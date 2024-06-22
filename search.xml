@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>My New Post</title>
+    <url>/2024/06/22/My-New-Post/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2024/06/22/mkdocs/</url>
+    <content><![CDATA[<h2 id="创建个人网站（github-pages）并将站点一键托管到Github"><a href="#创建个人网站（github-pages）并将站点一键托管到Github" class="headerlink" title="创建个人网站（github pages）并将站点一键托管到Github"></a>创建个人网站（github pages）并将站点一键托管到Github</h2><p>亮点：个人网站一键部署，简易文档直接渲染成网页挂载全流程<br>使用工具：mkdocs和git命令</p>
+<h2 id="1-mkdocs介绍"><a href="#1-mkdocs介绍" class="headerlink" title="1. mkdocs介绍"></a>1. mkdocs介绍</h2><p>MkDocs is a fast, simple and downright gorgeous static site generator that’s geared towards building project documentation. Documentation source files are written in Markdown, and configured with a single YAML configuration file.</p>
+<p>MkDocs是一个快速的、简单的、优美的静态站点生成器，主要用于构建项目文档。文档源文件采用Markdown格式，配置文件采用一个YAML格式文件。</p>
+<h2 id="2-mkdocs安装"><a href="#2-mkdocs安装" class="headerlink" title="2. mkdocs安装"></a>2. mkdocs安装</h2><p><strong>安装mkdocs前需要安装python环境。mkdocs要求python版本为：python 3.5、python 3.6 、python 3.7和python 3.8。</strong></p>
+<p>安装mkdocs非常简单，只需要在控制台运行如下命令即可：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install mkdocs</span><br></pre></td></tr></table></figure>
+
+<p>查看mkdocs是否安装成功，只需要运行如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdocs --version</span><br></pre></td></tr></table></figure>
+
+<p>如果提示不能运行<code>mkdocs</code>命令，简单的解决方法只需要在命令前加上<code>python -m</code>，即：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python -m mkdocs --version</span><br></pre></td></tr></table></figure>
+
+<p>永久的解决方法是将python安装目录下的<code>Scripts</code>加入环境变量<code>Path</code>中。</p>
+<h2 id="3-mkdocs创建站点"><a href="#3-mkdocs创建站点" class="headerlink" title="3. mkdocs创建站点"></a>3. mkdocs创建站点</h2><p>我们只需要运行如下命令，就可以创建一个站点：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdocs new my_wiki(你喜欢的目录名)</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会在当前目录下创建一个目录（my_wiki）</p>
+<p>然后进入我们创建的目录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd my_wiki</span><br></pre></td></tr></table></figure>
+
+<p>运行如下命令，即可在本地访问站点：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdocs serve</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器输入地址<code>http://127.0.0.1:8000</code>，页面如下：</p>
+<p><img src="/.%5Cpic%5Cmkdocs_pic%5C1.png" alt="1"></p>
+<p>在运行站点的同时，我们可以实时修改站点信息，mkdocs会更新并展示在浏览器上，方便我们预览。</p>
+<p>我们可以修改<code>mkdocs.yml</code>文件中的站点名<code>site_name</code>：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">site_name: 我的第一个站点</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-部署站点"><a href="#4-部署站点" class="headerlink" title="4.部署站点"></a>4.部署站点</h2><p>首先来认识一个命令:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdocs build</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会在<code>learn-mkdocs</code>目录下生成一个目录<code>site</code>，这个目录中包含了静态站点的页面内容。</p>
+<p>我们可以在GitHub中创建一个仓库</p>
+<p>然后在目录下打开git，并将当前目录设置为一个仓库，然后与GitHub新创建的仓库连接：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin 仓库地址</span><br></pre></td></tr></table></figure>
+
+<p>然后在目录下打开控制台，执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdocs gh-deploy</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会在GitHub项目上创建一个<code>gh-pages</code>分支，并执行<code>mkdocs build</code>命令，然后将当前目录中的<code>site</code>目录下的内容推送到远程的<code>gh-pages</code>分支</p>
+<p>浏览器访问<code>http://YourGithubUsername.github.io/repo-name</code>即可</p>
+<p>添加本地的文件到本地仓库：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+<p>这里的.表示所有文件都加进去，这里正常是没有输出反馈的，只要不报错一般就是没问题已经添加成功。</p>
+<p>将本地修改保存到本地仓库中：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git commit -m&quot;first version&quot;</span><br></pre></td></tr></table></figure>
+
+<p>推送到远程仓库：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git remote add origin 仓库地址</span><br><span class="line">git push -u origin main(or master)</span><br></pre></td></tr></table></figure>
+
+<p>新建 <code>.gitignore</code> 文件，忽略掉除 <code>docs</code> 、 <code>mkdocs.yml</code> 以及 <code>git</code> 相关文件之外的文件</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">/*</span></span><br><span class="line"><span class="type">!/docs</span></span><br><span class="line"><span class="type">!/mkdocs.yml</span></span><br><span class="line"><span class="type">!/.gitignore</span></span><br><span class="line"><span class="type">!/.github</span></span><br></pre></td></tr></table></figure>
+
+<p>然后我们在编写完文章后，一般至少都要执行这些命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &#x27;new article&#x27;</span><br><span class="line">git push    # 第一次push时执行git push -u origin main</span><br><span class="line">mkdocs gh-deploy</span><br></pre></td></tr></table></figure>
+
+<p>在仓库根目录下新建 <code>.github/workflows</code> 文件夹</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p .github/workflows</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>.github/workflows</code> 文件夹下新建 <code>gh-deploy.yml</code> 文件，其他文件名也可以，内容如下</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Publish</span> <span class="string">docs</span> <span class="string">via</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">docs</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">main</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">docs</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">mhausenblas/mkdocs-deploy-gh-pages@master</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">GITHUB_TOKEN:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUB_TOKEN</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">EXTRA_PACKAGES:</span> <span class="string">build-base</span></span><br></pre></td></tr></table></figure>
+
+<p>在GitHub仓库页面中，将 <code>Settings</code> -&gt; <code>Actions</code> -&gt; <code>General</code> -&gt; <code>Workflow Permissions</code> 设置为 <code>Read an write permissions</code>，点击 <code>Save</code> 保存设置。这样每次编写完文章，只需成功执行 <code>git push</code> ，GitHub就会自动帮助我们部署。</p>
+<h2 id="5-mkdocs简单使用"><a href="#5-mkdocs简单使用" class="headerlink" title="5.mkdocs简单使用"></a>5.mkdocs简单使用</h2><h4 id="添加页面"><a href="#添加页面" class="headerlink" title="添加页面"></a>添加页面</h4><p>在入门使用中，mkdocs为我们创建了一个页面<code>index.md</code>，我们同样可以自己添加页面，比如，在<code>docs</code>目录下创建页面<code>about.md</code>，然后在配置文件<code>mkdocs.yml</code>中添加以下配置项：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">nav:</span> </span><br><span class="line"></span><br><span class="line">  <span class="string">--主页:</span> <span class="string">index.md</span></span><br><span class="line"></span><br><span class="line">  <span class="string">--关于我:</span> <span class="string">about.md</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="更改外观"><a href="#更改外观" class="headerlink" title="更改外观"></a>更改外观</h4><p>如果你不满意mkdocs默认的外观样式，我们也可以进行相应的更改。</p>
+<h5 id="更改图标"><a href="#更改图标" class="headerlink" title="更改图标"></a>更改图标</h5><p>如果使用mkdocs主题，只需要在<code>docs</code>目录下创建目录<code>img</code>，然后在目录<code>img</code>中放入<code>favicon.ico</code>图标即可。</p>
+<p><img src="/.%5Cpic%5Cmkdocs_pic%5C2.png" alt="2"></p>
+<h5 id="更改主题"><a href="#更改主题" class="headerlink" title="更改主题"></a>更改主题</h5><p>mkdocs默认有两个主题：mkdocs和readthedoc，默认使用mkdocs。</p>
+<p>我们在配置文件中修改，使用<code>readthedocs</code>主题：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">readthedocs</span></span><br></pre></td></tr></table></figure>
+
+<p>我们也可以使用第三方主题，第三方主题详细列表如下：</p>
+<p>https:&#x2F;&#x2F;<a href="https://so.csdn.net/so/search?q=github&spm=1001.2101.3001.7020">github</a>.com&#x2F;mkdocs&#x2F;mkdocs&#x2F;wiki&#x2F;MkDocs-Themes</p>
+<p>可以参照具体的主题使用教程，进行配置。</p>
+<p>在本例中，我们配置一个名为<code>material</code>的主题。</p>
+<p>首先利用<code>pip</code>下载相应的主题：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install mkdocs-material</span><br></pre></td></tr></table></figure>
+
+<p>然后在配置文件中修改主题：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">material</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="个性化设置"><a href="#个性化设置" class="headerlink" title="个性化设置"></a>个性化设置</h5><p>如果想进行网页左上角logo修改，颜色修改等可加入如下内容</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">&quot;material&quot;</span></span><br><span class="line">    <span class="attr">logo:</span></span><br><span class="line">        <span class="attr">icon:</span> <span class="string">&quot;mkwiki&quot;</span></span><br><span class="line">    <span class="attr">palette:</span></span><br><span class="line">        <span class="attr">primary:</span> <span class="string">&quot;black&quot;</span></span><br><span class="line">        <span class="attr">accent:</span> <span class="string">&quot;white&quot;</span></span><br><span class="line">    <span class="attr">language:</span> <span class="string">&quot;zh&quot;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+</search>
