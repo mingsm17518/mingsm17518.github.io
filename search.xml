@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>My New Post</title>
-    <url>/2024/06/22/My-New-Post/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title></title>
     <url>/2024/06/22/mkdocs/</url>
     <content><![CDATA[<h2 id="创建个人网站（github-pages）并将站点一键托管到Github"><a href="#创建个人网站（github-pages）并将站点一键托管到Github" class="headerlink" title="创建个人网站（github pages）并将站点一键托管到Github"></a>创建个人网站（github pages）并将站点一键托管到Github</h2><p>亮点：个人网站一键部署，简易文档直接渲染成网页挂载全流程<br>使用工具：mkdocs和git命令</p>
@@ -100,5 +95,10 @@
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">&quot;material&quot;</span></span><br><span class="line">    <span class="attr">logo:</span></span><br><span class="line">        <span class="attr">icon:</span> <span class="string">&quot;mkwiki&quot;</span></span><br><span class="line">    <span class="attr">palette:</span></span><br><span class="line">        <span class="attr">primary:</span> <span class="string">&quot;black&quot;</span></span><br><span class="line">        <span class="attr">accent:</span> <span class="string">&quot;white&quot;</span></span><br><span class="line">    <span class="attr">language:</span> <span class="string">&quot;zh&quot;</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
+  </entry>
+  <entry>
+    <title>My New Post</title>
+    <url>/2024/06/22/My-New-Post/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
