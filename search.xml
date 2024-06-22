@@ -27,7 +27,7 @@
 <p>运行如下命令，即可在本地访问站点：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdocs serve</span><br></pre></td></tr></table></figure>
 <p>在浏览器输入地址<code>http://127.0.0.1:8000</code>，页面如下：</p>
-<p><img src="/2024/06/22/mkdocs/mkdocs%5C1.png" alt="1"></p>
+<p><img src="../images/mkdocs/1.png" alt="1"></p>
 <p>在运行站点的同时，我们可以实时修改站点信息，mkdocs会更新并展示在浏览器上，方便我们预览。</p>
 <p>我们可以修改<code>mkdocs.yml</code>文件中的站点名<code>site_name</code>：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">site_name: 我的第一个站点</span><br></pre></td></tr></table></figure>
@@ -66,7 +66,7 @@
 <p>如果你不满意mkdocs默认的外观样式，我们也可以进行相应的更改。</p>
 <h3 id="更改图标">更改图标</h3>
 <p>如果使用mkdocs主题，只需要在<code>docs</code>目录下创建目录<code>img</code>，然后在目录<code>img</code>中放入<code>favicon.ico</code>图标即可。</p>
-<img src="/2024/06/22/mkdocs/06/22/mkdocs/2.png" class width="2">
+<p><img src="../images/mkdocs/2.png" alt="2"></p>
 <h4 id="更改主题">更改主题</h4>
 <p>mkdocs默认有两个主题：mkdocs和readthedoc，默认使用mkdocs。</p>
 <p>我们在配置文件中修改，使用<code>readthedocs</code>主题：</p>
@@ -94,5 +94,11 @@
     <title>My New Post</title>
     <url>/2024/06/22/My-New-Post/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>ceshi</title>
+    <url>/2024/06/22/ceshi/</url>
+    <content><![CDATA[<p><img src="../images/header.jpg" alt="1"></p>
+]]></content>
   </entry>
 </search>
