@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"mingsm17518.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="职工管理系统 代码链接：基于多态的职工管理系统.zip 成品链接：基于多态的职工管理系统.exe 1、管理系统需求 职工管理系统可以用来管理公司内所有员工的信息 本教程主要利用C++来实现一个基于多态的职工管理系统 公司中职工分为三类：普通员工、经理、老板，显示信息时，需要显示职工编号、职工姓名、职工岗位、以及职责 普通员工职责：完成经理交给的任务 经理职责：完成老板交给的任务，并下发任务给员工">
+  <meta name="description" content="职工管理系统 代码链接：基于多态的职工管理系统.zip 成品链接：基于多态的职工管理系统.exe 1、管理系统需求 职工管理系统可以用来管理公司内所有员工的信息 本教程主要利用C++来实现一个基于多态的职工管理系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="职工管理系统">
 <meta property="og:url" content="https://mingsm17518.github.io/2024/06/22/c++/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="Ming-Blog">
-<meta property="og:description" content="职工管理系统 代码链接：基于多态的职工管理系统.zip 成品链接：基于多态的职工管理系统.exe 1、管理系统需求 职工管理系统可以用来管理公司内所有员工的信息 本教程主要利用C++来实现一个基于多态的职工管理系统 公司中职工分为三类：普通员工、经理、老板，显示信息时，需要显示职工编号、职工姓名、职工岗位、以及职责 普通员工职责：完成经理交给的任务 经理职责：完成老板交给的任务，并下发任务给员工">
+<meta property="og:description" content="职工管理系统 代码链接：基于多态的职工管理系统.zip 成品链接：基于多态的职工管理系统.exe 1、管理系统需求 职工管理系统可以用来管理公司内所有员工的信息 本教程主要利用C++来实现一个基于多态的职工管理系统">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://mingsm17518.github.io/2024/06/22/c++/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/1546511409198.png">
 <meta property="og:image" content="https://mingsm17518.github.io/2024/06/22/c++/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/1544151201465.png">
@@ -80,7 +80,7 @@
 <meta property="og:image" content="https://mingsm17518.github.io/2024/06/22/c++/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/1546510994196.png">
 <meta property="og:image" content="https://mingsm17518.github.io/2024/06/22/c++/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/1546511018517.png">
 <meta property="article:published_time" content="2024-06-22T13:16:51.920Z">
-<meta property="article:modified_time" content="2024-06-22T13:22:37.860Z">
+<meta property="article:modified_time" content="2024-06-22T13:58:55.245Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
@@ -269,7 +269,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-06-22 21:16:51 / Modified: 21:22:37" itemprop="dateCreated datePublished" datetime="2024-06-22T21:16:51+08:00">2024-06-22</time>
+              <time title="Created: 2024-06-22 21:16:51 / Modified: 21:58:55" itemprop="dateCreated datePublished" datetime="2024-06-22T21:16:51+08:00">2024-06-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -312,6 +312,7 @@
 <h2 id="1、管理系统需求">1、管理系统需求</h2>
 <p>职工管理系统可以用来管理公司内所有员工的信息</p>
 <p>本教程主要利用C++来实现一个基于多态的职工管理系统</p>
+<span id="more"></span>
 <p>公司中职工分为三类：普通员工、经理、老板，显示信息时，需要显示职工编号、职工姓名、职工岗位、以及职责</p>
 <p>普通员工职责：完成经理交给的任务</p>
 <p>经理职责：完成老板交给的任务，并下发任务给员工</p>
