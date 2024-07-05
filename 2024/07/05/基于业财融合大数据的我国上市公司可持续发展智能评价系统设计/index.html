@@ -28,7 +28,7 @@
 <meta property="og:description" content="系统设计方案 业财融合大数据平台构建流程： 1、数据源：公开财务年报、社会责任报告、可持续发展报告等。 2、数据抓取与清洗：使用Python进行自动化抓取和数据清洗，确保数据质量和一致性。 自动化数据抓取 1、选择合适的抓取工具和库： 使用第三方库如 requests 或 BeautifulSoup 进行网页数据抓取。 对于结构化数据，可以考虑使用 Selenium 或 Scrapy 等工具进行数">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-05T12:33:34.018Z">
-<meta property="article:modified_time" content="2024-07-05T12:50:54.481Z">
+<meta property="article:modified_time" content="2024-07-05T12:56:33.452Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary">
 
@@ -215,7 +215,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-07-05 20:33:34 / Modified: 20:50:54" itemprop="dateCreated datePublished" datetime="2024-07-05T20:33:34+08:00">2024-07-05</time>
+              <time title="Created: 2024-07-05 20:33:34 / Modified: 20:56:33" itemprop="dateCreated datePublished" datetime="2024-07-05T20:33:34+08:00">2024-07-05</time>
             </span>
 
           
@@ -231,7 +231,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>9.5k</span>
+              <span>9.4k</span>
             </span>
 
         </div>
@@ -286,18 +286,18 @@
 <h4 id="2-创建和管理存储桶或数据库">2. 创建和管理存储桶或数据库</h4>
 <p>对象存储（Object Storage）示例：</p>
 <p>在用友分析云中，对象存储一般通过创建存储桶（Bucket）来管理数据，以下是一个示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">python复制代码from yonyoucloud import storage</span><br><span class="line"></span><br><span class="line"># 创建对象存储客户端</span><br><span class="line">client = storage.Client()</span><br><span class="line"></span><br><span class="line"># 创建一个新的存储桶</span><br><span class="line">bucket_name = &#x27;my_bucket&#x27;</span><br><span class="line">bucket = client.bucket(bucket_name)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> yonyoucloud <span class="keyword">import</span> storage</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建对象存储客户端</span></span><br><span class="line">client = storage.Client()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个新的存储桶</span></span><br><span class="line">bucket_name = <span class="string">&#x27;my_bucket&#x27;</span></span><br><span class="line">bucket = client.bucket(bucket_name)</span><br></pre></td></tr></table></figure>
 <p>数据库服务（DBaaS）示例：</p>
 <p>如果需要存储结构化数据，可以创建和管理数据库服务：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python复制代码from yonyoucloud import database</span><br><span class="line"></span><br><span class="line"># 创建数据库客户端</span><br><span class="line">client = database.Client()</span><br><span class="line"></span><br><span class="line"># 创建一个新的数据库实例</span><br><span class="line">database_instance = client.create_instance(instance_name=&#x27;my_database&#x27;, database_type=&#x27;mysql&#x27;, ...)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> yonyoucloud <span class="keyword">import</span> database</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据库客户端</span></span><br><span class="line">client = database.Client()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个新的数据库实例</span></span><br><span class="line">database_instance = client.create_instance(instance_name=<span class="string">&#x27;my_database&#x27;</span>, database_type=<span class="string">&#x27;mysql&#x27;</span>, ...)</span><br></pre></td></tr></table></figure>
 <h4 id="3-数据上传与下载">3. 数据上传与下载</h4>
 <p>无论是对象存储还是数据库服务，都需要能够方便地上传和下载数据。</p>
 <p>对象存储上传和下载示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">python复制代码# 上传文件到存储桶</span><br><span class="line">blob = bucket.blob(&#x27;file.txt&#x27;)</span><br><span class="line">with open(&#x27;local_file.txt&#x27;, &#x27;rb&#x27;) as f:</span><br><span class="line">    blob.upload_from_file(f)</span><br><span class="line"></span><br><span class="line"># 下载存储桶中的文件</span><br><span class="line">blob = bucket.blob(&#x27;file.txt&#x27;)</span><br><span class="line">blob.download_to_filename(&#x27;local_file.txt&#x27;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 上传文件到存储桶</span></span><br><span class="line">blob = bucket.blob(<span class="string">&#x27;file.txt&#x27;</span>)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;local_file.txt&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    blob.upload_from_file(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载存储桶中的文件</span></span><br><span class="line">blob = bucket.blob(<span class="string">&#x27;file.txt&#x27;</span>)</span><br><span class="line">blob.download_to_filename(<span class="string">&#x27;local_file.txt&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <h4 id="4-数据安全和权限管理">4. 数据安全和权限管理</h4>
 <p>在用友分析云或其他云平台上，确保数据的安全性是至关重要的。可以通过以下方式来管理访问权限：</p>
 <p>设置存储桶的访问权限示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">python复制代码# 设置存储桶的公共读权限</span><br><span class="line">bucket.make_public()</span><br><span class="line"></span><br><span class="line"># 或者设置私有权限，并授权特定用户或角色访问</span><br><span class="line">bucket.acl.all().grant_read()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置存储桶的公共读权限</span></span><br><span class="line">bucket.make_public()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者设置私有权限，并授权特定用户或角色访问</span></span><br><span class="line">bucket.acl.<span class="built_in">all</span>().grant_read()</span><br></pre></td></tr></table></figure>
 <h3 id="4、智能化评估算法设计：">4、智能化评估算法设计：</h3>
 <h4 id="多层次多主题多维度评估算法：">多层次多主题多维度评估算法：</h4>
 <p>结合机器学习技术，如聚类分析、决策树等，构建智能评估模型。</p>
