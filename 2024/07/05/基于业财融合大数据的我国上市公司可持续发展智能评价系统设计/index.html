@@ -28,7 +28,7 @@
 <meta property="og:description" content="系统设计方案 业财融合大数据平台构建流程： 1、数据源：公开财务年报、社会责任报告、可持续发展报告等。 2、数据抓取与清洗：使用Python进行自动化抓取和数据清洗，确保数据质量和一致性。 自动化数据抓取 1、选择合适的抓取工具和库： 使用第三方库如 requests 或 BeautifulSoup 进行网页数据抓取。 对于结构化数据，可以考虑使用 Selenium 或 Scrapy 等工具进行数">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-05T12:33:34.018Z">
-<meta property="article:modified_time" content="2024-07-05T12:57:09.134Z">
+<meta property="article:modified_time" content="2024-07-27T02:47:49.930Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary">
 
@@ -213,10 +213,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-07-05 20:33:34 / Modified: 20:57:09" itemprop="dateCreated datePublished" datetime="2024-07-05T20:33:34+08:00">2024-07-05</time>
+              <time title="Created: 2024-07-05 20:33:34" itemprop="dateCreated datePublished" datetime="2024-07-05T20:33:34+08:00">2024-07-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-07-27 10:47:49" itemprop="dateModified" datetime="2024-07-27T10:47:49+08:00">2024-07-27</time>
+              </span>
 
           
             <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
@@ -251,6 +257,7 @@
 <h5 id="1、选择合适的抓取工具和库：">1、选择合适的抓取工具和库：</h5>
 <p>使用第三方库如 requests 或 BeautifulSoup 进行网页数据抓取。<br>
 对于结构化数据，可以考虑使用 Selenium 或 Scrapy 等工具进行数据爬取。</p>
+<span id="more"></span>
 <p>以下是一个简单的示例，使用 requests 库抓取网页数据并基本清洗的过程：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义抓取函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fetch_data</span>(<span class="params">url</span>):</span><br><span class="line">    headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&#x27;</span>&#125;</span><br><span class="line">    response = requests.get(url, headers=headers)</span><br><span class="line">    <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">        <span class="keyword">return</span> response.text</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：抓取并解析网页</span></span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://example.com&#x27;</span></span><br><span class="line">html_content = fetch_data(url)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> html_content:</span><br><span class="line">    soup = BeautifulSoup(html_content, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">    <span class="comment"># 进行进一步的数据提取和清洗操作，根据具体情况处理数据</span></span><br><span class="line">    <span class="comment"># 例如：提取表格数据，处理特定标签等</span></span><br><span class="line">    <span class="comment"># 示例：</span></span><br><span class="line">    table = soup.find(<span class="string">&#x27;table&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> table:</span><br><span class="line">        rows = table.find_all(<span class="string">&#x27;tr&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> rows:</span><br><span class="line">            columns = row.find_all(<span class="string">&#x27;td&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> col <span class="keyword">in</span> columns:</span><br><span class="line">                <span class="comment"># 处理每一列的数据，进行清洗和格式化</span></span><br><span class="line">                cleaned_data = col.text.strip()  <span class="comment"># 清除空白字符</span></span><br><span class="line">                <span class="comment"># 可以进一步添加数据类型转换、异常处理等逻辑</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 数据清洗和处理完成后，可以保存到文件或数据库中</span></span><br><span class="line">    <span class="comment"># 示例：</span></span><br><span class="line">    <span class="comment"># df.to_csv(&#x27;cleaned_data.csv&#x27;, index=False, encoding=&#x27;utf-8-sig&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Failed to fetch data from <span class="subst">&#123;url&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
 <h5 id="2、定时任务和调度：">2、定时任务和调度：</h5>
@@ -459,7 +466,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -519,7 +526,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">231k</span>
+    <span title="Symbols count total">244k</span>
 </div>
 
 <!--

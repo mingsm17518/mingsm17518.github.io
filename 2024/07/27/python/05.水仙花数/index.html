@@ -20,23 +20,20 @@
     var CONFIG = {"hostname":"mingsm17518.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="激活Typora 1.找到typora的安装目录 2.按照 Typora  —&gt;  resources  —&gt;  page-dist  —&gt;  static  —&gt;  js 这个路径找到LicenseIndex.180dd4c7.b98d5f1f.chunk.js和LicenseIndex.180dd4c7.d0150291.chunk.js这两个文件  3.打开这两个文件">
+  <meta name="description" content="构造程序逻辑 经典的例子   寻找水仙花数。  说明：水仙花数也被称为超完全数字不变数、自恋数、自幂数、阿姆斯特朗数，它是一个3位数，该数字每个位上数字的立方之和正好等于它本身，例如：$1^3 + 5^3+ 3^3&#x3D;153$。  1234567#找出所有水仙花数for num in range(100, 1000):    low &#x3D; num % 10    mid &#x3D; num &#x2F;&#x2F; 10 % 1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="激活Typora">
-<meta property="og:url" content="https://mingsm17518.github.io/2024/06/24/%E6%BF%80%E6%B4%BBTypora/index.html">
+<meta property="og:title" content="水仙花数">
+<meta property="og:url" content="https://mingsm17518.github.io/2024/07/27/python/05.%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/index.html">
 <meta property="og:site_name" content="Ming-Blog">
-<meta property="og:description" content="激活Typora 1.找到typora的安装目录 2.按照 Typora  —&gt;  resources  —&gt;  page-dist  —&gt;  static  —&gt;  js 这个路径找到LicenseIndex.180dd4c7.b98d5f1f.chunk.js和LicenseIndex.180dd4c7.d0150291.chunk.js这两个文件  3.打开这两个文件">
+<meta property="og:description" content="构造程序逻辑 经典的例子   寻找水仙花数。  说明：水仙花数也被称为超完全数字不变数、自恋数、自幂数、阿姆斯特朗数，它是一个3位数，该数字每个位上数字的立方之和正好等于它本身，例如：$1^3 + 5^3+ 3^3&#x3D;153$。  1234567#找出所有水仙花数for num in range(100, 1000):    low &#x3D; num % 10    mid &#x3D; num &#x2F;&#x2F; 10 % 1">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/ff37559e7fad4c1087d3b401fdb333ad.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/f3b3702c39454b31afb0904a0b510d53.png">
-<meta property="article:published_time" content="2024-06-24T11:51:05.071Z">
-<meta property="article:modified_time" content="2024-06-24T12:00:40.062Z">
+<meta property="article:published_time" content="2024-07-27T02:51:33.584Z">
+<meta property="article:modified_time" content="2024-07-27T02:52:50.286Z">
 <meta property="article:author" content="Ming">
-<meta property="article:tag" content="Typora">
+<meta property="article:tag" content="pyhton">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/ff37559e7fad4c1087d3b401fdb333ad.png">
 
-<link rel="canonical" href="https://mingsm17518.github.io/2024/06/24/%E6%BF%80%E6%B4%BBTypora/">
+<link rel="canonical" href="https://mingsm17518.github.io/2024/07/27/python/05.%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/">
 
 
 <script id="page-configurations">
@@ -49,7 +46,7 @@
   };
 </script>
 
-  <title>激活Typora | Ming-Blog</title>
+  <title>水仙花数 | Ming-Blog</title>
   
 
 
@@ -195,7 +192,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/06/24/%E6%BF%80%E6%B4%BBTypora/">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/07/27/python/05.%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -208,7 +205,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          激活Typora
+          水仙花数
         </h1>
 
         <div class="post-meta">
@@ -219,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-06-24 19:51:05 / Modified: 20:00:40" itemprop="dateCreated datePublished" datetime="2024-06-24T19:51:05+08:00">2024-06-24</time>
+              <time title="Created: 2024-07-27 10:51:33 / Modified: 10:52:50" itemprop="dateCreated datePublished" datetime="2024-07-27T10:51:33+08:00">2024-07-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +224,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/trick/" itemprop="url" rel="index"><span itemprop="name">trick</span></a>
+                  <a href="/categories/pyhton/" itemprop="url" rel="index"><span itemprop="name">pyhton</span></a>
                 </span>
             </span>
 
@@ -244,7 +241,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>351</span>
+              <span>2.2k</span>
             </span>
 
         </div>
@@ -256,15 +253,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>激活Typora</p>
-<p>1.找到typora的安装目录</p>
-<p>2.按照 Typora  —&gt;  resources  —&gt;  page-dist  —&gt;  static  —&gt;  js 这个路径找到LicenseIndex.180dd4c7.b98d5f1f.chunk.js和LicenseIndex.180dd4c7.d0150291.chunk.js这两个文件</p>
-<p><img src="https://img-blog.csdnimg.cn/ff37559e7fad4c1087d3b401fdb333ad.png" alt="img"></p>
-<p>3.打开这两个文件，Ctrl + F 搜索 hasActivated=“true”==e.hasActivated，并将其替换为 hasActivated=“true”==“true”</p>
-<p><code>hasActivated=&quot;true&quot;==e.hasActivated</code></p>
-<p><code>替换为</code></p>
-<p><code>hasActivated=&quot;true&quot;==&quot;true&quot;</code></p>
-<p><img src="https://img-blog.csdnimg.cn/f3b3702c39454b31afb0904a0b510d53.png" alt="img"></p>
+        <h2 id="构造程序逻辑">构造程序逻辑</h2>
+<h3 id="经典的例子">经典的例子</h3>
+<ol>
+<li>
+<p>寻找<strong>水仙花数</strong>。</p>
+<blockquote>
+<p><strong>说明</strong>：水仙花数也被称为超完全数字不变数、自恋数、自幂数、阿姆斯特朗数，它是一个3位数，该数字每个位上数字的立方之和正好等于它本身，例如：$1^3 + 5^3+ 3^3=153$。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#找出所有水仙花数</span></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>, <span class="number">1000</span>):</span><br><span class="line">    low = num % <span class="number">10</span></span><br><span class="line">    mid = num // <span class="number">10</span> % <span class="number">10</span></span><br><span class="line">    high = num // <span class="number">100</span></span><br><span class="line">    <span class="keyword">if</span> num == low ** <span class="number">3</span> + mid ** <span class="number">3</span> + high ** <span class="number">3</span>:</span><br><span class="line">        <span class="built_in">print</span>(num)</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>在上面的代码中，我们通过整除和求模运算分别找出了一个三位数的个位、十位和百位，这种小技巧在实际开发中还是常用的。用类似的方法，我们还可以实现将一个正整数反转，例如：将12345变成54321，代码如下所示。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#正整数的反转</span></span><br><span class="line">num = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;num = &#x27;</span>))</span><br><span class="line">reversed_num = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> num &gt; <span class="number">0</span>:</span><br><span class="line">    reversed_num = reversed_num * <span class="number">10</span> + num % <span class="number">10</span></span><br><span class="line">    num //= <span class="number">10</span></span><br><span class="line"><span class="built_in">print</span>(reversed_num)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>百钱百鸡</strong>问题。</p>
+<blockquote>
+<p><strong>说明</strong>：百钱百鸡是我国古代数学家<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BC%A0%E4%B8%98%E5%BB%BA/10246238">张丘建</a>在《算经》一书中提出的数学问题：鸡翁一值钱五，鸡母一值钱三，鸡雏三值钱一。百钱买百鸡，问鸡翁、鸡母、鸡雏各几何？翻译成现代文是：公鸡5元一只，母鸡3元一只，小鸡1元三只，用100块钱买一百只鸡，问公鸡、母鸡、小鸡各有多少只？</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#《百钱百鸡》问题</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">20</span>):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">33</span>):</span><br><span class="line">        z = <span class="number">100</span> - x - y</span><br><span class="line">        <span class="keyword">if</span> <span class="number">5</span> * x + <span class="number">3</span> * y + z / <span class="number">3</span> == <span class="number">100</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;公鸡: %d只, 母鸡: %d只, 小鸡: %d只&#x27;</span> % (x, y, z))</span><br></pre></td></tr></table></figure>
+<p>上面使用的方法叫做<strong>穷举法</strong>，也称为<strong>暴力搜索法</strong>，这种方法通过一项一项的列举备选解决方案中所有可能的候选项并检查每个候选项是否符合问题的描述，最终得到问题的解。这种方法看起来比较笨拙，但对于运算能力非常强大的计算机来说，通常都是一个可行的甚至是不错的选择，而且问题的解如果存在，这种方法一定能够找到它。</p>
+</li>
+<li>
+<p><strong>CRAPS赌博游戏</strong>。</p>
+<blockquote>
+<p><strong>说明</strong>：CRAPS又称花旗骰，是美国拉斯维加斯非常受欢迎的一种的桌上赌博游戏。该游戏使用两粒骰子，玩家通过摇两粒骰子获得点数进行游戏。简单的规则是：玩家第一次摇骰子如果摇出了7点或11点，玩家胜；玩家第一次如果摇出2点、3点或12点，庄家胜；其他点数玩家继续摇骰子，如果玩家摇出了7点，庄家胜；如果玩家摇出了第一次摇的点数，玩家胜；其他点数，玩家继续要骰子，直到分出胜负。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Craps赌博游戏</span></span><br><span class="line">我们设定玩家开始游戏时有<span class="number">1000</span>元的赌注</span><br><span class="line">游戏结束的条件是玩家输光所有的赌注</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line">money = <span class="number">1000</span></span><br><span class="line"><span class="keyword">while</span> money &gt; <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;你的总资产为:&#x27;</span>, money)</span><br><span class="line">    needs_go_on = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        debt = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请下注: &#x27;</span>))</span><br><span class="line">        <span class="keyword">if</span> <span class="number">0</span> &lt; debt &lt;= money:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    first = randint(<span class="number">1</span>, <span class="number">6</span>) + randint(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;玩家摇出了%d点&#x27;</span> % first)</span><br><span class="line">    <span class="keyword">if</span> first == <span class="number">7</span> <span class="keyword">or</span> first == <span class="number">11</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;玩家胜!&#x27;</span>)</span><br><span class="line">        money += debt</span><br><span class="line">    <span class="keyword">elif</span> first == <span class="number">2</span> <span class="keyword">or</span> first == <span class="number">3</span> <span class="keyword">or</span> first == <span class="number">12</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;庄家胜!&#x27;</span>)</span><br><span class="line">        money -= debt</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        needs_go_on = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">while</span> needs_go_on:</span><br><span class="line">        needs_go_on = <span class="literal">False</span></span><br><span class="line">        current = randint(<span class="number">1</span>, <span class="number">6</span>) + randint(<span class="number">1</span>, <span class="number">6</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;玩家摇出了%d点&#x27;</span> % current)</span><br><span class="line">        <span class="keyword">if</span> current == <span class="number">7</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;庄家胜&#x27;</span>)</span><br><span class="line">            money -= debt</span><br><span class="line">        <span class="keyword">elif</span> current == first:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;玩家胜&#x27;</span>)</span><br><span class="line">            money += debt</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            needs_go_on = <span class="literal">True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;你破产了, 游戏结束!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>生成<strong>斐波那契数列</strong>的前20个数。</p>
+<blockquote>
+<p><strong>说明</strong>：斐波那契数列（Fibonacci sequence），又称黄金分割数列，是意大利数学家莱昂纳多·斐波那契（Leonardoda Fibonacci）在《计算之书》中提出一个在理想假设条件下兔子成长率的问题而引入的数列，所以这个数列也被戏称为&quot;兔子数列&quot;。斐波那契数列的特点是数列的前两个数都是1，从第三个数开始，每个数都是它前面两个数的和，形如：1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …。斐波那契数列在现代物理、准晶体结构、化学等领域都有直接的应用。</p>
+</blockquote>
+</li>
+<li>
+<p>找出10000以内的<strong>完美数</strong>。</p>
+<blockquote>
+<p><strong>说明</strong>：完美数又称为完全数或完备数，它的所有的真因子（即除了自身以外的因子）的和（即因子函数）恰好等于它本身。例如：6（$6=1+2+3$）和28（$28=1+2+4+7+14$）就是完美数。完美数有很多神奇的特性，有兴趣的可以自行了解。</p>
+</blockquote>
+</li>
+<li>
+<p>输出<strong>100以内所有的素数</strong>。</p>
+<blockquote>
+<p><strong>说明</strong>：素数指的是只能被1和自身整除的正整数（不包括1）。</p>
+</blockquote>
+</li>
+</ol>
 
     </div>
 
@@ -274,7 +309,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Typora/" rel="tag"><i class="fa fa-tag"></i> Typora</a>
+              <a href="/tags/pyhton/" rel="tag"><i class="fa fa-tag"></i> pyhton</a>
           </div>
 
         
@@ -283,13 +318,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/06/22/c++/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" rel="prev" title="职工管理系统">
-      <i class="fa fa-chevron-left"></i> 职工管理系统
+    <a href="/2024/07/27/python/04.%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/" rel="prev" title="循环结构">
+      <i class="fa fa-chevron-left"></i> 循环结构
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2024/06/24/%E9%9A%8F%E7%AC%94/%E6%B6%88%E6%9E%81%E8%87%AA%E7%94%B1/" rel="next" title="积极自由vs消极自由（以赛亚柏林的哲学体系）">
-      积极自由vs消极自由（以赛亚柏林的哲学体系） <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -348,6 +380,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91"><span class="nav-text">构造程序逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-text">经典的例子</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
