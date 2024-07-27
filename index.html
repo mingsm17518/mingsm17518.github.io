@@ -188,6 +188,145 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/07/27/python/01.%E5%88%9D%E8%AF%86Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Ming">
+      <meta itemprop="description" content="hello world!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ming-Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/07/27/python/01.%E5%88%9D%E8%AF%86Python/" class="post-title-link" itemprop="url">初识Python</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-07-27 10:24:51 / Modified: 10:40:04" itemprop="dateCreated datePublished" datetime="2024-07-27T10:24:51+08:00">2024-07-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pyhton/" itemprop="url" rel="index"><span itemprop="name">pyhton</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.2k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="初识Python">初识Python</h2>
+<h3 id="Python应用领域">Python应用领域</h3>
+<p>目前Python在Web应用后端开发、云基础设施建设、DevOps、网络数据采集（爬虫）、自动化测试、数据分析、机器学习等领域都有着广泛的应用。</p>
+<h3 id="安装Python解释器">安装Python解释器</h3>
+<h4 id="Windows环境">Windows环境</h4>
+<p>可以在<a target="_blank" rel="noopener" href="https://www.python.org">Python官方网站</a>下载到Python的Windows安装程序（exe文件）</p>
+<p>安装过程建议勾选“Add Python 3.x to PATH”（将Python 3.x添加到PATH环境变量）并选择自定义安装，在设置“Optional Features”界面最好将“pip”、“tcl/tk”、“Python test suite”等项全部勾选上。</p>
+<p>强烈建议选择自定义的安装路径并保证路径中没有中文。</p>
+<p>安装完成会看到“Setup was successful”的提示。</p>
+<h4 id="Linux环境">Linux环境</h4>
+<p>Linux环境自带了Python 2.x版本，但是如果要更新到3.x的版本，可以在<a target="_blank" rel="noopener" href="https://www.python.org">Python的官方网站</a>下载Python的源代码并通过源代码构建安装的方式进行安装，具体的步骤如下所示（以CentOS为例）。</p>
+<ol>
+<li>安装依赖库（因为没有这些依赖库可能在源代码构件安装时因为缺失底层依赖库而失败）。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install wget gcc zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel libffi-devel</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>下载Python源代码并解压缩到指定目录。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.7.6/Python-3.7.6.tar.xz</span><br><span class="line">xz -d Python-3.7.6.tar.xz</span><br><span class="line">tar -xvf Python-3.7.6.tar</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>切换至Python源代码目录并执行下面的命令进行配置和安装。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd Python-3.7.6</span><br><span class="line">./configure --prefix=/usr/local/python37 --enable-optimizations</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>修改用户主目录下名为.bash_profile的文件，配置PATH环境变量并使其生效。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">vim .bash_profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">... 此处省略上面的代码 ...</span></span><br><span class="line"></span><br><span class="line">export PATH=$PATH:/usr/local/python37/bin</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">... 此处省略下面的代码 ...</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>激活环境变量。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></table></figure>
+<h4 id="macOS环境">macOS环境</h4>
+<p>macOS也自带了Python 2.x版本，可以通过<a target="_blank" rel="noopener" href="https://www.python.org">Python的官方网站</a>提供的安装文件（pkg文件）安装Python 3.x的版本。默认安装完成后，可以通过在终端执行<code>python</code>命令来启动2.x版本的Python解释器，启动3.x版本的Python解释器需要执行<code>python3</code>命令。</p>
+<h3 id="运行Python程序">运行Python程序</h3>
+<h4 id="确认Python的版本">确认Python的版本</h4>
+<p>可以Windows的命令行提示符中键入下面的命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure>
+<p>在Linux或macOS系统的终端中键入下面的命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 --version</span><br></pre></td></tr></table></figure>
+<p>当然也可以先输入<code>python</code>或<code>python3</code>进入交互式环境，再执行以下的代码检查Python的版本。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="built_in">print</span>(sys.version_info)</span><br><span class="line"><span class="built_in">print</span>(sys.version)</span><br></pre></td></tr></table></figure>
+<h4 id="编写Python源代码">编写Python源代码</h4>
+<p>可以用文本编辑工具（推荐使用<a target="_blank" rel="noopener" href="https://www.sublimetext.com/">Sublime</a>、<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a>等高级文本编辑工具）编写Python源代码并用py作为后缀名保存该文件，代码内容如下所示。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;hello, world!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="运行程序">运行程序</h4>
+<p>切换到源代码所在的目录并执行下面的命令，看看屏幕上是否输出了&quot;hello, world!&quot;。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python hello.py</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 hello.py</span><br></pre></td></tr></table></figure>
+<h4 id="代码中的注释">代码中的注释</h4>
+<ol>
+<li>单行注释 - 以#和空格开头的部分</li>
+<li>多行注释 - 三个引号开头，三个引号结尾</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">第一个Python程序 - hello, world!</span></span><br><span class="line"><span class="string">向伟大的Dennis M. Ritchie先生致敬</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Version: 0.1</span></span><br><span class="line"><span class="string">Author: 骆昊</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;hello, world!&#x27;</span>)</span><br><span class="line"><span class="comment"># print(&quot;你好, 世界！&quot;)</span></span><br></pre></td></tr></table></figure>
+<h3 id="Python开发工具">Python开发工具</h3>
+<h4 id="PyCharm">PyCharm</h4>
+<p><img src="/2024/07/27/python/01.%E5%88%9D%E8%AF%86Python/python-pycharm.png" alt="python-pycharm"></p>
+<h3 id="练习">练习</h3>
+<p>学习使用turtle在屏幕上绘制图形。</p>
+<blockquote>
+<p><strong>说明</strong>：turtle是Python内置的一个非常有趣的模块，特别适合对计算机程序设计进行初体验的小伙伴，它最早是Logo语言的一部分，Logo语言是Wally Feurzig和Seymour Papert在1966发明的编程语言。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line"></span><br><span class="line">turtle.pensize(<span class="number">4</span>)</span><br><span class="line">turtle.pencolor(<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line"></span><br><span class="line">turtle.forward(<span class="number">100</span>)</span><br><span class="line">turtle.right(<span class="number">90</span>)</span><br><span class="line">turtle.forward(<span class="number">100</span>)</span><br><span class="line">turtle.right(<span class="number">90</span>)</span><br><span class="line">turtle.forward(<span class="number">100</span>)</span><br><span class="line">turtle.right(<span class="number">90</span>)</span><br><span class="line">turtle.forward(<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">turtle.mainloop()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/07/05/%E5%9F%BA%E4%BA%8E%E4%B8%9A%E8%B4%A2%E8%9E%8D%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E6%88%91%E5%9B%BD%E4%B8%8A%E5%B8%82%E5%85%AC%E5%8F%B8%E5%8F%AF%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B1%95%E6%99%BA%E8%83%BD%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -213,7 +352,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-07-05 20:33:34 / Modified: 20:56:33" itemprop="dateCreated datePublished" datetime="2024-07-05T20:33:34+08:00">2024-07-05</time>
+              <time title="Created: 2024-07-05 20:33:34 / Modified: 20:57:09" itemprop="dateCreated datePublished" datetime="2024-07-05T20:33:34+08:00">2024-07-05</time>
             </span>
 
           <br>
@@ -1114,97 +1253,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/06/22/c++/Cpp%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="Ming">
-      <meta itemprop="description" content="hello world!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ming-Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/06/22/c++/Cpp%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">C++基础入门</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2024-06-22 21:09:30 / Modified: 21:58:04" itemprop="dateCreated datePublished" datetime="2024-06-22T21:09:30+08:00">2024-06-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/c/" itemprop="url" rel="index"><span itemprop="name">c++</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>35k</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1>C++基础入门</h1>
-<h2 id="1-C-初识">1 C++初识</h2>
-<h3 id="1-1-第一个C-程序">1.1  第一个C++程序</h3>
-<p>编写一个C++程序总共分为4个步骤</p>
-<ul>
-<li>创建项目</li>
-<li>创建文件</li>
-<li>编写代码</li>
-<li>运行程序</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/06/22/c++/Cpp%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1276,20 +1324,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1336,7 +1384,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">229k</span>
+    <span title="Symbols count total">231k</span>
 </div>
 
 <!--
