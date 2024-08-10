@@ -195,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%BE%AE%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6/%E5%BE%AE%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6/">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/hexo/hexo%20%E6%B7%BB%E5%8A%A0%20pdf%20%E9%A2%84%E8%A7%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -209,7 +209,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%BE%AE%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6/%E5%BE%AE%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6/" class="post-title-link" itemprop="url">微观经济学</a>
+            <a href="/2024/08/10/hexo/hexo%20%E6%B7%BB%E5%8A%A0%20pdf%20%E9%A2%84%E8%A7%88/" class="post-title-link" itemprop="url">hexo 基于 NexT 主题 添加 pdf 预览</a>
         </h2>
 
         <div class="post-meta">
@@ -220,7 +220,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-08-10 13:33:01 / Modified: 13:33:13" itemprop="dateCreated datePublished" datetime="2024-08-10T13:33:01+08:00">2024-08-10</time>
+              <time title="Created: 2024-08-10 14:12:35 / Modified: 14:20:27" itemprop="dateCreated datePublished" datetime="2024-08-10T14:12:35+08:00">2024-08-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,7 +228,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E5%AD%A6%E5%95%86%E9%99%A2%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">山东大学商院期末复习</span></a>
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -238,7 +238,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>128</span>
+              <span>313</span>
             </span>
 
         </div>
@@ -250,19 +250,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>下载链接：<a target="_blank" rel="noopener" href="https://1drv.ms/f/s!Amv1IR0UjIKdtxd-8qj09Nt-91Ye">微观经济学</a></p>
-<p>注：链接打不开的话可以下载onedrive或者挂梯子，两个方法选一个即可。</p>
-<p>下方为其中一个pdf预览，不挂梯子可能会加载较慢，请耐心等等。</p>
-<h1>高鸿业《西方经济学（微观部分）》（第7版）课后习题详解</h1>
-<p>考试可能有原题（23级最后一道计算题出自此处）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%BE%AE%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6/%E5%BE%AE%E8%A7%82%E7%BB%8F%E6%B5%8E%E5%AD%A6/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1>Install hexo dependency</h1>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">$</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">--save</span> <span class="string">hexo-pdf</span></span><br></pre></td></tr></table></figure>
+<h1>Usage</h1>
+<p>在<code>post_asset_folder: true</code>的情况下你就可以在 <code>/source/_posts</code> 目录下用和 <code>xxx.md</code>同名的文件夹保存图片和 pdf 文件</p>
+<p>然后键入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% pdf ./xxx.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<p><code>_config.yml 文件</code>里：</p>
+<p><img src="/2024/08/10/hexo/hexo%20%E6%B7%BB%E5%8A%A0%20pdf%20%E9%A2%84%E8%A7%88/1.png" alt="1"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="built_in">object</span> data=<span class="string">&quot;./xxx.pdf&quot;</span> <span class="built_in">type</span>=<span class="string">&quot;application/pdf&quot;</span> width=<span class="string">&quot;100%&quot;</span> height=<span class="string">&quot;1000px&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>object 可换成 embed, iframe</p>
+
       
     </div>
 
@@ -283,7 +281,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6-%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86/">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/hexo/%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -297,7 +295,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6-%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">市场营销学重点知识</a>
+            <a href="/2024/08/10/hexo/%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">hexo 基于 NexT 主题 在文章中插入图片</a>
         </h2>
 
         <div class="post-meta">
@@ -308,7 +306,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-08-10 13:22:53 / Modified: 13:27:20" itemprop="dateCreated datePublished" datetime="2024-08-10T13:22:53+08:00">2024-08-10</time>
+              <time title="Created: 2024-08-10 14:08:46 / Modified: 14:10:46" itemprop="dateCreated datePublished" datetime="2024-08-10T14:08:46+08:00">2024-08-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -316,11 +314,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E5%AD%A6%E5%95%86%E9%99%A2%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">山东大学商院期末复习</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E5%AD%A6%E5%95%86%E9%99%A2%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">市场营销学</span></a>
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -330,7 +324,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>8.4k</span>
+              <span>391</span>
             </span>
 
         </div>
@@ -342,18 +336,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>市场营销重点</strong></p>
-<h2 id="第一章-市场和市场营销">第一章 市场和市场营销</h2>
-<p>1、市场营销：市场营销是通过创造和交换产品及价值，从而使个人或群体满足欲望和需求的社会过程和管理过程。</p>
-<p>要点：1最终目标：使个人或群体满足欲望和需求</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6-%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1>在文章中插入图片</h1>
+<h4 id="绝对路径本地引用">绝对路径本地引用</h4>
+<p>当Hexo项目中只用到少量图片时，可以将图片统一放在source/images文件夹中，通过markdown语法访问它们。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](/images/image.jpg)</span><br></pre></td></tr></table></figure>
+<p>图片既可以在首页内容中访问到，也可以在文章正文中访问到。</p>
+<h4 id="相对路径本地引用">相对路径本地引用</h4>
+<p>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中。</p>
+<p>文章的目录可以通过站点配置文件_config.yml来生成。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>将_config.yml文件中的配置项post_asset_folder设为true后，执行命令_</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post_name</span><br></pre></td></tr></table></figure>
+<p>在source/_posts中会生成文章post_name.md和同名文件夹post_name。</p>
+<p>将图片资源放在post_name中，文章就可以使用相对路径引用图片资源了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](image.jpg)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -374,7 +370,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6%E8%AF%95%E9%A2%98%E5%BA%93/">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/hexo/%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -388,7 +384,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6%E8%AF%95%E9%A2%98%E5%BA%93/" class="post-title-link" itemprop="url">市场营销学试题库</a>
+            <a href="/2024/08/10/hexo/%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/" class="post-title-link" itemprop="url">hexo 基于 NexT 主题 相关文章推荐</a>
         </h2>
 
         <div class="post-meta">
@@ -399,7 +395,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-08-10 13:18:44 / Modified: 13:26:58" itemprop="dateCreated datePublished" datetime="2024-08-10T13:18:44+08:00">2024-08-10</time>
+              <time title="Created: 2024-08-10 14:07:50 / Modified: 14:10:34" itemprop="dateCreated datePublished" datetime="2024-08-10T14:07:50+08:00">2024-08-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -407,11 +403,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E5%AD%A6%E5%95%86%E9%99%A2%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">山东大学商院期末复习</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E5%AD%A6%E5%95%86%E9%99%A2%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">市场营销学</span></a>
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -421,7 +413,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>48k</span>
+              <span>308</span>
             </span>
 
         </div>
@@ -433,18 +425,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>市场营销学试题库</strong></p>
-<h1>一、名词解释模块：</h1>
-<p>1、 1、 产品观念；2、市场营销；3、营销观念；4、市场；5、社会营销观念</p>
-<p>6、潜在需要；7、营销管理；8、定制营销；9、关系营销；10、顾客让渡价值</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6%E8%AF%95%E9%A2%98%E5%BA%93/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1>相关文章推荐</h1>
+<p>该功能由 <a target="_blank" rel="noopener" href="https://github.com/tea3/hexo-related-popular-posts">hexo-related-popular-posts</a> 插件提供，会在文末出现本站相关的博客。</p>
+<p>在站点根目录中执行以下命令安装依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-related-popular-posts --save</span><br></pre></td></tr></table></figure>
+<p>在主题配置文件中开启相关文章推荐功能：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes\next_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">title:</span> <span class="comment"># custom header, leave empty to use the default one</span></span><br><span class="line">  <span class="attr">display_in_home:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">params:</span></span><br><span class="line">    <span class="attr">maxCount:</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>此时会在每篇文章结尾根据标签相关性和内容相关性来推荐相关文章。</p>
+
       
     </div>
 
@@ -465,7 +453,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E5%BF%85%E8%83%8C/">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/hexo/%E4%BF%AE%E6%94%B9%E6%96%87%E7%AB%A0%20meta%20%E4%BF%A1%E6%81%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -479,7 +467,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E5%BF%85%E8%83%8C/" class="post-title-link" itemprop="url">市场营销期末复习必背</a>
+            <a href="/2024/08/10/hexo/%E4%BF%AE%E6%94%B9%E6%96%87%E7%AB%A0%20meta%20%E4%BF%A1%E6%81%AF/" class="post-title-link" itemprop="url">hexo 基于 NexT 主题 修改文章 meta 信息</a>
         </h2>
 
         <div class="post-meta">
@@ -490,7 +478,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-08-10 13:10:15 / Modified: 13:27:27" itemprop="dateCreated datePublished" datetime="2024-08-10T13:10:15+08:00">2024-08-10</time>
+              <time title="Created: 2024-08-10 14:05:29 / Modified: 14:10:39" itemprop="dateCreated datePublished" datetime="2024-08-10T14:05:29+08:00">2024-08-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -498,11 +486,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E5%AD%A6%E5%95%86%E9%99%A2%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">山东大学商院期末复习</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E5%AD%A6%E5%95%86%E9%99%A2%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">市场营销学</span></a>
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -512,7 +496,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>19k</span>
+              <span>255</span>
             </span>
 
         </div>
@@ -524,18 +508,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>第一章   市场营销导论</h1>
-<h2 id="基本概念">基本概念</h2>
-<p><strong>市场营销</strong>：各类组织在洞悉顾客需要的基础上，通过创造价值、传递价值、交换价值等一系列活动满足顾客需要，进而实现组织盈利和其他目标的商业活动过程。</p>
-<p><strong>交换</strong>：通过提供某种东西作为回报以从他人处取得所需物品的行为。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E5%BF%85%E8%83%8C/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1>修改文章 meta 信息</h1>
+<p>默认主题下， 标题下方会显示文章的创建时间、文章的修改时间、文章分类信息等元数据，用户可以在主题配置文件中自定义设置需要显示的 meta 元信息：</p>
+<pre><code class="language-yml"># themes\next\_config.yml
+
+post_meta:
+  item_text: true  # 显示文字说明
+  created_at: true  # 显示文章创建时间
+  updated_at:
+    enabled: false  # 隐藏文章修改时间
+    another_day: true  # 只有当修改时间和创建时间不是同一天的时候才显示
+  categories: false  # 隐藏分类信息</code></pre>
+
       
     </div>
 
@@ -556,7 +540,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E3%80%8A%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6%E3%80%8B%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88/">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/hexo/%E6%B7%BB%E5%8A%A0%E7%A4%BE%E4%BA%A4%E9%93%BE%E6%8E%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -570,7 +554,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E3%80%8A%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6%E3%80%8B%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88/" class="post-title-link" itemprop="url">《市场营销学》课后习题及答案</a>
+            <a href="/2024/08/10/hexo/%E6%B7%BB%E5%8A%A0%E7%A4%BE%E4%BA%A4%E9%93%BE%E6%8E%A5/" class="post-title-link" itemprop="url">hexo 基于 NexT 主题 添加社交链接</a>
         </h2>
 
         <div class="post-meta">
@@ -581,7 +565,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-08-10 13:02:27 / Modified: 13:28:04" itemprop="dateCreated datePublished" datetime="2024-08-10T13:02:27+08:00">2024-08-10</time>
+              <time title="Created: 2024-08-10 14:03:33 / Modified: 14:10:32" itemprop="dateCreated datePublished" datetime="2024-08-10T14:03:33+08:00">2024-08-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -589,11 +573,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E5%AD%A6%E5%95%86%E9%99%A2%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">山东大学商院期末复习</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E5%AD%A6%E5%95%86%E9%99%A2%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">市场营销学</span></a>
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -603,7 +583,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>32k</span>
+              <span>622</span>
             </span>
 
         </div>
@@ -615,22 +595,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>《市场营销学》课后习题及答案</p>
-<h1>第1章</h1>
-<p>一、判断题</p>
-<ol>
-<li>×  市场营销学是一门研究个人和集体通过创造，提供出售，并同别人自由交换产品和价值，以获得其所需所欲之物的一种社会和管理过程的科学。</li>
-<li>×  企业市场营销是一种有机的整体性活动过程，并不等同于销售或推销。推销是企业市场营销活动的一个组成部分，但不是最重要的部分；推销是企业营销人员的职能之一，但不是最重要的职能。</li>
-<li>√</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E3%80%8A%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6%E3%80%8B%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1>添加社交链接</h1>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes\next\_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/yourname</span> <span class="string">||</span> <span class="string">github</span></span><br><span class="line">  <span class="attr">E-Mail:</span> <span class="string">mailto:yourname@gmail.com</span> <span class="string">||</span> <span class="string">envelope</span></span><br><span class="line">  <span class="attr">Weibo:</span> <span class="string">https://weibo.com/yourname</span> <span class="string">||</span> <span class="string">weibo</span></span><br><span class="line">  <span class="attr">Google:</span> <span class="string">https://plus.google.com/yourname</span> <span class="string">||</span> <span class="string">google</span></span><br><span class="line">  <span class="attr">Twitter:</span> <span class="string">https://twitter.com/yourname</span> <span class="string">||</span> <span class="string">twitter</span></span><br><span class="line">  <span class="attr">FB Page:</span> <span class="string">https://www.facebook.com/yourname</span> <span class="string">||</span> <span class="string">facebook</span></span><br><span class="line">  <span class="attr">VK Group:</span> <span class="string">https://vk.com/yourname</span> <span class="string">||</span> <span class="string">vk</span></span><br><span class="line">  <span class="attr">StackOverflow:</span> <span class="string">https://stackoverflow.com/yourname</span> <span class="string">||</span> <span class="string">stack-overflow</span></span><br><span class="line">  <span class="attr">YouTube:</span> <span class="string">https://youtube.com/yourname</span> <span class="string">||</span> <span class="string">youtube</span></span><br><span class="line">  <span class="attr">Instagram:</span> <span class="string">https://instagram.com/yourname</span> <span class="string">||</span> <span class="string">instagram</span></span><br><span class="line">  <span class="attr">Skype:</span> <span class="string">skype:yourname?call|chat</span> <span class="string">||</span> <span class="string">skype</span></span><br><span class="line"></span><br><span class="line"><span class="attr">social_icons:</span> </span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># 显示社交软件图标</span></span><br><span class="line">  <span class="attr">icons_only:</span> <span class="literal">false</span>  <span class="comment"># 显示图标的同时显示文字</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -651,7 +617,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E5%90%88/">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/hexo/%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%20Favicon/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -665,7 +631,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E5%90%88/" class="post-title-link" itemprop="url">市场营销学复习知识点集合</a>
+            <a href="/2024/08/10/hexo/%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%20Favicon/" class="post-title-link" itemprop="url">hexo 基于 NexT 主题 修改网站 Favicon</a>
         </h2>
 
         <div class="post-meta">
@@ -676,7 +642,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-08-10 00:15:21 / Modified: 13:25:36" itemprop="dateCreated datePublished" datetime="2024-08-10T00:15:21+08:00">2024-08-10</time>
+              <time title="Created: 2024-08-10 14:02:26 / Modified: 14:10:37" itemprop="dateCreated datePublished" datetime="2024-08-10T14:02:26+08:00">2024-08-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -684,11 +650,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E5%AD%A6%E5%95%86%E9%99%A2%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">山东大学商院期末复习</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B1%B1%E4%B8%9C%E5%A4%A7%E5%AD%A6%E5%95%86%E9%99%A2%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">市场营销学</span></a>
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -698,7 +660,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>97</span>
+              <span>334</span>
             </span>
 
         </div>
@@ -710,19 +672,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>下载链接：<a target="_blank" rel="noopener" href="https://1drv.ms/f/s!Amv1IR0UjIKd4F5bWtx-GfAhGPlP">市场营销</a></p>
-<p>注：链接打不开的话可以下载onedrive或者挂梯子，两个方法选一个即可。</p>
-<p>下方为其中一个pdf预览，不挂梯子可能会加载较慢，请耐心等等。pc端查看如下。</p>
-<img src="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E5%90%88/1.png" alt="1" style="zoom: 33%;">
-<h1>市场营销学复习知识点集合</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/08/10/%E5%B7%A5%E5%95%86%E7%AE%A1%E7%90%86/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80/%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%9F%A5%E8%AF%86%E7%82%B9%E9%9B%86%E5%90%88/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1>修改网站 Favicon</h1>
+<p>Favicon 即浏览器标签左侧的图标。下载自己喜欢的图标置于 <code>themes\next\source\images\</code> 目录下。 这里介绍一个<a target="_blank" rel="noopener" href="https://tool.lu/favicon/">在线制作 <code>favicon</code>的网站</a>，可以上传喜欢的图片制作成<code>favicon</code>。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># theme\next\_config.yml</span></span><br><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/favicon-16x16-next.png</span>  <span class="comment"># 小图标</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/favicon-32x32-next.png</span>  <span class="comment"># 大图标</span></span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon-next.png</span>  <span class="comment"># 苹果图标</span></span><br><span class="line">  <span class="attr">safari_pinned_tab:</span> <span class="string">/images/logo.svg</span>  <span class="comment"># safari浏览器标签页图标</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -743,7 +695,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/07/27/hexo/hexo/">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/hexo/%E4%BF%AE%E6%94%B9%E7%AB%99%E7%82%B9%E9%A1%B5%E8%84%9A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -757,7 +709,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/07/27/hexo/hexo/" class="post-title-link" itemprop="url">hexo</a>
+            <a href="/2024/08/10/hexo/%E4%BF%AE%E6%94%B9%E7%AB%99%E7%82%B9%E9%A1%B5%E8%84%9A/" class="post-title-link" itemprop="url">hexo 基于 NexT 主题 修改站点页脚</a>
         </h2>
 
         <div class="post-meta">
@@ -768,7 +720,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-07-27 13:22:47 / Modified: 13:27:07" itemprop="dateCreated datePublished" datetime="2024-07-27T13:22:47+08:00">2024-07-27</time>
+              <time title="Created: 2024-08-10 14:00:41 / Modified: 14:10:43" itemprop="dateCreated datePublished" datetime="2024-08-10T14:00:41+08:00">2024-08-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -776,7 +728,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E7%9A%84%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">静态网站的搭建</span></a>
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -786,7 +738,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>6.5k</span>
+              <span>269</span>
             </span>
 
         </div>
@@ -798,21 +750,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="使用-hexo-github-NexT-主题建立个人博客网站">使用 hexo+github+NexT 主题建立个人博客网站</h2>
-<h3 id="创建本地博客">创建本地博客</h3>
-<p>环境安装主要是<code>Nodejs</code>和<code>hexo</code>，Windows下具体可参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39345384/article/details/80097858#t1">安装Node.js</a>和<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39345384/article/details/80098228#t2">安装hexo</a>。Linux下和安装其他软件没有区别。</p>
-<p>安装完环境以后，新建一个文件夹作为本地博客的目录，然后在该文件夹下右键打开<code>git-bash</code>或终端，依次输入以下指令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>其中<code>hexo g</code> 即为<code>hexo generate</code>别名，同理<code>hexo s</code>为<code>hexo server</code>别名。</p>
-<p>此时可以打开浏览器输入网站<code>localhost:4000</code>查看默认的博客。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/07/27/hexo/hexo/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1>修改站点页脚</h1>
+<p>在主题配置文件中修改网站页脚信息</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes\next\_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">footer:</span>  <span class="comment"># 底部信息区</span></span><br><span class="line">  <span class="attr">since:</span> <span class="number">2018</span>  <span class="comment"># 建站时间</span></span><br><span class="line">  <span class="attr">icon:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">heart</span>   <span class="comment"># 图标名称</span></span><br><span class="line">    <span class="attr">animated:</span> <span class="literal">true</span>   <span class="comment"># 开启动画</span></span><br><span class="line">    <span class="attr">color:</span> <span class="string">&quot;#ff0000&quot;</span>   <span class="comment"># 图标颜色</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">powered:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span>  <span class="comment"># 隐藏由 Hexo 强力驱动</span></span><br><span class="line">    <span class="attr">version:</span> <span class="literal">false</span>  <span class="comment"># 隐藏 Hexo 版本号</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">theme:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span>  <span class="comment"># 隐藏所用的主题名称</span></span><br><span class="line">    <span class="attr">version:</span> <span class="literal">false</span>  <span class="comment"># 隐藏主题版本号</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -833,7 +773,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/07/27/python/05.%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/hexo/%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -847,7 +787,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/07/27/python/05.%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" class="post-title-link" itemprop="url">水仙花数</a>
+            <a href="/2024/08/10/hexo/%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81/" class="post-title-link" itemprop="url">hexo 基于 NexT 主题 首页显示文章摘要</a>
         </h2>
 
         <div class="post-meta">
@@ -858,7 +798,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-07-27 10:51:33 / Modified: 10:52:50" itemprop="dateCreated datePublished" datetime="2024-07-27T10:51:33+08:00">2024-07-27</time>
+              <time title="Created: 2024-08-10 13:59:29 / Modified: 14:10:30" itemprop="dateCreated datePublished" datetime="2024-08-10T13:59:29+08:00">2024-08-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -866,7 +806,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pyhton/" itemprop="url" rel="index"><span itemprop="name">pyhton</span></a>
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -876,7 +816,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.2k</span>
+              <span>256</span>
             </span>
 
         </div>
@@ -888,23 +828,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="构造程序逻辑">构造程序逻辑</h2>
-<h3 id="经典的例子">经典的例子</h3>
-<ol>
-<li>
-<p>寻找<strong>水仙花数</strong>。</p>
-<blockquote>
-<p><strong>说明</strong>：水仙花数也被称为超完全数字不变数、自恋数、自幂数、阿姆斯特朗数，它是一个3位数，该数字每个位上数字的立方之和正好等于它本身，例如：$1^3 + 5^3+ 3^3=153$。</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#找出所有水仙花数</span></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>, <span class="number">1000</span>):</span><br><span class="line">    low = num % <span class="number">10</span></span><br><span class="line">    mid = num // <span class="number">10</span> % <span class="number">10</span></span><br><span class="line">    high = num // <span class="number">100</span></span><br><span class="line">    <span class="keyword">if</span> num == low ** <span class="number">3</span> + mid ** <span class="number">3</span> + high ** <span class="number">3</span>:</span><br><span class="line">        <span class="built_in">print</span>(num)</span><br></pre></td></tr></table></figure></li></ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/07/27/python/05.%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1>首页显示文章摘要</h1>
+<p>默认的主题配置里，首页会显示每一篇文章的全文，如果想只显示文章摘要，对主题配置文件做如下更改</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># theme/next/_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># 开启自动摘要提取</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">150</span></span><br></pre></td></tr></table></figure>
+<p>此时文中的前150个字符将作为摘要。</p>
+<p>用户可以在文章中通过<code>&lt;!-- more --&gt;</code>标记来精确划分摘要信息，标记之前的段落将作为摘要显示在首页。</p>
+<p>如果在文章的 Front-Matter 中有非空的 <code>description</code> 字段，则该字段的内容会被作为摘要显示在首页。</p>
+
       
     </div>
 
@@ -925,7 +855,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/07/27/python/04.%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/hexo/%E6%9B%B4%E6%94%B9%E5%AF%BC%E8%88%AA%E6%A0%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -939,7 +869,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/07/27/python/04.%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">循环结构</a>
+            <a href="/2024/08/10/hexo/%E6%9B%B4%E6%94%B9%E5%AF%BC%E8%88%AA%E6%A0%8F/" class="post-title-link" itemprop="url">hexo 基于 NexT 主题 更改导航栏</a>
         </h2>
 
         <div class="post-meta">
@@ -950,7 +880,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-07-27 10:48:50 / Modified: 10:50:35" itemprop="dateCreated datePublished" datetime="2024-07-27T10:48:50+08:00">2024-07-27</time>
+              <time title="Created: 2024-08-10 13:58:01 / Modified: 14:11:11" itemprop="dateCreated datePublished" datetime="2024-08-10T13:58:01+08:00">2024-08-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -958,7 +888,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pyhton/" itemprop="url" rel="index"><span itemprop="name">pyhton</span></a>
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -968,7 +898,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>3.2k</span>
+              <span>427</span>
             </span>
 
         </div>
@@ -980,19 +910,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="循环结构">循环结构</h2>
-<p>循环结构就是程序中控制某条或某些指令重复执行的结构。在Python中构造循环结构有两种做法，一种是<code>for-in</code>循环，一种是<code>while</code>循环。</p>
-<h3 id="for-in循环">for-in循环</h3>
-<p>如果明确的知道循环执行的次数或者要对一个容器进行迭代（后面会讲到），那么我们推荐使用<code>for-in</code>循环，例如下面代码中计算1~100求和的结果（$\displaystyle \sum \limits_{n=1}^{100}n$）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用for循环实现1~100求和</span></span><br><span class="line"><span class="built_in">sum</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">101</span>):</span><br><span class="line">    <span class="built_in">sum</span> += x</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/07/27/python/04.%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1>更改导航栏</h1>
+<p>主题首页的默认页面中是没有标签、分类、归档页面的，需要手动生成一下。先在博客根目录下打开<code>git-bash</code>或终端，然后键入以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags &amp;&amp; hexo new page categories &amp;&amp; hexo new page archives</span><br></pre></td></tr></table></figure>
+<p>然后打开新增的<code>source/tags/index.md</code>，修改如下</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># source\tags\index.md</span></span><br><span class="line">  <span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line">  <span class="attr">date:</span> <span class="number">2018-10-19 22:57:00</span></span><br><span class="line"><span class="string">+</span> <span class="attr">type:</span> <span class="string">tags</span></span><br></pre></td></tr></table></figure>
+<p>同理再修改另外两个新增文件夹下的<code>index.md</code>。</p>
+<p>最后修改主题配置文件的<code>menu</code>字段</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes\next\_config.yml</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">user</span></span><br><span class="line"><span class="string">+</span> <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">tags</span></span><br><span class="line"><span class="string">+</span> <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">th</span></span><br><span class="line"><span class="string">+</span> <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">archive</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1013,7 +938,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/07/27/python/03.%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="https://mingsm17518.github.io/2024/08/10/hexo/%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -1027,7 +952,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/07/27/python/03.%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">分支结构</a>
+            <a href="/2024/08/10/hexo/%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/" class="post-title-link" itemprop="url">hexo 基于 NexT 主题 更换主题</a>
         </h2>
 
         <div class="post-meta">
@@ -1038,7 +963,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-07-27 10:48:41 / Modified: 10:49:31" itemprop="dateCreated datePublished" datetime="2024-07-27T10:48:41+08:00">2024-07-27</time>
+              <time title="Created: 2024-08-10 13:48:58 / Modified: 14:10:23" itemprop="dateCreated datePublished" datetime="2024-08-10T13:48:58+08:00">2024-08-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1046,7 +971,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pyhton/" itemprop="url" rel="index"><span itemprop="name">pyhton</span></a>
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -1056,7 +981,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.2k</span>
+              <span>333</span>
             </span>
 
         </div>
@@ -1068,13 +993,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="分支结构">分支结构</h2>
-<h3 id="if语句的使用">if语句的使用</h3>
-<p>在Python中，要构造分支结构可以使用<code>if</code>、<code>elif</code>和<code>else</code>关键字。所谓<strong>关键字</strong>就是有特殊含义的单词，像<code>if</code>和<code>else</code>就是专门用于构造分支结构的关键字，很显然你不能够使用它作为变量名（事实上，用作其他的标识符也是不可以）。下面的例子中演示了如何构造一个分支结构。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用户身份验证</span></span><br><span class="line">username = <span class="built_in">input</span>(<span class="string">&#x27;请输入用户名: &#x27;</span>)</span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&#x27;请输入口令: &#x27;</span>)</span><br><span class="line"><span class="comment"># 用户名是admin且密码是123456则身份验证成功否则身份验证失败</span></span><br><span class="line"><span class="keyword">if</span> username == <span class="string">&#x27;admin&#x27;</span> <span class="keyword">and</span> password == <span class="string">&#x27;123456&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;身份验证成功!&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;身份验证失败!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+          <h1>更换主题</h1>
+<p>NexT主题默认风格为<code>Muse</code>，可以在<strong>主题目录的配置文件</strong><code>_config.yml</code>，注意这不是根目录下网站的配置文件</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2024/07/27/python/03.%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84/#more" rel="contents">
+              <a class="btn" href="/2024/08/10/hexo/%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1100,7 +1023,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1168,20 +1091,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

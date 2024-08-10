@@ -20,20 +20,18 @@
     var CONFIG = {"hostname":"mingsm17518.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="使用 hexo+github+NexT 主题建立个人博客网站 创建本地博客 环境安装主要是Nodejs和hexo，Windows下具体可参考安装Node.js和安装hexo。Linux下和安装其他软件没有区别。 安装完环境以后，新建一个文件夹作为本地博客的目录，然后在该文件夹下右键打开git-bash或终端，依次输入以下指令 123hexo inithexo ghexo s 其中hexo g 即为">
+  <meta name="description" content="hexo 个人博客基于 NexT 主题的基本配置和定制优化 添加版权协议 先在主题配置文件中开启相关字段 1themes\next\_config.ymlcreative_commons: by-nc-sa 取消文章目录中的数字编号 1234themes\next\_config.ymltoc:  number: false  # 关闭目录中的数字编号 默认情况下文章的多级目录会被折叠，需要点击才">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo">
+<meta property="og:title" content="hexo 个人博客基于 NexT 主题的基本配置和定制优化">
 <meta property="og:url" content="https://mingsm17518.github.io/2024/07/27/hexo/hexo/index.html">
 <meta property="og:site_name" content="Ming-Blog">
-<meta property="og:description" content="使用 hexo+github+NexT 主题建立个人博客网站 创建本地博客 环境安装主要是Nodejs和hexo，Windows下具体可参考安装Node.js和安装hexo。Linux下和安装其他软件没有区别。 安装完环境以后，新建一个文件夹作为本地博客的目录，然后在该文件夹下右键打开git-bash或终端，依次输入以下指令 123hexo inithexo ghexo s 其中hexo g 即为">
+<meta property="og:description" content="hexo 个人博客基于 NexT 主题的基本配置和定制优化 添加版权协议 先在主题配置文件中开启相关字段 1themes\next\_config.ymlcreative_commons: by-nc-sa 取消文章目录中的数字编号 1234themes\next\_config.ymltoc:  number: false  # 关闭目录中的数字编号 默认情况下文章的多级目录会被折叠，需要点击才">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://mingsm17518.github.io/2024/07/27/hexo/hexo/image-20240727111635517.png">
 <meta property="article:published_time" content="2024-07-27T05:22:47.379Z">
-<meta property="article:modified_time" content="2024-07-27T05:27:07.823Z">
+<meta property="article:modified_time" content="2024-08-10T06:09:16.256Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mingsm17518.github.io/2024/07/27/hexo/hexo/image-20240727111635517.png">
 
 <link rel="canonical" href="https://mingsm17518.github.io/2024/07/27/hexo/hexo/">
 
@@ -48,7 +46,7 @@
   };
 </script>
 
-  <title>hexo | Ming-Blog</title>
+  <title>hexo 个人博客基于 NexT 主题的基本配置和定制优化 | Ming-Blog</title>
   
 
 
@@ -212,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hexo
+          hexo 个人博客基于 NexT 主题的基本配置和定制优化
         </h1>
 
         <div class="post-meta">
@@ -221,17 +219,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-07-27 13:22:47 / Modified: 13:27:07" itemprop="dateCreated datePublished" datetime="2024-07-27T13:22:47+08:00">2024-07-27</time>
+              <time title="Created: 2024-07-27 13:22:47" itemprop="dateCreated datePublished" datetime="2024-07-27T13:22:47+08:00">2024-07-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-08-10 14:09:16" itemprop="dateModified" datetime="2024-08-10T14:09:16+08:00">2024-08-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E7%9A%84%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">静态网站的搭建</span></a>
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
             </span>
 
@@ -248,7 +252,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>6.5k</span>
+              <span>2.4k</span>
             </span>
 
         </div>
@@ -260,63 +264,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="使用-hexo-github-NexT-主题建立个人博客网站">使用 hexo+github+NexT 主题建立个人博客网站</h2>
-<h3 id="创建本地博客">创建本地博客</h3>
-<p>环境安装主要是<code>Nodejs</code>和<code>hexo</code>，Windows下具体可参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39345384/article/details/80097858#t1">安装Node.js</a>和<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39345384/article/details/80098228#t2">安装hexo</a>。Linux下和安装其他软件没有区别。</p>
-<p>安装完环境以后，新建一个文件夹作为本地博客的目录，然后在该文件夹下右键打开<code>git-bash</code>或终端，依次输入以下指令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>其中<code>hexo g</code> 即为<code>hexo generate</code>别名，同理<code>hexo s</code>为<code>hexo server</code>别名。</p>
-<p>此时可以打开浏览器输入网站<code>localhost:4000</code>查看默认的博客。</p>
-  <span id="more"></span>
-<h3 id="部署到Github-Pages">部署到Github Pages</h3>
-<p>首先安装<code>hexo-deployer-git</code>，注意还是在本地博客文件夹下打开的<code>git-bash</code>键入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>修改博客文件夹根目录下的网站配置文件<code>_config.yml</code>中的<code>deploy</code>配置，<strong>注意冒号后有一个空格</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:xxxx/xxxx.github.io.git  #3.2步骤中克隆仓库的SSH地址</span><br><span class="line">  branch: master  #分支，一般用 master 即可</span><br></pre></td></tr></table></figure>
-<p>保存修改后在<code>git-bash</code>或终端中键入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>这里<code>hexo d</code>为<code>hexo deploy</code>别名。</p>
-<h3 id="使用NexT主题">使用NexT主题</h3>
-<p>可选的主题有很多，在这里<a target="_blank" rel="noopener" href="https://hexo.io/themes/">下载到各种官方主题</a>。</p>
-<p>本站主题是基于<code>NexT主题 v6.4.2</code>版本，<a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/releases/tag/v6.4.2">下载链接在这里</a>，后续文章将详细记录对主题如何配置和修改来达到和本站一样的效果。</p>
-<p>下载主题的压缩包以后，将其解压到博客根目录下的<code>theme</code>文件夹下，并命名为<code>next</code>。</p>
-<p>然后在网站的配置文件<code>_config.yml</code>中将<code>theme</code>字段的值修改为<code>next</code>，同样<strong>注意冒号后有一个空格</strong>，下文不再赘述。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-<p>此时重新生成静态文件，重启服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo c</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>即可在本地端口<code>localhost:4000</code>中查看新主题下的网站</p>
-<p>如果对主题没有定制化需求的话，那么此时直接进行部署就可以了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<h2 id="hexo-个人博客基于-NexT-主题的基本配置和定制优化">hexo 个人博客基于 NexT 主题的基本配置和定制优化</h2>
-<h3 id="更换主题">更换主题</h3>
-<p>NexT主题默认风格为<code>Muse</code>，可以在<strong>主题目录的配置文件</strong><code>_config.yml</code>，注意这不是根目录下网站的配置文件</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># theme/next/_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="comment"># scheme: Muse</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Mist</span></span><br><span class="line"><span class="comment">#scheme: Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br></pre></td></tr></table></figure>
-<p>而根目录下的<code>_config.yml</code>文件负责站点的相关配置包括了网站标题、网站描述、网站语言等</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ./_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Ming&#x27;s</span> <span class="string">Blog</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Ming</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br></pre></td></tr></table></figure>
-<h3 id="更改导航栏">更改导航栏</h3>
-<p>主题首页的默认页面中是没有标签、分类、归档页面的，需要手动生成一下。先在博客根目录下打开<code>git-bash</code>或终端，然后键入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags &amp;&amp; hexo new page categories &amp;&amp; hexo new page archives</span><br></pre></td></tr></table></figure>
-<p>然后打开新增的<code>source/tags/index.md</code>，修改如下</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># source\tags\index.md</span></span><br><span class="line">  <span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line">  <span class="attr">date:</span> <span class="number">2018-10-19 22:57:00</span></span><br><span class="line"><span class="string">+</span> <span class="attr">type:</span> <span class="string">tags</span></span><br></pre></td></tr></table></figure>
-<p>同理再修改另外两个新增文件夹下的<code>index.md</code>。</p>
-<p>最后修改主题配置文件的<code>menu</code>字段</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes\next\_config.yml</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">user</span></span><br><span class="line"><span class="string">+</span> <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">tags</span></span><br><span class="line"><span class="string">+</span> <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">th</span></span><br><span class="line"><span class="string">+</span> <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">archive</span></span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p><img src="/2024/07/27/hexo/hexo/image-20240727111635517.png" alt="image-20240727111635517"></p>
-<h3 id="首页显示文章摘要">首页显示文章摘要</h3>
-<p>默认的主题配置里，首页会显示每一篇文章的全文，如果想只显示文章摘要，对主题配置文件做如下更改</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># theme/next/_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">auto_excerpt:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># 开启自动摘要提取</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">150</span></span><br></pre></td></tr></table></figure>
-<p>此时文中的前150个字符将作为摘要。</p>
-<p>用户可以在文章中通过<code>&lt;!-- more --&gt;</code>标记来精确划分摘要信息，标记之前的段落将作为摘要显示在首页。</p>
-<p>如果在文章的 Front-Matter 中有非空的 <code>description</code> 字段，则该字段的内容会被作为摘要显示在首页。</p>
-<h3 id="修改站点页脚">修改站点页脚</h3>
-<p>在主题配置文件中修改网站页脚信息</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes\next\_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">footer:</span>  <span class="comment"># 底部信息区</span></span><br><span class="line">  <span class="attr">since:</span> <span class="number">2018</span>  <span class="comment"># 建站时间</span></span><br><span class="line">  <span class="attr">icon:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">heart</span>   <span class="comment"># 图标名称</span></span><br><span class="line">    <span class="attr">animated:</span> <span class="literal">true</span>   <span class="comment"># 开启动画</span></span><br><span class="line">    <span class="attr">color:</span> <span class="string">&quot;#ff0000&quot;</span>   <span class="comment"># 图标颜色</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">powered:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span>  <span class="comment"># 隐藏由 Hexo 强力驱动</span></span><br><span class="line">    <span class="attr">version:</span> <span class="literal">false</span>  <span class="comment"># 隐藏 Hexo 版本号</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">theme:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span>  <span class="comment"># 隐藏所用的主题名称</span></span><br><span class="line">    <span class="attr">version:</span> <span class="literal">false</span>  <span class="comment"># 隐藏主题版本号</span></span><br></pre></td></tr></table></figure>
-<h3 id="修改网站-Favicon">修改网站 Favicon</h3>
-<p>Favicon 即浏览器标签左侧的图标。下载自己喜欢的图标置于 <code>themes\next\source\images\</code> 目录下。 这里介绍一个<a target="_blank" rel="noopener" href="https://tool.lu/favicon/">在线制作 <code>favicon</code>的网站</a>，可以上传喜欢的图片制作成<code>favicon</code>。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># theme\next\_config.yml</span></span><br><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/favicon-16x16-next.png</span>  <span class="comment"># 小图标</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/favicon-32x32-next.png</span>  <span class="comment"># 大图标</span></span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon-next.png</span>  <span class="comment"># 苹果图标</span></span><br><span class="line">  <span class="attr">safari_pinned_tab:</span> <span class="string">/images/logo.svg</span>  <span class="comment"># safari浏览器标签页图标</span></span><br></pre></td></tr></table></figure>
-<h3 id="添加社交链接">添加社交链接</h3>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes\next\_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/yourname</span> <span class="string">||</span> <span class="string">github</span></span><br><span class="line">  <span class="attr">E-Mail:</span> <span class="string">mailto:yourname@gmail.com</span> <span class="string">||</span> <span class="string">envelope</span></span><br><span class="line">  <span class="attr">Weibo:</span> <span class="string">https://weibo.com/yourname</span> <span class="string">||</span> <span class="string">weibo</span></span><br><span class="line">  <span class="attr">Google:</span> <span class="string">https://plus.google.com/yourname</span> <span class="string">||</span> <span class="string">google</span></span><br><span class="line">  <span class="attr">Twitter:</span> <span class="string">https://twitter.com/yourname</span> <span class="string">||</span> <span class="string">twitter</span></span><br><span class="line">  <span class="attr">FB Page:</span> <span class="string">https://www.facebook.com/yourname</span> <span class="string">||</span> <span class="string">facebook</span></span><br><span class="line">  <span class="attr">VK Group:</span> <span class="string">https://vk.com/yourname</span> <span class="string">||</span> <span class="string">vk</span></span><br><span class="line">  <span class="attr">StackOverflow:</span> <span class="string">https://stackoverflow.com/yourname</span> <span class="string">||</span> <span class="string">stack-overflow</span></span><br><span class="line">  <span class="attr">YouTube:</span> <span class="string">https://youtube.com/yourname</span> <span class="string">||</span> <span class="string">youtube</span></span><br><span class="line">  <span class="attr">Instagram:</span> <span class="string">https://instagram.com/yourname</span> <span class="string">||</span> <span class="string">instagram</span></span><br><span class="line">  <span class="attr">Skype:</span> <span class="string">skype:yourname?call|chat</span> <span class="string">||</span> <span class="string">skype</span></span><br><span class="line"></span><br><span class="line"><span class="attr">social_icons:</span> </span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># 显示社交软件图标</span></span><br><span class="line">  <span class="attr">icons_only:</span> <span class="literal">false</span>  <span class="comment"># 显示图标的同时显示文字</span></span><br></pre></td></tr></table></figure>
+        <h2 id="hexo-个人博客基于-NexT-主题的基本配置和定制优化">hexo 个人博客基于 NexT 主题的基本配置和定制优化</h2>
 <h3 id="添加版权协议">添加版权协议</h3>
 <p>先在主题配置文件中开启相关字段</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">themes\next\_config.ymlcreative_commons: by-nc-sa</span><br></pre></td></tr></table></figure>
@@ -326,12 +274,8 @@
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">themes\next\source\css\_custom\custom.styl</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># TOC目录默认全部展开</span></span><br><span class="line"><span class="string">.post-toc</span> <span class="string">.nav</span> <span class="string">.nav-child</span> &#123;</span><br><span class="line">  <span class="attr">display:</span> <span class="string">block;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>因为这里是第一次新建自定义样式文件，还需要做如下修改，在<code>themes\next\layout\_layout.swig</code>文件中引入刚才新建的文件</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># themes\next\layout\\_layout.swig</span><br><span class="line"></span><br><span class="line">      &#123;% include &#x27;_third-party/exturl.swig&#x27; %&#125;</span><br><span class="line">      &#123;% include &#x27;_third-party/bookmark.swig&#x27; %&#125;</span><br><span class="line">      &#123;% include &#x27;_third-party/copy-code.swig&#x27; %&#125;</span><br><span class="line"></span><br><span class="line">+     &#123;% include &#x27;_custom/custom.swig&#x27; %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="修改文章-meta-信息">修改文章 meta 信息</h3>
-<p>默认主题下， 标题下方会显示文章的创建时间、文章的修改时间、文章分类信息等元数据，用户可以在主题配置文件中自定义设置需要显示的 meta 元信息：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes\next\_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">post_meta:</span></span><br><span class="line">  <span class="attr">item_text:</span> <span class="literal">true</span>  <span class="comment"># 显示文字说明</span></span><br><span class="line">  <span class="attr">created_at:</span> <span class="literal">true</span>  <span class="comment"># 显示文章创建时间</span></span><br><span class="line">  <span class="attr">updated_at:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">false</span>  <span class="comment"># 隐藏文章修改时间</span></span><br><span class="line">    <span class="attr">another_day:</span> <span class="literal">true</span>  <span class="comment"># 只有当修改时间和创建时间不是同一天的时候才显示</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="literal">false</span>  <span class="comment"># 隐藏分类信息</span></span><br></pre></td></tr></table></figure>
-<h3 id="修改博客字体">修改博客字体</h3>
-<p>在 <a target="_blank" rel="noopener" href="https://www.google.com/fonts">Google Fonts</a> 上找到心仪的字体，然后在主题配置文件中为不同的应用场景配置字体：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes\next\_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 外链字体库地址，例如 //fonts.googleapis.com (默认值)</span></span><br><span class="line">  <span class="attr">host:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 全局字体，应用在 body 元素上</span></span><br><span class="line">  <span class="attr">global:</span></span><br><span class="line">    <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">family:</span> <span class="string">Monda</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 标题字体 (h1, h2, h3, h4, h5, h6)</span></span><br><span class="line">  <span class="attr">headings:</span></span><br><span class="line">    <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">family:</span> <span class="string">Roboto</span> <span class="string">Slab</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 文章字体</span></span><br><span class="line">  <span class="attr">posts:</span></span><br><span class="line">    <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">family:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Logo 字体</span></span><br><span class="line">  <span class="attr">logo:</span></span><br><span class="line">    <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">family:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 代码字体，应用于 code 以及代码块</span></span><br><span class="line">  <span class="attr">codes:</span></span><br><span class="line">    <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">family:</span></span><br></pre></td></tr></table></figure>
+<h2 id></h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 修改博客字体</span><br><span class="line"></span><br><span class="line">在 [Google Fonts](https://www.google.com/fonts) 上找到心仪的字体，然后在主题配置文件中为不同的应用场景配置字体：</span><br><span class="line"></span><br><span class="line">```yml</span><br><span class="line"># themes\next\_config.yml</span><br><span class="line"></span><br><span class="line">font:</span><br><span class="line">  enable: true</span><br><span class="line"></span><br><span class="line">  # 外链字体库地址，例如 //fonts.googleapis.com (默认值)</span><br><span class="line">  host:</span><br><span class="line"></span><br><span class="line">  # 全局字体，应用在 body 元素上</span><br><span class="line">  global:</span><br><span class="line">    external: true</span><br><span class="line">    family: Monda</span><br><span class="line"></span><br><span class="line">  # 标题字体 (h1, h2, h3, h4, h5, h6)</span><br><span class="line">  headings:</span><br><span class="line">    external: true</span><br><span class="line">    family: Roboto Slab</span><br><span class="line"></span><br><span class="line">  # 文章字体</span><br><span class="line">  posts:</span><br><span class="line">    external: true</span><br><span class="line">    family:</span><br><span class="line"></span><br><span class="line">  # Logo 字体</span><br><span class="line">  logo:</span><br><span class="line">    external: true</span><br><span class="line">    family:</span><br><span class="line"></span><br><span class="line">  # 代码字体，应用于 code 以及代码块</span><br><span class="line">  codes:</span><br><span class="line">    external: true</span><br><span class="line">    family:</span><br></pre></td></tr></table></figure>
 <h3 id="页面加载进度条">页面加载进度条</h3>
 <p>当网络不好的时候可能会在打开站点或跳转文章时出现短暂的白屏，此时如果能有加载进度提示将会提高用户操作体验。</p>
 <p>在根目录下执行以下命令安装相关依赖：</p>
@@ -352,27 +296,7 @@
 <p>在根目录下执行以下命令安装相关依赖：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/theme-next/theme-next-fancybox3 themes/next/source/lib/fancybox</span><br></pre></td></tr></table></figure>
 <p>在主题配置文件中设置 <code>fancybox: true</code> 即可。</p>
-<h3 id="相关文章推荐">相关文章推荐</h3>
-<p>该功能由 <a target="_blank" rel="noopener" href="https://github.com/tea3/hexo-related-popular-posts">hexo-related-popular-posts</a> 插件提供，会在文末出现本站相关的博客。</p>
-<p>在站点根目录中执行以下命令安装依赖：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-related-popular-posts --save</span><br></pre></td></tr></table></figure>
-<p>在主题配置文件中开启相关文章推荐功能：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># themes\next_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">related_posts:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">title:</span> <span class="comment"># custom header, leave empty to use the default one</span></span><br><span class="line">  <span class="attr">display_in_home:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">params:</span></span><br><span class="line">    <span class="attr">maxCount:</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
-<p>此时会在每篇文章结尾根据标签相关性和内容相关性来推荐相关文章。</p>
-<h3 id="在文章中插入图片">在文章中插入图片</h3>
-<h4 id="绝对路径本地引用">绝对路径本地引用</h4>
-<p>当Hexo项目中只用到少量图片时，可以将图片统一放在source/images文件夹中，通过markdown语法访问它们。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](/images/image.jpg)</span><br></pre></td></tr></table></figure>
-<p>图片既可以在首页内容中访问到，也可以在文章正文中访问到。</p>
-<h4 id="相对路径本地引用">相对路径本地引用</h4>
-<p>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中。</p>
-<p>文章的目录可以通过站点配置文件_config.yml来生成。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-<p>将_config.yml文件中的配置项post_asset_folder设为true后，执行命令_</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post_name</span><br></pre></td></tr></table></figure>
-<p>在source/_posts中会生成文章post_name.md和同名文件夹post_name。</p>
-<p>将图片资源放在post_name中，文章就可以使用相对路径引用图片资源了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](image.jpg)</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -381,6 +305,24 @@
 
     
       
+  <div class="popular-posts-header">Related Posts</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2024\08\10\hexo\hexo 添加 pdf 预览\" rel="bookmark">hexo 基于 NexT 主题 添加 pdf 预览</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2024\08\10\hexo\修改站点页脚\" rel="bookmark">hexo 基于 NexT 主题 修改站点页脚</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2024\08\10\hexo\修改文章 meta 信息\" rel="bookmark">hexo 基于 NexT 主题 修改文章 meta 信息</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2024\08\10\hexo\修改网站 Favicon\" rel="bookmark">hexo 基于 NexT 主题 修改网站 Favicon</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2024\08\10\hexo\建立个人博客\" rel="bookmark">使用 hexo+github+NexT 主题建立个人博客网站</a></div>
+    </li>
+  </ul>
 
 
       <footer class="post-footer">
@@ -459,7 +401,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-hexo-github-NexT-%E4%B8%BB%E9%A2%98%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99"><span class="nav-text">使用 hexo+github+NexT 主题建立个人博客网站</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2"><span class="nav-text">创建本地博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0Github-Pages"><span class="nav-text">部署到Github Pages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8NexT%E4%B8%BB%E9%A2%98"><span class="nav-text">使用NexT主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%9F%BA%E4%BA%8E-NexT-%E4%B8%BB%E9%A2%98%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%92%8C%E5%AE%9A%E5%88%B6%E4%BC%98%E5%8C%96"><span class="nav-text">hexo 个人博客基于 NexT 主题的基本配置和定制优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98"><span class="nav-text">更换主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E5%AF%BC%E8%88%AA%E6%A0%8F"><span class="nav-text">更改导航栏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81"><span class="nav-text">首页显示文章摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%AB%99%E7%82%B9%E9%A1%B5%E8%84%9A"><span class="nav-text">修改站点页脚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99-Favicon"><span class="nav-text">修改网站 Favicon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%A4%BE%E4%BA%A4%E9%93%BE%E6%8E%A5"><span class="nav-text">添加社交链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E5%8D%8F%E8%AE%AE"><span class="nav-text">添加版权协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E6%B6%88%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%97%E7%BC%96%E5%8F%B7"><span class="nav-text">取消文章目录中的数字编号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E7%AB%A0-meta-%E4%BF%A1%E6%81%AF"><span class="nav-text">修改文章 meta 信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E5%AD%97%E4%BD%93"><span class="nav-text">修改博客字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6%E6%9D%A1"><span class="nav-text">页面加载进度条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD"><span class="nav-text">添加评论功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%89%93%E8%B5%8F%E5%8A%9F%E8%83%BD"><span class="nav-text">添加打赏功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E7%81%AF%E7%AE%B1"><span class="nav-text">添加图片灯箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90"><span class="nav-text">相关文章推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="nav-text">在文章中插入图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E6%9C%AC%E5%9C%B0%E5%BC%95%E7%94%A8"><span class="nav-text">绝对路径本地引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E6%9C%AC%E5%9C%B0%E5%BC%95%E7%94%A8"><span class="nav-text">相对路径本地引用</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%9F%BA%E4%BA%8E-NexT-%E4%B8%BB%E9%A2%98%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%92%8C%E5%AE%9A%E5%88%B6%E4%BC%98%E5%8C%96"><span class="nav-text">hexo 个人博客基于 NexT 主题的基本配置和定制优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E5%8D%8F%E8%AE%AE"><span class="nav-text">添加版权协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E6%B6%88%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%97%E7%BC%96%E5%8F%B7"><span class="nav-text">取消文章目录中的数字编号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6%E6%9D%A1"><span class="nav-text">页面加载进度条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD"><span class="nav-text">添加评论功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%89%93%E8%B5%8F%E5%8A%9F%E8%83%BD"><span class="nav-text">添加打赏功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E7%81%AF%E7%AE%B1"><span class="nav-text">添加图片灯箱</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -475,20 +417,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
