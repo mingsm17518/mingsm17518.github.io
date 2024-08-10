@@ -5633,10 +5633,10 @@
 <p>下方pdf预览，不挂梯子可能会加载较慢，请耐心等等。</p>
 <h1>营销导论</h1>
 <span id="more"></span>
-<iframe src="1营销导论.pdf" width="100%" height="750" type="application/pdf">
+<!-- <embed src="1营销导论.pdf" width="100%" height="750" type="application/pdf"> -->
 <h1>《市场营销学》简答题</h1>
 <iframe src="《市场营销学》简答题.pdf" width="100%" height="750" type="application/pdf">
-<iframe src="(完整版)市场营销学复习知识点集合.pdf" width="100%" height="750" type="application/pdf">
+<embed src="(完整版)市场营销学复习知识点集合.pdf" width="100%" height="750" type="application/pdf">
 <iframe src="简答题-市场营销学.pdf" width="100%" height="750" type="application/pdf">
 <iframe src="市场营销学第五版复习资料.pdf" width="100%" height="750" type="application/pdf">
 <iframe src="市场营销学第五版复习资料(复习纲要总结).pdf" width="100%" height="750" type="application/pdf">
@@ -5649,7 +5649,7 @@
 <iframe src="市场营销学试题及其答案(3).pdf" width="100%" height="750" type="application/pdf">
 <iframe src="市场营销学试题及其答案(4).pdf" width="100%" height="750" type="application/pdf">
 <iframe src="市场营销学试题及其答案(5).pdf" width="100%" height="750" type="application/pdf">
-<iframe src="市场营销学试题及其答案(6).pdf" width="100%" height="750" type="application/pdf"></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe>]]></content>
+<iframe src="市场营销学试题及其答案(6).pdf" width="100%" height="750" type="application/pdf"></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe></iframe>]]></content>
       <categories>
         <category>山东大学商院期末复习</category>
         <category>市场营销学</category>
