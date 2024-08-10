@@ -1022,10 +1022,10 @@
       <div class="popular-posts-title"><a href="\2024\06\22\c++\Cpp基础入门\" rel="bookmark">C++基础入门</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2024\06\22\c++\Cpp提高编程\" rel="bookmark">C++提高编程</a></div>
+      <div class="popular-posts-title"><a href="\2024\06\22\c++\职工管理系统\" rel="bookmark">职工管理系统</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2024\06\22\c++\职工管理系统\" rel="bookmark">职工管理系统</a></div>
+      <div class="popular-posts-title"><a href="\2024\06\22\c++\Cpp提高编程\" rel="bookmark">C++提高编程</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2024\06\22\c++\通讯录管理系统\" rel="bookmark">通讯录管理系统</a></div>
@@ -1125,20 +1125,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1279,6 +1279,26 @@ setInterval("createtime()",250);
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 
