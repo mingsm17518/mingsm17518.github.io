@@ -19,19 +19,23 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Graph 图 邻接表 python N, M &#x3D; map(int, input().split()) adj &#x3D; [[] for _ in range(N)]  for i in range(M): 	u, v &#x3D; map(int, input().split()) 	adj[u].append(v) 	adj[v].append(u)  u &#x3D; 1 # print number of v">
+    <meta name="description" content="Graph 图邻接表pythonN, M &#x3D; map(int, input().split()) adj &#x3D; [[] for _ in range(N)]  for i in range(M): 	u, v &#x3D; map(int, input().split()) 	adj[u].append(v) 	adj[v].append(u)  u &#x3D; 1 # print number of vertice">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图搜索算法">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/01/30/Graphs/Graph%20%E5%9B%BE/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Graph 图 邻接表 python N, M &#x3D; map(int, input().split()) adj &#x3D; [[] for _ in range(N)]  for i in range(M): 	u, v &#x3D; map(int, input().split()) 	adj[u].append(v) 	adj[v].append(u)  u &#x3D; 1 # print number of v">
+<meta property="og:description" content="Graph 图邻接表pythonN, M &#x3D; map(int, input().split()) adj &#x3D; [[] for _ in range(N)]  for i in range(M): 	u, v &#x3D; map(int, input().split()) 	adj[u].append(v) 	adj[v].append(u)  u &#x3D; 1 # print number of vertice">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mingsm17518.github.io/2026/01/30/Graphs/Graph%20%E5%9B%BE/dfs_demo.mp4">
+<meta property="og:image" content="https://mingsm17518.github.io/2026/01/30/Graphs/Graph%20%E5%9B%BE/bfs_demo.mp4">
 <meta property="article:published_time" content="2026-01-30T01:35:30.000Z">
-<meta property="article:modified_time" content="2026-01-30T02:16:02.377Z">
+<meta property="article:modified_time" content="2026-01-30T08:01:59.064Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="bfs">
 <meta property="article:tag" content="dfs">
+<meta property="article:tag" content="图搜索">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mingsm17518.github.io/2026/01/30/Graphs/Graph%20%E5%9B%BE/dfs_demo.mp4">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -292,10 +296,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="graph-图">Graph 图</h1>
-<h2 id="邻接表">邻接表</h2>
-<h3 id="python">python</h3>
-<div class="code-wrapper"><pre><code class="hljs python">N, M = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+                <h1 id="Graph-图"><a href="#Graph-图" class="headerlink" title="Graph 图"></a>Graph 图</h1><h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><div class="code-wrapper"><pre><code class="hljs python">N, M = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 adj = [[] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(N)]
 
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(M):
@@ -309,8 +310,7 @@ u = <span class="hljs-number">1</span>
 <span class="hljs-comment"># print all edges with u as an endpoint</span>
 <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> adj[u]:
 	<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&#123;&quot;</span> + <span class="hljs-built_in">str</span>(u) + <span class="hljs-string">&quot;, &quot;</span> + <span class="hljs-built_in">str</span>(v) + <span class="hljs-string">&quot;&#125;&quot;</span>)</code></pre></div>
-<h3 id="cpp">cpp</h3>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+<h3 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h3><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
@@ -332,27 +332,18 @@ u = <span class="hljs-number">1</span>
 		<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> v : adj.<span class="hljs-built_in">at</span>(u)) cout &lt;&lt; <span class="hljs-string">&quot;&#123;&quot;</span> &lt;&lt; u &lt;&lt; <span class="hljs-string">&quot;, &quot;</span> &lt;&lt; v &lt;&lt; <span class="hljs-string">&quot;&#125;&quot;</span> &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
 	&#125;
 &#125;</code></pre></div>
-<h3 id="output">Output</h3>
-<div class="code-wrapper"><pre><code class="hljs text">deg(u) = 3
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><div class="code-wrapper"><pre><code class="hljs text">deg(u) = 3
 &#123;1, 3&#125;
 &#123;1, 4&#125;
 &#123;1, 5&#125;</code></pre></div>
-<h1 id="graph-traversal-图遍历">Graph Traversal  图遍历</h1>
-<p>图遍历算法按照一定的顺序访问图中的所有节点，并且在遍历过程中可以计算一些信息。两种常见的实现方式是深度优先搜索
-depth first search (DFS) 和广度优先搜索 breadth first search (BFS)
-。</p>
-<h2 id="前置知识">前置知识</h2>
-<p><a href="Graph%20图.md">Graph 图</a></p>
+<h1 id="Graph-Traversal-图遍历"><a href="#Graph-Traversal-图遍历" class="headerlink" title="Graph Traversal  图遍历"></a>Graph Traversal  图遍历</h1><p>图遍历算法按照一定的顺序访问图中的所有节点，并且在遍历过程中可以计算一些信息。两种常见的实现方式是深度优先搜索 depth first search (DFS) 和广度优先搜索 breadth first search (BFS) 。</p>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p><a href="Graph%20图.md">Graph 图</a></p>
 <p><a href="使用递归的穷举搜索.md">使用递归的穷举搜索</a></p>
-<h2 id="dfs">DFS</h2>
-<p>深度优先搜索（DFS）是一种直接的图遍历技术。该算法从起始节点开始，通过图的边访问所有从起始节点可达的其他节点。</p>
+<h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>深度优先搜索（DFS）是一种直接的图遍历技术。该算法从起始节点开始，通过图的边访问所有从起始节点可达的其他节点。</p>
 <p>深度优先搜索只要发现新的节点，就会一直沿着图中的单一路径进行。之后，它会返回到之前的节点并开始探索图的其他部分。该算法会记录已访问的节点，以确保每个节点只被处理一次。</p>
-<p><video src="dfs_demo.mp4" controls=""><a
-href="dfs_demo.mp4">Video</a></video></p>
-<p>在实现 DFS
-时，我们通常使用一个递归函数来访问顶点，并使用一个数组来存储是否已经访问过某个顶点。</p>
-<h3 id="cpp-1">cpp</h3>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<p><img src="dfs_demo.mp4" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在实现 DFS 时，我们通常使用一个递归函数来访问顶点，并使用一个数组来存储是否已经访问过某个顶点。</p>
+<h3 id="cpp-1"><a href="#cpp-1" class="headerlink" title="cpp"></a>cpp</h3><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-type">int</span> n = <span class="hljs-number">6</span>;
@@ -376,8 +367,7 @@ vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs
 		<span class="hljs-keyword">if</span> (!visited[i]) &#123; <span class="hljs-built_in">dfs</span>(i); &#125;
 	&#125;
 &#125;</code></pre></div>
-<h3 id="python-1">python</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<h3 id="python-1"><a href="#python-1" class="headerlink" title="python"></a>python</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 sys.setrecursionlimit(<span class="hljs-number">10</span>**<span class="hljs-number">5</span>)  <span class="hljs-comment"># Python has a default recursion limit of 1000</span>
 
@@ -400,13 +390,10 @@ adj[<span class="hljs-number">2</span>] = [<span class="hljs-number">5</span>]
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
 	<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[i]:
 		dfs(i)</code></pre></div>
-<h2 id="bfs">BFS</h2>
-<p>在广度优先搜索中，我们按照顶点与起始顶点的距离顺序来遍历顶点。</p>
-<p><video src="bfs_demo.mp4" controls=""><a
-href="bfs_demo.mp4">Video</a></video></p>
-<p>在实现 BFS 时，我们通常使用一个队列来跟踪下一个要访问的顶点。与 DFS
-一样，我们也会维护一个数组来存储是否已经访问过某个顶点。 ### cpp</p>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span>
+<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><p>在广度优先搜索中，我们按照顶点与起始顶点的距离顺序来遍历顶点。</p>
+<p><img src="bfs_demo.mp4" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在实现 BFS 时，我们通常使用一个队列来跟踪下一个要访问的顶点。与 DFS 一样，我们也会维护一个数组来存储是否已经访问过某个顶点。</p>
+<h3 id="cpp-2"><a href="#cpp-2" class="headerlink" title="cpp"></a>cpp</h3><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span>
 
 <span class="hljs-keyword">using</span> std::queue;
@@ -440,8 +427,7 @@ href="bfs_demo.mp4">Video</a></video></p>
 		&#125;
 	&#125;
 &#125;</code></pre></div>
-<h3 id="python-2">python</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<h3 id="python-2"><a href="#python-2" class="headerlink" title="python"></a>python</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
 n = <span class="hljs-number">6</span>
 adj = [[] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
@@ -463,27 +449,13 @@ adj[<span class="hljs-number">2</span>] = [<span class="hljs-number">5</span>]
 			<span class="hljs-keyword">for</span> neighbor <span class="hljs-keyword">in</span> adj[node]:
 				<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[neighbor]:
 					q.append(neighbor)</code></pre></div>
-<h2 id="应用">应用</h2>
-<h3 id="connected-components-连通分量">Connected Components
-连通分量</h3>
-<p>https://cses.fi/problemset/task/1666</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="Connected-Components-连通分量"><a href="#Connected-Components-连通分量" class="headerlink" title="Connected Components  连通分量"></a>Connected Components  连通分量</h3><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1666">https://cses.fi/problemset/task/1666</a></p>
 <p>一个连通分量是无向图中一个最大的连通节点集合。换句话说，两个节点位于同一个连通分量中，当且仅当它们可以通过图中的边相互到达。</p>
 <p>在上述重点问题中，目标是添加尽可能少的边，使得整个图形成一个单一的连通分量。</p>
-<h4 id="solution---building-roads">Solution - Building Roads</h4>
-<p>请注意，每条边会将连通分量的数量减少零个或一个。因此，您必须至少添加
-<span class="math inline"><em>C</em> − 1</span> 条边，其中 <span
-class="math inline"><em>C</em></span> 是输入图中的连通分量数量。</p>
-<p>为了计算 <span class="math inline"><em>C</em></span>
-，可以遍历每个节点。如果该节点尚未被访问，则使用 DFS 或 BFS
-访问该节点及其所在连通分量的所有其他节点。然后 <span
-class="math inline"><em>C</em></span> 等于我们执行访问操作的次数。</p>
-<p>有许多有效的方法可以选择 <span
-class="math inline"><em>C</em> − 1</span>
-条新的道路来建设。一种方法是为每个 <span
-class="math inline"><em>C</em></span>
-连通分量选择一个代表节点，并将它们连接成一条线。</p>
-<h4 id="bfs-1">BFS</h4>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<h4 id="Solution-Building-Roads"><a href="#Solution-Building-Roads" class="headerlink" title="Solution - Building Roads"></a>Solution - Building Roads</h4><p>请注意，每条边会将连通分量的数量减少零个或一个。因此，您必须至少添加 $C-1$ 条边，其中 $C$ 是输入图中的连通分量数量。</p>
+<p>为了计算 $C$ ，可以遍历每个节点。如果该节点尚未被访问，则使用 DFS 或 BFS 访问该节点及其所在连通分量的所有其他节点。然后 $C$ 等于我们执行访问操作的次数。</p>
+<p>有许多有效的方法可以选择 $C−1$ 条新的道路来建设。一种方法是为每个 $C$ 连通分量选择一个代表节点，并将它们连接成一条线。</p>
+<h4 id="BFS-1"><a href="#BFS-1" class="headerlink" title="BFS"></a>BFS</h4><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 sys.setrecursionlimit(<span class="hljs-number">10</span> ** <span class="hljs-number">6</span>)
 
@@ -518,8 +490,7 @@ connect = []
 <span class="hljs-built_in">print</span>(c-<span class="hljs-number">1</span>)
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(c-<span class="hljs-number">1</span>):
     <span class="hljs-built_in">print</span>(connect[i]+<span class="hljs-number">1</span>, connect[i+<span class="hljs-number">1</span>]+<span class="hljs-number">1</span>)</code></pre></div>
-<h4 id="dfs-1">DFS</h4>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<h4 id="DFS-1"><a href="#DFS-1" class="headerlink" title="DFS"></a>DFS</h4><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
 n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 
@@ -552,9 +523,7 @@ connect = []
 <span class="hljs-built_in">print</span>(c-<span class="hljs-number">1</span>)
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(c-<span class="hljs-number">1</span>):
     <span class="hljs-built_in">print</span>(connect[i]+<span class="hljs-number">1</span>, connect[i+<span class="hljs-number">1</span>]+<span class="hljs-number">1</span>)</code></pre></div>
-<h3 id="graph-two-coloring-图的二色染色">Graph Two-Coloring
-图的二色染色</h3>
-<p>https://cses.fi/problemset/task/1668</p>
+<h3 id="Graph-Two-Coloring-图的二色染色"><a href="#Graph-Two-Coloring-图的二色染色" class="headerlink" title="Graph Two-Coloring  图的二色染色"></a>Graph Two-Coloring  图的二色染色</h3><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1668">https://cses.fi/problemset/task/1668</a></p>
 <p>图的二色化指的是为图中的每个节点分配一个布尔值，该值由边的配置决定。最常见的二色图例子是二分图，在这种图中，每条边连接两个颜色不同的节点。</p>
 <p>在上述重点问题中，目标是将图中的每个节点（朋友）分配到两种颜色（队伍）之一，满足边（友谊）连接两个颜色不同的节点的约束条件。换句话说，我们需要检查输入是否为二分图，如果是，则输出一种有效的着色方案。</p>
 
@@ -593,6 +562,8 @@ connect = []
         <a href="/tags/dfs/" class="print-no-link">#dfs</a>
       
         <a href="/tags/bfs/" class="print-no-link">#bfs</a>
+      
+        <a href="/tags/%E5%9B%BE%E6%90%9C%E7%B4%A2/" class="print-no-link">#图搜索</a>
       
     </div>
   
