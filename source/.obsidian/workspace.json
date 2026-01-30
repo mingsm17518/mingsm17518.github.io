@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/algorithm/数据结构.md",
+                "file": "_posts/algorithm/cf.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数据结构"
+              "title": "cf"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/algorithm/数据结构.md",
+                "file": "_posts/algorithm/cf.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "数据结构 的大纲"
+              "title": "cf 的大纲"
             }
           },
           {
@@ -182,9 +182,11 @@
   },
   "active": "7aca96cfbcc27ed9",
   "lastOpenFiles": [
-    "_posts/algorithm/cf.md",
-    "_posts/algorithm/数据结构.md",
     "_posts/algorithm/use_python.md",
+    "_posts/algorithm/数据结构.md",
+    "_drafts/hexo头部信息.md",
+    "_posts/algorithm/Sorting & Searching/Two Pointers  双指针.md",
+    "_posts/algorithm/cf.md",
     "_posts/bug修复/expected str, bytes or os.PathLike object, not MultiplexedPath.md",
     "_posts/algorithm/Graphs/Graph 图.md",
     "img/src/dfs_demo.mp4",
@@ -216,8 +218,6 @@
     "_posts/algorithm/3_Complete_Search/04_Counting_Liars.md",
     "_posts/algorithm/3_Complete_Search/05_Cow_Gymnastics.md",
     "_posts/algorithm/3_Complete_Search/02_Diamond_Collector.md",
-    "_posts/algorithm/3_Complete_Search/01_Milk Pails.md",
-    "_posts/algorithm/note_python.md",
     "情侣软件/assets/情侣软件/file-20260129195021523.png",
     "情侣软件/assets/情侣软件/file-20260129195011856.png",
     "华为机考/assets/经验/7db7b74e00bb8826907b03276b984947.png",

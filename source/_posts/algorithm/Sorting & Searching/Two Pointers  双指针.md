@@ -1,3 +1,10 @@
+---
+title: Two Pointers 双指针
+date: 2026-01-30 09:31:30
+tags:
+  - 双指针
+categories: Sorting & Searching
+---
 # Two Pointers 双指针
 
 双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：
