@@ -1,3 +1,10 @@
+---
+title: 01_Milk Pails
+date: 2025-10-29 10:56
+modification date: 2026-01-30 17:43
+tags:
+categories: Complete_Search
+---
 # 问题描述
 
 USACO 2016 February Contest, Bronze Problem 1. Milk Pails

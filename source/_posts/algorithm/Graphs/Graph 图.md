@@ -1,11 +1,12 @@
 ---
-title: 图搜索算法
-date: 2026-01-30 09:35:30
+title: Graph 图
+date: 2026-01-30 09:30
 tags:
   - dfs
   - bfs
   - 图搜索
 categories: Graphs
+modification date: 2026-01-30 17:43
 ---
 
 # Graph 图

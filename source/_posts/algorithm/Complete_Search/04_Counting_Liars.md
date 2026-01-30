@@ -1,3 +1,10 @@
+---
+title: 04_Counting_Liars
+date: 2025-11-20 09:35
+modification date: 2026-01-30 17:43
+tags:
+categories: Complete_Search
+---
 # 问题描述
 
 USACO 2022 US Open Contest, Bronze Problem 2. Counting Liars

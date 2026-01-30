@@ -1,3 +1,8 @@
+---
+title: cf
+tags:
+categories: algorithm
+---
 # 模板
 
 ```cpp

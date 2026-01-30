@@ -1,3 +1,10 @@
+---
+title: 02_Diamond_Collector
+date: 2025-10-29 11:26
+modification date: 2026-01-30 17:43
+tags:
+categories: Complete_Search
+---
 # 问题描述
 
 USACO 2016 US Open Contest, Bronze Problem 1. Diamond Collector

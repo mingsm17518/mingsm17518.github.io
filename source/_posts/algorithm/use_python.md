@@ -1,3 +1,10 @@
+---
+title: use_python
+date: 2025-12-16 09:37
+modification date: 2026-01-30 17:43
+tags:
+categories: algorithm
+---
 # 输入
 
 ## 读入单行
