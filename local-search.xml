@@ -112,31 +112,6 @@
   
   
   <entry>
-    <title>Two Pointers 双指针</title>
-    <link href="/2026/01/30/algorithm/Sorting%20&amp;%20Searching/Two%20Pointers%20%20%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    <url>/2026/01/30/algorithm/Sorting%20&amp;%20Searching/Two%20Pointers%20%20%E5%8F%8C%E6%8C%87%E9%92%88/</url>
-    
-    <content type="html"><![CDATA[<h1 id="two-pointers-双指针">Two Pointers 双指针</h1><p>双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：</p><ol type="1"><li><p>两个指针从数组的两端开始，并相互移动。</p></li><li><p>两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。</p></li></ol><h2 id="sum-of-two-values">Sum of Two Values</h2><p>https://cses.fi/problemset/task/1640</p><h3 id="solution---sum-of-two-values">Solution - Sum of Two Values</h3><p>我们要找到两个索引 <span class="math inline"><em>i</em></span> 和<span class="math inline"><em>j</em></span> ，使得 <spanclass="math inline"><em>a</em><sub><em>i</em></sub> + <em>a</em><sub><em>j</em></sub> = <em>x</em></span>。</p><h3 id="implementation-实现">Implementation  实现</h3><p><strong>Time Complexity:</strong> <spanclass="math inline">𝒪(<em>N</em>log <em>N</em>)</span>  时间复杂度：<span class="math inline">𝒪(<em>N</em>log <em>N</em>)</span></p><div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())nums = [(<span class="hljs-built_in">int</span>(val), i) <span class="hljs-keyword">for</span> i, val <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(<span class="hljs-built_in">input</span>().split())]nums.sort()l = <span class="hljs-number">0</span>r = n - <span class="hljs-number">1</span><span class="hljs-keyword">while</span> l &lt; r:<span class="hljs-built_in">sum</span> = nums[l][<span class="hljs-number">0</span>] + nums[r][<span class="hljs-number">0</span>]<span class="hljs-keyword">if</span> <span class="hljs-built_in">sum</span> == x:<span class="hljs-built_in">print</span>(nums[l][<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>, nums[r][<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>)exit()<span class="hljs-keyword">elif</span> <span class="hljs-built_in">sum</span> &lt; x:l += <span class="hljs-number">1</span><span class="hljs-keyword">else</span>:r -= <span class="hljs-number">1</span><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;IMPOSSIBLE&quot;</span>)</code></pre></div>]]></content>
-    
-    
-    <categories>
-      
-      <category>Sorting &amp; Searching</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>双指针</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>使用递归的穷举搜索</title>
     <link href="/2026/01/30/algorithm/Graphs/%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/"/>
     <url>/2026/01/30/algorithm/Graphs/%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/</url>
@@ -156,6 +131,31 @@
       <tag>穷举搜索</tag>
       
       <tag>递归</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Two Pointers 双指针</title>
+    <link href="/2026/01/30/algorithm/Sorting%20&amp;%20Searching/Two%20Pointers%20%20%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    <url>/2026/01/30/algorithm/Sorting%20&amp;%20Searching/Two%20Pointers%20%20%E5%8F%8C%E6%8C%87%E9%92%88/</url>
+    
+    <content type="html"><![CDATA[<h1 id="two-pointers-双指针">Two Pointers 双指针</h1><p>双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：</p><ol type="1"><li><p>两个指针从数组的两端开始，并相互移动。</p></li><li><p>两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。</p></li></ol><h2 id="sum-of-two-values">Sum of Two Values</h2><p>https://cses.fi/problemset/task/1640</p><h3 id="solution---sum-of-two-values">Solution - Sum of Two Values</h3><p>我们要找到两个索引 <span class="math inline"><em>i</em></span> 和<span class="math inline"><em>j</em></span> ，使得 <spanclass="math inline"><em>a</em><sub><em>i</em></sub> + <em>a</em><sub><em>j</em></sub> = <em>x</em></span>。</p><h3 id="implementation-实现">Implementation  实现</h3><p><strong>Time Complexity:</strong> <spanclass="math inline">𝒪(<em>N</em>log <em>N</em>)</span>  时间复杂度：<span class="math inline">𝒪(<em>N</em>log <em>N</em>)</span></p><div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())nums = [(<span class="hljs-built_in">int</span>(val), i) <span class="hljs-keyword">for</span> i, val <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(<span class="hljs-built_in">input</span>().split())]nums.sort()l = <span class="hljs-number">0</span>r = n - <span class="hljs-number">1</span><span class="hljs-keyword">while</span> l &lt; r:<span class="hljs-built_in">sum</span> = nums[l][<span class="hljs-number">0</span>] + nums[r][<span class="hljs-number">0</span>]<span class="hljs-keyword">if</span> <span class="hljs-built_in">sum</span> == x:<span class="hljs-built_in">print</span>(nums[l][<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>, nums[r][<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>)exit()<span class="hljs-keyword">elif</span> <span class="hljs-built_in">sum</span> &lt; x:l += <span class="hljs-number">1</span><span class="hljs-keyword">else</span>:r -= <span class="hljs-number">1</span><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;IMPOSSIBLE&quot;</span>)</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Sorting &amp; Searching</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>双指针</tag>
       
     </tags>
     
