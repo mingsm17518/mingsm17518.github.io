@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+    <meta name="description" content="输入 读入单行 a, b &#x3D; map(int, input().split()) print(a+b) 读入多行 import sys  for line in sys.stdin:     list1 &#x3D; map(int, line.strip().split())     print(sum(list1)) readline() 、readlines() 和 read() 区别">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/01/29/hello-world/index.html">
+<meta property="og:title" content="Ming&#39;s Blog">
+<meta property="og:url" content="https://mingsm17518.github.io/2025/12/16/algorithm/use_python/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="输入 读入单行 a, b &#x3D; map(int, input().split()) print(a+b) 读入多行 import sys  for line in sys.stdin:     list1 &#x3D; map(int, line.strip().split())     print(sum(list1)) readline() 、readlines() 和 read() 区别">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-29T03:29:23.099Z">
-<meta property="article:modified_time" content="2026-01-30T07:59:52.227Z">
+<meta property="article:published_time" content="2025-12-16T01:37:29.570Z">
+<meta property="article:modified_time" content="2026-01-02T23:13:42.100Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hello World - Ming&#39;s Blog</title>
+  <title>Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -216,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-01-29 11:29" pubdate>
-          2026年1月29日 上午
+        <time datetime="2025-12-16 09:37" pubdate>
+          2025年12月16日 上午
         </time>
       </span>
     
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          202 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -285,34 +285,53 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very
-first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for
-more info. If you get any problems when using Hexo, you can find the
-answer in <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or
-you can ask me on <a
-target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo server</code></pre></div>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo generate</code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo deploy</code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h1 id="输入">输入</h1>
+<h2 id="读入单行">读入单行</h2>
+<div class="code-wrapper"><pre><code class="hljs python">a, b = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+<span class="hljs-built_in">print</span>(a+b)</code></pre></div>
+<h2 id="读入多行">读入多行</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+
+<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> sys.stdin:
+    list1 = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, line.strip().split())
+    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">sum</span>(list1))</code></pre></div>
+<h2 id="readline-readlines-和-read-区别"><code>readline()</code>
+、<code>readlines()</code> 和 <code>read()</code> 区别</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+
+<span class="hljs-comment"># 输入：</span>
+<span class="hljs-comment"># Hello</span>
+<span class="hljs-comment"># World</span>
+<span class="hljs-comment"># !</span>
+
+<span class="hljs-comment"># 使用 readline()</span>
+line1 = sys.stdin.readline()  <span class="hljs-comment"># &quot;Hello\n&quot;</span>
+line2 = sys.stdin.readline()  <span class="hljs-comment"># &quot;World\n&quot;</span>
+line3 = sys.stdin.readline()  <span class="hljs-comment"># &quot;!\n&quot;</span>
+line4 = sys.stdin.readline()  <span class="hljs-comment"># &quot;&quot;</span>
+
+<span class="hljs-comment"># 使用 readlines()</span>
+lines = sys.stdin.readlines()  <span class="hljs-comment"># [&quot;Hello\n&quot;, &quot;World\n&quot;, &quot;!\n&quot;]</span>
+
+<span class="hljs-comment"># 使用 read()</span>
+content = sys.stdin.read()  <span class="hljs-comment"># &quot;Hello\nWorld\n!\n&quot;</span></code></pre></div>
+<h2 id="strip-函数"><code>strip()</code> 函数</h2>
+<div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-string">&quot;  hello  \n\t&quot;</span>
+
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">repr</span>(s.rstrip()))  <span class="hljs-comment"># 移除右侧空白字符 → &quot;&#x27;  hello&#x27;&quot;</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">repr</span>(s.lstrip()))  <span class="hljs-comment"># 移除左侧空白字符 → &quot;&#x27;hello  \n\t&#x27;&quot;</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">repr</span>(s.strip()))   <span class="hljs-comment"># 移除两侧空白字符 → &quot;&#x27;hello&#x27;&quot;</span></code></pre></div>
+<h2 id="split-函数"><code>split()</code> 函数</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">str</span>.split(sep=<span class="hljs-literal">None</span>, maxsplit=-<span class="hljs-number">1</span>)</code></pre></div>
+<ul>
+<li><strong>sep</strong>：分隔符，默认为任何空白字符</li>
+<li><strong>maxsplit</strong>：最大分割次数，默认为 -1（不限制）</li>
+</ul>
 
                 
               </div>
@@ -330,8 +349,8 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://mingsm17518.github.io/2026/01/29/hello-world/</div>
+      <div></div>
+      <div>https://mingsm17518.github.io/2025/12/16/algorithm/use_python/</div>
     </div>
     <div class="license-meta">
       
@@ -343,7 +362,7 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年1月29日</div>
+          <div>2025年12月16日</div>
         </div>
       
       
@@ -375,9 +394,9 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/01/30/algorithm/Graphs/%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="使用递归的穷举搜索">
+                      <a href="/2025/12/19/algorithm/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">使用递归的穷举搜索</span>
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -385,7 +404,7 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/12/19/algorithm/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="">
+                      <a href="/2025/11/20/algorithm/Complete_Search/05_Cow_Gymnastics/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>

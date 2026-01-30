@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+    <meta name="description" content="问题描述 USACO 2022 US Open Contest, Bronze Problem 2. Counting Liars https:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;1228 农夫约翰有 N 头奶牛（不包括 Bessie）。每头牛给出一条关于 Bessie 躲藏位置的陈述：  若某头牛说 L ：意思是 _Be">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/01/29/hello-world/index.html">
+<meta property="og:title" content="Ming&#39;s Blog">
+<meta property="og:url" content="https://mingsm17518.github.io/2025/11/20/algorithm/Complete_Search/04_Counting_Liars/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="问题描述 USACO 2022 US Open Contest, Bronze Problem 2. Counting Liars https:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;1228 农夫约翰有 N 头奶牛（不包括 Bessie）。每头牛给出一条关于 Bessie 躲藏位置的陈述：  若某头牛说 L ：意思是 _Be">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-29T03:29:23.099Z">
-<meta property="article:modified_time" content="2026-01-30T07:59:52.227Z">
+<meta property="article:published_time" content="2025-11-20T01:35:15.180Z">
+<meta property="article:modified_time" content="2025-11-20T02:33:09.629Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hello World - Ming&#39;s Blog</title>
+  <title>Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -216,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-01-29 11:29" pubdate>
-          2026年1月29日 上午
+        <time datetime="2025-11-20 09:35" pubdate>
+          2025年11月20日 上午
         </time>
       </span>
     
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          505 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          1 分钟
+          5 分钟
         
       </span>
     
@@ -285,34 +285,96 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very
-first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for
-more info. If you get any problems when using Hexo, you can find the
-answer in <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or
-you can ask me on <a
-target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo server</code></pre></div>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo generate</code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo deploy</code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h1 id="问题描述">问题描述</h1>
+<p>USACO 2022 US Open Contest, Bronze Problem 2. Counting Liars
+https://usaco.org/index.php?page=viewproblem2&amp;cpid=1228</p>
+<p>农夫约翰有 <span class="math inline"><em>N</em></span> 头奶牛（不包括
+Bessie）。每头牛给出一条关于 Bessie 躲藏位置的陈述：</p>
+<ul>
+<li>若某头牛说 <span class="math inline"><em>L</em></span> ：意思是
+_Bessie 的位置 <span class="math inline"> ≤ <em>p</em></span></li>
+<li>若某头牛说 <span class="math inline"><em>G</em></span> ：意思是
+_Bessie 的位置 <span class="math inline"> ≥ <em>p</em></span></li>
+</ul>
+<p><span
+class="math inline">0 ≤ <em>p</em> ≤ 10<sup>9</sup>，1 ≤ <em>N</em> ≤ 1000</span></p>
+<p>可能并非所有牛都说了真话，你需要找出至少要让多少头牛说谎，才能使得剩下的陈述存在某个位置
+<span class="math inline"><em>x</em></span> 满足所有剩余陈述。</p>
+<p><strong>输出最少必须说谎的牛数。</strong></p>
+<h1 id="样例">样例</h1>
+<h3 id="样例-1">样例 1</h3>
+<p>输入：</p>
+<div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">2</span>
+<span class="hljs-attribute">G</span> <span class="hljs-number">3</span>
+<span class="hljs-attribute">L</span> <span class="hljs-number">5</span></code></pre></div>
+<p>代表： - Cow1：Bessie ≥ 3 - Cow2：Bessie ≤ 5 显然 3 ≤ Bessie ≤ 5
+有解，所以 <strong>0</strong> 头说谎。</p>
+<p>输出 :</p>
+<div class="code-wrapper"><pre><code class="hljs">0</code></pre></div>
+<h3 id="样例-2">样例 2</h3>
+<p>输入：</p>
+<div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">2</span>
+<span class="hljs-attribute">G</span> <span class="hljs-number">3</span>
+<span class="hljs-attribute">L</span> <span class="hljs-number">2</span></code></pre></div>
+<p>代表： - Bessie ≥ 3 - Bessie ≤ 2
+没有位置能同时满足，必须至少删除一条陈述 → 答案是
+<strong>1</strong>。</p>
+<p>输出 :</p>
+<div class="code-wrapper"><pre><code class="hljs">1</code></pre></div>
+<h1 id="思路">思路</h1>
+<p>在我们对输入进行排序后，一个重要的观察是，如果贝西位于位置 <span
+class="math inline"><em>x</em></span>
+，那么说谎的牛的数量就是所有位置小于 <span
+class="math inline"><em>x</em></span> 且说 “L” 的牛，加上所有位置大于
+<span class="math inline"><em>x</em></span> 且说 “G” 的牛。</p>
+<p>也就是说，如果把所有 <span class="math inline"><em>p</em></span>
+排好序，只需考虑每个 <span
+class="math inline"><em>p</em><sub><em>i</em></sub></span>
+本身作为分界。</p>
+<p>因此，我们可以遍历每头牛的位置，通过使用正向循环和反向循环来计算说谎者的总数。</p>
+<p>答案是我们在所有遍历过的位置中最小的说谎者数量。 # 代码</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
+    
+    <span class="hljs-type">int</span> n; cin &gt;&gt; n;
+    vector&lt;pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">char</span>&gt;&gt; <span class="hljs-built_in">cow</span>(n);
+    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)&#123;
+        cin &gt;&gt; cow[i].second &gt;&gt; cow[i].first;
+    &#125;
+    <span class="hljs-built_in">sort</span>(cow.<span class="hljs-built_in">begin</span>(), cow.<span class="hljs-built_in">end</span>());
+    
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">left_lying</span><span class="hljs-params">(n)</span></span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++)&#123;
+        left_lying[i] = left_lying[i<span class="hljs-number">-1</span>];
+        <span class="hljs-keyword">if</span>(cow[i<span class="hljs-number">-1</span>].second == <span class="hljs-string">&#x27;L&#x27;</span>)&#123;
+            left_lying[i] ++;
+        &#125;
+    &#125;
+    
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">right_lying</span><span class="hljs-params">(n)</span></span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = n - <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; i--)&#123;
+        right_lying[i] = right_lying[i<span class="hljs-number">+1</span>];
+        <span class="hljs-keyword">if</span>(cow[i<span class="hljs-number">+1</span>].second == <span class="hljs-string">&#x27;G&#x27;</span>)&#123;
+            right_lying[i]++;
+        &#125;
+    &#125;
+    
+    <span class="hljs-type">int</span> ans = n;
+    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)&#123;
+        ans = <span class="hljs-built_in">min</span>(ans, left_lying[i] + right_lying[i]);
+    &#125;
+    cout &lt;&lt; ans;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
 
                 
               </div>
@@ -330,8 +392,8 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://mingsm17518.github.io/2026/01/29/hello-world/</div>
+      <div></div>
+      <div>https://mingsm17518.github.io/2025/11/20/algorithm/Complete_Search/04_Counting_Liars/</div>
     </div>
     <div class="license-meta">
       
@@ -343,7 +405,7 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年1月29日</div>
+          <div>2025年11月20日</div>
         </div>
       
       
@@ -375,9 +437,9 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/01/30/algorithm/Graphs/%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="使用递归的穷举搜索">
+                      <a href="/2025/11/20/algorithm/Complete_Search/05_Cow_Gymnastics/" title="">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">使用递归的穷举搜索</span>
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -385,7 +447,7 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/12/19/algorithm/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="">
+                      <a href="/2025/10/29/algorithm/Complete_Search/02_Diamond_Collector/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>

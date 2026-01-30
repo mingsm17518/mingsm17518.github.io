@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+    <meta name="description" content="Queues  队列 队列是一种先进先出 First In First Out（FIFO）的数据结构，支持三种操作，所有操作的时间复杂度均为 𝒪(1) 。 std::queue  push: 在队列的末尾插入 pop: 从队列的前端删除 front: 获取前端元素但不将其移除  queue&lt;int&gt; q; q.push(1);                  &#x2F;&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/01/29/hello-world/index.html">
+<meta property="og:title" content="Ming&#39;s Blog">
+<meta property="og:url" content="https://mingsm17518.github.io/2025/12/19/algorithm/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="Queues  队列 队列是一种先进先出 First In First Out（FIFO）的数据结构，支持三种操作，所有操作的时间复杂度均为 𝒪(1) 。 std::queue  push: 在队列的末尾插入 pop: 从队列的前端删除 front: 获取前端元素但不将其移除  queue&lt;int&gt; q; q.push(1);                  &#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-29T03:29:23.099Z">
-<meta property="article:modified_time" content="2026-01-30T07:59:52.227Z">
+<meta property="article:published_time" content="2025-12-19T08:38:36.457Z">
+<meta property="article:modified_time" content="2026-01-02T22:56:02.850Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hello World - Ming&#39;s Blog</title>
+  <title>Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -216,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-01-29 11:29" pubdate>
-          2026年1月29日 上午
+        <time datetime="2025-12-19 16:38" pubdate>
+          2025年12月19日 下午
         </time>
       </span>
     
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          334 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -285,34 +285,61 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very
-first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for
-more info. If you get any problems when using Hexo, you can find the
-answer in <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or
-you can ask me on <a
-target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo server</code></pre></div>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo generate</code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo deploy</code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h1 id="queues-队列">Queues  队列</h1>
+<p>队列是一种先进先出 First In First
+Out（FIFO）的数据结构，支持三种操作，所有操作的时间复杂度均为 <span
+class="math inline">𝒪(1)</span> 。</p>
+<p><code>std::queue</code></p>
+<ul>
+<li><p><code>push</code>: 在队列的末尾插入</p></li>
+<li><p><code>pop</code>: 从队列的前端删除</p></li>
+<li><p><code>front</code>: 获取前端元素但不将其移除</p></li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs cpp">queue&lt;<span class="hljs-type">int</span>&gt; q;
+q.<span class="hljs-built_in">push</span>(<span class="hljs-number">1</span>);                  <span class="hljs-comment">// [1]</span>
+q.<span class="hljs-built_in">push</span>(<span class="hljs-number">3</span>);                  <span class="hljs-comment">// [1, 3]</span>
+q.<span class="hljs-built_in">push</span>(<span class="hljs-number">4</span>);                  <span class="hljs-comment">// [1, 3, 4]</span>
+q.<span class="hljs-built_in">pop</span>();                    <span class="hljs-comment">// [3, 4]</span>
+cout &lt;&lt; q.<span class="hljs-built_in">front</span>() &lt;&lt; endl;  <span class="hljs-comment">// 3</span></code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> queue <span class="hljs-keyword">import</span> Queue
+
+q = Queue()           <span class="hljs-comment"># []</span>
+q.put(<span class="hljs-number">1</span>)              <span class="hljs-comment"># [1]</span>
+q.put(<span class="hljs-number">2</span>)              <span class="hljs-comment"># [1, 2]</span>
+v = q.queue[<span class="hljs-number">0</span>]        <span class="hljs-comment"># v = 1, q = [1, 2]</span>
+v = q.get()           <span class="hljs-comment"># v = 1, q = [2]</span>
+v = q.get()           <span class="hljs-comment"># v = 2, q = []</span>
+v = q.get()           <span class="hljs-comment"># 代码会一直等待，导致TLE错误</span></code></pre></div>
+<h1 id="deques-双端队列">Deques  双端队列</h1>
+<p>一个双端队列（通常发音为“deck”）代表双端队列，它是栈和队列的结合，支持在双端队列的前后两端进行插入和删除操作。</p>
+<p><code>std::deque</code></p>
+<p>添加和删除的四种方法是 <code>push_back</code> , <code>pop_back</code> , <code>push_front</code> ,
+和 <code>pop_front</code> 。</p>
+<div class="code-wrapper"><pre><code class="hljs cpp">deque&lt;<span class="hljs-type">int</span>&gt; d;
+
+d.<span class="hljs-built_in">push_front</span>(<span class="hljs-number">3</span>);  <span class="hljs-comment">// [3]</span>
+d.<span class="hljs-built_in">push_front</span>(<span class="hljs-number">4</span>);  <span class="hljs-comment">// [4, 3]</span>
+d.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">7</span>);   <span class="hljs-comment">// [4, 3, 7]</span>
+d.<span class="hljs-built_in">pop_front</span>();    <span class="hljs-comment">// [3, 7]</span>
+d.<span class="hljs-built_in">push_front</span>(<span class="hljs-number">1</span>);  <span class="hljs-comment">// [1, 3, 7]</span>
+d.<span class="hljs-built_in">pop_back</span>();     <span class="hljs-comment">// [1, 3]</span></code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs python">d = collections.deque()
+d.appendleft(<span class="hljs-number">3</span>)  <span class="hljs-comment"># [3]</span>
+d.appendleft(<span class="hljs-number">4</span>)  <span class="hljs-comment"># [4, 3]</span>
+d.append(<span class="hljs-number">7</span>)  <span class="hljs-comment"># [4, 3, 7]</span>
+d.popleft()  <span class="hljs-comment"># [3, 7]</span>
+d.appendleft(<span class="hljs-number">1</span>)  <span class="hljs-comment"># [1, 3, 7]</span>
+d.pop()  <span class="hljs-comment"># [1, 3]</span></code></pre></div>
+<p>你也可以像用数组的 <code>[]</code>
+运算符一样，以常数时间访问双端队列中的元素。例如，要访问双端队列 <span
+class="math inline"><code>dq</code></span> 中的 <span
+class="math inline"><em>i</em></span> 个元素，可以使用 <span
+class="math inline"><code>dq</code>[<em>i</em>]</span> 。</p>
 
                 
               </div>
@@ -330,8 +357,8 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://mingsm17518.github.io/2026/01/29/hello-world/</div>
+      <div></div>
+      <div>https://mingsm17518.github.io/2025/12/19/algorithm/数据结构/</div>
     </div>
     <div class="license-meta">
       
@@ -343,7 +370,7 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年1月29日</div>
+          <div>2025年12月19日</div>
         </div>
       
       
@@ -375,9 +402,9 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/01/30/algorithm/Graphs/%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="使用递归的穷举搜索">
+                      <a href="/2026/01/29/hello-world/" title="Hello World">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">使用递归的穷举搜索</span>
+                        <span class="hidden-mobile">Hello World</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -385,7 +412,7 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/12/19/algorithm/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="">
+                      <a href="/2025/12/16/algorithm/use_python/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
