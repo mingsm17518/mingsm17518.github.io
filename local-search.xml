@@ -4,6 +4,60 @@
   
   
   <entry>
+    <title>bug修复：GPU内存不足问题</title>
+    <link href="/2026/01/30/bug%E4%BF%AE%E5%A4%8D/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/"/>
+    <url>/2026/01/30/bug%E4%BF%AE%E5%A4%8D/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<div class="code-wrapper"><pre><code class="hljs Bash">nvidia-smi<span class="hljs-built_in">kill</span> -9 34069  <span class="hljs-comment"># 占用最多的进程</span><span class="hljs-comment"># 或者使用pkill</span>pkill -f <span class="hljs-string">&quot;python&quot;</span></code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>bug修复</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>bug修复</tag>
+      
+      <tag>GPU内存不足</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>expected str, bytes or os.PathLike object, not MultiplexedPath</title>
+    <link href="/2026/01/30/bug%E4%BF%AE%E5%A4%8D/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/"/>
+    <url>/2026/01/30/bug%E4%BF%AE%E5%A4%8D/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/</url>
+    
+    <content type="html"><![CDATA[<p>错误信息显示：</p><p><code>TypeError: expected str, bytes or os.PathLike object, not MultiplexedPath</code></p><p>这个错误是因为 <code>tn</code>库（textnormalization库）在创建缓存目录时收到了一个<code>MultiplexedPath</code>对象而不是字符串路径。</p><p><code>MultiplexedPath</code>是 HuggingFace 的<code>huggingface_hub</code>库中的类型，通常用于处理多个缓存位置。</p><p>查看错误栈，问题出现在：</p><p><code>File "/home/bysx/index-tts-vllm2/indextts/utils/front.py", line 111, in load</code></p><p><code>self.en_normalizer = NormalizerEn(overwrite_cache=False)</code></p><p>根据错误信息，现在的问题是在加载<code>en_normalizer</code>时，<code>cache_dir</code>参数的类型不正确。</p><p>在<code>NormalizerEn</code>的<code>init</code>中，<code>build_fst</code>方法尝试创建目录时，使用传入的<code>cache_dir</code>。</p><p>如果没有指定<code>cache_dir</code>，那么就会使用默认的缓存目录。</p><p>但是，如果默认的缓存目录是<code>MultiplexedPath</code>类型，就会有问题。</p><p>我们可以修改为：</p><p><code>self.en_normalizer = NormalizerEn(overwrite_cache=False, cache_dir=cache_dir)</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>bug修复</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>bug修复</tag>
+      
+      <tag>TypeError</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>图搜索算法</title>
     <link href="/2026/01/30/Graphs/Graph%20%E5%9B%BE/"/>
     <url>/2026/01/30/Graphs/Graph%20%E5%9B%BE/</url>
@@ -52,33 +106,6 @@
       <tag>穷举搜索</tag>
       
       <tag>递归</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>expected str, bytes or os.PathLike object, not MultiplexedPath</title>
-    <link href="/2026/01/30/bug%E4%BF%AE%E5%A4%8D/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/"/>
-    <url>/2026/01/30/bug%E4%BF%AE%E5%A4%8D/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/</url>
-    
-    <content type="html"><![CDATA[<p>错误信息显示：</p><p><code>TypeError: expected str, bytes or os.PathLike object, not MultiplexedPath</code></p><p>这个错误是因为 <code>tn</code>库（textnormalization库）在创建缓存目录时收到了一个<code>MultiplexedPath</code>对象而不是字符串路径。</p><p><code>MultiplexedPath</code>是 HuggingFace 的<code>huggingface_hub</code>库中的类型，通常用于处理多个缓存位置。</p><p>查看错误栈，问题出现在：</p><p><code>File "/home/bysx/index-tts-vllm2/indextts/utils/front.py", line 111, in load</code></p><p><code>self.en_normalizer = NormalizerEn(overwrite_cache=False)</code></p><p>根据错误信息，现在的问题是在加载<code>en_normalizer</code>时，<code>cache_dir</code>参数的类型不正确。</p><p>在<code>NormalizerEn</code>的<code>init</code>中，<code>build_fst</code>方法尝试创建目录时，使用传入的<code>cache_dir</code>。</p><p>如果没有指定<code>cache_dir</code>，那么就会使用默认的缓存目录。</p><p>但是，如果默认的缓存目录是<code>MultiplexedPath</code>类型，就会有问题。</p><p>我们可以修改为：</p><p><code>self.en_normalizer = NormalizerEn(overwrite_cache=False, cache_dir=cache_dir)</code></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>bug修复</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>bug修复</tag>
-      
-      <tag>TypeError</tag>
       
     </tags>
     

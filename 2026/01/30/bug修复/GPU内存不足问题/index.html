@@ -19,23 +19,25 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+    <meta name="description" content="nvidia-smi  kill -9 34069  # 占用最多的进程  # 或者使用pkill pkill -f &quot;python&quot;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/01/29/hello-world/index.html">
+<meta property="og:title" content="bug修复：GPU内存不足问题">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/01/30/bug%E4%BF%AE%E5%A4%8D/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="nvidia-smi  kill -9 34069  # 占用最多的进程  # 或者使用pkill pkill -f &quot;python&quot;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-29T03:29:23.099Z">
-<meta property="article:modified_time" content="2026-01-30T07:59:52.227Z">
+<meta property="article:published_time" content="2026-01-30T08:30:44.000Z">
+<meta property="article:modified_time" content="2026-01-30T08:32:32.323Z">
 <meta property="article:author" content="Ming">
+<meta property="article:tag" content="GPU内存不足">
+<meta property="article:tag" content="bug修复">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hello World - Ming&#39;s Blog</title>
+  <title>bug修复：GPU内存不足问题 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="bug修复：GPU内存不足问题"></span>
           
         </div>
 
@@ -216,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-01-29 11:29" pubdate>
-          2026年1月29日 上午
+        <time datetime="2026-01-30 16:30" pubdate>
+          2026年1月30日 下午
         </time>
       </span>
     
@@ -228,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          19 字
         
       </span>
     
@@ -285,34 +287,17 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">bug修复：GPU内存不足问题</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very
-first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for
-more info. If you get any problems when using Hexo, you can find the
-answer in <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or
-you can ask me on <a
-target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo server</code></pre></div>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo generate</code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<div class="code-wrapper"><pre><code class="hljs bash">$ hexo deploy</code></pre></div>
-<p>More info: <a
-target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <div class="code-wrapper"><pre><code class="hljs Bash">nvidia-smi
+
+<span class="hljs-built_in">kill</span> -9 34069  <span class="hljs-comment"># 占用最多的进程</span>
+
+<span class="hljs-comment"># 或者使用pkill</span>
+pkill -f <span class="hljs-string">&quot;python&quot;</span></code></pre></div>
 
                 
               </div>
@@ -321,6 +306,36 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/bug%E4%BF%AE%E5%A4%8D/" class="category-chain-item">bug修复</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/bug%E4%BF%AE%E5%A4%8D/" class="print-no-link">#bug修复</a>
+      
+        <a href="/tags/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3/" class="print-no-link">#GPU内存不足</a>
+      
+    </div>
   
 </div>
 
@@ -330,8 +345,8 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://mingsm17518.github.io/2026/01/29/hello-world/</div>
+      <div>bug修复：GPU内存不足问题</div>
+      <div>https://mingsm17518.github.io/2026/01/30/bug修复/GPU内存不足问题/</div>
     </div>
     <div class="license-meta">
       
@@ -343,7 +358,7 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年1月29日</div>
+          <div>2026年1月30日</div>
         </div>
       
       
@@ -375,15 +390,15 @@ target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/01/30/Graphs/%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="使用递归的穷举搜索">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">使用递归的穷举搜索</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2026/01/30/bug%E4%BF%AE%E5%A4%8D/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/" title="expected str, bytes or os.PathLike object, not MultiplexedPath">
+                        <span class="hidden-mobile">expected str, bytes or os.PathLike object, not MultiplexedPath</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
