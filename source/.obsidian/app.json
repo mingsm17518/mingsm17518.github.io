@@ -1,0 +1,11 @@
+{
+  "promptDelete": true,
+  "readableLineLength": false,
+  "newLinkFormat": "relative",
+  "useMarkdownLinks": true,
+  "attachmentFolderPath": "./assets",
+  "alwaysUpdateLinks": false,
+  "newFileLocation": "current",
+  "vimMode": false,
+  "strictLineBreaks": false
+}

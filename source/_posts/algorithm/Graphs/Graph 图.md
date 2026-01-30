@@ -1,9 +1,10 @@
 ---
 title: 图搜索算法
 date: 2026-01-30 09:35:30
-tags: 
-    - dfs
-    - bfs
+tags:
+  - dfs
+  - bfs
+  - 图搜索
 categories: Graphs
 ---
 

@@ -731,7 +731,7 @@ post:
   math:
     # 开启后文章默认可用，自定义页面如需使用，需在 Front-matter 中指定 `math: true`
     # If you want to use math on the custom page, you need to set `math: true` in Front-matter
-    enable: false
+    enable: true
 
     # 开启后，只有在文章 Front-matter 里指定 `math: true` 才会在文章页启动公式转换，以便在页面不包含公式时提高加载速度
     # If true, only set `math: true` in Front-matter will enable math, to load faster when the page does not contain math
@@ -1000,7 +1000,9 @@ about:
   # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, the icon is no longer a link, but a hovering QR code
   icons:
     - { class: "iconfont icon-github-fill", link: "https://github.com/mingsm17518", tip: "GitHub" }
-    # - { class: "iconfont icon-douban-fill", link: "https://douban.com", tip: "豆瓣" }
+    - { class: "iconfont icon-bilibili-fill", link: "https://space.bilibili.com/382796940?spm_id_from=333.1007.0.0", tip: "bilibili" }
+    - { class: "iconfont icon-codeforces-fill", link: "https://codeforces.com/profile/mingsm", tip: "codeforces" }
+    - { class: "iconfont icon-copyright-fill", link: "https://blog.csdn.net/sm250147369?spm=1000.2115.3001.10640", tip: "CSDN" }
     # - { class: "iconfont icon-wechat-fill", qrcode: "/img/favicon.png" }
 
 
