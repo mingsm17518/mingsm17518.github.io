@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="使用递归的穷举搜索Subsets  子集https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1623 递归生成子集编写一个递归函数，遍历所有可能的分组方式。 在某个索引处，我们要么将 $\texttt{apple}_i$​ 添加到第一个集合，要么添加到第二个集合，存储两个总和 $\texttt{sum}_1$​ 和 $\texttt{sum}_2$​ ，分别表示每个集合中值的总和。 一">
+    <meta name="description" content="使用递归的穷举搜索Subsets  子集https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1623 递归生成子集编写一个递归函数，遍历所有可能的分组方式。 在某个索引处，我们要么将 $\texttt{apple}_i$​ 添加到第一个集合，要么添加到第二个集合，存储两个总和 $\texttt{sum}_1$​ 和 $\texttt{sum}_2$​ ，分别表示每个集合中值的总和。 一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用递归的穷举搜索">
 <meta property="og:url" content="http://example.com/2026/01/30/Graphs/%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="使用递归的穷举搜索Subsets  子集https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1623 递归生成子集编写一个递归函数，遍历所有可能的分组方式。 在某个索引处，我们要么将 $\texttt{apple}_i$​ 添加到第一个集合，要么添加到第二个集合，存储两个总和 $\texttt{sum}_1$​ 和 $\texttt{sum}_2$​ ，分别表示每个集合中值的总和。 一">
+<meta property="og:description" content="使用递归的穷举搜索Subsets  子集https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1623 递归生成子集编写一个递归函数，遍历所有可能的分组方式。 在某个索引处，我们要么将 $\texttt{apple}_i$​ 添加到第一个集合，要么添加到第二个集合，存储两个总和 $\texttt{sum}_1$​ 和 $\texttt{sum}_2$​ ，分别表示每个集合中值的总和。 一">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-30T01:31:30.000Z">
 <meta property="article:modified_time" content="2026-01-30T01:34:20.369Z">
@@ -87,7 +87,11 @@
 
 
   
-<meta name="generator" content="Hexo 8.1.1"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head>
 
 
 <body>
@@ -287,7 +291,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="使用递归的穷举搜索"><a href="#使用递归的穷举搜索" class="headerlink" title="使用递归的穷举搜索"></a>使用递归的穷举搜索</h1><h2 id="Subsets-子集"><a href="#Subsets-子集" class="headerlink" title="Subsets  子集"></a>Subsets  子集</h2><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1623">https://cses.fi/problemset/task/1623</a></p>
+                <h1 id="使用递归的穷举搜索"><a href="#使用递归的穷举搜索" class="headerlink" title="使用递归的穷举搜索"></a>使用递归的穷举搜索</h1><h2 id="Subsets-子集"><a href="#Subsets-子集" class="headerlink" title="Subsets  子集"></a>Subsets  子集</h2><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1623">https://cses.fi/problemset/task/1623</a></p>
 <h3 id="递归生成子集"><a href="#递归生成子集" class="headerlink" title="递归生成子集"></a>递归生成子集</h3><p>编写一个递归函数，遍历所有可能的分组方式。</p>
 <p>在某个索引处，我们要么将 $\texttt{apple}_i$​ 添加到第一个集合，要么添加到第二个集合，存储两个总和 $\texttt{sum}_1$​ 和 $\texttt{sum}_2$​ ，分别表示每个集合中值的总和。</p>
 <p>一旦到达数组的末尾，我们返回这两个总和的差值。</p>
@@ -319,10 +323,9 @@ vector&lt;ll&gt; apples;
 
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
-<h2 id="Permutations-排列"><a href="#Permutations-排列" class="headerlink" title="Permutations  排列"></a>Permutations  排列</h2><ul>
+<h2 id="Permutations-排列"><a href="#Permutations-排列" class="headerlink" title="Permutations  排列"></a>Permutations  排列</h2><ul>
 <li>排列是对一组元素的重新排序。</li>
-<li>Lexicographical Order  字典序</li>
+<li>Lexicographical Order  字典序</li>
 </ul>
 <p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1622">https://cses.fi/problemset/task/1622</a></p>
 <h3 id="Solution-1：递归生成排列"><a href="#Solution-1：递归生成排列" class="headerlink" title="Solution 1：递归生成排列"></a>Solution 1：递归生成排列</h3><p>我们将使用递归函数 $\texttt{search}$ 来找出字符串 $s$ 的所有排列。首先，记录 $s$ 中每个字符的数量。对于每个函数调用，将一个可用字符添加到当前字符串中，并调用 $\texttt{search}$ 以该字符串作为参数。当当前字符串的长度与 $s$ 相同时，我们找到了一个排列，可以将其添加到 $\texttt{perms}$ 的列表中。</p>
@@ -361,8 +364,7 @@ vector&lt;string&gt; ans;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
-<h3 id="Solution-2：使用-next-permutation-生成排列"><a href="#Solution-2：使用-next-permutation-生成排列" class="headerlink" title="Solution 2：使用 next_permutation 生成排列"></a>Solution 2：使用 <code>next_permutation</code> 生成排列</h3><p>或者，我们也可以直接使用 <code>next_permutation()</code> 函数。该函数接受一个范围，并将其修改为下一个更大的排列。如果没有更大的排列，它将返回 false。</p>
+<h3 id="Solution-2：使用-next-permutation-生成排列"><a href="#Solution-2：使用-next-permutation-生成排列" class="headerlink" title="Solution 2：使用 next_permutation 生成排列"></a>Solution 2：使用 <code>next_permutation</code> 生成排列</h3><p>或者，我们也可以直接使用 <code>next_permutation()</code> 函数。该函数接受一个范围，并将其修改为下一个更大的排列。如果没有更大的排列，它将返回 false。</p>
 <p>每次调用 <code>next_permutation</code> 在遍历所有 $N!$ 大小的排列时，平均情况下会进行常数次交换。</p>
 <div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
@@ -383,9 +385,8 @@ vector&lt;string&gt; ans;
     &#125;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
-<h2 id="Backtracking-回溯法"><a href="#Backtracking-回溯法" class="headerlink" title="Backtracking  回溯法"></a>Backtracking  回溯法</h2><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1624">https://cses.fi/problemset/task/1624</a></p>
-<h3 id="Solution-1：使用-next-permutation生成排列"><a href="#Solution-1：使用-next-permutation生成排列" class="headerlink" title="Solution 1：使用 next_permutation生成排列"></a>Solution 1：使用 <code>next_permutation</code>生成排列</h3><p>一种检查所有 $\binom{64}{8}$ 种皇后组合的暴力解法将有超过 40 亿种情况需要检查，因此会太慢。</p>
+<h2 id="Backtracking-回溯法"><a href="#Backtracking-回溯法" class="headerlink" title="Backtracking  回溯法"></a>Backtracking  回溯法</h2><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1624">https://cses.fi/problemset/task/1624</a></p>
+<h3 id="Solution-1：使用-next-permutation生成排列"><a href="#Solution-1：使用-next-permutation生成排列" class="headerlink" title="Solution 1：使用 next_permutation生成排列"></a>Solution 1：使用 <code>next_permutation</code>生成排列</h3><p>一种检查所有 $\binom{64}{8}$ 种皇后组合的暴力解法将有超过 40 亿种情况需要检查，因此会太慢。</p>
 <p>我们必须更聪明地进行暴力枚举：注意我们可以直接生成排列，使得任何两个皇后都不在同一行或同一列上互相攻击。</p>
 <p>由于不能有两个皇后在同一列，因此只需要在每一行放置一个皇后。接下来需要确定的是如何变化每个皇后所在的行。这可以通过生成所有排列来实现，其中数字表示每个皇后所在的行。</p>
 <div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
@@ -450,7 +451,6 @@ vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt;<span class="hljs
     
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
 <h3 id="Solution-2：使用回溯法"><a href="#Solution-2：使用回溯法" class="headerlink" title="Solution 2：使用回溯法"></a>Solution 2：使用回溯法</h3><p>回溯算法从一个空解开始，逐步扩展解。搜索递归地遍历所有可能的解的构造方式。</p>
 <p>由于边界条件较小，我们可以递归地回溯所有放置皇后的方式，并存储棋盘的当前状态。</p>
 <p>在每一层，我们尝试在所有未被阻挡或未被其他皇后攻击的格子上放置皇后。完成这一步后，我们递归调用，然后移除该皇后并回溯。</p>
@@ -652,6 +652,12 @@ vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs
   
 
 
+  
+  
+
+
+
+
 
 
 
@@ -842,6 +848,49 @@ vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
