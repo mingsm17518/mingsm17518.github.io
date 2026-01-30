@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="模板 #include &lt;bits&#x2F;stdc++.h&gt; using namespace std;  #ifdef LOCAL #include &quot;algo&#x2F;debug.h&quot; #else #define debug(...) 42 #endif  int main() &#123;     ios::sync_with_stdio(false);     cin.t">
+    <meta name="description" content="模板#include &lt;bits&#x2F;stdc++.h&gt; using namespace std;  #ifdef LOCAL #include &quot;algo&#x2F;debug.h&quot; #else #define debug(...) 42 #endif  int main() &#123;     ios::sync_with_stdio(false);     cin.tie">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ming&#39;s Blog">
+<meta property="og:title" content="cf">
 <meta property="og:url" content="https://mingsm17518.github.io/2025/09/03/algorithm/cf/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="模板 #include &lt;bits&#x2F;stdc++.h&gt; using namespace std;  #ifdef LOCAL #include &quot;algo&#x2F;debug.h&quot; #else #define debug(...) 42 #endif  int main() &#123;     ios::sync_with_stdio(false);     cin.t">
+<meta property="og:description" content="模板#include &lt;bits&#x2F;stdc++.h&gt; using namespace std;  #ifdef LOCAL #include &quot;algo&#x2F;debug.h&quot; #else #define debug(...) 42 #endif  int main() &#123;     ios::sync_with_stdio(false);     cin.tie">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-09-03T00:33:30.101Z">
-<meta property="article:modified_time" content="2025-12-16T08:47:08.373Z">
+<meta property="article:modified_time" content="2026-01-30T09:51:37.960Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Ming&#39;s Blog</title>
+  <title>cf - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="cf"></span>
           
         </div>
 
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          640 字
+          636 字
         
       </span>
     
@@ -285,13 +285,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header"></h1>
+            <h1 id="seo-header">cf</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年1月30日 下午
+                  
+                
+              </p>
             
             
               <div class="markdown-body">
                 
-                <h1 id="模板">模板</h1>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+                <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> LOCAL</span>
@@ -308,16 +315,11 @@
     
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-<h1 id="一些算法">一些算法</h1>
-<p>对于任意两个正整数 n，m 的最小公倍数为 n×m /
-gcd(n,m)，其中 gcd(n,m) 为 n 和 m 的最大公约数。</p>
-<p>subarray是截取数组中连续的一段子数组。
-subsequence是序列中不连续的一段子序列</p>
-<h1 id="数据范围">数据范围</h1>
-<p>int32的范围是2e9 int64是2e18</p>
+<h1 id="一些算法"><a href="#一些算法" class="headerlink" title="一些算法"></a>一些算法</h1><p>对于任意两个正整数 n，m 的最小公倍数为 n×m / gcd(n,m)，其中 gcd(n,m) 为 n 和 m 的最大公约数。</p>
+<p>subarray是截取数组中连续的一段子数组。 subsequence是序列中不连续的一段子序列</p>
+<h1 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h1><p>int32的范围是2e9<br>int64是2e18</p>
 <p>题目给的时限是1s，时间复杂度在1e7到1e8之间</p>
-<h1 id="代码">代码</h1>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">// 自动初始化为全0</span>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">// 自动初始化为全0</span>
 <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">a</span><span class="hljs-params">(n)</span></span>;
 
 <span class="hljs-comment">// 改变长度</span>
@@ -352,25 +354,20 @@ a.<span class="hljs-built_in">push_back</span>(x)
 <span class="hljs-comment">// 找到数组 `a` 中的最大值 `mx`</span>
 <span class="hljs-type">int</span> mx = *<span class="hljs-built_in">max_element</span>(a.<span class="hljs-built_in">begin</span>(), a.<span class="hljs-built_in">end</span>());
 </code></pre></div>
-<h1 id="华为hr">华为HR</h1>
-<p>leetcode：熟悉题型和算法，各类型的题选做10-15道（保底5-8道）
-针对薄弱知识点查缺补漏题号： 字符串：3，49，30 线性表:86，16，27，732
-队列:641，406，899 栈:946，116，117，895 哈希表:61，729，25，554
-dfs：105，112，98，494，547，1254 bfs：1091，1129，102，101，752
-动态规划类题目也可以适当熟悉</p>
-<p>常考知识点：
-基本操作：输入输出处理（重点），字符串操作与ASCii码（重点）
-数据结构：一维数组，栈，队列 编程思想：暴力破解（重点），递归
-算法：排列组合（重点），快速排序（重点），二分查找，位运算，滑动窗口，深度优先搜索（进阶），搜索回溯（进阶）</p>
-<p>注意： 1.
-需要开摄像头，不能访问其他网页或者查找资源，可以在本地IDE调试好后拷贝到牛客网上再调试
-2. 多刷一下各类算法题，难度中等及以上，在牛客有或者力扣上刷都可以 3.
-熟悉牛客网考试环境，和本地环境IDE、力扣有差异 4. ACM模式自己写输入输出
-5. 三道题分值100、200、300，及格150分</p>
+<h1 id="华为HR"><a href="#华为HR" class="headerlink" title="华为HR"></a>华为HR</h1><p>leetcode：熟悉题型和算法，各类型的题选做10-15道（保底5-8道）<br>针对薄弱知识点查缺补漏题号：<br>字符串：3，49，30<br>线性表:86，16，27，732<br>队列:641，406，899<br>栈:946，116，117，895<br>哈希表:61，729，25，554<br>dfs：105，112，98，494，547，1254<br>bfs：1091，1129，102，101，752<br>动态规划类题目也可以适当熟悉</p>
+<p>常考知识点：<br>基本操作：输入输出处理（重点），字符串操作与ASCii码（重点）<br>数据结构：一维数组，栈，队列<br>编程思想：暴力破解（重点），递归<br>算法：排列组合（重点），快速排序（重点），二分查找，位运算，滑动窗口，深度优先搜索（进阶），搜索回溯（进阶）</p>
+<p>注意：</p>
+<ol>
+<li>需要开摄像头，不能访问其他网页或者查找资源，可以在本地IDE调试好后拷贝到牛客网上再调试</li>
+<li>多刷一下各类算法题，难度中等及以上，在牛客有或者力扣上刷都可以</li>
+<li>熟悉牛客网考试环境，和本地环境IDE、力扣有差异</li>
+<li>ACM模式自己写输入输出</li>
+<li>三道题分值100、200、300，及格150分</li>
+</ol>
 <p>这个公众号可以看一下题目类型适应一下</p>
-<p>https://www.acmcoder.com/#/practice/company</p>
-<p>https://mp.weixin.qq.com/s/1RuKNdSYLKRja0NlWikRnA</p>
-<p>https://mp.weixin.qq.com/s/pY0EHj0eVLgIfkDiJb0RSQ</p>
+<p><a target="_blank" rel="noopener" href="https://www.acmcoder.com/#/practice/company">https://www.acmcoder.com/#/practice/company</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1RuKNdSYLKRja0NlWikRnA">https://mp.weixin.qq.com/s/1RuKNdSYLKRja0NlWikRnA</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/pY0EHj0eVLgIfkDiJb0RSQ">https://mp.weixin.qq.com/s/pY0EHj0eVLgIfkDiJb0RSQ</a></p>
 
                 
               </div>
@@ -378,6 +375,27 @@ dfs：105，112，98，494，547，1254 bfs：1091，1129，102，101，752
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/algorithm/" class="category-chain-item">algorithm</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
@@ -388,7 +406,7 @@ dfs：105，112，98，494，547，1254 bfs：1091，1129，102，101，752
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
+      <div>cf</div>
       <div>https://mingsm17518.github.io/2025/09/03/algorithm/cf/</div>
     </div>
     <div class="license-meta">
@@ -404,6 +422,11 @@ dfs：105，112，98，494，547，1254 bfs：1091，1129，102，101，752
           <div>2025年9月3日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年1月30日</div>
+        </div>
       
       
         <div class="license-meta-item">
@@ -433,9 +456,9 @@ dfs：105，112，98，494，547，1254 bfs：1091，1129，102，101，752
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/10/29/algorithm/Complete_Search/01_Milk%20Pails/" title="">
+                      <a href="/2025/10/29/algorithm/Complete_Search/01_Milk%20Pails/" title="01_Milk Pails">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">01_Milk Pails</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Queues  队列 队列是一种先进先出 First In First Out（FIFO）的数据结构，支持三种操作，所有操作的时间复杂度均为 𝒪(1) 。 std::queue  push: 在队列的末尾插入 pop: 从队列的前端删除 front: 获取前端元素但不将其移除  queue&lt;int&gt; q; q.push(1);                  &#x2F;&#x2F;">
+    <meta name="description" content="Queues  队列队列是一种先进先出 First In First Out（FIFO）的数据结构，支持三种操作，所有操作的时间复杂度均为 $\mathcal{O}(1)$ 。 std::queue  push: 在队列的末尾插入  pop: 从队列的前端删除  front: 获取前端元素但不将其移除   queue&lt;int&gt; q; q.push(1);">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/01/30/algorithm/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:url" content="https://mingsm17518.github.io/2025/12/19/algorithm/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Queues  队列 队列是一种先进先出 First In First Out（FIFO）的数据结构，支持三种操作，所有操作的时间复杂度均为 𝒪(1) 。 std::queue  push: 在队列的末尾插入 pop: 从队列的前端删除 front: 获取前端元素但不将其移除  queue&lt;int&gt; q; q.push(1);                  &#x2F;&#x2F;">
+<meta property="og:description" content="Queues  队列队列是一种先进先出 First In First Out（FIFO）的数据结构，支持三种操作，所有操作的时间复杂度均为 $\mathcal{O}(1)$ 。 std::queue  push: 在队列的末尾插入  pop: 从队列的前端删除  front: 获取前端元素但不将其移除   queue&lt;int&gt; q; q.push(1);">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-30T01:31:30.000Z">
-<meta property="article:modified_time" content="2026-01-30T08:56:40.840Z">
+<meta property="article:published_time" content="2025-12-19T08:38:00.000Z">
+<meta property="article:modified_time" content="2026-01-30T09:46:18.958Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="队列">
 <meta name="twitter:card" content="summary_large_image">
@@ -217,8 +217,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-01-30 09:31" pubdate>
-          2026年1月30日 上午
+        <time datetime="2025-12-19 16:38" pubdate>
+          2025年12月19日 下午
         </time>
       </span>
     
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          334 字
+          339 字
         
       </span>
     
@@ -288,18 +288,26 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">数据结构</h1>
             
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年1月30日 下午
+                  
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
-                <h1 id="queues-队列">Queues  队列</h1>
-<p>队列是一种先进先出 First In First
-Out（FIFO）的数据结构，支持三种操作，所有操作的时间复杂度均为 <span
-class="math inline">𝒪(1)</span> 。</p>
+                <h1 id="Queues-队列"><a href="#Queues-队列" class="headerlink" title="Queues  队列"></a>Queues  队列</h1><p>队列是一种先进先出 First In First Out（FIFO）的数据结构，支持三种操作，所有操作的时间复杂度均为 $\mathcal{O}(1)$ 。</p>
 <p><code>std::queue</code></p>
 <ul>
-<li><p><code>push</code>: 在队列的末尾插入</p></li>
-<li><p><code>pop</code>: 从队列的前端删除</p></li>
-<li><p><code>front</code>: 获取前端元素但不将其移除</p></li>
+<li><p><code>push</code>: 在队列的末尾插入</p>
+</li>
+<li><p><code>pop</code>: 从队列的前端删除</p>
+</li>
+<li><p><code>front</code>: 获取前端元素但不将其移除</p>
+</li>
 </ul>
 <div class="code-wrapper"><pre><code class="hljs cpp">queue&lt;<span class="hljs-type">int</span>&gt; q;
 q.<span class="hljs-built_in">push</span>(<span class="hljs-number">1</span>);                  <span class="hljs-comment">// [1]</span>
@@ -316,11 +324,9 @@ v = q.queue[<span class="hljs-number">0</span>]        <span class="hljs-comment
 v = q.get()           <span class="hljs-comment"># v = 1, q = [2]</span>
 v = q.get()           <span class="hljs-comment"># v = 2, q = []</span>
 v = q.get()           <span class="hljs-comment"># 代码会一直等待，导致TLE错误</span></code></pre></div>
-<h1 id="deques-双端队列">Deques  双端队列</h1>
-<p>一个双端队列（通常发音为“deck”）代表双端队列，它是栈和队列的结合，支持在双端队列的前后两端进行插入和删除操作。</p>
+<h1 id="Deques-双端队列"><a href="#Deques-双端队列" class="headerlink" title="Deques  双端队列"></a>Deques  双端队列</h1><p>一个双端队列（通常发音为“deck”）代表双端队列，它是栈和队列的结合，支持在双端队列的前后两端进行插入和删除操作。</p>
 <p><code>std::deque</code></p>
-<p>添加和删除的四种方法是 <code>push_back</code> , <code>pop_back</code> , <code>push_front</code> ,
-和 <code>pop_front</code> 。</p>
+<p>添加和删除的四种方法是 <code>push_back</code> , <code>pop_back</code> , <code>push_front</code> , 和 <code>pop_front</code> 。</p>
 <div class="code-wrapper"><pre><code class="hljs cpp">deque&lt;<span class="hljs-type">int</span>&gt; d;
 
 d.<span class="hljs-built_in">push_front</span>(<span class="hljs-number">3</span>);  <span class="hljs-comment">// [3]</span>
@@ -336,11 +342,7 @@ d.append(<span class="hljs-number">7</span>)  <span class="hljs-comment"># [4, 3
 d.popleft()  <span class="hljs-comment"># [3, 7]</span>
 d.appendleft(<span class="hljs-number">1</span>)  <span class="hljs-comment"># [1, 3, 7]</span>
 d.pop()  <span class="hljs-comment"># [1, 3]</span></code></pre></div>
-<p>你也可以像用数组的 <code>[]</code>
-运算符一样，以常数时间访问双端队列中的元素。例如，要访问双端队列 <span
-class="math inline"><code>dq</code></span> 中的 <span
-class="math inline"><em>i</em></span> 个元素，可以使用 <span
-class="math inline"><code>dq</code>[<em>i</em>]</span> 。</p>
+<p>你也可以像用数组的 <code>[]</code> 运算符一样，以常数时间访问双端队列中的元素。例如，要访问双端队列 $\texttt{dq}$ 中的 $i$ 个元素，可以使用 $\texttt{dq}[i]$ 。</p>
 
                 
               </div>
@@ -359,7 +361,7 @@ class="math inline"><code>dq</code>[<em>i</em>]</span> 。</p>
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  <a href="/categories/algorithm/" class="category-chain-item">algorithm</a>
   
   
 
@@ -387,7 +389,7 @@ class="math inline"><code>dq</code>[<em>i</em>]</span> 。</p>
   <div class="license-box my-3">
     <div class="license-title">
       <div>数据结构</div>
-      <div>https://mingsm17518.github.io/2026/01/30/algorithm/数据结构/</div>
+      <div>https://mingsm17518.github.io/2025/12/19/algorithm/数据结构/</div>
     </div>
     <div class="license-meta">
       
@@ -399,9 +401,14 @@ class="math inline"><code>dq</code>[<em>i</em>]</span> 。</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年1月30日</div>
+          <div>2025年12月19日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年1月30日</div>
+        </div>
       
       
         <div class="license-meta-item">
@@ -431,9 +438,9 @@ class="math inline"><code>dq</code>[<em>i</em>]</span> 。</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/01/30/algorithm/Graphs/Graph%20%E5%9B%BE/" title="图搜索算法">
+                      <a href="/2026/01/29/hello-world/" title="Hello World">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">图搜索算法</span>
+                        <span class="hidden-mobile">Hello World</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -441,8 +448,8 @@ class="math inline"><code>dq</code>[<em>i</em>]</span> 。</p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/01/30/algorithm/Graphs/%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="使用递归的穷举搜索">
-                        <span class="hidden-mobile">使用递归的穷举搜索</span>
+                      <a href="/2025/12/16/algorithm/use_python/" title="use_python">
+                        <span class="hidden-mobile">use_python</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

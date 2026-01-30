@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题描述 USACO 2022 US Open Contest, Bronze Problem 2. Counting Liars https:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;1228 农夫约翰有 N 头奶牛（不包括 Bessie）。每头牛给出一条关于 Bessie 躲藏位置的陈述：  若某头牛说 L ：意思是 _Be">
+    <meta name="description" content="问题描述USACO 2022 US Open Contest, Bronze Problem 2. Counting Liarshttps:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;1228 农夫约翰有 $N$ 头奶牛（不包括 Bessie）。每头牛给出一条关于 Bessie 躲藏位置的陈述：  若某头牛说 $L$ ：意思是 _Bessie">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ming&#39;s Blog">
+<meta property="og:title" content="04_Counting_Liars">
 <meta property="og:url" content="https://mingsm17518.github.io/2025/11/20/algorithm/Complete_Search/04_Counting_Liars/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="问题描述 USACO 2022 US Open Contest, Bronze Problem 2. Counting Liars https:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;1228 农夫约翰有 N 头奶牛（不包括 Bessie）。每头牛给出一条关于 Bessie 躲藏位置的陈述：  若某头牛说 L ：意思是 _Be">
+<meta property="og:description" content="问题描述USACO 2022 US Open Contest, Bronze Problem 2. Counting Liarshttps:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;1228 农夫约翰有 $N$ 头奶牛（不包括 Bessie）。每头牛给出一条关于 Bessie 躲藏位置的陈述：  若某头牛说 $L$ ：意思是 _Bessie">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-11-20T01:35:15.180Z">
-<meta property="article:modified_time" content="2025-11-20T02:33:09.629Z">
+<meta property="article:published_time" content="2025-11-20T01:35:00.000Z">
+<meta property="article:modified_time" content="2026-01-30T09:46:08.698Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Ming&#39;s Blog</title>
+  <title>04_Counting_Liars - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="04_Counting_Liars"></span>
           
         </div>
 
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          505 字
+          507 字
         
       </span>
     
@@ -285,60 +285,55 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header"></h1>
+            <h1 id="seo-header">04_Counting_Liars</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年1月30日 下午
+                  
+                
+              </p>
             
             
               <div class="markdown-body">
                 
-                <h1 id="问题描述">问题描述</h1>
-<p>USACO 2022 US Open Contest, Bronze Problem 2. Counting Liars
-https://usaco.org/index.php?page=viewproblem2&amp;cpid=1228</p>
-<p>农夫约翰有 <span class="math inline"><em>N</em></span> 头奶牛（不包括
-Bessie）。每头牛给出一条关于 Bessie 躲藏位置的陈述：</p>
+                <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>USACO 2022 US Open Contest, Bronze Problem 2. Counting Liars<br><a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=1228">https://usaco.org/index.php?page=viewproblem2&amp;cpid=1228</a></p>
+<p>农夫约翰有 $N$ 头奶牛（不包括 Bessie）。每头牛给出一条关于 Bessie 躲藏位置的陈述：</p>
 <ul>
-<li>若某头牛说 <span class="math inline"><em>L</em></span> ：意思是
-_Bessie 的位置 <span class="math inline"> ≤ <em>p</em></span></li>
-<li>若某头牛说 <span class="math inline"><em>G</em></span> ：意思是
-_Bessie 的位置 <span class="math inline"> ≥ <em>p</em></span></li>
+<li>若某头牛说 $L$ ：意思是 _Bessie 的位置 $≤ p$</li>
+<li>若某头牛说 $G$ ：意思是 _Bessie 的位置 $≥ p$</li>
 </ul>
-<p><span
-class="math inline">0 ≤ <em>p</em> ≤ 10<sup>9</sup>，1 ≤ <em>N</em> ≤ 1000</span></p>
-<p>可能并非所有牛都说了真话，你需要找出至少要让多少头牛说谎，才能使得剩下的陈述存在某个位置
-<span class="math inline"><em>x</em></span> 满足所有剩余陈述。</p>
+<p>$0≤p≤10^9，1≤N≤1000$</p>
+<p>可能并非所有牛都说了真话，你需要找出至少要让多少头牛说谎，才能使得剩下的陈述存在某个位置 $x$ 满足所有剩余陈述。</p>
 <p><strong>输出最少必须说谎的牛数。</strong></p>
-<h1 id="样例">样例</h1>
-<h3 id="样例-1">样例 1</h3>
-<p>输入：</p>
+<h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><h3 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 1"></a>样例 1</h3><p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">2</span>
 <span class="hljs-attribute">G</span> <span class="hljs-number">3</span>
 <span class="hljs-attribute">L</span> <span class="hljs-number">5</span></code></pre></div>
-<p>代表： - Cow1：Bessie ≥ 3 - Cow2：Bessie ≤ 5 显然 3 ≤ Bessie ≤ 5
-有解，所以 <strong>0</strong> 头说谎。</p>
+<p>代表：</p>
+<ul>
+<li>Cow1：Bessie ≥ 3</li>
+<li>Cow2：Bessie ≤ 5<br>显然 3 ≤ Bessie ≤ 5 有解，所以 <strong>0</strong> 头说谎。</li>
+</ul>
 <p>输出 :</p>
 <div class="code-wrapper"><pre><code class="hljs">0</code></pre></div>
-<h3 id="样例-2">样例 2</h3>
-<p>输入：</p>
+<h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 2"></a>样例 2</h3><p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">2</span>
 <span class="hljs-attribute">G</span> <span class="hljs-number">3</span>
 <span class="hljs-attribute">L</span> <span class="hljs-number">2</span></code></pre></div>
-<p>代表： - Bessie ≥ 3 - Bessie ≤ 2
-没有位置能同时满足，必须至少删除一条陈述 → 答案是
-<strong>1</strong>。</p>
+<p>代表：</p>
+<ul>
+<li>Bessie ≥ 3</li>
+<li>Bessie ≤ 2<br>没有位置能同时满足，必须至少删除一条陈述 → 答案是 <strong>1</strong>。</li>
+</ul>
 <p>输出 :</p>
 <div class="code-wrapper"><pre><code class="hljs">1</code></pre></div>
-<h1 id="思路">思路</h1>
-<p>在我们对输入进行排序后，一个重要的观察是，如果贝西位于位置 <span
-class="math inline"><em>x</em></span>
-，那么说谎的牛的数量就是所有位置小于 <span
-class="math inline"><em>x</em></span> 且说 “L” 的牛，加上所有位置大于
-<span class="math inline"><em>x</em></span> 且说 “G” 的牛。</p>
-<p>也就是说，如果把所有 <span class="math inline"><em>p</em></span>
-排好序，只需考虑每个 <span
-class="math inline"><em>p</em><sub><em>i</em></sub></span>
-本身作为分界。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>在我们对输入进行排序后，一个重要的观察是，如果贝西位于位置 $x$ ，那么说谎的牛的数量就是所有位置小于 $x$ 且说 “L” 的牛，加上所有位置大于 $x$ 且说 “G” 的牛。</p>
+<p>也就是说，如果把所有 $p$ 排好序，只需考虑每个 $p_i$ 本身作为分界。</p>
 <p>因此，我们可以遍历每头牛的位置，通过使用正向循环和反向循环来计算说谎者的总数。</p>
-<p>答案是我们在所有遍历过的位置中最小的说谎者数量。 # 代码</p>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<p>答案是我们在所有遍历过的位置中最小的说谎者数量。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
@@ -375,13 +370,33 @@ class="math inline"><em>p</em><sub><em>i</em></sub></span>
     cout &lt;&lt; ans;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
                 
               </div>
             
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Complete-Search/" class="category-chain-item">Complete_Search</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
@@ -392,7 +407,7 @@ class="math inline"><em>p</em><sub><em>i</em></sub></span>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
+      <div>04_Counting_Liars</div>
       <div>https://mingsm17518.github.io/2025/11/20/algorithm/Complete_Search/04_Counting_Liars/</div>
     </div>
     <div class="license-meta">
@@ -408,6 +423,11 @@ class="math inline"><em>p</em><sub><em>i</em></sub></span>
           <div>2025年11月20日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年1月30日</div>
+        </div>
       
       
         <div class="license-meta-item">
@@ -437,9 +457,9 @@ class="math inline"><em>p</em><sub><em>i</em></sub></span>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/11/20/algorithm/Complete_Search/05_Cow_Gymnastics/" title="">
+                      <a href="/2025/11/20/algorithm/Complete_Search/05_Cow_Gymnastics/" title="05_Cow_Gymnastics">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">05_Cow_Gymnastics</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -447,8 +467,8 @@ class="math inline"><em>p</em><sub><em>i</em></sub></span>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/10/29/algorithm/Complete_Search/02_Diamond_Collector/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2025/10/29/algorithm/Complete_Search/02_Diamond_Collector/" title="02_Diamond_Collector">
+                        <span class="hidden-mobile">02_Diamond_Collector</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题描述USACO 2019 December Contest, Bronze Problem 1. Cow Gymnasticshttps:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;963 奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在每次训练课中都表现得比">
+    <meta name="description" content="111">
 <meta property="og:type" content="article">
-<meta property="og:title" content="05_Cow_Gymnastics">
-<meta property="og:url" content="https://mingsm17518.github.io/2025/11/20/algorithm/Complete_Search/05_Cow_Gymnastics/index.html">
+<meta property="og:title" content="你好">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/01/30/%E6%9C%AA%E5%91%BD%E5%90%8D/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="问题描述USACO 2019 December Contest, Bronze Problem 1. Cow Gymnasticshttps:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;963 奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在每次训练课中都表现得比">
+<meta property="og:description" content="111">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-11-20T03:14:00.000Z">
-<meta property="article:modified_time" content="2026-01-30T09:46:10.704Z">
+<meta property="article:published_time" content="2026-01-30T09:36:00.000Z">
+<meta property="article:modified_time" content="2026-01-30T09:42:52.156Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>05_Cow_Gymnastics - Ming&#39;s Blog</title>
+  <title>你好 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="05_Cow_Gymnastics"></span>
+            <span id="subtitle" data-typed-text="你好"></span>
           
         </div>
 
@@ -216,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-11-20 11:14" pubdate>
-          2025年11月20日 上午
+        <time datetime="2026-01-30 17:36" pubdate>
+          2026年1月30日 下午
         </time>
       </span>
     
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          505 字
+          1 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          5 分钟
+          1 分钟
         
       </span>
     
@@ -285,7 +285,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">05_Cow_Gymnastics</h1>
+            <h1 id="seo-header">你好</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
@@ -298,86 +298,14 @@
             
               <div class="markdown-body">
                 
-                <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>USACO 2019 December Contest, Bronze Problem 1. Cow Gymnastics<br><a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=963">https://usaco.org/index.php?page=viewproblem2&amp;cpid=963</a></p>
-<p>奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在<strong>每次</strong>训练课中都表现得比另一头要好。</p>
-<p>$0≤N≤20，1≤K≤10$</p>
-<h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><p>输入：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">3 </span><span class="hljs-number">4</span>
-<span class="hljs-symbol">4 </span><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>
-<span class="hljs-symbol">4 </span><span class="hljs-number">1</span> <span class="hljs-number">3</span> <span class="hljs-number">2</span>
-<span class="hljs-symbol">4 </span><span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">3</span></code></pre></div>
-<p>输出 :</p>
-<div class="code-wrapper"><pre><code class="hljs">4</code></pre></div>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>对于任意一对奶牛 $(i, j)$，它们的关系可能有三种情况：</p>
-<ol>
-<li>$i$ 在每次训练课中都比 $j$ 表现好</li>
-<li>$j$ 在每次训练课中都比 $i$ 表现好</li>
-<li>互有胜负（有时 $i$ 比 $j$ 好，有时 $j$ 比 $i$ 好）<br>只有前两种情况才符合”一致”的定义。</li>
-</ol>
-<p>我们可以创建一个二维布尔数组，该数组表示在任何时间点奶牛 $A$ 的排名是否高于奶牛 $B$ 。在读取完所有排名后，对于所有 $\frac{N(N-1)}{2}$ 对，我们设置 $b[A][B]=\text{true}$ 。</p>
-<p>然后我们遍历所有对，检查它们是否满足条件。如果两个都为真，那么这对在某个时间点改变了排名顺序。如果只有一个为真，那么这对保持了一致的顺序。因此，需要 $b[A][B]$ 和 $b[B][A]$ 中至少有一个为真，可以用异或操作 <code>a[i][j] ^ a[j][i]</code> 来检测。</p>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度：$O(K×N²)$<br>空间复杂度：$O(N²)$ </p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+                <p>111</p>
 
-<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
-    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
-    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
-    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;gymnastics.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>, stdin);
-    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;gymnastics.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, stdout);
-    <span class="hljs-type">int</span> k, n;
-    cin &gt;&gt; k &gt;&gt; n;
-    
-    vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt;<span class="hljs-built_in">a</span>(n, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(n));
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> tt = <span class="hljs-number">0</span>; tt &lt; k; tt++)&#123;
-        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">b</span><span class="hljs-params">(n)</span></span>;
-        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span>&amp; x:b)&#123;
-            cin &gt;&gt; x;
-            x--;
-        &#125;
-        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)&#123;
-            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = i<span class="hljs-number">+1</span>; j &lt; n; j++)&#123;
-                a[b[i]][b[j]] = <span class="hljs-literal">true</span>;
-            &#125;
-        &#125;
-    &#125;
-    
-    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)&#123;
-        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = i<span class="hljs-number">+1</span>; j &lt; n; j++)&#123;
-            ans += a[i][j] ^ a[j][i];
-        &#125;
-    &#125;
-    cout &lt;&lt; ans;
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre></div>
                 
               </div>
             
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Complete-Search/" class="category-chain-item">Complete_Search</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
 </div>
@@ -388,8 +316,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>05_Cow_Gymnastics</div>
-      <div>https://mingsm17518.github.io/2025/11/20/algorithm/Complete_Search/05_Cow_Gymnastics/</div>
+      <div>你好</div>
+      <div>https://mingsm17518.github.io/2026/01/30/未命名/</div>
     </div>
     <div class="license-meta">
       
@@ -401,7 +329,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年11月20日</div>
+          <div>2026年1月30日</div>
         </div>
       
       
@@ -438,18 +366,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/12/16/algorithm/use_python/" title="use_python">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">use_python</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/11/20/algorithm/Complete_Search/04_Counting_Liars/" title="04_Counting_Liars">
-                        <span class="hidden-mobile">04_Counting_Liars</span>
+                      <a href="/2026/01/30/bug%E4%BF%AE%E5%A4%8D/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/" title="bug修复：GPU内存不足问题">
+                        <span class="hidden-mobile">bug修复：GPU内存不足问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
