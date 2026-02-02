@@ -1,11 +1,9 @@
 ---
 title: expected str, bytes or os.PathLike object, not MultiplexedPath
-date: 2026-01-30 15:56
 tags:
   - bug修复
   - TypeError
 categories: bug修复
-modification date: 2026-01-30 16:30
 ---
 
 错误信息显示：

@@ -1,10 +1,8 @@
 ---
 title: Two Pointers  双指针
-date: 2026-01-30 15:28
+categories: Sorting & Searching
 tags:
   - 双指针
-categories: Sorting & Searching
-modification date: 2026-02-02 16:19
 ---
 # Two Pointers 双指针
 

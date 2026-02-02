@@ -1,7 +1,5 @@
 ---
 title: 04_Counting_Liars
-date: 2025-11-20 09:35
-modification date: 2026-01-30 17:43
 tags:
 categories: Complete_Search
 ---

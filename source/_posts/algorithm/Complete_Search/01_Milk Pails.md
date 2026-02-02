@@ -1,7 +1,5 @@
 ---
 title: 01_Milk Pails
-date: 2025-10-29 10:56
-modification date: 2026-01-30 17:43
 tags:
 categories: Complete_Search
 ---

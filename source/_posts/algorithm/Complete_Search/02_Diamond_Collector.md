@@ -1,7 +1,5 @@
 ---
 title: 02_Diamond_Collector
-date: 2025-10-29 11:26
-modification date: 2026-01-30 17:43
 tags:
 categories: Complete_Search
 ---

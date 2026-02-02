@@ -1,7 +1,5 @@
 ---
 title: 05_Cow_Gymnastics
-date: 2025-11-20 11:14
-modification date: 2026-01-30 17:43
 tags:
 categories: Complete_Search
 ---
