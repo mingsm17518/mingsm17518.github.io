@@ -1,1 +1,0 @@
-hexo new new_post
