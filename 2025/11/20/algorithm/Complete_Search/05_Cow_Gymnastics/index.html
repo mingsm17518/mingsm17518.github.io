@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题描述USACO 2019 December Contest, Bronze Problem 1. Cow Gymnasticshttps:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;963 奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在每次训练课中都表现得比">
+    <meta name="description" content="问题描述 USACO 2019 December Contest, Bronze Problem 1. Cow Gymnastics https:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;963 奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在每次训练课">
 <meta property="og:type" content="article">
 <meta property="og:title" content="05_Cow_Gymnastics">
 <meta property="og:url" content="https://mingsm17518.github.io/2025/11/20/algorithm/Complete_Search/05_Cow_Gymnastics/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="问题描述USACO 2019 December Contest, Bronze Problem 1. Cow Gymnasticshttps:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;963 奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在每次训练课中都表现得比">
+<meta property="og:description" content="问题描述 USACO 2019 December Contest, Bronze Problem 1. Cow Gymnastics https:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;963 奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在每次训练课">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-20T03:14:02.409Z">
 <meta property="article:modified_time" content="2026-02-02T08:24:46.892Z">
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          505 字
+          500 字
         
       </span>
     
@@ -278,6 +278,85 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Complete_Search"
+        id="heading-86fc16521058db38a6ecc73c7cdb7b16" role="tab" data-toggle="collapse" href="#collapse-86fc16521058db38a6ecc73c7cdb7b16"
+        aria-expanded="true"
+      >
+        Complete_Search
+        <span class="list-group-count">(4)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-86fc16521058db38a6ecc73c7cdb7b16"
+           role="tabpanel" aria-labelledby="heading-86fc16521058db38a6ecc73c7cdb7b16">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2025/10/29/algorithm/Complete_Search/01_Milk%20Pails/" title="01_Milk Pails"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">01_Milk Pails</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/10/29/algorithm/Complete_Search/02_Diamond_Collector/" title="02_Diamond_Collector"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">02_Diamond_Collector</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/11/20/algorithm/Complete_Search/04_Counting_Liars/" title="04_Counting_Liars"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">04_Counting_Liars</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/11/20/algorithm/Complete_Search/05_Cow_Gymnastics/" title="05_Cow_Gymnastics"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">05_Cow_Gymnastics</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
@@ -300,26 +379,50 @@
             
               <div class="markdown-body">
                 
-                <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>USACO 2019 December Contest, Bronze Problem 1. Cow Gymnastics<br><a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=963">https://usaco.org/index.php?page=viewproblem2&amp;cpid=963</a></p>
-<p>奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在<strong>每次</strong>训练课中都表现得比另一头要好。</p>
-<p>$0≤N≤20，1≤K≤10$</p>
-<h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><p>输入：</p>
+                <h1 id="问题描述">问题描述</h1>
+<p>USACO 2019 December Contest, Bronze Problem 1. Cow Gymnastics
+https://usaco.org/index.php?page=viewproblem2&amp;cpid=963</p>
+<p>奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N
+头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在<strong>每次</strong>训练课中都表现得比另一头要好。</p>
+<p><span
+class="math inline">0 ≤ <em>N</em> ≤ 20，1 ≤ <em>K</em> ≤ 10</span></p>
+<h1 id="样例">样例</h1>
+<p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">3 </span><span class="hljs-number">4</span>
 <span class="hljs-symbol">4 </span><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>
 <span class="hljs-symbol">4 </span><span class="hljs-number">1</span> <span class="hljs-number">3</span> <span class="hljs-number">2</span>
 <span class="hljs-symbol">4 </span><span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">3</span></code></pre></div>
 <p>输出 :</p>
 <div class="code-wrapper"><pre><code class="hljs">4</code></pre></div>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>对于任意一对奶牛 $(i, j)$，它们的关系可能有三种情况：</p>
-<ol>
-<li>$i$ 在每次训练课中都比 $j$ 表现好</li>
-<li>$j$ 在每次训练课中都比 $i$ 表现好</li>
-<li>互有胜负（有时 $i$ 比 $j$ 好，有时 $j$ 比 $i$ 好）<br>只有前两种情况才符合”一致”的定义。</li>
-</ol>
-<p>我们可以创建一个二维布尔数组，该数组表示在任何时间点奶牛 $A$ 的排名是否高于奶牛 $B$ 。在读取完所有排名后，对于所有 $\frac{N(N-1)}{2}$ 对，我们设置 $b[A][B]=\text{true}$ 。</p>
-<p>然后我们遍历所有对，检查它们是否满足条件。如果两个都为真，那么这对在某个时间点改变了排名顺序。如果只有一个为真，那么这对保持了一致的顺序。因此，需要 $b[A][B]$ 和 $b[B][A]$ 中至少有一个为真，可以用异或操作 <code>a[i][j] ^ a[j][i]</code> 来检测。</p>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度：$O(K×N²)$<br>空间复杂度：$O(N²)$ </p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<h1 id="思路">思路</h1>
+<p>对于任意一对奶牛 <span
+class="math inline">(<em>i</em>, <em>j</em>)</span>，它们的关系可能有三种情况：
+1. <span class="math inline"><em>i</em></span> 在每次训练课中都比 <span
+class="math inline"><em>j</em></span> 表现好 2. <span
+class="math inline"><em>j</em></span> 在每次训练课中都比 <span
+class="math inline"><em>i</em></span> 表现好 3. 互有胜负（有时 <span
+class="math inline"><em>i</em></span> 比 <span
+class="math inline"><em>j</em></span> 好，有时 <span
+class="math inline"><em>j</em></span> 比 <span
+class="math inline"><em>i</em></span> 好）
+只有前两种情况才符合”一致”的定义。</p>
+<p>我们可以创建一个二维布尔数组，该数组表示在任何时间点奶牛 <span
+class="math inline"><em>A</em></span> 的排名是否高于奶牛 <span
+class="math inline"><em>B</em></span> 。在读取完所有排名后，对于所有
+<span class="math inline">$\frac{N(N-1)}{2}$</span> 对，我们设置 <span
+class="math inline"><em>b</em>[<em>A</em>][<em>B</em>] = true</span>
+。</p>
+<p>然后我们遍历所有对，检查它们是否满足条件。如果两个都为真，那么这对在某个时间点改变了排名顺序。如果只有一个为真，那么这对保持了一致的顺序。因此，需要
+<span class="math inline"><em>b</em>[<em>A</em>][<em>B</em>]</span> 和
+<span class="math inline"><em>b</em>[<em>B</em>][<em>A</em>]</span>
+中至少有一个为真，可以用异或操作 <code>a[i][j] ^ a[j][i]</code>
+来检测。</p>
+<h3 id="复杂度分析">复杂度分析</h3>
+<p>时间复杂度：<span
+class="math inline"><em>O</em>(<em>K</em> × <em>N</em>²)</span>
+空间复杂度：<span class="math inline"><em>O</em>(<em>N</em>²)</span> #
+代码</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
@@ -353,6 +456,7 @@
     cout &lt;&lt; ans;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
+
                 
               </div>
             
