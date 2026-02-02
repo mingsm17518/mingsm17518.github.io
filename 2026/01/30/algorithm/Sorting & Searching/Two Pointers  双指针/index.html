@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Two Pointers 双指针 双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。 两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。  Sum of Two Values https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1640 Solution - Sum of Two Valu">
+    <meta name="description" content="Two Pointers 双指针 概念 双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。 两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。  Sum of Two Values 两数之和 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1640 Solution - Sum of">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Two Pointers  双指针">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/01/30/algorithm/Sorting%20&%20Searching/Two%20Pointers%20%20%E5%8F%8C%E6%8C%87%E9%92%88/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Two Pointers 双指针 双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。 两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。  Sum of Two Values https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1640 Solution - Sum of Two Valu">
+<meta property="og:description" content="Two Pointers 双指针 概念 双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。 两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。  Sum of Two Values 两数之和 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1640 Solution - Sum of">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-30T07:28:00.000Z">
-<meta property="article:modified_time" content="2026-01-30T09:46:16.642Z">
+<meta property="article:modified_time" content="2026-02-02T08:19:05.687Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="双指针">
 <meta name="twitter:card" content="summary_large_image">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          170 字
+          356 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          2 分钟
+          3 分钟
         
       </span>
     
@@ -291,7 +291,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年1月30日 下午
+                    本文最后更新于 2026年2月2日 下午
                   
                 
               </p>
@@ -300,12 +300,13 @@
               <div class="markdown-body">
                 
                 <h1 id="two-pointers-双指针">Two Pointers 双指针</h1>
+<h2 id="概念">概念</h2>
 <p>双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：</p>
 <ol type="1">
 <li><p>两个指针从数组的两端开始，并相互移动。</p></li>
 <li><p>两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。</p></li>
 </ol>
-<h2 id="sum-of-two-values">Sum of Two Values</h2>
+<h2 id="sum-of-two-values-两数之和">Sum of Two Values 两数之和</h2>
 <p>https://cses.fi/problemset/task/1640</p>
 <h3 id="solution---sum-of-two-values">Solution - Sum of Two Values</h3>
 <p>我们要找到两个索引 <span class="math inline"><em>i</em></span> 和
@@ -333,6 +334,38 @@ r = n - <span class="hljs-number">1</span>
 		r -= <span class="hljs-number">1</span>
 
 <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;IMPOSSIBLE&quot;</span>)</code></pre></div>
+<h2 id="sliding-window-滑动窗口">Sliding Window  滑动窗口</h2>
+<p>滑动窗口技术用于找到一个满足条件的连续子数组。</p>
+<p>https://codeforces.com/contest/279/problem/B</p>
+<h3 id="solution---books-解决方案---书籍">Solution - Books  解决方案 -
+书籍</h3>
+<p>我们想要找到可以在 <span class="math inline"><em>t</em></span>
+分钟内读完的最长的连续书籍段。</p>
+<p>为了实现这一点，我们可以定义 <span
+class="math inline"><code>left</code></span> 和 <span
+class="math inline"><code>right</code></span>
+来表示段的开始和结束。两者都将从数组的开头开始。这些数字可以被视为指针，因此得名”双指针”。</p>
+<p>由于两个指针最多移动 <span class="math inline"><em>N</em></span>
+次，整体时间复杂度为 <span class="math inline">𝒪(<em>N</em>)</span>
+。</p>
+<p><video src="../../../img/two_pointers.mp4" controls=""><a
+href="../../../img/two_pointers.mp4">Video</a></video></p>
+<h3 id="implementation-实现-1">Implementation  实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python">n, t = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+timeNeed = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
+
+l = <span class="hljs-number">0</span>
+sum_time = <span class="hljs-number">0</span>
+ans = <span class="hljs-number">0</span>
+
+<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    sum_time += timeNeed[r]
+    <span class="hljs-keyword">while</span> sum_time &gt; t <span class="hljs-keyword">and</span> l &lt;= r:
+        sum_time -= timeNeed[l]
+        l += <span class="hljs-number">1</span>
+    ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)
+
+<span class="hljs-built_in">print</span>(ans)</code></pre></div>
 
                 
               </div>
@@ -397,7 +430,7 @@ r = n - <span class="hljs-number">1</span>
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2026年1月30日</div>
+          <div>2026年2月2日</div>
         </div>
       
       
