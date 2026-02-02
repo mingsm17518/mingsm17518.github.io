@@ -289,11 +289,13 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">bug修复：GPU内存不足问题</h1>
             
-              <p id="updated-time" class="note note-info" style="">
+              <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026年2月2日 下午
+                    本文最后更新于 2026-02-02T16:25:12+08:00
                   
+                  
+
                 
               </p>
             
@@ -569,6 +571,33 @@ pkill -f <span class="hljs-string">&quot;python&quot;</span></code></pre></div>
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
