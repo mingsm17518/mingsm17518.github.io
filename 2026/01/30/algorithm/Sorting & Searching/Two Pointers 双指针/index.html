@@ -19,18 +19,20 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Two Pointers 双指针 概念 双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。 两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。  Sum of Two Values https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1640 Solution 我们要找到两个索引 i">
+    <meta name="description" content="Two Pointers 双指针概念双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。  两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。   Sum of Two Valueshttps:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1640 Solution我们要找到两个索引 $i$ 和 $j$ ，使得">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Two Pointers 双指针">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/01/30/algorithm/Sorting%20&%20Searching/Two%20Pointers%20%E5%8F%8C%E6%8C%87%E9%92%88/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Two Pointers 双指针 概念 双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。 两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。  Sum of Two Values https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1640 Solution 我们要找到两个索引 i">
+<meta property="og:description" content="Two Pointers 双指针概念双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。  两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。   Sum of Two Valueshttps:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1640 Solution我们要找到两个索引 $i$ 和 $j$ ，使得">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mingsm17518.github.io/2026/01/30/img/two_pointers.mp4">
 <meta property="article:published_time" content="2026-01-30T07:28:38.403Z">
 <meta property="article:modified_time" content="2026-02-04T03:13:36.682Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="双指针">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mingsm17518.github.io/2026/01/30/img/two_pointers.mp4">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -229,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          558 字
+          156 字
         
       </span>
     
@@ -240,7 +242,7 @@
         
         
         
-          5 分钟
+          2 分钟
         
       </span>
     
@@ -301,38 +303,22 @@
             
               <div class="markdown-body">
                 
-                <h1 id="two-pointers-双指针">Two Pointers 双指针</h1>
-<h2 id="概念">概念</h2>
-<p>双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：</p>
-<ol type="1">
-<li><p>两个指针从数组的两端开始，并相互移动。</p></li>
-<li><p>两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。</p></li>
+                <h1 id="Two-Pointers-双指针"><a href="#Two-Pointers-双指针" class="headerlink" title="Two Pointers 双指针"></a>Two Pointers 双指针</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：</p>
+<ol>
+<li><p>两个指针从数组的两端开始，并相互移动。</p>
+</li>
+<li><p>两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。</p>
+</li>
 </ol>
-<h2 id="sum-of-two-values">Sum of Two Values</h2>
-<p>https://cses.fi/problemset/task/1640</p>
-<h3 id="solution">Solution</h3>
-<p>我们要找到两个索引 <span class="math inline"><em>i</em></span> 和
-<span class="math inline"><em>j</em></span> ，使得 <span
-class="math inline"><em>a</em><sub><em>i</em></sub> + <em>a</em><sub><em>j</em></sub> = <em>x</em></span>。</p>
-<p>我们可以先对数组进行排序。然后，将左指针初始化在数组的开头（ <span
-class="math inline"><em>l</em> = 0</span> ），将右指针初始化在末尾（
-<span class="math inline"><em>r</em> = <em>N</em> − 1</span> ）。</p>
-<p>当 <span class="math inline"><em>l</em> &lt; <em>r</em></span> ：
-如果 <span
-class="math inline"><em>a</em>[<em>l</em>] + <em>a</em>[<em>r</em>] =  = <em>x</em></span>
-，我们就找到了目标和。 如果 <span
-class="math inline"><em>a</em>[<em>l</em>] + <em>a</em>[<em>r</em>] &lt; <em>x</em></span>
-，和太小。为了增加和，我们增加 <span
-class="math inline"><em>l</em></span><br />
-如果 <span
-class="math inline"><em>a</em>[<em>l</em>] + <em>a</em>[<em>r</em>] &gt; <em>x</em></span>
-，和太大。为了减少和，我们减少 <span
-class="math inline"><em>r</em></span></p>
+<h2 id="Sum-of-Two-Values"><a href="#Sum-of-Two-Values" class="headerlink" title="Sum of Two Values"></a>Sum of Two Values</h2><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1640">https://cses.fi/problemset/task/1640</a></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>我们要找到两个索引 $i$ 和 $j$ ，使得 $a_i + a_j = x$。</p>
+<p>我们可以先对数组进行排序。然后，将左指针初始化在数组的开头（ $l=0$ ），将右指针初始化在末尾（ $r=N−1$ ）。</p>
+<p>当 $l<r$ ：
+    如果 $a[l] + a[r] == x$ ，我们就找到了目标和。
+    如果 $a[l]+a[r]<x$ ，和太小。为了增加和，我们增加 $l$  
+    如果 $a[l]+a[r]>x$ ，和太大。为了减少和，我们减少 $r$</p>
 <p>由于数组已排序，将左指针向右移动永远不会减少和，将右指针向左移动永远不会增加和。</p>
-<h3 id="implementation">Implementation</h3>
-<p><strong>Time Complexity:</strong> <span
-class="math inline">𝒪(<em>N</em>log <em>N</em>)</span>  时间复杂度：
-<span class="math inline">𝒪(<em>N</em>log <em>N</em>)</span></p>
+<h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><p><strong>Time Complexity:</strong> $\mathcal{O}(N \log N)$  时间复杂度： $\mathcal{O}(N \log N)$ </p>
 <div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 
 nums = [(<span class="hljs-built_in">int</span>(val), i) <span class="hljs-keyword">for</span> i, val <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(<span class="hljs-built_in">input</span>().split())]
@@ -351,24 +337,13 @@ r = n - <span class="hljs-number">1</span>
 		r -= <span class="hljs-number">1</span>
 
 <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;IMPOSSIBLE&quot;</span>)</code></pre></div>
-<h2 id="sliding-window">Sliding Window</h2>
-<p>滑动窗口方法是双指针技术的一种变体，其中两个指针沿同一方向移动以维护一个特定的元素范围或”窗口”。虽然标准双指针通常相互靠近移动，但滑动窗口技术用于找到一个满足条件的连续子数组。</p>
-<p>https://codeforces.com/contest/279/problem/B</p>
-<h3 id="solution---books">Solution - Books</h3>
-<p>我们想要找到可以在 <span class="math inline"><em>t</em></span>
-分钟内读完的最长的连续书籍段，即寻找最长的连续子数组，要求子数组的和小于
-<span class="math inline"><em>t</em></span></p>
-<p>为了实现这一点，我们可以定义 <span
-class="math inline"><code>left</code></span> 和 <span
-class="math inline"><code>right</code></span>
-来表示段的开始和结束。两者都将从数组的开头开始。这些数字可以被视为指针，因此得名”双指针”。</p>
-<p>由于两个指针最多移动 <span class="math inline"><em>N</em></span>
-次，整体时间复杂度为 <span class="math inline">𝒪(<em>N</em>)</span>
-。</p>
-<p><video src="../../../img/two_pointers.mp4" controls=""><a
-href="../../../img/two_pointers.mp4">Video</a></video></p>
-<h3 id="implementation-1">Implementation</h3>
-<div class="code-wrapper"><pre><code class="hljs python">n, t = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+<h2 id="Sliding-Window"><a href="#Sliding-Window" class="headerlink" title="Sliding Window"></a>Sliding Window</h2><p>滑动窗口方法是双指针技术的一种变体，其中两个指针沿同一方向移动以维护一个特定的元素范围或”窗口”。虽然标准双指针通常相互靠近移动，但滑动窗口技术用于找到一个满足条件的连续子数组。</p>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/279/problem/B">https://codeforces.com/contest/279/problem/B</a></p>
+<h3 id="Solution-Books"><a href="#Solution-Books" class="headerlink" title="Solution - Books"></a>Solution - Books</h3><p>我们想要找到可以在 $t$ 分钟内读完的最长的连续书籍段，即寻找最长的连续子数组，要求子数组的和小于 $t$ </p>
+<p>为了实现这一点，我们可以定义 $\texttt{left}$ 和 $\texttt{right}$ 来表示段的开始和结束。两者都将从数组的开头开始。这些数字可以被视为指针，因此得名”双指针”。</p>
+<p>由于两个指针最多移动 $N$ 次，整体时间复杂度为 $\mathcal{O}(N)$  。</p>
+<p><img src="../../../img/two_pointers.mp4" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Implementation-1"><a href="#Implementation-1" class="headerlink" title="Implementation"></a>Implementation</h3><div class="code-wrapper"><pre><code class="hljs python">n, t = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 timeNeed = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
 
 l = <span class="hljs-number">0</span>
