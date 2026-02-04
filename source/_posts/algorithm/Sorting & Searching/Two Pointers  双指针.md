@@ -92,4 +92,30 @@ for r in range(n):
 print(ans)
 ```
 
+# Problems 
+
+## 01-Subarray Sums
+
+与 [Solution - Books](#Solution%20-%20Books) 做法类似。不同之处在于，更新 $ans$ 时改为判断 当前子数组之和 $cur$  是否等于 目标和 $x$ ，是的话 $ans+1$ 
+
+https://cses.fi/problemset/task/1660
+
+```python
+n, x = map(int, input().split())
+arr = list(map(int, input().split()))
+
+l = 0
+cur = 0
+ans = 0
+
+for r in range(n):
+    cur += arr[r]
+    while cur > x:
+        cur -= arr[l]
+        l += 1
+    if cur == x:
+        ans += 1
+        
+print(ans)
+```
 

@@ -183,8 +183,9 @@
   },
   "active": "7aca96cfbcc27ed9",
   "lastOpenFiles": [
-    "Template/template.md",
+    "_posts/algorithm/数据结构.md",
     "_posts/algorithm/Sorting & Searching/Two Pointers  双指针.md",
+    "Template/template.md",
     "_posts/algorithm/cf.md",
     "Template/template 1.md",
     "about/index.md",
@@ -192,7 +193,6 @@
     "_posts/bug修复/GPU内存不足问题.md",
     "_posts/bug修复/expected str, bytes or os.PathLike object, not MultiplexedPath.md",
     "_posts/algorithm/use_python.md",
-    "_posts/algorithm/数据结构.md",
     "_posts/algorithm/Graphs/Graph 图.md",
     "_posts/algorithm/Graphs/使用递归的穷举搜索.md",
     "_posts/algorithm/Complete_Search/05_Cow_Gymnastics.md",
