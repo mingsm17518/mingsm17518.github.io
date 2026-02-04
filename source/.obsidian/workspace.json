@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/algorithm/Sorting & Searching/Two Pointers  双指针.md",
+                "file": "_posts/algorithm/Graphs/Graph 图.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Two Pointers  双指针"
+              "title": "Graph 图"
             }
           }
         ]
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/algorithm/Sorting & Searching/Two Pointers  双指针.md",
+                "file": "_posts/algorithm/Graphs/Graph 图.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Two Pointers  双指针 的大纲"
+              "title": "Graph 图 的大纲"
             }
           },
           {
@@ -181,10 +181,12 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "7aca96cfbcc27ed9",
+  "active": "b9201b919a3c28d2",
   "lastOpenFiles": [
-    "_posts/algorithm/数据结构.md",
+    "_posts/algorithm/Graphs/使用递归的穷举搜索.md",
+    "_posts/algorithm/Graphs/Graph 图.md",
     "_posts/algorithm/Sorting & Searching/Two Pointers  双指针.md",
+    "_posts/algorithm/数据结构.md",
     "Template/template.md",
     "_posts/algorithm/cf.md",
     "Template/template 1.md",
@@ -193,8 +195,6 @@
     "_posts/bug修复/GPU内存不足问题.md",
     "_posts/bug修复/expected str, bytes or os.PathLike object, not MultiplexedPath.md",
     "_posts/algorithm/use_python.md",
-    "_posts/algorithm/Graphs/Graph 图.md",
-    "_posts/algorithm/Graphs/使用递归的穷举搜索.md",
     "_posts/algorithm/Complete_Search/05_Cow_Gymnastics.md",
     "_posts/algorithm/Complete_Search/04_Counting_Liars.md",
     "_posts/algorithm/Complete_Search/02_Diamond_Collector.md",
@@ -206,8 +206,8 @@
     "_posts/未命名 1.md",
     "_posts/1.md",
     "Template",
-    "img/src/dfs_demo.mp4",
-    "img/src/bfs_demo.mp4",
+    "img/graph/dfs_demo.mp4",
+    "img/graph/bfs_demo.mp4",
     "_posts/algorithm/Graphs/bfs_demo.mp4",
     "_posts/algorithm/Graphs/dfs_demo.mp4",
     "_posts/algorithm/Complete_Search",
