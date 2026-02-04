@@ -149,11 +149,6 @@ for i in range(n):
 
 ![](img/graph/bfs_demo.mp4)
 
-<video src="img/graph/bfs_demo.mp4" controls="controls" width="100%" height="auto">
-您的浏览器不支持 HTML5 视频标签。
-</video>
-
-
 在实现 BFS 时，我们通常使用一个队列来跟踪下一个要访问的顶点。与 DFS 一样，我们也会维护一个数组来存储是否已经访问过某个顶点。
 ### cpp
 
