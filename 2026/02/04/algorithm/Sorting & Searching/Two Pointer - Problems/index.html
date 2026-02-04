@@ -19,25 +19,23 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="nvidia-smi  kill -9 34069  # 占用最多的进程  # 或者使用pkill pkill -f &quot;python&quot;">
+    <meta name="description" content="Problems  01-Subarray Sums 与 Solution - Books 做法类似。不同之处在于，更新 ans 时改为判断 当前子数组之和 cur 是否等于 目标和 x ，是的话 ans + 1 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1660 n, x &#x3D; map(int, input().split()) arr &#x3D; list(map(i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bug修复：GPU内存不足问题">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/01/30/bug%E4%BF%AE%E5%A4%8D/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="Two Pointer - Problems">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/02/04/algorithm/Sorting%20&%20Searching/Two%20Pointer%20-%20Problems/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="nvidia-smi  kill -9 34069  # 占用最多的进程  # 或者使用pkill pkill -f &quot;python&quot;">
+<meta property="og:description" content="Problems  01-Subarray Sums 与 Solution - Books 做法类似。不同之处在于，更新 ans 时改为判断 当前子数组之和 cur 是否等于 目标和 x ，是的话 ans + 1 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1660 n, x &#x3D; map(int, input().split()) arr &#x3D; list(map(i">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-30T08:30:44.876Z">
-<meta property="article:modified_time" content="2026-02-02T08:25:12.403Z">
+<meta property="article:published_time" content="2026-02-04T03:12:40.240Z">
+<meta property="article:modified_time" content="2026-02-04T07:42:36.977Z">
 <meta property="article:author" content="Ming">
-<meta property="article:tag" content="GPU内存不足">
-<meta property="article:tag" content="bug修复">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>bug修复：GPU内存不足问题 - Ming&#39;s Blog</title>
+  <title>Two Pointer - Problems - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="bug修复：GPU内存不足问题"></span>
+            <span id="subtitle" data-typed-text="Two Pointer - Problems"></span>
           
         </div>
 
@@ -218,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-01-30 16:30" pubdate>
-          2026年1月30日 下午
+        <time datetime="2026-02-04 11:12" pubdate>
+          2026年2月4日 上午
         </time>
       </span>
     
@@ -230,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          19 字
+          306 字
         
       </span>
     
@@ -241,7 +239,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -287,12 +285,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">bug修复：GPU内存不足问题</h1>
+            <h1 id="seo-header">Two Pointer - Problems</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-02-02T16:25:12+08:00
+                    本文最后更新于 2026-02-04T15:42:36+08:00
                   
                   
 
@@ -302,12 +300,67 @@
             
               <div class="markdown-body">
                 
-                <div class="code-wrapper"><pre><code class="hljs Bash">nvidia-smi
+                <h1 id="problems">Problems </h1>
+<h2 id="subarray-sums">01-Subarray Sums</h2>
+<p>与 <a
+href="Two%20Pointer%20-%20Problems.md#Solution%20-%20Books">Solution -
+Books</a> 做法类似。不同之处在于，更新 <span
+class="math inline"><em>a</em><em>n</em><em>s</em></span> 时改为判断
+当前子数组之和 <span
+class="math inline"><em>c</em><em>u</em><em>r</em></span> 是否等于
+目标和 <span class="math inline"><em>x</em></span> ，是的话 <span
+class="math inline"><em>a</em><em>n</em><em>s</em> + 1</span></p>
+<p>https://cses.fi/problemset/task/1660</p>
+<div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+arr = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
 
-<span class="hljs-built_in">kill</span> -9 34069  <span class="hljs-comment"># 占用最多的进程</span>
+l = <span class="hljs-number">0</span>
+cur = <span class="hljs-number">0</span>
+ans = <span class="hljs-number">0</span>
 
-<span class="hljs-comment"># 或者使用pkill</span>
-pkill -f <span class="hljs-string">&quot;python&quot;</span></code></pre></div>
+<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    cur += arr[r]
+    <span class="hljs-keyword">while</span> cur &gt; x:
+        cur -= arr[l]
+        l += <span class="hljs-number">1</span>
+    <span class="hljs-keyword">if</span> cur == x:
+        ans += <span class="hljs-number">1</span>
+        
+<span class="hljs-built_in">print</span>(ans)</code></pre></div>
+<h2 id="sum-of-three-values">02-Sum of Three Values</h2>
+<p>https://cses.fi/problemset/task/1641</p>
+<p>这个问题是两数之和问题的扩展，只是现在涉及三个值。我们可以将第三个指针设置为数组中的某个值，然后问题就变成了本模块前面讨论的两数之和问题。</p>
+<p>首先我们将数组排序。然后我们将遍历所有可能的第三个指针的值，并检查这三个指针是否加起来等于目标值
+<span class="math inline"><em>x</em></span>
+，同时它们的位置是不同的。我们可以通过存储所有值 <code>{a[i],i}</code>
+的原始位置来保持它们的位置不变。</p>
+<div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+a = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
+
+p = [(a[i], i + <span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
+
+p.sort()
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    left = <span class="hljs-number">0</span>
+    right = n - <span class="hljs-number">1</span>
+
+    <span class="hljs-keyword">while</span> left &lt; right:
+        target = x - p[i][<span class="hljs-number">0</span>]
+
+        <span class="hljs-keyword">if</span> left != i <span class="hljs-keyword">and</span> right != i <span class="hljs-keyword">and</span> p[left][<span class="hljs-number">0</span>] + p[right][<span class="hljs-number">0</span>] == target:
+            <span class="hljs-built_in">print</span>(p[left][<span class="hljs-number">1</span>], p[right][<span class="hljs-number">1</span>], p[i][<span class="hljs-number">1</span>])
+            exit()
+
+        <span class="hljs-comment"># increase left if the sum is lower</span>
+        <span class="hljs-keyword">elif</span> p[left][<span class="hljs-number">0</span>] + p[right][<span class="hljs-number">0</span>] &lt; target:
+            left += <span class="hljs-number">1</span>
+
+        <span class="hljs-comment"># otherwise decrease right</span>
+        <span class="hljs-keyword">else</span>:
+            right -= <span class="hljs-number">1</span>
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;IMPOSSIBLE&quot;</span>)</code></pre></div>
 
                 
               </div>
@@ -326,7 +379,7 @@ pkill -f <span class="hljs-string">&quot;python&quot;</span></code></pre></div>
     
       <span class="category-chain">
         
-  <a href="/categories/bug%E4%BF%AE%E5%A4%8D/" class="category-chain-item">bug修复</a>
+  <a href="/categories/Sorting-Searching/" class="category-chain-item">Sorting &amp; Searching</a>
   
   
 
@@ -338,15 +391,6 @@ pkill -f <span class="hljs-string">&quot;python&quot;</span></code></pre></div>
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/bug%E4%BF%AE%E5%A4%8D/" class="print-no-link">#bug修复</a>
-      
-        <a href="/tags/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3/" class="print-no-link">#GPU内存不足</a>
-      
-    </div>
-  
 </div>
 
 
@@ -355,8 +399,8 @@ pkill -f <span class="hljs-string">&quot;python&quot;</span></code></pre></div>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>bug修复：GPU内存不足问题</div>
-      <div>https://mingsm17518.github.io/2026/01/30/bug修复/GPU内存不足问题/</div>
+      <div>Two Pointer - Problems</div>
+      <div>https://mingsm17518.github.io/2026/02/04/algorithm/Sorting &amp; Searching/Two Pointer - Problems/</div>
     </div>
     <div class="license-meta">
       
@@ -368,13 +412,13 @@ pkill -f <span class="hljs-string">&quot;python&quot;</span></code></pre></div>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年1月30日</div>
+          <div>2026年2月4日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2026年2月2日</div>
+          <div>2026年2月4日</div>
         </div>
       
       
@@ -405,18 +449,12 @@ pkill -f <span class="hljs-string">&quot;python&quot;</span></code></pre></div>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/02/04/algorithm/Sorting%20&amp;%20Searching/Two%20Pointer%20-%20Problems/" title="Two Pointer - Problems">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Two Pointer - Problems</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/01/30/bug%E4%BF%AE%E5%A4%8D/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/" title="expected str, bytes or os.PathLike object, not MultiplexedPath">
-                        <span class="hidden-mobile">expected str, bytes or os.PathLike object, not MultiplexedPath</span>
+                      <a href="/2026/01/30/bug%E4%BF%AE%E5%A4%8D/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/" title="bug修复：GPU内存不足问题">
+                        <span class="hidden-mobile">bug修复：GPU内存不足问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
