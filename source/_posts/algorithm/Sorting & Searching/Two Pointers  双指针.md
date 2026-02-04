@@ -70,7 +70,7 @@ https://codeforces.com/contest/279/problem/B
 
 由于两个指针最多移动 $N$ 次，整体时间复杂度为 $\mathcal{O}(N)$  。
 
-![](../../../img/two_pointers.mp4)
+![](img/two_pointers.mp4)
 
 ### Implementation
 
