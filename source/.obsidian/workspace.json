@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/algorithm/Sorting & Searching/Binary Search 二分搜索.md",
+                "file": "_posts/algorithm/Sorting & Searching/Two Pointer - Problems.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Binary Search 二分搜索"
+              "title": "Two Pointer - Problems"
             }
           }
         ],
@@ -171,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/algorithm/Sorting & Searching/Binary Search 二分搜索.md",
+                "file": "_posts/algorithm/Sorting & Searching/Two Pointer - Problems.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Binary Search 二分搜索 的大纲"
+              "title": "Two Pointer - Problems 的大纲"
             }
           },
           {

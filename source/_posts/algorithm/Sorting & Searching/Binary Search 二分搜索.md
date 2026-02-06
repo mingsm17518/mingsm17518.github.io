@@ -35,3 +35,4 @@ for _ in range(Q):
     ans = at_most(b) - at_most(a - 1)
     print(ans)
 ```
+
