@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/algorithm/Sorting & Searching/Two Pointer - Problems.md",
+                "file": "_posts/algorithm/cf.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Two Pointer - Problems"
+              "title": "cf"
             }
           }
         ],
@@ -171,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/algorithm/Sorting & Searching/Two Pointer - Problems.md",
+                "file": "_posts/algorithm/cf.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Two Pointer - Problems 的大纲"
+              "title": "cf 的大纲"
             }
           },
           {
@@ -212,20 +212,20 @@
   },
   "active": "4ec5e870b83eb2c9",
   "lastOpenFiles": [
-    "_posts/algorithm/Sorting & Searching/Two Pointers 双指针.md",
+    "_posts/algorithm/use_python.md",
+    "_posts/algorithm/cf.md",
     "_posts/algorithm/Sorting & Searching/Two Pointer - Problems.md",
     "_posts/algorithm/Sorting & Searching/Binary Search 二分搜索.md",
+    "_posts/algorithm/Sorting & Searching/Two Pointers 双指针.md",
     "_posts/algorithm/数据结构.md",
     "_posts/algorithm/Graphs/Graph 图.md",
     "_posts/algorithm/Graphs/使用递归的穷举搜索.md",
     "Template/template.md",
-    "_posts/algorithm/cf.md",
     "Template/template 1.md",
     "about/index.md",
     "_posts/hello-world.md",
     "_posts/bug修复/GPU内存不足问题.md",
     "_posts/bug修复/expected str, bytes or os.PathLike object, not MultiplexedPath.md",
-    "_posts/algorithm/use_python.md",
     "_posts/algorithm/Complete_Search/05_Cow_Gymnastics.md",
     "_posts/algorithm/Complete_Search/04_Counting_Liars.md",
     "_posts/algorithm/Complete_Search/02_Diamond_Collector.md",
