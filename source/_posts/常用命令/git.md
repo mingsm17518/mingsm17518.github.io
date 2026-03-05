@@ -5,7 +5,9 @@ tags:
 ---
 # git
 
-## 推送本地项目到远程仓库  
+## 远程
+
+推送本地项目到远程仓库  
 
 ```bash
 git init 
@@ -15,16 +17,22 @@ git remote add origin <远程仓库地址>
 git push -u origin "main"
 ```
 
-## 查看远程地址别名及路径
+重新设置远程仓库
+
+```bash
+git remote set-url origin <远程仓库地址>
+```
+
+查看远程地址别名及路径
 
 ```bash
 git remote -v  
 ```
 
-## 重新设置远程仓库
+查看工作区、暂存区的状态（哪些文件被修改/未跟踪）
 
 ```bash
-git remote set-url origin <远程仓库地址>
+git status
 ```
 
 ## 更新 `.gitignore`
@@ -33,12 +41,6 @@ git remote set-url origin <远程仓库地址>
 git rm -r --cached .
 git add .
 git commit -m 'update .gitignore'
-```
-
-## 查看工作区、暂存区的状态（哪些文件被修改/未跟踪）
-
-```bash
-git status
 ```
 
 ## 分支管理
