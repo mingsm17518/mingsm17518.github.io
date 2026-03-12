@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/algorithm/01_Bronze/01_Simulation  模拟.md",
-                "mode": "source",
+                "file": "_posts/algorithm/01_Bronze/03_Casework  案例分析.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01_Simulation  模拟"
+              "title": "03_Casework  案例分析"
             }
           }
         ],
@@ -199,13 +199,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/algorithm/01_Bronze/01_Simulation  模拟.md",
+                "file": "_posts/algorithm/01_Bronze/03_Casework  案例分析.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "01_Simulation  模拟 的大纲"
+              "title": "03_Casework  案例分析 的大纲"
             }
           },
           {
@@ -240,18 +240,18 @@
   },
   "active": "23e999d158e2a115",
   "lastOpenFiles": [
+    "_posts/algorithm/01_Bronze/01_ Complete_Search/04_Counting_Liars.md",
+    "_posts/algorithm/01_Bronze/01_ Complete_Search/05_Cow_Gymnastics.md",
+    "_posts/algorithm/01_Bronze/01_ Complete_Search/01_Milk Pails.md",
     "_posts/algorithm/01_Bronze/03_Casework  案例分析.md",
+    "_posts/algorithm/01_Bronze/02_Complete Search  完全搜索.md",
+    "_posts/algorithm/01_Bronze/01_Simulation  模拟.md",
     "_posts/algorithm/01_Bronze/04_Greedy Algorithms  贪心算法.md",
     "_posts/algorithm/03_Graphs/使用递归的穷举搜索.md",
     "_posts/algorithm/01_Bronze/04_Greedy Algorithms  贪心算法.md.tmp.4992.1773285300151",
-    "_posts/algorithm/01_Bronze/01_ Complete_Search/05_Cow_Gymnastics.md",
-    "_posts/algorithm/01_Bronze/01_ Complete_Search/04_Counting_Liars.md",
     "_posts/algorithm/01_Bronze/01_ Complete_Search/02_Diamond_Collector.md",
-    "_posts/algorithm/01_Bronze/01_ Complete_Search/01_Milk Pails.md",
     "_posts/algorithm/01_Bronze/01_ Complete_Search",
     "_posts/algorithm/03_Graphs/Graph 图.md",
-    "_posts/algorithm/01_Bronze/02_Complete Search  完全搜索.md",
-    "_posts/algorithm/01_Bronze/01_Simulation  模拟.md",
     "_posts/algorithm/01_Bronze",
     "_posts/algorithm/02_Sorting & Searching/Two Pointer - Problems.md",
     "_posts/algorithm/02_Sorting & Searching/Binary Search 二分搜索.md",

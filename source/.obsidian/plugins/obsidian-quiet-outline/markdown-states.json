@@ -1778,15 +1778,15 @@
     "expandedKeys": []
   },
   "_posts/algorithm/01_Bronze/01_Simulation  模拟.md": {
-    "scroll": 0,
+    "scroll": 134.0517939814815,
     "cursor": {
       "from": {
-        "line": 7,
-        "ch": 0
+        "line": 79,
+        "ch": 10
       },
       "to": {
-        "line": 7,
-        "ch": 0
+        "line": 79,
+        "ch": 10
       }
     },
     "expandedKeys": []
@@ -1806,21 +1806,21 @@
     "expandedKeys": []
   },
   "_posts/algorithm/01_Bronze/02_Complete Search  完全搜索.md": {
-    "scroll": 0,
+    "scroll": 312.6111111111111,
     "cursor": {
       "from": {
-        "line": 5,
-        "ch": 0
+        "line": 11,
+        "ch": 11
       },
       "to": {
-        "line": 5,
-        "ch": 0
+        "line": 11,
+        "ch": 11
       }
     },
     "expandedKeys": []
   },
   "_posts/algorithm/01_Bronze/03_Casework  案例分析.md": {
-    "scroll": 0,
+    "scroll": 5.613333333333333,
     "cursor": {
       "from": {
         "line": 5,
@@ -1842,6 +1842,48 @@
       },
       "to": {
         "line": 5,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "_posts/algorithm/01_Bronze/01_ Complete_Search/01_Milk Pails.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "_posts/algorithm/01_Bronze/01_ Complete_Search/05_Cow_Gymnastics.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "_posts/algorithm/01_Bronze/01_ Complete_Search/04_Counting_Liars.md": {
+    "scroll": 59.8,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
         "ch": 0
       }
     },
