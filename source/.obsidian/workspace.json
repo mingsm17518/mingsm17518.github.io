@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/algorithm/01_Bronze/03_Casework  案例分析.md",
+                "file": "_posts/algorithm/01_Bronze/01_Simulation  模拟.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03_Casework  案例分析"
+              "title": "01_Simulation  模拟"
             }
           }
         ],
@@ -199,13 +199,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/algorithm/01_Bronze/03_Casework  案例分析.md",
+                "file": "_posts/algorithm/01_Bronze/01_Simulation  模拟.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "03_Casework  案例分析 的大纲"
+              "title": "01_Simulation  模拟 的大纲"
             }
           },
           {
@@ -240,6 +240,7 @@
   },
   "active": "23e999d158e2a115",
   "lastOpenFiles": [
+    "_posts/algorithm/01_Bronze/03_Casework  案例分析.md",
     "_posts/algorithm/01_Bronze/04_Greedy Algorithms  贪心算法.md",
     "_posts/algorithm/03_Graphs/使用递归的穷举搜索.md",
     "_posts/algorithm/01_Bronze/04_Greedy Algorithms  贪心算法.md.tmp.4992.1773285300151",
@@ -249,7 +250,6 @@
     "_posts/algorithm/01_Bronze/01_ Complete_Search/01_Milk Pails.md",
     "_posts/algorithm/01_Bronze/01_ Complete_Search",
     "_posts/algorithm/03_Graphs/Graph 图.md",
-    "_posts/algorithm/01_Bronze/03_Casework  案例分析.md",
     "_posts/algorithm/01_Bronze/02_Complete Search  完全搜索.md",
     "_posts/algorithm/01_Bronze/01_Simulation  模拟.md",
     "_posts/algorithm/01_Bronze",
