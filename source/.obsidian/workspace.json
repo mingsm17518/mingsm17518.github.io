@@ -4,53 +4,81 @@
     "type": "split",
     "children": [
       {
-        "id": "63705813b1c1b680",
+        "id": "86b60b17ca02fca9",
         "type": "tabs",
         "children": [
           {
-            "id": "a7401bf93501d3b4",
+            "id": "0eb939c43c58c06c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/algorithm/cf.md",
+                "file": "_posts/algorithm/03_Graphs/使用递归的穷举搜索.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "cf"
+              "title": "使用递归的穷举搜索"
             }
           },
           {
-            "id": "ddd2877ca7568205",
+            "id": "d6ea64bdc2dc30d8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/常用命令/git.md",
+                "file": "_posts/algorithm/01_Bronze/01_Simulation  模拟.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "git"
+              "title": "01_Simulation  模拟"
             }
           },
           {
-            "id": "98530e1d569a32b9",
+            "id": "e560fa09d29ffbb0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/常用命令/huggingface.md",
+                "file": "_posts/algorithm/01_Bronze/02_Complete Search  完全搜索.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "huggingface"
+              "title": "02_Complete Search  完全搜索"
+            }
+          },
+          {
+            "id": "a14ce72be571450d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_posts/algorithm/01_Bronze/03_Casework  案例分析.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "03_Casework  案例分析"
+            }
+          },
+          {
+            "id": "23e999d158e2a115",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_posts/algorithm/01_Bronze/03_Casework  案例分析.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "03_Casework  案例分析"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -171,13 +199,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/常用命令/huggingface.md",
+                "file": "_posts/algorithm/01_Bronze/03_Casework  案例分析.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "huggingface 的大纲"
+              "title": "03_Casework  案例分析 的大纲"
             }
           },
           {
@@ -210,48 +238,47 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "98530e1d569a32b9",
+  "active": "23e999d158e2a115",
   "lastOpenFiles": [
+    "_posts/algorithm/01_Bronze/04_Greedy Algorithms  贪心算法.md",
+    "_posts/algorithm/03_Graphs/使用递归的穷举搜索.md",
+    "_posts/algorithm/01_Bronze/04_Greedy Algorithms  贪心算法.md.tmp.4992.1773285300151",
+    "_posts/algorithm/01_Bronze/01_ Complete_Search/05_Cow_Gymnastics.md",
+    "_posts/algorithm/01_Bronze/01_ Complete_Search/04_Counting_Liars.md",
+    "_posts/algorithm/01_Bronze/01_ Complete_Search/02_Diamond_Collector.md",
+    "_posts/algorithm/01_Bronze/01_ Complete_Search/01_Milk Pails.md",
+    "_posts/algorithm/01_Bronze/01_ Complete_Search",
+    "_posts/algorithm/03_Graphs/Graph 图.md",
+    "_posts/algorithm/01_Bronze/03_Casework  案例分析.md",
+    "_posts/algorithm/01_Bronze/02_Complete Search  完全搜索.md",
+    "_posts/algorithm/01_Bronze/01_Simulation  模拟.md",
+    "_posts/algorithm/01_Bronze",
+    "_posts/algorithm/02_Sorting & Searching/Two Pointer - Problems.md",
+    "_posts/algorithm/02_Sorting & Searching/Binary Search 二分搜索.md",
+    "_posts/algorithm/01_ Complete_Search/05_Cow_Gymnastics.md",
+    "_posts/algorithm/01_ Complete_Search/04_Counting_Liars.md",
+    "_posts/algorithm/01_ Complete_Search/02_Diamond_Collector.md",
+    "_posts/algorithm/01_ Complete_Search/01_Milk Pails.md",
+    "_posts/常用命令/huggingface.md",
+    "_posts/algorithm/数据结构.md",
+    "_posts/algorithm/cf.md",
+    "_posts/algorithm/use_python.md",
+    "_posts/bug修复/push 到 github 时出错.md",
+    "_posts/bug修复/GPU内存不足问题.md",
+    "_posts/bug修复/expected str, bytes or os.PathLike object, not MultiplexedPath.md",
     "_posts/常用命令/git.md",
     "_posts/常用命令/conda & uv.md",
-    "_posts/常用命令/huggingface.md",
-    "_posts/常用命令/linux.md",
-    "_posts/algorithm/Complete_Search/04_Counting_Liars.md",
-    "Template/template.md",
-    "Template/template - addtime.md",
-    "_posts/algorithm/cf.md",
     "_posts/常用命令",
-    "_posts/bug修复/expected str, bytes or os.PathLike object, not MultiplexedPath.md",
     "img/graph/bfs_demo.mp4",
     "img/graph/dfs_demo.mp4",
     "img/Icon.png",
     "img/pic2.png",
     "img/pic1.png",
     "img/jiangly.png",
-    "about/index.md",
-    "_posts/hello-world.md",
-    "_posts/bug修复/push 到 github 时出错.md",
-    "_posts/algorithm/Sorting & Searching/Binary Search 二分搜索.md",
-    "_posts/algorithm/Sorting & Searching/Two Pointer - Problems.md",
-    "_posts/algorithm/Sorting & Searching/Two Pointers 双指针.md",
-    "_posts/algorithm/Graphs/使用递归的穷举搜索.md",
-    "_posts/algorithm/Graphs/Graph 图.md",
-    "_posts/algorithm/Complete_Search/05_Cow_Gymnastics.md",
-    "_posts/algorithm/Complete_Search/02_Diamond_Collector.md",
-    "_posts/algorithm/Complete_Search/01_Milk Pails.md",
-    "_posts/algorithm/数据结构.md",
-    "_posts/algorithm/use_python.md",
-    "_posts/bug修复/GPU内存不足问题.md",
-    "_drafts/hexo头部信息.md",
     "img/two_pointers.mp4",
     "img/未确认 358187.crdownload",
-    "_posts/未命名.md",
-    "_posts/未命名 1.md",
     "Template",
     "_posts/algorithm/Graphs/bfs_demo.mp4",
-    "_posts/algorithm/Graphs/dfs_demo.mp4",
-    "_posts/algorithm/Complete_Search",
-    "_posts/algorithm/Solutions/Complete_Search",
     "情侣软件/assets/情侣软件/file-20260129195021523.png",
     "情侣软件/assets/情侣软件/file-20260129195011856.png",
     "华为机考/assets/经验/7db7b74e00bb8826907b03276b984947.png",
