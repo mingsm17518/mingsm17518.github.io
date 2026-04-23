@@ -1,0 +1,1116 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Icon.png">
+  <link rel="icon" href="/img/Icon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ming">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Prefix Sums 前缀和 什么是前缀和？ 前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i] &#x3D; a[1] + a[2] + ... + a[i] 其中 p[0] &#x3D; 0。 为什么需要前缀和？ 在没有前缀和的情况下，计算数组区间 [l, r] 的和需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01_Prefix Sums 前缀和">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/03/13/algorithm/02_Silver/01_Prefix_Sums/index.html">
+<meta property="og:site_name" content="Ming&#39;s Blog">
+<meta property="og:description" content="Prefix Sums 前缀和 什么是前缀和？ 前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i] &#x3D; a[1] + a[2] + ... + a[i] 其中 p[0] &#x3D; 0。 为什么需要前缀和？ 在没有前缀和的情况下，计算数组区间 [l, r] 的和需">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-13T14:15:03.289Z">
+<meta property="article:modified_time" content="2026-03-20T19:12:55.463Z">
+<meta property="article:author" content="Ming">
+<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="同余">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="滑动窗口">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>01_Prefix Sums 前缀和 - Ming&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mingsm17518.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ming&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/jiangly.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="01_Prefix Sums 前缀和"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-13 22:15" pubdate>
+          2026年3月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">01_Prefix Sums 前缀和</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-03-21T03:12:55+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="prefix-sums-前缀和">Prefix Sums 前缀和</h1>
+<h2 id="什么是前缀和">什么是前缀和？</h2>
+<p>前缀和（Prefix
+Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。</p>
+<p>对于数组 <code>a[1], a[2], ..., a[n]</code>，定义前缀和数组
+<code>p</code>：</p>
+<p><span
+class="math display"><em>p</em>[<em>i</em>] = <em>a</em>[1] + <em>a</em>[2] + ... + <em>a</em>[<em>i</em>]</span></p>
+<p>其中 <code>p[0] = 0</code>。</p>
+<h3 id="为什么需要前缀和">为什么需要前缀和？</h3>
+<p>在没有前缀和的情况下，计算数组区间 <code>[l, r]</code> 的和需要
+O(r-l+1) 的时间。但使用前缀和后，区间和可以在 <strong>O(1)</strong>
+时间内得到：</p>
+<p><span
+class="math display"><em>s</em><em>u</em><em>m</em>(<em>l</em>, <em>r</em>) = <em>p</em>[<em>r</em>] − <em>p</em>[<em>l</em> − 1]</span></p>
+<hr />
+<h2 id="前缀和的基本实现">前缀和的基本实现</h2>
+<h3 id="构建前缀和数组">构建前缀和数组</h3>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">// 构建前缀和数组</span>
+<span class="hljs-function">vector&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt; <span class="hljs-title">prefix</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;
+prefix[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;
+    prefix[i] = prefix[i<span class="hljs-number">-1</span>] + a[i];
+&#125;</code></pre></div>
+<h3 id="o1-区间求和">O(1) 区间求和</h3>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">// 计算区间 [l, r] 的和（1-indexed）</span>
+<span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;
+    <span class="hljs-keyword">return</span> prefix[r] - prefix[l<span class="hljs-number">-1</span>];
+&#125;</code></pre></div>
+<h3 id="python实现">python实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 前缀和数组</span>
+prefix = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+  prefix[i + <span class="hljs-number">1</span>] = prefix[i] + a[i]  <span class="hljs-comment"># a 是 0-indexed</span>
+
+<span class="hljs-comment"># 查询区间 [l, r]（1-indexed）</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">query</span>(<span class="hljs-params">l, r</span>):
+  <span class="hljs-keyword">return</span> prefix[r] - prefix[l - <span class="hljs-number">1</span>]</code></pre></div>
+<hr />
+<h2 id="经典例题">经典例题</h2>
+<h3 id="例题1-breed-counting-统计区间内各品种数量">例题1： Breed
+Counting 统计区间内各品种数量</h3>
+<p><strong>题目来源</strong>: <a
+target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=572">USACO
+- Breed Counting</a></p>
+<p><strong>题目描述</strong>: 给定 N 头牛的品种（1=Holsteins,
+2=Guernseys, 3=Jerseys），有 Q 次查询，每次查询区间 [a, b]
+内各品种的牛数量。</p>
+<p><strong>解题思路</strong>: 多维前缀和</p>
+<ul>
+<li>维护三个前缀和数组，分别统计每种品种的前缀数量</li>
+<li>对于每次查询，直接用前缀和相减得到区间内各品种数量</li>
+</ul>
+<p><strong>代码实现</strong>:</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
+
+    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;bcount.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>, stdin);
+    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;bcount.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, stdout);
+
+    <span class="hljs-type">int</span> n, q;
+    cin &gt;&gt; n &gt;&gt; q;
+
+    <span class="hljs-comment">// 三个前缀和数组</span>
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">pref1</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span>, <span class="hljs-title">pref2</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span>, <span class="hljs-title">pref3</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;
+        <span class="hljs-comment">// 先复制前一个位置的值</span>
+        pref1[i] = pref1[i - <span class="hljs-number">1</span>];
+        pref2[i] = pref2[i - <span class="hljs-number">1</span>];
+        pref3[i] = pref3[i - <span class="hljs-number">1</span>];
+
+        <span class="hljs-type">int</span> x;
+        cin &gt;&gt; x;
+        <span class="hljs-keyword">if</span> (x == <span class="hljs-number">1</span>) pref1[i]++;      <span class="hljs-comment">// 品种1：Holsteins</span>
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (x == <span class="hljs-number">2</span>) pref2[i]++; <span class="hljs-comment">// 品种2：Guernseys</span>
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (x == <span class="hljs-number">3</span>) pref3[i]++; <span class="hljs-comment">// 品种3：Jerseys</span>
+    &#125;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; q; i++) &#123;
+        <span class="hljs-type">int</span> l, r;
+        cin &gt;&gt; l &gt;&gt; r;
+        <span class="hljs-comment">// 区间 [l, r] 的各品种数量 = 前缀差</span>
+        cout &lt;&lt; pref1[r] - pref1[l - <span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;
+        cout &lt;&lt; pref2[r] - pref2[l - <span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;
+        cout &lt;&lt; pref3[r] - pref3[l - <span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    &#125;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<p><strong>时间复杂度</strong>: - 预处理：O(n) - 单次查询：O(1) -
+总时间：O(n + q)</p>
+<h3
+id="例题2子数组和为7的倍数求最长长度">例题2：子数组和为7的倍数（求最长长度）</h3>
+<p><strong>题目来源</strong>: <a
+target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=595">USACO
+- Div7</a></p>
+<p><strong>题目描述</strong>: 给定 n 个数，求和为 7
+的倍数的子数组的最长长度。</p>
+<p><strong>核心原理</strong>: 同余定理</p>
+<ul>
+<li>如果 <code>prefix[i] % 7 == prefix[j] % 7</code>，则子数组
+<code>[i+1, j]</code> 的和为 7 的倍数</li>
+<li>因此，我们只需要找到相同余数之间的最大距离</li>
+</ul>
+<p><strong>解题思路</strong>:</p>
+<ol type="1">
+<li>记录每个余数首次出现的下标</li>
+<li>当同一余数再次出现时，计算当前下标与首次下标的差值</li>
+<li>更新最大长度</li>
+</ol>
+<p><strong>代码实现</strong>:</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
+
+    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;div7.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>, stdin);
+    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;div7.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, stdout);
+
+    <span class="hljs-type">int</span> n;
+    cin &gt;&gt; n;
+
+    <span class="hljs-comment">// 记录每个余数首次出现的下标，-1表示未出现</span>
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">first_idx</span><span class="hljs-params">(<span class="hljs-number">7</span>, <span class="hljs-number">-1</span>)</span></span>;
+    first_idx[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;  <span class="hljs-comment">// 前缀和为0时，下标为0</span>
+
+    <span class="hljs-type">int</span> current_sum = <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> max_length = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;
+        <span class="hljs-type">int</span> x;
+        cin &gt;&gt; x;
+        current_sum = (current_sum + x) % <span class="hljs-number">7</span>;
+
+        <span class="hljs-keyword">if</span> (first_idx[current_sum] == <span class="hljs-number">-1</span>) &#123;
+            <span class="hljs-comment">// 该余数首次出现，记录下标</span>
+            first_idx[current_sum] = i;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-comment">// 该余数之前出现过，计算子数组长度</span>
+            max_length = <span class="hljs-built_in">max</span>(max_length, i - first_idx[current_sum]);
+        &#125;
+    &#125;
+
+    cout &lt;&lt; max_length &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<p><strong>时间复杂度</strong>: O(n)</p>
+<hr />
+<h3
+id="例题3子数组和为目标值数组全为正数">例题3：子数组和为目标值（数组全为正数）</h3>
+<p><strong>题目来源</strong>: <a
+target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1660">CSES - Subarray Sum
+I</a></p>
+<p><strong>题目描述</strong>: 给定一个长度为 n
+的数组（元素均为正整数）和目标值 x，求子数组和等于 x 的个数。</p>
+<p><strong>解题思路</strong>:
+由于数组元素全为正数，可以使用<strong>滑动窗口（双指针）</strong>求解。</p>
+<ul>
+<li>当窗口和小于 x 时，右指针右移扩大窗口</li>
+<li>当窗口和等于 x 时，计数加一，然后左指针右移缩小窗口</li>
+<li>当窗口和大于 x 时，左指针右移缩小窗口</li>
+</ul>
+<p><strong>代码实现</strong>:</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
+
+    <span class="hljs-type">int</span> n, x;
+    cin &gt;&gt; n &gt;&gt; x;
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">a</span><span class="hljs-params">(n)</span></span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>&amp; num : a) cin &gt;&gt; num;
+
+    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> sum = a[<span class="hljs-number">0</span>];
+    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">while</span> (r &lt; n) &#123;
+        <span class="hljs-keyword">if</span> (sum &lt; x) &#123;
+            <span class="hljs-comment">// 窗口和小于目标，右移扩展</span>
+            r++;
+            <span class="hljs-keyword">if</span> (r &lt; n) sum += a[r];
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sum == x) &#123;
+            <span class="hljs-comment">// 找到一个满足条件的子数组</span>
+            ans++;
+            sum -= a[l];
+            l++;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-comment">// 窗口和大于目标，左移收缩</span>
+            sum -= a[l];
+            l++;
+        &#125;
+    &#125;
+
+    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<p><strong>时间复杂度</strong>: O(n)</p>
+<hr />
+<h3
+id="例题4子数组和为目标值数组含负数">例题4：子数组和为目标值（数组含负数）</h3>
+<p><strong>题目来源</strong>: <a
+target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1661">CSES - Subarray Sum
+II</a></p>
+<p><strong>题目描述</strong>: 给定一个长度为 n
+的数组（可能含负数）和目标值 x，求子数组和等于 x 的个数。</p>
+<p><strong>解题思路</strong>:
+使用<strong>哈希表</strong>记录前缀和出现的次数。</p>
+<ul>
+<li>对于当前位置 i，前缀和为 prefix</li>
+<li>如果之前存在前缀和为 <code>prefix - x</code>
+的位置，则以当前位置结尾的子数组和为 x</li>
+<li>利用组合数学：满足条件的子数组个数等于此前 <code>prefix - x</code>
+出现的次数</li>
+</ul>
+<p><strong>代码实现</strong>:</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
+
+    <span class="hljs-type">int</span> n, target;
+    cin &gt;&gt; n &gt;&gt; target;
+
+    map&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>, <span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt; sums;
+    sums[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;  <span class="hljs-comment">// 空前缀，初始为1</span>
+
+    <span class="hljs-type">long</span> <span class="hljs-type">long</span> prefix_sum = <span class="hljs-number">0</span>;
+    <span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;
+        <span class="hljs-type">int</span> x;
+        cin &gt;&gt; x;
+        prefix_sum += x;
+
+        <span class="hljs-comment">// 累加 prefix_sum - target 出现的次数</span>
+        ans += sums[prefix_sum - target];
+
+        <span class="hljs-comment">// 记录当前前缀和</span>
+        sums[prefix_sum]++;
+    &#125;
+
+    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<p><strong>时间复杂度</strong>: O(n log n) 或 O(n) 使用
+unordered_map</p>
+<hr />
+<h3
+id="例题5子数组和为n的倍数求个数">例题5：子数组和为n的倍数（求个数）</h3>
+<p><strong>题目来源</strong>: <a
+target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1662">CSES - Subarray
+Divisibility</a></p>
+<p><strong>题目描述</strong>: 给定 n 个数，求和能够被 n
+整除的子数组个数。</p>
+<p><strong>核心原理</strong>: 同余组合</p>
+<ul>
+<li>如果 <code>prefix[i] % n == prefix[j] % n</code>，则子数组
+<code>[i+1, j]</code> 的和能被 n 整除</li>
+<li>统计每个余数出现的次数 cnt，该余数贡献的子数组个数为
+<code>C(cnt, 2) = cnt * (cnt - 1) / 2</code></li>
+</ul>
+<p><strong>代码实现</strong>:</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
+
+    <span class="hljs-type">int</span> n;
+    cin &gt;&gt; n;
+
+    <span class="hljs-function">vector&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt; <span class="hljs-title">cnt</span><span class="hljs-params">(n, <span class="hljs-number">0</span>)</span></span>;
+    cnt[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;  <span class="hljs-comment">// 前缀和为0时，余数为0，初始为1</span>
+
+    <span class="hljs-type">long</span> <span class="hljs-type">long</span> current = <span class="hljs-number">0</span>;
+    <span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+        <span class="hljs-type">int</span> x;
+        cin &gt;&gt; x;
+        current = (current + x) % n;
+        <span class="hljs-keyword">if</span> (current &lt; <span class="hljs-number">0</span>) current += n;  <span class="hljs-comment">// 处理负数情况</span>
+        cnt[current]++;
+    &#125;
+
+    <span class="hljs-comment">// 组合数学：每个余数贡献 C(cnt, 2) 个子数组</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> x : cnt) &#123;
+        ans += x * (x - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;
+    &#125;
+
+    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<p><strong>时间复杂度</strong>: O(n)</p>
+<hr />
+<h2 id="总结">总结</h2>
+<table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>解法</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多维前缀和（区间统计）</td>
+<td>多维前缀和数组</td>
+<td>O(1) 查询</td>
+</tr>
+<tr>
+<td>静态区间求和</td>
+<td>前缀和数组</td>
+<td>O(1) 查询</td>
+</tr>
+<tr>
+<td>子数组和为目标值（全正数）</td>
+<td>滑动窗口</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>子数组和为目标值（含负数）</td>
+<td>哈希表</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>子数组和为 k 的倍数（最长长度）</td>
+<td>同余 + 首次出现位置</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>子数组和为 n 的倍数（个数）</td>
+<td>同余 + 组合数学</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心思想</strong>:
+前缀和将”区间求和”问题转化为”两点差”问题，结合哈希表或同余性质可以高效解决各类子数组求和问题。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/02-Silver/" class="category-chain-item">02_Silver</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#前缀和</a>
+      
+        <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="print-no-link">#滑动窗口</a>
+      
+        <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" class="print-no-link">#哈希表</a>
+      
+        <a href="/tags/%E5%90%8C%E4%BD%99/" class="print-no-link">#同余</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>01_Prefix Sums 前缀和</div>
+      <div>https://mingsm17518.github.io/2026/03/13/algorithm/02_Silver/01_Prefix_Sums/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ming</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月13日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年3月21日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/03/18/algorithm/02_Silver/02_Sorting%20&amp;%20Searching/02_Binary%20Search%20%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/" title="Binary Search 二分搜索">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Binary Search 二分搜索</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/05/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/huggingface/" title="huggingface">
+                        <span class="hidden-mobile">huggingface</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,967 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Icon.png">
+  <link rel="icon" href="/img/Icon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ming">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩 本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序 排序不仅限于数字，还可以用于任意对象。 方法一：使用元组 将对象与排序关键字打包成元组： edge_num &#x3D; 4 edges &#x3D; [] for _ in range(edge_num):">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/03/18/algorithm/02_Silver/02_Sorting%20&%20Searching/03_Custom%20Comparators%20and%20Coordinate%20Compression%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/index.html">
+<meta property="og:site_name" content="Ming&#39;s Blog">
+<meta property="og:description" content="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩 本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序 排序不仅限于数字，还可以用于任意对象。 方法一：使用元组 将对象与排序关键字打包成元组： edge_num &#x3D; 4 edges &#x3D; [] for _ in range(edge_num):">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-17T16:29:50.183Z">
+<meta property="article:modified_time" content="2026-03-17T16:29:50.183Z">
+<meta property="article:author" content="Ming">
+<meta property="article:tag" content="坐标压缩">
+<meta property="article:tag" content="排序">
+<meta property="article:tag" content="自定义比较器">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩 - Ming&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mingsm17518.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ming&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/jiangly.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-18 00:29" pubdate>
+          2026年3月18日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="custom-comparators-and-coordinate-compression">Custom
+Comparators and Coordinate Compression</h1>
+<h2 id="自定义比较器和坐标压缩">自定义比较器和坐标压缩</h2>
+<p>本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。</p>
+<hr />
+<h2 id="一自定义排序">一、自定义排序</h2>
+<p>排序不仅限于数字，还可以用于任意对象。</p>
+<h3 id="方法一使用元组">方法一：使用元组</h3>
+<p>将对象与排序关键字打包成元组：</p>
+<div class="code-wrapper"><pre><code class="hljs python">edge_num = <span class="hljs-number">4</span>
+edges = []
+<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(edge_num):
+    a, b, width = [<span class="hljs-built_in">int</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
+    edges.append((width, a, b))  <span class="hljs-comment"># (关键字, 其他数据)</span>
+edges.sort()  <span class="hljs-comment"># 按 width 升序排序</span>
+
+<span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> edges:
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;(<span class="hljs-subst">&#123;e[<span class="hljs-number">1</span>]&#125;</span>, <span class="hljs-subst">&#123;e[<span class="hljs-number">2</span>]&#125;</span>): <span class="hljs-subst">&#123;e[<span class="hljs-number">0</span>]&#125;</span>&quot;</span>)</code></pre></div>
+<h3 id="方法二key-函数">方法二：Key 函数</h3>
+<p>使用 <code>key</code> 参数指定排序依据：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Edge</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, a: <span class="hljs-built_in">int</span>, b: <span class="hljs-built_in">int</span>, width: <span class="hljs-built_in">int</span></span>):
+        <span class="hljs-variable language_">self</span>.a = a
+        <span class="hljs-variable language_">self</span>.b = b
+        <span class="hljs-variable language_">self</span>.width = width
+
+edges = [Edge(*[<span class="hljs-built_in">int</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(edge_num)]
+edges.sort(key=<span class="hljs-keyword">lambda</span> e: e.width)  <span class="hljs-comment"># 按 width 排序</span>
+
+<span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> edges:
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;(<span class="hljs-subst">&#123;e.a&#125;</span>, <span class="hljs-subst">&#123;e.b&#125;</span>): <span class="hljs-subst">&#123;e.width&#125;</span>&quot;</span>)</code></pre></div>
+<h3 id="方法三comparator比较器">方法三：Comparator（比较器）</h3>
+<p>使用 <code>functools.cmp_to_key</code> 将比较函数转换为 key：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> cmp_to_key
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Edge</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, a: <span class="hljs-built_in">int</span>, b: <span class="hljs-built_in">int</span>, width: <span class="hljs-built_in">int</span></span>):
+        <span class="hljs-variable language_">self</span>.a = a
+        <span class="hljs-variable language_">self</span>.b = b
+        <span class="hljs-variable language_">self</span>.width = width
+
+edges = [Edge(*[<span class="hljs-built_in">int</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(edge_num)]
+edges.sort(key=cmp_to_key(<span class="hljs-keyword">lambda</span> x, y: x.width - y.width))</code></pre></div>
+<p><strong>比较器必须满足</strong>： - <code>x &lt; y</code> 时返回 -1 -
+<code>x &gt; y</code> 时返回 1 - <code>x == y</code> 时返回 0</p>
+<hr />
+<h2 id="二多条件排序">二、多条件排序</h2>
+<h3 id="按多个关键字升序排序">按多个关键字升序排序</h3>
+<p>利用元组的字典序特性：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 按 width 升序，width 相同时按 a 升序</span>
+edges.sort(key=<span class="hljs-keyword">lambda</span> edge: (edge.width, edge.a))</code></pre></div>
+<p>或者使用比较器：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">compare</span>(<span class="hljs-params">x, y</span>):
+    <span class="hljs-keyword">if</span> x.width != y.width:
+        <span class="hljs-keyword">return</span> x.width - y.width
+    <span class="hljs-keyword">return</span> x.a - y.a
+
+edges.sort(key=cmp_to_key(compare))</code></pre></div>
+<h3 id="降序排序">降序排序</h3>
+<div class="code-wrapper"><pre><code class="hljs python">edges.sort(key=<span class="hljs-keyword">lambda</span> e: e.width, reverse=<span class="hljs-literal">True</span>)</code></pre></div>
+<hr />
+<h2 id="三坐标压缩">三、坐标压缩</h2>
+<h3 id="什么是坐标压缩">什么是坐标压缩？</h3>
+<p>将大范围的值映射到连续的自然数索引。</p>
+<p><strong>示例</strong>： - 原始列表：<code>{7, 3, 4, 1}</code> -
+排序后：<code>{1, 3, 4, 7}</code> -
+压缩结果：<code>{3, 1, 2, 0}</code></p>
+<h3 id="适用场景">适用场景</h3>
+<p>当值域很大但需要用值作为数组索引时： -
+值域：<code>0 ~ 10^9</code>（无法直接作为数组索引） -
+实际不同值数量：<code>N ≤ 10^6</code> -
+压缩后：<code>0 ~ N-1</code>（可直接作为数组索引）</p>
+<h3 id="代码实现">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 方法1：简单压缩</span>
+values = [<span class="hljs-number">7</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>]
+sorted_unique = <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(values))  <span class="hljs-comment"># [1, 3, 4, 7]</span>
+compress = &#123;v: i <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(sorted_unique)&#125;
+
+compressed = [compress[v] <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> values]  <span class="hljs-comment"># [3, 1, 2, 0, 1]</span>
+
+<span class="hljs-comment"># 方法2：需要反向映射时</span>
+indices = <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(values))
+compress = &#123;v: i <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(indices)&#125;
+decompress = &#123;i: v <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(indices)&#125;</code></pre></div>
+<hr />
+<h2 id="四例题rectangular-pasture">四、例题：Rectangular Pasture</h2>
+<p><strong>题目来源</strong>: USACO Silver - Rectangular Pasture</p>
+<p><strong>核心思想</strong>：使用坐标压缩将坐标映射到
+<code>0 ~ N-1</code> 范围，以便使用二维前缀和数组。</p>
+<h3 id="代码实现-1">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+
+<span class="hljs-built_in">input</span> = sys.stdin.readline
+
+n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>().strip())
+points = [<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().strip().split())) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
+
+<span class="hljs-comment"># 坐标压缩：先按 y 排序</span>
+points.sort(key=<span class="hljs-keyword">lambda</span> i: i[<span class="hljs-number">1</span>])
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    points[i][<span class="hljs-number">1</span>] = i + <span class="hljs-number">1</span>
+
+<span class="hljs-comment"># 再按 x 排序</span>
+points.sort(key=<span class="hljs-keyword">lambda</span> i: i[<span class="hljs-number">0</span>])
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    points[i][<span class="hljs-number">0</span>] = i + <span class="hljs-number">1</span>
+
+<span class="hljs-comment"># 二维前缀和</span>
+psa = [[<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>)] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>)]
+<span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> points:
+    psa[x][y] = <span class="hljs-number">1</span>
+
+<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):
+    <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):
+        psa[x][y] += psa[x - <span class="hljs-number">1</span>][y] + psa[x][y - <span class="hljs-number">1</span>] - psa[x - <span class="hljs-number">1</span>][y - <span class="hljs-number">1</span>]
+
+<span class="hljs-comment"># 统计矩形数量</span>
+ans = n + <span class="hljs-number">1</span>
+
+<span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    <span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(s + <span class="hljs-number">1</span>, n):
+        srt, end = points[s][<span class="hljs-number">0</span>], points[e][<span class="hljs-number">0</span>]
+        top = <span class="hljs-built_in">max</span>(points[s][<span class="hljs-number">1</span>], points[e][<span class="hljs-number">1</span>])
+        bottom = <span class="hljs-built_in">min</span>(points[s][<span class="hljs-number">1</span>], points[e][<span class="hljs-number">1</span>])
+
+        above = psa[end][n] - psa[srt - <span class="hljs-number">1</span>][n] - psa[end][top] + psa[srt - <span class="hljs-number">1</span>][top]
+        below = psa[end][bottom - <span class="hljs-number">1</span>] - psa[srt - <span class="hljs-number">1</span>][bottom - <span class="hljs-number">1</span>]
+        ans += (above + <span class="hljs-number">1</span>) * (below + <span class="hljs-number">1</span>)
+
+<span class="hljs-built_in">print</span>(ans)</code></pre></div>
+<h3 id="关键点">关键点</h3>
+<ul>
+<li>坐标压缩后，原有坐标值不再需要，只用压缩后的索引</li>
+<li>压缩后坐标范围：<code>0 ~ N-1</code>，可直接作为数组下标</li>
+</ul>
+<hr />
+<h2 id="五例题static-range-queries">五、例题：Static Range Queries</h2>
+<p><strong>题目来源</strong>: Codeforces - Hard</p>
+<p><strong>题目描述</strong>： - 有 N 个区间更新操作：每次在区间
+<code>[l, r)</code> 上加 <code>v</code> - 有 Q 个查询操作：查询区间
+<code>[l, r)</code> 的元素之和 -
+坐标范围：<code>0 ~ 10^9</code>，需要高效处理</p>
+<p><strong>核心思想</strong>： 1.
+<strong>特殊索引</strong>：输入中出现的所有坐标（每个更新的左右端点、每个查询的左右端点）
+2.
+<strong>特殊区间</strong>：两个相邻特殊索引之间的区间，区间内所有元素值相同
+3. <strong>差分数组</strong>：用 <code>+v</code>
+标记左端点，<code>-v</code> 标记右端点，求前缀和得到实际值 4.
+<strong>双向映射</strong>：既要能用原始值找压缩索引（<code>index[v]</code>），也要能用压缩索引找原始值（<code>coordinates[i]</code>）</p>
+<h3 id="详细解释">详细解释</h3>
+<h4 id="特殊索引与特殊区间">1. 特殊索引与特殊区间</h4>
+<p>在整个范围 <code>1 ~ 10^9</code>
+中，并非每个索引都会在更新中使用。输入中提到的每个索引称为<strong>特殊索引</strong>。两个连续的特殊索引之间的区间内，每个位置的值都相同——因为不可能有更新操作插入到两个特殊索引之间（否则会产生新的特殊索引）。</p>
+<p>例如：更新 <code>[3, 10) += 5</code>，查询
+<code>[5, 8)</code>，则特殊索引为 <code>{3, 5, 8, 10}</code>，特殊区间为
+<code>[3,5)</code>、<code>[5,8)</code>、<code>[8,10)</code>。</p>
+<h4 id="差分数组">2. 差分数组</h4>
+<p>对区间 <code>[l, r)</code> 加 <code>v</code> 时： - 在位置
+<code>l</code> 标记 <code>+v</code>（表示从 l 开始增加 v） - 在位置
+<code>r</code> 标记 <code>-v</code>（表示从 r 开始减少 v）</p>
+<p>对这个差分数组求前缀和，就得到每个位置的<strong>值</strong>。</p>
+<h4 id="前缀和与区间求和">3. 前缀和与区间求和</h4>
+<p>对于查询 <code>[l, r)</code> 的和： - 区间和 = 区间内每个元素的值 ×
+区间长度 - 如果我们知道每个特殊区间的值和长度，就可以求和</p>
+<p>这引出了<strong>双重前缀和</strong>： -
+第一层前缀和：从差分数组得到每个特殊区间的值 -
+第二层前缀和：从特殊区间的”值 × 长度”得到区间累计和</p>
+<h4 id="双向坐标映射">4. 双向坐标映射</h4>
+<p>与上一题（Rectangular
+Pasture）不同，本题需要<strong>同时</strong>知道： - 原始值 →
+压缩索引：<code>index[value]</code> 用于定位 - 压缩索引 →
+原始值：<code>coordinates[i]</code> 用于计算区间长度</p>
+<p>因为我们需要知道相邻特殊索引之间的距离（即特殊区间的长度）。</p>
+<h3 id="代码实现-2">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># https://codeforces.com/gym/102951/problem/D</span>
+
+n, q = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+diff_dict = <span class="hljs-built_in">dict</span>()
+coord_set = &#123;-<span class="hljs-number">1</span>&#125;
+queries = []
+
+<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    left, right, add_val = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+    coord_set.add(left)
+    coord_set.add(right)
+    diff_dict[left] = diff_dict.get(left, <span class="hljs-number">0</span>) + add_val
+    diff_dict[right] = diff_dict.get(right, <span class="hljs-number">0</span>) - add_val
+
+<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(q):
+    left, right = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+    coord_set.add(left)
+    coord_set.add(right)
+    queries.append((left, right))
+
+coord_set = <span class="hljs-built_in">sorted</span>(coord_set)
+idx_dict = &#123;coord_set[i]: i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(coord_set))&#125;
+
+cur_value = <span class="hljs-number">0</span>
+prefix_sum = [<span class="hljs-number">0</span>]
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(coord_set)):
+    segment_len = coord_set[i] - coord_set[i - <span class="hljs-number">1</span>]
+    segment_sum = cur_value * segment_len
+    prefix_sum.append(prefix_sum[-<span class="hljs-number">1</span>] + segment_sum)
+    cur_value += diff_dict.get(coord_set[i], <span class="hljs-number">0</span>)
+
+
+<span class="hljs-keyword">for</span> (l, r) <span class="hljs-keyword">in</span> queries:
+        left_idx = idx_dict[l]
+        right_idx = idx_dict[r]
+        ans = prefix_sum[right_idx] - prefix_sum[left_idx]
+        <span class="hljs-built_in">print</span>(ans)</code></pre></div>
+<h3 id="关键点-1">关键点</h3>
+<ul>
+<li><strong>双向映射</strong>：<code>index[v]</code>
+获取压缩索引，<code>coordinates[i]</code> 获取原始值</li>
+<li><strong>差分数组技巧</strong>：用 <code>+v</code>、<code>-v</code>
+标记区间起止，前缀和得到实际值</li>
+<li><strong>空间优化</strong>：只需存储出现的坐标，最多
+<code>2·(N+Q)</code> 个</li>
+<li><strong>时间复杂度</strong>：预处理 O((N+Q) log(N+Q))，查询
+O(1)</li>
+</ul>
+<hr />
+<h2 id="六总结">六、总结</h2>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key 函数</td>
+<td>按单/多关键字排序，最常用</td>
+</tr>
+<tr>
+<td>比较器</td>
+<td>复杂排序逻辑</td>
+</tr>
+<tr>
+<td>坐标压缩</td>
+<td>大范围值映射到小范围索引</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心思想</strong>：将问题转化为可以用数组下标处理的形式。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/02-Silver/" class="category-chain-item">02_Silver</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8E%92%E5%BA%8F/" class="print-no-link">#排序</a>
+      
+        <a href="/tags/%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/" class="print-no-link">#坐标压缩</a>
+      
+        <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8/" class="print-no-link">#自定义比较器</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩</div>
+      <div>https://mingsm17518.github.io/2026/03/18/algorithm/02_Silver/02_Sorting &amp; Searching/03_Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ming</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/03/18/algorithm/02_Silver/02_Sorting%20&amp;%20Searching/04_Greedy%20Algorithms%20with%20Sorting%20%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%8E%92%E5%BA%8F/" title="Greedy Algorithms with Sorting 贪心算法与排序">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Greedy Algorithms with Sorting 贪心算法与排序</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/18/algorithm/02_Silver/02_Sorting%20&amp;%20Searching/02_Binary%20Search%20%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/" title="Binary Search 二分搜索">
+                        <span class="hidden-mobile">Binary Search 二分搜索</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
