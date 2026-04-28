@@ -241,7 +241,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/26/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/05_longest_palindrome/" target="_self">
         <div>
-          最长回文子串 题目描述 https://leetcode.cn/problems/longest-palindromic-substring/ 给你一个字符串 s，找到 s 中最长的回文子串。 解题思路 核心观察 回文串的中心可以是单个字符（奇数长度，如 “aba”）或两个相邻字符（偶数长度，如 “bb”）。从中心向两端扩展，直到不再是回文串。 算法步骤  对每个可能的中心点
+          最长回文子串题目描述https://leetcode.cn/problems/longest-palindromic-substring/ 给你一个字符串 s，找到 s 中最长的回文子串。 解题思路核心观察回文串的中心可以是单个字符（奇数长度，如 “aba”）或两个相邻字符（偶数长度，如 “bb”）。从中心向两端扩展，直到不再是回文串。 算法步骤 对每个可能的中心点进行扩展 奇数中心：以 s[i]
         </div>
       </a>
 
@@ -284,9 +284,9 @@
             
               <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
             
-              <a href="/tags/%E4%B8%AD%E5%BF%83%E6%89%A9%E5%B1%95/">#中心扩展</a>
-            
               <a href="/tags/LeetCode/">#LeetCode</a>
+            
+              <a href="/tags/%E4%B8%AD%E5%BF%83%E6%89%A9%E5%B1%95/">#中心扩展</a>
             
           </div>
         
@@ -308,7 +308,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/26/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/" target="_self">
         <div>
-          无重复字符的最长子串 题目描述 https://leetcode.cn/problems/longest-substring-without-repeating-characters/ 给定一个字符串 s，请你找出其中不含有重复字符的最长子串的长度。 解题思路 核心观察 使用滑动窗口维护一个不包含重复字符的子串。窗口左边界为 l，右边界为 r（当前遍历到的字符）。 算法步骤
+          无重复字符的最长子串题目描述https://leetcode.cn/problems/longest-substring-without-repeating-characters/ 给定一个字符串 s，请你找出其中不含有重复字符的最长子串的长度。 解题思路核心观察使用滑动窗口维护一个不包含重复字符的子串。窗口左边界为 l，右边界为 r（当前遍历到的字符）。 算法步骤 使用集合 a 存储当前窗口中的
         </div>
       </a>
 
@@ -373,7 +373,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/26/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/01_two_sum/" target="_self">
         <div>
-          两数之和 题目描述 https://leetcode.cn/problems/two-sum/ 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target 的那两个整数，并返回它们的数组下标。 你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。 你可以按任意顺序返回答案。 解题思路 核心观察 对于每个元素 nums[i
+          两数之和题目描述https://leetcode.cn/problems/two-sum/ 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target 的那两个整数，并返回它们的数组下标。 你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。 你可以按任意顺序返回答案。 解题思路核心观察对于每个元素 nums[i]，我们需要查找是否存在另一
         </div>
       </a>
 
@@ -438,7 +438,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/21/algorithm/solutions/%E4%BB%85%E4%BB%A3%E7%A0%81%E7%89%88/" target="_self">
         <div>
-          交互题：猜数字 import sys l, r, ans = 1, 7, 0 for i in range(3):     mid = (l + r) // 2     print(f&quot;? &#123;mid&#125;&quot;)     sys.stdout.flush()     a = input()     if a == &#x27;&lt;&#x27;:
+          交互题：猜数字import sys l, r, ans = 1, 7, 0 for i in range(3):     mid = (l + r) // 2     print(f&quot;? &#123;mid&#125;&quot;)     sys.stdout.flush()     a = input()     if a == &#x27;&lt;&#x27;:         l
         </div>
       </a>
 
@@ -492,7 +492,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/02_parity_check/" target="_self">
         <div>
-          奇偶排序 题目描述 给定长度为 n 的数组 a，有两种操作： - 交换两个奇数位置上的元素 - 交换两个偶数位置上的元素 判断能否通过任意次操作将数组按非递减顺序排序。 解题思路 核心观察 奇数只能和奇数交换，偶数只能和偶数交换。这意味着： - 排序后，每个位置的奇偶性必须与原数组该位置的奇偶性相同 - 我们只需要检查排序后数组的奇偶性是否与原数组一致 算法步骤  提取每个
+          奇偶排序题目描述给定长度为 n 的数组 a，有两种操作：  交换两个奇数位置上的元素 交换两个偶数位置上的元素  判断能否通过任意次操作将数组按非递减顺序排序。 解题思路核心观察奇数只能和奇数交换，偶数只能和偶数交换。这意味着：  排序后，每个位置的奇偶性必须与原数组该位置的奇偶性相同 我们只需要检查排序后数组的奇偶性是否与原数组一致  算法步骤 提取每个位置的奇偶性：arr[i] % 2 对原数
         </div>
       </a>
 
@@ -557,7 +557,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/19/algorithm/solutions/2025_SDU_Star_Remake/01_women_day/" target="_self">
         <div>
-          题目描述 根据输入的姓名和性别，筛选出所有女士（Ms），按输入顺序输出祝福。 解题思路 直接遍历输入，筛选性别为 “Ms” 的姓名输出即可。 代码实现 n = int(input()) print(&quot;Congratulations on 38 happy Women&#x27;s Day To:&quot;) for _ in range(n):     name, gende
+          题目描述根据输入的姓名和性别，筛选出所有女士（Ms），按输入顺序输出祝福。 解题思路直接遍历输入，筛选性别为 “Ms” 的姓名输出即可。 代码实现n = int(input()) print(&quot;Congratulations on 38 happy Women&#x27;s Day To:&quot;) for _ in range(n):     name, gender = map(
         </div>
       </a>
 
@@ -620,7 +620,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/21/algorithm/02_Silver/03_Graphs/05_Disjoint%20Set%20Union%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" target="_self">
         <div>
-          并查集 什么是并查集？ 并查集（Disjoint Set Union，DSU）数据结构，也称为并查集或联合-查找数据结构，允许你向图中添加边，并测试图中两个顶点是否相连。 由于实现非常简单，你可能更倾向于使用它来代替 DFS 计算连通分量。  实现 class DisjointSets:     def __init__(self, size: int) -&gt; None:
+          并查集什么是并查集？并查集（Disjoint Set Union，DSU）数据结构，也称为并查集或联合-查找数据结构，允许你向图中添加边，并测试图中两个顶点是否相连。 由于实现非常简单，你可能更倾向于使用它来代替 DFS 计算连通分量。  实现class DisjointSets:     def __init__(self, size: int) -&gt; None:         self
         </div>
       </a>
 
@@ -687,7 +687,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/13/algorithm/02_Silver/01_Prefix_Sums/" target="_self">
         <div>
-          Prefix Sums 前缀和 什么是前缀和？ 前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i] = a[1] + a[2] + ... + a[i] 其中 p[0] = 0。 为什么需要前缀和？ 在没有前缀和的情况下，计算数组区间 [l, r] 的和需
+          Prefix Sums 前缀和什么是前缀和？前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i] = a[1] + a[2] + ... + a[i]其中 p[0] = 0。 为什么需要前缀和？在没有前缀和的情况下，计算数组区间 [l, r] 的和需要 O(r-l+1) 的时
         </div>
       </a>
 
@@ -754,7 +754,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/02_Silver/02_Sorting%20&amp;%20Searching/05_Priority%20Queues%20%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" target="_self">
         <div>
-          Priority Queues 优先队列 简介 优先队列（Priority Queue 或 Heap）支持以下操作： - 插入元素 - 删除最高优先级元素 - 获取最高优先级元素 以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现 注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封
+          Priority Queues 优先队列简介优先队列（Priority Queue 或 Heap）支持以下操作：  插入元素 删除最高优先级元素 获取最高优先级元素  以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操作传入的列表，
         </div>
       </a>
 
@@ -821,7 +821,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/21/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" target="_self">
         <div>
-          最长递增子序列 Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang Contributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件  Gold - Introduction to DP (动态规划简介)
+          最长递增子序列Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew WangContributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件 Gold - Introduction to DP (动态规划简介)   教程令 $A$
         </div>
       </a>
 

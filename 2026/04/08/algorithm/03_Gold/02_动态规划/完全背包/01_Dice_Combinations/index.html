@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Dice Combinations 题解 题目描述 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1633 给定一个目标整数 N，计算有多少种骰子投掷序列，使得骰子顶面的和为 N。 限制：1 ≤ N ≤ 106  解法 问题类型：完全背包（计数问题，每种骰子点数可用无限次） 定义：dp[i] 为掷骰子得到的和为 i 的所有序列的数量 初始条件：dp[0] &#x3D;">
+    <meta name="description" content="Dice Combinations 题解题目描述https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1633 给定一个目标整数 $N$，计算有多少种骰子投掷序列，使得骰子顶面的和为 $N$。 限制：$1 \le N \le 10^6$  解法问题类型：完全背包（计数问题，每种骰子点数可用无限次） 定义：dp[i] 为掷骰子得到的和为 $i$ 的所有序列的数量 初始条件：dp[0] &#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dice Combinations 题解">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/01_Dice_Combinations/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Dice Combinations 题解 题目描述 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1633 给定一个目标整数 N，计算有多少种骰子投掷序列，使得骰子顶面的和为 N。 限制：1 ≤ N ≤ 106  解法 问题类型：完全背包（计数问题，每种骰子点数可用无限次） 定义：dp[i] 为掷骰子得到的和为 i 的所有序列的数量 初始条件：dp[0] &#x3D;">
+<meta property="og:description" content="Dice Combinations 题解题目描述https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1633 给定一个目标整数 $N$，计算有多少种骰子投掷序列，使得骰子顶面的和为 $N$。 限制：$1 \le N \le 10^6$  解法问题类型：完全背包（计数问题，每种骰子点数可用无限次） 定义：dp[i] 为掷骰子得到的和为 $i$ 的所有序列的数量 初始条件：dp[0] &#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-08T01:27:06.231Z">
 <meta property="article:modified_time" content="2026-04-08T10:55:12.711Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          236 字
+          238 字
         
       </span>
     
@@ -303,30 +303,16 @@
             
               <div class="markdown-body">
                 
-                <h1 id="dice-combinations-题解">Dice Combinations 题解</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>https://cses.fi/problemset/task/1633</p>
-<p>给定一个目标整数 <span
-class="math inline"><em>N</em></span>，计算有多少种骰子投掷序列，使得骰子顶面的和为
-<span class="math inline"><em>N</em></span>。</p>
-<p><strong>限制</strong>：<span
-class="math inline">1 ≤ <em>N</em> ≤ 10<sup>6</sup></span></p>
-<hr />
-<h2 id="解法">解法</h2>
-<p><strong>问题类型</strong>：完全背包（计数问题，每种骰子点数可用无限次）</p>
-<p><strong>定义</strong>：<code>dp[i]</code> 为掷骰子得到的和为 <span
-class="math inline"><em>i</em></span> 的所有序列的数量</p>
-<p><strong>初始条件</strong>：<code>dp[0] = 1</code>（和为 0
-只有一种方式：什么都不投），当 <span
-class="math inline"><em>i</em> &lt; 0</span> 时忽略</p>
-<p><strong>状态转移</strong>： <span
-class="math display"><em>d</em><em>p</em>[<em>i</em>] = <em>d</em><em>p</em>[<em>i</em> − 1] + <em>d</em><em>p</em>[<em>i</em> − 2] + <em>d</em><em>p</em>[<em>i</em> − 3] + <em>d</em><em>p</em>[<em>i</em> − 4] + <em>d</em><em>p</em>[<em>i</em> − 5] + <em>d</em><em>p</em>[<em>i</em> − 6]</span></p>
-<p><strong>解释</strong>：考虑最后一个掷出的骰子点数。如果是
-1，则前面和为 <span class="math inline"><em>i</em> − 1</span>；如果是
-2，则前面和为 <span class="math inline"><em>i</em> − 2</span>；…
-依此类直到 6。将所有可能的情况相加。</p>
-<h3 id="代码">代码</h3>
-<div class="code-wrapper"><pre><code class="hljs python">MOD = <span class="hljs-number">10</span>**<span class="hljs-number">9</span> + <span class="hljs-number">7</span>
+                <h1 id="Dice-Combinations-题解"><a href="#Dice-Combinations-题解" class="headerlink" title="Dice Combinations 题解"></a>Dice Combinations 题解</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1633">https://cses.fi/problemset/task/1633</a></p>
+<p>给定一个目标整数 $N$，计算有多少种骰子投掷序列，使得骰子顶面的和为 $N$。</p>
+<p><strong>限制</strong>：$1 \le N \le 10^6$</p>
+<hr>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>问题类型</strong>：完全背包（计数问题，每种骰子点数可用无限次）</p>
+<p><strong>定义</strong>：<code>dp[i]</code> 为掷骰子得到的和为 $i$ 的所有序列的数量</p>
+<p><strong>初始条件</strong>：<code>dp[0] = 1</code>（和为 0 只有一种方式：什么都不投），当 $i &lt; 0$ 时忽略</p>
+<p><strong>状态转移</strong>：</p>
+<script type="math/tex; mode=display">dp[i] = dp[i-1] + dp[i-2] + dp[i-3] + dp[i-4] + dp[i-5] + dp[i-6]</script><p><strong>解释</strong>：考虑最后一个掷出的骰子点数。如果是 1，则前面和为 $i-1$；如果是 2，则前面和为 $i-2$；… 依此类直到 6。将所有可能的情况相加。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="code-wrapper"><pre><code class="hljs python">MOD = <span class="hljs-number">10</span>**<span class="hljs-number">9</span> + <span class="hljs-number">7</span>
 n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 dp = [<span class="hljs-number">1</span>]
 
@@ -335,8 +321,7 @@ dp = [<span class="hljs-number">1</span>]
     dp.append(total % MOD)
 
 <span class="hljs-built_in">print</span>(dp[-<span class="hljs-number">1</span>])</code></pre></div>
-<p><strong>时间复杂度</strong>：O(N)
-<strong>空间复杂度</strong>：O(N)</p>
+<p><strong>时间复杂度</strong>：O(N)<br><strong>空间复杂度</strong>：O(N)</p>
 
                 
               </div>

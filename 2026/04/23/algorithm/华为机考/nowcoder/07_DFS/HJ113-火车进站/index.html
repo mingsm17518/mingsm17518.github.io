@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目描述 火车站一共有 n 辆火车需要入站，每辆火车有一个编号，编号为 1 到 n。同时，也有火车需要出站，由于火车站进出共享一个轨道，所以后入站的火车需要先出站。换句话说，对于某一辆火车，只有在它之后入站的火车都出站了，它才能出站。 现在，已经知道了火车的入站顺序，你需要计算，一共有多少种不同的出站顺序。按照字典序从小到大依次输出全部的出站顺序。">
+    <meta name="description" content="题目描述火车站一共有 n 辆火车需要入站，每辆火车有一个编号，编号为 1 到 n。同时，也有火车需要出站，由于火车站进出共享一个轨道，所以后入站的火车需要先出站。换句话说，对于某一辆火车，只有在它之后入站的火车都出站了，它才能出站。 现在，已经知道了火车的入站顺序，你需要计算，一共有多少种不同的出站顺序。按照字典序从小到大依次输出全部的出站顺序。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HJ113 火车进站">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/23/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ113-%E7%81%AB%E8%BD%A6%E8%BF%9B%E7%AB%99/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目描述 火车站一共有 n 辆火车需要入站，每辆火车有一个编号，编号为 1 到 n。同时，也有火车需要出站，由于火车站进出共享一个轨道，所以后入站的火车需要先出站。换句话说，对于某一辆火车，只有在它之后入站的火车都出站了，它才能出站。 现在，已经知道了火车的入站顺序，你需要计算，一共有多少种不同的出站顺序。按照字典序从小到大依次输出全部的出站顺序。">
+<meta property="og:description" content="题目描述火车站一共有 n 辆火车需要入站，每辆火车有一个编号，编号为 1 到 n。同时，也有火车需要出站，由于火车站进出共享一个轨道，所以后入站的火车需要先出站。换句话说，对于某一辆火车，只有在它之后入站的火车都出站了，它才能出站。 现在，已经知道了火车的入站顺序，你需要计算，一共有多少种不同的出站顺序。按照字典序从小到大依次输出全部的出站顺序。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-23T03:12:00.000Z">
 <meta property="article:modified_time" content="2026-04-23T03:21:16.950Z">
@@ -303,18 +303,17 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目描述">题目描述</h2>
-<p>火车站一共有 n 辆火车需要入站，每辆火车有一个编号，编号为 1 到
-n。同时，也有火车需要出站，由于火车站进出共享一个轨道，所以后入站的火车需要先出站。换句话说，对于某一辆火车，只有在它之后入站的火车都出站了，它才能出站。</p>
+                <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>火车站一共有 n 辆火车需要入站，每辆火车有一个编号，编号为 1 到 n。同时，也有火车需要出站，由于火车站进出共享一个轨道，所以后入站的火车需要先出站。换句话说，对于某一辆火车，只有在它之后入站的火车都出站了，它才能出站。</p>
 <p>现在，已经知道了火车的入站顺序，你需要计算，一共有多少种不同的出站顺序。按照字典序从小到大依次输出全部的出站顺序。</p>
 <span id="more"></span>
-<h2 id="解题思路">解题思路</h2>
-<p>这道题本质上是求栈的出栈序列。栈的特点是<strong>后进先出(LIFO)</strong>，因此：
-- 每次决策有两个选择：<strong>入栈</strong> 或 <strong>出栈</strong> -
-只有栈不为空时才能出栈 - 所有火车都入完且栈空时得到一个完整序列</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题本质上是求栈的出栈序列。栈的特点是<strong>后进先出(LIFO)</strong>，因此：</p>
+<ul>
+<li>每次决策有两个选择：<strong>入栈</strong> 或 <strong>出栈</strong></li>
+<li>只有栈不为空时才能出栈</li>
+<li>所有火车都入完且栈空时得到一个完整序列</li>
+</ul>
 <p>使用<strong>深度优先搜索(DFS)</strong>遍历所有可能的出站顺序。</p>
-<h2 id="代码实现">代码实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python">res = []
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">res = []
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">wait, stack, out</span>):
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> wait <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> stack:
@@ -328,9 +327,7 @@ n, nums = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">inp
 dfs(nums, [], [])
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">sorted</span>(res):
 	<span class="hljs-built_in">print</span>(i)</code></pre></div>
-<h2 id="代码解析">代码解析</h2>
-<h3 id="核心函数-dfswait-stack-out">核心函数
-<code>dfs(wait, stack, out)</code></h3>
+<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="核心函数-dfs-wait-stack-out"><a href="#核心函数-dfs-wait-stack-out" class="headerlink" title="核心函数 dfs(wait, stack, out)"></a>核心函数 <code>dfs(wait, stack, out)</code></h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -353,14 +350,13 @@ dfs(nums, [], [])
 </tr>
 </tbody>
 </table>
-<h3 id="递归逻辑">递归逻辑</h3>
-<ol type="1">
+</div>
+<h3 id="递归逻辑"><a href="#递归逻辑" class="headerlink" title="递归逻辑"></a>递归逻辑</h3><ol>
 <li><strong>终止条件</strong>：当等待队列为空且栈为空时，说明所有火车都已出站，记录当前序列</li>
 <li><strong>入栈分支</strong>：如果有火车等待入站，可以选择让它入栈</li>
 <li><strong>出栈分支</strong>：如果栈不为空，可以选择让栈顶火车出站</li>
 </ol>
-<h3 id="搜索树示意以-1-2-3-为例">搜索树示意（以 1 2 3 为例）</h3>
-<div class="code-wrapper"><pre><code class="hljs inform7">初始: wait=<span class="hljs-comment">[1,2,3]</span>, stack=<span class="hljs-comment">[]</span>, out=<span class="hljs-comment">[]</span>
+<h3 id="搜索树示意（以-1-2-3-为例）"><a href="#搜索树示意（以-1-2-3-为例）" class="headerlink" title="搜索树示意（以 1 2 3 为例）"></a>搜索树示意（以 1 2 3 为例）</h3><div class="code-wrapper"><pre><code class="hljs inform7">初始: wait=<span class="hljs-comment">[1,2,3]</span>, stack=<span class="hljs-comment">[]</span>, out=<span class="hljs-comment">[]</span>
 
                         <span class="hljs-comment">[]</span>
                        /
@@ -382,19 +378,14 @@ stack=<span class="hljs-comment">[1,2,3]</span>    out=<span class="hljs-comment
    |                                  |
 <span class="hljs-comment">[3,2,1]</span>                            出1
                                    <span class="hljs-comment">[1,3,2]</span></code></pre></div>
-<p><strong>关键点</strong>：根节点栈为空，无法出栈。只有入了1之后，才能从
-<code>stack=[1]</code> 状态选择”出1”。</p>
-<h2 id="复杂度分析">复杂度分析</h2>
-<ul>
-<li><strong>时间复杂度</strong>：O(2^n) -
-每个火车最多入栈、出栈各一次</li>
+<p><strong>关键点</strong>：根节点栈为空，无法出栈。只有入了1之后，才能从 <code>stack=[1]</code> 状态选择”出1”。</p>
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
+<li><strong>时间复杂度</strong>：O(2^n) - 每个火车最多入栈、出栈各一次</li>
 <li><strong>空间复杂度</strong>：O(n) - 递归栈深度</li>
 </ul>
-<h2 id="优化建议">优化建议</h2>
-<p>当前实现已经是比较简洁的写法。如果需要进一步优化，可以考虑：</p>
-<ol type="1">
-<li><strong>使用 itertools</strong>：C++ 可用
-<code>next_permutation</code>，Python 可用 <code>itertools</code></li>
+<h2 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h2><p>当前实现已经是比较简洁的写法。如果需要进一步优化，可以考虑：</p>
+<ol>
+<li><strong>使用 itertools</strong>：C++ 可用 <code>next_permutation</code>，Python 可用 <code>itertools</code></li>
 <li><strong>剪枝</strong>：当等待队列和栈都为空时直接返回</li>
 <li><strong>字典序优化</strong>：搜索顺序自然保证字典序输出</li>
 </ol>

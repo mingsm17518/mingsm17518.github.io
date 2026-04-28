@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greedy Algorithms 贪心算法 什么是贪心算法？ 贪心算法是一种在每一步选择中都采取局部最优解的算法，期望通过一系列局部最优选择达到全局最优。 贪心算法的特点  贪心选择性质：每一步都做出当前最优的选择 最优子结构：问题的最优解包含子问题的最优解 不可回溯：一旦做出选择，就不再考虑其他可能  贪心 vs 动态规划    特征 贪心算法 动态规划">
+    <meta name="description" content="Greedy Algorithms 贪心算法什么是贪心算法？贪心算法是一种在每一步选择中都采取局部最优解的算法，期望通过一系列局部最优选择达到全局最优。 贪心算法的特点 贪心选择性质：每一步都做出当前最优的选择 最优子结构：问题的最优解包含子问题的最优解 不可回溯：一旦做出选择，就不再考虑其他可能  贪心 vs 动态规划    特征 贪心算法 动态规划     选择策略 只考虑当前最优 考虑所有可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Greedy Algorithms 贪心算法">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/18/algorithm/01_Bronze/04_Greedy%20Algorithms%20%20%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Greedy Algorithms 贪心算法 什么是贪心算法？ 贪心算法是一种在每一步选择中都采取局部最优解的算法，期望通过一系列局部最优选择达到全局最优。 贪心算法的特点  贪心选择性质：每一步都做出当前最优的选择 最优子结构：问题的最优解包含子问题的最优解 不可回溯：一旦做出选择，就不再考虑其他可能  贪心 vs 动态规划    特征 贪心算法 动态规划">
+<meta property="og:description" content="Greedy Algorithms 贪心算法什么是贪心算法？贪心算法是一种在每一步选择中都采取局部最优解的算法，期望通过一系列局部最优选择达到全局最优。 贪心算法的特点 贪心选择性质：每一步都做出当前最优的选择 最优子结构：问题的最优解包含子问题的最优解 不可回溯：一旦做出选择，就不再考虑其他可能  贪心 vs 动态规划    特征 贪心算法 动态规划     选择策略 只考虑当前最优 考虑所有可">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-17T16:33:43.542Z">
 <meta property="article:modified_time" content="2026-03-17T16:33:43.542Z">
@@ -292,16 +292,13 @@
             
               <div class="markdown-body">
                 
-                <h1 id="greedy-algorithms-贪心算法">Greedy Algorithms 贪心算法</h1>
-<h2 id="什么是贪心算法">什么是贪心算法？</h2>
-<p>贪心算法是一种在每一步选择中都采取<strong>局部最优</strong>解的算法，期望通过一系列局部最优选择达到全局最优。</p>
-<h3 id="贪心算法的特点">贪心算法的特点</h3>
-<ol type="1">
+                <h1 id="Greedy-Algorithms-贪心算法"><a href="#Greedy-Algorithms-贪心算法" class="headerlink" title="Greedy Algorithms 贪心算法"></a>Greedy Algorithms 贪心算法</h1><h2 id="什么是贪心算法？"><a href="#什么是贪心算法？" class="headerlink" title="什么是贪心算法？"></a>什么是贪心算法？</h2><p>贪心算法是一种在每一步选择中都采取<strong>局部最优</strong>解的算法，期望通过一系列局部最优选择达到全局最优。</p>
+<h3 id="贪心算法的特点"><a href="#贪心算法的特点" class="headerlink" title="贪心算法的特点"></a>贪心算法的特点</h3><ol>
 <li><strong>贪心选择性质</strong>：每一步都做出当前最优的选择</li>
 <li><strong>最优子结构</strong>：问题的最优解包含子问题的最优解</li>
 <li><strong>不可回溯</strong>：一旦做出选择，就不再考虑其他可能</li>
 </ol>
-<h3 id="贪心-vs-动态规划">贪心 vs 动态规划</h3>
+<h3 id="贪心-vs-动态规划"><a href="#贪心-vs-动态规划" class="headerlink" title="贪心 vs 动态规划"></a>贪心 vs 动态规划</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -333,28 +330,31 @@
 </tr>
 </tbody>
 </table>
-<h3 id="何时使用贪心">何时使用贪心？</h3>
-<p>贪心算法适用于满足以下条件的问题： - 具有贪心选择性质 - 最优子结构 -
-问题规模较大，需要高效算法</p>
-<hr />
-<h2 id="经典例题mad-scientist-usaco-bronze">经典例题：Mad Scientist
-(USACO Bronze)</h2>
-<h3 id="题目描述">题目描述</h3>
-<p>给定两个长度为 n 的字符串 a 和 b，每次操作可以将 a
-的任意连续子串反转。求最少需要多少次操作才能将 a 变成 b。</p>
-<h3 id="算法思路">算法思路</h3>
-<p>核心思想：<strong>匹配段计数</strong></p>
-<p>使用 flag 标志当前是否处于”不匹配段”中： - 当
-flag=True（不在段中）时： - 若 a[i] !=
-b[i]，说明开始一个新的不匹配段，ans++，flag 设为 False - 当
-flag=False（正在段中）时： - 若 a[i] == b[i]，说明当前不匹配段结束，flag
-设回 True</p>
+</div>
+<h3 id="何时使用贪心？"><a href="#何时使用贪心？" class="headerlink" title="何时使用贪心？"></a>何时使用贪心？</h3><p>贪心算法适用于满足以下条件的问题：</p>
+<ul>
+<li>具有贪心选择性质</li>
+<li>最优子结构</li>
+<li>问题规模较大，需要高效算法</li>
+</ul>
+<hr>
+<h2 id="经典例题：Mad-Scientist-USACO-Bronze"><a href="#经典例题：Mad-Scientist-USACO-Bronze" class="headerlink" title="经典例题：Mad Scientist (USACO Bronze)"></a>经典例题：Mad Scientist (USACO Bronze)</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定两个长度为 n 的字符串 a 和 b，每次操作可以将 a 的任意连续子串反转。求最少需要多少次操作才能将 a 变成 b。</p>
+<h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><p>核心思想：<strong>匹配段计数</strong></p>
+<p>使用 flag 标志当前是否处于”不匹配段”中：</p>
+<ul>
+<li>当 flag=True（不在段中）时：<ul>
+<li>若 a[i] != b[i]，说明开始一个新的不匹配段，ans++，flag 设为 False</li>
+</ul>
+</li>
+<li>当 flag=False（正在段中）时：<ul>
+<li>若 a[i] == b[i]，说明当前不匹配段结束，flag 设回 True</li>
+</ul>
+</li>
+</ul>
 <p>最终 ans 即为答案。</p>
-<h3 id="正确性证明">正确性证明</h3>
-<p>每次操作（反转连续子串）可以消除一个连续的不匹配段。因此<strong>最少操作数等于不匹配段的个数</strong>。</p>
+<h3 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a>正确性证明</h3><p>每次操作（反转连续子串）可以消除一个连续的不匹配段。因此<strong>最少操作数等于不匹配段的个数</strong>。</p>
 <p>贪心策略在遇到不匹配时立即开始新段，在匹配时立即结束当前段，能准确计数所有不匹配段。</p>
-<h3 id="代码实现">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 sys.stdin = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;breedflip.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)
 sys.stdout = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;breedflip.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>)
@@ -376,62 +376,45 @@ ans = <span class="hljs-number">0</span>
             flag = <span class="hljs-literal">True</span>
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h3 id="时间复杂度">时间复杂度</h3>
-<ul>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
 <li>时间复杂度：O(n)</li>
 <li>空间复杂度：O(1)</li>
 </ul>
-<hr />
-<h2 id="经典例题watching-mooloo-usaco-bronze">经典例题：Watching Mooloo
-(USACO Bronze)</h2>
-<h3 id="题目描述-1">题目描述</h3>
-<p>https://usaco.org/index.php?page=viewproblem2&amp;cpid=1301</p>
-<p>农民 John 要观看 N 个电影，每个电影在第 <span
-class="math inline"><em>d</em><sub><em>i</em></sub></span> 天上映（<span
-class="math inline">1 ≤ <em>d</em><sub><em>i</em></sub> ≤ 10<sup>14</sup></span>，<span
-class="math inline"><em>d</em><sub>1</sub> &lt; <em>d</em><sub>2</sub> &lt; … &lt; <em>d</em><sub><em>N</em></sub></span>）。</p>
-<p>Mooloo 订阅规则： - 订阅连续 <span
-class="math inline"><em>d</em></span> 天的费用为 <span
-class="math inline"><em>d</em> + <em>K</em></span> 美元（<span
-class="math inline">1 ≤ <em>K</em> ≤ 10<sup>9</sup></span>） -
-可以随时开始订阅，也可以多次订阅</p>
+<hr>
+<h2 id="经典例题：Watching-Mooloo-USACO-Bronze"><a href="#经典例题：Watching-Mooloo-USACO-Bronze" class="headerlink" title="经典例题：Watching Mooloo (USACO Bronze)"></a>经典例题：Watching Mooloo (USACO Bronze)</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p><a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=1301">https://usaco.org/index.php?page=viewproblem2&amp;cpid=1301</a></p>
+<p>农民 John 要观看 N 个电影，每个电影在第 $d_i$ 天上映（$1 \leq d_i \leq 10^{14}$，$d_1 &lt; d_2 &lt; \dots &lt; d_N$）。</p>
+<p>Mooloo 订阅规则：</p>
+<ul>
+<li>订阅连续 $d$ 天的费用为 $d + K$ 美元（$1 \leq K \leq 10^9$）</li>
+<li>可以随时开始订阅，也可以多次订阅</li>
+</ul>
 <p>求农民 John 观看所有 N 部电影所需的最小总费用。</p>
-<h3 id="算法思路-1">算法思路</h3>
-<p><strong>贪心策略</strong>：尽可能将多个观影日期合并到同一个订阅中。</p>
-<p>核心思想： - 如果相邻两部电影的间隔为 <span
-class="math inline"><em>g</em><em>a</em><em>p</em></span>，那么： -
-合并订阅费用 = <span
-class="math inline"><em>g</em><em>a</em><em>p</em> + <em>K</em></span>（从第
-<span class="math inline"><em>d</em><sub>1</sub></span> 天开始订阅 <span
-class="math inline"><em>g</em><em>a</em><em>p</em></span> 天） -
-分开订阅费用 = <span
-class="math inline">2 × (<em>K</em> + 1)</span>（两个独立订阅各需 <span
-class="math inline"><em>K</em> + 1</span> 天） - 当 <span
-class="math inline"><em>g</em><em>a</em><em>p</em> + <em>K</em> &gt; 2(<em>K</em> + 1)</span>，即
-<span
-class="math inline"><em>g</em><em>a</em><em>p</em> &gt; <em>K</em> + 1</span>
-时，分开订阅更划算 - 因此，当 <span
-class="math inline"><em>g</em><em>a</em><em>p</em> &gt; <em>K</em> + 1</span>
-时开新订阅，否则合并到当前订阅</p>
-<p>具体实现： - 从第一天开始订阅 -
-遍历后续观影日期，计算与上一个日期的间隔 - 如果间隔 <span
-class="math inline"> &gt; <em>K</em> + 1</span>，则开始新订阅 -
-否则继续使用当前订阅</p>
-<h3 id="正确性证明-1">正确性证明</h3>
-<p><strong>贪心选择性质</strong>：对于任意相邻观影日期，如果间隔 <span
-class="math inline"><em>g</em><em>a</em><em>p</em> ≤ <em>K</em> + 1</span>，合并订阅更优（<span
-class="math inline"><em>g</em><em>a</em><em>p</em> + <em>K</em> ≤ 2(<em>K</em> + 1)</span>）；如果间隔
-<span
-class="math inline"><em>g</em><em>a</em><em>p</em> &gt; <em>K</em> + 1</span>，分开订阅更优。</p>
-<p><strong>最优子结构</strong>：假设已经确定前 <span
-class="math inline"><em>i</em></span> 部电影的最佳订阅方案，那么对于第
-<span class="math inline"><em>i</em> + 1</span> 部电影： - 如果 <span
-class="math inline"><em>d</em><sub><em>i</em> + 1</sub> − <em>d</em><sub><em>i</em></sub> ≤ <em>K</em> + 1</span>，将其加入当前订阅不会增加费用
-- 如果 <span
-class="math inline"><em>d</em><sub><em>i</em> + 1</sub> − <em>d</em><sub><em>i</em></sub> &gt; <em>K</em> + 1</span>，必须开始新订阅</p>
+<h3 id="算法思路-1"><a href="#算法思路-1" class="headerlink" title="算法思路"></a>算法思路</h3><p><strong>贪心策略</strong>：尽可能将多个观影日期合并到同一个订阅中。</p>
+<p>核心思想：</p>
+<ul>
+<li>如果相邻两部电影的间隔为 $gap$，那么：<ul>
+<li>合并订阅费用 = $gap + K$（从第 $d_1$ 天开始订阅 $gap$ 天）</li>
+<li>分开订阅费用 = $2 \times (K + 1)$（两个独立订阅各需 $K+1$ 天）</li>
+</ul>
+</li>
+<li>当 $gap + K &gt; 2(K + 1)$，即 $gap &gt; K + 1$ 时，分开订阅更划算</li>
+<li>因此，当 $gap &gt; K + 1$ 时开新订阅，否则合并到当前订阅</li>
+</ul>
+<p>具体实现：</p>
+<ul>
+<li>从第一天开始订阅</li>
+<li>遍历后续观影日期，计算与上一个日期的间隔</li>
+<li>如果间隔 $&gt; K + 1$，则开始新订阅</li>
+<li>否则继续使用当前订阅</li>
+</ul>
+<h3 id="正确性证明-1"><a href="#正确性证明-1" class="headerlink" title="正确性证明"></a>正确性证明</h3><p><strong>贪心选择性质</strong>：对于任意相邻观影日期，如果间隔 $gap \leq K + 1$，合并订阅更优（$gap + K \leq 2(K + 1)$）；如果间隔 $gap &gt; K + 1$，分开订阅更优。</p>
+<p><strong>最优子结构</strong>：假设已经确定前 $i$ 部电影的最佳订阅方案，那么对于第 $i+1$ 部电影：</p>
+<ul>
+<li>如果 $d_{i+1} - d_i \leq K + 1$，将其加入当前订阅不会增加费用</li>
+<li>如果 $d_{i+1} - d_i &gt; K + 1$，必须开始新订阅</li>
+</ul>
 <p>因此，贪心策略在每个间隔处做出最优选择，最终得到全局最优解。</p>
-<h3 id="代码实现-1">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python">n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python">n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 arr = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
 ans = k + <span class="hljs-number">1</span>
 
@@ -442,59 +425,48 @@ ans = k + <span class="hljs-number">1</span>
         ans += k + <span class="hljs-number">1</span>
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h3 id="时间复杂度-1">时间复杂度</h3>
-<ul>
+<h3 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
 <li>时间复杂度：O(n)</li>
 <li>空间复杂度：O(1)</li>
 </ul>
-<h3 id="核心要点">核心要点</h3>
-<ol type="1">
-<li>每个订阅必须从观影日期开始，订阅 <span
-class="math inline"><em>K</em> + 1</span> 天的费用为 <span
-class="math inline"><em>K</em> + 1 + <em>K</em> = 2<em>K</em> + 1</span></li>
-<li>贪心决策点：当 <span
-class="math inline"><em>g</em><em>a</em><em>p</em> &gt; <em>K</em> + 1</span>
-时开新订阅，否则合并到当前订阅</li>
-<li>第一部电影也需要新订阅，费用为 <span
-class="math inline"><em>K</em> + 1</span></li>
+<h3 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h3><ol>
+<li>每个订阅必须从观影日期开始，订阅 $K+1$ 天的费用为 $K+1+K=2K+1$</li>
+<li>贪心决策点：当 $gap &gt; K + 1$ 时开新订阅，否则合并到当前订阅</li>
+<li>第一部电影也需要新订阅，费用为 $K + 1$</li>
 </ol>
-<hr />
-<h2 id="经典例题cow-tipping-usaco-bronze">经典例题：Cow Tipping (USACO
-Bronze)</h2>
-<h3 id="题目描述-2">题目描述</h3>
-<p>https://usaco.org/index.php?page=viewproblem2&amp;cpid=1060</p>
-<p>给定一个 <span class="math inline"><em>N</em> × <em>N</em></span>
-的格子（<span
-class="math inline"><em>N</em> ≤ 10</span>），每个格子上有一头牛： -
-<code>0</code> = 站立（正确状态） - <code>1</code> =
-躺下（错误状态）</p>
-<p>每次操作可以选择左上角为 <code>(0, 0)</code>、右下角为
-<code>(r, c)</code> 的矩形，将该矩形内所有格子翻转（0 变 1，1 变
-0）。</p>
+<hr>
+<h2 id="经典例题：Cow-Tipping-USACO-Bronze"><a href="#经典例题：Cow-Tipping-USACO-Bronze" class="headerlink" title="经典例题：Cow Tipping (USACO Bronze)"></a>经典例题：Cow Tipping (USACO Bronze)</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p><a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=1060">https://usaco.org/index.php?page=viewproblem2&amp;cpid=1060</a></p>
+<p>给定一个 $N \times N$ 的格子（$N \leq 10$），每个格子上有一头牛：</p>
+<ul>
+<li><code>0</code> = 站立（正确状态）</li>
+<li><code>1</code> = 躺下（错误状态）</li>
+</ul>
+<p>每次操作可以选择左上角为 <code>(0, 0)</code>、右下角为 <code>(r, c)</code> 的矩形，将该矩形内所有格子翻转（0 变 1，1 变 0）。</p>
 <p>求最少需要多少次操作才能让所有格子变成 0。</p>
-<h3 id="算法思路-2">算法思路</h3>
-<p><strong>贪心策略</strong>：从右下角开始，逐个处理每个格子。</p>
-<p>核心思想： - 对于格子 <code>(i, j)</code>，如果它是
-1（躺下），我们<strong>必须</strong>对以 <code>(i, j)</code>
-为右下角的矩形进行操作才能改变它 -
-这是因为操作只能影响左上角的矩形，且一旦处理完某个格子，后续操作不会影响到它</p>
-<p>具体实现： - 从右下角 <code>(N-1, N-1)</code> 开始 - 对于每个格子
-<code>(i, j)</code>： - 如果当前值为 1，应用操作翻转以
-<code>(i, j)</code> 为右下角的矩形 - 计数器 +1 -
-移动到下一个格子（先向左，到头后向上）</p>
-<h3 id="正确性证明-2">正确性证明</h3>
-<p><strong>贪心选择性质</strong>：对于任意格子
-<code>(i, j)</code>，如果它是 1，唯一能改变它的方式是对以
-<code>(i, j)</code>
-为右下角的矩形进行操作。更大的矩形会多余地翻转更多格子，因此最小的必要操作就是翻转以
-<code>(i, j)</code> 为右下角的矩形。</p>
-<p><strong>最优子结构</strong>：假设我们已经处理完所有右下角在
-<code>(i, j)</code> 之后的格子，现在处理格子 <code>(i, j)</code>： -
-如果它是 0，不需要操作，后续操作也不会影响它 - 如果它是
-1，必须进行操作，且这是唯一的选择</p>
+<h3 id="算法思路-2"><a href="#算法思路-2" class="headerlink" title="算法思路"></a>算法思路</h3><p><strong>贪心策略</strong>：从右下角开始，逐个处理每个格子。</p>
+<p>核心思想：</p>
+<ul>
+<li>对于格子 <code>(i, j)</code>，如果它是 1（躺下），我们<strong>必须</strong>对以 <code>(i, j)</code> 为右下角的矩形进行操作才能改变它</li>
+<li>这是因为操作只能影响左上角的矩形，且一旦处理完某个格子，后续操作不会影响到它</li>
+</ul>
+<p>具体实现：</p>
+<ul>
+<li>从右下角 <code>(N-1, N-1)</code> 开始</li>
+<li>对于每个格子 <code>(i, j)</code>：<ul>
+<li>如果当前值为 1，应用操作翻转以 <code>(i, j)</code> 为右下角的矩形</li>
+<li>计数器 +1</li>
+</ul>
+</li>
+<li>移动到下一个格子（先向左，到头后向上）</li>
+</ul>
+<h3 id="正确性证明-2"><a href="#正确性证明-2" class="headerlink" title="正确性证明"></a>正确性证明</h3><p><strong>贪心选择性质</strong>：对于任意格子 <code>(i, j)</code>，如果它是 1，唯一能改变它的方式是对以 <code>(i, j)</code> 为右下角的矩形进行操作。更大的矩形会多余地翻转更多格子，因此最小的必要操作就是翻转以 <code>(i, j)</code> 为右下角的矩形。</p>
+<p><strong>最优子结构</strong>：假设我们已经处理完所有右下角在 <code>(i, j)</code> 之后的格子，现在处理格子 <code>(i, j)</code>：</p>
+<ul>
+<li>如果它是 0，不需要操作，后续操作也不会影响它</li>
+<li>如果它是 1，必须进行操作，且这是唯一的选择</li>
+</ul>
 <p>因此，贪心策略在每个格子做出最优选择，最终得到全局最优解。</p>
-<h3 id="代码实现-2">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python">TIPPED = <span class="hljs-string">&quot;0&quot;</span>
+<h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python">TIPPED = <span class="hljs-string">&quot;0&quot;</span>
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">flip</span>(<span class="hljs-params">r: <span class="hljs-built_in">int</span>, c: <span class="hljs-built_in">int</span>, cows</span>):
     <span class="hljs-keyword">if</span> cows[r][c]:
@@ -527,14 +499,11 @@ y = width - <span class="hljs-number">1</span>
         x = y
 
 <span class="hljs-built_in">print</span>(min_flips, file=<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;cowtip.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>))</code></pre></div>
-<h3 id="时间复杂度-2">时间复杂度</h3>
-<ul>
-<li>时间复杂度：O(N³) - 每次翻转操作最多影响 N² 个格子，总共最多 N²
-次操作</li>
+<h3 id="时间复杂度-2"><a href="#时间复杂度-2" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
+<li>时间复杂度：O(N³) - 每次翻转操作最多影响 N² 个格子，总共最多 N² 次操作</li>
 <li>空间复杂度：O(N²) - 存储网格</li>
 </ul>
-<h3 id="核心要点-1">核心要点</h3>
-<ol type="1">
+<h3 id="核心要点-1"><a href="#核心要点-1" class="headerlink" title="核心要点"></a>核心要点</h3><ol>
 <li>贪心策略：从右下角开始，每个格子只处理一次</li>
 <li>关键洞察：对于每个 1，唯一能消除它的方式是操作包含它的最小矩形</li>
 <li>为什么贪心有效：操作只影响左上方向的格子，从右下开始确保不会影响已处理的格子</li>

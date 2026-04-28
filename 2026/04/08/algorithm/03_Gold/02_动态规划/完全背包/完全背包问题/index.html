@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="完全背包问题 什么是完全背包 完全背包（Unbounded Knapsack） 是动态规划中的经典问题：  有 n 种物品，每种物品有重量&#x2F;价值 wi，每种物品可以无限次使用，求恰好凑成重量 W 的方案数或最大价值。  特点  物品数量无限：每种物品可以重复使用多次 状态无后效性：只关心当前重量，不关心用了哪些物品 组合方式：求的是组合（无序）还是排列（有序）  做题方">
+    <meta name="description" content="完全背包问题什么是完全背包完全背包（Unbounded Knapsack） 是动态规划中的经典问题：  有 n 种物品，每种物品有重量&#x2F;价值 $w_i$，每种物品可以无限次使用，求恰好凑成重量 $W$ 的方案数或最大价值。  特点 物品数量无限：每种物品可以重复使用多次 状态无后效性：只关心当前重量，不关心用了哪些物品 组合方式：求的是组合（无序）还是排列（有序）  做题方法核心思路：将大问题拆分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="完全背包问题">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="完全背包问题 什么是完全背包 完全背包（Unbounded Knapsack） 是动态规划中的经典问题：  有 n 种物品，每种物品有重量&#x2F;价值 wi，每种物品可以无限次使用，求恰好凑成重量 W 的方案数或最大价值。  特点  物品数量无限：每种物品可以重复使用多次 状态无后效性：只关心当前重量，不关心用了哪些物品 组合方式：求的是组合（无序）还是排列（有序）  做题方">
+<meta property="og:description" content="完全背包问题什么是完全背包完全背包（Unbounded Knapsack） 是动态规划中的经典问题：  有 n 种物品，每种物品有重量&#x2F;价值 $w_i$，每种物品可以无限次使用，求恰好凑成重量 $W$ 的方案数或最大价值。  特点 物品数量无限：每种物品可以重复使用多次 状态无后效性：只关心当前重量，不关心用了哪些物品 组合方式：求的是组合（无序）还是排列（有序）  做题方法核心思路：将大问题拆分">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-08T12:19:10.286Z">
 <meta property="article:modified_time" content="2026-04-08T12:20:02.661Z">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          511 字
+          512 字
         
       </span>
     
@@ -302,44 +302,32 @@
             
               <div class="markdown-body">
                 
-                <h1 id="完全背包问题">完全背包问题</h1>
-<h2 id="什么是完全背包">什么是完全背包</h2>
-<p><strong>完全背包（Unbounded Knapsack）</strong>
-是动态规划中的经典问题：</p>
+                <h1 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h1><h2 id="什么是完全背包"><a href="#什么是完全背包" class="headerlink" title="什么是完全背包"></a>什么是完全背包</h2><p><strong>完全背包（Unbounded Knapsack）</strong> 是动态规划中的经典问题：</p>
 <blockquote>
-<p>有 n 种物品，每种物品有重量/价值 <span
-class="math inline"><em>w</em><sub><em>i</em></sub></span>，每种物品可以<strong>无限次使用</strong>，求恰好凑成重量
-<span class="math inline"><em>W</em></span> 的方案数或最大价值。</p>
+<p>有 n 种物品，每种物品有重量/价值 $w_i$，每种物品可以<strong>无限次使用</strong>，求恰好凑成重量 $W$ 的方案数或最大价值。</p>
 </blockquote>
-<h3 id="特点">特点</h3>
-<ol type="1">
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
 <li><strong>物品数量无限</strong>：每种物品可以重复使用多次</li>
 <li><strong>状态无后效性</strong>：只关心当前重量，不关心用了哪些物品</li>
 <li><strong>组合方式</strong>：求的是组合（无序）还是排列（有序）</li>
 </ol>
-<h3 id="做题方法">做题方法</h3>
-<p><strong>核心思路</strong>：将大问题拆分为小问题</p>
-<ol type="1">
-<li><strong>定义状态</strong>：<code>dp[j]</code> 表示凑成重量 j
-的方案数/最大价值</li>
-<li><strong>初始条件</strong>：<code>dp[0] = 1</code>（方案数）或
-<code>dp[0] = 0</code>（价值）</li>
-<li><strong>状态转移</strong>：
-<ul>
+<h3 id="做题方法"><a href="#做题方法" class="headerlink" title="做题方法"></a>做题方法</h3><p><strong>核心思路</strong>：将大问题拆分为小问题</p>
+<ol>
+<li><strong>定义状态</strong>：<code>dp[j]</code> 表示凑成重量 j 的方案数/最大价值</li>
+<li><strong>初始条件</strong>：<code>dp[0] = 1</code>（方案数）或 <code>dp[0] = 0</code>（价值）</li>
+<li><strong>状态转移</strong>：<ul>
 <li>方案数：<code>dp[j] += dp[j - w_i]</code></li>
 <li>最大价值：<code>dp[j] = max(dp[j], dp[j - w_i] + value_i)</code></li>
-</ul></li>
-<li><strong>遍历顺序</strong>：
-<ul>
-<li><strong>有序</strong>：先遍历目标 j，再遍历物品
-i（顺序不同算不同）</li>
-<li><strong>无序</strong>：先遍历物品 i，再遍历目标
-j（顺序不同视为相同）</li>
-</ul></li>
+</ul>
+</li>
+<li><strong>遍历顺序</strong>：<ul>
+<li><strong>有序</strong>：先遍历目标 j，再遍历物品 i（顺序不同算不同）</li>
+<li><strong>无序</strong>：先遍历物品 i，再遍历目标 j（顺序不同视为相同）</li>
+</ul>
+</li>
 </ol>
-<hr />
-<h2 id="完全背包-vs-0-1-背包">完全背包 vs 0-1 背包</h2>
-<p>0-1 背包（倒序）</p>
+<hr>
+<h2 id="完全背包-vs-0-1-背包"><a href="#完全背包-vs-0-1-背包" class="headerlink" title="完全背包 vs 0-1 背包"></a>完全背包 vs 0-1 背包</h2><p>0-1 背包（倒序）</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
     <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(W, weight[i] - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):
         dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - weight[i]] + value[i])</code></pre></div>
@@ -347,24 +335,12 @@ j（顺序不同视为相同）</li>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
     <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(weight[i], W + <span class="hljs-number">1</span>):
         dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - weight[i]] + value[i])</code></pre></div>
-<hr />
-<h2 id="最大价值问题">最大价值问题</h2>
-<h3 id="问题描述">问题描述</h3>
-<p>有 <span class="math inline"><em>N</em></span> 种物品，每种物品有重量
-<span class="math inline"><em>w</em><sub><em>i</em></sub></span> 和价值
-<span
-class="math inline"><em>v</em><sub><em>i</em></sub></span>，每种物品可以使用无限次，求在不超过背包容量
-<span class="math inline"><em>W</em></span>
-的情况下，选择物品使得总价值最大。</p>
-<h3 id="解法">解法</h3>
-<p><strong>定义</strong>：<code>dp[j]</code> 为背包容量为 j
-时的最大价值</p>
-<p><strong>初始条件</strong>：<code>dp[j] = 0</code>（容量为 0 时价值为
-0）</p>
-<p><strong>状态转移</strong>： <span
-class="math display"><em>d</em><em>p</em>[<em>j</em>] = max (<em>d</em><em>p</em>[<em>j</em>], <em>d</em><em>p</em>[<em>j</em> − <em>w</em><sub><em>i</em></sub>] + <em>v</em><sub><em>i</em></sub>)</span></p>
-<h3 id="代码实现">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 完全背包 - 一维 DP</span>
+<hr>
+<h2 id="最大价值问题"><a href="#最大价值问题" class="headerlink" title="最大价值问题"></a>最大价值问题</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>有 $N$ 种物品，每种物品有重量 $w_i$ 和价值 $v_i$，每种物品可以使用无限次，求在不超过背包容量 $W$ 的情况下，选择物品使得总价值最大。</p>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p><strong>定义</strong>：<code>dp[j]</code> 为背包容量为 j 时的最大价值</p>
+<p><strong>初始条件</strong>：<code>dp[j] = 0</code>（容量为 0 时价值为 0）</p>
+<p><strong>状态转移</strong>：</p>
+<script type="math/tex; mode=display">dp[j] = \max(dp[j], dp[j - w_i] + v_i)</script><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 完全背包 - 一维 DP</span>
 N, W = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 dp = [<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</span>)
 
@@ -374,11 +350,9 @@ dp = [<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</sp
         dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - w] + v)
 
 <span class="hljs-built_in">print</span>(dp[W])</code></pre></div>
-<p><strong>时间复杂度</strong>：O(N × W)
-<strong>空间复杂度</strong>：O(W)</p>
+<p><strong>时间复杂度</strong>：O(N × W)<br><strong>空间复杂度</strong>：O(W)</p>
 <blockquote>
-<p><strong>注意</strong>:
-完全背包中内层循环需要<strong>正序</strong>遍历，因为每种物品可以使用多次。</p>
+<p><strong>注意</strong>: 完全背包中内层循环需要<strong>正序</strong>遍历，因为每种物品可以使用多次。</p>
 </blockquote>
 
                 

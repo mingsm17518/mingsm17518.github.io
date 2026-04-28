@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="抽卡系统 题目描述 构造一个长度为 n 的序列，仅包含 A、B、C、D 四种字符，满足： - 每 10 次抽卡：至少一个 B、C 或 D - 每 90 次抽卡：至少一个 C 或 D - 每 180 次抽卡：至少一个 D - 已知 B、C、D 的数量分别为 x、y、z 解题思路 核心观察 题目要求的是保底机制： - 第 180 抽：D - 第 90 抽：C 或 D - 第 10 抽：">
+    <meta name="description" content="抽卡系统题目描述构造一个长度为 n 的序列，仅包含 A、B、C、D 四种字符，满足：  每 10 次抽卡：至少一个 B、C 或 D 每 90 次抽卡：至少一个 C 或 D 每 180 次抽卡：至少一个 D 已知 B、C、D 的数量分别为 x、y、z  解题思路核心观察题目要求的是保底机制：  第 180 抽：D 第 90 抽：C 或 D 第 10 抽：B、C 或 D  贪心分配从后往前分配，保证每">
 <meta property="og:type" content="article">
 <meta property="og:title" content="抽卡系统（Gacha System）">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/05_gacha_system/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="抽卡系统 题目描述 构造一个长度为 n 的序列，仅包含 A、B、C、D 四种字符，满足： - 每 10 次抽卡：至少一个 B、C 或 D - 每 90 次抽卡：至少一个 C 或 D - 每 180 次抽卡：至少一个 D - 已知 B、C、D 的数量分别为 x、y、z 解题思路 核心观察 题目要求的是保底机制： - 第 180 抽：D - 第 90 抽：C 或 D - 第 10 抽：">
+<meta property="og:description" content="抽卡系统题目描述构造一个长度为 n 的序列，仅包含 A、B、C、D 四种字符，满足：  每 10 次抽卡：至少一个 B、C 或 D 每 90 次抽卡：至少一个 C 或 D 每 180 次抽卡：至少一个 D 已知 B、C、D 的数量分别为 x、y、z  解题思路核心观察题目要求的是保底机制：  第 180 抽：D 第 90 抽：C 或 D 第 10 抽：B、C 或 D  贪心分配从后往前分配，保证每">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-18T14:11:52.702Z">
 <meta property="article:modified_time" content="2026-03-19T03:41:17.405Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          518 字
+          513 字
         
       </span>
     
@@ -303,26 +303,27 @@
             
               <div class="markdown-body">
                 
-                <h1 id="抽卡系统">抽卡系统</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>构造一个长度为 n 的序列，仅包含 A、B、C、D 四种字符，满足： - 每 10
-次抽卡：至少一个 B、C 或 D - 每 90 次抽卡：至少一个 C 或 D - 每 180
-次抽卡：至少一个 D - 已知 B、C、D 的数量分别为 x、y、z</p>
-<h2 id="解题思路">解题思路</h2>
-<h3 id="核心观察">核心观察</h3>
-<p>题目要求的是<strong>保底机制</strong>： - 第 180 抽：D - 第 90 抽：C
-或 D - 第 10 抽：B、C 或 D</p>
-<h3 id="贪心分配">贪心分配</h3>
-<p>从后往前分配，保证每个保底位置都被满足：</p>
-<ol type="1">
+                <h1 id="抽卡系统"><a href="#抽卡系统" class="headerlink" title="抽卡系统"></a>抽卡系统</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>构造一个长度为 n 的序列，仅包含 A、B、C、D 四种字符，满足：</p>
+<ul>
+<li>每 10 次抽卡：至少一个 B、C 或 D</li>
+<li>每 90 次抽卡：至少一个 C 或 D</li>
+<li>每 180 次抽卡：至少一个 D</li>
+<li>已知 B、C、D 的数量分别为 x、y、z</li>
+</ul>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="核心观察"><a href="#核心观察" class="headerlink" title="核心观察"></a>核心观察</h3><p>题目要求的是<strong>保底机制</strong>：</p>
+<ul>
+<li>第 180 抽：D</li>
+<li>第 90 抽：C 或 D</li>
+<li>第 10 抽：B、C 或 D</li>
+</ul>
+<h3 id="贪心分配"><a href="#贪心分配" class="headerlink" title="贪心分配"></a>贪心分配</h3><p>从后往前分配，保证每个保底位置都被满足：</p>
+<ol>
 <li><strong>分配 D</strong>（第 180, 360, … 位置）</li>
-<li><strong>分配 C</strong>（第 90, 180, 270, … 位置，如果 C 不够则用
-D）</li>
-<li><strong>分配 B</strong>（第 10, 20, 30, … 位置，优先 B，不够则用
-C/D）</li>
+<li><strong>分配 C</strong>（第 90, 180, 270, … 位置，如果 C 不够则用 D）</li>
+<li><strong>分配 B</strong>（第 10, 20, 30, … 位置，优先 B，不够则用 C/D）</li>
 <li><strong>剩余位置</strong>：从前往后分配 D → C → B → A</li>
 </ol>
-<h3 id="位置规律">位置规律</h3>
+<h3 id="位置规律"><a href="#位置规律" class="headerlink" title="位置规律"></a>位置规律</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -349,8 +350,8 @@ C/D）</li>
 </tr>
 </tbody>
 </table>
-<h2 id="代码实现">代码实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python">n, x, y, z = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+</div>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n, x, y, z = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 
 s = [<span class="hljs-string">&quot;E&quot;</span>] * n
 
@@ -401,26 +402,18 @@ pos = <span class="hljs-number">9</span>
             s[i] = <span class="hljs-string">&quot;A&quot;</span>
 
 <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;</span>.join(s))</code></pre></div>
-<h2 id="代码详解">代码详解</h2>
-<h3 id="四个分配阶段">四个分配阶段</h3>
-<ol type="1">
-<li><strong>阶段1</strong>：从位置 179 开始，每隔 180 分配
-D（最高保底）</li>
-<li><strong>阶段2</strong>：从位置 89 开始，每隔 90 分配 C，优先
-C，不够则用 D</li>
-<li><strong>阶段3</strong>：从位置 9 开始，每隔 10 分配 B，优先
-B，不够则用 C/D</li>
-<li><strong>阶段4</strong>：剩余位置从前往后分配，顺序为 D → C → B →
-A</li>
+<h2 id="代码详解"><a href="#代码详解" class="headerlink" title="代码详解"></a>代码详解</h2><h3 id="四个分配阶段"><a href="#四个分配阶段" class="headerlink" title="四个分配阶段"></a>四个分配阶段</h3><ol>
+<li><strong>阶段1</strong>：从位置 179 开始，每隔 180 分配 D（最高保底）</li>
+<li><strong>阶段2</strong>：从位置 89 开始，每隔 90 分配 C，优先 C，不够则用 D</li>
+<li><strong>阶段3</strong>：从位置 9 开始，每隔 10 分配 B，优先 B，不够则用 C/D</li>
+<li><strong>阶段4</strong>：剩余位置从前往后分配，顺序为 D → C → B → A</li>
 </ol>
-<h3 id="关键点">关键点</h3>
-<ul>
+<h3 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h3><ul>
 <li><strong>从后往前</strong>：先满足高保底要求，再满足低保底要求</li>
 <li><strong>保底累加</strong>：满足高层保底的位置同时也满足低层保底</li>
 <li><strong>优先级</strong>：D &gt; C &gt; B &gt; A（从高到低）</li>
 </ul>
-<h2 id="复杂度分析">复杂度分析</h2>
-<ul>
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
 <li><strong>时间复杂度</strong>：O(n)</li>
 <li><strong>空间复杂度</strong>：O(n)</li>
 </ul>

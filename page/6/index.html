@@ -241,7 +241,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/06_unique_string/" target="_self">
         <div>
-          独特字符串 题目描述 给定字符串 s 和 q 次查询，每次查询 [l, r] 区间，判断该子串是否为”独特字符串”——存在至少一个字符在该子串中恰好出现一次。 核心观察 对于每次查询 [l, r]，需要知道每个字符在该区间内出现的次数。如果存在某个字符出现恰好 1 次，则答案为 YES。 如何想到前缀和？ 核心问题：区间查询 → 需要快速得到区间内字符出现次数 → 前缀和 套
+          独特字符串题目描述给定字符串 s 和 q 次查询，每次查询 [l, r] 区间，判断该子串是否为”独特字符串”——存在至少一个字符在该子串中恰好出现一次。 核心观察对于每次查询 [l, r]，需要知道每个字符在该区间内出现的次数。如果存在某个字符出现恰好 1 次，则答案为 YES。 如何想到前缀和？核心问题：区间查询 → 需要快速得到区间内字符出现次数 → 前缀和 套路总结 看到区间查询：先问自己
         </div>
       </a>
 
@@ -306,7 +306,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/05_gacha_system/" target="_self">
         <div>
-          抽卡系统 题目描述 构造一个长度为 n 的序列，仅包含 A、B、C、D 四种字符，满足： - 每 10 次抽卡：至少一个 B、C 或 D - 每 90 次抽卡：至少一个 C 或 D - 每 180 次抽卡：至少一个 D - 已知 B、C、D 的数量分别为 x、y、z 解题思路 核心观察 题目要求的是保底机制： - 第 180 抽：D - 第 90 抽：C 或 D - 第 10 抽：
+          抽卡系统题目描述构造一个长度为 n 的序列，仅包含 A、B、C、D 四种字符，满足：  每 10 次抽卡：至少一个 B、C 或 D 每 90 次抽卡：至少一个 C 或 D 每 180 次抽卡：至少一个 D 已知 B、C、D 的数量分别为 x、y、z  解题思路核心观察题目要求的是保底机制：  第 180 抽：D 第 90 抽：C 或 D 第 10 抽：B、C 或 D  贪心分配从后往前分配，保证每
         </div>
       </a>
 
@@ -371,7 +371,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/04_jump_game/" target="_self">
         <div>
-          跳跃过桥 题目描述 有 n 个方块组成的桥，每个方块有价值 a_i。起点为 0，终点为 n+1。跳跃能力为 k，每次可跳 [X+1, X+k] 范围内的任意位置。求过桥代价的最小值（代价 = 经过方块的最大价值）。 思路分析 如何思考这个问题？  代价的定义：代价是路径上所有方块价值的最大值 状态的表示：设 dp[i] = 到达位置 i 的最小代价（即路径上最大值的最小可能）
+          跳跃过桥题目描述有 n 个方块组成的桥，每个方块有价值 a_i。起点为 0，终点为 n+1。跳跃能力为 k，每次可跳 [X+1, X+k] 范围内的任意位置。求过桥代价的最小值（代价 = 经过方块的最大价值）。 思路分析如何思考这个问题？ 代价的定义：代价是路径上所有方块价值的最大值  状态的表示：设 dp[i] = 到达位置 i 的最小代价（即路径上最大值的最小可能）  状态转移：  从位置 j
         </div>
       </a>
 
@@ -414,9 +414,9 @@
             
               <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
             
-              <a href="/tags/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/">#二分搜索</a>
-            
               <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+            
+              <a href="/tags/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/">#二分搜索</a>
             
               <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调队列</a>
             
@@ -440,7 +440,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/03_password_crack/" target="_self">
         <div>
-          密码分配 题目描述 有 n 台破解器，字符集 S 长度为 k，密码长度为 m。总共有 k^m 个密码，按 S 定义的字典序排列。每台破解器处理连续的一段密码，要求： - 所有密码都被处理 - 工作量均衡，最大与最小工作量差不超过 1 解题思路 1. 计算总密码数 total = k^m 2. 均匀分配 base = total // n        # 每台基础数量 remai
+          密码分配题目描述有 n 台破解器，字符集 S 长度为 k，密码长度为 m。总共有 k^m 个密码，按 S 定义的字典序排列。每台破解器处理连续的一段密码，要求：  所有密码都被处理 工作量均衡，最大与最小工作量差不超过 1  解题思路1. 计算总密码数total = k^m 2. 均匀分配base = total // n        # 每台基础数量 remainder = total % n
         </div>
       </a>
 
@@ -505,7 +505,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/solutions/path-construction/" target="_self">
         <div>
-          矩阵路径构造题解 题目概述 构造一个 n × m 的矩阵（n × m ≤ 200），对于每个查询的非负整数 S，需要找到一条从 (1, 1) 到 (n, m) 的路径，满足：  每个单元格至多被经过一次 路径上所有数字之和等于 S  构造思路 矩阵构造 设 n = ⌊log2(max S)⌋ + 1，即最大查询值 Smax 的二进制位数，m = 3。 构造一个 n ×
+          矩阵路径构造题解题目概述构造一个 $n \times m$ 的矩阵（$n \times m \leq 200$），对于每个查询的非负整数 $S$，需要找到一条从 $(1,1)$ 到 $(n,m)$ 的路径，满足：  每个单元格至多被经过一次 路径上所有数字之和等于 $S$  构造思路矩阵构造设 $n = \lfloor \log2(\max S) \rfloor + 1$，即最大查询值 $S{\m
         </div>
       </a>
 
@@ -568,7 +568,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/others/use_python/" target="_self">
         <div>
-          输入 readline() 、readlines() 和 read() 区别 import sys  # 输入： # Hello # World # !  # 使用 readline() line1 = sys.stdin.readline()  # &quot;Hello\n&quot; line2 = sys.stdin.readline()  # &quot;World\n&quot;
+          输入readline() 、readlines() 和 read() 区别import sys  # 输入： # Hello # World # !  # 使用 readline() line1 = sys.stdin.readline()  # &quot;Hello\n&quot; line2 = sys.stdin.readline()  # &quot;World\n&quot; line
         </div>
       </a>
 
@@ -629,7 +629,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/02_Silver/02_Sorting%20&amp;%20Searching/04_Greedy%20Algorithms%20with%20Sorting%20%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%8E%92%E5%BA%8F/" target="_self">
         <div>
-          Greedy Algorithms with Sorting 贪心算法与排序 贪心算法在每一步选择当前最优的选项，通常与排序配合使用。  一、贪心算法基础 贪心算法的核心是价值函数：决定哪个选择是最优的。  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的  关键：贪心算法需要证明其正确性，通常通过交换参数证法（exchange argument）。
+          Greedy Algorithms with Sorting贪心算法与排序贪心算法在每一步选择当前最优的选项，通常与排序配合使用。  一、贪心算法基础贪心算法的核心是价值函数：决定哪个选择是最优的。  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的  关键：贪心算法需要证明其正确性，通常通过交换参数证法（exchange argument）。  二、例题1：学习算法（Stu
         </div>
       </a>
 
@@ -692,7 +692,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/others/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_self">
         <div>
-          Queues  队列 队列是一种先进先出 First In First Out（FIFO）的数据结构，支持三种操作，所有操作的时间复杂度均为 𝒪(1) 。 std::queue  push: 在队列的末尾插入 pop: 从队列的前端删除 front: 获取前端元素但不将其移除  queue&lt;int&gt; q; q.push(1);                  //
+          Queues  队列队列是一种先进先出 First In First Out（FIFO）的数据结构，支持三种操作，所有操作的时间复杂度均为 $\mathcal{O}(1)$ 。 std::queue  push: 在队列的末尾插入  pop: 从队列的前端删除  front: 获取前端元素但不将其移除   queue&lt;int&gt; q; q.push(1);
         </div>
       </a>
 
@@ -755,7 +755,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/02_Silver/03_Graphs/Graph%20%E5%9B%BE/" target="_self">
         <div>
-          Graph 图 邻接表 python N, M = map(int, input().split()) adj = [[] for _ in range(N)]  for i in range(M): 	u, v = map(int, input().split()) 	adj[u].append(v) 	adj[v].append(u)  u = 1 # print number of v
+          Graph 图邻接表pythonN, M = map(int, input().split()) adj = [[] for _ in range(N)]  for i in range(M): 	u, v = map(int, input().split()) 	adj[u].append(v) 	adj[v].append(u)  u = 1 # print number of vertice
         </div>
       </a>
 
@@ -820,7 +820,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/02_Silver/03_Graphs/%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" target="_self">
         <div>
-          使用递归的穷举搜索 Subsets  子集 https://cses.fi/problemset/task/1623 递归生成子集 编写一个递归函数，遍历所有可能的分组方式。 在某个索引处，我们要么将 applei​ 添加到第一个集合，要么添加到第二个集合，存储两个总和 sum1​ 和 sum2​ ，分别表示每个集合中值的总和。 一旦到达数组的末尾，我们返回这两个总和的差值。 #
+          使用递归的穷举搜索Subsets  子集https://cses.fi/problemset/task/1623 递归生成子集编写一个递归函数，遍历所有可能的分组方式。 在某个索引处，我们要么将 $\texttt{apple}_i$​ 添加到第一个集合，要么添加到第二个集合，存储两个总和 $\texttt{sum}_1$​ 和 $\texttt{sum}_2$​ ，分别表示每个集合中值的总和。 一
         </div>
       </a>
 

@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Rectangle Geometry 矩形几何 什么是矩形几何问题？ 矩形几何问题是指涉及边平行于坐标轴的矩形的计算问题。这类问题在 USACO Bronze 中非常常见，主要考察对矩形面积、交集等概念的理解。 矩形表示方法 通常使用两个对角顶点来表示矩形： - 左下角 (bottom-left)：(bl_x, bl_y) - 右上角 (top-right)：(tr_x, tr_y)">
+    <meta name="description" content="Rectangle Geometry 矩形几何什么是矩形几何问题？矩形几何问题是指涉及边平行于坐标轴的矩形的计算问题。这类问题在 USACO Bronze 中非常常见，主要考察对矩形面积、交集等概念的理解。 矩形表示方法通常使用两个对角顶点来表示矩形：  左下角 (bottom-left)：(bl_x, bl_y) 右上角 (top-right)：(tr_x, tr_y)  注意：$bl_x &amp;l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rectangle Geometry 矩形几何">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/18/algorithm/01_Bronze/05_Rectangle%20Geometry%20%20%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Rectangle Geometry 矩形几何 什么是矩形几何问题？ 矩形几何问题是指涉及边平行于坐标轴的矩形的计算问题。这类问题在 USACO Bronze 中非常常见，主要考察对矩形面积、交集等概念的理解。 矩形表示方法 通常使用两个对角顶点来表示矩形： - 左下角 (bottom-left)：(bl_x, bl_y) - 右上角 (top-right)：(tr_x, tr_y)">
+<meta property="og:description" content="Rectangle Geometry 矩形几何什么是矩形几何问题？矩形几何问题是指涉及边平行于坐标轴的矩形的计算问题。这类问题在 USACO Bronze 中非常常见，主要考察对矩形面积、交集等概念的理解。 矩形表示方法通常使用两个对角顶点来表示矩形：  左下角 (bottom-left)：(bl_x, bl_y) 右上角 (top-right)：(tr_x, tr_y)  注意：$bl_x &amp;l">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-17T16:34:25.175Z">
 <meta property="article:modified_time" content="2026-03-17T16:34:25.175Z">
@@ -292,32 +292,24 @@
             
               <div class="markdown-body">
                 
-                <h1 id="rectangle-geometry-矩形几何">Rectangle Geometry 矩形几何</h1>
-<h2 id="什么是矩形几何问题">什么是矩形几何问题？</h2>
-<p>矩形几何问题是指涉及<strong>边平行于坐标轴的矩形</strong>的计算问题。这类问题在
-USACO Bronze 中非常常见，主要考察对矩形面积、交集等概念的理解。</p>
-<h3 id="矩形表示方法">矩形表示方法</h3>
-<p>通常使用两个对角顶点来表示矩形： - 左下角
-(bottom-left)：<code>(bl_x, bl_y)</code> - 右上角
-(top-right)：<code>(tr_x, tr_y)</code></p>
-<p>注意：<span
-class="math inline"><em>b</em><em>l</em><sub><em>x</em></sub> &lt; <em>t</em><em>r</em><sub><em>x</em></sub></span>
-且 <span
-class="math inline"><em>b</em><em>l</em><sub><em>y</em></sub> &lt; <em>t</em><em>r</em><sub><em>y</em></sub></span></p>
-<hr />
-<h2 id="常用公式">常用公式</h2>
-<h3 id="矩形面积">1. 矩形面积</h3>
-<p><span
-class="math display"><em>面</em><em>积</em> = (<em>t</em><em>r</em><sub><em>x</em></sub> − <em>b</em><em>l</em><sub><em>x</em></sub>) × (<em>t</em><em>r</em><sub><em>y</em></sub> − <em>b</em><em>l</em><sub><em>y</em></sub>)</span></p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">area</span>(<span class="hljs-params">bl_x, bl_y, tr_x, tr_y</span>):
+                <h1 id="Rectangle-Geometry-矩形几何"><a href="#Rectangle-Geometry-矩形几何" class="headerlink" title="Rectangle Geometry 矩形几何"></a>Rectangle Geometry 矩形几何</h1><h2 id="什么是矩形几何问题？"><a href="#什么是矩形几何问题？" class="headerlink" title="什么是矩形几何问题？"></a>什么是矩形几何问题？</h2><p>矩形几何问题是指涉及<strong>边平行于坐标轴的矩形</strong>的计算问题。这类问题在 USACO Bronze 中非常常见，主要考察对矩形面积、交集等概念的理解。</p>
+<h3 id="矩形表示方法"><a href="#矩形表示方法" class="headerlink" title="矩形表示方法"></a>矩形表示方法</h3><p>通常使用两个对角顶点来表示矩形：</p>
+<ul>
+<li>左下角 (bottom-left)：<code>(bl_x, bl_y)</code></li>
+<li>右上角 (top-right)：<code>(tr_x, tr_y)</code></li>
+</ul>
+<p>注意：$bl_x &lt; tr_x$ 且 $bl_y &lt; tr_y$</p>
+<hr>
+<h2 id="常用公式"><a href="#常用公式" class="headerlink" title="常用公式"></a>常用公式</h2><h3 id="1-矩形面积"><a href="#1-矩形面积" class="headerlink" title="1. 矩形面积"></a>1. 矩形面积</h3><script type="math/tex; mode=display">面积 = (tr_x - bl_x) \times (tr_y - bl_y)</script><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">area</span>(<span class="hljs-params">bl_x, bl_y, tr_x, tr_y</span>):
     <span class="hljs-keyword">return</span> (tr_x - bl_x) * (tr_y - bl_y)</code></pre></div>
-<h3 id="判断两矩形是否相交">2. 判断两矩形是否相交</h3>
-<p>两个矩形不相交的条件是：其中一个矩形完全在另一个的<strong>左侧、右侧、上方或下方</strong>。</p>
-<p>矩形 s1 和 s2 相交的充要条件： - s1 的左边界在 s2
-的右边：<strong>不存在</strong> - s1 的右边界在 s2
-的左边：<strong>不存在</strong> - s1 的下边界在 s2
-的上边：<strong>不存在</strong> - s1 的上边界在 s2
-的下边：<strong>不存在</strong></p>
+<h3 id="2-判断两矩形是否相交"><a href="#2-判断两矩形是否相交" class="headerlink" title="2. 判断两矩形是否相交"></a>2. 判断两矩形是否相交</h3><p>两个矩形不相交的条件是：其中一个矩形完全在另一个的<strong>左侧、右侧、上方或下方</strong>。</p>
+<p>矩形 s1 和 s2 相交的充要条件：</p>
+<ul>
+<li>s1 的左边界在 s2 的右边：<strong>不存在</strong></li>
+<li>s1 的右边界在 s2 的左边：<strong>不存在</strong></li>
+<li>s1 的下边界在 s2 的上边：<strong>不存在</strong></li>
+<li>s1 的上边界在 s2 的下边：<strong>不存在</strong></li>
+</ul>
 <p>即：<strong>相交 = NOT (分离的任意条件)</strong></p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">intersect</span>(<span class="hljs-params">s1, s2</span>):
     <span class="hljs-comment"># s = (bl_x, bl_y, tr_x, tr_y)</span>
@@ -327,13 +319,14 @@ class="math display"><em>面</em><em>积</em> = (<em>t</em><em>r</em><sub><e
     <span class="hljs-keyword">if</span> s1[<span class="hljs-number">3</span>] &lt;= s2[<span class="hljs-number">1</span>] <span class="hljs-keyword">or</span> s2[<span class="hljs-number">3</span>] &lt;= s1[<span class="hljs-number">1</span>]:  <span class="hljs-comment"># 上下分离</span>
         <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
     <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span></code></pre></div>
-<h3 id="求两矩形交集面积">3. 求两矩形交集面积</h3>
-<p>如果两矩形相交，交集矩形的边界： - 左边界 = max(s1.bl_x, s2.bl_x) -
-右边界 = min(s1.tr_x, s2.tr_x) - 下边界 = max(s1.bl_y, s2.bl_y) - 上边界
-= min(s1.tr_y, s2.tr_y)</p>
-<p><span
-class="math display"><em>交</em><em>集</em><em>面</em><em>积</em> = (<em>m</em><em>i</em><em>n</em>(<em>t</em><em>r</em><sub><em>x</em></sub>) − <em>m</em><em>a</em><em>x</em>(<em>b</em><em>l</em><sub><em>x</em></sub>)) × (<em>m</em><em>i</em><em>n</em>(<em>t</em><em>r</em><sub><em>y</em></sub>) − <em>m</em><em>a</em><em>x</em>(<em>b</em><em>l</em><sub><em>y</em></sub>))</span></p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">inter_area</span>(<span class="hljs-params">s1, s2</span>):
+<h3 id="3-求两矩形交集面积"><a href="#3-求两矩形交集面积" class="headerlink" title="3. 求两矩形交集面积"></a>3. 求两矩形交集面积</h3><p>如果两矩形相交，交集矩形的边界：</p>
+<ul>
+<li>左边界 = max(s1.bl_x, s2.bl_x)</li>
+<li>右边界 = min(s1.tr_x, s2.tr_x)</li>
+<li>下边界 = max(s1.bl_y, s2.bl_y)</li>
+<li>上边界 = min(s1.tr_y, s2.tr_y)</li>
+</ul>
+<script type="math/tex; mode=display">交集面积 = (min(tr_x) - max(bl_x)) \times (min(tr_y) - max(bl_y))</script><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">inter_area</span>(<span class="hljs-params">s1, s2</span>):
     <span class="hljs-comment"># 计算交集矩形的边界</span>
     left = <span class="hljs-built_in">max</span>(s1[<span class="hljs-number">0</span>], s2[<span class="hljs-number">0</span>])
     right = <span class="hljs-built_in">min</span>(s1[<span class="hljs-number">2</span>], s2[<span class="hljs-number">2</span>])
@@ -345,18 +338,11 @@ class="math display"><em>交</em><em>集</em><em>面</em><em>积</em> = (<em
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
 
     <span class="hljs-keyword">return</span> (right - left) * (top - bottom)</code></pre></div>
-<hr />
-<h2 id="经典例题fence-painting油漆围栏">经典例题：Fence
-Painting（油漆围栏）</h2>
-<h3 id="题目描述">题目描述</h3>
-<p>https://usaco.org/index.php?page=viewproblem2&amp;cpid=567</p>
-<p>农民 John 有一个矩形牛棚墙壁，需要重新油漆。给出 N
-个已油漆过的矩形区域，现在要油漆一个新的矩形区域。求新油漆的面积（不重复计算已有油漆的区域）。</p>
-<h3 id="算法思路">算法思路</h3>
-<p><strong>核心问题</strong>：求新矩形与已有矩形<strong>交集面积的总和</strong>。</p>
-<h3 id="快速解法o1">快速解法：O(1)</h3>
-<p>使用区间交集公式：新面积 = 新矩形面积 -
-与已有矩形的交集面积之和。</p>
+<hr>
+<h2 id="经典例题：Fence-Painting（油漆围栏）"><a href="#经典例题：Fence-Painting（油漆围栏）" class="headerlink" title="经典例题：Fence Painting（油漆围栏）"></a>经典例题：Fence Painting（油漆围栏）</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p><a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=567">https://usaco.org/index.php?page=viewproblem2&amp;cpid=567</a></p>
+<p>农民 John 有一个矩形牛棚墙壁，需要重新油漆。给出 N 个已油漆过的矩形区域，现在要油漆一个新的矩形区域。求新油漆的面积（不重复计算已有油漆的区域）。</p>
+<h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><p><strong>核心问题</strong>：求新矩形与已有矩形<strong>交集面积的总和</strong>。</p>
+<h3 id="快速解法：O-1"><a href="#快速解法：O-1" class="headerlink" title="快速解法：O(1)"></a>快速解法：O(1)</h3><p>使用区间交集公式：新面积 = 新矩形面积 - 与已有矩形的交集面积之和。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">inter_len</span>(<span class="hljs-params">a1, a2, b1, b2</span>):
     <span class="hljs-string">&quot;&quot;&quot;一维区间交集长度&quot;&quot;&quot;</span>
     left = <span class="hljs-built_in">max</span>(a1, b1)
@@ -381,21 +367,15 @@ total_inter = <span class="hljs-number">0</span>
 <span class="hljs-comment"># 最终答案</span>
 ans = new_area - total_inter
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h3 id="时间复杂度">时间复杂度</h3>
-<ul>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
 <li>快速解法：O(N)，空间 O(1)</li>
 </ul>
-<hr />
-<h2 id="经典例题blocked-billboard被遮挡的广告牌">经典例题：Blocked
-Billboard（被遮挡的广告牌）</h2>
-<h3 id="题目描述-1">题目描述</h3>
-<p>https://usaco.org/index.php?page=viewproblem2&amp;cpid=759</p>
+<hr>
+<h2 id="经典例题：Blocked-Billboard（被遮挡的广告牌）"><a href="#经典例题：Blocked-Billboard（被遮挡的广告牌）" class="headerlink" title="经典例题：Blocked Billboard（被遮挡的广告牌）"></a>经典例题：Blocked Billboard（被遮挡的广告牌）</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p><a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=759">https://usaco.org/index.php?page=viewproblem2&amp;cpid=759</a></p>
 <p>有两个矩形广告牌，卡车可能会遮挡其中一个或两个。求未被遮挡的可见部分总面积。</p>
-<h3 id="算法思路-1">算法思路</h3>
-<p><strong>核心问题</strong>：求两个广告牌<strong>各自未被卡车遮挡的面积</strong>之和。</p>
+<h3 id="算法思路-1"><a href="#算法思路-1" class="headerlink" title="算法思路"></a>算法思路</h3><p><strong>核心问题</strong>：求两个广告牌<strong>各自未被卡车遮挡的面积</strong>之和。</p>
 <p>可视作：两个广告牌面积之和 - 各自与卡车交集面积之和</p>
-<h3 id="快速解法o1-1">快速解法：O(1)</h3>
-<p>二维类比一维区间交集公式。</p>
+<h3 id="快速解法：O-1-1"><a href="#快速解法：O-1-1" class="headerlink" title="快速解法：O(1)"></a>快速解法：O(1)</h3><p>二维类比一维区间交集公式。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 sys.stdin = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;billboard.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)
 sys.stdout = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;billboard.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>)
@@ -428,26 +408,25 @@ intersetion = inter_area(board1, truck) + inter_area(board2, truck)
 ans = sum_of_s - intersetion
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h3 id="时间复杂度-1">时间复杂度</h3>
-<ul>
+<h3 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
 <li>快速解法：O(1)</li>
 </ul>
-<hr />
-<h2 id="经典例题billboard广告牌">经典例题：Billboard（广告牌）</h2>
-<h3 id="题目描述-2">题目描述</h3>
-<p>https://usaco.org/index.php?page=viewproblem2&amp;cpid=783</p>
-<p>有两个广告牌： - 割草机广告牌（Lawnmower）：(x1, y1) 到 (x2, y2) -
-牛饲料广告牌（Cow Feed）：(x3, y3) 到 (x4, y4)</p>
+<hr>
+<h2 id="经典例题：Billboard（广告牌）"><a href="#经典例题：Billboard（广告牌）" class="headerlink" title="经典例题：Billboard（广告牌）"></a>经典例题：Billboard（广告牌）</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p><a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=783">https://usaco.org/index.php?page=viewproblem2&amp;cpid=783</a></p>
+<p>有两个广告牌：</p>
+<ul>
+<li>割草机广告牌（Lawnmower）：(x1, y1) 到 (x2, y2)</li>
+<li>牛饲料广告牌（Cow Feed）：(x3, y3) 到 (x4, y4)</li>
+</ul>
 <p>饲料广告牌可能会部分或完全遮挡割草机广告牌。求覆盖剩余可见部分所需的最小矩形帆布面积。</p>
-<h3 id="算法思路-2">算法思路</h3>
-<p><strong>核心问题</strong>：判断饲料广告牌遮挡了割草机广告牌的哪些部分。</p>
-<p>关键观察： 1.
-<strong>完全遮挡</strong>：如果饲料广告牌覆盖了对角两个角（左下+右上或右上+左下），则完全遮挡
-→ 面积 0 2.
-<strong>部分遮挡</strong>：如果饲料广告牌覆盖了<strong>两个相邻的角</strong>，则剩余可见部分是一个矩形，可以用一块帆布覆盖
-3. <strong>其他情况</strong>：需要完整的割草机广告牌面积</p>
-<h3 id="快速解法o1-2">快速解法：O(1)</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<h3 id="算法思路-2"><a href="#算法思路-2" class="headerlink" title="算法思路"></a>算法思路</h3><p><strong>核心问题</strong>：判断饲料广告牌遮挡了割草机广告牌的哪些部分。</p>
+<p>关键观察：</p>
+<ol>
+<li><strong>完全遮挡</strong>：如果饲料广告牌覆盖了对角两个角（左下+右上或右上+左下），则完全遮挡 → 面积 0</li>
+<li><strong>部分遮挡</strong>：如果饲料广告牌覆盖了<strong>两个相邻的角</strong>，则剩余可见部分是一个矩形，可以用一块帆布覆盖</li>
+<li><strong>其他情况</strong>：需要完整的割草机广告牌面积</li>
+</ol>
+<h3 id="快速解法：O-1-2"><a href="#快速解法：O-1-2" class="headerlink" title="快速解法：O(1)"></a>快速解法：O(1)</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 sys.stdin = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;billboard.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)
 sys.stdout = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;billboard.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>)
 
@@ -476,21 +455,16 @@ inter = (right - left) * (top - bottom)
 
 <span class="hljs-keyword">else</span>:
     <span class="hljs-built_in">print</span>(s1)</code></pre></div>
-<h3 id="时间复杂度-2">时间复杂度</h3>
-<ul>
+<h3 id="时间复杂度-2"><a href="#时间复杂度-2" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
 <li>快速解法：O(1)</li>
 </ul>
-<hr />
-<h2 id="核心要点">核心要点</h2>
-<ol type="1">
-<li><strong>矩形表示</strong>：使用左下角和右上角坐标
-<code>(bl_x, bl_y, tr_x, tr_y)</code></li>
+<hr>
+<h2 id="核心要点"><a href="#核心要点" class="headerlink" title="核心要点"></a>核心要点</h2><ol>
+<li><strong>矩形表示</strong>：使用左下角和右上角坐标 <code>(bl_x, bl_y, tr_x, tr_y)</code></li>
 <li><strong>判断相交</strong>：检查是否存在分离条件（左右分离或上下分离）</li>
-<li><strong>交集面积</strong>：对 x 和 y
-分别求交集区间长度，然后相乘</li>
+<li><strong>交集面积</strong>：对 x 和 y 分别求交集区间长度，然后相乘</li>
 <li><strong>一维到二维</strong>：先理解一维区间交集，再类比到二维矩形</li>
-<li><strong>快速解法</strong>：对于坐标范围大的情况，必须使用 O(1)
-公式解法</li>
+<li><strong>快速解法</strong>：对于坐标范围大的情况，必须使用 O(1) 公式解法</li>
 </ol>
 
                 

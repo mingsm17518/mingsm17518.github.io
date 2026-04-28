@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩 本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序 排序不仅限于数字，还可以用于任意对象。 方法一：使用元组 将对象与排序关键字打包成元组： edge_num &#x3D; 4 edges &#x3D; [] for _ in range(edge_num):">
+    <meta name="description" content="Custom Comparators and Coordinate Compression自定义比较器和坐标压缩本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序排序不仅限于数字，还可以用于任意对象。 方法一：使用元组将对象与排序关键字打包成元组： edge_num &#x3D; 4 edges &#x3D; [] for _ in range(edge_num):     a, b, wi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/18/algorithm/02_Silver/02_Sorting%20&%20Searching/03_Custom%20Comparators%20and%20Coordinate%20Compression%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩 本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序 排序不仅限于数字，还可以用于任意对象。 方法一：使用元组 将对象与排序关键字打包成元组： edge_num &#x3D; 4 edges &#x3D; [] for _ in range(edge_num):">
+<meta property="og:description" content="Custom Comparators and Coordinate Compression自定义比较器和坐标压缩本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序排序不仅限于数字，还可以用于任意对象。 方法一：使用元组将对象与排序关键字打包成元组： edge_num &#x3D; 4 edges &#x3D; [] for _ in range(edge_num):     a, b, wi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-17T16:29:50.183Z">
 <meta property="article:modified_time" content="2026-03-17T16:29:50.183Z">
@@ -293,15 +293,10 @@
             
               <div class="markdown-body">
                 
-                <h1 id="custom-comparators-and-coordinate-compression">Custom
-Comparators and Coordinate Compression</h1>
-<h2 id="自定义比较器和坐标压缩">自定义比较器和坐标压缩</h2>
-<p>本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。</p>
-<hr />
-<h2 id="一自定义排序">一、自定义排序</h2>
-<p>排序不仅限于数字，还可以用于任意对象。</p>
-<h3 id="方法一使用元组">方法一：使用元组</h3>
-<p>将对象与排序关键字打包成元组：</p>
+                <h1 id="Custom-Comparators-and-Coordinate-Compression"><a href="#Custom-Comparators-and-Coordinate-Compression" class="headerlink" title="Custom Comparators and Coordinate Compression"></a>Custom Comparators and Coordinate Compression</h1><h2 id="自定义比较器和坐标压缩"><a href="#自定义比较器和坐标压缩" class="headerlink" title="自定义比较器和坐标压缩"></a>自定义比较器和坐标压缩</h2><p>本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。</p>
+<hr>
+<h2 id="一、自定义排序"><a href="#一、自定义排序" class="headerlink" title="一、自定义排序"></a>一、自定义排序</h2><p>排序不仅限于数字，还可以用于任意对象。</p>
+<h3 id="方法一：使用元组"><a href="#方法一：使用元组" class="headerlink" title="方法一：使用元组"></a>方法一：使用元组</h3><p>将对象与排序关键字打包成元组：</p>
 <div class="code-wrapper"><pre><code class="hljs python">edge_num = <span class="hljs-number">4</span>
 edges = []
 <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(edge_num):
@@ -311,8 +306,7 @@ edges.sort()  <span class="hljs-comment"># 按 width 升序排序</span>
 
 <span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> edges:
     <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;(<span class="hljs-subst">&#123;e[<span class="hljs-number">1</span>]&#125;</span>, <span class="hljs-subst">&#123;e[<span class="hljs-number">2</span>]&#125;</span>): <span class="hljs-subst">&#123;e[<span class="hljs-number">0</span>]&#125;</span>&quot;</span>)</code></pre></div>
-<h3 id="方法二key-函数">方法二：Key 函数</h3>
-<p>使用 <code>key</code> 参数指定排序依据：</p>
+<h3 id="方法二：Key-函数"><a href="#方法二：Key-函数" class="headerlink" title="方法二：Key 函数"></a>方法二：Key 函数</h3><p>使用 <code>key</code> 参数指定排序依据：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Edge</span>:
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, a: <span class="hljs-built_in">int</span>, b: <span class="hljs-built_in">int</span>, width: <span class="hljs-built_in">int</span></span>):
         <span class="hljs-variable language_">self</span>.a = a
@@ -324,8 +318,7 @@ edges.sort(key=<span class="hljs-keyword">lambda</span> e: e.width)  <span class
 
 <span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> edges:
     <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;(<span class="hljs-subst">&#123;e.a&#125;</span>, <span class="hljs-subst">&#123;e.b&#125;</span>): <span class="hljs-subst">&#123;e.width&#125;</span>&quot;</span>)</code></pre></div>
-<h3 id="方法三comparator比较器">方法三：Comparator（比较器）</h3>
-<p>使用 <code>functools.cmp_to_key</code> 将比较函数转换为 key：</p>
+<h3 id="方法三：Comparator（比较器）"><a href="#方法三：Comparator（比较器）" class="headerlink" title="方法三：Comparator（比较器）"></a>方法三：Comparator（比较器）</h3><p>使用 <code>functools.cmp_to_key</code> 将比较函数转换为 key：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> cmp_to_key
 
 <span class="hljs-keyword">class</span> <span class="hljs-title class_">Edge</span>:
@@ -336,12 +329,14 @@ edges.sort(key=<span class="hljs-keyword">lambda</span> e: e.width)  <span class
 
 edges = [Edge(*[<span class="hljs-built_in">int</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(edge_num)]
 edges.sort(key=cmp_to_key(<span class="hljs-keyword">lambda</span> x, y: x.width - y.width))</code></pre></div>
-<p><strong>比较器必须满足</strong>： - <code>x &lt; y</code> 时返回 -1 -
-<code>x &gt; y</code> 时返回 1 - <code>x == y</code> 时返回 0</p>
-<hr />
-<h2 id="二多条件排序">二、多条件排序</h2>
-<h3 id="按多个关键字升序排序">按多个关键字升序排序</h3>
-<p>利用元组的字典序特性：</p>
+<p><strong>比较器必须满足</strong>：</p>
+<ul>
+<li><code>x &lt; y</code> 时返回 -1</li>
+<li><code>x &gt; y</code> 时返回 1</li>
+<li><code>x == y</code> 时返回 0</li>
+</ul>
+<hr>
+<h2 id="二、多条件排序"><a href="#二、多条件排序" class="headerlink" title="二、多条件排序"></a>二、多条件排序</h2><h3 id="按多个关键字升序排序"><a href="#按多个关键字升序排序" class="headerlink" title="按多个关键字升序排序"></a>按多个关键字升序排序</h3><p>利用元组的字典序特性：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 按 width 升序，width 相同时按 a 升序</span>
 edges.sort(key=<span class="hljs-keyword">lambda</span> edge: (edge.width, edge.a))</code></pre></div>
 <p>或者使用比较器：</p>
@@ -351,22 +346,22 @@ edges.sort(key=<span class="hljs-keyword">lambda</span> edge: (edge.width, edge.
     <span class="hljs-keyword">return</span> x.a - y.a
 
 edges.sort(key=cmp_to_key(compare))</code></pre></div>
-<h3 id="降序排序">降序排序</h3>
-<div class="code-wrapper"><pre><code class="hljs python">edges.sort(key=<span class="hljs-keyword">lambda</span> e: e.width, reverse=<span class="hljs-literal">True</span>)</code></pre></div>
-<hr />
-<h2 id="三坐标压缩">三、坐标压缩</h2>
-<h3 id="什么是坐标压缩">什么是坐标压缩？</h3>
-<p>将大范围的值映射到连续的自然数索引。</p>
-<p><strong>示例</strong>： - 原始列表：<code>{7, 3, 4, 1}</code> -
-排序后：<code>{1, 3, 4, 7}</code> -
-压缩结果：<code>{3, 1, 2, 0}</code></p>
-<h3 id="适用场景">适用场景</h3>
-<p>当值域很大但需要用值作为数组索引时： -
-值域：<code>0 ~ 10^9</code>（无法直接作为数组索引） -
-实际不同值数量：<code>N ≤ 10^6</code> -
-压缩后：<code>0 ~ N-1</code>（可直接作为数组索引）</p>
-<h3 id="代码实现">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 方法1：简单压缩</span>
+<h3 id="降序排序"><a href="#降序排序" class="headerlink" title="降序排序"></a>降序排序</h3><div class="code-wrapper"><pre><code class="hljs python">edges.sort(key=<span class="hljs-keyword">lambda</span> e: e.width, reverse=<span class="hljs-literal">True</span>)</code></pre></div>
+<hr>
+<h2 id="三、坐标压缩"><a href="#三、坐标压缩" class="headerlink" title="三、坐标压缩"></a>三、坐标压缩</h2><h3 id="什么是坐标压缩？"><a href="#什么是坐标压缩？" class="headerlink" title="什么是坐标压缩？"></a>什么是坐标压缩？</h3><p>将大范围的值映射到连续的自然数索引。</p>
+<p><strong>示例</strong>：</p>
+<ul>
+<li>原始列表：<code>{7, 3, 4, 1}</code></li>
+<li>排序后：<code>{1, 3, 4, 7}</code></li>
+<li>压缩结果：<code>{3, 1, 2, 0}</code></li>
+</ul>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><p>当值域很大但需要用值作为数组索引时：</p>
+<ul>
+<li>值域：<code>0 ~ 10^9</code>（无法直接作为数组索引）</li>
+<li>实际不同值数量：<code>N ≤ 10^6</code></li>
+<li>压缩后：<code>0 ~ N-1</code>（可直接作为数组索引）</li>
+</ul>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 方法1：简单压缩</span>
 values = [<span class="hljs-number">7</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>]
 sorted_unique = <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(values))  <span class="hljs-comment"># [1, 3, 4, 7]</span>
 compress = &#123;v: i <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(sorted_unique)&#125;
@@ -377,13 +372,10 @@ compressed = [compress[v] <span class="hljs-keyword">for</span> v <span class="h
 indices = <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(values))
 compress = &#123;v: i <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(indices)&#125;
 decompress = &#123;i: v <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(indices)&#125;</code></pre></div>
-<hr />
-<h2 id="四例题rectangular-pasture">四、例题：Rectangular Pasture</h2>
-<p><strong>题目来源</strong>: USACO Silver - Rectangular Pasture</p>
-<p><strong>核心思想</strong>：使用坐标压缩将坐标映射到
-<code>0 ~ N-1</code> 范围，以便使用二维前缀和数组。</p>
-<h3 id="代码实现-1">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<hr>
+<h2 id="四、例题：Rectangular-Pasture"><a href="#四、例题：Rectangular-Pasture" class="headerlink" title="四、例题：Rectangular Pasture"></a>四、例题：Rectangular Pasture</h2><p><strong>题目来源</strong>: USACO Silver - Rectangular Pasture</p>
+<p><strong>核心思想</strong>：使用坐标压缩将坐标映射到 <code>0 ~ N-1</code> 范围，以便使用二维前缀和数组。</p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 <span class="hljs-built_in">input</span> = sys.stdin.readline
 
@@ -423,51 +415,50 @@ ans = n + <span class="hljs-number">1</span>
         ans += (above + <span class="hljs-number">1</span>) * (below + <span class="hljs-number">1</span>)
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h3 id="关键点">关键点</h3>
-<ul>
+<h3 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h3><ul>
 <li>坐标压缩后，原有坐标值不再需要，只用压缩后的索引</li>
 <li>压缩后坐标范围：<code>0 ~ N-1</code>，可直接作为数组下标</li>
 </ul>
-<hr />
-<h2 id="五例题static-range-queries">五、例题：Static Range Queries</h2>
-<p><strong>题目来源</strong>: Codeforces - Hard</p>
-<p><strong>题目描述</strong>： - 有 N 个区间更新操作：每次在区间
-<code>[l, r)</code> 上加 <code>v</code> - 有 Q 个查询操作：查询区间
-<code>[l, r)</code> 的元素之和 -
-坐标范围：<code>0 ~ 10^9</code>，需要高效处理</p>
-<p><strong>核心思想</strong>： 1.
-<strong>特殊索引</strong>：输入中出现的所有坐标（每个更新的左右端点、每个查询的左右端点）
-2.
-<strong>特殊区间</strong>：两个相邻特殊索引之间的区间，区间内所有元素值相同
-3. <strong>差分数组</strong>：用 <code>+v</code>
-标记左端点，<code>-v</code> 标记右端点，求前缀和得到实际值 4.
-<strong>双向映射</strong>：既要能用原始值找压缩索引（<code>index[v]</code>），也要能用压缩索引找原始值（<code>coordinates[i]</code>）</p>
-<h3 id="详细解释">详细解释</h3>
-<h4 id="特殊索引与特殊区间">1. 特殊索引与特殊区间</h4>
-<p>在整个范围 <code>1 ~ 10^9</code>
-中，并非每个索引都会在更新中使用。输入中提到的每个索引称为<strong>特殊索引</strong>。两个连续的特殊索引之间的区间内，每个位置的值都相同——因为不可能有更新操作插入到两个特殊索引之间（否则会产生新的特殊索引）。</p>
-<p>例如：更新 <code>[3, 10) += 5</code>，查询
-<code>[5, 8)</code>，则特殊索引为 <code>{3, 5, 8, 10}</code>，特殊区间为
-<code>[3,5)</code>、<code>[5,8)</code>、<code>[8,10)</code>。</p>
-<h4 id="差分数组">2. 差分数组</h4>
-<p>对区间 <code>[l, r)</code> 加 <code>v</code> 时： - 在位置
-<code>l</code> 标记 <code>+v</code>（表示从 l 开始增加 v） - 在位置
-<code>r</code> 标记 <code>-v</code>（表示从 r 开始减少 v）</p>
+<hr>
+<h2 id="五、例题：Static-Range-Queries"><a href="#五、例题：Static-Range-Queries" class="headerlink" title="五、例题：Static Range Queries"></a>五、例题：Static Range Queries</h2><p><strong>题目来源</strong>: Codeforces - Hard</p>
+<p><strong>题目描述</strong>：</p>
+<ul>
+<li>有 N 个区间更新操作：每次在区间 <code>[l, r)</code> 上加 <code>v</code></li>
+<li>有 Q 个查询操作：查询区间 <code>[l, r)</code> 的元素之和</li>
+<li>坐标范围：<code>0 ~ 10^9</code>，需要高效处理</li>
+</ul>
+<p><strong>核心思想</strong>：</p>
+<ol>
+<li><strong>特殊索引</strong>：输入中出现的所有坐标（每个更新的左右端点、每个查询的左右端点）</li>
+<li><strong>特殊区间</strong>：两个相邻特殊索引之间的区间，区间内所有元素值相同</li>
+<li><strong>差分数组</strong>：用 <code>+v</code> 标记左端点，<code>-v</code> 标记右端点，求前缀和得到实际值</li>
+<li><strong>双向映射</strong>：既要能用原始值找压缩索引（<code>index[v]</code>），也要能用压缩索引找原始值（<code>coordinates[i]</code>）</li>
+</ol>
+<h3 id="详细解释"><a href="#详细解释" class="headerlink" title="详细解释"></a>详细解释</h3><h4 id="1-特殊索引与特殊区间"><a href="#1-特殊索引与特殊区间" class="headerlink" title="1. 特殊索引与特殊区间"></a>1. 特殊索引与特殊区间</h4><p>在整个范围 <code>1 ~ 10^9</code> 中，并非每个索引都会在更新中使用。输入中提到的每个索引称为<strong>特殊索引</strong>。两个连续的特殊索引之间的区间内，每个位置的值都相同——因为不可能有更新操作插入到两个特殊索引之间（否则会产生新的特殊索引）。</p>
+<p>例如：更新 <code>[3, 10) += 5</code>，查询 <code>[5, 8)</code>，则特殊索引为 <code>{3, 5, 8, 10}</code>，特殊区间为 <code>[3,5)</code>、<code>[5,8)</code>、<code>[8,10)</code>。</p>
+<h4 id="2-差分数组"><a href="#2-差分数组" class="headerlink" title="2. 差分数组"></a>2. 差分数组</h4><p>对区间 <code>[l, r)</code> 加 <code>v</code> 时：</p>
+<ul>
+<li>在位置 <code>l</code> 标记 <code>+v</code>（表示从 l 开始增加 v）</li>
+<li>在位置 <code>r</code> 标记 <code>-v</code>（表示从 r 开始减少 v）</li>
+</ul>
 <p>对这个差分数组求前缀和，就得到每个位置的<strong>值</strong>。</p>
-<h4 id="前缀和与区间求和">3. 前缀和与区间求和</h4>
-<p>对于查询 <code>[l, r)</code> 的和： - 区间和 = 区间内每个元素的值 ×
-区间长度 - 如果我们知道每个特殊区间的值和长度，就可以求和</p>
-<p>这引出了<strong>双重前缀和</strong>： -
-第一层前缀和：从差分数组得到每个特殊区间的值 -
-第二层前缀和：从特殊区间的”值 × 长度”得到区间累计和</p>
-<h4 id="双向坐标映射">4. 双向坐标映射</h4>
-<p>与上一题（Rectangular
-Pasture）不同，本题需要<strong>同时</strong>知道： - 原始值 →
-压缩索引：<code>index[value]</code> 用于定位 - 压缩索引 →
-原始值：<code>coordinates[i]</code> 用于计算区间长度</p>
+<h4 id="3-前缀和与区间求和"><a href="#3-前缀和与区间求和" class="headerlink" title="3. 前缀和与区间求和"></a>3. 前缀和与区间求和</h4><p>对于查询 <code>[l, r)</code> 的和：</p>
+<ul>
+<li>区间和 = 区间内每个元素的值 × 区间长度</li>
+<li>如果我们知道每个特殊区间的值和长度，就可以求和</li>
+</ul>
+<p>这引出了<strong>双重前缀和</strong>：</p>
+<ul>
+<li>第一层前缀和：从差分数组得到每个特殊区间的值</li>
+<li>第二层前缀和：从特殊区间的”值 × 长度”得到区间累计和</li>
+</ul>
+<h4 id="4-双向坐标映射"><a href="#4-双向坐标映射" class="headerlink" title="4. 双向坐标映射"></a>4. 双向坐标映射</h4><p>与上一题（Rectangular Pasture）不同，本题需要<strong>同时</strong>知道：</p>
+<ul>
+<li>原始值 → 压缩索引：<code>index[value]</code> 用于定位</li>
+<li>压缩索引 → 原始值：<code>coordinates[i]</code> 用于计算区间长度</li>
+</ul>
 <p>因为我们需要知道相邻特殊索引之间的距离（即特殊区间的长度）。</p>
-<h3 id="代码实现-2">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># https://codeforces.com/gym/102951/problem/D</span>
+<h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># https://codeforces.com/gym/102951/problem/D</span>
 
 n, q = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 diff_dict = <span class="hljs-built_in">dict</span>()
@@ -505,19 +496,14 @@ prefix_sum = [<span class="hljs-number">0</span>]
         right_idx = idx_dict[r]
         ans = prefix_sum[right_idx] - prefix_sum[left_idx]
         <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h3 id="关键点-1">关键点</h3>
-<ul>
-<li><strong>双向映射</strong>：<code>index[v]</code>
-获取压缩索引，<code>coordinates[i]</code> 获取原始值</li>
-<li><strong>差分数组技巧</strong>：用 <code>+v</code>、<code>-v</code>
-标记区间起止，前缀和得到实际值</li>
-<li><strong>空间优化</strong>：只需存储出现的坐标，最多
-<code>2·(N+Q)</code> 个</li>
-<li><strong>时间复杂度</strong>：预处理 O((N+Q) log(N+Q))，查询
-O(1)</li>
+<h3 id="关键点-1"><a href="#关键点-1" class="headerlink" title="关键点"></a>关键点</h3><ul>
+<li><strong>双向映射</strong>：<code>index[v]</code> 获取压缩索引，<code>coordinates[i]</code> 获取原始值</li>
+<li><strong>差分数组技巧</strong>：用 <code>+v</code>、<code>-v</code> 标记区间起止，前缀和得到实际值</li>
+<li><strong>空间优化</strong>：只需存储出现的坐标，最多 <code>2·(N+Q)</code> 个</li>
+<li><strong>时间复杂度</strong>：预处理 O((N+Q) log(N+Q))，查询 O(1)</li>
 </ul>
-<hr />
-<h2 id="六总结">六、总结</h2>
+<hr>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -540,6 +526,7 @@ O(1)</li>
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>核心思想</strong>：将问题转化为可以用数组下标处理的形式。</p>
 
                 

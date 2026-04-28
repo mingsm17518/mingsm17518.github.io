@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="字符串变换 题目描述 https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720361603 输入两个字符串 s1 和 s2： - s1：字母进行大小写转换并后移 1 位，数字后移 1 位 - s2：字母进行大小写转换并前移 1 位，数字前移 1 位 字母移动范围在 26 个字母内循环，数字移动范围在 0-9 内循环。 示例 输入： ab">
+    <meta name="description" content="字符串变换题目描述https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720361603 输入两个字符串 s1 和 s2：  s1：字母进行大小写转换并后移 1 位，数字后移 1 位 s2：字母进行大小写转换并前移 1 位，数字前移 1 位  字母移动范围在 26 个字母内循环，数字移动范围在 0-9 内循环。 示例输入：abc123 XYZ987输出">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字符串变换（HJ15）">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/09/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="字符串变换 题目描述 https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720361603 输入两个字符串 s1 和 s2： - s1：字母进行大小写转换并后移 1 位，数字后移 1 位 - s2：字母进行大小写转换并前移 1 位，数字前移 1 位 字母移动范围在 26 个字母内循环，数字移动范围在 0-9 内循环。 示例 输入： ab">
+<meta property="og:description" content="字符串变换题目描述https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720361603 输入两个字符串 s1 和 s2：  s1：字母进行大小写转换并后移 1 位，数字后移 1 位 s2：字母进行大小写转换并前移 1 位，数字前移 1 位  字母移动范围在 26 个字母内循环，数字移动范围在 0-9 内循环。 示例输入：abc123 XYZ987输出">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-09T07:39:10.019Z">
 <meta property="article:modified_time" content="2026-04-09T07:39:48.250Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          480 字
+          476 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -303,26 +303,29 @@
             
               <div class="markdown-body">
                 
-                <h1 id="字符串变换">字符串变换</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>https://www.nowcoder.com/share/jump/5832603751775720361603</p>
-<p>输入两个字符串 s1 和 s2： - s1：字母进行大小写转换并后移 1
-位，数字后移 1 位 - s2：字母进行大小写转换并前移 1 位，数字前移 1 位</p>
+                <h1 id="字符串变换"><a href="#字符串变换" class="headerlink" title="字符串变换"></a>字符串变换</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/share/jump/5832603751775720361603">https://www.nowcoder.com/share/jump/5832603751775720361603</a></p>
+<p>输入两个字符串 s1 和 s2：</p>
+<ul>
+<li>s1：字母进行大小写转换并后移 1 位，数字后移 1 位</li>
+<li>s2：字母进行大小写转换并前移 1 位，数字前移 1 位</li>
+</ul>
 <p>字母移动范围在 26 个字母内循环，数字移动范围在 0-9 内循环。</p>
-<h2 id="示例">示例</h2>
-<p>输入： <div class="code-wrapper"><pre><code class="hljs nginx"><span class="hljs-attribute">abc123</span>
-XYZ987</code></pre></div> 输出： <div class="code-wrapper"><pre><code class="hljs mipsasm"><span class="hljs-keyword">BCD234</span>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：<br><div class="code-wrapper"><pre><code class="hljs nginx"><span class="hljs-attribute">abc123</span>
+XYZ987</code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs mipsasm"><span class="hljs-keyword">BCD234</span>
 <span class="hljs-keyword"></span>wyz876</code></pre></div></p>
-<h2 id="解题思路">解题思路</h2>
-<h3 id="统一变换函数">统一变换函数</h3>
-<p>通过 <code>flag</code> 参数控制变换方向： -
-<code>flag = 1</code>：后移（+1） -
-<code>flag = -1</code>：前移（-1）</p>
-<p><strong>变换规则</strong>： 1. 小写字母 → 大写字母 + 移位 2. 大写字母
-→ 小写字母 + 移位 3. 数字 → 数字 + 移位</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="统一变换函数"><a href="#统一变换函数" class="headerlink" title="统一变换函数"></a>统一变换函数</h3><p>通过 <code>flag</code> 参数控制变换方向：</p>
+<ul>
+<li><code>flag = 1</code>：后移（+1）</li>
+<li><code>flag = -1</code>：前移（-1）</li>
+</ul>
+<p><strong>变换规则</strong>：</p>
+<ol>
+<li>小写字母 → 大写字母 + 移位</li>
+<li>大写字母 → 小写字母 + 移位</li>
+<li>数字 → 数字 + 移位</li>
+</ol>
 <p>使用模运算实现循环移动。</p>
-<h2 id="代码实现">代码实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python">s1 = <span class="hljs-built_in">input</span>().strip()
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">s1 = <span class="hljs-built_in">input</span>().strip()
 s2 = <span class="hljs-built_in">input</span>().strip()
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">fun</span>(<span class="hljs-params">s, flag</span>):
@@ -345,9 +348,7 @@ s2 = <span class="hljs-built_in">input</span>().strip()
 
 fun(s1, <span class="hljs-number">1</span>)
 fun(s2, -<span class="hljs-number">1</span>)</code></pre></div>
-<h2 id="代码解析">代码解析</h2>
-<h3 id="字母变换逻辑">字母变换逻辑</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">if</span> ch.islower():
+<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="字母变换逻辑"><a href="#字母变换逻辑" class="headerlink" title="字母变换逻辑"></a>字母变换逻辑</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">if</span> ch.islower():
     base = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)  <span class="hljs-comment"># 97</span>
     new = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>)   <span class="hljs-comment"># 65</span>
 <span class="hljs-keyword">else</span>:
@@ -355,27 +356,24 @@ fun(s2, -<span class="hljs-number">1</span>)</code></pre></div>
     new = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)   <span class="hljs-comment"># 97</span>
 
 cur = (cur - base + flag) % <span class="hljs-number">26</span> + new</code></pre></div>
-<p><strong>以 ‘c’ 后移 1 位为例</strong>： <div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. ord(&#x27;c&#x27;) - ord(&#x27;a&#x27;) = <span class="hljs-number">2</span>      # 归一化到 <span class="hljs-number">0</span>-<span class="hljs-number">25</span>
+<p><strong>以 ‘c’ 后移 1 位为例</strong>：<br><div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. ord(&#x27;c&#x27;) - ord(&#x27;a&#x27;) = <span class="hljs-number">2</span>      # 归一化到 <span class="hljs-number">0</span>-<span class="hljs-number">25</span>
 <span class="hljs-attribute">2</span>. <span class="hljs-number">2</span> + <span class="hljs-number">1</span> = <span class="hljs-number">3</span>                     # 后移 <span class="hljs-number">1</span> 位
 <span class="hljs-attribute">3</span>. <span class="hljs-number">3</span> % <span class="hljs-number">26</span> = <span class="hljs-number">3</span>                    # 模 <span class="hljs-number">26</span> 循环
 <span class="hljs-attribute">4</span>. <span class="hljs-number">3</span> + ord(&#x27;A&#x27;) = <span class="hljs-number">68</span>             # 转回 ASCII
 <span class="hljs-attribute">5</span>. chr(<span class="hljs-number">68</span>) = &#x27;D&#x27;                 # 最终结果</code></pre></div></p>
-<h3 id="数字变换逻辑">数字变换逻辑</h3>
-<div class="code-wrapper"><pre><code class="hljs python">cur = (cur - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>) + flag) % <span class="hljs-number">10</span> + <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>)</code></pre></div>
-<p><strong>以 ‘3’ 后移 1 位为例</strong>： <div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. ord(&#x27;<span class="hljs-number">3</span>&#x27;) - ord(&#x27;<span class="hljs-number">0</span>&#x27;) = <span class="hljs-number">3</span>       # 归一化到 <span class="hljs-number">0</span>-<span class="hljs-number">9</span>
+<h3 id="数字变换逻辑"><a href="#数字变换逻辑" class="headerlink" title="数字变换逻辑"></a>数字变换逻辑</h3><div class="code-wrapper"><pre><code class="hljs python">cur = (cur - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>) + flag) % <span class="hljs-number">10</span> + <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>)</code></pre></div>
+<p><strong>以 ‘3’ 后移 1 位为例</strong>：<br><div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. ord(&#x27;<span class="hljs-number">3</span>&#x27;) - ord(&#x27;<span class="hljs-number">0</span>&#x27;) = <span class="hljs-number">3</span>       # 归一化到 <span class="hljs-number">0</span>-<span class="hljs-number">9</span>
 <span class="hljs-attribute">2</span>. <span class="hljs-number">3</span> + <span class="hljs-number">1</span> = <span class="hljs-number">4</span>                     # 后移 <span class="hljs-number">1</span> 位
 <span class="hljs-attribute">3</span>. <span class="hljs-number">4</span> % <span class="hljs-number">10</span> = <span class="hljs-number">4</span>                    # 模 <span class="hljs-number">10</span> 循环
 <span class="hljs-attribute">4</span>. <span class="hljs-number">4</span> + ord(&#x27;<span class="hljs-number">0</span>&#x27;) = <span class="hljs-number">52</span>             # 转回 ASCII
 <span class="hljs-attribute">5</span>. chr(<span class="hljs-number">52</span>) = &#x27;<span class="hljs-number">4</span>&#x27;                 # 最终结果</code></pre></div></p>
-<p><strong>以 ‘0’ 前移 1 位为例</strong>： <div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. <span class="hljs-number">0</span> - <span class="hljs-number">1</span> = -<span class="hljs-number">1</span>                    # 前移 <span class="hljs-number">1</span> 位
+<p><strong>以 ‘0’ 前移 1 位为例</strong>：<br><div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. <span class="hljs-number">0</span> - <span class="hljs-number">1</span> = -<span class="hljs-number">1</span>                    # 前移 <span class="hljs-number">1</span> 位
 <span class="hljs-attribute">2</span>. -<span class="hljs-number">1</span> % <span class="hljs-number">10</span> = <span class="hljs-number">9</span>                   # Python 模运算保证非负
 <span class="hljs-attribute">3</span>. 结果为 &#x27;<span class="hljs-number">9</span>&#x27;</code></pre></div></p>
-<h2 id="时间复杂度">时间复杂度</h2>
-<ul>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul>
 <li>O(n) - 遍历字符串一次</li>
 </ul>
-<h2 id="空间复杂度">空间复杂度</h2>
-<ul>
+<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ul>
 <li>O(n) - 存储变换后的结果</li>
 </ul>
 

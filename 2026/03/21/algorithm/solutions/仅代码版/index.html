@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="交互题：猜数字 import sys l, r, ans &#x3D; 1, 7, 0 for i in range(3):     mid &#x3D; (l + r) &#x2F;&#x2F; 2     print(f&quot;? &#123;mid&#125;&quot;)     sys.stdout.flush()     a &#x3D; input()     if a &#x3D;&#x3D; &#x27;&lt;&#x27;:">
+    <meta name="description" content="交互题：猜数字import sys l, r, ans &#x3D; 1, 7, 0 for i in range(3):     mid &#x3D; (l + r) &#x2F;&#x2F; 2     print(f&quot;? &#123;mid&#125;&quot;)     sys.stdout.flush()     a &#x3D; input()     if a &#x3D;&#x3D; &#x27;&lt;&#x27;:         l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="未命名">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/21/algorithm/solutions/%E4%BB%85%E4%BB%A3%E7%A0%81%E7%89%88/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="交互题：猜数字 import sys l, r, ans &#x3D; 1, 7, 0 for i in range(3):     mid &#x3D; (l + r) &#x2F;&#x2F; 2     print(f&quot;? &#123;mid&#125;&quot;)     sys.stdout.flush()     a &#x3D; input()     if a &#x3D;&#x3D; &#x27;&lt;&#x27;:">
+<meta property="og:description" content="交互题：猜数字import sys l, r, ans &#x3D; 1, 7, 0 for i in range(3):     mid &#x3D; (l + r) &#x2F;&#x2F; 2     print(f&quot;? &#123;mid&#125;&quot;)     sys.stdout.flush()     a &#x3D; input()     if a &#x3D;&#x3D; &#x27;&lt;&#x27;:         l">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-21T02:57:07.417Z">
 <meta property="article:modified_time" content="2026-03-21T03:04:55.403Z">
@@ -300,8 +300,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="交互题猜数字">交互题：猜数字</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+                <h2 id="交互题：猜数字"><a href="#交互题：猜数字" class="headerlink" title="交互题：猜数字"></a>交互题：猜数字</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 l, r, ans = <span class="hljs-number">1</span>, <span class="hljs-number">7</span>, <span class="hljs-number">0</span>
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>):
     mid = (l + r) // <span class="hljs-number">2</span>
@@ -317,10 +316,11 @@ l, r, ans = <span class="hljs-number">1</span>, <span class="hljs-number">7</spa
         <span class="hljs-keyword">break</span>
 <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;! <span class="hljs-subst">&#123;ans&#125;</span>&quot;</span>)
 sys.stdout.flush()</code></pre></div>
-<h2 id="k进制转换">03_k进制转换</h2>
-<p>有 n 台破解器，字符集 S 长度为 k，密码长度为 m。总共有 k^m 个密码，按
-S 定义的字典序排列。每台破解器处理连续的一段密码，要求： -
-所有密码都被处理 - 工作量均衡，最大与最小工作量差不超过 1</p>
+<h2 id="03-k进制转换"><a href="#03-k进制转换" class="headerlink" title="03_k进制转换"></a>03_k进制转换</h2><p>有 n 台破解器，字符集 S 长度为 k，密码长度为 m。总共有 k^m 个密码，按 S 定义的字典序排列。每台破解器处理连续的一段密码，要求：</p>
+<ul>
+<li>所有密码都被处理</li>
+<li>工作量均衡，最大与最小工作量差不超过 1</li>
+</ul>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">idx_to_password</span>(<span class="hljs-params">idx</span>):
     res = []
     <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):
@@ -343,9 +343,7 @@ a = <span class="hljs-number">0</span>
     b = a + len_i
     <span class="hljs-built_in">print</span>(idx_to_password(a), idx_to_password(b - <span class="hljs-number">1</span>))
     a = b</code></pre></div>
-<h2 id="跳跃过桥">04_跳跃过桥</h2>
-<h3 id="方法一二分搜索">方法一：二分搜索</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">first_true</span>(<span class="hljs-params">lo, hi, check</span>):
+<h2 id="04-跳跃过桥"><a href="#04-跳跃过桥" class="headerlink" title="04_跳跃过桥"></a>04_跳跃过桥</h2><h3 id="方法一：二分搜索"><a href="#方法一：二分搜索" class="headerlink" title="方法一：二分搜索"></a>方法一：二分搜索</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">first_true</span>(<span class="hljs-params">lo, hi, check</span>):
     <span class="hljs-string">&quot;&quot;&quot;查找第一个满足 check(x) 为 True 的 x&quot;&quot;&quot;</span>
     hi += <span class="hljs-number">1</span>
     <span class="hljs-keyword">while</span> lo &lt; hi:
@@ -369,8 +367,7 @@ a = <span class="hljs-number">0</span>
     a = [<span class="hljs-number">0</span>] + <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())) + [<span class="hljs-number">0</span>]  <span class="hljs-comment"># 添加起点和终点</span>
     result = first_true(<span class="hljs-built_in">min</span>(a), <span class="hljs-built_in">max</span>(a), can_reach)
     <span class="hljs-built_in">print</span>(result)</code></pre></div>
-<h3 id="方法二单调队列">方法二：单调队列</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<h3 id="方法二：单调队列"><a href="#方法二：单调队列" class="headerlink" title="方法二：单调队列"></a>方法二：单调队列</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
 t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 
@@ -394,8 +391,7 @@ t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</sp
     n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
     a = [<span class="hljs-number">0</span>] + <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())) + [<span class="hljs-number">0</span>]
     <span class="hljs-built_in">print</span>(solve_one(n, k, a))</code></pre></div>
-<h2 id="前缀和">06_前缀和</h2>
-<div class="code-wrapper"><pre><code class="hljs python">n, q = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+<h2 id="06-前缀和"><a href="#06-前缀和" class="headerlink" title="06_前缀和"></a>06_前缀和</h2><div class="code-wrapper"><pre><code class="hljs python">n, q = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 s = <span class="hljs-built_in">input</span>().strip()
 
 pref = [[<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>)]
@@ -413,8 +409,7 @@ pref = [[<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1<
             flag = <span class="hljs-literal">True</span>
             <span class="hljs-keyword">break</span>
     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;YES&quot;</span> <span class="hljs-keyword">if</span> flag <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;NO&quot;</span>)</code></pre></div>
-<h2 id="路径构造">07_路径构造</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<h2 id="07-路径构造"><a href="#07-路径构造" class="headerlink" title="07_路径构造"></a>07_路径构造</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 <span class="hljs-built_in">input</span> = sys.stdin.readline
 
 q = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
@@ -438,9 +433,7 @@ n = <span class="hljs-built_in">max</span>(S_list).bit_length()  <span class="hl
     <span class="hljs-keyword">if</span> flag:
         path.append(<span class="hljs-string">&#x27;RR&#x27;</span>)
     <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;&#x27;</span>.join(path))</code></pre></div>
-<h2 id="二分图染色">08_二分图染色</h2>
-<h3 id="bfs-版本">BFS 版本</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<h2 id="08-二分图染色"><a href="#08-二分图染色" class="headerlink" title="08_二分图染色"></a>08_二分图染色</h2><h3 id="BFS-版本"><a href="#BFS-版本" class="headerlink" title="BFS 版本"></a>BFS 版本</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 <span class="hljs-keyword">import</span> sys
 sys.setrecursionlimit(<span class="hljs-number">10</span>**<span class="hljs-number">6</span>)
 <span class="hljs-built_in">input</span> = sys.stdin.readline
@@ -484,8 +477,7 @@ ans = <span class="hljs-number">0</span>
     ans += <span class="hljs-built_in">min</span>(res)
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h3 id="dfs-版本递归">DFS 版本（递归）</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<h3 id="DFS-版本（递归）"><a href="#DFS-版本（递归）" class="headerlink" title="DFS 版本（递归）"></a>DFS 版本（递归）</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 sys.setrecursionlimit(<span class="hljs-number">10</span>**<span class="hljs-number">6</span>)
 
 n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
@@ -526,8 +518,7 @@ ans = <span class="hljs-number">0</span>
         ans += <span class="hljs-built_in">min</span>(c, tot - c)
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h2 id="dp">13_dp</h2>
-<div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+<h2 id="13-dp"><a href="#13-dp" class="headerlink" title="13_dp"></a>13_dp</h2><div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 A = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
 B = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
 
@@ -542,7 +533,6 @@ dp = [[<span class="hljs-number">0</span>] * (m + <span class="hljs-number">1</s
             dp[i][j] = <span class="hljs-built_in">max</span>(dp[i - <span class="hljs-number">1</span>][j], dp[i][j - <span class="hljs-number">1</span>])
 
 <span class="hljs-built_in">print</span>(dp[n][m])</code></pre></div>
-
                 
               </div>
             

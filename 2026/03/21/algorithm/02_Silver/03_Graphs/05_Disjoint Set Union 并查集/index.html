@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="并查集 什么是并查集？ 并查集（Disjoint Set Union，DSU）数据结构，也称为并查集或联合-查找数据结构，允许你向图中添加边，并测试图中两个顶点是否相连。 由于实现非常简单，你可能更倾向于使用它来代替 DFS 计算连通分量。  实现 class DisjointSets:     def __init__(self, size: int) -&gt; None:">
+    <meta name="description" content="并查集什么是并查集？并查集（Disjoint Set Union，DSU）数据结构，也称为并查集或联合-查找数据结构，允许你向图中添加边，并测试图中两个顶点是否相连。 由于实现非常简单，你可能更倾向于使用它来代替 DFS 计算连通分量。  实现class DisjointSets:     def __init__(self, size: int) -&gt; None:         self">
 <meta property="og:type" content="article">
 <meta property="og:title" content="05_Disjoint Set Union 并查集">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/21/algorithm/02_Silver/03_Graphs/05_Disjoint%20Set%20Union%20%E5%B9%B6%E6%9F%A5%E9%9B%86/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="并查集 什么是并查集？ 并查集（Disjoint Set Union，DSU）数据结构，也称为并查集或联合-查找数据结构，允许你向图中添加边，并测试图中两个顶点是否相连。 由于实现非常简单，你可能更倾向于使用它来代替 DFS 计算连通分量。  实现 class DisjointSets:     def __init__(self, size: int) -&gt; None:">
+<meta property="og:description" content="并查集什么是并查集？并查集（Disjoint Set Union，DSU）数据结构，也称为并查集或联合-查找数据结构，允许你向图中添加边，并测试图中两个顶点是否相连。 由于实现非常简单，你可能更倾向于使用它来代替 DFS 计算连通分量。  实现class DisjointSets:     def __init__(self, size: int) -&gt; None:         self">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-20T18:18:51.899Z">
 <meta property="article:modified_time" content="2026-03-20T19:17:17.544Z">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          764 字
+          765 字
         
       </span>
     
@@ -304,14 +304,10 @@
             
               <div class="markdown-body">
                 
-                <h1 id="并查集">并查集</h1>
-<h2 id="什么是并查集">什么是并查集？</h2>
-<p>并查集（Disjoint Set
-Union，DSU）数据结构，也称为并查集或联合-查找数据结构，允许你向图中添加边，并测试图中两个顶点是否相连。</p>
+                <h1 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h1><h2 id="什么是并查集？"><a href="#什么是并查集？" class="headerlink" title="什么是并查集？"></a>什么是并查集？</h2><p>并查集（Disjoint Set Union，DSU）数据结构，也称为并查集或联合-查找数据结构，允许你向图中添加边，并测试图中两个顶点是否相连。</p>
 <p>由于实现非常简单，你可能更倾向于使用它来代替 DFS 计算连通分量。</p>
-<hr />
-<h2 id="实现">实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DisjointSets</span>:
+<hr>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DisjointSets</span>:
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, size: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:
         <span class="hljs-variable language_">self</span>.parents = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(size)]
         <span class="hljs-variable language_">self</span>.sizes = [<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(size)]
@@ -338,40 +334,24 @@ Union，DSU）数据结构，也称为并查集或联合-查找数据结构，�
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">connected</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span>, y: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:
         <span class="hljs-string">&quot;&quot;&quot;检查 x 和 y 是否在同一集合中&quot;&quot;&quot;</span>
         <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.find(x) == <span class="hljs-variable language_">self</span>.find(y)</code></pre></div>
-<hr />
-<h2 id="核心优化">核心优化</h2>
-<h3 id="路径压缩-path-compression">1. 路径压缩 (Path Compression)</h3>
-<p>在 <code>find</code>
-操作中，将路径上的所有节点直接指向根节点，大大加快后续查询。</p>
-<h3 id="按秩合并-union-by-ranksize">2. 按秩合并 (Union by
-Rank/Size)</h3>
-<p>总是将较小的树合并到较大的树下，保持树的平衡性。</p>
-<hr />
-<h2 id="时间复杂度">时间复杂度</h2>
-<p>并查集的各种操作的时间复杂度均为 <span
-class="math inline"><em>O</em>(<em>α</em>(<em>N</em>))</span>，其中
-<span class="math inline"><em>α</em></span>
-是反阿克曼函数，在实际应用中近似为常数。</p>
-<hr />
-<h2 id="示例---并查集-union-find">示例 - 并查集 (Union Find)</h2>
-<blockquote>
+<hr>
+<h2 id="核心优化"><a href="#核心优化" class="headerlink" title="核心优化"></a>核心优化</h2><h3 id="1-路径压缩-Path-Compression"><a href="#1-路径压缩-Path-Compression" class="headerlink" title="1. 路径压缩 (Path Compression)"></a>1. 路径压缩 (Path Compression)</h3><p>在 <code>find</code> 操作中，将路径上的所有节点直接指向根节点，大大加快后续查询。</p>
+<h3 id="2-按秩合并-Union-by-Rank-Size"><a href="#2-按秩合并-Union-by-Rank-Size" class="headerlink" title="2. 按秩合并 (Union by Rank/Size)"></a>2. 按秩合并 (Union by Rank/Size)</h3><p>总是将较小的树合并到较大的树下，保持树的平衡性。</p>
+<hr>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>并查集的各种操作的时间复杂度均为 $O(\alpha(N))$，其中 $\alpha$ 是反阿克曼函数，在实际应用中近似为常数。</p>
+<hr>
+<h2 id="示例-并查集-Union-Find"><a href="#示例-并查集-Union-Find" class="headerlink" title="示例 - 并查集 (Union Find)"></a>示例 - 并查集 (Union Find)</h2><blockquote>
 <p><strong>Focus Problem</strong>: 在继续之前，请尽力解决这个问题！</p>
 </blockquote>
-<h3 id="题目描述">题目描述</h3>
-<p>我们需要处理两类操作： - 合并两个顶点所在的集合 -
-查询两个顶点是否在同一连通分量中</p>
-<h3 id="不用并查集">不用并查集</h3>
-<p>如果没有并查集，我们需要用邻接表表示图，并使用泛洪填充来计算连通分量。这种方法需要
-<span class="math inline"><em>O</em>(<em>N</em><em>Q</em>)</span>
-时间，这太慢了。</p>
-<h3 id="使用并查集">使用并查集</h3>
-<p>通过使用并查集数据结构，我们可以使用其方法来合并顶点，并仅用 <span
-class="math inline"><em>O</em>(<em>α</em>(<em>N</em>))</span> amortized
-时间检查两个顶点是否在同一个连通分量中。</p>
-<p>这将整体时间复杂度降低到 <span
-class="math inline"><em>O</em>(<em>Q</em><em>α</em>(<em>N</em>))</span>，这是一个显著的改进，并使我们能够通过所有测试用例。</p>
-<h3 id="代码实现">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DisjointSets</span>:
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>我们需要处理两类操作：</p>
+<ul>
+<li>合并两个顶点所在的集合</li>
+<li>查询两个顶点是否在同一连通分量中</li>
+</ul>
+<h3 id="不用并查集"><a href="#不用并查集" class="headerlink" title="不用并查集"></a>不用并查集</h3><p>如果没有并查集，我们需要用邻接表表示图，并使用泛洪填充来计算连通分量。这种方法需要 $O(NQ)$ 时间，这太慢了。</p>
+<h3 id="使用并查集"><a href="#使用并查集" class="headerlink" title="使用并查集"></a>使用并查集</h3><p>通过使用并查集数据结构，我们可以使用其方法来合并顶点，并仅用 $O(\alpha(N))$  amortized 时间检查两个顶点是否在同一个连通分量中。</p>
+<p>这将整体时间复杂度降低到 $O(Q \alpha(N))$，这是一个显著的改进，并使我们能够通过所有测试用例。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DisjointSets</span>:
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, size: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:
         <span class="hljs-variable language_">self</span>.parents = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(size)]
         <span class="hljs-variable language_">self</span>.sizes = [<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(size)]
@@ -405,17 +385,16 @@ dsu = DisjointSets(size)
         dsu.unite(u, v)
     <span class="hljs-keyword">else</span>:
         <span class="hljs-built_in">print</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> dsu.connected(u, v) <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>)</code></pre></div>
-<hr />
-<h2 id="应用场景">应用场景</h2>
-<ol type="1">
+<hr>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
 <li><strong>连通分量计算</strong> - 判断图中两点是否连通</li>
 <li><strong>集合合并</strong> - 合并若干集合</li>
 <li><strong>最近公共祖先 (LCA)</strong> - 在树中求 LCA</li>
 <li><strong>Kruskal 最小生成树</strong> - 边的集合合并</li>
 <li><strong>贪心算法</strong> - 某些贪心问题的辅助数据结构</li>
 </ol>
-<hr />
-<h2 id="经典问题">经典问题</h2>
+<hr>
+<h2 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -432,6 +411,7 @@ dsu = DisjointSets(size)
 </tr>
 </tbody>
 </table>
+</div>
 
                 
               </div>

@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="02_Complete Search 完全搜索 什么是完全搜索？ 完全搜索（Complete Search &#x2F; Brute Force）是一种通过枚举所有可能的情况来解决问题的算法思想。虽然听起来简单，但在 Bronze 级别中非常有效。 完全搜索的特点  枚举所有可能性：遍历问题的整个解空间 简单直接：不需要复杂的数学推导 适合小规模数据：当解空间较小时非常有效 往往能通过">
+    <meta name="description" content="02_Complete Search 完全搜索什么是完全搜索？完全搜索（Complete Search &#x2F; Brute Force）是一种通过枚举所有可能的情况来解决问题的算法思想。虽然听起来简单，但在 Bronze 级别中非常有效。 完全搜索的特点 枚举所有可能性：遍历问题的整个解空间 简单直接：不需要复杂的数学推导 适合小规模数据：当解空间较小时非常有效 往往能通过 Bronze 题目：数据规">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Complete Search 完全搜索">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/18/algorithm/01_Bronze/02_Complete%20Search%20%20%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="02_Complete Search 完全搜索 什么是完全搜索？ 完全搜索（Complete Search &#x2F; Brute Force）是一种通过枚举所有可能的情况来解决问题的算法思想。虽然听起来简单，但在 Bronze 级别中非常有效。 完全搜索的特点  枚举所有可能性：遍历问题的整个解空间 简单直接：不需要复杂的数学推导 适合小规模数据：当解空间较小时非常有效 往往能通过">
+<meta property="og:description" content="02_Complete Search 完全搜索什么是完全搜索？完全搜索（Complete Search &#x2F; Brute Force）是一种通过枚举所有可能的情况来解决问题的算法思想。虽然听起来简单，但在 Bronze 级别中非常有效。 完全搜索的特点 枚举所有可能性：遍历问题的整个解空间 简单直接：不需要复杂的数学推导 适合小规模数据：当解空间较小时非常有效 往往能通过 Bronze 题目：数据规">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-17T16:33:27.560Z">
 <meta property="article:modified_time" content="2026-03-17T16:33:27.560Z">
@@ -293,33 +293,25 @@
             
               <div class="markdown-body">
                 
-                <h1 id="complete-search-完全搜索">02_Complete Search 完全搜索</h1>
-<h2 id="什么是完全搜索">什么是完全搜索？</h2>
-<p>完全搜索（Complete Search / Brute
-Force）是一种通过<strong>枚举所有可能的情况</strong>来解决问题的算法思想。虽然听起来简单，但在
-Bronze 级别中非常有效。</p>
-<h3 id="完全搜索的特点">完全搜索的特点</h3>
-<ol type="1">
+                <h1 id="02-Complete-Search-完全搜索"><a href="#02-Complete-Search-完全搜索" class="headerlink" title="02_Complete Search 完全搜索"></a>02_Complete Search 完全搜索</h1><h2 id="什么是完全搜索？"><a href="#什么是完全搜索？" class="headerlink" title="什么是完全搜索？"></a>什么是完全搜索？</h2><p>完全搜索（Complete Search / Brute Force）是一种通过<strong>枚举所有可能的情况</strong>来解决问题的算法思想。虽然听起来简单，但在 Bronze 级别中非常有效。</p>
+<h3 id="完全搜索的特点"><a href="#完全搜索的特点" class="headerlink" title="完全搜索的特点"></a>完全搜索的特点</h3><ol>
 <li><strong>枚举所有可能性</strong>：遍历问题的整个解空间</li>
 <li><strong>简单直接</strong>：不需要复杂的数学推导</li>
 <li><strong>适合小规模数据</strong>：当解空间较小时非常有效</li>
-<li><strong>往往能通过 Bronze
-题目</strong>：数据规模通常在可枚举范围内</li>
+<li><strong>往往能通过 Bronze 题目</strong>：数据规模通常在可枚举范围内</li>
 </ol>
-<h3 id="适用场景">适用场景</h3>
-<ul>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
 <li>数据规模较小（通常 n ≤ 100~1000）</li>
 <li>需要找出满足某些条件的最优解</li>
 <li>无法直接推导出公式解时</li>
 </ul>
-<h3 id="常见优化技巧">常见优化技巧</h3>
-<ul>
+<h3 id="常见优化技巧"><a href="#常见优化技巧" class="headerlink" title="常见优化技巧"></a>常见优化技巧</h3><ul>
 <li><strong>剪枝</strong>：提前排除不可能的情况</li>
 <li><strong>利用数据结构</strong>：使用集合、数组等加速查找</li>
 <li><strong>避免重复计算</strong>：记录已经计算过的结果</li>
 </ul>
-<hr />
-<h2 id="题目列表">题目列表</h2>
+<hr>
+<h2 id="题目列表"><a href="#题目列表" class="headerlink" title="题目列表"></a>题目列表</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -361,19 +353,16 @@ Bronze 级别中非常有效。</p>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="经典例题">经典例题</h2>
-<h3 id="milk-pails-usaco-bronze">01. Milk Pails (USACO Bronze)</h3>
-<h4 id="题目描述">题目描述</h4>
-<p>给定两个水桶容量 x 和 y，以及最大容量
-m，求使用这两个水桶能装下的最大牛奶量（不超过 m）。</p>
-<h4 id="算法思路">算法思路</h4>
-<p><strong>完全搜索</strong>：枚举所有可能的取水次数，找到不超过 m
-的最大组合。</p>
-<p>遍历所有可能的取水次数组合 (i, j)： - i * x + j * y ≤ m -
-取最大值</p>
-<h4 id="代码实现">代码实现</h4>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+</div>
+<hr>
+<h2 id="经典例题"><a href="#经典例题" class="headerlink" title="经典例题"></a>经典例题</h2><h3 id="01-Milk-Pails-USACO-Bronze"><a href="#01-Milk-Pails-USACO-Bronze" class="headerlink" title="01. Milk Pails (USACO Bronze)"></a>01. Milk Pails (USACO Bronze)</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定两个水桶容量 x 和 y，以及最大容量 m，求使用这两个水桶能装下的最大牛奶量（不超过 m）。</p>
+<h4 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h4><p><strong>完全搜索</strong>：枚举所有可能的取水次数，找到不超过 m 的最大组合。</p>
+<p>遍历所有可能的取水次数组合 (i, j)：</p>
+<ul>
+<li>i <em> x + j </em> y ≤ m</li>
+<li>取最大值</li>
+</ul>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
@@ -398,21 +387,13 @@ m，求使用这两个水桶能装下的最大牛奶量（不超过 m）。</p>
     cout &lt;&lt; ans;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-<h4 id="时间复杂度">时间复杂度</h4>
-<ul>
+<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><ul>
 <li>O((m/x) × (m/y)) ≈ O(m²)</li>
 </ul>
-<hr />
-<h3 id="diamond-collector-usaco-bronze">02. Diamond Collector (USACO
-Bronze)</h3>
-<h4 id="题目描述-1">题目描述</h4>
-<p>给定 n 颗钻石的大小和大小差上限 k，找出一个大小差不超过 k
-的最大钻石集合。</p>
-<h4 id="算法思路-1">算法思路</h4>
-<p><strong>完全搜索 + 优化</strong>：枚举每个可能的起始钻石，统计在 [x,
-x+k] 范围内的钻石数量。</p>
-<h4 id="代码实现-1">代码实现</h4>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<hr>
+<h3 id="02-Diamond-Collector-USACO-Bronze"><a href="#02-Diamond-Collector-USACO-Bronze" class="headerlink" title="02. Diamond Collector (USACO Bronze)"></a>02. Diamond Collector (USACO Bronze)</h3><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定 n 颗钻石的大小和大小差上限 k，找出一个大小差不超过 k 的最大钻石集合。</p>
+<h4 id="算法思路-1"><a href="#算法思路-1" class="headerlink" title="算法思路"></a>算法思路</h4><p><strong>完全搜索 + 优化</strong>：枚举每个可能的起始钻石，统计在 [x, x+k] 范围内的钻石数量。</p>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
@@ -438,19 +419,13 @@ x+k] 范围内的钻石数量。</p>
     cout &lt;&lt; ans;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-<h4 id="时间复杂度-1">时间复杂度</h4>
-<ul>
+<h4 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><ul>
 <li>O(n²)</li>
 </ul>
-<hr />
-<h3 id="daisy-chains-usaco-bronze">03. Daisy Chains (USACO Bronze)</h3>
-<h4 id="题目描述-2">题目描述</h4>
-<p>给定 n 朵花的美丽值，求有多少个子序列的平均值等于其中的某朵花。</p>
-<h4 id="算法思路-2">算法思路</h4>
-<p><strong>完全搜索</strong>：枚举所有子序列 [i,
-j]，计算平均值，判断是否有花朵的美丽值等于平均值。</p>
-<h4 id="代码实现-2">代码实现</h4>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<hr>
+<h3 id="03-Daisy-Chains-USACO-Bronze"><a href="#03-Daisy-Chains-USACO-Bronze" class="headerlink" title="03. Daisy Chains (USACO Bronze)"></a>03. Daisy Chains (USACO Bronze)</h3><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定 n 朵花的美丽值，求有多少个子序列的平均值等于其中的某朵花。</p>
+<h4 id="算法思路-2"><a href="#算法思路-2" class="headerlink" title="算法思路"></a>算法思路</h4><p><strong>完全搜索</strong>：枚举所有子序列 [i, j]，计算平均值，判断是否有花朵的美丽值等于平均值。</p>
+<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h4><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
@@ -482,21 +457,14 @@ j]，计算平均值，判断是否有花朵的美丽值等于平均值。</p>
     cout &lt;&lt; ans;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-<h4 id="时间复杂度-2">时间复杂度</h4>
-<ul>
+<h4 id="时间复杂度-2"><a href="#时间复杂度-2" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><ul>
 <li>O(n³)</li>
 </ul>
-<hr />
-<h3 id="counting-liars-usaco-bronze">04. Counting Liars (USACO
-Bronze)</h3>
-<h4 id="题目描述-3">题目描述</h4>
-<p>给定 n
-头牛的位置和每头牛说真话(L)或说假话(G)的状态，找出一个位置使得说谎的牛最少。</p>
-<h4 id="算法思路-3">算法思路</h4>
-<p><strong>完全搜索</strong>：枚举每个可能的位置，计算该位置处说谎的牛数量，取最小值。</p>
+<hr>
+<h3 id="04-Counting-Liars-USACO-Bronze"><a href="#04-Counting-Liars-USACO-Bronze" class="headerlink" title="04. Counting Liars (USACO Bronze)"></a>04. Counting Liars (USACO Bronze)</h3><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定 n 头牛的位置和每头牛说真话(L)或说假话(G)的状态，找出一个位置使得说谎的牛最少。</p>
+<h4 id="算法思路-3"><a href="#算法思路-3" class="headerlink" title="算法思路"></a>算法思路</h4><p><strong>完全搜索</strong>：枚举每个可能的位置，计算该位置处说谎的牛数量，取最小值。</p>
 <p>优化：先排序，然后利用前缀和/后缀和加速计算。</p>
-<h4 id="代码实现-3">代码实现</h4>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
@@ -535,25 +503,17 @@ Bronze)</h3>
     cout &lt;&lt; ans;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-<h4 id="时间复杂度-3">时间复杂度</h4>
-<ul>
+<h4 id="时间复杂度-3"><a href="#时间复杂度-3" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><ul>
 <li>O(n log n) 排序 + O(n) 搜索</li>
 </ul>
-<hr />
-<h3 id="cow-gymnastics-usaco-bronze">05. Cow Gymnastics (USACO
-Bronze)</h3>
-<h4 id="题目描述-4">题目描述</h4>
-<p>给定 k 次训练中 n 头牛的排名，找出有多少对牛 (i, j)
-满足：在所有训练中，i 始终排在 j 前面。</p>
-<h4 id="算法思路-4">算法思路</h4>
-<p><strong>完全搜索</strong>：记录每对牛 (i, j) 在所有训练中 i 是否都在
-j 前面。</p>
+<hr>
+<h3 id="05-Cow-Gymnastics-USACO-Bronze"><a href="#05-Cow-Gymnastics-USACO-Bronze" class="headerlink" title="05. Cow Gymnastics (USACO Bronze)"></a>05. Cow Gymnastics (USACO Bronze)</h3><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定 k 次训练中 n 头牛的排名，找出有多少对牛 (i, j) 满足：在所有训练中，i 始终排在 j 前面。</p>
+<h4 id="算法思路-4"><a href="#算法思路-4" class="headerlink" title="算法思路"></a>算法思路</h4><p><strong>完全搜索</strong>：记录每对牛 (i, j) 在所有训练中 i 是否都在 j 前面。</p>
 <ul>
 <li>使用二维布尔数组 <code>a[i][j]</code> 表示 i 是否在 j 前面</li>
 <li>对每对牛检查是否在所有训练中都成立</li>
 </ul>
-<h4 id="代码实现-4">代码实现</h4>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<h4 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h4><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
@@ -589,24 +549,17 @@ j 前面。</p>
     cout &lt;&lt; ans;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-<h4 id="时间复杂度-4">时间复杂度</h4>
-<ul>
+<h4 id="时间复杂度-4"><a href="#时间复杂度-4" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><ul>
 <li>O(k × n²)</li>
 </ul>
-<hr />
-<h3 id="bovine-genomics-usaco-bronze">06. Bovine Genomics (USACO
-Bronze)</h3>
-<h4 id="题目描述-5">题目描述</h4>
-<p>给定 n 头有斑点的牛和 n 头无斑点的牛的基因序列（长度为
-m），找出有多少列满足：该列中所有有斑点的牛和无斑点的牛的基因完全不同。</p>
-<h4 id="算法思路-5">算法思路</h4>
-<p><strong>完全搜索</strong>：对每一列，检查有斑点的牛的基因是否与无斑点的牛的基因有交集。</p>
+<hr>
+<h3 id="06-Bovine-Genomics-USACO-Bronze"><a href="#06-Bovine-Genomics-USACO-Bronze" class="headerlink" title="06. Bovine Genomics (USACO Bronze)"></a>06. Bovine Genomics (USACO Bronze)</h3><h4 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定 n 头有斑点的牛和 n 头无斑点的牛的基因序列（长度为 m），找出有多少列满足：该列中所有有斑点的牛和无斑点的牛的基因完全不同。</p>
+<h4 id="算法思路-5"><a href="#算法思路-5" class="headerlink" title="算法思路"></a>算法思路</h4><p><strong>完全搜索</strong>：对每一列，检查有斑点的牛的基因是否与无斑点的牛的基因有交集。</p>
 <ul>
 <li>对每列建立基因计数数组</li>
 <li>检查无斑点牛是否有相同的基因</li>
 </ul>
-<h4 id="代码实现-5">代码实现</h4>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<h4 id="代码实现-5"><a href="#代码实现-5" class="headerlink" title="代码实现"></a>代码实现</h4><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">char2idx</span><span class="hljs-params">(<span class="hljs-type">char</span> c)</span></span>&#123;
@@ -669,8 +622,7 @@ m），找出有多少列满足：该列中所有有斑点的牛和无斑点的�
     cout &lt;&lt; ans;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-<h4 id="时间复杂度-5">时间复杂度</h4>
-<ul>
+<h4 id="时间复杂度-5"><a href="#时间复杂度-5" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><ul>
 <li>O(m × n)</li>
 </ul>
 

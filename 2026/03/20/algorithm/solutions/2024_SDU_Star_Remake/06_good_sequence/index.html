@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="好序列 题目描述 给定 n 个严格递增的数 a1, a2, …, an，从中选取一个子序列 x1, x2, …, xk，满足：  x1 &lt; x2 &lt; … &lt; xk（严格递增） gcd(xi, xi+1) &gt; 1（相邻元素有公共质因子） xi 必须在给定的数组 a 中  求最长序列的长度。 解题思路 核心观察  相邻元素有公共质因子：两个数能相邻的条">
+    <meta name="description" content="好序列题目描述给定 n 个严格递增的数 a1, a2, …, an，从中选取一个子序列 x1, x2, …, xk，满足：  x1 &lt; x2 &lt; … &lt; xk（严格递增） gcd(xi, xi+1) &gt; 1（相邻元素有公共质因子） xi 必须在给定的数组 a 中  求最长序列的长度。 解题思路核心观察 相邻元素有公共质因子：两个数能相邻的条件是它们至少共享一个质因数。  动">
 <meta property="og:type" content="article">
 <meta property="og:title" content="好序列（最长合法序列）">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/20/algorithm/solutions/2024_SDU_Star_Remake/06_good_sequence/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="好序列 题目描述 给定 n 个严格递增的数 a1, a2, …, an，从中选取一个子序列 x1, x2, …, xk，满足：  x1 &lt; x2 &lt; … &lt; xk（严格递增） gcd(xi, xi+1) &gt; 1（相邻元素有公共质因子） xi 必须在给定的数组 a 中  求最长序列的长度。 解题思路 核心观察  相邻元素有公共质因子：两个数能相邻的条">
+<meta property="og:description" content="好序列题目描述给定 n 个严格递增的数 a1, a2, …, an，从中选取一个子序列 x1, x2, …, xk，满足：  x1 &lt; x2 &lt; … &lt; xk（严格递增） gcd(xi, xi+1) &gt; 1（相邻元素有公共质因子） xi 必须在给定的数组 a 中  求最长序列的长度。 解题思路核心观察 相邻元素有公共质因子：两个数能相邻的条件是它们至少共享一个质因数。  动">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-20T15:14:56.125Z">
 <meta property="article:modified_time" content="2026-03-20T15:14:56.778Z">
@@ -304,47 +304,40 @@
             
               <div class="markdown-body">
                 
-                <h1 id="好序列">好序列</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>给定 n 个严格递增的数 a1, a2, …, an，从中选取一个子序列 x1, x2, …,
-xk，满足：</p>
+                <h1 id="好序列"><a href="#好序列" class="headerlink" title="好序列"></a>好序列</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定 n 个严格递增的数 a1, a2, …, an，从中选取一个子序列 x1, x2, …, xk，满足：</p>
 <ul>
 <li>x1 &lt; x2 &lt; … &lt; xk（严格递增）</li>
 <li>gcd(xi, xi+1) &gt; 1（相邻元素有公共质因子）</li>
 <li>xi 必须在给定的数组 a 中</li>
 </ul>
 <p>求最长序列的长度。</p>
-<h2 id="解题思路">解题思路</h2>
-<h3 id="核心观察">核心观察</h3>
-<ol type="1">
-<li><p><strong>相邻元素有公共质因子</strong>：两个数能相邻的条件是它们至少共享一个质因数。</p></li>
-<li><p><strong>动态规划</strong>：对于每个数
-ai，考虑它能接在哪些数后面。以 ai 的质因数为”桥梁”，如果某个质因数 p
-之前出现过，那么以 p 结尾的最长序列长度 +1 就是以 ai
-结尾的长度。</p></li>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="核心观察"><a href="#核心观察" class="headerlink" title="核心观察"></a>核心观察</h3><ol>
+<li><p><strong>相邻元素有公共质因子</strong>：两个数能相邻的条件是它们至少共享一个质因数。</p>
+</li>
+<li><p><strong>动态规划</strong>：对于每个数 ai，考虑它能接在哪些数后面。以 ai 的质因数为”桥梁”，如果某个质因数 p 之前出现过，那么以 p 结尾的最长序列长度 +1 就是以 ai 结尾的长度。</p>
+</li>
 <li><p><strong>状态转移</strong>：</p>
 <ul>
 <li>设 dp[p] 表示以质因数 p 结尾的最长序列长度</li>
 <li>对于 ai，计算其所有质因数集合 fac</li>
 <li>cur = max(dp[p] for p in fac) + 1</li>
 <li>更新所有 dp[p] = cur</li>
-</ul></li>
-<li><p><strong>特殊处理</strong>：如果 ai =
-1（没有质因数），则单独成为一个新的序列，长度为 1。</p></li>
+</ul>
+</li>
+<li><p><strong>特殊处理</strong>：如果 ai = 1（没有质因数），则单独成为一个新的序列，长度为 1。</p>
+</li>
 </ol>
-<h3 id="算法步骤">算法步骤</h3>
-<ol type="1">
+<h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><ol>
 <li>预处理：计算每个数的质因数集合</li>
-<li>遍历数组，对于每个数：
-<ul>
+<li>遍历数组，对于每个数：<ul>
 <li>获取其质因数集合</li>
 <li>如果非空，取最大 dp 值 +1</li>
 <li>更新 dp 字典</li>
-</ul></li>
+</ul>
+</li>
 <li>记录最大长度</li>
 </ol>
-<h2 id="代码实现">代码实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 arr = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">prime_factors</span>(<span class="hljs-params">n</span>):
@@ -376,21 +369,17 @@ dp = &#123;&#125;
     ans = <span class="hljs-built_in">max</span>(ans, cur)
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h2 id="代码解析">代码解析</h2>
-<h3 id="prime_factors-函数">prime_factors 函数</h3>
-<ul>
+<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="prime-factors-函数"><a href="#prime-factors-函数" class="headerlink" title="prime_factors 函数"></a>prime_factors 函数</h3><ul>
 <li>使用试除法分解质因数</li>
 <li>返回一个集合（去重）</li>
 <li>时间复杂度 O(√n)</li>
 </ul>
-<h3 id="dp-过程">DP 过程</h3>
-<ul>
+<h3 id="DP-过程"><a href="#DP-过程" class="headerlink" title="DP 过程"></a>DP 过程</h3><ul>
 <li>dp 字典存储每个质因数当前对应的最长序列长度</li>
 <li>每次遇到新数，取其所有质因数的最大 dp 值 +1</li>
 <li>然后将该长度更新到所有相关质因数上</li>
 </ul>
-<h2 id="时间复杂度">时间复杂度</h2>
-<ul>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul>
 <li>分解质因数：每个数 O(√ai)，总体 O(n × √max(ai))</li>
 <li>DP 更新：O(n × 质因数个数)</li>
 <li>在实际应用中，由于 ai ≤ 10⁵，质因数个数较少，运行效率较高</li>

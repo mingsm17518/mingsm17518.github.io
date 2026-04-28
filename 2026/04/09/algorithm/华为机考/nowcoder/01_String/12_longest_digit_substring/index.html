@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最长数字子串 题目描述 https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720143943 对于给定的由数字和小写字母混合构成的字符串 s，找到其中最长的数字子串。如果有多个相同长度的数字子串，则需要全部输出。  子串为从原字符串中连续选择一段字符得到的新字符串 输入保证至少存在一个数字子串  示例 输入： abcd12345e">
+    <meta name="description" content="最长数字子串题目描述https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720143943 对于给定的由数字和小写字母混合构成的字符串 s，找到其中最长的数字子串。如果有多个相同长度的数字子串，则需要全部输出。  子串为从原字符串中连续选择一段字符得到的新字符串 输入保证至少存在一个数字子串  示例输入：abcd12345ed125ss12305878">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最长数字子串（HJ12）">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/09/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/12_longest_digit_substring/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="最长数字子串 题目描述 https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720143943 对于给定的由数字和小写字母混合构成的字符串 s，找到其中最长的数字子串。如果有多个相同长度的数字子串，则需要全部输出。  子串为从原字符串中连续选择一段字符得到的新字符串 输入保证至少存在一个数字子串  示例 输入： abcd12345e">
+<meta property="og:description" content="最长数字子串题目描述https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720143943 对于给定的由数字和小写字母混合构成的字符串 s，找到其中最长的数字子串。如果有多个相同长度的数字子串，则需要全部输出。  子串为从原字符串中连续选择一段字符得到的新字符串 输入保证至少存在一个数字子串  示例输入：abcd12345ed125ss12305878">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-09T07:29:32.102Z">
 <meta property="article:modified_time" content="2026-04-09T07:35:49.889Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          499 字
+          507 字
         
       </span>
     
@@ -303,24 +303,17 @@
             
               <div class="markdown-body">
                 
-                <h1 id="最长数字子串">最长数字子串</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>https://www.nowcoder.com/share/jump/5832603751775720143943</p>
-<p>对于给定的由数字和小写字母混合构成的字符串
-s，找到其中最长的数字子串。如果有多个相同长度的数字子串，则需要全部输出。</p>
+                <h1 id="最长数字子串"><a href="#最长数字子串" class="headerlink" title="最长数字子串"></a>最长数字子串</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/share/jump/5832603751775720143943">https://www.nowcoder.com/share/jump/5832603751775720143943</a></p>
+<p>对于给定的由数字和小写字母混合构成的字符串 s，找到其中最长的数字子串。如果有多个相同长度的数字子串，则需要全部输出。</p>
 <ul>
 <li>子串为从原字符串中连续选择一段字符得到的新字符串</li>
 <li>输入保证至少存在一个数字子串</li>
 </ul>
-<h2 id="示例">示例</h2>
-<p>输入： <div class="code-wrapper"><pre><code class="hljs dns">abcd12345ed125ss<span class="hljs-number">123058789</span></code></pre></div> 输出： <div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">123058789</span>,<span class="hljs-number">9</span></code></pre></div></p>
-<p>输入： <div class="code-wrapper"><pre><code class="hljs llvm"><span class="hljs-number">11</span>a<span class="hljs-number">22</span>b<span class="hljs-number">33</span><span class="hljs-keyword">c</span></code></pre></div> 输出： <div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">112233</span>,<span class="hljs-number">2</span></code></pre></div></p>
-<hr />
-<h2 id="方法一正则表达式">方法一：正则表达式</h2>
-<h3 id="解题思路">解题思路</h3>
-<p>使用 <code>re.findall(r'\d+', s)</code> 直接提取所有连续数字串。</p>
-<h3 id="代码实现">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：<br><div class="code-wrapper"><pre><code class="hljs dns">abcd12345ed125ss<span class="hljs-number">123058789</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">123058789</span>,<span class="hljs-number">9</span></code></pre></div></p>
+<p>输入：<br><div class="code-wrapper"><pre><code class="hljs llvm"><span class="hljs-number">11</span>a<span class="hljs-number">22</span>b<span class="hljs-number">33</span><span class="hljs-keyword">c</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">112233</span>,<span class="hljs-number">2</span></code></pre></div></p>
+<hr>
+<h2 id="方法一：正则表达式"><a href="#方法一：正则表达式" class="headerlink" title="方法一：正则表达式"></a>方法一：正则表达式</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>使用 <code>re.findall(r&#39;\d+&#39;, s)</code> 直接提取所有连续数字串。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re
 
 s = <span class="hljs-built_in">input</span>().strip()
 
@@ -334,21 +327,15 @@ max_len = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">len
 res = <span class="hljs-string">&#x27;&#x27;</span>.join(x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arr <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(x) == max_len)
 
 <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;res&#125;</span>,<span class="hljs-subst">&#123;max_len&#125;</span>&quot;</span>)</code></pre></div>
-<h3 id="代码解析">代码解析</h3>
-<ul>
-<li><code>re.findall(r'\d+', s)</code> - <code>\d+</code>
-匹配一个或多个连续数字</li>
+<h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><ul>
+<li><code>re.findall(r&#39;\d+&#39;, s)</code> - <code>\d+</code> 匹配一个或多个连续数字</li>
 <li>列表推导式筛选最长子串</li>
-<li><code>''.join()</code> 拼接所有最长子串</li>
+<li><code>&#39;&#39;.join()</code> 拼接所有最长子串</li>
 </ul>
 <p><strong>时间复杂度</strong>：O(n) - 正则表达式线性扫描</p>
-<hr />
-<h2 id="方法二列表替换">方法二：列表替换</h2>
-<h3 id="解题思路-1">解题思路</h3>
-<p>将非数字字符替换为空格，利用 <code>split()</code>
-自动处理连续空格。</p>
-<h3 id="代码实现-1">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">input</span>().strip())
+<hr>
+<h2 id="方法二：列表替换"><a href="#方法二：列表替换" class="headerlink" title="方法二：列表替换"></a>方法二：列表替换</h2><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>将非数字字符替换为空格，利用 <code>split()</code> 自动处理连续空格。</p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">input</span>().strip())
 
 <span class="hljs-comment"># 非数字字符替换为空格</span>
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):
@@ -360,16 +347,15 @@ arr = <span class="hljs-string">&#x27;&#x27;</span>.join(s).split()
 ans = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">len</span>(d) <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> arr)
 res = <span class="hljs-string">&#x27;&#x27;</span>.join(x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arr <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(x) == ans)
 <span class="hljs-built_in">print</span>(<span class="hljs-built_in">str</span>(res) + <span class="hljs-string">&#x27;,&#x27;</span> + <span class="hljs-built_in">str</span>(ans))</code></pre></div>
-<h3 id="代码解析-1">代码解析</h3>
-<ul>
+<h3 id="代码解析-1"><a href="#代码解析-1" class="headerlink" title="代码解析"></a>代码解析</h3><ul>
 <li><code>list(input())</code> 将字符串转为可变列表</li>
 <li>遍历替换非数字为空格，避免重复空格问题</li>
-<li><code>''.join(s).split()</code> 自动处理连续空格</li>
+<li><code>&#39;&#39;.join(s).split()</code> 自动处理连续空格</li>
 <li>两个生成器表达式分别求最长长度和收集结果</li>
 </ul>
 <p><strong>时间复杂度</strong>：O(n) - 单次遍历替换</p>
-<hr />
-<h2 id="总结">总结</h2>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -394,6 +380,7 @@ res = <span class="hljs-string">&#x27;&#x27;</span>.join(x <span class="hljs-key
 </tr>
 </tbody>
 </table>
+</div>
 <blockquote>
 <p>注：本题 n ≤ 200，两种方法都能通过</p>
 </blockquote>

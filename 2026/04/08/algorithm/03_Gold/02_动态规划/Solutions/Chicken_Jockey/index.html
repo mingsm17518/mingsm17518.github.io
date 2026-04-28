@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Chicken Jockey 题解 题目描述 有 n 个怪物叠在一起，怪物 i (从下到上编号) 初始血量为 h[i]。 一次攻击可以对任意一个怪物造成 1 点伤害。当怪物血量 ≤ 0 时死亡，其上方的所有怪物会掉落。掉落的怪物中，底部的怪物会受到等于其下方怪物数量的摔落伤害。如果摔落后死亡，过程继续。 求最少需要多少次攻击才能消灭所有怪物。  解法 问题类型：线性 DP（状态转">
+    <meta name="description" content="Chicken Jockey 题解题目描述有 n 个怪物叠在一起，怪物 i (从下到上编号) 初始血量为 h[i]。 一次攻击可以对任意一个怪物造成 1 点伤害。当怪物血量 ≤ 0 时死亡，其上方的所有怪物会掉落。掉落的怪物中，底部的怪物会受到等于其下方怪物数量的摔落伤害。如果摔落后死亡，过程继续。 求最少需要多少次攻击才能消灭所有怪物。  解法问题类型：线性 DP（状态转移只与前几个状态相关，呈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ming&#39;s Blog">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Solutions/Chicken_Jockey/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Chicken Jockey 题解 题目描述 有 n 个怪物叠在一起，怪物 i (从下到上编号) 初始血量为 h[i]。 一次攻击可以对任意一个怪物造成 1 点伤害。当怪物血量 ≤ 0 时死亡，其上方的所有怪物会掉落。掉落的怪物中，底部的怪物会受到等于其下方怪物数量的摔落伤害。如果摔落后死亡，过程继续。 求最少需要多少次攻击才能消灭所有怪物。  解法 问题类型：线性 DP（状态转">
+<meta property="og:description" content="Chicken Jockey 题解题目描述有 n 个怪物叠在一起，怪物 i (从下到上编号) 初始血量为 h[i]。 一次攻击可以对任意一个怪物造成 1 点伤害。当怪物血量 ≤ 0 时死亡，其上方的所有怪物会掉落。掉落的怪物中，底部的怪物会受到等于其下方怪物数量的摔落伤害。如果摔落后死亡，过程继续。 求最少需要多少次攻击才能消灭所有怪物。  解法问题类型：线性 DP（状态转移只与前几个状态相关，呈">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-08T01:21:45.193Z">
 <meta property="article:modified_time" content="2026-04-08T01:21:45.193Z">
@@ -290,32 +290,25 @@
             
               <div class="markdown-body">
                 
-                <h1 id="chicken-jockey-题解">Chicken Jockey 题解</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>有 n 个怪物叠在一起，怪物 i (从下到上编号) 初始血量为 h[i]。</p>
-<p>一次攻击可以对任意一个怪物造成 1 点伤害。当怪物血量 ≤ 0
-时死亡，其上方的所有怪物会掉落。掉落的怪物中，底部的怪物会受到等于其下方怪物数量的摔落伤害。如果摔落后死亡，过程继续。</p>
+                <h1 id="Chicken-Jockey-题解"><a href="#Chicken-Jockey-题解" class="headerlink" title="Chicken Jockey 题解"></a>Chicken Jockey 题解</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>有 n 个怪物叠在一起，怪物 i (从下到上编号) 初始血量为 h[i]。</p>
+<p>一次攻击可以对任意一个怪物造成 1 点伤害。当怪物血量 ≤ 0 时死亡，其上方的所有怪物会掉落。掉落的怪物中，底部的怪物会受到等于其下方怪物数量的摔落伤害。如果摔落后死亡，过程继续。</p>
 <p>求最少需要多少次攻击才能消灭所有怪物。</p>
-<hr />
-<h2 id="解法">解法</h2>
-<p><strong>问题类型</strong>：线性
-DP（状态转移只与前几个状态相关，呈线性关系）</p>
+<hr>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>问题类型</strong>：线性 DP（状态转移只与前几个状态相关，呈线性关系）</p>
 <p><strong>核心观察</strong>：摔落伤害只取决于位置，不取决于具体死亡的是哪个怪物。</p>
-<p><strong>定义</strong>：<code>dp[i]</code> 为处理到第 i 个位置（从 0
-开始）时的最少攻击次数</p>
-<p><strong>初始条件</strong>：<code>dp[0] = h[0]</code>（第 1 个怪物需要
-h[0] 次攻击）</p>
-<p><strong>状态转移</strong>： -
-与前一个怪物同组：<code>dp[i] = dp[i-1] + max(0, h[i] - 1)</code> -
-独立成新组：<code>dp[i] = dp[i-2] + h[i-1] + max(0, h[i] - i)</code></p>
-<p><span
-class="math display"><em>d</em><em>p</em>[<em>i</em>] = min (<em>d</em><em>p</em>[<em>i</em> − 1] + max (0, <em>h</em>[<em>i</em>] − 1), <em>d</em><em>p</em>[<em>i</em> − 2] + <em>h</em>[<em>i</em> − 1] + max (0, <em>h</em>[<em>i</em>] − <em>i</em>))</span></p>
-<p><strong>解释</strong>： - 情况 1（与前一个同组）：第 i 个怪物会受 1
-次摔落伤害，所以需要 max(0, h[i] - 1) 次直接攻击 - 情况
-2（独立成新组）：第 i-1 个怪物需要单独攻击 h[i-1] 次，第 i 个怪物会受到
-i 次摔落伤害，所以需要 max(0, h[i] - i) 次直接攻击</p>
-<h3 id="代码实现">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>():
+<p><strong>定义</strong>：<code>dp[i]</code> 为处理到第 i 个位置（从 0 开始）时的最少攻击次数</p>
+<p><strong>初始条件</strong>：<code>dp[0] = h[0]</code>（第 1 个怪物需要 h[0] 次攻击）</p>
+<p><strong>状态转移</strong>：</p>
+<ul>
+<li>与前一个怪物同组：<code>dp[i] = dp[i-1] + max(0, h[i] - 1)</code></li>
+<li>独立成新组：<code>dp[i] = dp[i-2] + h[i-1] + max(0, h[i] - i)</code></li>
+</ul>
+<script type="math/tex; mode=display">dp[i] = \min(dp[i-1] + \max(0, h[i] - 1),\ dp[i-2] + h[i-1] + \max(0, h[i] - i))</script><p><strong>解释</strong>：</p>
+<ul>
+<li>情况 1（与前一个同组）：第 i 个怪物会受 1 次摔落伤害，所以需要 max(0, h[i] - 1) 次直接攻击</li>
+<li>情况 2（独立成新组）：第 i-1 个怪物需要单独攻击 h[i-1] 次，第 i 个怪物会受到 i 次摔落伤害，所以需要 max(0, h[i] - i) 次直接攻击</li>
+</ul>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>():
     n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
     a = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
     dp = [<span class="hljs-number">0</span>] * n
@@ -336,8 +329,7 @@ t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</sp
 <span class="hljs-keyword">while</span> t &gt; <span class="hljs-number">0</span>:
     solve()
     t -= <span class="hljs-number">1</span></code></pre></div>
-<p><strong>时间复杂度</strong>：O(n)
-<strong>空间复杂度</strong>：O(n)</p>
+<p><strong>时间复杂度</strong>：O(n)<br><strong>空间复杂度</strong>：O(n)</p>
 
                 
               </div>

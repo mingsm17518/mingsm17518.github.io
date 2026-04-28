@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="网格路径问题 Authors: Nathan Chen, Michael Cao, Benjamin Qi, Andrew Wang Contributor: Neo Wang  先决条件  Gold - Introduction to DP (动态规划简介)   教程 网格路径问题概述 DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要">
+    <meta name="description" content="网格路径问题Authors: Nathan Chen, Michael Cao, Benjamin Qi, Andrew WangContributor: Neo Wang  先决条件 Gold - Introduction to DP (动态规划简介)   教程网格路径问题概述DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="03_Paths on Grids 网格路径问题">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03_Paths%20on%20Grids%20%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="网格路径问题 Authors: Nathan Chen, Michael Cao, Benjamin Qi, Andrew Wang Contributor: Neo Wang  先决条件  Gold - Introduction to DP (动态规划简介)   教程 网格路径问题概述 DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要">
+<meta property="og:description" content="网格路径问题Authors: Nathan Chen, Michael Cao, Benjamin Qi, Andrew WangContributor: Neo Wang  先决条件 Gold - Introduction to DP (动态规划简介)   教程网格路径问题概述DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-08T01:17:43.661Z">
 <meta property="article:modified_time" content="2026-04-08T01:17:43.661Z">
@@ -294,67 +294,40 @@
             
               <div class="markdown-body">
                 
-                <h1 id="网格路径问题">网格路径问题</h1>
-<p><strong>Authors</strong>: Nathan Chen, Michael Cao, Benjamin Qi,
-Andrew Wang <strong>Contributor</strong>: Neo Wang</p>
-<hr />
-<h2 id="先决条件">先决条件</h2>
-<ul>
+                <h1 id="网格路径问题"><a href="#网格路径问题" class="headerlink" title="网格路径问题"></a>网格路径问题</h1><p><strong>Authors</strong>: Nathan Chen, Michael Cao, Benjamin Qi, Andrew Wang<br><strong>Contributor</strong>: Neo Wang</p>
+<hr>
+<h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><ul>
 <li>Gold - Introduction to DP (动态规划简介)</li>
 </ul>
-<hr />
-<h2 id="教程">教程</h2>
-<h3 id="网格路径问题概述">网格路径问题概述</h3>
-<p>DP 问题的一个常见原型涉及由正方形单元格组成的 2D
-网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的序列，其移动仅限于在
-<span class="math inline"><em>x</em></span> 轴的一个方向和 <span
-class="math inline"><em>y</em></span>
-轴的一个方向（例如，你可能只能向下或向右移动）。通常，路径还必须从网格的一个角落开始，并在另一个角落结束。问题可能要求你计算满足某些属性的路径数量，或者可能要求你在所有路径中找到某个量的最大值或最小值。</p>
-<hr />
-<h3 id="基本网格路径-dp">基本网格路径 DP</h3>
-<p><strong>问题</strong>：计算从 <span class="math inline">(1, 1)</span>
-到 <span class="math inline">(<em>N</em>, <em>M</em>)</span>
-的路径数量，只能向正 <span class="math inline"><em>x</em></span>
-方向和正 <span class="math inline"><em>y</em></span> 方向移动。</p>
-<p><strong>定义</strong>：<code>dp[x][y]</code> 为从 <span
-class="math inline">(1, 1)</span> 到 <span
-class="math inline">(<em>x</em>, <em>y</em>)</span> 的路径数量</p>
+<hr>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="网格路径问题概述"><a href="#网格路径问题概述" class="headerlink" title="网格路径问题概述"></a>网格路径问题概述</h3><p>DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的序列，其移动仅限于在 $x$ 轴的一个方向和 $y$ 轴的一个方向（例如，你可能只能向下或向右移动）。通常，路径还必须从网格的一个角落开始，并在另一个角落结束。问题可能要求你计算满足某些属性的路径数量，或者可能要求你在所有路径中找到某个量的最大值或最小值。</p>
+<hr>
+<h3 id="基本网格路径-DP"><a href="#基本网格路径-DP" class="headerlink" title="基本网格路径 DP"></a>基本网格路径 DP</h3><p><strong>问题</strong>：计算从 $(1,1)$ 到 $(N,M)$ 的路径数量，只能向正 $x$ 方向和正 $y$ 方向移动。</p>
+<p><strong>定义</strong>：<code>dp[x][y]</code> 为从 $(1,1)$ 到 $(x,y)$ 的路径数量</p>
 <p><strong>初始条件</strong>：<code>dp[1][1] = 1</code>（起点只有一种方式）</p>
-<p><strong>状态转移</strong>： <span
-class="math display"><em>d</em><em>p</em>[<em>x</em>][<em>y</em>] = <em>d</em><em>p</em>[<em>x</em> − 1][<em>y</em>] + <em>d</em><em>p</em>[<em>x</em>][<em>y</em> − 1]</span></p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(M):
+<p><strong>状态转移</strong>：</p>
+<script type="math/tex; mode=display">dp[x][y] = dp[x-1][y] + dp[x][y-1]</script><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(M):
     <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(N):
         <span class="hljs-keyword">if</span> j &gt; <span class="hljs-number">0</span>:
             dp[j][i] += dp[j - <span class="hljs-number">1</span>][i]
         <span class="hljs-keyword">if</span> i &gt; <span class="hljs-number">0</span>:
             dp[j][i] += dp[j][i - <span class="hljs-number">1</span>]</code></pre></div>
 <blockquote>
-<p><strong>注意</strong>: 代码中的坐标是以 (x 坐标, y 坐标)
-的形式表示的。大多数情况下，将点视为 (行, 列)
-更方便，这会交换坐标的顺序。</p>
+<p><strong>注意</strong>: 代码中的坐标是以 (x 坐标, y 坐标) 的形式表示的。大多数情况下，将点视为 (行, 列) 更方便，这会交换坐标的顺序。</p>
 </blockquote>
-<hr />
-<h2 id="示例---网格路径-grid-paths">示例 - 网格路径 (Grid Paths)</h2>
-<blockquote>
+<hr>
+<h2 id="示例-网格路径-Grid-Paths"><a href="#示例-网格路径-Grid-Paths" class="headerlink" title="示例 - 网格路径 (Grid Paths)"></a>示例 - 网格路径 (Grid Paths)</h2><blockquote>
 <p><strong>Focus Problem</strong>: 在继续之前，请尽力解决这个问题！</p>
 </blockquote>
-<h3 id="题目描述">题目描述</h3>
-<p>在这个问题中，我们直接得到一个二维网格，必须计算从角落到角落的路径数量，这些路径只能向下（正
-<span class="math inline"><em>y</em></span> 方向）和向右（正 <span
-class="math inline"><em>x</em></span>
-方向）移动，有一个特殊的限制：**路径不能使用标有星号 (*)
-的单元格**。</p>
-<h3 id="解法">解法</h3>
-<p><strong>定义</strong>：<code>dp[i][j]</code> 为到达单元格 (i, j)
-的合法路径数量</p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>在这个问题中，我们直接得到一个二维网格，必须计算从角落到角落的路径数量，这些路径只能向下（正 $y$ 方向）和向右（正 $x$ 方向）移动，有一个特殊的限制：<strong>路径不能使用标有星号 (*) 的单元格</strong>。</p>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p><strong>定义</strong>：<code>dp[i][j]</code> 为到达单元格 (i, j) 的合法路径数量</p>
 <p><strong>初始条件</strong>：<code>dp[0][0] = 1</code>（起点可达）</p>
-<p><strong>状态转移</strong>： - 如果单元格 (i, j)
-是障碍物：<code>dp[i][j] = 0</code> -
-否则：<code>dp[i][j] = dp[i-1][j] + dp[i][j-1]</code></p>
-<p><span class="math display">$$dp[i][j] = \begin{cases} 0 &amp;
-\text{if } (i,j) \text{ is a trap} \\ dp[i-1][j] + dp[i][j-1] &amp;
-\text{otherwise} \end{cases}$$</span></p>
-<div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+<p><strong>状态转移</strong>：</p>
+<ul>
+<li>如果单元格 (i, j) 是障碍物：<code>dp[i][j] = 0</code></li>
+<li>否则：<code>dp[i][j] = dp[i-1][j] + dp[i][j-1]</code></li>
+</ul>
+<script type="math/tex; mode=display">dp[i][j] = \begin{cases} 0 & \text{if } (i,j) \text{ is a trap} \\ dp[i-1][j] + dp[i][j-1] & \text{otherwise} \end{cases}</script><div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 ok = [[char == <span class="hljs-string">&quot;.&quot;</span> <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>()] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
 dp = [[<span class="hljs-number">0</span>] * n <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
 dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>
@@ -375,76 +348,39 @@ dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <sp
 
 <span class="hljs-built_in">print</span>(dp[n - <span class="hljs-number">1</span>][n - <span class="hljs-number">1</span>])</code></pre></div>
 <blockquote>
-<p><strong>注意</strong>: 在读取输入时，坐标现在是以 (row, column)
-的形式出现的。</p>
+<p><strong>注意</strong>: 在读取输入时，坐标现在是以 (row, column) 的形式出现的。</p>
 </blockquote>
-<hr />
-<h2 id="示例---最长公共子序列-longest-common-subsequence">示例 -
-最长公共子序列 (Longest Common Subsequence)</h2>
-<blockquote>
+<hr>
+<h2 id="示例-最长公共子序列-Longest-Common-Subsequence"><a href="#示例-最长公共子序列-Longest-Common-Subsequence" class="headerlink" title="示例 - 最长公共子序列 (Longest Common Subsequence)"></a>示例 - 最长公共子序列 (Longest Common Subsequence)</h2><blockquote>
 <p><strong>Focus Problem</strong>: 在继续之前，请尽力解决这个问题！</p>
 </blockquote>
-<h3 id="什么是网格">什么是网格？</h3>
-<p>最长公共子序列是一个经典的字符串问题，但网格在哪里？实际上，我们可以创建一个网格来解决这个问题。</p>
-<p>考虑以下算法来在两个字符串 <span
-class="math inline"><em>A</em></span> 和 <span
-class="math inline"><em>B</em></span>
-之间创建任意（不一定是最长）的子序列：</p>
-<ol type="1">
-<li>我们用两个指针 <span class="math inline"><em>i</em></span> 和 <span
-class="math inline"><em>j</em></span>，每个指针都从 <span
-class="math inline">0</span> 开始。</li>
-<li>我们在每个时间步执行一些”操作”，直到没有更多的可用”操作”。一个”操作”可以是以下任何一种：
-<ul>
-<li>将 <span class="math inline"><em>i</em></span> 的值增加 <span
-class="math inline">1</span>（仅当 <span
-class="math inline"><em>i</em> &lt; |<em>A</em>|</span> 时有效）</li>
-<li>将 <span class="math inline"><em>j</em></span> 的值增加 <span
-class="math inline">1</span>（仅当 <span
-class="math inline"><em>j</em> &lt; |<em>B</em>|</span> 时有效）</li>
-<li>仅当 <span
-class="math inline"><em>A</em><sub><em>i</em></sub> = <em>B</em><sub><em>j</em></sub></span>
-时，将 <span class="math inline"><em>i</em></span> 和 <span
-class="math inline"><em>j</em></span> 的值增加 <span
-class="math inline">1</span>，并将那个字符追加到公共子序列中（仅当 <span
-class="math inline"><em>i</em> &lt; |<em>A</em>|</span> 和 <span
-class="math inline"><em>j</em> &lt; |<em>B</em>|</span> 时有效）</li>
-</ul></li>
+<h3 id="什么是网格？"><a href="#什么是网格？" class="headerlink" title="什么是网格？"></a>什么是网格？</h3><p>最长公共子序列是一个经典的字符串问题，但网格在哪里？实际上，我们可以创建一个网格来解决这个问题。</p>
+<p>考虑以下算法来在两个字符串 $A$ 和 $B$ 之间创建任意（不一定是最长）的子序列：</p>
+<ol>
+<li>我们用两个指针 $i$ 和 $j$，每个指针都从 $0$ 开始。</li>
+<li>我们在每个时间步执行一些”操作”，直到没有更多的可用”操作”。一个”操作”可以是以下任何一种：<ul>
+<li>将 $i$ 的值增加 $1$（仅当 $i &lt; |A|$ 时有效）</li>
+<li>将 $j$ 的值增加 $1$（仅当 $j &lt; |B|$ 时有效）</li>
+<li>仅当 $A_i = B_j$ 时，将 $i$ 和 $j$ 的值增加 $1$，并将那个字符追加到公共子序列中（仅当 $i &lt; |A|$ 和 $j &lt; |B|$ 时有效）</li>
+</ul>
+</li>
 </ol>
-<h3 id="网格表示">网格表示</h3>
-<p>这个算法也可以在网格上进行说明。设 <span
-class="math inline"><em>A</em> := <em>x</em><em>a</em><em>b</em><em>c</em><em>d</em></span>
-和 <span
-class="math inline"><em>B</em> := <em>y</em><em>a</em><em>z</em><em>c</em></span>。然后，算法的当前状态可以用我们之前讨论的
-<span class="math inline"><em>i</em></span> 和 <span
-class="math inline"><em>j</em></span> 的值定义为一个特定的点 <span
-class="math inline">(<em>i</em>, <em>j</em>)</span>。指针增加的过程可以看作是向右移动（如果
-<span class="math inline"><em>i</em></span> 增加）、向下移动（如果 <span
-class="math inline"><em>j</em></span> 增加）或对角线移动（如果 <span
-class="math inline"><em>i</em></span> 和 <span
-class="math inline"><em>j</em></span>
-都增加）。可以看到，<strong>每次对角线移动都会使公共子序列的长度增加一</strong>。</p>
+<h3 id="网格表示"><a href="#网格表示" class="headerlink" title="网格表示"></a>网格表示</h3><p>这个算法也可以在网格上进行说明。设 $A := xabcd$ 和 $B := yazc$。然后，算法的当前状态可以用我们之前讨论的 $i$ 和 $j$ 的值定义为一个特定的点 $(i,j)$。指针增加的过程可以看作是向右移动（如果 $i$ 增加）、向下移动（如果 $j$ 增加）或对角线移动（如果 $i$ 和 $j$ 都增加）。可以看到，<strong>每次对角线移动都会使公共子序列的长度增加一</strong>。</p>
 <p>现在，我们将”最长公共子序列的长度”重新表述为”从网格左上角到右下角路径中的最大’对角线移动’次数”。因此，我们已经构建了一个网格型动态规划问题。</p>
 <div class="code-wrapper"><pre><code class="hljs apache">       <span class="hljs-attribute">x</span>    a    b    c    d
 <span class="hljs-attribute">y</span>      <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>
 <span class="hljs-attribute">a</span>      <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>
 <span class="hljs-attribute">z</span>      <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>
 <span class="hljs-attribute">c</span>      <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">2</span>    <span class="hljs-number">2</span></code></pre></div>
-<p>在上面的网格中，可以看到加粗的路径在字符 “a” 和 “c”
-处有对角线移动。这意味着 “xabcd” 和 “yazc” 之间的最长公共子序列是
-“ac”。</p>
-<h3 id="解法-1">解法</h3>
-<p><strong>定义</strong>：<code>dp[i][j]</code> 为 A[0..i-1] 和
-B[0..j-1] 的最长公共子序列长度</p>
-<p><strong>初始条件</strong>：<code>dp[0][j] = dp[i][0] = 0</code>（空串的
-LCS 为 0）</p>
-<p><strong>状态转移</strong>： - 如果 <span
-class="math inline"><em>A</em><sub><em>i</em></sub> = <em>B</em><sub><em>j</em></sub></span>：<code>dp[i][j] = dp[i-1][j-1] + 1</code>
-- 否则：<code>dp[i][j] = max(dp[i-1][j], dp[i][j-1])</code></p>
-<p><span class="math display">$$dp[i][j] = \begin{cases} dp[i-1][j-1] +
-1 &amp; \text{if } A_i = B_j \\ \max(dp[i-1][j], dp[i][j-1]) &amp;
-\text{otherwise} \end{cases}$$</span></p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
+<p>在上面的网格中，可以看到加粗的路径在字符 “a” 和 “c” 处有对角线移动。这意味着 “xabcd” 和 “yazc” 之间的最长公共子序列是 “ac”。</p>
+<h3 id="解法-1"><a href="#解法-1" class="headerlink" title="解法"></a>解法</h3><p><strong>定义</strong>：<code>dp[i][j]</code> 为 A[0..i-1] 和 B[0..j-1] 的最长公共子序列长度</p>
+<p><strong>初始条件</strong>：<code>dp[0][j] = dp[i][0] = 0</code>（空串的 LCS 为 0）</p>
+<p><strong>状态转移</strong>：</p>
+<ul>
+<li>如果 $A_i = B_j$：<code>dp[i][j] = dp[i-1][j-1] + 1</code></li>
+<li>否则：<code>dp[i][j] = max(dp[i-1][j], dp[i][j-1])</code></li>
+</ul>
+<script type="math/tex; mode=display">dp[i][j] = \begin{cases} dp[i-1][j-1] + 1 & \text{if } A_i = B_j \\ \max(dp[i-1][j], dp[i][j-1]) & \text{otherwise} \end{cases}</script><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">longestCommonSubsequence</span>(<span class="hljs-params">self, a: <span class="hljs-built_in">str</span>, b: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:
         dp = [[<span class="hljs-number">0</span>] * (<span class="hljs-built_in">len</span>(b) + <span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(a) + <span class="hljs-number">1</span>)]
         <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(a) + <span class="hljs-number">1</span>):
@@ -454,10 +390,9 @@ class="math inline"><em>A</em><sub><em>i</em></sub> = <em>B</em><sub><em>j</
                 <span class="hljs-keyword">else</span>:
                     dp[i][j] = <span class="hljs-built_in">max</span>(dp[i - <span class="hljs-number">1</span>][j], dp[i][j - <span class="hljs-number">1</span>])
         <span class="hljs-keyword">return</span> dp[<span class="hljs-built_in">len</span>(a)][<span class="hljs-built_in">len</span>(b)]</code></pre></div>
-<hr />
-<h2 id="总结">总结</h2>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="table-container">
 <table>
-
 <thead>
 <tr>
 <th>问题类型</th>
@@ -468,35 +403,24 @@ class="math inline"><em>A</em><sub><em>i</em></sub> = <em>B</em><sub><em>j</
 <tbody>
 <tr>
 <td>基本网格路径</td>
-<td><span
-class="math inline"><em>d</em><em>p</em>[<em>x</em>][<em>y</em>]</span>:
-从 <span class="math inline">(1, 1)</span> 到 <span
-class="math inline">(<em>x</em>, <em>y</em>)</span> 的路径数</td>
-<td><span
-class="math inline"><em>d</em><em>p</em>[<em>x</em>][<em>y</em>] = <em>d</em><em>p</em>[<em>x</em> − 1][<em>y</em>] + <em>d</em><em>p</em>[<em>x</em>][<em>y</em> − 1]</span></td>
+<td>$dp[x][y]$: 从 $(1,1)$ 到 $(x,y)$ 的路径数</td>
+<td>$dp[x][y] = dp[x-1][y] + dp[x][y-1]$</td>
 </tr>
 <tr>
 <td>带障碍网格</td>
-<td><span
-class="math inline"><em>d</em><em>p</em>[<em>x</em>][<em>y</em>]</span>:
-到达 <span class="math inline">(<em>x</em>, <em>y</em>)</span>
-的合法路径数</td>
-<td>障碍物处 <span
-class="math inline"><em>d</em><em>p</em> = 0</span></td>
+<td>$dp[x][y]$: 到达 $(x,y)$ 的合法路径数</td>
+<td>障碍物处 $dp = 0$</td>
 </tr>
 <tr>
 <td>最长公共子序列</td>
-<td><span
-class="math inline"><em>d</em><em>p</em>[<em>i</em>][<em>j</em>]</span>:
-<span class="math inline"><em>A</em>[0..<em>i</em> − 1]</span> 和 <span
-class="math inline"><em>B</em>[0..<em>j</em> − 1]</span> 的 LCS
-长度</td>
-<td>匹配时 <span class="math inline">+1</span>，否则取最大值</td>
+<td>$dp[i][j]$: $A[0..i-1]$ 和 $B[0..j-1]$ 的 LCS 长度</td>
+<td>匹配时 $+1$，否则取最大值</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="经典问题">经典问题</h2>
+</div>
+<hr>
+<h2 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -518,6 +442,7 @@ class="math inline"><em>B</em>[0..<em>j</em> − 1]</span> 的 LCS
 </tr>
 </tbody>
 </table>
+</div>
 
                 
               </div>

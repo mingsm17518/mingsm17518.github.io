@@ -241,7 +241,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/21/algorithm/03_Gold/01_Math/02_Modular%20Arithmetic%20%E6%A8%A1%E8%BF%90%E7%AE%97/" target="_self">
         <div>
-          Modular Arithmetic 模运算 简介 在模运算中，我们不是直接处理整数本身，而是处理它们除以 m 后的余数。我们称这个过程为取模 m。例如，如果我们取 m = 23，那么我们不是处理 x = 247，而是使用 x mod  23 = 17。 通常，m 会是一个大素数，题目中会给出；最常见的两个值是 109 + 7 和 998244353 = 119 ⋅ 223 + 1。
+          Modular Arithmetic 模运算简介在模运算中，我们不是直接处理整数本身，而是处理它们除以 $m$ 后的余数。我们称这个过程为取模 $m$。例如，如果我们取 $m = 23$，那么我们不是处理 $x = 247$，而是使用 $x \bmod 23 = 17$。 通常，$m$ 会是一个大素数，题目中会给出；最常见的两个值是 $10^9 + 7$ 和 $998244353 = 119 \c
         </div>
       </a>
 
@@ -308,7 +308,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/20/algorithm/solutions/2024_SDU_Star_Remake/06_good_sequence/" target="_self">
         <div>
-          好序列 题目描述 给定 n 个严格递增的数 a1, a2, …, an，从中选取一个子序列 x1, x2, …, xk，满足：  x1 &lt; x2 &lt; … &lt; xk（严格递增） gcd(xi, xi+1) &gt; 1（相邻元素有公共质因子） xi 必须在给定的数组 a 中  求最长序列的长度。 解题思路 核心观察  相邻元素有公共质因子：两个数能相邻的条
+          好序列题目描述给定 n 个严格递增的数 a1, a2, …, an，从中选取一个子序列 x1, x2, …, xk，满足：  x1 &lt; x2 &lt; … &lt; xk（严格递增） gcd(xi, xi+1) &gt; 1（相邻元素有公共质因子） xi 必须在给定的数组 a 中  求最长序列的长度。 解题思路核心观察 相邻元素有公共质因子：两个数能相邻的条件是它们至少共享一个质因数。  动
         </div>
       </a>
 
@@ -375,7 +375,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/19/algorithm/solutions/2024_SDU_Star_Remake/03_name_check/" target="_self">
         <div>
-          名字验证 题目描述 班主任有 n 个学生的名字（互不相同）。严校长依次报出 m 个名字，判断每个名字的情况： - 正确且第一次出现 → 输出 OK - 名字错误 → 输出 WRONG - 正确但已出现过 → 输出 REPEAT 解题思路 核心思想 使用两个集合： 1. valid - 存放所有正确的学生名字 2. answered - 存放已经正确回答过（输出过 OK）的名字 判
+          名字验证题目描述班主任有 n 个学生的名字（互不相同）。严校长依次报出 m 个名字，判断每个名字的情况：  正确且第一次出现 → 输出 OK 名字错误 → 输出 WRONG 正确但已出现过 → 输出 REPEAT  解题思路核心思想使用两个集合：  valid - 存放所有正确的学生名字 answered - 存放已经正确回答过（输出过 OK）的名字  判断逻辑对于每个报出的名字 s：  如果 s
         </div>
       </a>
 
@@ -440,7 +440,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/19/algorithm/solutions/2024_SDU_Star_Remake/04_lamp_tower/" target="_self">
         <div>
-          日月双塔 题目描述 有两座灯塔，高度分别为 a 和 b。每次操作可以将任意一座灯塔的高度乘以任意素数。求最少需要多少次操作才能使两座灯塔高度相等。 解题思路 核心观察  目标状态：让 a 和 b 都变成它们的最小公倍数 lcm(a,b)，此时两塔高度相等。 最大公约数的作用：  设 g = gcd(a, b) 为最大公约数 则 lcm(a, b) = a × b / g
+          日月双塔题目描述有两座灯塔，高度分别为 a 和 b。每次操作可以将任意一座灯塔的高度乘以任意素数。求最少需要多少次操作才能使两座灯塔高度相等。 解题思路核心观察 目标状态：让 a 和 b 都变成它们的最小公倍数 lcm(a,b)，此时两塔高度相等。  最大公约数的作用：  设 g = gcd(a, b) 为最大公约数 则 lcm(a, b) = a × b / g   需要的操作次数：  a 需要
         </div>
       </a>
 
@@ -505,7 +505,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/19/algorithm/solutions/2025_SDU_Star_Remake/13_friendly_array/" target="_self">
         <div>
-          题目描述 给定数组 A 和 B，求它们的最长友好子数组长度。 友好数组定义：对于长度 l 的数组 a, b，若满足： - a1 = b1 - bi − ai = bi + 1 − ai + 1 − 1（即 bi = ai + i − 1） 解题思路 公式推导 由定义可得： - b1 − a1 = 0 ⇒ b1 = a1 - b2 − a2 = 1 ⇒ b2 = a2 + 1 -
+          题目描述给定数组 A 和 B，求它们的最长友好子数组长度。 友好数组定义：对于长度 l 的数组 a, b，若满足：  $a_1 = b_1$ $bi - a_i = b{i+1} - a_{i+1} - 1$（即 $b_i = a_i + i - 1$）  解题思路公式推导由定义可得：  $b_1 - a_1 = 0 \Rightarrow b_1 = a_1$ $b_2 - a_2 = 1 \R
         </div>
       </a>
 
@@ -570,7 +570,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/19/algorithm/solutions/2025_SDU_Star_Remake/11_icecream_pair/" target="_self">
         <div>
-          题目描述 有 n 盒冰淇淋，第 i 盒有 ai 个。Kyoko 每次吃两个不同口味的冰淇淋，判断能否吃完所有冰淇淋。 解题思路 核心条件 每次吃两个不同口味，意味着： 1. 总数必须为偶数：否则必然剩下一个 2. 最大盒不能超过总数的一半：否则最大的那个口味会剩余 证明 设总量为 S = ∑ai，最大值为 M = max ai：  若 S 为奇数，显然无法配对完成 若
+          题目描述有 $n$ 盒冰淇淋，第 $i$ 盒有 $a_i$ 个。Kyoko 每次吃两个不同口味的冰淇淋，判断能否吃完所有冰淇淋。 解题思路核心条件每次吃两个不同口味，意味着：  总数必须为偶数：否则必然剩下一个 最大盒不能超过总数的一半：否则最大的那个口味会剩余  证明设总量为 $S = \sum a_i$，最大值为 $M = \max a_i$：  若 $S$ 为奇数，显然无法配对完成 若 $M
         </div>
       </a>
 
@@ -635,7 +635,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/19/algorithm/solutions/2025_SDU_Star_Remake/10_contest_score/" target="_self">
         <div>
-          题目描述 安排解题顺序以最大化总得分。每道题有： - 满分 Si - 解题耗时 Di - 错误提交次数 Fi 得分计算（选手在第 T 分钟完成本题）： $$\text{得分} = \max(S_i - 50 \times F_i - T \times \frac{S_i}{250}, 0.3 \times S_i)$$ 解题思路 核心观察  n ≤ 9，总排列数 n! ≤ 9!
+          题目描述安排解题顺序以最大化总得分。每道题有：  满分 $S_i$ 解题耗时 $D_i$ 错误提交次数 $F_i$  得分计算（选手在第 $T$ 分钟完成本题）： \text{得分} = \max(S_i - 50 \times F_i - T \times \frac{S_i}{250}, 0.3 \times S_i)解题思路核心观察 $n \leq 9$，总排列数 $n! \leq 9! =
         </div>
       </a>
 
@@ -700,7 +700,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/19/algorithm/solutions/2025_SDU_Star_Remake/08-graph-bipartite-check/" target="_self">
         <div>
-          题目描述 给定一个无向图，每个结点已有颜色（蓝色 0 或红色 1）。要求相邻结点颜色不同，求最少需要修改多少个结点的颜色。若无法满足要求，输出 “Impossible”。 问题分析 核心性质 题目要求「任意结点与和它直接相连的所有结点颜色不同」，这正是二分图的定义： - 二分图的顶点集可以分割为两个互不相交的子集 - 图中每条边连接的两个顶点属于不同的子集 因此问题转化为： 1.
+          题目描述给定一个无向图，每个结点已有颜色（蓝色 0 或红色 1）。要求相邻结点颜色不同，求最少需要修改多少个结点的颜色。若无法满足要求，输出 “Impossible”。 问题分析核心性质题目要求「任意结点与和它直接相连的所有结点颜色不同」，这正是二分图的定义：  二分图的顶点集可以分割为两个互不相交的子集 图中每条边连接的两个顶点属于不同的子集  因此问题转化为：  判断图是否为二分图 若是二分图
         </div>
       </a>
 
@@ -767,7 +767,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/09-rating-calculation/" target="_self">
         <div>
-          题目描述 给定初始 Rating 为 0，进行 n 场比赛。第 i 场比赛的表现分为 Pi，Rating 计算公式为： $$Y = X + \frac{P - X}{4}$$ 其中 X 为当前 Rating，P 为本次表现分。计算结果需四舍五入到整数，作为下次计算的初始 Rating。 解题思路 核心公式 四舍五入可以用整数运算实现： $$Y = X + \lfloor\frac
+          题目描述给定初始 Rating 为 0，进行 n 场比赛。第 $i$ 场比赛的表现分为 $P_i$，Rating 计算公式为： Y = X + \frac{P - X}{4}其中 $X$ 为当前 Rating，$P$ 为本次表现分。计算结果需四舍五入到整数，作为下次计算的初始 Rating。 解题思路核心公式四舍五入可以用整数运算实现： Y = X + \lfloor\frac{P - X}{4}
         </div>
       </a>
 
@@ -832,7 +832,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/07-matrix-path-sum/" target="_self">
         <div>
-          题目描述 构造一个 n × m 的矩阵（n × m ≤ 200），每个单元格填入非负整数。对于 q 次询问，每次给出一个非负整数 S，需要找到一条从 (1, 1) 到 (n, m) 的路径，满足： 1. 每个单元格至多被经过一次 2. 路径上所有数字之和等于 S 思路分析 如何思考这个问题？ 当我们第一次看到这个问题时，可能会尝试各种复杂的图论算法。但仔细分析会发现几个关键点：
+          题目描述构造一个 $n \times m$ 的矩阵（$n \times m \leq 200$），每个单元格填入非负整数。对于 $q$ 次询问，每次给出一个非负整数 $S$，需要找到一条从 $(1,1)$ 到 $(n,m)$ 的路径，满足：  每个单元格至多被经过一次 路径上所有数字之和等于 $S$  思路分析如何思考这个问题？当我们第一次看到这个问题时，可能会尝试各种复杂的图论算法。但仔细分析会
         </div>
       </a>
 

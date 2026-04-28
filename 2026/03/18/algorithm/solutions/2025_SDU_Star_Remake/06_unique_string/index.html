@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="独特字符串 题目描述 给定字符串 s 和 q 次查询，每次查询 [l, r] 区间，判断该子串是否为”独特字符串”——存在至少一个字符在该子串中恰好出现一次。 核心观察 对于每次查询 [l, r]，需要知道每个字符在该区间内出现的次数。如果存在某个字符出现恰好 1 次，则答案为 YES。 如何想到前缀和？ 核心问题：区间查询 → 需要快速得到区间内字符出现次数 → 前缀和 套">
+    <meta name="description" content="独特字符串题目描述给定字符串 s 和 q 次查询，每次查询 [l, r] 区间，判断该子串是否为”独特字符串”——存在至少一个字符在该子串中恰好出现一次。 核心观察对于每次查询 [l, r]，需要知道每个字符在该区间内出现的次数。如果存在某个字符出现恰好 1 次，则答案为 YES。 如何想到前缀和？核心问题：区间查询 → 需要快速得到区间内字符出现次数 → 前缀和 套路总结 看到区间查询：先问自己">
 <meta property="og:type" content="article">
 <meta property="og:title" content="独特字符串（Unique String）">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/06_unique_string/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="独特字符串 题目描述 给定字符串 s 和 q 次查询，每次查询 [l, r] 区间，判断该子串是否为”独特字符串”——存在至少一个字符在该子串中恰好出现一次。 核心观察 对于每次查询 [l, r]，需要知道每个字符在该区间内出现的次数。如果存在某个字符出现恰好 1 次，则答案为 YES。 如何想到前缀和？ 核心问题：区间查询 → 需要快速得到区间内字符出现次数 → 前缀和 套">
+<meta property="og:description" content="独特字符串题目描述给定字符串 s 和 q 次查询，每次查询 [l, r] 区间，判断该子串是否为”独特字符串”——存在至少一个字符在该子串中恰好出现一次。 核心观察对于每次查询 [l, r]，需要知道每个字符在该区间内出现的次数。如果存在某个字符出现恰好 1 次，则答案为 YES。 如何想到前缀和？核心问题：区间查询 → 需要快速得到区间内字符出现次数 → 前缀和 套路总结 看到区间查询：先问自己">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-18T14:19:25.539Z">
 <meta property="article:modified_time" content="2026-03-19T03:41:21.629Z">
@@ -303,32 +303,22 @@
             
               <div class="markdown-body">
                 
-                <h1 id="独特字符串">独特字符串</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>给定字符串 s 和 q 次查询，每次查询 [l, r]
-区间，判断该子串是否为”独特字符串”——存在至少一个字符在该子串中恰好出现一次。</p>
-<h2 id="核心观察">核心观察</h2>
-<p>对于每次查询 [l,
-r]，需要知道每个字符在该区间内出现的次数。如果存在某个字符出现恰好 1
-次，则答案为 YES。</p>
-<h2 id="如何想到前缀和">如何想到前缀和？</h2>
-<p><strong>核心问题</strong>：区间查询 → 需要快速得到区间内字符出现次数
-→ 前缀和</p>
-<h3 id="套路总结">套路总结</h3>
-<ol type="1">
+                <h1 id="独特字符串"><a href="#独特字符串" class="headerlink" title="独特字符串"></a>独特字符串</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定字符串 s 和 q 次查询，每次查询 [l, r] 区间，判断该子串是否为”独特字符串”——存在至少一个字符在该子串中恰好出现一次。</p>
+<h2 id="核心观察"><a href="#核心观察" class="headerlink" title="核心观察"></a>核心观察</h2><p>对于每次查询 [l, r]，需要知道每个字符在该区间内出现的次数。如果存在某个字符出现恰好 1 次，则答案为 YES。</p>
+<h2 id="如何想到前缀和？"><a href="#如何想到前缀和？" class="headerlink" title="如何想到前缀和？"></a>如何想到前缀和？</h2><p><strong>核心问题</strong>：区间查询 → 需要快速得到区间内字符出现次数 → 前缀和</p>
+<h3 id="套路总结"><a href="#套路总结" class="headerlink" title="套路总结"></a>套路总结</h3><ol>
 <li><strong>看到区间查询</strong>：先问自己需要什么信息？</li>
 <li><strong>这个信息可累减吗？</strong>（如次数、和）→ 可以用前缀和</li>
 <li><strong>需要记录多种东西？</strong> → 建多个前缀和数组</li>
 </ol>
 <p>本题：26 种字符 → 26 个前缀和数组（二维前缀和）</p>
-<h2 id="解题思路">解题思路</h2>
-<p>使用二维前缀和： - <code>pref[c][i]</code>：字符 c 在 s[0:i]
-中出现的次数</p>
-<p>查询 [l, r] 时，字符 c
-出现的次数为：<code>pref[c][r] - pref[c][l-1]</code></p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>使用二维前缀和：</p>
+<ul>
+<li><code>pref[c][i]</code>：字符 c 在 s[0:i] 中出现的次数</li>
+</ul>
+<p>查询 [l, r] 时，字符 c 出现的次数为：<code>pref[c][r] - pref[c][l-1]</code></p>
 <p>枚举 26 个小写字母，检查是否存在出现次数为 1 的字符。</p>
-<h2 id="代码实现">代码实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python">n, q = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n, q = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 s = <span class="hljs-built_in">input</span>().strip()
 
 <span class="hljs-comment"># pref[c][i]: 字符 c 在 s[0:i] 中出现的次数</span>
@@ -347,31 +337,24 @@ pref = [[<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1<
             flag = <span class="hljs-literal">True</span>
             <span class="hljs-keyword">break</span>
     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;YES&quot;</span> <span class="hljs-keyword">if</span> flag <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;NO&quot;</span>)</code></pre></div>
-<h2 id="代码详解">代码详解</h2>
-<h3 id="前缀和构建">前缀和构建</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+<h2 id="代码详解"><a href="#代码详解" class="headerlink" title="代码详解"></a>代码详解</h2><h3 id="前缀和构建"><a href="#前缀和构建" class="headerlink" title="前缀和构建"></a>前缀和构建</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
     <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>):
         pref[c][i + <span class="hljs-number">1</span>] = pref[c][i]
     pref[<span class="hljs-built_in">ord</span>(s[i]) - <span class="hljs-number">97</span>][i + <span class="hljs-number">1</span>] += <span class="hljs-number">1</span></code></pre></div>
 <p>对于每个位置 i，先复制前面的计数，再增加当前字符的计数。</p>
-<h3 id="查询处理">查询处理</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>):
+<h3 id="查询处理"><a href="#查询处理" class="headerlink" title="查询处理"></a>查询处理</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>):
     <span class="hljs-keyword">if</span> pref[c][r] - pref[c][l - <span class="hljs-number">1</span>] == <span class="hljs-number">1</span>:
         flag = <span class="hljs-literal">True</span>
         <span class="hljs-keyword">break</span></code></pre></div>
-<p>计算区间 [l, r] 内每个字符的出现次数，找到恰好出现 1
-次的字符即可。</p>
-<h2 id="复杂度分析">复杂度分析</h2>
-<ul>
+<p>计算区间 [l, r] 内每个字符的出现次数，找到恰好出现 1 次的字符即可。</p>
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
 <li><strong>预处理</strong>：O(26 × n)</li>
 <li><strong>每次查询</strong>：O(26)</li>
 <li><strong>总时间</strong>：O(26 × n + 26 × q) ≈ O(n + q)</li>
 <li><strong>空间复杂度</strong>：O(26 × n)</li>
 </ul>
-<h2 id="优化方向">优化方向</h2>
-<ul>
-<li>可以用 26
-个桶分别存储每个字符的位置列表，二分查找区间内出现次数</li>
+<h2 id="优化方向"><a href="#优化方向" class="headerlink" title="优化方向"></a>优化方向</h2><ul>
+<li>可以用 26 个桶分别存储每个字符的位置列表，二分查找区间内出现次数</li>
 </ul>
 
                 

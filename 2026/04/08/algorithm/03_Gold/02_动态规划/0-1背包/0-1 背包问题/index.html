@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="0&#x2F;1 背包问题 问题描述 有 N 件物品，每件物品有重量 wi 和价值 vi，求在不超过背包容量 W 的情况下，选择物品使得总价值最大。  一维 DP 定义：dp[j] 为背包容量为 j 时的最大价值 初始条件：dp[j] &#x3D; 0 状态转移： dp[j] &#x3D; max (dp[j], dp[j − w] + v) 代码： N, W &#x3D; map(int, input().">
+    <meta name="description" content="0&#x2F;1 背包问题问题描述有 $N$ 件物品，每件物品有重量 $w_i$ 和价值 $v_i$，求在不超过背包容量 $W$ 的情况下，选择物品使得总价值最大。  一维 DP定义：dp[j] 为背包容量为 j 时的最大价值 初始条件：dp[j] &#x3D; 0 状态转移： dp[j] &#x3D; \max(dp[j], dp[j - w] + v)代码： N, W &#x3D; map(int, input().split())">
 <meta property="og:type" content="article">
 <meta property="og:title" content="0&#x2F;1 背包问题">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/0-1%20%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="0&#x2F;1 背包问题 问题描述 有 N 件物品，每件物品有重量 wi 和价值 vi，求在不超过背包容量 W 的情况下，选择物品使得总价值最大。  一维 DP 定义：dp[j] 为背包容量为 j 时的最大价值 初始条件：dp[j] &#x3D; 0 状态转移： dp[j] &#x3D; max (dp[j], dp[j − w] + v) 代码： N, W &#x3D; map(int, input().">
+<meta property="og:description" content="0&#x2F;1 背包问题问题描述有 $N$ 件物品，每件物品有重量 $w_i$ 和价值 $v_i$，求在不超过背包容量 $W$ 的情况下，选择物品使得总价值最大。  一维 DP定义：dp[j] 为背包容量为 j 时的最大价值 初始条件：dp[j] &#x3D; 0 状态转移： dp[j] &#x3D; \max(dp[j], dp[j - w] + v)代码： N, W &#x3D; map(int, input().split())">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-08T12:13:05.537Z">
 <meta property="article:modified_time" content="2026-04-08T12:14:49.728Z">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          611 字
+          613 字
         
       </span>
     
@@ -302,22 +302,12 @@
             
               <div class="markdown-body">
                 
-                <h1 id="背包问题">0/1 背包问题</h1>
-<h2 id="问题描述">问题描述</h2>
-<p>有 <span class="math inline"><em>N</em></span> 件物品，每件物品有重量
-<span class="math inline"><em>w</em><sub><em>i</em></sub></span> 和价值
-<span
-class="math inline"><em>v</em><sub><em>i</em></sub></span>，求在不超过背包容量
-<span class="math inline"><em>W</em></span>
-的情况下，选择物品使得总价值最大。</p>
-<hr />
-<h2 id="一维-dp">一维 DP</h2>
-<p><strong>定义</strong>：<code>dp[j]</code> 为背包容量为 j
-时的最大价值</p>
+                <h1 id="0-1-背包问题"><a href="#0-1-背包问题" class="headerlink" title="0/1 背包问题"></a>0/1 背包问题</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>有 $N$ 件物品，每件物品有重量 $w_i$ 和价值 $v_i$，求在不超过背包容量 $W$ 的情况下，选择物品使得总价值最大。</p>
+<hr>
+<h2 id="一维-DP"><a href="#一维-DP" class="headerlink" title="一维 DP"></a>一维 DP</h2><p><strong>定义</strong>：<code>dp[j]</code> 为背包容量为 j 时的最大价值</p>
 <p><strong>初始条件</strong>：<code>dp[j] = 0</code></p>
-<p><strong>状态转移</strong>： <span
-class="math display"><em>d</em><em>p</em>[<em>j</em>] = max (<em>d</em><em>p</em>[<em>j</em>], <em>d</em><em>p</em>[<em>j</em> − <em>w</em>] + <em>v</em>)</span></p>
-<p><strong>代码</strong>：</p>
+<p><strong>状态转移</strong>：</p>
+<script type="math/tex; mode=display">dp[j] = \max(dp[j], dp[j - w] + v)</script><p><strong>代码</strong>：</p>
 <div class="code-wrapper"><pre><code class="hljs python">N, W = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 dp = [<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</span>)
 
@@ -329,46 +319,35 @@ dp = [<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</sp
 <span class="hljs-built_in">print</span>(dp[W])</code></pre></div>
 <p><strong>空间复杂度</strong>：O(W)</p>
 <blockquote>
-<p><strong>注意</strong>：一维 DP
-中，内层循环需要<strong>倒序</strong>遍历，以确保每个物品只被使用一次。</p>
+<p><strong>注意</strong>：一维 DP 中，内层循环需要<strong>倒序</strong>遍历，以确保每个物品只被使用一次。</p>
 </blockquote>
-<hr />
-<h2 id="为什么要倒序">为什么要倒序？</h2>
-<p><strong>原因</strong>：避免同一物品被重复使用</p>
+<hr>
+<h2 id="为什么要倒序？"><a href="#为什么要倒序？" class="headerlink" title="为什么要倒序？"></a>为什么要倒序？</h2><p><strong>原因</strong>：避免同一物品被重复使用</p>
 <p>以物品 (w=3, v=5) 为例：</p>
-<h3 id="正序遍历错误">正序遍历（错误）</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(w, W + <span class="hljs-number">1</span>):  <span class="hljs-comment"># 正序</span>
+<h3 id="正序遍历（错误）"><a href="#正序遍历（错误）" class="headerlink" title="正序遍历（错误）"></a>正序遍历（错误）</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(w, W + <span class="hljs-number">1</span>):  <span class="hljs-comment"># 正序</span>
     dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j-w] + v)</code></pre></div>
 <p>假设 W=6，初始 dp=[0,0,0,0,0,0,0]</p>
 <div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">j</span>=<span class="hljs-number">3</span>: dp[<span class="hljs-number">3</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">0</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # 放了这个物品
 <span class="hljs-attribute">j</span>=<span class="hljs-number">4</span>: dp[<span class="hljs-number">4</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">1</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">1</span>] 是 <span class="hljs-number">0</span>
 <span class="hljs-attribute">j</span>=<span class="hljs-number">5</span>: dp[<span class="hljs-number">5</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">2</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">2</span>] 是 <span class="hljs-number">0</span>
 <span class="hljs-attribute">j</span>=<span class="hljs-number">6</span>: dp[<span class="hljs-number">6</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">3</span>]+<span class="hljs-number">5</span>) = max(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>+<span class="hljs-number">5</span>) = <span class="hljs-number">10</span>   # 出问题了！</code></pre></div>
-<p><strong>问题</strong>：<code>dp[3]</code> 刚刚被更新成 5，现在
-<code>dp[6]</code> 又去查
-<code>dp[3]</code>，相当于<strong>同一个物品用了两次</strong>！</p>
-<h3 id="倒序遍历正确">倒序遍历（正确）</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(W, w - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):  <span class="hljs-comment"># 倒序</span>
+<p><strong>问题</strong>：<code>dp[3]</code> 刚刚被更新成 5，现在 <code>dp[6]</code> 又去查 <code>dp[3]</code>，相当于<strong>同一个物品用了两次</strong>！</p>
+<h3 id="倒序遍历（正确）"><a href="#倒序遍历（正确）" class="headerlink" title="倒序遍历（正确）"></a>倒序遍历（正确）</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(W, w - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):  <span class="hljs-comment"># 倒序</span>
     dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j-w] + v)</code></pre></div>
 <div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">j</span>=<span class="hljs-number">6</span>: dp[<span class="hljs-number">6</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">3</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">3</span>] 还是 <span class="hljs-number">0</span>（未被当前物品更新）
 <span class="hljs-attribute">j</span>=<span class="hljs-number">5</span>: dp[<span class="hljs-number">5</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">2</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">2</span>] 还是 <span class="hljs-number">0</span>
 <span class="hljs-attribute">j</span>=<span class="hljs-number">4</span>: dp[<span class="hljs-number">4</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">1</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">1</span>] 还是 <span class="hljs-number">0</span>
 <span class="hljs-attribute">j</span>=<span class="hljs-number">3</span>: dp[<span class="hljs-number">3</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">0</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">0</span>] 是 <span class="hljs-number">0</span></code></pre></div>
-<p><strong>原因</strong>：倒序时，大 j 先更新，小 j 后更新。大 j 用到的
-<code>dp[j-w]</code>
-还是<strong>旧值</strong>，没被当前物品污染，确保每个物品只选一次。</p>
-<hr />
-<h2 id="二维-dp">二维 DP</h2>
-<p><strong>定义</strong>：<code>dp[i][j]</code> 为考虑前 i
-件物品，背包容量为 j 时的最大价值</p>
-<p><strong>初始条件</strong>：<code>dp[0][j] = 0</code>（没有物品时价值为
-0）</p>
-<p><strong>状态转移</strong>： - 不选第 i
-件物品：<code>dp[i][j] = dp[i-1][j]</code> - 选第 i
-件物品：<code>dp[i][j] = dp[i-1][j-w_i] + v_i</code></p>
-<p><span
-class="math display"><em>d</em><em>p</em>[<em>i</em>][<em>j</em>] = max (<em>d</em><em>p</em>[<em>i</em> − 1][<em>j</em>], <em>d</em><em>p</em>[<em>i</em> − 1][<em>j</em> − <em>w</em><sub><em>i</em></sub>] + <em>v</em><sub><em>i</em></sub>)</span></p>
-<p><strong>代码</strong>：</p>
+<p><strong>原因</strong>：倒序时，大 j 先更新，小 j 后更新。大 j 用到的 <code>dp[j-w]</code> 还是<strong>旧值</strong>，没被当前物品污染，确保每个物品只选一次。</p>
+<hr>
+<h2 id="二维-DP"><a href="#二维-DP" class="headerlink" title="二维 DP"></a>二维 DP</h2><p><strong>定义</strong>：<code>dp[i][j]</code> 为考虑前 i 件物品，背包容量为 j 时的最大价值</p>
+<p><strong>初始条件</strong>：<code>dp[0][j] = 0</code>（没有物品时价值为 0）</p>
+<p><strong>状态转移</strong>：</p>
+<ul>
+<li>不选第 i 件物品：<code>dp[i][j] = dp[i-1][j]</code></li>
+<li>选第 i 件物品：<code>dp[i][j] = dp[i-1][j-w_i] + v_i</code></li>
+</ul>
+<script type="math/tex; mode=display">dp[i][j] = \max(dp[i-1][j], dp[i-1][j-w_i] + v_i)</script><p><strong>代码</strong>：</p>
 <div class="code-wrapper"><pre><code class="hljs python">N, W = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 dp = [[<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(N + <span class="hljs-number">1</span>)]
 
@@ -380,9 +359,8 @@ dp = [[<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</s
             dp[i][j] = <span class="hljs-built_in">max</span>(dp[i][j], dp[i-<span class="hljs-number">1</span>][j-w] + v)
 
 <span class="hljs-built_in">print</span>(dp[N][W])</code></pre></div>
-<p><strong>时间复杂度</strong>：O(N × W)
-<strong>空间复杂度</strong>：O(N × W)</p>
-<hr />
+<p><strong>时间复杂度</strong>：O(N × W)<br><strong>空间复杂度</strong>：O(N × W)</p>
+<hr>
 
                 
               </div>

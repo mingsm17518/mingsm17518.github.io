@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Priority Queues 优先队列 简介 优先队列（Priority Queue 或 Heap）支持以下操作： - 插入元素 - 删除最高优先级元素 - 获取最高优先级元素 以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现 注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封">
+    <meta name="description" content="Priority Queues 优先队列简介优先队列（Priority Queue 或 Heap）支持以下操作：  插入元素 删除最高优先级元素 获取最高优先级元素  以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操作传入的列表，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="05_Priority Queues 优先队列">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/18/algorithm/02_Silver/02_Sorting%20&%20Searching/05_Priority%20Queues%20%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Priority Queues 优先队列 简介 优先队列（Priority Queue 或 Heap）支持以下操作： - 插入元素 - 删除最高优先级元素 - 获取最高优先级元素 以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现 注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封">
+<meta property="og:description" content="Priority Queues 优先队列简介优先队列（Priority Queue 或 Heap）支持以下操作：  插入元素 删除最高优先级元素 获取最高优先级元素  以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操作传入的列表，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-17T17:11:07.211Z">
 <meta property="article:modified_time" content="2026-03-20T19:07:05.421Z">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          628 字
+          624 字
         
       </span>
     
@@ -304,21 +304,18 @@
             
               <div class="markdown-body">
                 
-                <h1 id="priority-queues-优先队列">Priority Queues 优先队列</h1>
-<h2 id="简介">简介</h2>
-<p>优先队列（Priority Queue 或 Heap）支持以下操作： - 插入元素 -
-删除最高优先级元素 - 获取最高优先级元素</p>
+                <h1 id="Priority-Queues-优先队列"><a href="#Priority-Queues-优先队列" class="headerlink" title="Priority Queues 优先队列"></a>Priority Queues 优先队列</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>优先队列（Priority Queue 或 Heap）支持以下操作：</p>
+<ul>
+<li>插入元素</li>
+<li>删除最高优先级元素</li>
+<li>获取最高优先级元素</li>
+</ul>
 <p>以上操作的时间复杂度均为 <strong>O(log N)</strong>。</p>
 <p>优先队列比集合更简单更快，应尽可能使用优先队列。</p>
-<h2 id="python-实现">Python 实现</h2>
-<p><strong>注意</strong>：Python（与 C++
-不同）中删除和获取的是<strong>最小元素</strong>。</p>
-<p><code>heapq</code>
-不是封装好的类，而是直接操作传入的列表，将其转换为堆。</p>
-<p><strong>警告</strong>：由于堆的结构特性，打印 pq
-不会按排序顺序打印元素，而是直接打印列表。</p>
-<h3 id="基本操作">基本操作</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
+<h2 id="Python-实现"><a href="#Python-实现" class="headerlink" title="Python 实现"></a>Python 实现</h2><p><strong>注意</strong>：Python（与 C++ 不同）中删除和获取的是<strong>最小元素</strong>。</p>
+<p><code>heapq</code> 不是封装好的类，而是直接操作传入的列表，将其转换为堆。</p>
+<p><strong>警告</strong>：由于堆的结构特性，打印 pq 不会按排序顺序打印元素，而是直接打印列表。</p>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
 
 pq = []
 
@@ -334,7 +331,7 @@ heapq.heappush(pq, <span class="hljs-number">5</span>)  <span class="hljs-commen
 heapq.heappop(pq)  <span class="hljs-comment"># 弹出最小值 [7, 5, 2]</span>
 heapq.heappop(pq)  <span class="hljs-comment"># 弹出最小值 [7, 5]</span>
 heapq.heappush(pq, <span class="hljs-number">6</span>)  <span class="hljs-comment"># [7, 6, 5]</span></code></pre></div>
-<h3 id="常用方法">常用方法</h3>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -361,29 +358,23 @@ heapq.heappush(pq, <span class="hljs-number">6</span>)  <span class="hljs-commen
 </tr>
 </tbody>
 </table>
-<h3 id="大顶堆">大顶堆</h3>
-<p>Python 的 heapq 只支持小顶堆。要实现大顶堆，可以取负值：</p>
+</div>
+<h3 id="大顶堆"><a href="#大顶堆" class="headerlink" title="大顶堆"></a>大顶堆</h3><p>Python 的 heapq 只支持小顶堆。要实现大顶堆，可以取负值：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 大顶堆</span>
 heapq.heappush(heap, -x)   <span class="hljs-comment"># 存入负值</span>
 x = -heapq.heappop(heap)  <span class="hljs-comment"># 取出时再取负，得到原值</span></code></pre></div>
-<h2 id="例题room-allocation">例题：Room Allocation</h2>
-<p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1164">CSES - Room
-Allocation</a></p>
-<h3 id="问题描述">问题描述</h3>
-<p>给定 n 个客户的到达和离开时间，求所需的最少房间数。</p>
-<h3 id="思路">思路</h3>
-<ol type="1">
+<h2 id="例题：Room-Allocation"><a href="#例题：Room-Allocation" class="headerlink" title="例题：Room Allocation"></a>例题：Room Allocation</h2><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1164">CSES - Room Allocation</a></p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>给定 n 个客户的到达和离开时间，求所需的最少房间数。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
 <li>按到达时间排序所有客户</li>
 <li>维护一个小顶堆，存储已处理客户的离开时间</li>
-<li>对于每个客户：
-<ul>
-<li>如果堆顶的离开时间 &lt;
-新客户的到达时间，说明有房间空出，弹出堆顶并放入新客户的离开时间</li>
+<li>对于每个客户：<ul>
+<li>如果堆顶的离开时间 &lt; 新客户的到达时间，说明有房间空出，弹出堆顶并放入新客户的离开时间</li>
 <li>否则，所有房间都满了，需要分配新房间</li>
-</ul></li>
+</ul>
+</li>
 </ol>
-<h3 id="代码">代码</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
 
 n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 timetable = []
@@ -408,19 +399,18 @@ results = [-<span class="hljs-number">1</span>] * n
 
 <span class="hljs-built_in">print</span>(ans)
 <span class="hljs-built_in">print</span>(*results)</code></pre></div>
-<h3 id="复杂度">复杂度</h3>
-<ul>
+<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><ul>
 <li>时间复杂度：O(n log n)</li>
 <li>空间复杂度：O(n)</li>
 </ul>
-<h2 id="更多例题">更多例题</h2>
-<h3 id="思路总结">思路总结</h3>
-<p>优先队列常用于： 1.
-<strong>贪心算法</strong>：每次选择最小/最大的元素 2.
-<strong>多路归并</strong>：合并多个有序序列 3. <strong>求 Top
-K</strong>：维护最大的 K 个元素 4.
-<strong>任务调度</strong>：按优先级处理任务 5.
-<strong>滑动窗口</strong>：维护窗口内的最值</p>
+<h2 id="更多例题"><a href="#更多例题" class="headerlink" title="更多例题"></a>更多例题</h2><h3 id="思路总结"><a href="#思路总结" class="headerlink" title="思路总结"></a>思路总结</h3><p>优先队列常用于：</p>
+<ol>
+<li><strong>贪心算法</strong>：每次选择最小/最大的元素</li>
+<li><strong>多路归并</strong>：合并多个有序序列</li>
+<li><strong>求 Top K</strong>：维护最大的 K 个元素</li>
+<li><strong>任务调度</strong>：按优先级处理任务</li>
+<li><strong>滑动窗口</strong>：维护窗口内的最值</li>
+</ol>
 
                 
               </div>

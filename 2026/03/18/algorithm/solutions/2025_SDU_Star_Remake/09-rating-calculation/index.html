@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目描述 给定初始 Rating 为 0，进行 n 场比赛。第 i 场比赛的表现分为 Pi，Rating 计算公式为： $$Y &#x3D; X + \frac{P - X}{4}$$ 其中 X 为当前 Rating，P 为本次表现分。计算结果需四舍五入到整数，作为下次计算的初始 Rating。 解题思路 核心公式 四舍五入可以用整数运算实现： $$Y &#x3D; X + \lfloor\frac">
+    <meta name="description" content="题目描述给定初始 Rating 为 0，进行 n 场比赛。第 $i$ 场比赛的表现分为 $P_i$，Rating 计算公式为： Y &#x3D; X + \frac{P - X}{4}其中 $X$ 为当前 Rating，$P$ 为本次表现分。计算结果需四舍五入到整数，作为下次计算的初始 Rating。 解题思路核心公式四舍五入可以用整数运算实现： Y &#x3D; X + \lfloor\frac{P - X}{4}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="09 Rating计算">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/09-rating-calculation/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目描述 给定初始 Rating 为 0，进行 n 场比赛。第 i 场比赛的表现分为 Pi，Rating 计算公式为： $$Y &#x3D; X + \frac{P - X}{4}$$ 其中 X 为当前 Rating，P 为本次表现分。计算结果需四舍五入到整数，作为下次计算的初始 Rating。 解题思路 核心公式 四舍五入可以用整数运算实现： $$Y &#x3D; X + \lfloor\frac">
+<meta property="og:description" content="题目描述给定初始 Rating 为 0，进行 n 场比赛。第 $i$ 场比赛的表现分为 $P_i$，Rating 计算公式为： Y &#x3D; X + \frac{P - X}{4}其中 $X$ 为当前 Rating，$P$ 为本次表现分。计算结果需四舍五入到整数，作为下次计算的初始 Rating。 解题思路核心公式四舍五入可以用整数运算实现： Y &#x3D; X + \lfloor\frac{P - X}{4}">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-18T14:30:49.857Z">
 <meta property="article:modified_time" content="2026-03-19T03:41:33.805Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          225 字
+          227 字
         
       </span>
     
@@ -303,27 +303,16 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目描述">题目描述</h2>
-<p>给定初始 Rating 为 0，进行 n 场比赛。第 <span
-class="math inline"><em>i</em></span> 场比赛的表现分为 <span
-class="math inline"><em>P</em><sub><em>i</em></sub></span>，Rating
-计算公式为：</p>
-<p><span class="math display">$$Y = X + \frac{P - X}{4}$$</span></p>
-<p>其中 <span class="math inline"><em>X</em></span> 为当前 Rating，<span
-class="math inline"><em>P</em></span>
-为本次表现分。计算结果需四舍五入到整数，作为下次计算的初始 Rating。</p>
-<h2 id="解题思路">解题思路</h2>
-<h3 id="核心公式">核心公式</h3>
-<p>四舍五入可以用整数运算实现：</p>
-<p><span class="math display">$$Y = X + \lfloor\frac{P - X}{4}\rfloor +
-[\text{小数部分} \geq 0.5]$$</span></p>
-<p>设 <span
-class="math inline"><em>d</em> = <em>P</em> − <em>X</em></span>，则： -
-整数部分：<span class="math inline"><em>d</em>//4</span> -
-小数部分：<span class="math inline"><em>d</em>%4</span> - 若 <span
-class="math inline"><em>d</em>%4 ≥ 2</span>，则向上取整</p>
-<h2 id="代码实现">代码实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+                <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定初始 Rating 为 0，进行 n 场比赛。第 $i$ 场比赛的表现分为 $P_i$，Rating 计算公式为：</p>
+<script type="math/tex; mode=display">Y = X + \frac{P - X}{4}</script><p>其中 $X$ 为当前 Rating，$P$ 为本次表现分。计算结果需四舍五入到整数，作为下次计算的初始 Rating。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="核心公式"><a href="#核心公式" class="headerlink" title="核心公式"></a>核心公式</h3><p>四舍五入可以用整数运算实现：</p>
+<script type="math/tex; mode=display">Y = X + \lfloor\frac{P - X}{4}\rfloor + [\text{小数部分} \geq 0.5]</script><p>设 $d = P - X$，则：</p>
+<ul>
+<li>整数部分：$d // 4$</li>
+<li>小数部分：$d \% 4$</li>
+<li>若 $d \% 4 \geq 2$，则向上取整</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 arr = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
 y = <span class="hljs-number">0</span>  <span class="hljs-comment"># 初始 Rating</span>
 
@@ -334,19 +323,13 @@ y = <span class="hljs-number">0</span>  <span class="hljs-comment"># 初始 Rati
     <span class="hljs-keyword">if</span> d % <span class="hljs-number">4</span> &gt;= <span class="hljs-number">2</span>:
         y += <span class="hljs-number">1</span>
     <span class="hljs-built_in">print</span>(y, end=<span class="hljs-string">&#x27; &#x27;</span>)</code></pre></div>
-<h2 id="复杂度分析">复杂度分析</h2>
-<ul>
-<li><strong>时间复杂度</strong>：<span
-class="math inline"><em>O</em>(<em>n</em>)</span></li>
-<li><strong>空间复杂度</strong>：<span
-class="math inline"><em>O</em>(1)</span></li>
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
+<li><strong>时间复杂度</strong>：$O(n)$</li>
+<li><strong>空间复杂度</strong>：$O(1)$</li>
 </ul>
-<h2 id="关键点">关键点</h2>
-<ol type="1">
+<h2 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h2><ol>
 <li><strong>全程整数运算</strong>：避免浮点数精度问题</li>
-<li><strong>四舍五入</strong>：通过取模判断小数部分是否 <span
-class="math inline"> ≥ 0.5</span>（即 <span
-class="math inline"> ≥ 2</span>）</li>
+<li><strong>四舍五入</strong>：通过取模判断小数部分是否 $\geq 0.5$（即 $\geq 2$）</li>
 </ol>
 
                 

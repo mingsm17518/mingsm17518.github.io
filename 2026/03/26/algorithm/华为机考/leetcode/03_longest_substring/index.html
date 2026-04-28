@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="无重复字符的最长子串 题目描述 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;longest-substring-without-repeating-characters&#x2F; 给定一个字符串 s，请你找出其中不含有重复字符的最长子串的长度。 解题思路 核心观察 使用滑动窗口维护一个不包含重复字符的子串。窗口左边界为 l，右边界为 r（当前遍历到的字符）。 算法步骤">
+    <meta name="description" content="无重复字符的最长子串题目描述https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;longest-substring-without-repeating-characters&#x2F; 给定一个字符串 s，请你找出其中不含有重复字符的最长子串的长度。 解题思路核心观察使用滑动窗口维护一个不包含重复字符的子串。窗口左边界为 l，右边界为 r（当前遍历到的字符）。 算法步骤 使用集合 a 存储当前窗口中的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无重复字符的最长子串（Longest Substring Without Repeating Characters）">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/26/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="无重复字符的最长子串 题目描述 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;longest-substring-without-repeating-characters&#x2F; 给定一个字符串 s，请你找出其中不含有重复字符的最长子串的长度。 解题思路 核心观察 使用滑动窗口维护一个不包含重复字符的子串。窗口左边界为 l，右边界为 r（当前遍历到的字符）。 算法步骤">
+<meta property="og:description" content="无重复字符的最长子串题目描述https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;longest-substring-without-repeating-characters&#x2F; 给定一个字符串 s，请你找出其中不含有重复字符的最长子串的长度。 解题思路核心观察使用滑动窗口维护一个不包含重复字符的子串。窗口左边界为 l，右边界为 r（当前遍历到的字符）。 算法步骤 使用集合 a 存储当前窗口中的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-26T02:49:22.704Z">
 <meta property="article:modified_time" content="2026-03-26T02:50:02.583Z">
@@ -303,24 +303,16 @@
             
               <div class="markdown-body">
                 
-                <h1 id="无重复字符的最长子串">无重复字符的最长子串</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>https://leetcode.cn/problems/longest-substring-without-repeating-characters/</p>
+                <h1 id="无重复字符的最长子串"><a href="#无重复字符的最长子串" class="headerlink" title="无重复字符的最长子串"></a>无重复字符的最长子串</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">https://leetcode.cn/problems/longest-substring-without-repeating-characters/</a></p>
 <p>给定一个字符串 s，请你找出其中不含有重复字符的最长子串的长度。</p>
-<h2 id="解题思路">解题思路</h2>
-<h3 id="核心观察">核心观察</h3>
-<p>使用滑动窗口维护一个不包含重复字符的子串。窗口左边界为 l，右边界为
-r（当前遍历到的字符）。</p>
-<h3 id="算法步骤">算法步骤</h3>
-<ol type="1">
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="核心观察"><a href="#核心观察" class="headerlink" title="核心观察"></a>核心观察</h3><p>使用滑动窗口维护一个不包含重复字符的子串。窗口左边界为 l，右边界为 r（当前遍历到的字符）。</p>
+<h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><ol>
 <li>使用集合 <code>a</code> 存储当前窗口中的字符</li>
 <li>右指针 r 不断向右扩展</li>
-<li>如果新字符 s[r] 已存在于窗口中，则收缩左边界
-l，直到窗口中不再包含该字符</li>
+<li>如果新字符 s[r] 已存在于窗口中，则收缩左边界 l，直到窗口中不再包含该字符</li>
 <li>更新最长子串长度 ans</li>
 </ol>
-<h2 id="代码实现">代码实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 s = sys.stdin.readline().strip()
 
@@ -335,15 +327,13 @@ ans = <span class="hljs-number">0</span>
     ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h2 id="代码解析">代码解析</h2>
-<ul>
+<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><ul>
 <li><code>a</code> 集合：存储当前滑动窗口中的字符</li>
 <li><code>l</code>：窗口左边界</li>
 <li><code>r</code>：窗口右边界（遍历指针）</li>
 <li>当遇到重复字符时，不断移除左边界字符直到窗口中不存在该字符</li>
 </ul>
-<h2 id="时间复杂度">时间复杂度</h2>
-<ul>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul>
 <li>每个字符最多被左、右指针访问一次：O(n)</li>
 <li>集合操作平均 O(1)</li>
 <li>总计：O(n)</li>

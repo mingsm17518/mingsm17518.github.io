@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最长递增子序列 Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang Contributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件  Gold - Introduction to DP (动态规划简介)">
+    <meta name="description" content="最长递增子序列Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew WangContributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件 Gold - Introduction to DP (动态规划简介)   教程令 $A$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="04_Longest Increasing Subsequence 最长递增子序列">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/21/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="最长递增子序列 Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang Contributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件  Gold - Introduction to DP (动态规划简介)">
+<meta property="og:description" content="最长递增子序列Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew WangContributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件 Gold - Introduction to DP (动态规划简介)   教程令 $A$">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-20T18:16:32.359Z">
 <meta property="article:modified_time" content="2026-03-20T18:16:32.771Z">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          919 字
+          946 字
         
       </span>
     
@@ -304,29 +304,16 @@
             
               <div class="markdown-body">
                 
-                <h1 id="最长递增子序列">最长递增子序列</h1>
-<p><strong>Authors</strong>: Michael Cao, Benjamin Qi, Andi Qu, Andrew
-Wang <strong>Contributors</strong>: Dong Liu, Siyong Huang, Aryansh
-Shrivastava, Kevin Sheng, Katja Frantzen</p>
-<hr />
-<h2 id="先决条件">先决条件</h2>
-<ul>
+                <h1 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h1><p><strong>Authors</strong>: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang<br><strong>Contributors</strong>: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen</p>
+<hr>
+<h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><ul>
 <li>Gold - Introduction to DP (动态规划简介)</li>
 </ul>
-<hr />
-<h2 id="教程">教程</h2>
-<p>令 <span class="math inline"><em>A</em></span>
-为我们要寻找最长递增子序列（LIS）的数组。</p>
-<hr />
-<h3 id="慢速解法">慢速解法</h3>
-<p><strong>时间复杂度</strong>: <span
-class="math inline"><em>O</em>(<em>N</em><sup>2</sup>)</span></p>
-<p>令 <span class="math inline"><em>d</em><em>p</em>[<em>i</em>]</span>
-表示以 <span class="math inline"><em>A</em>[<em>i</em>]</span>
-结尾的最长递增子序列的长度。我们可以通过简单的方法在 <span
-class="math inline"><em>O</em>(<em>N</em><sup>2</sup>)</span> 时间内计算
-<span class="math inline"><em>d</em><em>p</em></span>（从而得到
-LIS）：</p>
+<hr>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>令 $A$ 为我们要寻找最长递增子序列（LIS）的数组。</p>
+<hr>
+<h3 id="慢速解法"><a href="#慢速解法" class="headerlink" title="慢速解法"></a>慢速解法</h3><p><strong>时间复杂度</strong>: $O(N^2)$</p>
+<p>令 $dp[i]$ 表示以 $A[i]$ 结尾的最长递增子序列的长度。我们可以通过简单的方法在 $O(N^2)$ 时间内计算 $dp$（从而得到 LIS）：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span>
 
 
@@ -340,33 +327,13 @@ LIS）：</p>
         lis = <span class="hljs-built_in">max</span>(lis, dp[i])
     <span class="hljs-keyword">return</span> lis</code></pre></div>
 <p>然而，我们可以做得更好！</p>
-<hr />
-<h3 id="快速解法">快速解法</h3>
-<p><strong>时间复杂度</strong>: <span
-class="math inline"><em>O</em>(<em>N</em>log <em>N</em>)</span></p>
-<p>令 <span class="math inline"><em>L</em><sub><em>i</em></sub></span>
-是一个数组（0 索引），其中 <span
-class="math inline"><em>L</em><sub><em>i</em></sub>[<em>j</em>]</span>
-是从 <span class="math inline"><em>A</em></span> 的前 <span
-class="math inline"><em>i</em></span> 个元素中最小的一个元素，它以长度为
-<span class="math inline"><em>j</em> + 1</span>
-的递增序列结束（如果没有这样的元素则为 <span
-class="math inline">∞</span>）。</p>
-<p><strong>引理 1</strong>: <span
-class="math inline"><em>L</em><sub><em>i</em></sub></span>
-形成一个严格递增的序列。</p>
-<p><strong>引理 2</strong>: 以 <span
-class="math inline"><em>A</em>[<em>i</em> + 1]</span>
-结尾的最长递增子序列的长度等于满足 <span
-class="math inline"><em>L</em><sub><em>i</em></sub>[<em>j</em>] ≥ <em>A</em>[<em>i</em> + 1]</span>
-的最小索引 <span class="math inline"><em>j</em></span>。</p>
-<p><strong>引理 3</strong>: <span
-class="math inline"><em>L</em><sub><em>i</em></sub></span> 和 <span
-class="math inline"><em>L</em><sub><em>i</em> + 1</sub></span>
-之间最多有 1 个元素不同。</p>
-<p>要在 <span class="math inline"><em>O</em>(log <em>N</em>)</span>
-时间内找到并更新描述的 <span
-class="math inline"><em>j</em></span>，我们可以使用带二分查找的列表：</p>
+<hr>
+<h3 id="快速解法"><a href="#快速解法" class="headerlink" title="快速解法"></a>快速解法</h3><p><strong>时间复杂度</strong>: $O(N \log N)$</p>
+<p>令 $L_i$ 是一个数组（0 索引），其中 $L_i[j]$ 是从 $A$ 的前 $i$ 个元素中最小的一个元素，它以长度为 $j+1$ 的递增序列结束（如果没有这样的元素则为 $\infty$）。</p>
+<p><strong>引理 1</strong>: $L_i$ 形成一个严格递增的序列。</p>
+<p><strong>引理 2</strong>: 以 $A[i+1]$ 结尾的最长递增子序列的长度等于满足 $L_i[j] \ge A[i+1]$ 的最小索引 $j$。</p>
+<p><strong>引理 3</strong>: $L<em>i$ 和 $L</em>{i+1}$ 之间最多有 1 个元素不同。</p>
+<p>要在 $O(\log N)$ 时间内找到并更新描述的 $j$，我们可以使用带二分查找的列表：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span>
 <span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> bisect_left
 
@@ -380,68 +347,24 @@ class="math inline"><em>j</em></span>，我们可以使用带二分查找的列�
         <span class="hljs-keyword">else</span>:  <span class="hljs-comment"># oh ok, at least we can make the ending element smaller</span>
             min_endings[pos] = i
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(min_endings)</code></pre></div>
-<hr />
-<h3 id="rmq-数据结构解法">RMQ 数据结构解法</h3>
-<p><strong>时间复杂度</strong>: <span
-class="math inline"><em>O</em>(<em>N</em>log <em>N</em>)</span>，但可能比之前的解决方案慢一个常数因子。</p>
-<p>设 <span class="math inline"><em>d</em><em>p</em>[<em>k</em>]</span>
-为以元素 <span class="math inline"><em>k</em> ∈ <em>a</em></span> 结尾的
-<span class="math inline"><em>a</em></span> 的 LIS
-长度。我们的基本情况是 <span
-class="math inline"><em>d</em><em>p</em>[<em>a</em>[0]] = 1</span>。由于
-LIS 具有最优子结构特性，我们按以下方式进行转换：</p>
-<p><span
-class="math display"><em>d</em><em>p</em>[<em>t</em>] = max<sub>0 ≤ <em>k</em> &lt; <em>t</em></sub><em>d</em><em>p</em>[<em>k</em>] + 1</span></p>
-<p>如果 <span class="math inline"><em>d</em><em>p</em></span> 是一个 RMQ
-数据结构，<span
-class="math inline"><em>d</em><em>p</em>[<em>t</em>]</span>
-的变化只是一个点更新，而 <span
-class="math inline">max<sub>0 ≤ <em>k</em> &lt; <em>t</em></sub><em>d</em><em>p</em>[<em>k</em>]</span>
-的计算是一个区间查询。</p>
-<hr />
-<h2 id="应用-1---不相交的线段">应用 1 - 不相交的线段</h2>
-<p>首先，如果两个线段 <span
-class="math inline">(<em>l</em><sub>1</sub>, <em>r</em><sub>1</sub>)</span>
-和 <span
-class="math inline">(<em>l</em><sub>2</sub>, <em>r</em><sub>2</sub>)</span>
-相交（假设 <span
-class="math inline"><em>l</em><sub>1</sub> &lt; <em>l</em><sub>2</sub></span>），我们可以注意到
-<span
-class="math inline"><em>l</em><sub>1</sub> &lt; <em>l</em><sub>2</sub> ⟹ <em>r</em><sub>1</sub> &gt; <em>r</em><sub>2</sub></span>。</p>
-<p>这意味着一组不相交的线段对于所有对 <span
-class="math inline">(<em>i</em>, <em>j</em>)</span> 都满足 <span
-class="math inline"><em>l</em><sub><em>i</em></sub> &lt; <em>l</em><sub><em>j</em></sub> ⟹ <em>r</em><sub><em>i</em></sub> &lt; <em>r</em><sub><em>j</em></sub></span>！</p>
-<p>设 <span class="math inline"><em>A</em></span> 是一个数组，其中 <span
-class="math inline"><em>A</em>[<em>i</em>] = <em>x</em></span>
-表示位于位置 <span class="math inline"><em>i</em></span>
-的右端点的线段的左端点位于位置 <span
-class="math inline"><em>x</em></span>。</p>
-<p>如果我们被要求找出不相交线段集的最大大小，答案将是 <span
-class="math inline"><em>A</em></span> 的最长递增子序列！</p>
-<hr />
-<h2 id="应用-2---最少递增子序列数">应用 2 - 最少递增子序列数</h2>
-<p><strong>引理（简单）</strong>: 覆盖 <span
-class="math inline"><em>A</em></span> 所需的最少递增子序列数至少等于
-<span class="math inline"><em>A</em></span> 最长非递增子序列的长度。</p>
-<p><strong>命题</strong>: 覆盖 <span
-class="math inline"><em>A</em></span> 所需的最少递增子序列的数量等于
-<span class="math inline"><em>A</em></span> 最长非递增子序列的长度！</p>
-<p><strong>证明</strong>: 设 <span
-class="math inline"><em>f</em><sub><em>i</em></sub></span> 表示以 <span
-class="math inline"><em>A</em><sub><em>i</em></sub></span>
-结尾的最长非递增子序列的长度。那么对于固定的 <span
-class="math inline"><em>t</em></span>，满足 <span
-class="math inline"><em>f</em><sub><em>i</em></sub> = <em>t</em></span>
-的 <span class="math inline"><em>A</em><sub><em>i</em></sub></span>
-对于每个 <span class="math inline"><em>t</em></span>
-都是一个递增子序列。所以我们用（最长非递增子序列的长度）个递增子序列覆盖了
-<span class="math inline"><em>A</em></span>。</p>
+<hr>
+<h3 id="RMQ-数据结构解法"><a href="#RMQ-数据结构解法" class="headerlink" title="RMQ 数据结构解法"></a>RMQ 数据结构解法</h3><p><strong>时间复杂度</strong>: $O(N \log N)$，但可能比之前的解决方案慢一个常数因子。</p>
+<p>设 $dp[k]$ 为以元素 $k \in a$ 结尾的 $a$ 的 LIS 长度。我们的基本情况是 $dp[a[0]] = 1$。由于 LIS 具有最优子结构特性，我们按以下方式进行转换：</p>
+<script type="math/tex; mode=display">dp[t] = \max_{0 \le k < t} dp[k] + 1</script><p>如果 $dp$ 是一个 RMQ 数据结构，$dp[t]$ 的变化只是一个点更新，而 $\max_{0 \le k &lt; t} dp[k]$ 的计算是一个区间查询。</p>
+<hr>
+<h2 id="应用-1-不相交的线段"><a href="#应用-1-不相交的线段" class="headerlink" title="应用 1 - 不相交的线段"></a>应用 1 - 不相交的线段</h2><p>首先，如果两个线段 $(l_1, r_1)$ 和 $(l_2, r_2)$ 相交（假设 $l_1 &lt; l_2$），我们可以注意到 $l_1 &lt; l_2 \implies r_1 &gt; r_2$。</p>
+<p>这意味着一组不相交的线段对于所有对 $(i, j)$ 都满足 $l_i &lt; l_j \implies r_i &lt; r_j$！</p>
+<p>设 $A$ 是一个数组，其中 $A[i] = x$ 表示位于位置 $i$ 的右端点的线段的左端点位于位置 $x$。</p>
+<p>如果我们被要求找出不相交线段集的最大大小，答案将是 $A$ 的最长递增子序列！</p>
+<hr>
+<h2 id="应用-2-最少递增子序列数"><a href="#应用-2-最少递增子序列数" class="headerlink" title="应用 2 - 最少递增子序列数"></a>应用 2 - 最少递增子序列数</h2><p><strong>引理（简单）</strong>: 覆盖 $A$ 所需的最少递增子序列数至少等于 $A$ 最长非递增子序列的长度。</p>
+<p><strong>命题</strong>: 覆盖 $A$ 所需的最少递增子序列的数量等于 $A$ 最长非递增子序列的长度！</p>
+<p><strong>证明</strong>: 设 $f_i$ 表示以 $A_i$ 结尾的最长非递增子序列的长度。那么对于固定的 $t$，满足 $f_i = t$ 的 $A_i$ 对于每个 $t$ 都是一个递增子序列。所以我们用（最长非递增子序列的长度）个递增子序列覆盖了 $A$。</p>
 <blockquote>
 <p><strong>另一种证明</strong>: 这只是 Dilworth 定理的一个特例。</p>
 </blockquote>
-<hr />
-<h2 id="示例---pcb">示例 - PCB</h2>
-<blockquote>
+<hr>
+<h2 id="示例-PCB"><a href="#示例-PCB" class="headerlink" title="示例 - PCB"></a>示例 - PCB</h2><blockquote>
 <p><strong>Focus Problem</strong>: 在继续之前，请尽力解决这个问题！</p>
 </blockquote>
 <p>这个问题要求我们找到最小数量的不交线段集。</p>
@@ -466,8 +389,8 @@ endpoints.append(board[<span class="hljs-number">0</span>][<span class="hljs-num
         )  <span class="hljs-comment"># invert list in order to use bisect_left</span>
         endpoints[index] = v
 <span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(endpoints))</code></pre></div>
-<hr />
-<h2 id="总结">总结</h2>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -479,26 +402,24 @@ endpoints.append(board[<span class="hljs-number">0</span>][<span class="hljs-num
 <tbody>
 <tr>
 <td>暴力 DP</td>
-<td><span
-class="math inline"><em>O</em>(<em>N</em><sup>2</sup>)</span></td>
-<td><span class="math inline"><em>O</em>(<em>N</em>)</span></td>
+<td>$O(N^2)$</td>
+<td>$O(N)$</td>
 </tr>
 <tr>
 <td>二分查找优化</td>
-<td><span
-class="math inline"><em>O</em>(<em>N</em>log <em>N</em>)</span></td>
-<td><span class="math inline"><em>O</em>(<em>N</em>)</span></td>
+<td>$O(N \log N)$</td>
+<td>$O(N)$</td>
 </tr>
 <tr>
 <td>RMQ/线段树</td>
-<td><span
-class="math inline"><em>O</em>(<em>N</em>log <em>N</em>)</span></td>
-<td><span class="math inline"><em>O</em>(<em>N</em>)</span></td>
+<td>$O(N \log N)$</td>
+<td>$O(N)$</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="经典问题">经典问题</h2>
+</div>
+<hr>
+<h2 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -520,6 +441,7 @@ class="math inline"><em>O</em>(<em>N</em>log <em>N</em>)</span></td>
 </tr>
 </tbody>
 </table>
+</div>
 
                 
               </div>

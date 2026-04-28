@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="明文分组 题目描述 https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720083470 输入一个字符串，将字符串按每 8 个字符进行分组。不足 8 个字符的组则在后面补 0，每组单独输出一行。 示例 输入： abc 输出： abc00000 输入： 1234567890 输出： 12345678 90 解题思路 字符串填充 + 分">
+    <meta name="description" content="明文分组题目描述https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720083470 输入一个字符串，将字符串按每 8 个字符进行分组。不足 8 个字符的组则在后面补 0，每组单独输出一行。 示例输入：abc输出：abc00000 输入：1234567890输出：12345678 90 解题思路字符串填充 + 分组截取 计算需要补 0 后的长度：向上">
 <meta property="og:type" content="article">
 <meta property="og:title" content="明文分组（HJ3）">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/09/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="明文分组 题目描述 https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720083470 输入一个字符串，将字符串按每 8 个字符进行分组。不足 8 个字符的组则在后面补 0，每组单独输出一行。 示例 输入： abc 输出： abc00000 输入： 1234567890 输出： 12345678 90 解题思路 字符串填充 + 分">
+<meta property="og:description" content="明文分组题目描述https:&#x2F;&#x2F;www.nowcoder.com&#x2F;share&#x2F;jump&#x2F;5832603751775720083470 输入一个字符串，将字符串按每 8 个字符进行分组。不足 8 个字符的组则在后面补 0，每组单独输出一行。 示例输入：abc输出：abc00000 输入：1234567890输出：12345678 90 解题思路字符串填充 + 分组截取 计算需要补 0 后的长度：向上">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-09T07:31:14.986Z">
 <meta property="article:modified_time" content="2026-04-09T07:34:51.448Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          302 字
+          304 字
         
       </span>
     
@@ -303,24 +303,17 @@
             
               <div class="markdown-body">
                 
-                <h1 id="明文分组">明文分组</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>https://www.nowcoder.com/share/jump/5832603751775720083470</p>
-<p>输入一个字符串，将字符串按每 8 个字符进行分组。不足 8
-个字符的组则在后面补 0，每组单独输出一行。</p>
-<h2 id="示例">示例</h2>
-<p>输入： <div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">abc</span></code></pre></div> 输出： <div class="code-wrapper"><pre><code class="hljs">abc00000</code></pre></div></p>
-<p>输入： <div class="code-wrapper"><pre><code class="hljs dns"><span class="hljs-number">1234567890</span></code></pre></div> 输出： <div class="code-wrapper"><pre><code class="hljs dns"><span class="hljs-number">12345678</span>
+                <h1 id="明文分组"><a href="#明文分组" class="headerlink" title="明文分组"></a>明文分组</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/share/jump/5832603751775720083470">https://www.nowcoder.com/share/jump/5832603751775720083470</a></p>
+<p>输入一个字符串，将字符串按每 8 个字符进行分组。不足 8 个字符的组则在后面补 0，每组单独输出一行。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：<br><div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">abc</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs">abc00000</code></pre></div></p>
+<p>输入：<br><div class="code-wrapper"><pre><code class="hljs dns"><span class="hljs-number">1234567890</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs dns"><span class="hljs-number">12345678</span>
 <span class="hljs-number">90</span></code></pre></div></p>
-<h2 id="解题思路">解题思路</h2>
-<h3 id="字符串填充-分组截取">字符串填充 + 分组截取</h3>
-<ol type="1">
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="字符串填充-分组截取"><a href="#字符串填充-分组截取" class="headerlink" title="字符串填充 + 分组截取"></a>字符串填充 + 分组截取</h3><ol>
 <li>计算需要补 0 后的长度：向上取整到 8 的倍数</li>
 <li>使用 <code>ljust()</code> 右侧填充 ‘0’</li>
 <li>按 8 个字符一组截取输出</li>
 </ol>
-<h2 id="代码实现">代码实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-built_in">input</span>().strip()
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-built_in">input</span>().strip()
 n = <span class="hljs-built_in">len</span>(s)
 k = <span class="hljs-number">8</span>
 
@@ -333,10 +326,7 @@ s = s.ljust(new_len, <span class="hljs-string">&#x27;0&#x27;</span>)
 <span class="hljs-comment"># 每8个字符一组输出</span>
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, new_len, k):
     <span class="hljs-built_in">print</span>(s[i: i + k])</code></pre></div>
-<h2 id="代码解析">代码解析</h2>
-<h3
-id="n-k---1-k-k---向上取整到-k-的倍数"><code>(n + k - 1) // k * k</code>
-- 向上取整到 k 的倍数</h3>
+<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="n-k-1-k-k-向上取整到-k-的倍数"><a href="#n-k-1-k-k-向上取整到-k-的倍数" class="headerlink" title="(n + k - 1) // k * k - 向上取整到 k 的倍数"></a><code>(n + k - 1) // k * k</code> - 向上取整到 k 的倍数</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -363,20 +353,16 @@ id="n-k---1-k-k---向上取整到-k-的倍数"><code>(n + k - 1) // k * k</code>
 </tr>
 </tbody>
 </table>
+</div>
 <p>等价于 <code>math.ceil(n / k) * k</code>，但无需导入 math 模块。</p>
-<h3 id="ljustnew_len-0---右侧填充"><code>ljust(new_len, '0')</code> -
-右侧填充</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-string">&quot;abc&quot;</span>.ljust(<span class="hljs-number">8</span>, <span class="hljs-string">&#x27;0&#x27;</span>)  <span class="hljs-comment"># → &quot;abc00000&quot;</span></code></pre></div>
-<h3 id="si-i-k---分组截取"><code>s[i: i + k]</code> - 分组截取</h3>
-<div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-string">&quot;1234567890000000&quot;</span>
+<h3 id="ljust-new-len-39-0-39-右侧填充"><a href="#ljust-new-len-39-0-39-右侧填充" class="headerlink" title="ljust(new_len, &#39;0&#39;) - 右侧填充"></a><code>ljust(new_len, &#39;0&#39;)</code> - 右侧填充</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-string">&quot;abc&quot;</span>.ljust(<span class="hljs-number">8</span>, <span class="hljs-string">&#x27;0&#x27;</span>)  <span class="hljs-comment"># → &quot;abc00000&quot;</span></code></pre></div>
+<h3 id="s-i-i-k-分组截取"><a href="#s-i-i-k-分组截取" class="headerlink" title="s[i: i + k] - 分组截取"></a><code>s[i: i + k]</code> - 分组截取</h3><div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-string">&quot;1234567890000000&quot;</span>
 i = <span class="hljs-number">0</span>:  s[<span class="hljs-number">0</span>:<span class="hljs-number">8</span>]   <span class="hljs-comment"># &quot;12345678&quot;</span>
 i = <span class="hljs-number">8</span>:  s[<span class="hljs-number">8</span>:<span class="hljs-number">16</span>]  <span class="hljs-comment"># &quot;90000000&quot;</span></code></pre></div>
-<h2 id="时间复杂度">时间复杂度</h2>
-<ul>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul>
 <li>O(n) - 单次遍历填充和分组</li>
 </ul>
-<h2 id="空间复杂度">空间复杂度</h2>
-<ul>
+<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ul>
 <li>O(n) - 存储填充后的字符串</li>
 </ul>
 

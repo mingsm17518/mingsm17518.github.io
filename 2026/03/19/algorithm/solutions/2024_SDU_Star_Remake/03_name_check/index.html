@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="名字验证 题目描述 班主任有 n 个学生的名字（互不相同）。严校长依次报出 m 个名字，判断每个名字的情况： - 正确且第一次出现 → 输出 OK - 名字错误 → 输出 WRONG - 正确但已出现过 → 输出 REPEAT 解题思路 核心思想 使用两个集合： 1. valid - 存放所有正确的学生名字 2. answered - 存放已经正确回答过（输出过 OK）的名字 判">
+    <meta name="description" content="名字验证题目描述班主任有 n 个学生的名字（互不相同）。严校长依次报出 m 个名字，判断每个名字的情况：  正确且第一次出现 → 输出 OK 名字错误 → 输出 WRONG 正确但已出现过 → 输出 REPEAT  解题思路核心思想使用两个集合：  valid - 存放所有正确的学生名字 answered - 存放已经正确回答过（输出过 OK）的名字  判断逻辑对于每个报出的名字 s：  如果 s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="名字验证（严校长报名字）">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/19/algorithm/solutions/2024_SDU_Star_Remake/03_name_check/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="名字验证 题目描述 班主任有 n 个学生的名字（互不相同）。严校长依次报出 m 个名字，判断每个名字的情况： - 正确且第一次出现 → 输出 OK - 名字错误 → 输出 WRONG - 正确但已出现过 → 输出 REPEAT 解题思路 核心思想 使用两个集合： 1. valid - 存放所有正确的学生名字 2. answered - 存放已经正确回答过（输出过 OK）的名字 判">
+<meta property="og:description" content="名字验证题目描述班主任有 n 个学生的名字（互不相同）。严校长依次报出 m 个名字，判断每个名字的情况：  正确且第一次出现 → 输出 OK 名字错误 → 输出 WRONG 正确但已出现过 → 输出 REPEAT  解题思路核心思想使用两个集合：  valid - 存放所有正确的学生名字 answered - 存放已经正确回答过（输出过 OK）的名字  判断逻辑对于每个报出的名字 s：  如果 s">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-19T10:09:25.166Z">
 <meta property="article:modified_time" content="2026-03-19T10:09:25.166Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          337 字
+          333 字
         
       </span>
     
@@ -293,20 +293,24 @@
             
               <div class="markdown-body">
                 
-                <h1 id="名字验证">名字验证</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>班主任有 n 个学生的名字（互不相同）。严校长依次报出 m
-个名字，判断每个名字的情况： - 正确且第一次出现 → 输出 OK - 名字错误 →
-输出 WRONG - 正确但已出现过 → 输出 REPEAT</p>
-<h2 id="解题思路">解题思路</h2>
-<h3 id="核心思想">核心思想</h3>
-<p>使用两个集合： 1. <code>valid</code> - 存放所有正确的学生名字 2.
-<code>answered</code> - 存放已经正确回答过（输出过 OK）的名字</p>
-<h3 id="判断逻辑">判断逻辑</h3>
-<p>对于每个报出的名字 s： 1. 如果 s 不在 valid 中 → WRONG 2. 如果 s 在
-answered 中（已回答过OK）→ REPEAT 3. 否则 → OK，并将 s 加入 answered</p>
-<h2 id="代码实现">代码实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+                <h1 id="名字验证"><a href="#名字验证" class="headerlink" title="名字验证"></a>名字验证</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>班主任有 n 个学生的名字（互不相同）。严校长依次报出 m 个名字，判断每个名字的情况：</p>
+<ul>
+<li>正确且第一次出现 → 输出 OK</li>
+<li>名字错误 → 输出 WRONG</li>
+<li>正确但已出现过 → 输出 REPEAT</li>
+</ul>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p>使用两个集合：</p>
+<ol>
+<li><code>valid</code> - 存放所有正确的学生名字</li>
+<li><code>answered</code> - 存放已经正确回答过（输出过 OK）的名字</li>
+</ol>
+<h3 id="判断逻辑"><a href="#判断逻辑" class="headerlink" title="判断逻辑"></a>判断逻辑</h3><p>对于每个报出的名字 s：</p>
+<ol>
+<li>如果 s 不在 valid 中 → WRONG</li>
+<li>如果 s 在 answered 中（已回答过OK）→ REPEAT</li>
+<li>否则 → OK，并将 s 加入 answered</li>
+</ol>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 arr = <span class="hljs-built_in">set</span>(<span class="hljs-built_in">input</span>() <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n))
 m = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 c = <span class="hljs-built_in">set</span>()
@@ -320,15 +324,12 @@ c = <span class="hljs-built_in">set</span>()
             <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;REPEAT&quot;</span>)
     <span class="hljs-keyword">else</span>:
         <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;WRONG&quot;</span>)</code></pre></div>
-<h2 id="代码解析">代码解析</h2>
-<ul>
-<li><code>arr = set(...)</code>：存放正确的学生名字，set 查找效率
-O(1)</li>
+<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><ul>
+<li><code>arr = set(...)</code>：存放正确的学生名字，set 查找效率 O(1)</li>
 <li><code>c = set()</code>：存放已经输出过 OK 的名字</li>
 <li>判断顺序：先判断错误，再判断重复，最后判断首次正确</li>
 </ul>
-<h2 id="示例演示">示例演示</h2>
-<p><strong>输入：</strong> <div class="code-wrapper"><pre><code class="hljs css"><span class="hljs-number">5</span>
+<h2 id="示例演示"><a href="#示例演示" class="headerlink" title="示例演示"></a>示例演示</h2><p><strong>输入：</strong><br><div class="code-wrapper"><pre><code class="hljs css"><span class="hljs-number">5</span>
 <span class="hljs-selector-tag">a</span>
 <span class="hljs-selector-tag">b</span>
 c
@@ -344,11 +345,10 @@ e</code></pre></div></p>
 <li>第2次：查询 “a”，在 arr 中且已在 c 中 → 输出 REPEAT</li>
 <li>第3次：查询 “e”，不在 arr 中 → 输出 WRONG</li>
 </ul>
-<p><strong>输出：</strong> <div class="code-wrapper"><pre><code class="hljs cal">OK
+<p><strong>输出：</strong><br><div class="code-wrapper"><pre><code class="hljs cal">OK
 <span class="hljs-keyword">REPEAT</span>
 WRONG</code></pre></div></p>
-<h2 id="时间复杂度">时间复杂度</h2>
-<ul>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul>
 <li>创建集合：O(n)</li>
 <li>每次查询：O(1)</li>
 <li>总计：O(n + m)</li>

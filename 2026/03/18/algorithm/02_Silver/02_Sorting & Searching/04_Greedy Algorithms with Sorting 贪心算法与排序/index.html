@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greedy Algorithms with Sorting 贪心算法与排序 贪心算法在每一步选择当前最优的选项，通常与排序配合使用。  一、贪心算法基础 贪心算法的核心是价值函数：决定哪个选择是最优的。  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的  关键：贪心算法需要证明其正确性，通常通过交换参数证法（exchange argument）。">
+    <meta name="description" content="Greedy Algorithms with Sorting贪心算法与排序贪心算法在每一步选择当前最优的选项，通常与排序配合使用。  一、贪心算法基础贪心算法的核心是价值函数：决定哪个选择是最优的。  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的  关键：贪心算法需要证明其正确性，通常通过交换参数证法（exchange argument）。  二、例题1：学习算法（Stu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Greedy Algorithms with Sorting 贪心算法与排序">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/18/algorithm/02_Silver/02_Sorting%20&%20Searching/04_Greedy%20Algorithms%20with%20Sorting%20%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Greedy Algorithms with Sorting 贪心算法与排序 贪心算法在每一步选择当前最优的选项，通常与排序配合使用。  一、贪心算法基础 贪心算法的核心是价值函数：决定哪个选择是最优的。  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的  关键：贪心算法需要证明其正确性，通常通过交换参数证法（exchange argument）。">
+<meta property="og:description" content="Greedy Algorithms with Sorting贪心算法与排序贪心算法在每一步选择当前最优的选项，通常与排序配合使用。  一、贪心算法基础贪心算法的核心是价值函数：决定哪个选择是最优的。  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的  关键：贪心算法需要证明其正确性，通常通过交换参数证法（exchange argument）。  二、例题1：学习算法（Stu">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-17T16:29:57.885Z">
 <meta property="article:modified_time" content="2026-03-17T17:03:02.871Z">
@@ -302,39 +302,30 @@
             
               <div class="markdown-body">
                 
-                <h1 id="greedy-algorithms-with-sorting">Greedy Algorithms with
-Sorting</h1>
-<h2 id="贪心算法与排序">贪心算法与排序</h2>
-<p>贪心算法在每一步选择当前最优的选项，通常与排序配合使用。</p>
-<hr />
-<h2 id="一贪心算法基础">一、贪心算法基础</h2>
-<p>贪心算法的核心是<strong>价值函数</strong>：决定哪个选择是最优的。</p>
+                <h1 id="Greedy-Algorithms-with-Sorting"><a href="#Greedy-Algorithms-with-Sorting" class="headerlink" title="Greedy Algorithms with Sorting"></a>Greedy Algorithms with Sorting</h1><h2 id="贪心算法与排序"><a href="#贪心算法与排序" class="headerlink" title="贪心算法与排序"></a>贪心算法与排序</h2><p>贪心算法在每一步选择当前最优的选项，通常与排序配合使用。</p>
+<hr>
+<h2 id="一、贪心算法基础"><a href="#一、贪心算法基础" class="headerlink" title="一、贪心算法基础"></a>一、贪心算法基础</h2><p>贪心算法的核心是<strong>价值函数</strong>：决定哪个选择是最优的。</p>
 <ul>
 <li>要最大化某个值 → 每次选择最大的</li>
 <li>要最小化某个值 → 每次选择最小的</li>
 </ul>
-<p><strong>关键</strong>：贪心算法需要证明其正确性，通常通过<strong>交换参数证法</strong>（exchange
-argument）。</p>
-<hr />
-<h2
-id="二例题1学习算法studying-algorithms">二、例题1：学习算法（Studying
-Algorithms）</h2>
-<p><strong>题目来源</strong>: Codeforces - Very Easy</p>
-<p><strong>题目描述</strong>：Steph 有 X 分钟时间学习算法，有 N
-个算法，第 i 个需要 a_i 分钟。求最多能学多少个算法。</p>
+<p><strong>关键</strong>：贪心算法需要证明其正确性，通常通过<strong>交换参数证法</strong>（exchange argument）。</p>
+<hr>
+<h2 id="二、例题1：学习算法（Studying-Algorithms）"><a href="#二、例题1：学习算法（Studying-Algorithms）" class="headerlink" title="二、例题1：学习算法（Studying Algorithms）"></a>二、例题1：学习算法（Studying Algorithms）</h2><p><strong>题目来源</strong>: Codeforces - Very Easy</p>
+<p><strong>题目描述</strong>：Steph 有 X 分钟时间学习算法，有 N 个算法，第 i 个需要 a_i 分钟。求最多能学多少个算法。</p>
 <p><strong>约束条件</strong>：<code>1 ≤ X ≤ 10^4</code>，<code>1 ≤ N ≤ 100</code>，<code>1 ≤ a_i ≤ 100</code></p>
-<h3 id="解题思路">解题思路</h3>
-<ol type="1">
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
 <li><strong>贪心策略</strong>：先学习用时最短的算法</li>
 <li><strong>排序</strong>：将 a_i 按升序排列</li>
 <li><strong>累加</strong>：依次选择，直到时间用完</li>
 </ol>
-<h3 id="正确性证明">正确性证明</h3>
-<p>假设有两个算法 A（用时短）和 B（用时更长）。如果最优解先选 B，那么把
-B 换成 A： - 不会增加总时间 - 不会减少可选算法的数量</p>
+<h3 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a>正确性证明</h3><p>假设有两个算法 A（用时短）和 B（用时更长）。如果最优解先选 B，那么把 B 换成 A：</p>
+<ul>
+<li>不会增加总时间</li>
+<li>不会减少可选算法的数量</li>
+</ul>
 <p>因此，先选最短的总是最优的。</p>
-<h3 id="代码实现">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python">algorithms.sort()
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python">algorithms.sort()
 count = <span class="hljs-number">0</span>  <span class="hljs-comment"># 已用时间</span>
 i = <span class="hljs-number">0</span>
 <span class="hljs-keyword">while</span> i &lt; N <span class="hljs-keyword">and</span> count + algorithms[i] &lt;= X:
@@ -342,32 +333,21 @@ i = <span class="hljs-number">0</span>
     i += <span class="hljs-number">1</span>
 <span class="hljs-built_in">print</span>(i)</code></pre></div>
 <p><strong>时间复杂度</strong>：O(N log N)</p>
-<hr />
-<h2 id="三例题2活动安排movie-festival">三、例题2：活动安排（Movie
-Festival）</h2>
-<p><strong>题目来源</strong>: CSES - Easy</p>
-<p><strong>题目描述</strong>：有 N
-个活动，每个活动有开始时间和结束时间。每次只能参加一个活动，参加必须全程参加。求最多能参加多少个活动。</p>
-<h3 id="贪心策略对比">贪心策略对比</h3>
-<h4
-id="错误策略选择下一个最早开始的">错误策略：选择下一个最早开始的</h4>
-<p>反例： <div class="code-wrapper"><pre><code class="hljs prolog">活动: [(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>), (<span class="hljs-number">5</span>,<span class="hljs-number">10</span>), (<span class="hljs-number">6</span>,<span class="hljs-number">7</span>)]
+<hr>
+<h2 id="三、例题2：活动安排（Movie-Festival）"><a href="#三、例题2：活动安排（Movie-Festival）" class="headerlink" title="三、例题2：活动安排（Movie Festival）"></a>三、例题2：活动安排（Movie Festival）</h2><p><strong>题目来源</strong>: CSES - Easy</p>
+<p><strong>题目描述</strong>：有 N 个活动，每个活动有开始时间和结束时间。每次只能参加一个活动，参加必须全程参加。求最多能参加多少个活动。</p>
+<h3 id="贪心策略对比"><a href="#贪心策略对比" class="headerlink" title="贪心策略对比"></a>贪心策略对比</h3><h4 id="错误策略：选择下一个最早开始的"><a href="#错误策略：选择下一个最早开始的" class="headerlink" title="错误策略：选择下一个最早开始的"></a>错误策略：选择下一个最早开始的</h4><p>反例：<br><div class="code-wrapper"><pre><code class="hljs prolog">活动: [(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>), (<span class="hljs-number">5</span>,<span class="hljs-number">10</span>), (<span class="hljs-number">6</span>,<span class="hljs-number">7</span>)]
 按<span class="hljs-string">&quot;最早开始&quot;</span> → 只选<span class="hljs-number">1</span>个
 最优解 → 选<span class="hljs-number">2</span>个 [(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>), (<span class="hljs-number">6</span>,<span class="hljs-number">7</span>)]</code></pre></div></p>
-<h4
-id="正确策略选择下一个最早结束的">正确策略：选择下一个最早结束的</h4>
-<p><strong>核心思想</strong>：选择结束最早的活动，为后续活动留出更多时间。</p>
-<h3 id="正确性证明-1">正确性证明</h3>
-<p>设有两个活动 E1 和 E2，E1 比 E2 结束得更早。</p>
+<h4 id="正确策略：选择下一个最早结束的"><a href="#正确策略：选择下一个最早结束的" class="headerlink" title="正确策略：选择下一个最早结束的"></a>正确策略：选择下一个最早结束的</h4><p><strong>核心思想</strong>：选择结束最早的活动，为后续活动留出更多时间。</p>
+<h3 id="正确性证明-1"><a href="#正确性证明-1" class="headerlink" title="正确性证明"></a>正确性证明</h3><p>设有两个活动 E1 和 E2，E1 比 E2 结束得更早。</p>
 <ul>
-<li>如果能参加 E2 之后的某个活动 X，那么 X 也能接在 E1 之后（因为 E1
-结束更早）</li>
+<li>如果能参加 E2 之后的某个活动 X，那么 X 也能接在 E1 之后（因为 E1 结束更早）</li>
 <li>所以选择 E1 不会比选择 E2 差</li>
 <li>选择 E1 能让后续选择集合更大</li>
 </ul>
 <p>因此，总是选择<strong>最早结束</strong>的活动是最优的。</p>
-<h3 id="代码实现-1">代码实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python">events.sort(key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>])  <span class="hljs-comment"># 按结束时间排序</span>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python">events.sort(key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>])  <span class="hljs-comment"># 按结束时间排序</span>
 current_end = -<span class="hljs-number">1</span>
 ans = <span class="hljs-number">0</span>
 
@@ -378,17 +358,19 @@ ans = <span class="hljs-number">0</span>
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
 <p><strong>时间复杂度</strong>：O(N log N)</p>
-<hr />
-<h2 id="四贪心算法失效的例子">四、贪心算法失效的例子</h2>
-<h3 id="例1硬币找零coin-change">例1：硬币找零（Coin Change）</h3>
-<p><strong>问题</strong>：给定硬币面额，求组成目标值所需的最少硬币数。</p>
-<p><strong>反例</strong>： - 面额：<code>{1, 3, 4}</code> -
-目标值：<code>6</code> - 贪心解：<code>4 + 1 + 1 = 3</code> 个硬币 -
-最优解：<code>3 + 3 = 2</code> 个硬币</p>
-<p><strong>结论</strong>：贪心只在特定面额系统下有效（如美元、欧元）。</p>
-<h3 id="例2背包问题knapsack">例2：背包问题（Knapsack）</h3>
-<p><strong>问题</strong>：每个物品有重量和价值，求价值最大的选择。</p>
+<hr>
+<h2 id="四、贪心算法失效的例子"><a href="#四、贪心算法失效的例子" class="headerlink" title="四、贪心算法失效的例子"></a>四、贪心算法失效的例子</h2><h3 id="例1：硬币找零（Coin-Change）"><a href="#例1：硬币找零（Coin-Change）" class="headerlink" title="例1：硬币找零（Coin Change）"></a>例1：硬币找零（Coin Change）</h3><p><strong>问题</strong>：给定硬币面额，求组成目标值所需的最少硬币数。</p>
 <p><strong>反例</strong>：</p>
+<ul>
+<li>面额：<code>{1, 3, 4}</code></li>
+<li>目标值：<code>6</code></li>
+<li>贪心解：<code>4 + 1 + 1 = 3</code> 个硬币</li>
+<li>最优解：<code>3 + 3 = 2</code> 个硬币</li>
+</ul>
+<p><strong>结论</strong>：贪心只在特定面额系统下有效（如美元、欧元）。</p>
+<h3 id="例2：背包问题（Knapsack）"><a href="#例2：背包问题（Knapsack）" class="headerlink" title="例2：背包问题（Knapsack）"></a>例2：背包问题（Knapsack）</h3><p><strong>问题</strong>：每个物品有重量和价值，求价值最大的选择。</p>
+<p><strong>反例</strong>：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -419,20 +401,19 @@ ans = <span class="hljs-number">0</span>
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li>容量：4</li>
 <li>贪心解：选 A，价值 18</li>
 <li>最优解：选 B + C，价值 20</li>
 </ul>
 <p><strong>结论</strong>：背包问题需要用动态规划（Gold 级别）解决。</p>
-<hr />
-<h2 id="五总结">五、总结</h2>
-<h3 id="贪心算法适用条件">贪心算法适用条件</h3>
-<ol type="1">
+<hr>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><h3 id="贪心算法适用条件"><a href="#贪心算法适用条件" class="headerlink" title="贪心算法适用条件"></a>贪心算法适用条件</h3><ol>
 <li><strong>最优子结构</strong>：局部最优能导出全局最优</li>
 <li><strong>贪心选择性质</strong>：每步选择都是当前最优</li>
 </ol>
-<h3 id="常见贪心策略">常见贪心策略</h3>
+<h3 id="常见贪心策略"><a href="#常见贪心策略" class="headerlink" title="常见贪心策略"></a>常见贪心策略</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -459,8 +440,8 @@ ans = <span class="hljs-number">0</span>
 </tr>
 </tbody>
 </table>
-<h3 id="关键要点">关键要点</h3>
-<ul>
+</div>
+<h3 id="关键要点"><a href="#关键要点" class="headerlink" title="关键要点"></a>关键要点</h3><ul>
 <li>先排序，再贪心</li>
 <li>用交换参数证法证明正确性</li>
 <li>注意特判反例场景</li>

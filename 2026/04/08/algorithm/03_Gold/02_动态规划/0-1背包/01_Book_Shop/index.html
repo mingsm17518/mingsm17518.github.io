@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Book Shop 题解 题目描述 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1158 给定 n 本书，每本书有价格 hi 和页数 si，总预算为 x，求在预算范围内能获得的最大页数。每本书只能购买一次。 限制： - 1 ≤ n ≤ 1000 - 1 ≤ x ≤ 105 - 1 ≤ h_i, s_i ≤ 1000 示例： - 输入：4 10, h &#x3D; [4, 8,">
+    <meta name="description" content="Book Shop 题解题目描述https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1158 给定 n 本书，每本书有价格 $h_i$ 和页数 $s_i$，总预算为 x，求在预算范围内能获得的最大页数。每本书只能购买一次。 限制：  1 ≤ n ≤ 1000 1 ≤ x ≤ $10^5$ 1 ≤ h_i, s_i ≤ 1000  示例：  输入：4 10, h &#x3D; [4, 8, 5,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Book Shop 题解">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/01_Book_Shop/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Book Shop 题解 题目描述 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1158 给定 n 本书，每本书有价格 hi 和页数 si，总预算为 x，求在预算范围内能获得的最大页数。每本书只能购买一次。 限制： - 1 ≤ n ≤ 1000 - 1 ≤ x ≤ 105 - 1 ≤ h_i, s_i ≤ 1000 示例： - 输入：4 10, h &#x3D; [4, 8,">
+<meta property="og:description" content="Book Shop 题解题目描述https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1158 给定 n 本书，每本书有价格 $h_i$ 和页数 $s_i$，总预算为 x，求在预算范围内能获得的最大页数。每本书只能购买一次。 限制：  1 ≤ n ≤ 1000 1 ≤ x ≤ $10^5$ 1 ≤ h_i, s_i ≤ 1000  示例：  输入：4 10, h &#x3D; [4, 8, 5,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-08T09:24:50.977Z">
 <meta property="article:modified_time" content="2026-04-08T10:54:40.859Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          291 字
+          292 字
         
       </span>
     
@@ -303,30 +303,26 @@
             
               <div class="markdown-body">
                 
-                <h1 id="book-shop-题解">Book Shop 题解</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>https://cses.fi/problemset/task/1158</p>
-<p>给定 n 本书，每本书有价格 <span
-class="math inline"><em>h</em><sub><em>i</em></sub></span> 和页数 <span
-class="math inline"><em>s</em><sub><em>i</em></sub></span>，总预算为
-x，求在预算范围内能获得的最大页数。每本书只能购买一次。</p>
-<p><strong>限制</strong>： - 1 ≤ n ≤ 1000 - 1 ≤ x ≤ <span
-class="math inline">10<sup>5</sup></span> - 1 ≤ h_i, s_i ≤ 1000</p>
-<p><strong>示例</strong>： - 输入：4 10, h = [4, 8, 5, 3], s = [5, 12,
-8, 1] - 输出：13（购买第 1 和第 3 本书，价格 4+5=9，页数 5+8=13）</p>
-<hr />
-<h2 id="解法">解法</h2>
-<p><strong>问题类型</strong>：0-1 背包（每本书只能选一次）</p>
-<p><strong>定义</strong>：<code>dp[j]</code> 为花费不超过 j
-时能获得的最大页数</p>
-<p><strong>初始条件</strong>：<code>dp[j] = 0</code>（不选任何书时页数为
-0）</p>
-<p><strong>状态转移</strong>： <span
-class="math display"><em>d</em><em>p</em>[<em>j</em>] = max (<em>d</em><em>p</em>[<em>j</em>], <em>d</em><em>p</em>[<em>j</em> − <em>h</em><sub><em>i</em></sub>] + <em>s</em><sub><em>i</em></sub>)</span></p>
-<p><strong>解释</strong>：对于每本书，尝试将其加入背包。倒序遍历 j
-确保每本书只被使用一次。</p>
-<h3 id="代码">代码</h3>
-<div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+                <h1 id="Book-Shop-题解"><a href="#Book-Shop-题解" class="headerlink" title="Book Shop 题解"></a>Book Shop 题解</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1158">https://cses.fi/problemset/task/1158</a></p>
+<p>给定 n 本书，每本书有价格 $h_i$ 和页数 $s_i$，总预算为 x，求在预算范围内能获得的最大页数。每本书只能购买一次。</p>
+<p><strong>限制</strong>：</p>
+<ul>
+<li>1 ≤ n ≤ 1000</li>
+<li>1 ≤ x ≤ $10^5$</li>
+<li>1 ≤ h_i, s_i ≤ 1000</li>
+</ul>
+<p><strong>示例</strong>：</p>
+<ul>
+<li>输入：4 10, h = [4, 8, 5, 3], s = [5, 12, 8, 1]</li>
+<li>输出：13（购买第 1 和第 3 本书，价格 4+5=9，页数 5+8=13）</li>
+</ul>
+<hr>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>问题类型</strong>：0-1 背包（每本书只能选一次）</p>
+<p><strong>定义</strong>：<code>dp[j]</code> 为花费不超过 j 时能获得的最大页数</p>
+<p><strong>初始条件</strong>：<code>dp[j] = 0</code>（不选任何书时页数为 0）</p>
+<p><strong>状态转移</strong>：</p>
+<script type="math/tex; mode=display">dp[j] = \max(dp[j], dp[j - h_i] + s_i)</script><p><strong>解释</strong>：对于每本书，尝试将其加入背包。倒序遍历 j 确保每本书只被使用一次。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 cost = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
 pages = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
 
@@ -337,11 +333,9 @@ dp = [<span class="hljs-number">0</span>] * (x + <span class="hljs-number">1</sp
         dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - cost[i]] + pages[i])
 
 <span class="hljs-built_in">print</span>(dp[x])</code></pre></div>
-<p><strong>时间复杂度</strong>：O(n × x)
-<strong>空间复杂度</strong>：O(x)</p>
+<p><strong>时间复杂度</strong>：O(n × x)<br><strong>空间复杂度</strong>：O(x)</p>
 <blockquote>
-<p><strong>注意</strong>：0-1
-背包需要倒序遍历，确保每本书只选一次；完全背包则正序遍历。</p>
+<p><strong>注意</strong>：0-1 背包需要倒序遍历，确保每本书只选一次；完全背包则正序遍历。</p>
 </blockquote>
 
                 

@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Prefix Sums 前缀和 什么是前缀和？ 前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i] &#x3D; a[1] + a[2] + ... + a[i] 其中 p[0] &#x3D; 0。 为什么需要前缀和？ 在没有前缀和的情况下，计算数组区间 [l, r] 的和需">
+    <meta name="description" content="Prefix Sums 前缀和什么是前缀和？前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i] &#x3D; a[1] + a[2] + ... + a[i]其中 p[0] &#x3D; 0。 为什么需要前缀和？在没有前缀和的情况下，计算数组区间 [l, r] 的和需要 O(r-l+1) 的时">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01_Prefix Sums 前缀和">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/13/algorithm/02_Silver/01_Prefix_Sums/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Prefix Sums 前缀和 什么是前缀和？ 前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i] &#x3D; a[1] + a[2] + ... + a[i] 其中 p[0] &#x3D; 0。 为什么需要前缀和？ 在没有前缀和的情况下，计算数组区间 [l, r] 的和需">
+<meta property="og:description" content="Prefix Sums 前缀和什么是前缀和？前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i] &#x3D; a[1] + a[2] + ... + a[i]其中 p[0] &#x3D; 0。 为什么需要前缀和？在没有前缀和的情况下，计算数组区间 [l, r] 的和需要 O(r-l+1) 的时">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-13T14:15:03.289Z">
 <meta property="article:modified_time" content="2026-03-20T19:12:55.463Z">
@@ -304,37 +304,22 @@
             
               <div class="markdown-body">
                 
-                <h1 id="prefix-sums-前缀和">Prefix Sums 前缀和</h1>
-<h2 id="什么是前缀和">什么是前缀和？</h2>
-<p>前缀和（Prefix
-Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。</p>
-<p>对于数组 <code>a[1], a[2], ..., a[n]</code>，定义前缀和数组
-<code>p</code>：</p>
-<p><span
-class="math display"><em>p</em>[<em>i</em>] = <em>a</em>[1] + <em>a</em>[2] + ... + <em>a</em>[<em>i</em>]</span></p>
-<p>其中 <code>p[0] = 0</code>。</p>
-<h3 id="为什么需要前缀和">为什么需要前缀和？</h3>
-<p>在没有前缀和的情况下，计算数组区间 <code>[l, r]</code> 的和需要
-O(r-l+1) 的时间。但使用前缀和后，区间和可以在 <strong>O(1)</strong>
-时间内得到：</p>
-<p><span
-class="math display"><em>s</em><em>u</em><em>m</em>(<em>l</em>, <em>r</em>) = <em>p</em>[<em>r</em>] − <em>p</em>[<em>l</em> − 1]</span></p>
-<hr />
-<h2 id="前缀和的基本实现">前缀和的基本实现</h2>
-<h3 id="构建前缀和数组">构建前缀和数组</h3>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">// 构建前缀和数组</span>
+                <h1 id="Prefix-Sums-前缀和"><a href="#Prefix-Sums-前缀和" class="headerlink" title="Prefix Sums 前缀和"></a>Prefix Sums 前缀和</h1><h2 id="什么是前缀和？"><a href="#什么是前缀和？" class="headerlink" title="什么是前缀和？"></a>什么是前缀和？</h2><p>前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。</p>
+<p>对于数组 <code>a[1], a[2], ..., a[n]</code>，定义前缀和数组 <code>p</code>：</p>
+<script type="math/tex; mode=display">p[i] = a[1] + a[2] + ... + a[i]</script><p>其中 <code>p[0] = 0</code>。</p>
+<h3 id="为什么需要前缀和？"><a href="#为什么需要前缀和？" class="headerlink" title="为什么需要前缀和？"></a>为什么需要前缀和？</h3><p>在没有前缀和的情况下，计算数组区间 <code>[l, r]</code> 的和需要 O(r-l+1) 的时间。但使用前缀和后，区间和可以在 <strong>O(1)</strong> 时间内得到：</p>
+<script type="math/tex; mode=display">sum(l, r) = p[r] - p[l-1]</script><hr>
+<h2 id="前缀和的基本实现"><a href="#前缀和的基本实现" class="headerlink" title="前缀和的基本实现"></a>前缀和的基本实现</h2><h3 id="构建前缀和数组"><a href="#构建前缀和数组" class="headerlink" title="构建前缀和数组"></a>构建前缀和数组</h3><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">// 构建前缀和数组</span>
 <span class="hljs-function">vector&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt; <span class="hljs-title">prefix</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;
 prefix[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;
     prefix[i] = prefix[i<span class="hljs-number">-1</span>] + a[i];
 &#125;</code></pre></div>
-<h3 id="o1-区间求和">O(1) 区间求和</h3>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">// 计算区间 [l, r] 的和（1-indexed）</span>
+<h3 id="O-1-区间求和"><a href="#O-1-区间求和" class="headerlink" title="O(1) 区间求和"></a>O(1) 区间求和</h3><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">// 计算区间 [l, r] 的和（1-indexed）</span>
 <span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;
     <span class="hljs-keyword">return</span> prefix[r] - prefix[l<span class="hljs-number">-1</span>];
 &#125;</code></pre></div>
-<h3 id="python实现">python实现</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 前缀和数组</span>
+<h3 id="python实现"><a href="#python实现" class="headerlink" title="python实现"></a>python实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 前缀和数组</span>
 prefix = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
   prefix[i + <span class="hljs-number">1</span>] = prefix[i] + a[i]  <span class="hljs-comment"># a 是 0-indexed</span>
@@ -342,16 +327,9 @@ prefix = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1
 <span class="hljs-comment"># 查询区间 [l, r]（1-indexed）</span>
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">query</span>(<span class="hljs-params">l, r</span>):
   <span class="hljs-keyword">return</span> prefix[r] - prefix[l - <span class="hljs-number">1</span>]</code></pre></div>
-<hr />
-<h2 id="经典例题">经典例题</h2>
-<h3 id="例题1-breed-counting-统计区间内各品种数量">例题1： Breed
-Counting 统计区间内各品种数量</h3>
-<p><strong>题目来源</strong>: <a
-target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=572">USACO
-- Breed Counting</a></p>
-<p><strong>题目描述</strong>: 给定 N 头牛的品种（1=Holsteins,
-2=Guernseys, 3=Jerseys），有 Q 次查询，每次查询区间 [a, b]
-内各品种的牛数量。</p>
+<hr>
+<h2 id="经典例题"><a href="#经典例题" class="headerlink" title="经典例题"></a>经典例题</h2><h3 id="例题1：-Breed-Counting-统计区间内各品种数量"><a href="#例题1：-Breed-Counting-统计区间内各品种数量" class="headerlink" title="例题1： Breed Counting 统计区间内各品种数量"></a>例题1： Breed Counting 统计区间内各品种数量</h3><p><strong>题目来源</strong>: <a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=572">USACO - Breed Counting</a></p>
+<p><strong>题目描述</strong>: 给定 N 头牛的品种（1=Holsteins, 2=Guernseys, 3=Jerseys），有 Q 次查询，每次查询区间 [a, b] 内各品种的牛数量。</p>
 <p><strong>解题思路</strong>: 多维前缀和</p>
 <ul>
 <li>维护三个前缀和数组，分别统计每种品种的前缀数量</li>
@@ -398,23 +376,21 @@ target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproble
 
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-<p><strong>时间复杂度</strong>: - 预处理：O(n) - 单次查询：O(1) -
-总时间：O(n + q)</p>
-<h3
-id="例题2子数组和为7的倍数求最长长度">例题2：子数组和为7的倍数（求最长长度）</h3>
-<p><strong>题目来源</strong>: <a
-target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=595">USACO
-- Div7</a></p>
-<p><strong>题目描述</strong>: 给定 n 个数，求和为 7
-的倍数的子数组的最长长度。</p>
+<p><strong>时间复杂度</strong>:</p>
+<ul>
+<li>预处理：O(n)</li>
+<li>单次查询：O(1)</li>
+<li>总时间：O(n + q)</li>
+</ul>
+<h3 id="例题2：子数组和为7的倍数（求最长长度）"><a href="#例题2：子数组和为7的倍数（求最长长度）" class="headerlink" title="例题2：子数组和为7的倍数（求最长长度）"></a>例题2：子数组和为7的倍数（求最长长度）</h3><p><strong>题目来源</strong>: <a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=595">USACO - Div7</a></p>
+<p><strong>题目描述</strong>: 给定 n 个数，求和为 7 的倍数的子数组的最长长度。</p>
 <p><strong>核心原理</strong>: 同余定理</p>
 <ul>
-<li>如果 <code>prefix[i] % 7 == prefix[j] % 7</code>，则子数组
-<code>[i+1, j]</code> 的和为 7 的倍数</li>
+<li>如果 <code>prefix[i] % 7 == prefix[j] % 7</code>，则子数组 <code>[i+1, j]</code> 的和为 7 的倍数</li>
 <li>因此，我们只需要找到相同余数之间的最大距离</li>
 </ul>
 <p><strong>解题思路</strong>:</p>
-<ol type="1">
+<ol>
 <li>记录每个余数首次出现的下标</li>
 <li>当同一余数再次出现时，计算当前下标与首次下标的差值</li>
 <li>更新最大长度</li>
@@ -458,16 +434,10 @@ target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproble
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
 <p><strong>时间复杂度</strong>: O(n)</p>
-<hr />
-<h3
-id="例题3子数组和为目标值数组全为正数">例题3：子数组和为目标值（数组全为正数）</h3>
-<p><strong>题目来源</strong>: <a
-target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1660">CSES - Subarray Sum
-I</a></p>
-<p><strong>题目描述</strong>: 给定一个长度为 n
-的数组（元素均为正整数）和目标值 x，求子数组和等于 x 的个数。</p>
-<p><strong>解题思路</strong>:
-由于数组元素全为正数，可以使用<strong>滑动窗口（双指针）</strong>求解。</p>
+<hr>
+<h3 id="例题3：子数组和为目标值（数组全为正数）"><a href="#例题3：子数组和为目标值（数组全为正数）" class="headerlink" title="例题3：子数组和为目标值（数组全为正数）"></a>例题3：子数组和为目标值（数组全为正数）</h3><p><strong>题目来源</strong>: <a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1660">CSES - Subarray Sum I</a></p>
+<p><strong>题目描述</strong>: 给定一个长度为 n 的数组（元素均为正整数）和目标值 x，求子数组和等于 x 的个数。</p>
+<p><strong>解题思路</strong>: 由于数组元素全为正数，可以使用<strong>滑动窗口（双指针）</strong>求解。</p>
 <ul>
 <li>当窗口和小于 x 时，右指针右移扩大窗口</li>
 <li>当窗口和等于 x 时，计数加一，然后左指针右移缩小窗口</li>
@@ -511,22 +481,14 @@ I</a></p>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
 <p><strong>时间复杂度</strong>: O(n)</p>
-<hr />
-<h3
-id="例题4子数组和为目标值数组含负数">例题4：子数组和为目标值（数组含负数）</h3>
-<p><strong>题目来源</strong>: <a
-target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1661">CSES - Subarray Sum
-II</a></p>
-<p><strong>题目描述</strong>: 给定一个长度为 n
-的数组（可能含负数）和目标值 x，求子数组和等于 x 的个数。</p>
-<p><strong>解题思路</strong>:
-使用<strong>哈希表</strong>记录前缀和出现的次数。</p>
+<hr>
+<h3 id="例题4：子数组和为目标值（数组含负数）"><a href="#例题4：子数组和为目标值（数组含负数）" class="headerlink" title="例题4：子数组和为目标值（数组含负数）"></a>例题4：子数组和为目标值（数组含负数）</h3><p><strong>题目来源</strong>: <a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1661">CSES - Subarray Sum II</a></p>
+<p><strong>题目描述</strong>: 给定一个长度为 n 的数组（可能含负数）和目标值 x，求子数组和等于 x 的个数。</p>
+<p><strong>解题思路</strong>: 使用<strong>哈希表</strong>记录前缀和出现的次数。</p>
 <ul>
 <li>对于当前位置 i，前缀和为 prefix</li>
-<li>如果之前存在前缀和为 <code>prefix - x</code>
-的位置，则以当前位置结尾的子数组和为 x</li>
-<li>利用组合数学：满足条件的子数组个数等于此前 <code>prefix - x</code>
-出现的次数</li>
+<li>如果之前存在前缀和为 <code>prefix - x</code> 的位置，则以当前位置结尾的子数组和为 x</li>
+<li>利用组合数学：满足条件的子数组个数等于此前 <code>prefix - x</code> 出现的次数</li>
 </ul>
 <p><strong>代码实现</strong>:</p>
 <div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
@@ -560,22 +522,14 @@ II</a></p>
     cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-<p><strong>时间复杂度</strong>: O(n log n) 或 O(n) 使用
-unordered_map</p>
-<hr />
-<h3
-id="例题5子数组和为n的倍数求个数">例题5：子数组和为n的倍数（求个数）</h3>
-<p><strong>题目来源</strong>: <a
-target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1662">CSES - Subarray
-Divisibility</a></p>
-<p><strong>题目描述</strong>: 给定 n 个数，求和能够被 n
-整除的子数组个数。</p>
+<p><strong>时间复杂度</strong>: O(n log n) 或 O(n) 使用 unordered_map</p>
+<hr>
+<h3 id="例题5：子数组和为n的倍数（求个数）"><a href="#例题5：子数组和为n的倍数（求个数）" class="headerlink" title="例题5：子数组和为n的倍数（求个数）"></a>例题5：子数组和为n的倍数（求个数）</h3><p><strong>题目来源</strong>: <a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1662">CSES - Subarray Divisibility</a></p>
+<p><strong>题目描述</strong>: 给定 n 个数，求和能够被 n 整除的子数组个数。</p>
 <p><strong>核心原理</strong>: 同余组合</p>
 <ul>
-<li>如果 <code>prefix[i] % n == prefix[j] % n</code>，则子数组
-<code>[i+1, j]</code> 的和能被 n 整除</li>
-<li>统计每个余数出现的次数 cnt，该余数贡献的子数组个数为
-<code>C(cnt, 2) = cnt * (cnt - 1) / 2</code></li>
+<li>如果 <code>prefix[i] % n == prefix[j] % n</code>，则子数组 <code>[i+1, j]</code> 的和能被 n 整除</li>
+<li>统计每个余数出现的次数 cnt，该余数贡献的子数组个数为 <code>C(cnt, 2) = cnt * (cnt - 1) / 2</code></li>
 </ul>
 <p><strong>代码实现</strong>:</p>
 <div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
@@ -611,8 +565,8 @@ Divisibility</a></p>
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
 <p><strong>时间复杂度</strong>: O(n)</p>
-<hr />
-<h2 id="总结">总结</h2>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -654,8 +608,8 @@ Divisibility</a></p>
 </tr>
 </tbody>
 </table>
-<p><strong>核心思想</strong>:
-前缀和将”区间求和”问题转化为”两点差”问题，结合哈希表或同余性质可以高效解决各类子数组求和问题。</p>
+</div>
+<p><strong>核心思想</strong>: 前缀和将”区间求和”问题转化为”两点差”问题，结合哈希表或同余性质可以高效解决各类子数组求和问题。</p>
 
                 
               </div>

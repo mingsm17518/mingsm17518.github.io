@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="密码分配 题目描述 有 n 台破解器，字符集 S 长度为 k，密码长度为 m。总共有 k^m 个密码，按 S 定义的字典序排列。每台破解器处理连续的一段密码，要求： - 所有密码都被处理 - 工作量均衡，最大与最小工作量差不超过 1 解题思路 1. 计算总密码数 total &#x3D; k^m 2. 均匀分配 base &#x3D; total &#x2F;&#x2F; n        # 每台基础数量 remai">
+    <meta name="description" content="密码分配题目描述有 n 台破解器，字符集 S 长度为 k，密码长度为 m。总共有 k^m 个密码，按 S 定义的字典序排列。每台破解器处理连续的一段密码，要求：  所有密码都被处理 工作量均衡，最大与最小工作量差不超过 1  解题思路1. 计算总密码数total &#x3D; k^m 2. 均匀分配base &#x3D; total &#x2F;&#x2F; n        # 每台基础数量 remainder &#x3D; total % n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="密码分配（Password Crack）">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/03_password_crack/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="密码分配 题目描述 有 n 台破解器，字符集 S 长度为 k，密码长度为 m。总共有 k^m 个密码，按 S 定义的字典序排列。每台破解器处理连续的一段密码，要求： - 所有密码都被处理 - 工作量均衡，最大与最小工作量差不超过 1 解题思路 1. 计算总密码数 total &#x3D; k^m 2. 均匀分配 base &#x3D; total &#x2F;&#x2F; n        # 每台基础数量 remai">
+<meta property="og:description" content="密码分配题目描述有 n 台破解器，字符集 S 长度为 k，密码长度为 m。总共有 k^m 个密码，按 S 定义的字典序排列。每台破解器处理连续的一段密码，要求：  所有密码都被处理 工作量均衡，最大与最小工作量差不超过 1  解题思路1. 计算总密码数total &#x3D; k^m 2. 均匀分配base &#x3D; total &#x2F;&#x2F; n        # 每台基础数量 remainder &#x3D; total % n">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-18T14:00:15.331Z">
 <meta property="article:modified_time" content="2026-03-19T03:41:07.759Z">
@@ -303,27 +303,22 @@
             
               <div class="markdown-body">
                 
-                <h1 id="密码分配">密码分配</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>有 n 台破解器，字符集 S 长度为 k，密码长度为 m。总共有 k^m 个密码，按
-S 定义的字典序排列。每台破解器处理连续的一段密码，要求： -
-所有密码都被处理 - 工作量均衡，最大与最小工作量差不超过 1</p>
-<h2 id="解题思路">解题思路</h2>
-<h3 id="计算总密码数">1. 计算总密码数</h3>
-<div class="code-wrapper"><pre><code class="hljs ini"><span class="hljs-attr">total</span> = k^m</code></pre></div>
-<h3 id="均匀分配">2. 均匀分配</h3>
-<div class="code-wrapper"><pre><code class="hljs ini"><span class="hljs-attr">base</span> = total // n        <span class="hljs-comment"># 每台基础数量</span>
+                <h1 id="密码分配"><a href="#密码分配" class="headerlink" title="密码分配"></a>密码分配</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>有 n 台破解器，字符集 S 长度为 k，密码长度为 m。总共有 k^m 个密码，按 S 定义的字典序排列。每台破解器处理连续的一段密码，要求：</p>
+<ul>
+<li>所有密码都被处理</li>
+<li>工作量均衡，最大与最小工作量差不超过 1</li>
+</ul>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="1-计算总密码数"><a href="#1-计算总密码数" class="headerlink" title="1. 计算总密码数"></a>1. 计算总密码数</h3><div class="code-wrapper"><pre><code class="hljs ini"><span class="hljs-attr">total</span> = k^m</code></pre></div>
+<h3 id="2-均匀分配"><a href="#2-均匀分配" class="headerlink" title="2. 均匀分配"></a>2. 均匀分配</h3><div class="code-wrapper"><pre><code class="hljs ini"><span class="hljs-attr">base</span> = total // n        <span class="hljs-comment"># 每台基础数量</span>
 <span class="hljs-attr">remainder</span> = total % n    <span class="hljs-comment"># 前 remainder 台多处理 1 个</span></code></pre></div>
-<h3 id="索引转密码k进制转换">3. 索引转密码（k进制转换）</h3>
-<p>将索引转换为 k 进制，每位对应字符集 S 中的字符。</p>
+<h3 id="3-索引转密码（k进制转换）"><a href="#3-索引转密码（k进制转换）" class="headerlink" title="3. 索引转密码（k进制转换）"></a>3. 索引转密码（k进制转换）</h3><p>将索引转换为 k 进制，每位对应字符集 S 中的字符。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">idx_to_password</span>(<span class="hljs-params">idx</span>):
     res = []
     <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):
         res.append(s[idx % k])  <span class="hljs-comment"># 取余得到当前位字符</span>
         idx //= k               <span class="hljs-comment"># 右移一位</span>
     <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>.join(<span class="hljs-built_in">reversed</span>(res))</code></pre></div>
-<h2 id="代码实现">代码实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">idx_to_password</span>(<span class="hljs-params">idx</span>):
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">idx_to_password</span>(<span class="hljs-params">idx</span>):
     res = []
     <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):
         res.append(s[idx % k])
@@ -345,14 +340,12 @@ a = <span class="hljs-number">0</span>
     b = a + len_i
     <span class="hljs-built_in">print</span>(idx_to_password(a), idx_to_password(b - <span class="hljs-number">1</span>))
     a = b</code></pre></div>
-<h2 id="时间复杂度">时间复杂度</h2>
-<ul>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul>
 <li>计算总密码数：<code>O(log k^m)</code>（幂运算）</li>
 <li>索引转密码：每次 <code>O(m)</code>，共 n 次</li>
 <li>总计：<code>O(n × m)</code></li>
 </ul>
-<h2 id="空间复杂度">空间复杂度</h2>
-<ul>
+<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ul>
 <li>输出列表：<code>O(n × m)</code>（存储 n 个密码）</li>
 <li>其他：<code>O(1)</code></li>
 </ul>
