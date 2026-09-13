@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目描述给定数组 A 和 B，求它们的最长友好子数组长度。 友好数组定义：对于长度 l 的数组 a, b，若满足：  $a_1 &#x3D; b_1$ $bi - a_i &#x3D; b{i+1} - a_{i+1} - 1$（即 $b_i &#x3D; a_i + i - 1$）  解题思路公式推导由定义可得：  $b_1 - a_1 &#x3D; 0 \Rightarrow b_1 &#x3D; a_1$ $b_2 - a_2 &#x3D; 1 \R">
+    <meta name="description" content="题目描述 给定数组 A 和 B，求它们的最长友好子数组长度。 友好数组定义：对于长度 l 的数组 a, b，若满足： - a1&#x3D;b1a_1 &#x3D; b_1 - bi−ai&#x3D;bi+1−ai+1−1b_i - a_i &#x3D; b_{i+1} - a_{i+1} - 1（即 bi&#x3D;ai+i−1b_i &#x3D; a_i + i - 1） 解题思路 公式推导 由定义可得： - b1−a1&#x3D;0⇒b1&#x3D;a1b_1 - a_1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="13 友好数组">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/03/19/algorithm/solutions/2025_SDU_Star_Remake/13_friendly_array/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目描述给定数组 A 和 B，求它们的最长友好子数组长度。 友好数组定义：对于长度 l 的数组 a, b，若满足：  $a_1 &#x3D; b_1$ $bi - a_i &#x3D; b{i+1} - a_{i+1} - 1$（即 $b_i &#x3D; a_i + i - 1$）  解题思路公式推导由定义可得：  $b_1 - a_1 &#x3D; 0 \Rightarrow b_1 &#x3D; a_1$ $b_2 - a_2 &#x3D; 1 \R">
+<meta property="og:description" content="题目描述 给定数组 A 和 B，求它们的最长友好子数组长度。 友好数组定义：对于长度 l 的数组 a, b，若满足： - a1&#x3D;b1a_1 &#x3D; b_1 - bi−ai&#x3D;bi+1−ai+1−1b_i - a_i &#x3D; b_{i+1} - a_{i+1} - 1（即 bi&#x3D;ai+i−1b_i &#x3D; a_i + i - 1） 解题思路 公式推导 由定义可得： - b1−a1&#x3D;0⇒b1&#x3D;a1b_1 - a_1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-19T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-19T04:47:48.092Z">
+<meta property="article:modified_time" content="2026-03-19T04:47:48.000Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="DP">
 <meta property="article:tag" content="LCS变形">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          338 字
+          421 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -303,28 +303,34 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定数组 A 和 B，求它们的最长友好子数组长度。</p>
-<p>友好数组定义：对于长度 l 的数组 a, b，若满足：</p>
-<ul>
-<li>$a_1 = b_1$</li>
-<li>$b<em>i - a_i = b</em>{i+1} - a_{i+1} - 1$（即 $b_i = a_i + i - 1$）</li>
-</ul>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="公式推导"><a href="#公式推导" class="headerlink" title="公式推导"></a>公式推导</h3><p>由定义可得：</p>
-<ul>
-<li>$b_1 - a_1 = 0 \Rightarrow b_1 = a_1$</li>
-<li>$b_2 - a_2 = 1 \Rightarrow b_2 = a_2 + 1$</li>
-<li>$b_3 - a_3 = 2 \Rightarrow b_3 = a_3 + 2$</li>
-<li>…</li>
-</ul>
-<p>即友好数组需满足：$b_i = a_i + (i-1)$</p>
-<h3 id="DP-设计"><a href="#DP-设计" class="headerlink" title="DP 设计"></a>DP 设计</h3><p>$dp[i][j]$：考虑 A 前 i 个和 B 前 j 个的最长友好数组长度</p>
-<p>转移方程：</p>
-<ul>
-<li>若 $A[i-1] + dp[i-1][j-1] == B[j-1]$，则 $dp[i][j] = dp[i-1][j-1] + 1$</li>
-<li>否则 $dp[i][j] = \max(dp[i-1][j], dp[i][j-1])$</li>
-</ul>
+                <h2 id="题目描述">题目描述</h2>
+<p>给定数组 A 和 B，求它们的最长友好子数组长度。</p>
+<p>友好数组定义：对于长度 l 的数组 a, b，若满足： -
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><msub><mi>b</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">a_1 = b_1</annotation></semantics></math>
+-
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub><mo>−</mo><msub><mi>a</mi><mi>i</mi></msub><mo>=</mo><msub><mi>b</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>a</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b_i - a_i = b_{i+1} - a_{i+1} - 1</annotation></semantics></math>（即
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub><mo>=</mo><msub><mi>a</mi><mi>i</mi></msub><mo>+</mo><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b_i = a_i + i - 1</annotation></semantics></math>）</p>
+<h2 id="解题思路">解题思路</h2>
+<h3 id="公式推导">公式推导</h3>
+<p>由定义可得： -
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn><mo>⇒</mo><msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">b_1 - a_1 = 0 \Rightarrow b_1 = a_1</annotation></semantics></math>
+-
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>2</mn></msub><mo>−</mo><msub><mi>a</mi><mn>2</mn></msub><mo>=</mo><mn>1</mn><mo>⇒</mo><msub><mi>b</mi><mn>2</mn></msub><mo>=</mo><msub><mi>a</mi><mn>2</mn></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b_2 - a_2 = 1 \Rightarrow b_2 = a_2 + 1</annotation></semantics></math>
+-
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>3</mn></msub><mo>−</mo><msub><mi>a</mi><mn>3</mn></msub><mo>=</mo><mn>2</mn><mo>⇒</mo><msub><mi>b</mi><mn>3</mn></msub><mo>=</mo><msub><mi>a</mi><mn>3</mn></msub><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">b_3 - a_3 = 2 \Rightarrow b_3 = a_3 + 2</annotation></semantics></math>
+- …</p>
+<p>即友好数组需满足：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub><mo>=</mo><msub><mi>a</mi><mi>i</mi></msub><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">b_i = a_i + (i-1)</annotation></semantics></math></p>
+<h3 id="dp-设计">DP 设计</h3>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">dp[i][j]</annotation></semantics></math>：考虑
+A 前 i 个和 B 前 j 个的最长友好数组长度</p>
+<p>转移方程： - 若
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mo>=</mo><mi>B</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">A[i-1] + dp[i-1][j-1] == B[j-1]</annotation></semantics></math>，则
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">dp[i][j] = dp[i-1][j-1] + 1</annotation></semantics></math>
+- 否则
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>,</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">dp[i][j] = \max(dp[i-1][j], dp[i][j-1])</annotation></semantics></math></p>
 <p>这类似 LCS（最长公共子序列）的变形。</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+<h2 id="代码实现">代码实现</h2>
+<div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 A = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
 B = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
 
@@ -339,14 +345,18 @@ dp = [[<span class="hljs-number">0</span>] * (m + <span class="hljs-number">1</s
             dp[i][j] = <span class="hljs-built_in">max</span>(dp[i - <span class="hljs-number">1</span>][j], dp[i][j - <span class="hljs-number">1</span>])
 
 <span class="hljs-built_in">print</span>(dp[n][m])</code></pre></div>
-<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
-<li><strong>时间复杂度</strong>：$O(n \times m)$</li>
-<li><strong>空间复杂度</strong>：$O(n \times m)$</li>
+<h2 id="复杂度分析">复杂度分析</h2>
+<ul>
+<li><strong>时间复杂度</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>×</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n \times m)</annotation></semantics></math></li>
+<li><strong>空间复杂度</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>×</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n \times m)</annotation></semantics></math></li>
 </ul>
-<h2 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h2><ol>
-<li>友好数组等价于 $b_i = a_i + (i-1)$</li>
+<h2 id="关键点">关键点</h2>
+<ol type="1">
+<li>友好数组等价于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub><mo>=</mo><msub><mi>a</mi><mi>i</mi></msub><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">b_i = a_i + (i-1)</annotation></semantics></math></li>
 <li>状态转移类似 LCS，但条件不同</li>
-<li>$A[i-1] + dp[i-1][j-1] == B[j-1]$ 表示可以继续延伸友好关系</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mo>=</mo><mi>B</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">A[i-1] + dp[i-1][j-1] == B[j-1]</annotation></semantics></math>
+表示可以继续延伸友好关系</li>
 </ol>
 
                 
@@ -447,21 +457,15 @@ dp = [[<span class="hljs-number">0</span>] * (m + <span class="hljs-number">1</s
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/03/19/algorithm/solutions/2025_SDU_Star_Remake/08-graph-bipartite-check/" title="08 魔女填色游戏（图染色问题）">
+                      <a href="/2026/04/23/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ113-%E7%81%AB%E8%BD%A6%E8%BF%9B%E7%AB%99/" title="HJ113 火车进站">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">08 魔女填色游戏（图染色问题）</span>
+                        <span class="hidden-mobile">HJ113 火车进站</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2026/03/18/algorithm/solutions/2025_SDU_Star_Remake/04_jump_game/" title="跳跃过桥（Jump Game）">
-                        <span class="hidden-mobile">跳跃过桥（Jump Game）</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>

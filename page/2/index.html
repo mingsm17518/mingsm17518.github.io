@@ -233,15 +233,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/09/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/" target="_self">
-          第一个只出现一次的字符（HJ13）
+        <a href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_self">
+          未命名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/09/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_self">
         <div>
-          第一个只出现一次的字符题目描述https://www.nowcoder.com/share/jump/5832603751775720154472 给定一个字符串，找出其中第一个只出现一次的字符。如果没有这样的字符，输出 -1。 示例输入：asdfasdfo输出：o解释：o 只出现 1 次，且是第一个满足条件的字符 输入：aabbcc输出：-1解释：所有字符都出现多次 解题思路哈希表统计 + 顺序
+          动态规划 # ===== 1. 背包问题 ===== # 01 背包（每个物品选0或1次） def knapsack_01(n, W, weights, values):     dp = [0] * (W + 1)     for i in range(n):         for w in range(W, weights[i] - 1, -1):  # 倒序遍历             d
         </div>
       </a>
 
@@ -249,8 +249,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-09 15:34" pubdate>
-              2026-04-09
+            <time datetime="2026-05-08 23:02" pubdate>
+              2026-05-08
             </time>
           </div>
         
@@ -265,7 +265,61 @@
     
       <span class="category-chain">
         
-  <a href="/categories/algorithm/" class="category-chain-item">algorithm</a>
+  <a href="/categories/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/BFS-DFS%20%E4%BE%8B%E9%A2%98/" target="_self">
+          Graph 图
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/BFS-DFS%20%E4%BE%8B%E9%A2%98/" target="_self">
+        <div>
+          BFS/DFS 例题 Connected Components 连通分量 https://cses.fi/problemset/task/1666 一个连通分量是无向图中一个最大的连通节点集合。换句话说，两个节点位于同一个连通分量中，当且仅当它们可以通过图中的边相互到达。 在上述重点问题中，目标是添加尽可能少的边，使得整个图形成一个单一的连通分量。 Solution - Building Road
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-05-08 01:17" pubdate>
+              2026-05-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/02-Silver/" class="category-chain-item">02_Silver</a>
   
   
 
@@ -280,13 +334,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Python/">#Python</a>
+              <a href="/tags/DFS/">#DFS</a>
             
-              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">#哈希表</a>
+              <a href="/tags/%E5%9B%BE%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/">#图搜索算法</a>
             
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
-            
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
+              <a href="/tags/BFS/">#BFS</a>
             
           </div>
         
@@ -300,15 +352,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/09/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/12_longest_digit_substring/" target="_self">
-          最长数字子串（HJ12）
+        <a href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%85%B6%E4%BB%96/" target="_self">
+          未命名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/09/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/12_longest_digit_substring/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%85%B6%E4%BB%96/" target="_self">
         <div>
-          最长数字子串题目描述https://www.nowcoder.com/share/jump/5832603751775720143943 对于给定的由数字和小写字母混合构成的字符串 s，找到其中最长的数字子串。如果有多个相同长度的数字子串，则需要全部输出。  子串为从原字符串中连续选择一段字符得到的新字符串 输入保证至少存在一个数字子串  示例输入：abcd12345ed125ss12305878
+          核心算法 全排列 from itertools import permutations, combinations  # 全排列 for perm in permutations(arr):     print(list(perm))  # [1, 2, 3]  # 组合 for comb in combinations(arr, r):     pass 差分数组 diff = [0] * (n
         </div>
       </a>
 
@@ -316,8 +368,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-09 15:29" pubdate>
-              2026-04-09
+            <time datetime="2026-05-08 21:07" pubdate>
+              2026-05-08
             </time>
           </div>
         
@@ -332,7 +384,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/algorithm/" class="category-chain-item">algorithm</a>
+  <a href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" class="category-chain-item">知识点总结</a>
   
   
 
@@ -343,17 +395,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Python/">#Python</a>
-            
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
-            
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
-            
-          </div>
         
       </div>
     </article>
@@ -365,15 +406,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/09/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/07_remove_least_freq_chars/" target="_self">
-          删除出现次数最少的字符（HJ7）
+        <a href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
+          未命名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/09/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/07_remove_least_freq_chars/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
         <div>
-          删除出现次数最少的字符题目描述https://www.nowcoder.com/share/jump/5832603751775720118042 给定一个字符串，删除其中出现次数最少的字符。如果有多个字符出现次数都是最少，则全部删除。输出删除后的字符串，保持原有顺序。 示例输入：aabcddd输出：aadddd解释：b 和 c 各出现 1 次（最少），删除后剩余 “aadddd” 输入：aabb
+          前缀和 用途：快速求区间和，查询时间 O(1)，预处理 O(n) 原理：prefix[i] 表示前 i 个元素的和，区间 [l, r] 的和 = prefix[r] - prefix[l-1] # 一维前缀和 prefix = [0] * (n + 1) for i in range(n):   prefix[i + 1] = prefix[i] + a[i]  # a 是 0-indexed
         </div>
       </a>
 
@@ -381,8 +422,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-09 15:32" pubdate>
-              2026-04-09
+            <time datetime="2026-05-08 23:02" pubdate>
+              2026-05-08
             </time>
           </div>
         
@@ -397,7 +438,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/algorithm/" class="category-chain-item">algorithm</a>
+  <a href="/categories/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
   
   
 
@@ -408,19 +449,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Python/">#Python</a>
-            
-              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">#哈希表</a>
-            
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
-            
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
-            
-          </div>
         
       </div>
     </article>
@@ -432,15 +460,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/09/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/" target="_self">
-          明文分组（HJ3）
+        <a href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
+          未命名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/09/algorithm/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
         <div>
-          明文分组题目描述https://www.nowcoder.com/share/jump/5832603751775720083470 输入一个字符串，将字符串按每 8 个字符进行分组。不足 8 个字符的组则在后面补 0，每组单独输出一行。 示例输入：abc输出：abc00000 输入：1234567890输出：12345678 90 解题思路字符串填充 + 分组截取 计算需要补 0 后的长度：向上
+          滑动窗口 1. 固定窗口大小（求最大/最小窗口和） 适用场景：给定固定大小 k，求所有窗口中最大/最小的和 def sliding_window(arr, k):     &quot;&quot;&quot;求大小为 k 的窗口的最大和&quot;&quot;&quot;     window_sum = sum(arr[:k])  # 初始化第一个窗口的和     max_sum = windo
         </div>
       </a>
 
@@ -448,8 +476,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-09 15:31" pubdate>
-              2026-04-09
+            <time datetime="2026-05-08 23:00" pubdate>
+              2026-05-08
             </time>
           </div>
         
@@ -464,7 +492,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/algorithm/" class="category-chain-item">algorithm</a>
+  <a href="/categories/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
   
   
 
@@ -475,17 +503,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Python/">#Python</a>
-            
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
-            
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
-            
-          </div>
         
       </div>
     </article>
@@ -497,15 +514,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/09_Two_Sets_II/" target="_self">
-          Two Sets II 题解
+        <a href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" target="_self">
+          未命名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/09_Two_Sets_II/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" target="_self">
         <div>
-          Two Sets II 题解题目描述https://cses.fi/problemset/task/1092 给定数字 1, 2, …, n，求将其分成两个和相等集合的方式数。 限制：  1 ≤ n ≤ 500  示例：  输入：7 输出：4 解释： {1,3,4,6} 和 {2,5,7} {1,2,5,6} 和 {3,4,7} {1,2,4,7} 和 {3,5,6} {1,6,7} 和 {2,3
+          二分查找 在有序数组上查找 import bisect  arr = sorted([...])  # 先排序  # lower_bound: 第一个 &gt;= x 的位置 pos = bisect.bisect_left(arr, x)  # upper_bound: 第一个 &gt; x 的位置 pos = bisect.bisect_right(arr, x) 手动实现 # 查找左边界（第
         </div>
       </a>
 
@@ -513,8 +530,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-08 20:41" pubdate>
-              2026-04-08
+            <time datetime="2026-05-08 22:59" pubdate>
+              2026-05-08
             </time>
           </div>
         
@@ -529,7 +546,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/02-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">02_动态规划</a>
+  <a href="/categories/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
   
   
 
@@ -540,17 +557,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
-            
-              <a href="/tags/DP/">#DP</a>
-            
-              <a href="/tags/0-1-%E8%83%8C%E5%8C%85/">#0-1 背包</a>
-            
-          </div>
         
       </div>
     </article>
@@ -562,15 +568,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/03_Minimizing%20Coins/" target="_self">
-          Minimizing Coins 题解
+        <a href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" target="_self">
+          未命名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/03_Minimizing%20Coins/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" target="_self">
         <div>
-          Minimizing Coins（最少硬币数）题目描述https://cses.fi/problemset/task/1634/ 给定 n 种硬币，每种硬币价值为 $c_i$，求凑成金额 x 所需的最少硬币数（每种硬币可用无限次）。如果无法凑成，输出 -1。 限制：  1 ≤ n ≤ 100 1 ≤ x ≤ $10^6$ 1 ≤ c_i ≤ $10^6$   解法问题类型：完全背包 定义：dp[j
+          集合 set 是无序集合，元素唯一，支持 O(1) 成员检查。 s = set()  # 从列表创建（去重） nums = [1, 2, 2, 3, 3, 3] unique = set(nums) # &#123;1, 2, 3&#125;  s.add(x) s.remove(x)      # 不存在会报错 s.discard(x)     # 不存在不报错 s.pop()      # 删
         </div>
       </a>
 
@@ -578,8 +584,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-08 20:24" pubdate>
-              2026-04-08
+            <time datetime="2026-05-08 22:46" pubdate>
+              2026-05-08
             </time>
           </div>
         
@@ -594,7 +600,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/" class="category-chain-item">完全背包</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
   
   
 
@@ -605,17 +611,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
-            
-              <a href="/tags/DP/">#DP</a>
-            
-              <a href="/tags/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">#完全背包</a>
-            
-          </div>
         
       </div>
     </article>
@@ -627,15 +622,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/02_Coin%20Combinations/" target="_self">
-          Coin Combinations
+        <a href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" target="_self">
+          未命名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/02_Coin%20Combinations/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" target="_self">
         <div>
-          完全背包类型一：计数问题（方案数）Coin Combinations I（有序）题目描述https://cses.fi/problemset/task/1635 给定 n 种硬币，每种硬币价值为 $c_i$，求凑成金额 x 的不同方式数（顺序不同视为不同）。输出模 $10^9+7$ 的结果。 限制：  1 ≤ n ≤ 100 1 ≤ x ≤ $10^6$ 1 ≤ c_i ≤ $10^6$  示例：
+          队列 from collections import deque  dq = deque() dq.append(x) dq.appendleft(x) dq.pop() dq.popleft() 单调队列 from collections import deque  # 求窗口最小值（递增队列） q = deque() for i in range(n):     while q and q[0
         </div>
       </a>
 
@@ -643,8 +638,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-08 20:21" pubdate>
-              2026-04-08
+            <time datetime="2026-05-08 22:47" pubdate>
+              2026-05-08
             </time>
           </div>
         
@@ -659,7 +654,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/" class="category-chain-item">完全背包</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
   
   
 
@@ -670,17 +665,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
-            
-              <a href="/tags/DP/">#DP</a>
-            
-              <a href="/tags/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">#完全背包</a>
-            
-          </div>
         
       </div>
     </article>
@@ -692,15 +676,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
-          完全背包问题
+        <a href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_self">
+          未命名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_self">
         <div>
-          完全背包问题什么是完全背包完全背包（Unbounded Knapsack） 是动态规划中的经典问题：  有 n 种物品，每种物品有重量/价值 $w_i$，每种物品可以无限次使用，求恰好凑成重量 $W$ 的方案数或最大价值。  特点 物品数量无限：每种物品可以重复使用多次 状态无后效性：只关心当前重量，不关心用了哪些物品 组合方式：求的是组合（无序）还是排列（有序）  做题方法核心思路：将大问题拆分
+          数据结构 复杂度速查    数据结构 操作 时间复杂度     列表 索引访问/切片 O(1) / O(k)    append/pop(末尾) O(1)    insert/pop(开头) O(n)    in 检查 O(n)   集合/字典 in 检查 O(1) 平均    add/insert O(1) 平均    remove/delete O(1) 平均   堆 push/pop O(l
         </div>
       </a>
 
@@ -708,8 +692,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-08 20:19" pubdate>
-              2026-04-08
+            <time datetime="2026-05-08 21:04" pubdate>
+              2026-05-08
             </time>
           </div>
         
@@ -724,7 +708,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/02-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">02_动态规划</a>
+  <a href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" class="category-chain-item">知识点总结</a>
   
   
 
@@ -735,15 +719,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP/">#DP</a>
-            
-              <a href="/tags/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">#完全背包</a>
-            
-          </div>
         
       </div>
     </article>
@@ -755,15 +730,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/0-1%20%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
-          0/1 背包问题
+        <a href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" target="_self">
+          未命名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/0-1%20%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/algorithm/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" target="_self">
         <div>
-          0/1 背包问题问题描述有 $N$ 件物品，每件物品有重量 $w_i$ 和价值 $v_i$，求在不超过背包容量 $W$ 的情况下，选择物品使得总价值最大。  一维 DP定义：dp[j] 为背包容量为 j 时的最大价值 初始条件：dp[j] = 0 状态转移： dp[j] = \max(dp[j], dp[j - w] + v)代码： N, W = map(int, input().split())
+          列表 初始化与创建 # 自动初始化为全0 a = [0] * n  # 二维列表（注意：不能用 [[0]*m]*n，是浅拷贝！） grid = [[0] * m for _ in range(n)]  # 列表推导式 squares = [x * x for x in range(n)] evens = [x for x in range(n) if x % 2 == 0]  # 基本格式: [表
         </div>
       </a>
 
@@ -771,8 +746,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-08 20:13" pubdate>
-              2026-04-08
+            <time datetime="2026-05-08 22:45" pubdate>
+              2026-05-08
             </time>
           </div>
         
@@ -787,7 +762,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/0-1%E8%83%8C%E5%8C%85/" class="category-chain-item">0-1背包</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
   
   
 
@@ -798,82 +773,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP/">#DP</a>
-            
-              <a href="/tags/0-1-%E8%83%8C%E5%8C%85/">#0-1 背包</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02_Knapsack%20DP%20%E8%83%8C%E5%8C%85DP/" target="_self">
-          02_Knapsack DP 背包DP
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/08/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02_Knapsack%20DP%20%E8%83%8C%E5%8C%85DP/" target="_self">
-        <div>
-          背包 DP背包问题简介背包问题通常涉及将有限容量的容器用物品的子集填满，我们希望计算或优化与物品相关的某些数量。几乎每次，你可以将每个物品视为具有正重量，而我们选择的物品的总重量不得超过容器的容量，这个容量是一个数字。 背包问题的变体 0/1 背包问题: 选择物品的子集，使得它们总价值最大化，且总重量不超过容器容量 完全背包问题: 找到所有可能的、由任何物品子集实现的总重量，这些总重量不超过容器容
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-08 09:04" pubdate>
-              2026-04-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/02-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">02_动态规划</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP/">#DP</a>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-              <a href="/tags/%E8%83%8C%E5%8C%85/">#背包</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
-            
-          </div>
         
       </div>
     </article>
@@ -883,7 +782,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#board">11</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

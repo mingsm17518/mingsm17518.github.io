@@ -233,15 +233,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/03/18/algorithm/01_Bronze/01_%20Complete_Search/05_Cow_Gymnastics/" target="_self">
-          Cow Gymnastics
+        <a href="/2026/04/30/algorithm/solutions/2025_SDU_Star_Remake/01_women_day/" target="_self">
+          12 三八妇女节祝福
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/01_Bronze/01_%20Complete_Search/05_Cow_Gymnastics/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/algorithm/solutions/2025_SDU_Star_Remake/01_women_day/" target="_self">
         <div>
-          问题描述USACO 2019 December Contest, Bronze Problem 1. Cow Gymnasticshttps://usaco.org/index.php?page=viewproblem2&amp;cpid=963 奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在每次训练课中都表现得比
+          题目描述 根据输入的姓名和性别，筛选出所有女士（Ms），按输入顺序输出祝福。 解题思路 直接遍历输入，筛选性别为 “Ms” 的姓名输出即可。 代码实现 n = int(input()) print(&quot;Congratulations on 38 happy Women&#x27;s Day To:&quot;) for _ in range(n):     name, gender = m
         </div>
       </a>
 
@@ -249,8 +249,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-18 00:44" pubdate>
-              2026-03-18
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
             </time>
           </div>
         
@@ -265,7 +265,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/01-Bronze/" class="category-chain-item">01_Bronze</a>
+  <a href="/categories/%E9%A2%98%E8%A7%A3/" class="category-chain-item">题解</a>
   
   
 
@@ -280,11 +280,409 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/USACO/">#USACO</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E7%AE%80%E5%8D%95%E6%A8%A1%E6%8B%9F/">#简单模拟</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/algorithm/04_Graphs/05_Disjoint%20Set%20Union%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" target="_self">
+          05_Disjoint Set Union 并查集
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/algorithm/04_Graphs/05_Disjoint%20Set%20Union%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" target="_self">
+        <div>
+          并查集 什么是并查集？ 并查集（Disjoint Set Union，DSU）数据结构，也称为并查集或联合-查找数据结构，允许你向图中添加边，并测试图中两个顶点是否相连。 由于实现非常简单，你可能更倾向于使用它来代替 DFS 计算连通分量。  实现 class DisjointSets:     def __init__(self, size: int) -&gt; None:         s
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/02-Silver/" class="category-chain-item">02_Silver</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DSU/">#DSU</a>
+            
+              <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">#并查集</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+              <a href="/tags/%E5%9B%BE/">#图</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/algorithm/02_Silver/01_Prefix_Sums/" target="_self">
+          01_Prefix Sums 前缀和
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/algorithm/02_Silver/01_Prefix_Sums/" target="_self">
+        <div>
+          Prefix Sums 前缀和 什么是前缀和？ 前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i]=a[1]+a[2]+...+a[i]p[i] = a[1] + a[2] + ... + a[i] 其中 p[0] = 0。 为什么需要前缀和？ 在没有前缀和的情况下，计算数
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/02-Silver/" class="category-chain-item">02_Silver</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
+            
+              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+            
+              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">#哈希表</a>
+            
+              <a href="/tags/%E5%90%8C%E4%BD%99/">#同余</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/algorithm/02_Silver/02_Sorting%20&amp;%20Searching/05_Priority%20Queues%20%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" target="_self">
+          05_Priority Queues 优先队列
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/algorithm/02_Silver/02_Sorting%20&amp;%20Searching/05_Priority%20Queues%20%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" target="_self">
+        <div>
+          Priority Queues 优先队列 简介 优先队列（Priority Queue 或 Heap）支持以下操作： - 插入元素 - 删除最高优先级元素 - 获取最高优先级元素 以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现 注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/02-Silver/" class="category-chain-item">02_Silver</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/">#优先队列</a>
+            
+              <a href="/tags/%E5%A0%86/">#堆</a>
+            
+              <a href="/tags/Priority-Queue/">#Priority Queue</a>
+            
+              <a href="/tags/Heap/">#Heap</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" target="_self">
+          04_Longest Increasing Subsequence 最长递增子序列
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/algorithm/03_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" target="_self">
+        <div>
+          最长递增子序列 Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang Contributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件  Gold - Introduction to DP (动态规划简介)   教程 令
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/02-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">02_动态规划</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/LIS/">#LIS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/algorithm/03_Gold/01_Math/02_Modular%20Arithmetic%20%E6%A8%A1%E8%BF%90%E7%AE%97/" target="_self">
+          Modular Arithmetic 模运算
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/algorithm/03_Gold/01_Math/02_Modular%20Arithmetic%20%E6%A8%A1%E8%BF%90%E7%AE%97/" target="_self">
+        <div>
+          Modular Arithmetic 模运算 简介 在模运算中，我们不是直接处理整数本身，而是处理它们除以 mm 后的余数。我们称这个过程为取模 mm。例如，如果我们取 m=23m = 23，那么我们不是处理 x=247x = 247，而是使用 xmod&#8289;23=17x \bmod 23 = 17。 通常，mm 会是一个大素数，题目中会给出；最常见的两个值是 109+710^9 + 7
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/03-Gold/" class="category-chain-item">03_Gold</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%A8%A1%E8%BF%90%E7%AE%97/">#模运算</a>
+            
+              <a href="/tags/%E6%A8%A1%E5%B9%82/">#模幂</a>
+            
+              <a href="/tags/%E6%A8%A1%E9%80%86%E5%85%83/">#模逆元</a>
+            
+              <a href="/tags/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86/">#费马小定理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/algorithm/solutions/2024_SDU_Star_Remake/03_name_check/" target="_self">
+          名字验证（严校长报名字）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/algorithm/solutions/2024_SDU_Star_Remake/03_name_check/" target="_self">
+        <div>
+          名字验证 题目描述 班主任有 n 个学生的名字（互不相同）。严校长依次报出 m 个名字，判断每个名字的情况： - 正确且第一次出现 → 输出 OK - 名字错误 → 输出 WRONG - 正确但已出现过 → 输出 REPEAT 解题思路 核心思想 使用两个集合： 1. valid - 存放所有正确的学生名字 2. answered - 存放已经正确回答过（输出过 OK）的名字 判断逻辑 对于每个报
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/algorithm/" class="category-chain-item">algorithm</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">#Python</a>
             
               <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
             
-              <a href="/tags/Bronze/">#Bronze</a>
+              <a href="/tags/%E9%9B%86%E5%90%88/">#集合</a>
             
           </div>
         
@@ -298,15 +696,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/03/18/algorithm/01_Bronze/01_%20Complete_Search/04_Counting_Liars/" target="_self">
-          Counting Liars
+        <a href="/2026/04/30/algorithm/solutions/2024_SDU_Star_Remake/04_lamp_tower/" target="_self">
+          日月双塔（灯塔问题）
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/01_Bronze/01_%20Complete_Search/04_Counting_Liars/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/algorithm/solutions/2024_SDU_Star_Remake/04_lamp_tower/" target="_self">
         <div>
-          问题描述USACO 2022 US Open Contest, Bronze Problem 2. Counting Liarshttps://usaco.org/index.php?page=viewproblem2&amp;cpid=1228 农夫约翰有 $N$ 头奶牛（不包括 Bessie）。每头牛给出一条关于 Bessie 躲藏位置的陈述：  若某头牛说 $L$ ：意思是 _Bessie
+          日月双塔 题目描述 有两座灯塔，高度分别为 a 和 b。每次操作可以将任意一座灯塔的高度乘以任意素数。求最少需要多少次操作才能使两座灯塔高度相等。 解题思路 核心观察  目标状态：让 a 和 b 都变成它们的最小公倍数 lcm(a,b)，此时两塔高度相等。 最大公约数的作用：  设 g = gcd(a, b) 为最大公约数 则 lcm(a, b) = a × b / g  需要的操作次数：  a
         </div>
       </a>
 
@@ -314,8 +712,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-18 00:43" pubdate>
-              2026-03-18
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
             </time>
           </div>
         
@@ -330,7 +728,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/01-Bronze/" class="category-chain-item">01_Bronze</a>
+  <a href="/categories/algorithm/" class="category-chain-item">algorithm</a>
   
   
 
@@ -345,11 +743,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/USACO/">#USACO</a>
+              <a href="/tags/Python/">#Python</a>
             
               <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
             
-              <a href="/tags/Bronze/">#Bronze</a>
+              <a href="/tags/%E6%95%B0%E8%AE%BA/">#数论</a>
             
           </div>
         
@@ -363,15 +761,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/03/18/algorithm/01_Bronze/01_%20Complete_Search/02_Diamond_Collector/" target="_self">
-          Diamond Collector
+        <a href="/2026/03/19/algorithm/solutions/2025_SDU_Star_Remake/13_friendly_array/" target="_self">
+          13 友好数组
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/01_Bronze/01_%20Complete_Search/02_Diamond_Collector/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/03/19/algorithm/solutions/2025_SDU_Star_Remake/13_friendly_array/" target="_self">
         <div>
-          问题描述USACO 2016 US Open Contest, Bronze Problem 1. Diamond Collectorhttps://usaco.org/index.php?page=viewproblem2&amp;cpid=639 给定长度为 $N$ 的数组和 $K$ ，输出 $subsequence$ 最长的长度，要求 $subsequence$ 中任意两数之差不超过 $K$
+          题目描述 给定数组 A 和 B，求它们的最长友好子数组长度。 友好数组定义：对于长度 l 的数组 a, b，若满足： - a1=b1a_1 = b_1 - bi−ai=bi+1−ai+1−1b_i - a_i = b_{i+1} - a_{i+1} - 1（即 bi=ai+i−1b_i = a_i + i - 1） 解题思路 公式推导 由定义可得： - b1−a1=0⇒b1=a1b_1 - a_1
         </div>
       </a>
 
@@ -379,8 +777,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-18 00:43" pubdate>
-              2026-03-18
+            <time datetime="2026-03-19 11:00" pubdate>
+              2026-03-19
             </time>
           </div>
         
@@ -395,7 +793,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/01-Bronze/" class="category-chain-item">01_Bronze</a>
+  <a href="/categories/%E9%A2%98%E8%A7%A3/" class="category-chain-item">题解</a>
   
   
 
@@ -410,11 +808,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/USACO/">#USACO</a>
+              <a href="/tags/DP/">#DP</a>
             
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
             
-              <a href="/tags/Bronze/">#Bronze</a>
+              <a href="/tags/LCS%E5%8F%98%E5%BD%A2/">#LCS变形</a>
             
           </div>
         
@@ -428,15 +826,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/03/18/algorithm/01_Bronze/01_%20Complete_Search/01_Milk%20Pails/" target="_self">
-          Milk Pails
+        <a href="/2026/04/30/algorithm/solutions/2025_SDU_Star_Remake/11_icecream_pair/" target="_self">
+          11 冰淇淋配对
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/01_Bronze/01_%20Complete_Search/01_Milk%20Pails/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/algorithm/solutions/2025_SDU_Star_Remake/11_icecream_pair/" target="_self">
         <div>
-          问题描述USACO 2016 February Contest, Bronze Problem 1. Milk Pailshttps://usaco.org/index.php?page=viewproblem2&amp;cpid=615 给定 $X, Y, M$ ，求 $aX + bY$ 不超过 $M$ 的最大值，$a, b$ 任意。 样例输入 17 25 77 输出 76 思路$a$ 的范围为
+          题目描述 有 nn 盒冰淇淋，第 ii 盒有 aia_i 个。Kyoko 每次吃两个不同口味的冰淇淋，判断能否吃完所有冰淇淋。 解题思路 核心条件 每次吃两个不同口味，意味着： 1. 总数必须为偶数：否则必然剩下一个 2. 最大盒不能超过总数的一半：否则最大的那个口味会剩余 证明 设总量为 S=∑aiS = \sum a_i，最大值为 M=max&#8289;aiM = \max a_i：  若
         </div>
       </a>
 
@@ -444,8 +842,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-18 00:42" pubdate>
-              2026-03-18
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
             </time>
           </div>
         
@@ -460,7 +858,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/01-Bronze/" class="category-chain-item">01_Bronze</a>
+  <a href="/categories/%E9%A2%98%E8%A7%A3/" class="category-chain-item">题解</a>
   
   
 
@@ -475,393 +873,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/USACO/">#USACO</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
             
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
             
-              <a href="/tags/Bronze/">#Bronze</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/03/18/algorithm/01_Bronze/06_Ad_Hoc_Problems_Ad_Hoc%E9%97%AE%E9%A2%98/" target="_self">
-          Ad Hoc Problems  Ad Hoc 问题
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/01_Bronze/06_Ad_Hoc_Problems_Ad_Hoc%E9%97%AE%E9%A2%98/" target="_self">
-        <div>
-          Ad Hoc Problems  Ad Hoc 问题什么是 Ad Hoc 问题？Ad Hoc 问题是一类没有固定算法模式的题目，通常只需要直接模拟题意或者进行简单的逻辑推理就能解决。这类问题的特点是没有通用的解题模板，需要根据每个问题的具体情况灵活处理。 Ad Hoc 问题的特点 没有固定模式：不需要复杂的算法或数据结构 题意驱动：关键在于正确理解题目要求 简单直接：通常只需要模拟或简单逻辑 技巧
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-18 00:36" pubdate>
-              2026-03-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/01-Bronze/" class="category-chain-item">01_Bronze</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%A8%A1%E6%8B%9F/">#模拟</a>
-            
-              <a href="/tags/Ad-Hoc/">#Ad Hoc</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/03/18/algorithm/01_Bronze/05_Rectangle%20Geometry%20%20%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" target="_self">
-          Rectangle Geometry 矩形几何
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/01_Bronze/05_Rectangle%20Geometry%20%20%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" target="_self">
-        <div>
-          Rectangle Geometry 矩形几何什么是矩形几何问题？矩形几何问题是指涉及边平行于坐标轴的矩形的计算问题。这类问题在 USACO Bronze 中非常常见，主要考察对矩形面积、交集等概念的理解。 矩形表示方法通常使用两个对角顶点来表示矩形：  左下角 (bottom-left)：(bl_x, bl_y) 右上角 (top-right)：(tr_x, tr_y)  注意：$bl_x &l
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-18 00:34" pubdate>
-              2026-03-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/01-Bronze/" class="category-chain-item">01_Bronze</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%A8%A1%E6%8B%9F/">#模拟</a>
-            
-              <a href="/tags/%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/">#矩形几何</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/03/18/algorithm/01_Bronze/04_Greedy%20Algorithms%20%20%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" target="_self">
-          Greedy Algorithms 贪心算法
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/01_Bronze/04_Greedy%20Algorithms%20%20%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" target="_self">
-        <div>
-          Greedy Algorithms 贪心算法什么是贪心算法？贪心算法是一种在每一步选择中都采取局部最优解的算法，期望通过一系列局部最优选择达到全局最优。 贪心算法的特点 贪心选择性质：每一步都做出当前最优的选择 最优子结构：问题的最优解包含子问题的最优解 不可回溯：一旦做出选择，就不再考虑其他可能  贪心 vs 动态规划    特征 贪心算法 动态规划     选择策略 只考虑当前最优 考虑所有可
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-18 00:33" pubdate>
-              2026-03-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/01-Bronze/" class="category-chain-item">01_Bronze</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">#贪心算法</a>
-            
-              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/03/18/algorithm/01_Bronze/03_Casework%20%20%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" target="_self">
-          Casework 案例分析
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/01_Bronze/03_Casework%20%20%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" target="_self">
-        <div>
-          03_Casework 案例分析什么是案例分析？案例分析（Casework）是一种通过分情况讨论来解决问题的算法思想。当问题存在多种不同的情况，且每种情况需要不同的处理方式时，这种方法特别有效。 案例分析的特点 分情况讨论：将问题分成若干种情况分别处理 逻辑清晰：每种情况独立分析 避免复杂公式：用简单逻辑处理边界情况 需要仔细分析：确保覆盖所有可能的情况  适用场景 问题有多种边界情况 不同输入范
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-18 00:33" pubdate>
-              2026-03-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/01-Bronze/" class="category-chain-item">01_Bronze</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
-            
-              <a href="/tags/%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/">#案例分析</a>
-            
-              <a href="/tags/%E5%88%86%E6%83%85%E5%86%B5%E8%AE%A8%E8%AE%BA/">#分情况讨论</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/03/18/algorithm/01_Bronze/02_Complete%20Search%20%20%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" target="_self">
-          Complete Search 完全搜索
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/01_Bronze/02_Complete%20Search%20%20%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" target="_self">
-        <div>
-          02_Complete Search 完全搜索什么是完全搜索？完全搜索（Complete Search / Brute Force）是一种通过枚举所有可能的情况来解决问题的算法思想。虽然听起来简单，但在 Bronze 级别中非常有效。 完全搜索的特点 枚举所有可能性：遍历问题的整个解空间 简单直接：不需要复杂的数学推导 适合小规模数据：当解空间较小时非常有效 往往能通过 Bronze 题目：数据规
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-18 00:33" pubdate>
-              2026-03-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/01-Bronze/" class="category-chain-item">01_Bronze</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
-            
-              <a href="/tags/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/">#完全搜索</a>
-            
-              <a href="/tags/%E6%9A%B4%E5%8A%9B/">#暴力</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/03/18/algorithm/01_Bronze/01_Simulation%20%20%E6%A8%A1%E6%8B%9F/" target="_self">
-          Simulation 模拟
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/03/18/algorithm/01_Bronze/01_Simulation%20%20%E6%A8%A1%E6%8B%9F/" target="_self">
-        <div>
-          01_Simulation 模拟什么是模拟算法？模拟算法（Simulation）是最直接的算法思想——按照问题描述直接模拟整个过程。不需要复杂的优化或数学技巧，只需要忠实地执行题目给出的规则。 模拟算法的特点 直观简单：按照题目描述直接实现 无需优化技巧：重点在于正确理解题意 适合入门：Bronze 级别最常见的题型 注意细节：需要仔细处理边界情况和数据范围  适用场景 按照固定规则进行操作的题目
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-03-18 00:33" pubdate>
-              2026-03-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/01-Bronze/" class="category-chain-item">01_Bronze</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%A8%A1%E6%8B%9F/">#模拟</a>
-            
-              <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
+              <a href="/tags/%E9%85%8D%E5%AF%B9%E9%97%AE%E9%A2%98/">#配对问题</a>
             
           </div>
         
@@ -873,7 +889,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/8/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#board">11</a><a class="extend next" rel="next" href="/page/8/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
