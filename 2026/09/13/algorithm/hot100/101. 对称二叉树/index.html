@@ -19,28 +19,26 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="跳跃过桥 题目描述 有 n 个方块组成的桥，每个方块有价值 a_i。起点为 0，终点为 n+1。跳跃能力为 k，每次可跳 [X+1, X+k] 范围内的任意位置。求过桥代价的最小值（代价 &#x3D; 经过方块的最大价值）。 思路分析 如何思考这个问题？  代价的定义：代价是路径上所有方块价值的最大值 状态的表示：设 dp[i] &#x3D; 到达位置 i 的最小代价（即路径上最大值的最小可能） 状态转移：  从位置">
+    <meta name="description" content="101. 对称二叉树 给你一个二叉树的根节点 root ， 检查它是否轴对称。 示例 1：  输入：root &#x3D; [1,2,2,3,4,4,3] 输出：true 示例 2：  输入：root &#x3D; [1,2,2,null,3,null,3] 输出：false 提示：  树中节点数目在范围 [1, 1000] 内 -100 &lt;&#x3D; Node.val &lt;&#x3D; 100  # Definition">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跳跃过桥（Jump Game）">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/algorithm/solutions/2025_SDU_Star_Remake/04_jump_game/index.html">
+<meta property="og:title" content="未命名">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/09/13/algorithm/hot100/101.%20%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="跳跃过桥 题目描述 有 n 个方块组成的桥，每个方块有价值 a_i。起点为 0，终点为 n+1。跳跃能力为 k，每次可跳 [X+1, X+k] 范围内的任意位置。求过桥代价的最小值（代价 &#x3D; 经过方块的最大价值）。 思路分析 如何思考这个问题？  代价的定义：代价是路径上所有方块价值的最大值 状态的表示：设 dp[i] &#x3D; 到达位置 i 的最小代价（即路径上最大值的最小可能） 状态转移：  从位置">
+<meta property="og:description" content="101. 对称二叉树 给你一个二叉树的根节点 root ， 检查它是否轴对称。 示例 1：  输入：root &#x3D; [1,2,2,3,4,4,3] 输出：true 示例 2：  输入：root &#x3D; [1,2,2,null,3,null,3] 输出：false 提示：  树中节点数目在范围 [1, 1000] 内 -100 &lt;&#x3D; Node.val &lt;&#x3D; 100  # Definition">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-30T09:02:14.000Z">
-<meta property="article:modified_time" content="2026-03-19T03:41:12.000Z">
+<meta property="og:image" content="https://pic.leetcode.cn/1698026966-JDYPDU-image.png">
+<meta property="og:image" content="https://pic.leetcode.cn/1698027008-nPFLbM-image.png">
+<meta property="article:published_time" content="2026-09-13T14:52:49.759Z">
+<meta property="article:modified_time" content="2026-09-13T14:53:17.319Z">
 <meta property="article:author" content="Ming">
-<meta property="article:tag" content="Python">
-<meta property="article:tag" content="二分搜索">
-<meta property="article:tag" content="单调队列">
-<meta property="article:tag" content="滑动窗口">
-<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic.leetcode.cn/1698026966-JDYPDU-image.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>跳跃过桥（Jump Game） - Ming&#39;s Blog</title>
+  <title>未命名 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -210,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="跳跃过桥（Jump Game）"></span>
+            <span id="subtitle" data-typed-text="未命名"></span>
           
         </div>
 
@@ -221,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-04-30 17:02" pubdate>
-          2026年4月30日 下午
+        <time datetime="2026-09-13 22:52" pubdate>
+          2026年9月13日 晚上
         </time>
       </span>
     
@@ -233,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          128 字
         
       </span>
     
@@ -244,7 +242,7 @@
         
         
         
-          9 分钟
+          2 分钟
         
       </span>
     
@@ -290,12 +288,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">跳跃过桥（Jump Game）</h1>
+            <h1 id="seo-header">未命名</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-03-19T11:41:12+08:00
+                    本文最后更新于 2026-09-13T22:53:17+08:00
                   
                   
 
@@ -305,178 +303,38 @@
             
               <div class="markdown-body">
                 
-                <h1 id="跳跃过桥">跳跃过桥</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>有 n 个方块组成的桥，每个方块有价值 a_i。起点为 0，终点为
-n+1。跳跃能力为 k，每次可跳 [X+1, X+k]
-范围内的任意位置。求过桥代价的最小值（代价 = 经过方块的最大价值）。</p>
-<h2 id="思路分析">思路分析</h2>
-<h3 id="如何思考这个问题">如何思考这个问题？</h3>
-<ol type="1">
-<li><p><strong>代价的定义</strong>：代价是路径上所有方块价值的最大值</p></li>
-<li><p><strong>状态的表示</strong>：设 <code>dp[i]</code> = 到达位置 i
-的最小代价（即路径上最大值的最小可能）</p></li>
-<li><p><strong>状态转移</strong>：</p>
+                <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/symmetric-tree/">101.
+对称二叉树</a></p>
+<p>给你一个二叉树的根节点 <code>root</code> ， 检查它是否轴对称。</p>
+<p><strong>示例 1：</strong></p>
+<p><img src="https://pic.leetcode.cn/1698026966-JDYPDU-image.png" srcset="/img/loading.gif" lazyload /></p>
+<p><strong>输入：</strong>root = [1,2,2,3,4,4,3]
+<strong>输出：</strong>true</p>
+<p><strong>示例 2：</strong></p>
+<p><img src="https://pic.leetcode.cn/1698027008-nPFLbM-image.png" srcset="/img/loading.gif" lazyload /></p>
+<p><strong>输入：</strong>root = [1,2,2,null,3,null,3]
+<strong>输出：</strong>false</p>
+<p><strong>提示：</strong></p>
 <ul>
-<li>从位置 j 可以跳到 i，当 j ∈ [i-k, i-1]</li>
-<li><code>dp[i] = min( max(dp[j], a[i]) )</code> for j ∈ [i-k, i-1]</li>
-<li>解释：选择从某个 j 跳过来，代价是 max(到达 j 的代价, i
-位置的价值)</li>
-</ul></li>
-<li><p><strong>优化方向</strong>：</p>
-<ul>
-<li>直接 DP 复杂度 O(nk)</li>
-<li>注意到转移只需要窗口 [i-k, i-1] 内的最小 dp 值</li>
-<li>→ 使用<strong>单调队列</strong>在 O(1) 时间内获取最小值</li>
-</ul></li>
-</ol>
-<h3 id="为什么单调队列可行">为什么单调队列可行？</h3>
-<p>单调队列的核心思想： - 队列按 dp 值<strong>单调递增</strong>存储 -
-队首 <code>q[0]</code> 始终是当前窗口内的<strong>最小 dp 值</strong> -
-队尾插入时，移除所有 dp 值更大的元素（它们永远不是最优的）</p>
-<p>这样就能在 O(1) 时间获取窗口最小值，整体 O(n)。</p>
-<h2 id="解题思路">解题思路</h2>
-<h3 id="方法一二分搜索-贪心更简洁">方法一：二分搜索 +
-贪心（更简洁）</h3>
-<p>观察题目特点： - <strong>答案单调性</strong>：如果代价 X
-可以过桥，那么更大的代价 Y 也一定可以过桥 -
-因此可以使用二分搜索，二分答案 + 贪心验证</p>
-<h3 id="方法二滑动窗口-单调队列更高效">方法二：滑动窗口 +
-单调队列（更高效）</h3>
-<p>直接 DP 求解： - <code>dp[i] = min( max(dp[j], a[i]) )</code> for j ∈
-[i-k, i-1] - 使用单调队列在 O(1) 时间内获取窗口最小值 - 整体时间
-O(n)，空间 O(k)</p>
-<h2 id="代码实现">代码实现</h2>
-<h3 id="方法一二分搜索">方法一：二分搜索</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">first_true</span>(<span class="hljs-params">lo, hi, check</span>):
-    <span class="hljs-string">&quot;&quot;&quot;查找第一个满足 check(x) 为 True 的 x&quot;&quot;&quot;</span>
-    hi += <span class="hljs-number">1</span>
-    <span class="hljs-keyword">while</span> lo &lt; hi:
-        mid = lo + (hi - lo) // <span class="hljs-number">2</span>
-        <span class="hljs-keyword">if</span> check(mid):
-            hi = mid
-        <span class="hljs-keyword">else</span>:
-            lo = mid + <span class="hljs-number">1</span>
-    <span class="hljs-keyword">return</span> lo
-
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">can_reach</span>(<span class="hljs-params">target</span>):
-    <span class="hljs-string">&quot;&quot;&quot;检查是否能通过跳跃长度 k 到达终点&quot;&quot;&quot;</span>
-    farthest = k
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):
-        <span class="hljs-keyword">if</span> a[i] &lt;= target <span class="hljs-keyword">and</span> i &lt;= farthest:
-            farthest = <span class="hljs-built_in">max</span>(farthest, i + k)
-    <span class="hljs-keyword">return</span> farthest &gt;= n + <span class="hljs-number">1</span>
-
-<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(t):
-    n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
-    a = [<span class="hljs-number">0</span>] + <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())) + [<span class="hljs-number">0</span>]  <span class="hljs-comment"># 添加起点和终点</span>
-    result = first_true(<span class="hljs-built_in">min</span>(a), <span class="hljs-built_in">max</span>(a), can_reach)
-    <span class="hljs-built_in">print</span>(result)</code></pre></div>
-<h3 id="方法二单调队列更高效">方法二：单调队列（更高效）</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
-
-t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
-
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">solve_one</span>(<span class="hljs-params">n, k, a</span>):
-    q = deque()
-    q.append((<span class="hljs-number">0</span>, <span class="hljs-number">0</span>))
-    cost = <span class="hljs-number">0</span>
-
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">2</span>):
-        <span class="hljs-keyword">while</span> q <span class="hljs-keyword">and</span> q[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] &lt; i - k:
-            q.popleft()
-        <span class="hljs-keyword">if</span> q:
-            cost = <span class="hljs-built_in">max</span>(q[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>], a[i])
-            <span class="hljs-keyword">while</span> q <span class="hljs-keyword">and</span> q[-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] &gt;= cost:
-                q.pop()
-            q.append((i, cost))
-    <span class="hljs-keyword">return</span> cost
-
-    
-<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(t):
-    n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
-    a = [<span class="hljs-number">0</span>] + <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())) + [<span class="hljs-number">0</span>]
-    <span class="hljs-built_in">print</span>(solve_one(n, k, a))</code></pre></div>
-<h2 id="核心逻辑详解">核心逻辑详解</h2>
-<h3 id="单调队列工作流程">单调队列工作流程</h3>
-<p>以 n=5, k=2, a=[1,2,3,4,5] 为例：</p>
-<table>
-<thead>
-<tr>
-<th>i</th>
-<th>窗口 [i-k, i-1]</th>
-<th>队列状态</th>
-<th>min_dp</th>
-<th>dp[i]</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>[max(0, -1), 0] = [0,0]</td>
-<td>(0,0)</td>
-<td>0</td>
-<td>max(0,1)=1</td>
-</tr>
-<tr>
-<td>2</td>
-<td>[0,1]</td>
-<td>(0,0),(1,1)</td>
-<td>0</td>
-<td>max(0,2)=2</td>
-</tr>
-<tr>
-<td>3</td>
-<td>[1,2]</td>
-<td>(1,1),(2,2)</td>
-<td>1</td>
-<td>max(1,3)=3</td>
-</tr>
-<tr>
-<td>4</td>
-<td>[2,3]</td>
-<td>(2,2),(3,3)</td>
-<td>2</td>
-<td>max(2,4)=4</td>
-</tr>
-<tr>
-<td>5</td>
-<td>[3,4]</td>
-<td>(3,3),(4,4)</td>
-<td>3</td>
-<td>max(3,5)=5</td>
-</tr>
-<tr>
-<td>6</td>
-<td>[4,5]</td>
-<td>(4,4),(5,5)</td>
-<td>4</td>
-<td>max(4,0)=4</td>
-</tr>
-</tbody>
-</table>
-<p>最终 dp[6]=4，即为答案。</p>
-<h3 id="为什么队首是最小值">为什么队首是最小值？</h3>
-<p>队列维护两个不变量： 1.
-<strong>位置有效性</strong>：队首位置始终在窗口 [i-k, i-1] 内 2.
-<strong>单调性</strong>：队列按 dp 值递增排列</p>
-<p>因此队首 <code>q[0][1]</code> 永远是当前窗口内的最小 dp 值。</p>
-<h3 id="为什么可以移除-dp-值更大的元素">为什么可以移除 dp
-值更大的元素？</h3>
-<p>当插入新位置 i（dp[i]=x）时： - 队列中已有的元素 j（dp[j] &gt;=
-x）在位置 i 之后仍然是可达的 - 但它们的 dp
-值更大，所以对于任何后续位置，j 都不可能比 i 更优 - 因此可以安全移除</p>
-<h2 id="复杂度分析">复杂度分析</h2>
-<h3 id="方法一二分搜索-1">方法一：二分搜索</h3>
-<ul>
-<li><strong>时间复杂度</strong>：O(n log V)，V 为价值范围</li>
-<li><strong>空间复杂度</strong>：O(n)</li>
+<li>树中节点数目在范围 <code>[1, 1000]</code> 内</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
 </ul>
-<h3 id="方法二单调队列">方法二：单调队列</h3>
-<ul>
-<li><strong>时间复杂度</strong>：O(n)，每个位置最多入队和出队一次</li>
-<li><strong>空间复杂度</strong>：O(k)，队列最多存储 k 个元素</li>
-</ul>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Definition for a binary tree node.</span>
+<span class="hljs-comment"># class TreeNode:</span>
+<span class="hljs-comment">#     def __init__(self, val=0, left=None, right=None):</span>
+<span class="hljs-comment">#         self.val = val</span>
+<span class="hljs-comment">#         self.left = left</span>
+<span class="hljs-comment">#         self.right = right</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">isSymmetric</span>(<span class="hljs-params">self, root: <span class="hljs-type">Optional</span>[TreeNode]</span>) -&gt; <span class="hljs-built_in">bool</span>:
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">check</span>(<span class="hljs-params">q, p</span>):
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">not</span> q <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> p):
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">not</span> q <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> p):
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+            <span class="hljs-keyword">return</span> p.val == q.val <span class="hljs-keyword">and</span> check(p.left, q.right) <span class="hljs-keyword">and</span> check(p.right, q.left)
+        
+        <span class="hljs-keyword">return</span> check(root.left, root.right)</code></pre></div>
 
                 
               </div>
@@ -495,7 +353,7 @@ x）在位置 i 之后仍然是可达的 - 但它们的 dp
     
       <span class="category-chain">
         
-  <a href="/categories/algorithm/" class="category-chain-item">algorithm</a>
+  <a href="/categories/hot100/" class="category-chain-item">hot100</a>
   
   
 
@@ -507,21 +365,6 @@ x）在位置 i 之后仍然是可达的 - 但它们的 dp
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="print-no-link">#滑动窗口</a>
-      
-        <a href="/tags/Python/" class="print-no-link">#Python</a>
-      
-        <a href="/tags/%E9%A2%98%E8%A7%A3/" class="print-no-link">#题解</a>
-      
-        <a href="/tags/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/" class="print-no-link">#二分搜索</a>
-      
-        <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" class="print-no-link">#单调队列</a>
-      
-    </div>
-  
 </div>
 
 
@@ -530,8 +373,8 @@ x）在位置 i 之后仍然是可达的 - 但它们的 dp
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>跳跃过桥（Jump Game）</div>
-      <div>https://mingsm17518.github.io/2026/04/30/algorithm/solutions/2025_SDU_Star_Remake/04_jump_game/</div>
+      <div>未命名</div>
+      <div>https://mingsm17518.github.io/2026/09/13/algorithm/hot100/101. 对称二叉树/</div>
     </div>
     <div class="license-meta">
       
@@ -543,13 +386,13 @@ x）在位置 i 之后仍然是可达的 - 但它们的 dp
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年4月30日</div>
+          <div>2026年9月13日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2026年3月19日</div>
+          <div>2026年9月13日</div>
         </div>
       
       
@@ -580,18 +423,12 @@ x）在位置 i 之后仍然是可达的 - 但它们的 dp
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/30/algorithm/solutions/2025_SDU_Star_Remake/03_password_crack/" title="密码分配（Password Crack）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">密码分配（Password Crack）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/30/algorithm/solutions/2025_SDU_Star_Remake/06_unique_string/" title="独特字符串（Unique String）">
-                        <span class="hidden-mobile">独特字符串（Unique String）</span>
+                      <a href="/2026/09/13/algorithm/hot100/94.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" title="94. 二叉树的中序遍历">
+                        <span class="hidden-mobile">94. 二叉树的中序遍历</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
