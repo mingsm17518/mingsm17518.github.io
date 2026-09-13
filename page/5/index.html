@@ -233,15 +233,719 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03_Bronze/03_Casework%20%20%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" target="_self">
-          Casework 案例分析
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02_Knapsack%20DP%20%E8%83%8C%E5%8C%85DP/" target="_self">
+          02_Knapsack DP 背包DP
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03_Bronze/03_Casework%20%20%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_Gold/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02_Knapsack%20DP%20%E8%83%8C%E5%8C%85DP/" target="_self">
         <div>
-          03_Casework 案例分析 什么是案例分析？ 案例分析（Casework）是一种通过分情况讨论来解决问题的算法思想。当问题存在多种不同的情况，且每种情况需要不同的处理方式时，这种方法特别有效。 案例分析的特点  分情况讨论：将问题分成若干种情况分别处理 逻辑清晰：每种情况独立分析 避免复杂公式：用简单逻辑处理边界情况 需要仔细分析：确保覆盖所有可能的情况  适用场景  问题有多种边界情况 不
+          背包 DP 背包问题简介 背包问题通常涉及将有限容量的容器用物品的子集填满，我们希望计算或优化与物品相关的某些数量。几乎每次，你可以将每个物品视为具有正重量，而我们选择的物品的总重量不得超过容器的容量，这个容量是一个数字。 背包问题的变体  0/1 背包问题: 选择物品的子集，使得它们总价值最大化，且总重量不超过容器容量 完全背包问题: 找到所有可能的、由任何物品子集实现的总重量，这些总重量不超过
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-Gold/" class="category-chain-item">05_Gold</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-Gold/02-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">02_动态规划</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E8%83%8C%E5%8C%85/">#背包</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_Gold/01_Math/02_Modular%20Arithmetic%20%E6%A8%A1%E8%BF%90%E7%AE%97/" target="_self">
+          Modular Arithmetic 模运算
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_Gold/01_Math/02_Modular%20Arithmetic%20%E6%A8%A1%E8%BF%90%E7%AE%97/" target="_self">
+        <div>
+          Modular Arithmetic 模运算 简介 在模运算中，我们不是直接处理整数本身，而是处理它们除以 mm 后的余数。我们称这个过程为取模 mm。例如，如果我们取 m=23m = 23，那么我们不是处理 x=247x = 247，而是使用 xmod&#8289;23=17x \bmod 23 = 17。 通常，mm 会是一个大素数，题目中会给出；最常见的两个值是 109+710^9 + 7
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-Gold/" class="category-chain-item">05_Gold</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-Gold/01-Math/" class="category-chain-item">01_Math</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%A8%A1%E5%B9%82/">#模幂</a>
+            
+              <a href="/tags/%E6%A8%A1%E8%BF%90%E7%AE%97/">#模运算</a>
+            
+              <a href="/tags/%E6%A8%A1%E9%80%86%E5%85%83/">#模逆元</a>
+            
+              <a href="/tags/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86/">#费马小定理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/Two%20Pointer%20-%20Problems/" target="_self">
+          Two Pointer - Problems
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/Two%20Pointer%20-%20Problems/" target="_self">
+        <div>
+          Problems  01-Subarray Sums 与 Solution - Books 做法类似。不同之处在于，更新 ansans 时改为判断 当前子数组之和 curcur 是否等于 目标和 xx ，是的话 ans+1ans+1 https://cses.fi/problemset/task/1660 n, x = map(int, input().split()) arr = list(ma
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/" class="category-chain-item">04_Silver</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/02-Sorting-Searching/" class="category-chain-item">02_Sorting &amp; Searching</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+            
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/05_Priority%20Queues%20%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" target="_self">
+          05_Priority Queues 优先队列
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/05_Priority%20Queues%20%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" target="_self">
+        <div>
+          Priority Queues 优先队列 简介 优先队列（Priority Queue 或 Heap）支持以下操作： - 插入元素 - 删除最高优先级元素 - 获取最高优先级元素 以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现 注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/" class="category-chain-item">04_Silver</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/02-Sorting-Searching/" class="category-chain-item">02_Sorting &amp; Searching</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Heap/">#Heap</a>
+            
+              <a href="/tags/Priority-Queue/">#Priority Queue</a>
+            
+              <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/">#优先队列</a>
+            
+              <a href="/tags/%E5%A0%86/">#堆</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/04_Greedy%20Algorithms%20with%20Sorting%20%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%8E%92%E5%BA%8F/" target="_self">
+          Greedy Algorithms with Sorting 贪心算法与排序
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/04_Greedy%20Algorithms%20with%20Sorting%20%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%8E%92%E5%BA%8F/" target="_self">
+        <div>
+          Greedy Algorithms with Sorting 贪心算法与排序 贪心算法在每一步选择当前最优的选项，通常与排序配合使用。  一、贪心算法基础 贪心算法的核心是价值函数：决定哪个选择是最优的。  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的  关键：贪心算法需要证明其正确性，通常通过交换参数证法（exchange argument）。  二、例题1：学习算法（
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/" class="category-chain-item">04_Silver</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/02-Sorting-Searching/" class="category-chain-item">02_Sorting &amp; Searching</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
+            
+              <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">#贪心算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/03_Custom%20Comparators%20and%20Coordinate%20Compression%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/" target="_self">
+          Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/03_Custom%20Comparators%20and%20Coordinate%20Compression%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/" target="_self">
+        <div>
+          Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩 本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序 排序不仅限于数字，还可以用于任意对象。 方法一：使用元组 将对象与排序关键字打包成元组： edge_num = 4 edges = [] for _ in range(edge_num):     a, b
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/" class="category-chain-item">04_Silver</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/02-Sorting-Searching/" class="category-chain-item">02_Sorting &amp; Searching</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
+            
+              <a href="/tags/%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/">#坐标压缩</a>
+            
+              <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8/">#自定义比较器</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/01_Two%20Pointers%20%E5%8F%8C%E6%8C%87%E9%92%88/" target="_self">
+          Two Pointers 双指针
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/01_Two%20Pointers%20%E5%8F%8C%E6%8C%87%E9%92%88/" target="_self">
+        <div>
+          Two Pointers 双指针 概念 双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。 两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。  Sum of Two Values https://cses.fi/problemset/task/1640 Solution 我们要找到两个索引 ii 和 jj ，使得
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/" class="category-chain-item">04_Silver</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/02-Sorting-Searching/" class="category-chain-item">02_Sorting &amp; Searching</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+            
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/02_Binary%20Search%20%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/" target="_self">
+          Binary Search 二分搜索
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/02_Binary%20Search%20%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/" target="_self">
+        <div>
+          Binary Search 二分搜索 什么是二分搜索？ 二分搜索是一种在有序数组中查找目标值的高效算法，时间复杂度为 O(log n)。 基本思想 每次将搜索区间缩小一半，通过比较中间元素与目标值的大小关系，决定向左还是向右继续搜索。  一、在有序数组上查找 二分搜索的两种形式    函数 功能 返回值     lower_bound(x) 第一个 &gt;= x 的位置 第一个 &gt;= x
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/" class="category-chain-item">04_Silver</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/02-Sorting-Searching/" class="category-chain-item">02_Sorting &amp; Searching</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/">#二分搜索</a>
+            
+              <a href="/tags/%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/">#有序数组</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/01_Prefix_Sums/" target="_self">
+          01_Prefix Sums 前缀和
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/01_Prefix_Sums/" target="_self">
+        <div>
+          Prefix Sums 前缀和 什么是前缀和？ 前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i]=a[1]+a[2]+...+a[i]p[i] = a[1] + a[2] + ... + a[i] 其中 p[0] = 0。 为什么需要前缀和？ 在没有前缀和的情况下，计算数
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/" class="category-chain-item">04_Silver</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
+            
+              <a href="/tags/%E5%90%8C%E4%BD%99/">#同余</a>
+            
+              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">#哈希表</a>
+            
+              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03_Bronze/04_Greedy%20Algorithms%20%20%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" target="_self">
+          Greedy Algorithms 贪心算法
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03_Bronze/04_Greedy%20Algorithms%20%20%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" target="_self">
+        <div>
+          Greedy Algorithms 贪心算法 什么是贪心算法？ 贪心算法是一种在每一步选择中都采取局部最优解的算法，期望通过一系列局部最优选择达到全局最优。 贪心算法的特点  贪心选择性质：每一步都做出当前最优的选择 最优子结构：问题的最优解包含子问题的最优解 不可回溯：一旦做出选择，就不再考虑其他可能  贪心 vs 动态规划    特征 贪心算法 动态规划     选择策略 只考虑当前最优 考虑
         </div>
       </a>
 
@@ -287,582 +991,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
+              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
             
-              <a href="/tags/%E5%88%86%E6%83%85%E5%86%B5%E8%AE%A8%E8%AE%BA/">#分情况讨论</a>
-            
-              <a href="/tags/%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/">#案例分析</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">#贪心算法</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03_Bronze/01_Simulation%20%20%E6%A8%A1%E6%8B%9F/" target="_self">
-          Simulation 模拟
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03_Bronze/01_Simulation%20%20%E6%A8%A1%E6%8B%9F/" target="_self">
-        <div>
-          01_Simulation 模拟 什么是模拟算法？ 模拟算法（Simulation）是最直接的算法思想——按照问题描述直接模拟整个过程。不需要复杂的优化或数学技巧，只需要忠实地执行题目给出的规则。 模拟算法的特点  直观简单：按照题目描述直接实现 无需优化技巧：重点在于正确理解题意 适合入门：Bronze 级别最常见的题型 注意细节：需要仔细处理边界情况和数据范围  适用场景  按照固定规则进行操
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-30 17:02" pubdate>
-              2026-04-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03-Bronze/" class="category-chain-item">03_Bronze</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
-            
-              <a href="/tags/%E6%A8%A1%E6%8B%9F/">#模拟</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%85%B6%E4%BB%96/" target="_self">
-          未命名
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%85%B6%E4%BB%96/" target="_self">
-        <div>
-          核心算法 全排列 from itertools import permutations, combinations  # 全排列 for perm in permutations(arr):     print(list(perm))  # [1, 2, 3]  # 组合 for comb in combinations(arr, r):     pass 差分数组 diff = [0] * (n
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-05-08 21:07" pubdate>
-              2026-05-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/BFS-DFS%20%E4%BE%8B%E9%A2%98/" target="_self">
-          Graph 图
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/BFS-DFS%20%E4%BE%8B%E9%A2%98/" target="_self">
-        <div>
-          BFS/DFS 例题 Connected Components 连通分量 https://cses.fi/problemset/task/1666 一个连通分量是无向图中一个最大的连通节点集合。换句话说，两个节点位于同一个连通分量中，当且仅当它们可以通过图中的边相互到达。 在上述重点问题中，目标是添加尽可能少的边，使得整个图形成一个单一的连通分量。 Solution - Building Road
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-05-08 01:17" pubdate>
-              2026-05-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DFS/">#DFS</a>
-            
-              <a href="/tags/BFS/">#BFS</a>
-            
-              <a href="/tags/%E5%9B%BE%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/">#图搜索算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
-          未命名
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
-        <div>
-          前缀和 用途：快速求区间和，查询时间 O(1)，预处理 O(n) 原理：prefix[i] 表示前 i 个元素的和，区间 [l, r] 的和 = prefix[r] - prefix[l-1] # 一维前缀和 prefix = [0] * (n + 1) for i in range(n):   prefix[i + 1] = prefix[i] + a[i]  # a 是 0-indexed
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-05-08 23:02" pubdate>
-              2026-05-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
-          未命名
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
-        <div>
-          滑动窗口 1. 固定窗口大小（求最大/最小窗口和） 适用场景：给定固定大小 k，求所有窗口中最大/最小的和 def sliding_window(arr, k):     &quot;&quot;&quot;求大小为 k 的窗口的最大和&quot;&quot;&quot;     window_sum = sum(arr[:k])  # 初始化第一个窗口的和     max_sum = windo
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-05-08 23:00" pubdate>
-              2026-05-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" target="_self">
-          未命名
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" target="_self">
-        <div>
-          二分查找 在有序数组上查找 import bisect  arr = sorted([...])  # 先排序  # lower_bound: 第一个 &gt;= x 的位置 pos = bisect.bisect_left(arr, x)  # upper_bound: 第一个 &gt; x 的位置 pos = bisect.bisect_right(arr, x) 手动实现 # 查找左边界（第
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-05-08 22:59" pubdate>
-              2026-05-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_self">
-          未命名
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_self">
-        <div>
-          动态规划 # ===== 1. 背包问题 ===== # 01 背包（每个物品选0或1次） def knapsack_01(n, W, weights, values):     dp = [0] * (W + 1)     for i in range(n):         for w in range(W, weights[i] - 1, -1):  # 倒序遍历             d
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-05-08 23:02" pubdate>
-              2026-05-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%9B%BE%E8%AE%BA/" target="_self">
-          未命名
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%9B%BE%E8%AE%BA/" target="_self">
-        <div>
-          图论 邻接表建图 # 邻接表 adj = [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历/搜索 ## DFS（深度优先搜索） 核心思想 “一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-05-08 23:01" pubdate>
-              2026-05-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_self">
-          未命名
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_self">
-        <div>
-          数据结构 复杂度速查    数据结构 操作 时间复杂度     列表 索引访问/切片 O(1) / O(k)    append/pop(末尾) O(1)    insert/pop(开头) O(n)    in 检查 O(n)   集合/字典 in 检查 O(1) 平均    add/insert O(1) 平均    remove/delete O(1) 平均   堆 push/pop O(l
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-05-08 21:04" pubdate>
-              2026-05-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
         
       </div>
     </article>

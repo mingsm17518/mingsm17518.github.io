@@ -1,0 +1,1143 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Icon.png">
+  <link rel="icon" href="/img/Icon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ming">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="图论 邻接表建图 # 邻接表 adj &#x3D; [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历&#x2F;搜索 ## DFS（深度优先搜索） 核心思想 “一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01_图论">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%9B%BE%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Ming&#39;s Blog">
+<meta property="og:description" content="图论 邻接表建图 # 邻接表 adj &#x3D; [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历&#x2F;搜索 ## DFS（深度优先搜索） 核心思想 “一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-09-13T16:04:38.514Z">
+<meta property="article:modified_time" content="2026-09-13T16:04:38.514Z">
+<meta property="article:author" content="Ming">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>01_图论 - Ming&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mingsm17518.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ming&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/jiangly.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="01_图论"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-09-14 00:04" pubdate>
+          2026年9月14日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">01_图论</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="图论">图论</h1>
+<h2 id="邻接表建图">邻接表建图</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 邻接表</span>
+adj = [[] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
+<span class="hljs-comment"># 无向图</span>
+adj[u].append(v)
+adj[v].append(u)
+
+adj[u].append((v, w))    <span class="hljs-comment"># 带权重</span></code></pre></div>
+<p><strong>图论基础</strong>：BFS 适合求最短路，DFS 适合遍历/搜索 ##
+DFS（深度优先搜索）</p>
+<h3 id="核心思想">核心思想</h3>
+<p><strong>“一条路走到黑，走不通就回头。”</strong> DFS
+沿着一个方向一直往深处走，直到无路可走，再回退到上一个岔路口尝试另一个方向。可以用
+<strong>递归</strong> 实现。</p>
+<h3 id="递归模板">递归模板</h3>
+<div class="code-wrapper"><pre><code class="hljs python">visited = [<span class="hljs-literal">False</span>] * n
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">u</span>):
+    visited[u] = <span class="hljs-literal">True</span>
+    <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> adj[u]:
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[v]:
+            dfs(v)
+
+<span class="hljs-comment"># 处理不连通图</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[i]:
+        dfs(i)</code></pre></div>
+<h3 id="网格-dfs-lc-200-岛屿数量">网格 DFS — LC 200 岛屿数量</h3>
+<p>https://leetcode.cn/problems/number-of-islands/</p>
+<blockquote>
+<p>给定一个 <code>'1'</code>（陆地）和
+<code>'0'</code>（水）组成的二维网格，计算岛屿的数量。</p>
+</blockquote>
+<p><strong>思路</strong>：遍历每个格子，遇到 <code>'1'</code> 就启动一次
+DFS 把整座岛”淹掉”（标记为已访问），岛屿计数 +1。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">numIslands</span>(<span class="hljs-params">grid</span>):
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> grid:
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+    rows, cols = <span class="hljs-built_in">len</span>(grid), <span class="hljs-built_in">len</span>(grid[<span class="hljs-number">0</span>])
+    count = <span class="hljs-number">0</span>
+    directions = [(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">0</span>), (-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>)]
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">r, c</span>):
+        grid[r][c] = <span class="hljs-string">&#x27;0&#x27;</span>          <span class="hljs-comment"># 先标记当前格子</span>
+        <span class="hljs-keyword">for</span> dr, dc <span class="hljs-keyword">in</span> directions:
+            nr, nc = r + dr, c + dc
+            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nr &lt; rows <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= nc &lt; cols <span class="hljs-keyword">and</span> grid[nr][nc] == <span class="hljs-string">&#x27;1&#x27;</span>:
+                dfs(nr, nc)
+
+    <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(rows):
+        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(cols):
+            <span class="hljs-keyword">if</span> grid[r][c] == <span class="hljs-string">&#x27;1&#x27;</span>:
+                count += <span class="hljs-number">1</span>
+                dfs(r, c)
+    <span class="hljs-keyword">return</span> count</code></pre></div>
+<h2 id="bfs广度优先搜索">BFS（广度优先搜索）</h2>
+<h3 id="核心思想-1">核心思想</h3>
+<p><strong>“逐层扩散，像水波纹一样。”</strong> BFS
+从起点出发，先访问距离为 1 的节点，再访问距离为 2
+的节点，依此类推。因为一层一层扩展，<strong>BFS
+天然能求最短路径</strong>（边权相等时）。用
+<strong>队列（deque）</strong> 实现。</p>
+<h3 id="bfs-模板">BFS 模板</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+
+visited = [<span class="hljs-literal">False</span>] * n
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">bfs</span>(<span class="hljs-params">start</span>):
+    q = deque([start])
+    visited[start] = <span class="hljs-literal">True</span>
+    <span class="hljs-keyword">while</span> q:
+        u = q.popleft()
+        <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> adj[u]:
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[v]:
+                visited[v] = <span class="hljs-literal">True</span>
+                q.append(v)
+
+<span class="hljs-comment"># 处理不连通图</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[i]:
+        bfs(i)</code></pre></div>
+<h3 id="分层-bfs-模板">分层 BFS 模板</h3>
+<p>很多题目需要知道”当前是第几层”（比如求最短距离），用分层写法：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">bfs_level</span>(<span class="hljs-params">start, graph</span>):
+    queue = deque([start])
+    visited = &#123;start&#125;
+    level = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> queue:
+        size = <span class="hljs-built_in">len</span>(queue)               <span class="hljs-comment"># 当前层的节点数</span>
+        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(size):
+            node = queue.popleft()
+            <span class="hljs-keyword">for</span> neighbor <span class="hljs-keyword">in</span> graph[node]:
+                <span class="hljs-keyword">if</span> neighbor <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+        level += <span class="hljs-number">1</span>                       <span class="hljs-comment"># 一层处理完，层数 +1</span>
+    <span class="hljs-keyword">return</span> level</code></pre></div>
+<h3 id="多源-bfs-lc-994-腐烂的橘子">多源 BFS — LC 994 腐烂的橘子</h3>
+<p>https://leetcode.cn/problems/rotting-oranges/</p>
+<blockquote>
+<p>网格中 <code>0</code> 是空格，<code>1</code>
+是新鲜橘子，<code>2</code>
+是腐烂橘子。每分钟腐烂橘子会让上下左右的新鲜橘子腐烂。求所有橘子腐烂的最短时间，不可能则返回
+-1。</p>
+</blockquote>
+<p><strong>思路</strong>：把所有腐烂橘子同时作为 BFS 起点（多源
+BFS），一层层向外扩散，每扩一层就是 1 分钟。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">orangesRotting</span>(<span class="hljs-params">grid</span>):
+    rows, cols = <span class="hljs-built_in">len</span>(grid), <span class="hljs-built_in">len</span>(grid[<span class="hljs-number">0</span>])
+    queue = deque()
+    fresh = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 第一步：找出所有腐烂橘子和新鲜橘子数</span>
+    <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(rows):
+        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(cols):
+            <span class="hljs-keyword">if</span> grid[r][c] == <span class="hljs-number">2</span>:
+                queue.append((r, c))   <span class="hljs-comment"># 所有腐烂橘子入队</span>
+            <span class="hljs-keyword">elif</span> grid[r][c] == <span class="hljs-number">1</span>:
+                fresh += <span class="hljs-number">1</span>
+    <span class="hljs-keyword">if</span> fresh == <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+
+    directions = [(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">0</span>), (-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>)]
+    minutes = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 第二步：BFS 逐层扩散</span>
+    <span class="hljs-keyword">while</span> queue:
+        size = <span class="hljs-built_in">len</span>(queue)
+        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(size):
+            r, c = queue.popleft()
+            <span class="hljs-keyword">for</span> dr, dc <span class="hljs-keyword">in</span> directions:
+                nr, nc = r + dr, c + dc
+                <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nr &lt; rows <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= nc &lt; cols <span class="hljs-keyword">and</span> grid[nr][nc] == <span class="hljs-number">1</span>:
+                    grid[nr][nc] = <span class="hljs-number">2</span>       <span class="hljs-comment"># 新鲜 → 腐烂</span>
+                    fresh -= <span class="hljs-number">1</span>
+                    queue.append((nr, nc))
+        minutes += <span class="hljs-number">1</span>
+    <span class="hljs-comment"># 最后一轮多加了 1，需要减掉</span>
+    <span class="hljs-keyword">return</span> minutes - <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> fresh == <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> -<span class="hljs-number">1</span></code></pre></div>
+<h2 id="dfs-vs-bfs-对比">DFS vs BFS 对比</h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>DFS</th>
+<th>BFS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据结构</td>
+<td>栈 / 递归</td>
+<td>队列（deque）</td>
+</tr>
+<tr>
+<td>遍历顺序</td>
+<td>先深后广</td>
+<td>先广后深（逐层）</td>
+</tr>
+<tr>
+<td>空间复杂度</td>
+<td>O(h)，h 为深度</td>
+<td>O(w)，w 为最大宽度</td>
+</tr>
+<tr>
+<td>能否求最短路径</td>
+<td>不能（需额外处理）</td>
+<td>天然最短路径</td>
+</tr>
+<tr>
+<td>典型场景</td>
+<td>路径搜索、连通分量、回溯</td>
+<td>最短路径、层序遍历</td>
+</tr>
+</tbody>
+</table>
+<p><strong>选择建议</strong>： -
+求<strong>连通性、所有路径、是否可达</strong> → DFS（代码简洁） -
+求<strong>最短距离、最少步数</strong> → BFS（天然最短） -
+网格/树的层序遍历 → BFS</p>
+<hr />
+<h2 id="拓扑排序">拓扑排序</h2>
+<p>拓扑排序针对<strong>有向无环图（DAG）</strong>，把所有节点排成一条线，使得每条边的起点都排在终点前面。典型场景是<strong>任务调度、课程依赖</strong>。核心概念是<strong>入度</strong>（指向该节点的边数），入度为
+0 的节点没有前置依赖，可以最先处理。</p>
+<h3 id="lc-207-课程表">LC 207 课程表</h3>
+<blockquote>
+<p>共 <code>numCourses</code>
+门课，<code>prerequisites[i] = [a, b]</code> 表示学 a 之前要先学
+b。判断是否能完成所有课程（即图中是否有环）。</p>
+</blockquote>
+<p><strong>思路</strong>：BFS 拓扑排序（Kahn
+算法）。维护入度表，每次取入度为 0 的节点，处理后将其邻居入度
+-1。最终处理节点数等于总数则无环。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque, defaultdict
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">canFinish</span>(<span class="hljs-params">numCourses, prerequisites</span>):
+    <span class="hljs-comment"># 建图 + 统计入度</span>
+    graph = defaultdict(<span class="hljs-built_in">list</span>)
+    in_degree = [<span class="hljs-number">0</span>] * numCourses
+    <span class="hljs-keyword">for</span> course, pre <span class="hljs-keyword">in</span> prerequisites:
+        graph[pre].append(course)   <span class="hljs-comment"># pre → course</span>
+        in_degree[course] += <span class="hljs-number">1</span>
+    <span class="hljs-comment"># 入度为 0 的节点入队</span>
+    queue = deque()
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(numCourses):
+        <span class="hljs-keyword">if</span> in_degree[i] == <span class="hljs-number">0</span>:
+            queue.append(i)
+    count = <span class="hljs-number">0</span>   <span class="hljs-comment"># 已处理的课程数</span>
+    <span class="hljs-keyword">while</span> queue:
+        node = queue.popleft()
+        count += <span class="hljs-number">1</span>
+        <span class="hljs-keyword">for</span> neighbor <span class="hljs-keyword">in</span> graph[node]:
+            in_degree[neighbor] -= <span class="hljs-number">1</span>        <span class="hljs-comment"># 删掉这条边</span>
+            <span class="hljs-keyword">if</span> in_degree[neighbor] == <span class="hljs-number">0</span>:    <span class="hljs-comment"># 入度变 0，可以学了</span>
+                queue.append(neighbor)
+    <span class="hljs-keyword">return</span> count == numCourses   <span class="hljs-comment"># 全部处理完说明无环</span></code></pre></div>
+<h2 id="单源最短路径算法">单源最短路径算法</h2>
+<h3 id="dijkstra">Dijkstra</h3>
+<p><strong>Dijkstra
+算法</strong>用于解决<strong>单源最短路径</strong>问题：在一个<strong>边权非负</strong>的有向或无向图中，给定一个起点，计算该起点到<strong>所有其他节点</strong>的最短距离。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">dijkstra</span>(<span class="hljs-params">start, n, adj</span>):
+    dist = [<span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)] * n
+    dist[start] = <span class="hljs-number">0</span>
+    pq = [(<span class="hljs-number">0</span>, start)]   <span class="hljs-comment"># (当前距离, 节点)</span>
+    <span class="hljs-keyword">while</span> pq:
+        d, u = heapq.headidppop(pq)
+        <span class="hljs-keyword">if</span> d &gt; dist[u]:
+            <span class="hljs-keyword">continue</span>    <span class="hljs-comment"># 忽略过时的记录</span>
+        <span class="hljs-keyword">for</span> v, w <span class="hljs-keyword">in</span> adj[u]:
+            nd = d + w
+            <span class="hljs-keyword">if</span> nd &lt; dist[v]:
+                dist[v] = nd
+                heapq.heappush(pq, (nd, v))
+    <span class="hljs-keyword">return</span> dist</code></pre></div>
+<h3 id="bellman-ford-算法">Bellman-Ford 算法</h3>
+<p><strong>Bellman-Ford</strong> 是另一种单源最短路径算法，与 Dijkstra
+的最大区别在于：<strong>它可以处理负权边</strong>，并且能够检测图中是否存在<strong>负权环</strong>（即环的总权重为负数，导致最短路径无下界）。</p>
+<h3 id="核心思想-2">核心思想</h3>
+<ul>
+<li><p>对每条边进行 <strong>V-1
+次松弛操作</strong>（<code>V</code> 是顶点数）。</p></li>
+<li><p>松弛：如果 <code>dist[u] + w &lt; dist[v]</code>，则更新 <code>dist[v]</code>。</p></li>
+<li><p>因为最短路径最多包含 <code>V-1</code> 条边（无环），所以 V-1
+轮后所有最短距离必然确定。</p></li>
+<li><p>再做一轮：如果还能松弛，说明存在负权环。</p></li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">bellman_ford</span>(<span class="hljs-params">n, edges, start</span>):
+    <span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">    参数:</span>
+<span class="hljs-string">        n: 节点数量 (节点编号 0 ~ n-1)</span>
+<span class="hljs-string">        edges: 边列表，每条边为 (u, v, w)，表示从 u 到 v 权重为 w（有向图）</span>
+<span class="hljs-string">        start: 源点编号</span>
+<span class="hljs-string">    返回:</span>
+<span class="hljs-string">        dist: 列表，dist[i] 表示 start 到 i 的最短距离</span>
+<span class="hljs-string">        若存在负权环，则返回 None</span>
+<span class="hljs-string">    &quot;&quot;&quot;</span>
+    INF = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)
+    dist = [INF] * n
+    dist[start] = <span class="hljs-number">0</span>
+
+    <span class="hljs-comment"># 第 1 步：进行 n-1 轮松弛</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>):
+        updated = <span class="hljs-literal">False</span>
+        <span class="hljs-keyword">for</span> u, v, w <span class="hljs-keyword">in</span> edges:
+            <span class="hljs-keyword">if</span> dist[u] != INF <span class="hljs-keyword">and</span> dist[u] + w &lt; dist[v]:
+                dist[v] = dist[u] + w
+                updated = <span class="hljs-literal">True</span>
+        <span class="hljs-comment"># 如果没有更新，可以提前结束（优化）</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> updated:
+            <span class="hljs-keyword">break</span>
+
+    <span class="hljs-comment"># 第 2 步：检测负权环（第 n 轮还能松弛则存在负环）</span>
+    <span class="hljs-keyword">for</span> u, v, w <span class="hljs-keyword">in</span> edges:
+        <span class="hljs-keyword">if</span> dist[u] != INF <span class="hljs-keyword">and</span> dist[u] + w &lt; dist[v]:
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>   <span class="hljs-comment"># 存在负权环，无法得到最短路径</span>
+
+    <span class="hljs-keyword">return</span> dist</code></pre></div>
+<h2 id="floyd-warshall-算法">Floyd-Warshall 算法</h2>
+<h3 id="算法作用">1. 算法作用</h3>
+<ul>
+<li><p>计算<strong>所有节点对之间的最短路径</strong>。</p></li>
+<li><p>可处理<strong>负权边</strong>（但不能有负权环）。</p></li>
+<li><p>适用于<strong>稠密图</strong>，节点数通常 ≤ 500。</p></li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">floyd_warshall</span>(<span class="hljs-params">n, edges, directed=<span class="hljs-literal">False</span></span>):
+    <span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">    n: 节点数 (0 ~ n-1)</span>
+<span class="hljs-string">    edges: 列表 [(u, v, w), ...] 边和权值</span>
+<span class="hljs-string">    directed: 是否为有向图，默认无向</span>
+<span class="hljs-string">    返回 dist 矩阵 (n x n)，不相邻时距离为 INF</span>
+<span class="hljs-string">    &quot;&quot;&quot;</span>
+    INF = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)
+    <span class="hljs-comment"># 初始化距离矩阵</span>
+    dist = [[INF] * n <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+        dist[i][i] = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> u, v, w <span class="hljs-keyword">in</span> edges:
+        dist[u][v] = <span class="hljs-built_in">min</span>(dist[u][v], w)
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> directed:
+            dist[v][u] = <span class="hljs-built_in">min</span>(dist[v][u], w)
+    <span class="hljs-comment"># Floyd-Warshall 核心三重循环</span>
+    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+            <span class="hljs-keyword">if</span> dist[i][k] == INF:   <span class="hljs-comment"># 小优化，跳过不可达</span>
+                <span class="hljs-keyword">continue</span>
+            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+                <span class="hljs-keyword">if</span> dist[i][k] + dist[k][j] &lt; dist[i][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
+    <span class="hljs-keyword">return</span> dist</code></pre></div>
+<h2 id="kruskal最小生成树">Kruskal（最小生成树）</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">kruskal</span>(<span class="hljs-params">edges, n</span>):
+    edges.sort()
+    parent = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(n))
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">find</span>(<span class="hljs-params">x</span>):
+        <span class="hljs-keyword">if</span> parent[x] != x:
+            parent[x] = find(parent[x])
+        <span class="hljs-keyword">return</span> parent[x]
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">union</span>(<span class="hljs-params">x, y</span>):
+        px, py = find(x), find(y)
+        <span class="hljs-keyword">if</span> px != py:
+            parent[px] = py
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(w <span class="hljs-keyword">for</span> w, u, v <span class="hljs-keyword">in</span> edges <span class="hljs-keyword">if</span> union(u, v))</code></pre></div>
+<hr />
+<h2 id="经典题目">经典题目</h2>
+<h3 id="入门">入门</h3>
+<table>
+<thead>
+<tr>
+<th>题号</th>
+<th>题目</th>
+<th>关键点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LC 200</td>
+<td>岛屿数量</td>
+<td>网格 DFS/BFS 入门</td>
+</tr>
+<tr>
+<td>LC 733</td>
+<td>图像渲染（Flood Fill）</td>
+<td>基础 DFS 染色</td>
+</tr>
+<tr>
+<td>LC 617</td>
+<td>合并二叉树</td>
+<td>树的 DFS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="进阶">进阶</h3>
+<table>
+<thead>
+<tr>
+<th>题号</th>
+<th>题目</th>
+<th>关键点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LC 994</td>
+<td>腐烂的橘子</td>
+<td>多源 BFS</td>
+</tr>
+<tr>
+<td>LC 695</td>
+<td>岛屿的最大面积</td>
+<td>DFS + 计数</td>
+</tr>
+<tr>
+<td>LC 542</td>
+<td>01 矩阵</td>
+<td>多源 BFS 求最短距离</td>
+</tr>
+<tr>
+<td>LC 207</td>
+<td>课程表</td>
+<td>拓扑排序判环</td>
+</tr>
+</tbody>
+</table>
+<h3 id="挑战">挑战</h3>
+<table>
+<thead>
+<tr>
+<th>题号</th>
+<th>题目</th>
+<th>关键点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LC 127</td>
+<td>单词接龙</td>
+<td>BFS 最短变换路径</td>
+</tr>
+<tr>
+<td>LC 210</td>
+<td>课程表 II</td>
+<td>拓扑排序输出顺序</td>
+</tr>
+<tr>
+<td>LC 417</td>
+<td>太平洋大西洋水流问题</td>
+<td>反向 DFS，两次搜索求交集</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="小结">小结</h2>
+<ol type="1">
+<li><strong>DFS 和 BFS
+是图搜索的两大基石</strong>，大量题目都是它们的变体。</li>
+<li>DFS 用递归或栈，擅长路径搜索和连通性判断。</li>
+<li>BFS 用队列，擅长最短路径和层序遍历；多源 BFS
+处理”同时出发”的场景。</li>
+<li>网格问题本质就是图问题，四方向移动是固定套路。</li>
+<li>拓扑排序用 BFS（Kahn 算法）处理有向无环图的依赖关系。</li>
+<li>刷题时先判断是 DFS 还是 BFS
+场景，再套模板，最后根据题意调整细节。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>01_图论</div>
+      <div>https://mingsm17518.github.io/2026/09/14/算法学习/02_核心算法/01_图论/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ming</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年9月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%201/" title="02_动态规划 1">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">02_动态规划 1</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
+                        <span class="hidden-mobile">数据结构</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
