@@ -233,6 +233,80 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2026/05/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/06_Cycle%20Detection%20in%20Directed%20Graph%20%E6%9C%89%E5%90%91%E5%9B%BE%E7%8E%AF%E6%A3%80%E6%B5%8B/" target="_self">
+          06_Cycle Detection in Directed Graph 有向图环检测
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/06_Cycle%20Detection%20in%20Directed%20Graph%20%E6%9C%89%E5%90%91%E5%9B%BE%E7%8E%AF%E6%A3%80%E6%B5%8B/" target="_self">
+        <div>
+          有向图中的环检测 在有向图中检测是否存在环（Cycle）是一个经典问题。环是指从某个节点出发，沿着有向边最终能回到该节点的路径。  方法一：DFS + 三色标记 算法思想 使用三种颜色标记节点的状态： - 白色 (0)：未访问 - 灰色 (1)：正在访问（在当前递归栈中） - 黑色 (2)：已访问完成（不在递归栈中） 如果在 DFS 过程中遇到灰色节点，说明找到了环。 为什么有效？  灰色节点表示
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-05-07 23:51" pubdate>
+              2026-05-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06-Graphs/" class="category-chain-item">06_Graphs</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DFS/">#DFS</a>
+            
+              <a href="/tags/%E5%9B%BE/">#图</a>
+            
+              <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">#拓扑排序</a>
+            
+              <a href="/tags/%E7%8E%AF%E6%A3%80%E6%B5%8B/">#环检测</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/05_Disjoint%20Set%20Union%20%E5%B9%B6%E6%9F%A5%E9%9B%86/" target="_self">
           05_Disjoint Set Union 并查集
         </a>
@@ -287,9 +361,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/DSU/">#DSU</a>
-            
               <a href="/tags/%E5%9B%BE/">#图</a>
+            
+              <a href="/tags/DSU/">#DSU</a>
             
               <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">#并查集</a>
             
@@ -934,87 +1008,6 @@
               <a href="/tags/%E6%A8%A1%E9%80%86%E5%85%83/">#模逆元</a>
             
               <a href="/tags/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86/">#费马小定理</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/05_Priority%20Queues%20%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" target="_self">
-          05_Priority Queues 优先队列
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_Silver/02_Sorting%20&amp;%20Searching/05_Priority%20Queues%20%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" target="_self">
-        <div>
-          Priority Queues 优先队列 简介 优先队列（Priority Queue 或 Heap）支持以下操作： - 插入元素 - 删除最高优先级元素 - 获取最高优先级元素 以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现 注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-30 17:02" pubdate>
-              2026-04-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/" class="category-chain-item">04_Silver</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/02-Sorting-Searching/" class="category-chain-item">02_Sorting &amp; Searching</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Heap/">#Heap</a>
-            
-              <a href="/tags/Priority-Queue/">#Priority Queue</a>
-            
-              <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/">#优先队列</a>
-            
-              <a href="/tags/%E5%A0%86/">#堆</a>
             
           </div>
         
