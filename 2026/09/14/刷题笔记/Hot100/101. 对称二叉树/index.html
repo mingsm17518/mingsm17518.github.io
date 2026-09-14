@@ -19,17 +19,17 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 101. 对称二叉树（简单） 给你一个二叉树的根节点 root，检查它是否轴对称。 示例 1：  输入：root &#x3D; [1,2,2,3,4,4,3] 输出：true 示例 2：  输入：root &#x3D; [1,2,2,null,3,null,3] 输出：false 提示：  树中节点数目在范围 [1, 1000] 内 -100 &lt;&#x3D; Node.val &lt;&#x3D; 100  思路 「轴对称」">
+    <meta name="description" content="题目 101. 对称二叉树（简单） 给你一个二叉树的根节点 root，检查它是否轴对称。 示例 1：  输入： [1,2,2,3,4,4,3] 输出： true 示例 2：  输入： [1,2,2,null,3,null,3] 输出： false 提示：  树中节点数目在范围 [1, 1000] 内 -100 &lt;&#x3D; Node.val &lt;&#x3D; 100  思路 「轴对称」转化为递归比较镜像子">
 <meta property="og:type" content="article">
 <meta property="og:title" content="101. 对称二叉树">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/101.%20%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目 101. 对称二叉树（简单） 给你一个二叉树的根节点 root，检查它是否轴对称。 示例 1：  输入：root &#x3D; [1,2,2,3,4,4,3] 输出：true 示例 2：  输入：root &#x3D; [1,2,2,null,3,null,3] 输出：false 提示：  树中节点数目在范围 [1, 1000] 内 -100 &lt;&#x3D; Node.val &lt;&#x3D; 100  思路 「轴对称」">
+<meta property="og:description" content="题目 101. 对称二叉树（简单） 给你一个二叉树的根节点 root，检查它是否轴对称。 示例 1：  输入： [1,2,2,3,4,4,3] 输出： true 示例 2：  输入： [1,2,2,null,3,null,3] 输出： false 提示：  树中节点数目在范围 [1, 1000] 内 -100 &lt;&#x3D; Node.val &lt;&#x3D; 100  思路 「轴对称」转化为递归比较镜像子">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.leetcode.cn/1698026966-JDYPDU-image.png">
 <meta property="og:image" content="https://pic.leetcode.cn/1698027008-nPFLbM-image.png">
 <meta property="article:published_time" content="2026-09-14T01:37:37.703Z">
-<meta property="article:modified_time" content="2026-09-14T01:37:37.704Z">
+<meta property="article:modified_time" content="2026-09-14T01:43:08.413Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="DFS">
 <meta property="article:tag" content="二叉树">
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          209 字
+          207 字
         
       </span>
     
@@ -296,7 +296,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-14T09:37:37+08:00
+                    本文最后更新于 2026-09-14T09:43:08+08:00
                   
                   
 
@@ -312,12 +312,16 @@
 <p>给你一个二叉树的根节点 <code>root</code>，检查它是否轴对称。</p>
 <p><strong>示例 1：</strong></p>
 <p><img src="https://pic.leetcode.cn/1698026966-JDYPDU-image.png" srcset="/img/loading.gif" lazyload /></p>
-<div class="code-wrapper"><pre><code class="hljs xquery">输入<span class="hljs-built_in">：root</span> = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>]
-输出<span class="hljs-built_in">：true</span></code></pre></div>
+<p>输入：</p>
+<div class="code-wrapper"><pre><code class="hljs accesslog"><span class="hljs-string">[1,2,2,3,4,4,3]</span></code></pre></div>
+<p>输出：</p>
+<div class="code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-literal">true</span></code></pre></div>
 <p><strong>示例 2：</strong></p>
 <p><img src="https://pic.leetcode.cn/1698027008-nPFLbM-image.png" srcset="/img/loading.gif" lazyload /></p>
-<div class="code-wrapper"><pre><code class="hljs actionscript">输入：root = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">3</span>,<span class="hljs-literal">null</span>,<span class="hljs-number">3</span>]
-输出：<span class="hljs-literal">false</span></code></pre></div>
+<p>输入：</p>
+<div class="code-wrapper"><pre><code class="hljs 1c">[<span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span><span class="hljs-literal">null</span><span class="hljs-punctuation">,</span><span class="hljs-number">3</span><span class="hljs-punctuation">,</span><span class="hljs-literal">null</span><span class="hljs-punctuation">,</span><span class="hljs-number">3</span>]</code></pre></div>
+<p>输出：</p>
+<div class="code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-literal">false</span></code></pre></div>
 <p><strong>提示：</strong></p>
 <ul>
 <li>树中节点数目在范围 <code>[1, 1000]</code> 内</li>
