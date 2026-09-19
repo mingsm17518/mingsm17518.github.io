@@ -27,7 +27,7 @@
 <meta property="og:description" content="图论 邻接表建图 # 邻接表 adj &#x3D; [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历&#x2F;搜索 ## DFS（深度优先搜索） 核心思想 “一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T12:02:08.148Z">
-<meta property="article:modified_time" content="2026-09-19T15:22:10.096Z">
+<meta property="article:modified_time" content="2026-09-19T15:38:54.156Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          2.3k 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          18 分钟
+          20 分钟
         
       </span>
     
@@ -290,7 +290,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-19T23:22:10+08:00
+                    本文最后更新于 2026-09-19T23:38:54+08:00
                   
                   
 
@@ -523,12 +523,14 @@ b。判断是否能完成所有课程（即图中是否有环）。</p>
 <h3 id="dijkstra">Dijkstra</h3>
 <p><strong>Dijkstra
 算法</strong>用于解决<strong>单源最短路径</strong>问题：在一个<strong>边权非负</strong>的有向或无向图中，给定一个起点，计算该起点到<strong>所有其他节点</strong>的最短距离。</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">dijkstra</span>(<span class="hljs-params">start, n, adj</span>):
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">dijkstra</span>(<span class="hljs-params">start, n, adj</span>):
     dist = [<span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)] * n
     dist[start] = <span class="hljs-number">0</span>
     pq = [(<span class="hljs-number">0</span>, start)]   <span class="hljs-comment"># (当前距离, 节点)</span>
     <span class="hljs-keyword">while</span> pq:
-        d, u = heapq.headidppop(pq)
+        d, u = heapq.heappop(pq)
         <span class="hljs-keyword">if</span> d &gt; dist[u]:
             <span class="hljs-keyword">continue</span>    <span class="hljs-comment"># 忽略过时的记录</span>
         <span class="hljs-keyword">for</span> v, w <span class="hljs-keyword">in</span> adj[u]:
@@ -630,6 +632,55 @@ b。判断是否能完成所有课程（即图中是否有环）。</p>
         <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
 
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(w <span class="hljs-keyword">for</span> w, u, v <span class="hljs-keyword">in</span> edges <span class="hljs-keyword">if</span> union(u, v))</code></pre></div>
+<hr />
+<h2 id="二分图检测染色法">二分图检测（染色法）</h2>
+<p>BFS
+双色染色：相邻节点颜色必须相反；若冲突则不是二分图。下面这版同时统计「改成合法二分图的最少修改数」（每
+个连通块内两种染色方向取较小者）：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">is_bipartite</span>(<span class="hljs-params">n, adj, node</span>):
+    <span class="hljs-string">&quot;&quot;&quot;检测图是否为二分图，返回 (is_bipartite, min_changes)&quot;&quot;&quot;</span>
+    color = [-<span class="hljs-number">1</span>] * n  <span class="hljs-comment"># -1: 未染色, 0/1: 颜色</span>
+    ans = <span class="hljs-number">0</span>
+
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+        <span class="hljs-keyword">if</span> color[i] != -<span class="hljs-number">1</span>:
+            <span class="hljs-keyword">continue</span>
+        q = deque([i])
+        color[i] = <span class="hljs-number">0</span>
+        res = [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+
+        <span class="hljs-keyword">while</span> q:
+            u = q.popleft()
+            <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> adj[u]:
+                <span class="hljs-keyword">if</span> color[v] == -<span class="hljs-number">1</span>:
+                    color[v] = color[u] ^ <span class="hljs-number">1</span>
+                    q.append(v)
+                <span class="hljs-keyword">elif</span> color[v] == color[u]:
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>, <span class="hljs-number">0</span>
+            res[<span class="hljs-number">0</span>] += color[u] ^ node[u]
+            res[<span class="hljs-number">1</span>] += (color[u] ^ <span class="hljs-number">1</span>) ^ node[u]
+
+        ans += <span class="hljs-built_in">min</span>(res)
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>, ans</code></pre></div>
+<h2 id="拓扑排序返回序列版">拓扑排序（返回序列版）</h2>
+<p>Kahn
+算法的另一常见形态：不只要判环，还要输出拓扑序本身（有环时返回空列表）：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">topological_sort</span>():
+    in_degree = [<span class="hljs-number">0</span>] * n
+    <span class="hljs-keyword">for</span> u <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+        <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> adj[u]:
+            in_degree[v] += <span class="hljs-number">1</span>
+    q = deque([i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n) <span class="hljs-keyword">if</span> in_degree[i] == <span class="hljs-number">0</span>])
+    result = []
+    <span class="hljs-keyword">while</span> q:
+        u = q.popleft()
+        result.append(u)
+        <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> adj[u]:
+            in_degree[v] -= <span class="hljs-number">1</span>
+            <span class="hljs-keyword">if</span> in_degree[v] == <span class="hljs-number">0</span>:
+                q.append(v)
+    <span class="hljs-keyword">return</span> result <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(result) == n <span class="hljs-keyword">else</span> []  <span class="hljs-comment"># 有环返回空</span></code></pre></div>
 <hr />
 <h2 id="经典题目">经典题目</h2>
 <h3 id="入门">入门</h3>
@@ -826,9 +877,9 @@ b。判断是否能完成所有课程（即图中是否有环）。</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/08_%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="08_并查集">
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="09_动态规划">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">08_并查集</span>
+                        <span class="hidden-mobile">09_动态规划</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

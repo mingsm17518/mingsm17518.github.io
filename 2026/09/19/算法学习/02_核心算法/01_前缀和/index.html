@@ -27,7 +27,7 @@
 <meta property="og:description" content="前缀和 用途：快速求区间和，查询时间 O(1)，预处理 O(n) 原理：prefix[i] 表示前 i 个元素的和，区间 [l, r] 的和 &#x3D; prefix[r] - prefix[l-1] # 一维前缀和 prefix &#x3D; [0] * (n + 1) for i in range(n):   prefix[i + 1] &#x3D; prefix[i] + a[i]  # a 是 0-indexed">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T15:30:15.884Z">
-<meta property="article:modified_time" content="2026-09-19T15:30:15.886Z">
+<meta property="article:modified_time" content="2026-09-19T15:40:25.833Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          167 字
+          2k 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          2 分钟
+          17 分钟
         
       </span>
     
@@ -290,7 +290,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-19T23:30:15+08:00
+                    本文最后更新于 2026-09-19T23:40:25+08:00
                   
                   
 
@@ -320,6 +320,357 @@ prefix = [[<span class="hljs-number">0</span>] * (m+<span class="hljs-number">1<
         prefix[i][j] = grid[i-<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>] + prefix[i-<span class="hljs-number">1</span>][j] + prefix[i][j-<span class="hljs-number">1</span>] - prefix[i-<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>]</code></pre></div>
 <p><strong>Python 实现</strong>：一维前缀和可直接用
 <code>itertools.accumulate</code>，前缀最值、前缀积、后缀数组也是一行——用法详见《01_数据结构/07_Python工具函数》。</p>
+<hr />
+<h1 id="前缀和例题集原-silver-笔记">前缀和例题集（原 Silver 笔记）</h1>
+<h2 id="什么是前缀和">什么是前缀和？</h2>
+<p>前缀和（Prefix
+Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。</p>
+<p>对于数组 <code>a[1], a[2], ..., a[n]</code>，定义前缀和数组
+<code>p</code>：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mn>2</mn><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>+</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">p[i] = a[1] + a[2] + ... + a[i]</annotation></semantics></math></p>
+<p>其中 <code>p[0] = 0</code>。</p>
+<h3 id="为什么需要前缀和">为什么需要前缀和？</h3>
+<p>在没有前缀和的情况下，计算数组区间 <code>[l, r]</code> 的和需要
+O(r-l+1) 的时间。但使用前缀和后，区间和可以在 <strong>O(1)</strong>
+时间内得到：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>u</mi><mi>m</mi><mo stretchy="false" form="prefix">(</mo><mi>l</mi><mo>,</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>r</mi><mo stretchy="false" form="postfix">]</mo><mo>−</mo><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">sum(l, r) = p[r] - p[l-1]</annotation></semantics></math></p>
+<hr />
+<h2 id="前缀和的基本实现">前缀和的基本实现</h2>
+<h3 id="构建前缀和数组">构建前缀和数组</h3>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">// 构建前缀和数组</span>
+<span class="hljs-function">vector&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt; <span class="hljs-title">prefix</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;
+prefix[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;
+    prefix[i] = prefix[i<span class="hljs-number">-1</span>] + a[i];
+&#125;</code></pre></div>
+<h3 id="o1-区间求和">O(1) 区间求和</h3>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">// 计算区间 [l, r] 的和（1-indexed）</span>
+<span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;
+    <span class="hljs-keyword">return</span> prefix[r] - prefix[l<span class="hljs-number">-1</span>];
+&#125;</code></pre></div>
+<h3 id="python实现">python实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 前缀和数组</span>
+prefix = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+  prefix[i + <span class="hljs-number">1</span>] = prefix[i] + a[i]  <span class="hljs-comment"># a 是 0-indexed</span>
+
+<span class="hljs-comment"># 查询区间 [l, r]（1-indexed）</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">query</span>(<span class="hljs-params">l, r</span>):
+  <span class="hljs-keyword">return</span> prefix[r] - prefix[l - <span class="hljs-number">1</span>]</code></pre></div>
+<hr />
+<h2 id="经典例题">经典例题</h2>
+<h3 id="例题1-breed-counting-统计区间内各品种数量">例题1： Breed
+Counting 统计区间内各品种数量</h3>
+<p><strong>题目来源</strong>: <a
+target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=572">USACO
+- Breed Counting</a></p>
+<p><strong>题目描述</strong>: 给定 N 头牛的品种（1=Holsteins,
+2=Guernseys, 3=Jerseys），有 Q 次查询，每次查询区间 [a, b]
+内各品种的牛数量。</p>
+<p><strong>解题思路</strong>: 多维前缀和</p>
+<ul>
+<li>维护三个前缀和数组，分别统计每种品种的前缀数量</li>
+<li>对于每次查询，直接用前缀和相减得到区间内各品种数量</li>
+</ul>
+<p><strong>代码实现</strong>:</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
+
+    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;bcount.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>, stdin);
+    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;bcount.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, stdout);
+
+    <span class="hljs-type">int</span> n, q;
+    cin &gt;&gt; n &gt;&gt; q;
+
+    <span class="hljs-comment">// 三个前缀和数组</span>
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">pref1</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span>, <span class="hljs-title">pref2</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span>, <span class="hljs-title">pref3</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;
+        <span class="hljs-comment">// 先复制前一个位置的值</span>
+        pref1[i] = pref1[i - <span class="hljs-number">1</span>];
+        pref2[i] = pref2[i - <span class="hljs-number">1</span>];
+        pref3[i] = pref3[i - <span class="hljs-number">1</span>];
+
+        <span class="hljs-type">int</span> x;
+        cin &gt;&gt; x;
+        <span class="hljs-keyword">if</span> (x == <span class="hljs-number">1</span>) pref1[i]++;      <span class="hljs-comment">// 品种1：Holsteins</span>
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (x == <span class="hljs-number">2</span>) pref2[i]++; <span class="hljs-comment">// 品种2：Guernseys</span>
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (x == <span class="hljs-number">3</span>) pref3[i]++; <span class="hljs-comment">// 品种3：Jerseys</span>
+    &#125;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; q; i++) &#123;
+        <span class="hljs-type">int</span> l, r;
+        cin &gt;&gt; l &gt;&gt; r;
+        <span class="hljs-comment">// 区间 [l, r] 的各品种数量 = 前缀差</span>
+        cout &lt;&lt; pref1[r] - pref1[l - <span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;
+        cout &lt;&lt; pref2[r] - pref2[l - <span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;
+        cout &lt;&lt; pref3[r] - pref3[l - <span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    &#125;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<p><strong>时间复杂度</strong>: - 预处理：O(n) - 单次查询：O(1) -
+总时间：O(n + q)</p>
+<h3
+id="例题2子数组和为7的倍数求最长长度">例题2：子数组和为7的倍数（求最长长度）</h3>
+<p><strong>题目来源</strong>: <a
+target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=595">USACO
+- Div7</a></p>
+<p><strong>题目描述</strong>: 给定 n 个数，求和为 7
+的倍数的子数组的最长长度。</p>
+<p><strong>核心原理</strong>: 同余定理</p>
+<ul>
+<li>如果 <code>prefix[i] % 7 == prefix[j] % 7</code>，则子数组
+<code>[i+1, j]</code> 的和为 7 的倍数</li>
+<li>因此，我们只需要找到相同余数之间的最大距离</li>
+</ul>
+<p><strong>解题思路</strong>:</p>
+<ol type="1">
+<li>记录每个余数首次出现的下标</li>
+<li>当同一余数再次出现时，计算当前下标与首次下标的差值</li>
+<li>更新最大长度</li>
+</ol>
+<p><strong>代码实现</strong>:</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
+
+    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;div7.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>, stdin);
+    <span class="hljs-built_in">freopen</span>(<span class="hljs-string">&quot;div7.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, stdout);
+
+    <span class="hljs-type">int</span> n;
+    cin &gt;&gt; n;
+
+    <span class="hljs-comment">// 记录每个余数首次出现的下标，-1表示未出现</span>
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">first_idx</span><span class="hljs-params">(<span class="hljs-number">7</span>, <span class="hljs-number">-1</span>)</span></span>;
+    first_idx[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;  <span class="hljs-comment">// 前缀和为0时，下标为0</span>
+
+    <span class="hljs-type">int</span> current_sum = <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> max_length = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;
+        <span class="hljs-type">int</span> x;
+        cin &gt;&gt; x;
+        current_sum = (current_sum + x) % <span class="hljs-number">7</span>;
+
+        <span class="hljs-keyword">if</span> (first_idx[current_sum] == <span class="hljs-number">-1</span>) &#123;
+            <span class="hljs-comment">// 该余数首次出现，记录下标</span>
+            first_idx[current_sum] = i;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-comment">// 该余数之前出现过，计算子数组长度</span>
+            max_length = <span class="hljs-built_in">max</span>(max_length, i - first_idx[current_sum]);
+        &#125;
+    &#125;
+
+    cout &lt;&lt; max_length &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<p><strong>时间复杂度</strong>: O(n)</p>
+<hr />
+<h3
+id="例题3子数组和为目标值数组全为正数">例题3：子数组和为目标值（数组全为正数）</h3>
+<p><strong>题目来源</strong>: <a
+target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1660">CSES - Subarray Sum
+I</a></p>
+<p><strong>题目描述</strong>: 给定一个长度为 n
+的数组（元素均为正整数）和目标值 x，求子数组和等于 x 的个数。</p>
+<p><strong>解题思路</strong>:
+由于数组元素全为正数，可以使用<strong>滑动窗口（双指针）</strong>求解。</p>
+<ul>
+<li>当窗口和小于 x 时，右指针右移扩大窗口</li>
+<li>当窗口和等于 x 时，计数加一，然后左指针右移缩小窗口</li>
+<li>当窗口和大于 x 时，左指针右移缩小窗口</li>
+</ul>
+<p><strong>代码实现</strong>:</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
+
+    <span class="hljs-type">int</span> n, x;
+    cin &gt;&gt; n &gt;&gt; x;
+    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">a</span><span class="hljs-params">(n)</span></span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>&amp; num : a) cin &gt;&gt; num;
+
+    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> sum = a[<span class="hljs-number">0</span>];
+    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">while</span> (r &lt; n) &#123;
+        <span class="hljs-keyword">if</span> (sum &lt; x) &#123;
+            <span class="hljs-comment">// 窗口和小于目标，右移扩展</span>
+            r++;
+            <span class="hljs-keyword">if</span> (r &lt; n) sum += a[r];
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sum == x) &#123;
+            <span class="hljs-comment">// 找到一个满足条件的子数组</span>
+            ans++;
+            sum -= a[l];
+            l++;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-comment">// 窗口和大于目标，左移收缩</span>
+            sum -= a[l];
+            l++;
+        &#125;
+    &#125;
+
+    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<p><strong>时间复杂度</strong>: O(n)</p>
+<hr />
+<h3
+id="例题4子数组和为目标值数组含负数">例题4：子数组和为目标值（数组含负数）</h3>
+<p><strong>题目来源</strong>: <a
+target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1661">CSES - Subarray Sum
+II</a></p>
+<p><strong>题目描述</strong>: 给定一个长度为 n
+的数组（可能含负数）和目标值 x，求子数组和等于 x 的个数。</p>
+<p><strong>解题思路</strong>:
+使用<strong>哈希表</strong>记录前缀和出现的次数。</p>
+<ul>
+<li>对于当前位置 i，前缀和为 prefix</li>
+<li>如果之前存在前缀和为 <code>prefix - x</code>
+的位置，则以当前位置结尾的子数组和为 x</li>
+<li>利用组合数学：满足条件的子数组个数等于此前 <code>prefix - x</code>
+出现的次数</li>
+</ul>
+<p><strong>代码实现</strong>:</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
+
+    <span class="hljs-type">int</span> n, target;
+    cin &gt;&gt; n &gt;&gt; target;
+
+    map&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>, <span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt; sums;
+    sums[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;  <span class="hljs-comment">// 空前缀，初始为1</span>
+
+    <span class="hljs-type">long</span> <span class="hljs-type">long</span> prefix_sum = <span class="hljs-number">0</span>;
+    <span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;
+        <span class="hljs-type">int</span> x;
+        cin &gt;&gt; x;
+        prefix_sum += x;
+
+        <span class="hljs-comment">// 累加 prefix_sum - target 出现的次数</span>
+        ans += sums[prefix_sum - target];
+
+        <span class="hljs-comment">// 记录当前前缀和</span>
+        sums[prefix_sum]++;
+    &#125;
+
+    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<p><strong>时间复杂度</strong>: O(n log n) 或 O(n) 使用
+unordered_map</p>
+<hr />
+<h3
+id="例题5子数组和为n的倍数求个数">例题5：子数组和为n的倍数（求个数）</h3>
+<p><strong>题目来源</strong>: <a
+target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1662">CSES - Subarray
+Divisibility</a></p>
+<p><strong>题目描述</strong>: 给定 n 个数，求和能够被 n
+整除的子数组个数。</p>
+<p><strong>核心原理</strong>: 同余组合</p>
+<ul>
+<li>如果 <code>prefix[i] % n == prefix[j] % n</code>，则子数组
+<code>[i+1, j]</code> 的和能被 n 整除</li>
+<li>统计每个余数出现的次数 cnt，该余数贡献的子数组个数为
+<code>C(cnt, 2) = cnt * (cnt - 1) / 2</code></li>
+</ul>
+<p><strong>代码实现</strong>:</p>
+<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);
+    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-literal">nullptr</span>);
+
+    <span class="hljs-type">int</span> n;
+    cin &gt;&gt; n;
+
+    <span class="hljs-function">vector&lt;<span class="hljs-type">long</span> <span class="hljs-type">long</span>&gt; <span class="hljs-title">cnt</span><span class="hljs-params">(n, <span class="hljs-number">0</span>)</span></span>;
+    cnt[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;  <span class="hljs-comment">// 前缀和为0时，余数为0，初始为1</span>
+
+    <span class="hljs-type">long</span> <span class="hljs-type">long</span> current = <span class="hljs-number">0</span>;
+    <span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+        <span class="hljs-type">int</span> x;
+        cin &gt;&gt; x;
+        current = (current + x) % n;
+        <span class="hljs-keyword">if</span> (current &lt; <span class="hljs-number">0</span>) current += n;  <span class="hljs-comment">// 处理负数情况</span>
+        cnt[current]++;
+    &#125;
+
+    <span class="hljs-comment">// 组合数学：每个余数贡献 C(cnt, 2) 个子数组</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> x : cnt) &#123;
+        ans += x * (x - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;
+    &#125;
+
+    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<p><strong>时间复杂度</strong>: O(n)</p>
+<hr />
+<h2 id="总结">总结</h2>
+<table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>解法</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多维前缀和（区间统计）</td>
+<td>多维前缀和数组</td>
+<td>O(1) 查询</td>
+</tr>
+<tr>
+<td>静态区间求和</td>
+<td>前缀和数组</td>
+<td>O(1) 查询</td>
+</tr>
+<tr>
+<td>子数组和为目标值（全正数）</td>
+<td>滑动窗口</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>子数组和为目标值（含负数）</td>
+<td>哈希表</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>子数组和为 k 的倍数（最长长度）</td>
+<td>同余 + 首次出现位置</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>子数组和为 n 的倍数（个数）</td>
+<td>同余 + 组合数学</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心思想</strong>:
+前缀和将”区间求和”问题转化为”两点差”问题，结合哈希表或同余性质可以高效解决各类子数组求和问题。</p>
 
                 
               </div>

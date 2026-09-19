@@ -233,15 +233,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_self">
-          09_动态规划
+        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
+          01_前缀和
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
         <div>
-          动态规划 # ===== 1. 背包问题 ===== # 01 背包（每个物品选0或1次） def knapsack_01(n, W, weights, values):     dp = [0] * (W + 1)     for i in range(n):         for w in range(W, weights[i] - 1, -1):  # 倒序遍历             d
+          前缀和 用途：快速求区间和，查询时间 O(1)，预处理 O(n) 原理：prefix[i] 表示前 i 个元素的和，区间 [l, r] 的和 = prefix[r] - prefix[l-1] # 一维前缀和 prefix = [0] * (n + 1) for i in range(n):   prefix[i + 1] = prefix[i] + a[i]  # a 是 0-indexed
         </div>
       </a>
 
@@ -249,7 +249,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:02" pubdate>
+            <time datetime="2026-09-19 23:30" pubdate>
               2026-09-19
             </time>
           </div>
@@ -270,7 +270,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
   
   
 
@@ -294,15 +294,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/10_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%BF%9B%E9%98%B6/" target="_self">
-          10_动态规划进阶
+        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_self">
+          09_动态规划
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/10_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%BF%9B%E9%98%B6/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_self">
         <div>
-          动态规划 动态规划（Dynamic Programming，简称 DP）是面试中出现频率最高的算法类型。很多同学觉得 DP 难，其实只要掌握了思考框架，绝大多数题目都能拆解出来。  什么是动态规划 核心思想：把一个大问题拆成若干个重叠的子问题，先解决小的子问题，把结果存起来，再用这些结果推导出大问题的答案。 与贪心算法的区别    维度 动态规划 贪心     决策方式 考虑所有子问题，取全局最优
+          动态规划（Dynamic Programming，简称 DP）是面试中出现频率最高的算法类型。很多同学觉得 DP 难，其实只要掌握了思考框架，绝大多数题目都能拆解出来。  什么是动态规划 核心思想：把一个大问题拆成若干个重叠的子问题，先解决小的子问题，把结果存起来，再用这些结果推导出大问题的答案。 与贪心算法的区别    维度 动态规划 贪心     决策方式 考虑所有子问题，取全局最优 每一步只
         </div>
       </a>
 
@@ -344,6 +344,298 @@
 
           </div>
         
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/%E6%A8%A1%E6%9D%BF/">#模板</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/07_%E6%95%B0%E8%AE%BA/" target="_self">
+          07_数论
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/07_%E6%95%B0%E8%AE%BA/" target="_self">
+        <div>
+          数论  合并自《数论》与《模运算》两篇，模板均保留。  取整 # 向上取整到 k 的倍数 (n + k - 1) // k * k  import math math.ceil(n / k) * k      # 更易读 # 四舍五入（整数版，避免浮点误差） def round_div(a, b):     # 计算 a / b，四舍五入到整数     # 原理：判断小数部分是否 &gt;= 0.
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 23:39" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">#Python</a>
+            
+              <a href="/tags/%E6%95%B0%E8%AE%BA/">#数论</a>
+            
+              <a href="/tags/%E6%A8%A1%E8%BF%90%E7%AE%97/">#模运算</a>
+            
+              <a href="/tags/%E7%B4%A0%E6%95%B0/">#素数</a>
+            
+              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/" target="_self">
+          07_图论
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/" target="_self">
+        <div>
+          图论 邻接表建图 # 邻接表 adj = [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历/搜索 ## DFS（深度优先搜索） 核心思想 “一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 20:02" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06-Graphs/" class="category-chain-item">06_Graphs</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/05_%E5%B9%B6%E6%9F%A5%E9%9B%86/" target="_self">
+          05_并查集
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/05_%E5%B9%B6%E6%9F%A5%E9%9B%86/" target="_self">
+        <div>
+          并查集 什么是并查集？ 并查集（Disjoint Set Union，DSU）数据结构，也称为联合-查找数据结构，允许你向图中添加边，并测试图中两个顶点是否相连。 由于实现非常简单，你可能更倾向于使用它来代替 DFS 计算连通分量。 核心优化 1. 路径压缩 (Path Compression) 在 find 操作中，将路径上的所有节点直接指向根节点，大大加快后续查询。 2. 按秩合并 (Unio
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 23:38" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06-Graphs/" class="category-chain-item">06_Graphs</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">#并查集</a>
+            
+              <a href="/tags/%E5%9B%BE/">#图</a>
+            
+              <a href="/tags/DSU/">#DSU</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" target="_self">
+          07_Python工具函数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" target="_self">
+        <div>
+          Python 工具函数 itertools.accumulate —— 前缀和 / 前缀最值 签名：itertools.accumulate(iterable, func=operator.add, *, initial=None) 一遍扫描累积出「每一步的折叠结果」，默认就是前缀和： from itertools import accumulate from operator import mu
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 23:30" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">#Python</a>
+            
+              <a href="/tags/itertools/">#itertools</a>
+            
+              <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
+            
+          </div>
         
       </div>
     </article>
@@ -419,80 +711,6 @@
               <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
             
               <a href="/tags/%E5%88%86%E5%9D%97/">#分块</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
-          01_Prefix Sums 前缀和
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
-        <div>
-          Prefix Sums 前缀和 什么是前缀和？ 前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i]=a[1]+a[2]+...+a[i]p[i] = a[1] + a[2] + ... + a[i] 其中 p[0] = 0。 为什么需要前缀和？ 在没有前缀和的情况下，计算数
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-30 17:02" pubdate>
-              2026-04-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
-            
-              <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
-            
-              <a href="/tags/%E5%90%8C%E4%BD%99/">#同余</a>
-            
-              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">#哈希表</a>
             
           </div>
         
@@ -644,9 +862,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
               <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
             
           </div>
         
@@ -722,235 +940,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" target="_self">
-          136. 只出现一次的数字
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" target="_self">
-        <div>
-          题目 136. 只出现一次的数字（简单） 给你一个 非空 整数数组 nums，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现一次的元素。 你必须设计并实现线性时间复杂度的算法来解决此问题，且该算法只使用常量额外空间。 示例 1： 输入： [2,2,1] 输出： 1 示例 2： 输入： [4,1,2,1,2] 输出： 4 示例 3： 输入： [1] 输出： 1 提示：  1 &l
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/" class="category-chain-item">位运算</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
-            
-              <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/70.%20%E7%88%AC%E6%A5%BC%E6%A2%AF/" target="_self">
-          70. 爬楼梯
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/70.%20%E7%88%AC%E6%A5%BC%E6%A2%AF/" target="_self">
-        <div>
-          题目 70. 爬楼梯（简单） 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 示例 1： 输入： 2 输出： 2 解释：有两种方法可以爬到楼顶。  1 阶 + 1 阶 2 阶  示例 2： 输入： 3 输出： 3 解释：有三种方法可以爬到楼顶。  1 阶 + 1 阶 + 1 阶 1 阶 + 2 阶 2 阶 + 1 阶  提示：
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">动态规划</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" target="_self">
-          121. 买卖股票的最佳时机
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" target="_self">
-        <div>
-          题目 121. 买卖股票的最佳时机（简单） 给定一个数组 prices，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。 你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。 返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0。 示例 1： 输入： [7,1,5,3,6,4] 输出：
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/" class="category-chain-item">贪心</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-              <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
             
           </div>
         

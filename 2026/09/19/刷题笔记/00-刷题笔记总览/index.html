@@ -1,0 +1,1257 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Icon.png">
+  <link rel="icon" href="/img/Icon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ming">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="刷题笔记总览 刷题笔记快速导航页，按来源分四大板块，链接直达题解。    板块 定位 数量     Hot100 LeetCode Hot 100，按考点分组 22 题   Leetcode 零散 LeetCode 题目 1 题   华为机考 牛客 HJ 系列 + LeetCode 高频 + 题型指南 21 题   小红书 笔试真题（按日期）+ 练习题 10 题    系统学习看 算法学习&#x2F;（数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="刷题笔记总览">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/00-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E6%80%BB%E8%A7%88/index.html">
+<meta property="og:site_name" content="Ming&#39;s Blog">
+<meta property="og:description" content="刷题笔记总览 刷题笔记快速导航页，按来源分四大板块，链接直达题解。    板块 定位 数量     Hot100 LeetCode Hot 100，按考点分组 22 题   Leetcode 零散 LeetCode 题目 1 题   华为机考 牛客 HJ 系列 + LeetCode 高频 + 题型指南 21 题   小红书 笔试真题（按日期）+ 练习题 10 题    系统学习看 算法学习&#x2F;（数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-09-19T15:40:02.926Z">
+<meta property="article:modified_time" content="2026-09-19T15:40:58.516Z">
+<meta property="article:author" content="Ming">
+<meta property="article:tag" content="索引">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>刷题笔记总览 - Ming&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mingsm17518.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ming&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/jiangly.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="刷题笔记总览"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-09-19 23:40" pubdate>
+          2026年9月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          827 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">刷题笔记总览</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-09-19T23:40:58+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="刷题笔记总览">刷题笔记总览</h1>
+<p>刷题笔记快速导航页，按来源分四大板块，链接直达题解。</p>
+<table>
+<thead>
+<tr>
+<th>板块</th>
+<th>定位</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hot100</td>
+<td>LeetCode Hot 100，按考点分组</td>
+<td>22 题</td>
+</tr>
+<tr>
+<td>Leetcode</td>
+<td>零散 LeetCode 题目</td>
+<td>1 题</td>
+</tr>
+<tr>
+<td>华为机考</td>
+<td>牛客 HJ 系列 + LeetCode 高频 + 题型指南</td>
+<td>21 题</td>
+</tr>
+<tr>
+<td>小红书</td>
+<td>笔试真题（按日期）+ 练习题</td>
+<td>10 题</td>
+</tr>
+</tbody>
+</table>
+<p>系统学习看 <code>算法学习/</code>（数据结构 → 核心算法 → Bronze →
+Silver → Gold → Graphs），本目录只放做题记录。</p>
+<h2 id="hot100">Hot100</h2>
+<h3 id="哈希">哈希</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Hot100/哈希/1.%20两数之和.md">1. 两数之和</a></td>
+<td>哈希表</td>
+</tr>
+<tr>
+<td><a href="Hot100/哈希/169.%20多数元素.md">169. 多数元素</a></td>
+<td>哈希表、摩尔投票</td>
+</tr>
+<tr>
+<td><a href="Hot100/哈希/448.%20找到所有数组中消失的数字.md">448.
+找到所有数组中消失的数字</a></td>
+<td>原地哈希</td>
+</tr>
+</tbody>
+</table>
+<h3 id="双指针">双指针</h3>
+<table>
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Hot100/双指针/283.%20移动零.md">283. 移动零</a></td>
+<td>快慢双指针</td>
+</tr>
+</tbody>
+</table>
+<h3 id="链表">链表</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Hot100/链表/206.%20反转链表.md">206. 反转链表</a></td>
+<td>迭代/递归反转</td>
+</tr>
+<tr>
+<td><a href="Hot100/链表/21.%20合并两个有序链表.md">21.
+合并两个有序链表</a></td>
+<td>双链表归并</td>
+</tr>
+<tr>
+<td><a href="Hot100/链表/234.%20回文链表.md">234. 回文链表</a></td>
+<td>中点 + 反转后半</td>
+</tr>
+<tr>
+<td><a href="Hot100/链表/141.%20环形链表.md">141. 环形链表</a></td>
+<td>快慢指针判环</td>
+</tr>
+<tr>
+<td><a href="Hot100/链表/160.%20相交链表.md">160. 相交链表</a></td>
+<td>双指针走两程</td>
+</tr>
+</tbody>
+</table>
+<h3 id="二叉树">二叉树</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Hot100/二叉树/94.%20二叉树的中序遍历.md">94.
+二叉树的中序遍历</a></td>
+<td>中序遍历</td>
+</tr>
+<tr>
+<td><a href="Hot100/二叉树/104.%20二叉树的最大深度.md">104.
+二叉树的最大深度</a></td>
+<td>DFS 递归</td>
+</tr>
+<tr>
+<td><a href="Hot100/二叉树/226.%20翻转二叉树.md">226.
+翻转二叉树</a></td>
+<td>DFS 递归</td>
+</tr>
+<tr>
+<td><a href="Hot100/二叉树/101.%20对称二叉树.md">101.
+对称二叉树</a></td>
+<td>双子树同步 DFS</td>
+</tr>
+<tr>
+<td><a href="Hot100/二叉树/543.%20二叉树的直径.md">543.
+二叉树的直径</a></td>
+<td>后序遍历统计</td>
+</tr>
+<tr>
+<td><a href="Hot100/二叉树/617.%20合并二叉树.md">617.
+合并二叉树</a></td>
+<td>同步递归</td>
+</tr>
+</tbody>
+</table>
+<h3 id="栈">栈</h3>
+<table>
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Hot100/栈/20.%20有效的括号.md">20. 有效的括号</a></td>
+<td>栈匹配</td>
+</tr>
+</tbody>
+</table>
+<h3 id="贪心">贪心</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Hot100/贪心/121.%20买卖股票的最佳时机.md">121.
+买卖股票的最佳时机</a></td>
+<td>维护前缀最小值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="动态规划">动态规划</h3>
+<table>
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Hot100/动态规划/70.%20爬楼梯.md">70. 爬楼梯</a></td>
+<td>斐波那契 DP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="位运算">位运算</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Hot100/位运算/136.%20只出现一次的数字.md">136.
+只出现一次的数字</a></td>
+<td>异或</td>
+</tr>
+<tr>
+<td><a href="Hot100/位运算/461.%20汉明距离.md">461. 汉明距离</a></td>
+<td>异或 + 计 1</td>
+</tr>
+<tr>
+<td><a href="Hot100/位运算/338.%20比特位计数.md">338.
+比特位计数</a></td>
+<td>DP（低位转移）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="中等">中等</h3>
+<table>
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Hot100/中等/2.%20两数相加.md">2. 两数相加</a></td>
+<td>链表模拟进位</td>
+</tr>
+</tbody>
+</table>
+<h2 id="leetcode">Leetcode</h2>
+<table>
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Leetcode/78.%20子集.md">78. 子集</a></td>
+<td>回溯、迭代枚举、库函数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="华为机考">华为机考</h2>
+<p>先看 <a
+href="华为机考/华为机考题型.md">华为机考题型</a>：常考点、分值构成、考试环境注意事项。</p>
+<h3 id="leetcode华为高频">leetcode（华为高频）</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="华为机考/leetcode/01_two_sum.md">两数之和</a></td>
+<td>哈希表</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/leetcode/03_longest_substring.md">无重复字符的最长子串</a></td>
+<td>滑动窗口</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/leetcode/05_longest_palindrome.md">最长回文子串</a></td>
+<td>中心扩展</td>
+</tr>
+<tr>
+<td><a href="华为机考/leetcode/06_zigzag_convert.md">Z 字形变换</a></td>
+<td>字符串模拟</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nowcoder-01_string">nowcoder / 01_String</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="华为机考/nowcoder/01_String/03_string_group.md">明文分组（HJ3）</a></td>
+<td>去重排序</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/nowcoder/01_String/07_remove_least_freq_chars.md">删除出现次数最少的字符（HJ7）</a></td>
+<td>哈希计数</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/nowcoder/01_String/12_longest_digit_substring.md">最长数字子串（HJ12）</a></td>
+<td>双指针扫描</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/nowcoder/01_String/13_first_unique_char.md">第一个只出现一次的字符（HJ13）</a></td>
+<td>有序字典</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/nowcoder/01_String/14_sort_strings.md">字符串排序（HJ14）</a></td>
+<td>排序</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/nowcoder/01_String/15_string_transform.md">字符串变换（HJ15）</a></td>
+<td>模拟</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/nowcoder/01_String/16_palindrome.md">最长回文子串（HJ16）</a></td>
+<td>中心扩展</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/nowcoder/01_String/17_string_match.md">字符串字符匹配（HJ17）</a></td>
+<td>集合判定</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/nowcoder/01_String/19_string_sort.md">字符串排序（HJ19）</a></td>
+<td>排序</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/nowcoder/01_String/20_brother_words.md">查找兄弟单词（HJ20）</a></td>
+<td>变位词</td>
+</tr>
+<tr>
+<td><a
+href="华为机考/nowcoder/01_String/21_longest_common_substring.md">最长公共子串（HJ21）</a></td>
+<td>DP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nowcoder-07_dfs">nowcoder / 07_DFS</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="华为机考/nowcoder/07_DFS/HJ113-火车进站.md">HJ113
+火车进站</a></td>
+<td>DFS 全排列 + 栈</td>
+</tr>
+<tr>
+<td><a href="华为机考/nowcoder/07_DFS/HJ148-迷宫寻路.md">HJ148
+迷宫寻路</a></td>
+<td>DFS 迷宫</td>
+</tr>
+<tr>
+<td><a href="华为机考/nowcoder/07_DFS/HJ149-数水坑.md">HJ149
+数水坑</a></td>
+<td>Flood Fill</td>
+</tr>
+<tr>
+<td><a href="华为机考/nowcoder/07_DFS/HJ150_全排列.md">HJ150
+全排列</a></td>
+<td>回溯排列</td>
+</tr>
+<tr>
+<td><a href="华为机考/nowcoder/07_DFS/HJ59-数组分组.md">HJ59
+数组分组</a></td>
+<td>DFS 组合枚举</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nowcoder-其他">nowcoder / 其他</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="华为机考/nowcoder/HJ114-宝石手串.md">HJ114
+宝石手串</a></td>
+<td>哈希 + 环形统计</td>
+</tr>
+</tbody>
+</table>
+<h2 id="小红书">小红书</h2>
+<h3 id="section">2026-09-17</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="小红书/2026年9月17日/第1题-选择题.md">第1题-选择题</a></td>
+<td>计算机基础</td>
+</tr>
+<tr>
+<td><a
+href="小红书/2026年9月17日/第2题-加速窗口收益.md">第2题-加速窗口收益</a></td>
+<td>DP、前缀和</td>
+</tr>
+<tr>
+<td><a
+href="小红书/2026年9月17日/第3题-待发热度重排.md">第3题-待发热度重排</a></td>
+<td>前缀最值分块</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-1">2026-09-13</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="小红书/2026年9月13日/第1题-达人数据看板.md">第1题-达人数据看板</a></td>
+<td>模拟、统计</td>
+</tr>
+<tr>
+<td><a
+href="小红书/2026年9月13日/第2题-避重口令.md">第2题-避重口令</a></td>
+<td>贪心</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-2">2025-09-07</h3>
+<table>
+
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="小红书/2025年9月7日/第1题-超级重排.md">第1题-超级重排</a></td>
+<td>贪心、排序</td>
+</tr>
+<tr>
+<td><a
+href="小红书/2025年9月7日/第2题-行为权重2.md">第2题-行为权重2</a></td>
+<td>枚举、前缀和</td>
+</tr>
+<tr>
+<td><a href="小红书/2025年9月7日/第3题-轰炸机.md">第3题-轰炸机</a></td>
+<td>树形 DP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="练习题">练习题</h3>
+<table>
+<thead>
+<tr>
+<th>题目</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="小红书/练习题/第1题：数列求和.md">第1题：数列求和</a></td>
+<td>数学、模拟</td>
+</tr>
+<tr>
+<td><a href="小红书/练习题/第2题：水仙花数.md">第2题：水仙花数</a></td>
+<td>数学、枚举</td>
+</tr>
+</tbody>
+</table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%B4%A2%E5%BC%95/" class="print-no-link">#索引</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>刷题笔记总览</div>
+      <div>https://mingsm17518.github.io/2026/09/19/刷题笔记/00-刷题笔记总览/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ming</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年9月19日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年9月19日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03_Bronze/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="07_使用递归的穷举搜索">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">07_使用递归的穷举搜索</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/07_%E6%95%B0%E8%AE%BA/" title="07_数论">
+                        <span class="hidden-mobile">07_数论</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
