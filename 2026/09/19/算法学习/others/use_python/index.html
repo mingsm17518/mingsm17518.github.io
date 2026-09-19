@@ -19,15 +19,13 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="输入 readline() 、readlines() 和 read() 区别 import sys  # 输入： # Hello # World # !  # 使用 readline() line1 &#x3D; sys.stdin.readline()  # &quot;Hello\n&quot; line2 &#x3D; sys.stdin.readline()  # &quot;World\n&quot; li">
-<meta property="og:type" content="article">
+    <meta property="og:type" content="article">
 <meta property="og:title" content="Python 常用技巧">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/others/use_python/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="输入 readline() 、readlines() 和 read() 区别 import sys  # 输入： # Hello # World # !  # 使用 readline() line1 &#x3D; sys.stdin.readline()  # &quot;Hello\n&quot; line2 &#x3D; sys.stdin.readline()  # &quot;World\n&quot; li">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T11:38:14.601Z">
-<meta property="article:modified_time" content="2026-09-19T11:38:14.602Z">
+<meta property="article:modified_time" content="2026-09-19T11:40:05.866Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="输入输出">
@@ -230,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          373 字
+          0 字
         
       </span>
     
@@ -241,7 +239,7 @@
         
         
         
-          4 分钟
+          1 分钟
         
       </span>
     
@@ -292,7 +290,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-19T19:38:14+08:00
+                    本文最后更新于 2026-09-19T19:40:05+08:00
                   
                   
 
@@ -302,96 +300,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="输入">输入</h1>
-<h2 id="readline-readlines-和-read-区别"><code>readline()</code>
-、<code>readlines()</code> 和 <code>read()</code> 区别</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
-
-<span class="hljs-comment"># 输入：</span>
-<span class="hljs-comment"># Hello</span>
-<span class="hljs-comment"># World</span>
-<span class="hljs-comment"># !</span>
-
-<span class="hljs-comment"># 使用 readline()</span>
-line1 = sys.stdin.readline()  <span class="hljs-comment"># &quot;Hello\n&quot;</span>
-line2 = sys.stdin.readline()  <span class="hljs-comment"># &quot;World\n&quot;</span>
-line3 = sys.stdin.readline()  <span class="hljs-comment"># &quot;!\n&quot;</span>
-line4 = sys.stdin.readline()  <span class="hljs-comment"># &quot;&quot;</span>
-
-<span class="hljs-comment"># 使用 readlines()</span>
-lines = sys.stdin.readlines()  <span class="hljs-comment"># [&quot;Hello\n&quot;, &quot;World\n&quot;, &quot;!\n&quot;]</span>
-
-<span class="hljs-comment"># 使用 read()</span>
-content = sys.stdin.read()  <span class="hljs-comment"># &quot;Hello\nWorld\n!\n&quot;</span></code></pre></div>
-<h2 id="strip-函数"><code>strip()</code> 函数</h2>
-<div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-string">&quot;  hello  \n\t&quot;</span>
-
-<span class="hljs-built_in">print</span>(<span class="hljs-built_in">repr</span>(s.rstrip()))  <span class="hljs-comment"># 移除右侧空白字符 → &quot;&#x27;  hello&#x27;&quot;</span>
-<span class="hljs-built_in">print</span>(<span class="hljs-built_in">repr</span>(s.lstrip()))  <span class="hljs-comment"># 移除左侧空白字符 → &quot;&#x27;hello  \n\t&#x27;&quot;</span>
-<span class="hljs-built_in">print</span>(<span class="hljs-built_in">repr</span>(s.strip()))   <span class="hljs-comment"># 移除两侧空白字符 → &quot;&#x27;hello&#x27;&quot;</span></code></pre></div>
-<h2 id="split-函数"><code>split()</code> 函数</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-built_in">str</span>.split(sep=<span class="hljs-literal">None</span>, maxsplit=-<span class="hljs-number">1</span>)</code></pre></div>
-<ul>
-<li><strong>sep</strong>：分隔符，默认为任何空白字符</li>
-<li><strong>maxsplit</strong>：最大分割次数，默认为 -1（不限制）</li>
-</ul>
-<h2 id="空字典-vs-空集合">空字典 vs 空集合</h2>
-<div class="code-wrapper"><pre><code class="hljs python">a = &#123;&#125;        <span class="hljs-comment"># 空字典（dict）</span>
-b = <span class="hljs-built_in">set</span>()    <span class="hljs-comment"># 空集合（set）</span>
-
-<span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(a))  <span class="hljs-comment"># &lt;class &#x27;dict&#x27;&gt;</span>
-<span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(b))  <span class="hljs-comment"># &lt;class &#x27;set&#x27;&gt;</span></code></pre></div>
-<h3 id="如何创建空集合">如何创建空集合</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># ❌ 错误：这是字典，不是集合</span>
-a = &#123;&#125;
-
-<span class="hljs-comment"># ✅ 正确：创建空集合</span>
-b = <span class="hljs-built_in">set</span>()
-
-<span class="hljs-comment"># ✅ 正确：创建带初始值的集合</span>
-c = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;</code></pre></div>
-<h3 id="记忆方法">记忆方法</h3>
-<table>
-<thead>
-<tr>
-<th>写法</th>
-<th>类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>{}</code></td>
-<td>dict</td>
-<td>大括号里有键值对或为空时是字典</td>
-</tr>
-<tr>
-<td><code>{1}</code></td>
-<td>set</td>
-<td>大括号里只有值时是集合</td>
-</tr>
-<tr>
-<td><code>set()</code></td>
-<td>set</td>
-<td>明确表示集合</td>
-</tr>
-</tbody>
-</table>
-<h3 id="典型应用差分数组">典型应用：差分数组</h3>
-<div class="code-wrapper"><pre><code class="hljs python">diff = &#123;&#125;
-
-<span class="hljs-comment"># 对区间 [l, r) 加 v</span>
-diff[l] = diff.get(l, <span class="hljs-number">0</span>) + v    <span class="hljs-comment"># 起点加 v</span>
-diff[r] = diff.get(r, <span class="hljs-number">0</span>) - v    <span class="hljs-comment"># 终点减 v</span></code></pre></div>
-<h3 id="常见应用场景">常见应用场景</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 交换变量</span>
-a, b = b, a
-
-<span class="hljs-comment"># 函数返回多个值</span>
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">get_point</span>():
-    <span class="hljs-keyword">return</span> (<span class="hljs-number">3</span>, <span class="hljs-number">5</span>)
-
-x, y = get_point()  <span class="hljs-comment"># x=3, y=5</span></code></pre></div>
+                
 
                 
               </div>
