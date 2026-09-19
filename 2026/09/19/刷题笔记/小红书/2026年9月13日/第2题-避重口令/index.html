@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串 SS。SS 的每一个子序列（含 SS 本身与空串）都被视为已经占用的口令，不能再给新专题使用。 求最短的、不是 SS 子序列的小写口令长度。 子序列：从原串中删除任意个（可以为零个）字符后，剩余字符保持相对顺序所形成的串。 输入描述 一行，仅含小写字母的字符串 SS（1≤|S|≤1051 \le |S| \le 10^5）">
+    <meta name="description" content="题目短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串 $S$。$S$ 的每一个子序列（含 $S$ 本身与空串）都被视为已经占用的口令，不能再给新专题使用。 求最短的、不是 $S$ 子序列的小写口令长度。 子序列：从原串中删除任意个（可以为零个）字符后，剩余字符保持相对顺序所形成的串。 输入描述 一行，仅含小写字母的字符串 $S$（$1 \le |S| \le 10^5$）。 输">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第2题-避重口令">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E9%81%BF%E9%87%8D%E5%8F%A3%E4%BB%A4/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目 短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串 SS。SS 的每一个子序列（含 SS 本身与空串）都被视为已经占用的口令，不能再给新专题使用。 求最短的、不是 SS 子序列的小写口令长度。 子序列：从原串中删除任意个（可以为零个）字符后，剩余字符保持相对顺序所形成的串。 输入描述 一行，仅含小写字母的字符串 SS（1≤|S|≤1051 \le |S| \le 10^5）">
+<meta property="og:description" content="题目短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串 $S$。$S$ 的每一个子序列（含 $S$ 本身与空串）都被视为已经占用的口令，不能再给新专题使用。 求最短的、不是 $S$ 子序列的小写口令长度。 子序列：从原串中删除任意个（可以为零个）字符后，剩余字符保持相对顺序所形成的串。 输入描述 一行，仅含小写字母的字符串 $S$（$1 \le |S| \le 10^5$）。 输">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T08:27:28.383Z">
 <meta property="article:modified_time" content="2026-09-19T08:27:28.384Z">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          388 字
+          389 字
         
       </span>
     
@@ -302,19 +302,11 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目">题目</h2>
-<p>短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-的每一个子序列（含
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-本身与空串）都被视为已经占用的口令，不能再给新专题使用。</p>
-<p>求最短的、不是
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-子序列的小写口令长度。</p>
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串 $S$。$S$ 的每一个子序列（含 $S$ 本身与空串）都被视为已经占用的口令，不能再给新专题使用。</p>
+<p>求最短的、不是 $S$ 子序列的小写口令长度。</p>
 <p>子序列：从原串中删除任意个（可以为零个）字符后，剩余字符保持相对顺序所形成的串。</p>
 <p><strong>输入描述</strong></p>
-<p>一行，仅含小写字母的字符串
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mo stretchy="false" form="prefix">|</mo><mi>S</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le |S| \le 10^5</annotation></semantics></math>）。</p>
+<p>一行，仅含小写字母的字符串 $S$（$1 \le |S| \le 10^5$）。</p>
 <p><strong>输出描述</strong></p>
 <p>一行一个正整数，即最短未占用口令的长度。</p>
 <p><strong>样例 1</strong></p>
@@ -322,36 +314,14 @@
 <div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">zyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcba</span></code></pre></div>
 <p>输出：</p>
 <div class="code-wrapper"><pre><code class="hljs">3</code></pre></div>
-<p><strong>说明</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-由两段倒序的 26 个小写字母拼接而成。任意单个字母、任意长度为 2
-的小写串都是
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-的子序列（前半段取第一个字符、后半段取第二个字符即可）。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-中字母 <code>a</code> 只出现两次，故 <code>aaa</code>
-不是子序列，最短长度为 3。</p>
-<h2 id="思路">思路</h2>
-<p>贪心分块：从左往右扫描，每当<strong>凑齐全部 26
-个字母</strong>就形成一个块并清空计数，设总共得到
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-个块。</p>
+<p><strong>说明</strong>：$S$ 由两段倒序的 26 个小写字母拼接而成。任意单个字母、任意长度为 2 的小写串都是 $S$ 的子序列（前半段取第一个字符、后半段取第二个字符即可）。$S$ 中字母 <code>a</code> 只出现两次，故 <code>aaa</code> 不是子序列，最短长度为 3。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>贪心分块：从左往右扫描，每当<strong>凑齐全部 26 个字母</strong>就形成一个块并清空计数，设总共得到 $k$ 个块。</p>
 <ul>
-<li>任何长度
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">\le k</annotation></semantics></math>
-的串都是
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-的子序列——第
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-个字符总能在第
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-个块里找到；</li>
-<li>而 <code>a</code> 重复
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k+1</annotation></semantics></math>
-次不是子序列——每个块至多贡献一个 <code>a</code>。</li>
+<li>任何长度 $\le k$ 的串都是 $S$ 的子序列——第 $i$ 个字符总能在第 $i$ 个块里找到；</li>
+<li>而 <code>a</code> 重复 $k+1$ 次不是子序列——每个块至多贡献一个 <code>a</code>。</li>
 </ul>
-<p>所以答案为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k + 1</annotation></semantics></math>，一次线性扫描即可。</p>
-<h2 id="代码">代码</h2>
-<div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-built_in">input</span>().strip()
+<p>所以答案为 $k + 1$，一次线性扫描即可。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-built_in">input</span>().strip()
 seen = <span class="hljs-built_in">set</span>()
 ans = <span class="hljs-number">0</span>
 <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s:

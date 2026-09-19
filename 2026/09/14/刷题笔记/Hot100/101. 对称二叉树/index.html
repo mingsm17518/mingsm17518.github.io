@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 101. 对称二叉树（简单） 给你一个二叉树的根节点 root，检查它是否轴对称。 示例 1：  输入： [1,2,2,3,4,4,3] 输出： true 示例 2：  输入： [1,2,2,null,3,null,3] 输出： false 提示：  树中节点数目在范围 [1, 1000] 内 -100 &lt;&#x3D; Node.val &lt;&#x3D; 100  思路 「轴对称」转化为递归比较镜像子">
+    <meta name="description" content="题目101. 对称二叉树（简单） 给你一个二叉树的根节点 root，检查它是否轴对称。 示例 1：  输入： [1,2,2,3,4,4,3] 输出： true 示例 2：  输入： [1,2,2,null,3,null,3] 输出： false 提示：  树中节点数目在范围 [1, 1000] 内 -100 &lt;&#x3D; Node.val &lt;&#x3D; 100  思路「轴对称」转化为递归比较镜像子树对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="101. 对称二叉树">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/101.%20%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目 101. 对称二叉树（简单） 给你一个二叉树的根节点 root，检查它是否轴对称。 示例 1：  输入： [1,2,2,3,4,4,3] 输出： true 示例 2：  输入： [1,2,2,null,3,null,3] 输出： false 提示：  树中节点数目在范围 [1, 1000] 内 -100 &lt;&#x3D; Node.val &lt;&#x3D; 100  思路 「轴对称」转化为递归比较镜像子">
+<meta property="og:description" content="题目101. 对称二叉树（简单） 给你一个二叉树的根节点 root，检查它是否轴对称。 示例 1：  输入： [1,2,2,3,4,4,3] 输出： true 示例 2：  输入： [1,2,2,null,3,null,3] 输出： false 提示：  树中节点数目在范围 [1, 1000] 内 -100 &lt;&#x3D; Node.val &lt;&#x3D; 100  思路「轴对称」转化为递归比较镜像子树对">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.leetcode.cn/1698026966-JDYPDU-image.png">
 <meta property="og:image" content="https://pic.leetcode.cn/1698027008-nPFLbM-image.png">
@@ -306,18 +306,16 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目">题目</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/symmetric-tree/">101.
-对称二叉树</a>（简单）</p>
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/symmetric-tree/">101. 对称二叉树</a>（简单）</p>
 <p>给你一个二叉树的根节点 <code>root</code>，检查它是否轴对称。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="https://pic.leetcode.cn/1698026966-JDYPDU-image.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://pic.leetcode.cn/1698026966-JDYPDU-image.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs accesslog"><span class="hljs-string">[1,2,2,3,4,4,3]</span></code></pre></div>
 <p>输出：</p>
 <div class="code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-literal">true</span></code></pre></div>
 <p><strong>示例 2：</strong></p>
-<p><img src="https://pic.leetcode.cn/1698027008-nPFLbM-image.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://pic.leetcode.cn/1698027008-nPFLbM-image.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs 1c">[<span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">,</span><span class="hljs-literal">null</span><span class="hljs-punctuation">,</span><span class="hljs-number">3</span><span class="hljs-punctuation">,</span><span class="hljs-literal">null</span><span class="hljs-punctuation">,</span><span class="hljs-number">3</span>]</code></pre></div>
 <p>输出：</p>
@@ -327,13 +325,8 @@
 <li>树中节点数目在范围 <code>[1, 1000]</code> 内</li>
 <li><code>-100 &lt;= Node.val &lt;= 100</code></li>
 </ul>
-<h2 id="思路">思路</h2>
-<p>「轴对称」转化为递归比较镜像子树对：<code>check(q, p)</code>
-要求两棵子树要么同为空，要么值相等且 <code>q 的左子树</code> 与
-<code>p 的右子树</code>、<code>q 的右子树</code> 与
-<code>p 的左子树</code> 也互为镜像。从根的左右孩子开始递归即可。</p>
-<h2 id="代码">代码</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Definition for a binary tree node.</span>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>「轴对称」转化为递归比较镜像子树对：<code>check(q, p)</code> 要求两棵子树要么同为空，要么值相等且 <code>q 的左子树</code> 与 <code>p 的右子树</code>、<code>q 的右子树</code> 与 <code>p 的左子树</code> 也互为镜像。从根的左右孩子开始递归即可。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Definition for a binary tree node.</span>
 <span class="hljs-comment"># class TreeNode:</span>
 <span class="hljs-comment">#     def __init__(self, val=0, left=None, right=None):</span>
 <span class="hljs-comment">#         self.val = val</span>

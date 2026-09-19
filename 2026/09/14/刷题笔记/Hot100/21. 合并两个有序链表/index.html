@@ -19,19 +19,21 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 21. 合并两个有序链表（简单） 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例 1：  输入： [1,2,4] [1,3,4] 输出： [1,1,2,3,4,4] 示例 2： 输入： [] [] 输出： [] 示例 3： 输入： [] [0] 输出： [0] 提示：  两个链表的节点数目范围是 [0, 50] -100 &lt;&#x3D; N">
+    <meta name="description" content="题目21. 合并两个有序链表（简单） 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例 1：  输入： [1,2,4] [1,3,4] 输出： [1,1,2,3,4,4] 示例 2： 输入： [] [] 输出： [] 示例 3： 输入： [] [0] 输出： [0] 提示：  两个链表的节点数目范围是 [0, 50] -100 &lt;&#x3D; No">
 <meta property="og:type" content="article">
 <meta property="og:title" content="21. 合并两个有序链表">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/21.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目 21. 合并两个有序链表（简单） 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例 1：  输入： [1,2,4] [1,3,4] 输出： [1,1,2,3,4,4] 示例 2： 输入： [] [] 输出： [] 示例 3： 输入： [] [0] 输出： [0] 提示：  两个链表的节点数目范围是 [0, 50] -100 &lt;&#x3D; N">
+<meta property="og:description" content="题目21. 合并两个有序链表（简单） 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例 1：  输入： [1,2,4] [1,3,4] 输出： [1,1,2,3,4,4] 示例 2： 输入： [] [] 输出： [] 示例 3： 输入： [] [0] 输出： [0] 提示：  两个链表的节点数目范围是 [0, 50] -100 &lt;&#x3D; No">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg">
 <meta property="article:published_time" content="2026-09-14T01:37:37.712Z">
 <meta property="article:modified_time" content="2026-09-14T01:43:08.415Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="递归">
 <meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -230,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          258 字
+          256 字
         
       </span>
     
@@ -302,14 +304,10 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目">题目</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-two-sorted-lists/">21.
-合并两个有序链表</a>（简单）</p>
-<p>将两个升序链表合并为一个新的 <strong>升序</strong>
-链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-two-sorted-lists/">21. 合并两个有序链表</a>（简单）</p>
+<p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
 <p><strong>示例 1：</strong></p>
-<p><img
-src="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[1,2,4]</span>
 <span class="hljs-string">[1,3,4]</span></code></pre></div>
@@ -331,18 +329,10 @@ src="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg" srcset="/img/
 <ul>
 <li>两个链表的节点数目范围是 <code>[0, 50]</code></li>
 <li><code>-100 &lt;= Node.val &lt;= 100</code></li>
-<li><code>l1</code> 和 <code>l2</code> 均按 <strong>非递减顺序</strong>
-排列</li>
+<li><code>l1</code> 和 <code>l2</code> 均按 <strong>非递减顺序</strong> 排列</li>
 </ul>
-<h2 id="思路">思路</h2>
-<p>递归合并：比较两条链表的头结点，较小者作为合并结果的头，其
-<code>next</code>
-指向「剩余部分」的合并结果；任一链表为空时直接返回另一条。递归深度与链长成正比，也可用哑结点
-+ 双指针迭代做到
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math>
-空间。</p>
-<h2 id="代码">代码</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Definition for singly-linked list.</span>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>递归合并：比较两条链表的头结点，较小者作为合并结果的头，其 <code>next</code> 指向「剩余部分」的合并结果；任一链表为空时直接返回另一条。递归深度与链长成正比，也可用哑结点 + 双指针迭代做到 $O(1)$ 空间。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Definition for singly-linked list.</span>
 <span class="hljs-comment"># class ListNode:</span>
 <span class="hljs-comment">#     def __init__(self, val=0, next=None):</span>
 <span class="hljs-comment">#         self.val = val</span>

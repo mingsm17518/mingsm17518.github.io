@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="动态规划简介 核心思想 将大问题拆解为小问题，记录子问题的解，避免重复计算。  示例 - 青蛙 1 (Frog 1) 题目描述 https:&#x2F;&#x2F;atcoder.jp&#x2F;contests&#x2F;dp&#x2F;tasks&#x2F;dp_a 题目要求我们计算青蛙从石头 11 跳到石头 NN (N≤105N \le 10^5) 的最小总成本，已知青蛙只能跳一或两的距离。任意两个石头 ii 和 jj 之间的旅行成本由 |hi−hj">
+    <meta name="description" content="动态规划简介核心思想将大问题拆解为小问题，记录子问题的解，避免重复计算。  示例 - 青蛙 1 (Frog 1)题目描述https:&#x2F;&#x2F;atcoder.jp&#x2F;contests&#x2F;dp&#x2F;tasks&#x2F;dp_a 题目要求我们计算青蛙从石头 $1$ 跳到石头 $N$ ($N \le 10^5$) 的最小总成本，已知青蛙只能跳一或两的距离。任意两个石头 $i$ 和 $j$ 之间的旅行成本由 $|h_i - h">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01_Introduction to DP 动态规划简介">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_Introduction%20to%20DP%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="动态规划简介 核心思想 将大问题拆解为小问题，记录子问题的解，避免重复计算。  示例 - 青蛙 1 (Frog 1) 题目描述 https:&#x2F;&#x2F;atcoder.jp&#x2F;contests&#x2F;dp&#x2F;tasks&#x2F;dp_a 题目要求我们计算青蛙从石头 11 跳到石头 NN (N≤105N \le 10^5) 的最小总成本，已知青蛙只能跳一或两的距离。任意两个石头 ii 和 jj 之间的旅行成本由 |hi−hj">
+<meta property="og:description" content="动态规划简介核心思想将大问题拆解为小问题，记录子问题的解，避免重复计算。  示例 - 青蛙 1 (Frog 1)题目描述https:&#x2F;&#x2F;atcoder.jp&#x2F;contests&#x2F;dp&#x2F;tasks&#x2F;dp_a 题目要求我们计算青蛙从石头 $1$ 跳到石头 $N$ ($N \le 10^5$) 的最小总成本，已知青蛙只能跳一或两的距离。任意两个石头 $i$ 和 $j$ 之间的旅行成本由 $|h_i - h">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-30T09:02:14.000Z">
 <meta property="article:modified_time" content="2026-09-19T09:12:11.378Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          304 字
+          305 字
         
       </span>
     
@@ -303,40 +303,23 @@
             
               <div class="markdown-body">
                 
-                <h1 id="动态规划简介">动态规划简介</h1>
-<h2 id="核心思想">核心思想</h2>
-<p>将大问题拆解为小问题，记录子问题的解，避免重复计算。</p>
-<hr />
-<h2 id="示例---青蛙-1-frog-1">示例 - 青蛙 1 (Frog 1)</h2>
-<h3 id="题目描述">题目描述</h3>
-<p>https://atcoder.jp/contests/dp/tasks/dp_a</p>
-<p>题目要求我们计算青蛙从石头
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
-跳到石头
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≤</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">N \le 10^5</annotation></semantics></math>)
-的最小总成本，已知青蛙只能跳一或两的距离。任意两个石头
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-之间的旅行成本由
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>h</mi><mi>i</mi></msub><mo>−</mo><msub><mi>h</mi><mi>j</mi></msub><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|h_i - h_j|</annotation></semantics></math>
-给出，其中
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mi>i</mi></msub><annotation encoding="application/x-tex">h_i</annotation></semantics></math>
-表示石头
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-的高度。</p>
-<hr />
-<h3 id="解法">解法</h3>
-<p><strong>拉动态规划 (Pull DP) - 常用</strong></p>
+                <h1 id="动态规划简介"><a href="#动态规划简介" class="headerlink" title="动态规划简介"></a>动态规划简介</h1><h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p>将大问题拆解为小问题，记录子问题的解，避免重复计算。</p>
+<hr>
+<h2 id="示例-青蛙-1-Frog-1"><a href="#示例-青蛙-1-Frog-1" class="headerlink" title="示例 - 青蛙 1 (Frog 1)"></a>示例 - 青蛙 1 (Frog 1)</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p><a target="_blank" rel="noopener" href="https://atcoder.jp/contests/dp/tasks/dp_a">https://atcoder.jp/contests/dp/tasks/dp_a</a></p>
+<p>题目要求我们计算青蛙从石头 $1$ 跳到石头 $N$ ($N \le 10^5$) 的最小总成本，已知青蛙只能跳一或两的距离。任意两个石头 $i$ 和 $j$ 之间的旅行成本由 $|h_i - h_j|$ 给出，其中 $h_i$ 表示石头 $i$ 的高度。</p>
+<hr>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p><strong>拉动态规划 (Pull DP) - 常用</strong></p>
 <p><strong>定义</strong>：<code>dp[i]</code> 为到达石头 i 的最小成本</p>
-<p><strong>初始条件</strong>： -
-<code>dp = [INF] * n</code>：初始化为无穷大，表示尚未找到到达各石头的最小成本
-- <code>dp[0] = 0</code>：起点成本为 0，青蛙已经在石头 1 上</p>
-<p><strong>状态转移</strong>： - 从 i-1
-跳来：<code>dp[i] = min(dp[i], dp[i-1] + abs(h[i] - h[i-1]))</code> - 从
-i-2
-跳来：<code>dp[i] = min(dp[i], dp[i-2] + abs(h[i] - h[i-2]))</code></p>
+<p><strong>初始条件</strong>：</p>
+<ul>
+<li><code>dp = [INF] * n</code>：初始化为无穷大，表示尚未找到到达各石头的最小成本</li>
+<li><code>dp[0] = 0</code>：起点成本为 0，青蛙已经在石头 1 上</li>
+</ul>
+<p><strong>状态转移</strong>：</p>
+<ul>
+<li>从 i-1 跳来：<code>dp[i] = min(dp[i], dp[i-1] + abs(h[i] - h[i-1]))</code></li>
+<li>从 i-2 跳来：<code>dp[i] = min(dp[i], dp[i-2] + abs(h[i] - h[i-2]))</code></li>
+</ul>
 <div class="code-wrapper"><pre><code class="hljs python">INF = <span class="hljs-number">10</span>**<span class="hljs-number">18</span>
 n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 h = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
@@ -350,8 +333,7 @@ dp[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>
         dp[i] = <span class="hljs-built_in">min</span>(dp[i], dp[i - <span class="hljs-number">2</span>] + <span class="hljs-built_in">abs</span>(h[i] - h[i - <span class="hljs-number">2</span>]))
     
 <span class="hljs-built_in">print</span>(dp[n - <span class="hljs-number">1</span>])</code></pre></div>
-<p><strong>时间复杂度</strong>：O(N)
-<strong>空间复杂度</strong>：O(N)</p>
+<p><strong>时间复杂度</strong>：O(N)<br><strong>空间复杂度</strong>：O(N)</p>
 
                 
               </div>
@@ -468,8 +450,8 @@ dp[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02_Knapsack%20DP%20%E8%83%8C%E5%8C%85DP/" title="02_Knapsack DP 背包DP">
-                        <span class="hidden-mobile">02_Knapsack DP 背包DP</span>
+                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03_Paths%20on%20Grids%20%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" title="03_Paths on Grids 网格路径问题">
+                        <span class="hidden-mobile">03_Paths on Grids 网格路径问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
