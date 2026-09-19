@@ -233,15 +233,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" target="_self">
-          20. 有效的括号
+        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_self">
+          09_动态规划
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_self">
         <div>
-          题目 20. 有效的括号（简单） 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s，判断字符串是否有效。 有效字符串需满足：  左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 每个右括号都有一个对应的相同类型的左括号。  示例 1： 输入： () 输出： true 示例 2： 输入： ()[]&#123;&#125; 输出： true 示例 3： 输入
+          动态规划 # ===== 1. 背包问题 ===== # 01 背包（每个物品选0或1次） def knapsack_01(n, W, weights, values):     dp = [0] * (W + 1)     for i in range(n):         for w in range(W, weights[i] - 1, -1):  # 倒序遍历             d
         </div>
       </a>
 
@@ -249,7 +249,129 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
+            <time datetime="2026-09-19 20:02" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/" target="_self">
+          07_图论
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/" target="_self">
+        <div>
+          图论 邻接表建图 # 邻接表 adj = [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历/搜索 ## DFS（深度优先搜索） 核心思想 “一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 20:02" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06-Graphs/" class="category-chain-item">06_Graphs</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/" target="_self">
+          第3题-待发热度重排
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/" target="_self">
+        <div>
+          题目  在线练习：codefun2000 P5465  短视频后台里躺着 mm 条待发稿，第 ii 条带着质量分 pip_i 和热度分 hih_i。策划给了一份目标热度排列 t1,t2,…,tmt_1, t_2, \ldots, t_m，要求排完之后每个位置上的热度刚好等于 tt。 运营只能按下面的规则对调两条稿件：当且仅当 pi≤pjp_i \le p_j 且 hi≤hjh_i \le h_j
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 23:21" pubdate>
               2026-09-19
             </time>
           </div>
@@ -270,12 +392,12 @@
   
     <span>></span>
     
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/" class="category-chain-item">栈</a>
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/" class="category-chain-item">2026年9月17日</a>
   
   
 
@@ -294,9 +416,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%A0%88/">#栈</a>
+              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
             
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
+              <a href="/tags/%E5%88%86%E5%9D%97/">#分块</a>
             
           </div>
         
@@ -310,15 +432,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/543.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" target="_self">
-          543. 二叉树的直径
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
+          01_Prefix Sums 前缀和
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/543.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
         <div>
-          题目 543. 二叉树的直径（简单） 给你一棵二叉树的根节点，返回该树的 直径。 二叉树的 直径 是指树中任意两个节点之间最长路径的 长度。这条路径可能经过也可能不经过根节点 root。 两节点之间路径的 长度 由它们之间边数表示。 示例 1：  输入： [1,2,3,4,5] 输出： 3 解释：3，取路径 [4,2,1,3] 或 [5,2,1,3] 的长度。 示例 2： 输入： [1,2] 输出
+          Prefix Sums 前缀和 什么是前缀和？ 前缀和（Prefix Sum）是一种重要的预处理技术，用于快速计算数组任意区间内的元素和。 对于数组 a[1], a[2], ..., a[n]，定义前缀和数组 p： p[i]=a[1]+a[2]+...+a[i]p[i] = a[1] + a[2] + ... + a[i] 其中 p[0] = 0。 为什么需要前缀和？ 在没有前缀和的情况下，计算数
         </div>
       </a>
 
@@ -326,8 +448,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
             </time>
           </div>
         
@@ -342,20 +464,13 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="category-chain-item">二叉树</a>
-  
-  
-
   
 
   
@@ -371,635 +486,471 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/DFS/">#DFS</a>
+              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
             
-              <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
+              <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
             
-              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">#二叉树</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" target="_self">
-          226. 翻转二叉树
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" target="_self">
-        <div>
-          题目 226. 翻转二叉树（简单） 给你一棵二叉树的根节点 root，翻转这棵二叉树，并返回其根节点。 示例 1：  输入： [4,2,7,1,3,6,9] 输出： [4,7,2,9,6,3,1] 示例 2：  输入： [2,1,3] 输出： [2,3,1] 示例 3： 输入： [] 输出： [] 提示：  树中节点数目范围在 [0, 100] 内 -100 &lt;= Node.val &lt;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="category-chain-item">二叉树</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DFS/">#DFS</a>
-            
-              <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
-            
-              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">#二叉树</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/104.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" target="_self">
-          104. 二叉树的最大深度
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/104.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" target="_self">
-        <div>
-          题目 104. 二叉树的最大深度（简单） 给定一个二叉树 root，返回其最大深度。 二叉树的 最大深度 是指从根节点到最远叶子节点的最长路径上的节点数。 示例 1：  输入： [3,9,20,null,null,15,7] 输出： 3 示例 2： 输入： [1,null,2] 输出： 2 提示：  树中节点的数量在 [0, 10^4] 区间内。 -100 &lt;= Node.val &lt;=
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="category-chain-item">二叉树</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DFS/">#DFS</a>
-            
-              <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
-            
-              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">#二叉树</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/101.%20%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" target="_self">
-          101. 对称二叉树
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/101.%20%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" target="_self">
-        <div>
-          题目 101. 对称二叉树（简单） 给你一个二叉树的根节点 root，检查它是否轴对称。 示例 1：  输入： [1,2,2,3,4,4,3] 输出： true 示例 2：  输入： [1,2,2,null,3,null,3] 输出： false 提示：  树中节点数目在范围 [1, 1000] 内 -100 &lt;= Node.val &lt;= 100  思路 「轴对称」转化为递归比较镜像子
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="category-chain-item">二叉树</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DFS/">#DFS</a>
-            
-              <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
-            
-              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">#二叉树</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/234.%20%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" target="_self">
-          234. 回文链表
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/234.%20%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" target="_self">
-        <div>
-          题目 234. 回文链表（简单） 给你一个单链表的头节点 head，请你判断该链表是否为回文链表。如果是，返回 true；否则，返回 false。 示例 1：  输入： [1,2,2,1] 输出： true 示例 2：  输入： [1,2] 输出： false 提示：  链表中节点数目在范围 [1, 10^5] 内 0 &lt;= Node.val &lt;= 9  思路 方法一数组复制：把链表值
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/" class="category-chain-item">链表</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
-            
-              <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
-            
-              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/21.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" target="_self">
-          21. 合并两个有序链表
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/21.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" target="_self">
-        <div>
-          题目 21. 合并两个有序链表（简单） 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 示例 1：  输入： [1,2,4] [1,3,4] 输出： [1,1,2,3,4,4] 示例 2： 输入： [] [] 输出： [] 示例 3： 输入： [] [0] 输出： [0] 提示：  两个链表的节点数目范围是 [0, 50] -100 &lt;= N
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/" class="category-chain-item">链表</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
-            
-              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" target="_self">
-          206. 反转链表
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" target="_self">
-        <div>
-          题目 206. 反转链表（简单） 给你单链表的头节点 head，请你反转链表，并返回反转后的链表。 示例 1：  输入： [1,2,3,4,5] 输出： [5,4,3,2,1] 示例 2：  输入： [1,2] 输出： [2,1] 示例 3： 输入： [] 输出： [] 提示：  链表中节点的数目范围是 [0, 5000] -5000 &lt;= Node.val &lt;= 5000  思路 方
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/" class="category-chain-item">链表</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
-            
-              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/160.%20%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" target="_self">
-          160. 相交链表
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/160.%20%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" target="_self">
-        <div>
-          题目 160. 相交链表（简单） 给你两个单链表的头节点 headA 和 headB，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null。 图示两个链表在节点 c1 开始相交：  题目数据 保证 整个链式结构中不存在环。 注意，函数返回结果后，链表必须 保持其原始结构。 自定义评测： 评测系统 的输入如下（你设计的程序 不适用 此输入）：  intersectVal
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/" class="category-chain-item">链表</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
-            
-              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" target="_self">
-          141. 环形链表
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" target="_self">
-        <div>
-          题目 141. 环形链表（简单） 给你一个链表的头节点 head，判断链表中是否有环。 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。注意：pos 不作为参数进行传递。仅仅是为了标识链表的实际情况。 如果链表中存在环，则返回 true。否则，返回 false。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 20:07" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/" class="category-chain-item">链表</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+              <a href="/tags/%E5%90%8C%E4%BD%99/">#同余</a>
             
               <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">#哈希表</a>
             
-              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/617.%20%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/" target="_self">
+          617. 合并二叉树
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/617.%20%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/" target="_self">
+        <div>
+          题目 617. 合并二叉树（简单） 给你两棵二叉树：root1 和 root2。 想象一下，当你将其中一棵覆盖到另一棵之上时，两棵树上的一些节点将会重叠（而另一些不会）。你需要将这两棵树合并成一棵新二叉树。合并的规则是：如果两个节点重叠，那么将这两个节点的值相加作为合并后节点的新值；否则，不为 null 的节点将直接作为新二叉树的节点。 返回合并后的二叉树。 注意： 合并过程必须从两个树的根节点开
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 20:07" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="category-chain-item">二叉树</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
+            
+              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">#二叉树</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/338.%20%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" target="_self">
+          338. 比特位计数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/338.%20%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" target="_self">
+        <div>
+          题目 338. 比特位计数（简单） 给你一个整数 n，对于 0 &lt;= i &lt;= n 中的每个 i，计算其二进制表示中 1 的个数，返回一个长度为 n + 1 的数组 ans 作为答案。 不要使用内置函数来解决（例如，C++ 中的 __builtin_popcount）。 示例 1： 输入： 2 输出： [0,1,1] 解释： 0 –&gt; 0 1 –&gt; 1 2 –&gt; 10
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 20:07" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/" class="category-chain-item">位运算</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/461.%20%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" target="_self">
+          461. 汉明距离
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/461.%20%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" target="_self">
+        <div>
+          题目  461. 汉明距离（简单） 两个整数之间的 汉明距离 指的是这两个数字对应二进制位不同的位置的数目。 给你两个整数 x 和 y，计算并返回它们之间的汉明距离。 示例 1： 输入： 1 4 输出： 2 解释： 1 (0 0 0 1) 4 (0 1 0 0) ↑ ↑ 上面的箭头指出了对应二进制位不同的位置。 示例 2： 输入： 3 1 输出： 1 提示：  0 &lt;= x, y &lt;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 20:07" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/" class="category-chain-item">位运算</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" target="_self">
+          136. 只出现一次的数字
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" target="_self">
+        <div>
+          题目 136. 只出现一次的数字（简单） 给你一个 非空 整数数组 nums，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现一次的元素。 你必须设计并实现线性时间复杂度的算法来解决此问题，且该算法只使用常量额外空间。 示例 1： 输入： [2,2,1] 输出： 1 示例 2： 输入： [4,1,2,1,2] 输出： 4 示例 3： 输入： [1] 输出： 1 提示：  1 &l
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 20:07" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/" class="category-chain-item">位运算</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
+            
+              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" target="_self">
+          121. 买卖股票的最佳时机
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" target="_self">
+        <div>
+          题目 121. 买卖股票的最佳时机（简单） 给定一个数组 prices，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。 你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。 返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0。 示例 1： 输入： [7,1,5,3,6,4] 输出：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 20:07" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/" class="category-chain-item">贪心</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/70.%20%E7%88%AC%E6%A5%BC%E6%A2%AF/" target="_self">
+          70. 爬楼梯
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/70.%20%E7%88%AC%E6%A5%BC%E6%A2%AF/" target="_self">
+        <div>
+          题目 70. 爬楼梯（简单） 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ 示例 1： 输入： 2 输出： 2 解释：有两种方法可以爬到楼顶。  1 阶 + 1 阶 2 阶  示例 2： 输入： 3 输出： 3 解释：有三种方法可以爬到楼顶。  1 阶 + 1 阶 + 1 阶 1 阶 + 2 阶 2 阶 + 1 阶  提示：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 20:07" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">动态规划</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
             
           </div>
         

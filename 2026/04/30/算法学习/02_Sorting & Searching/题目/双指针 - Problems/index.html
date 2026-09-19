@@ -19,27 +19,25 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Priority Queues 优先队列 简介 优先队列（Priority Queue 或 Heap）支持以下操作： - 插入元素 - 删除最高优先级元素 - 获取最高优先级元素 以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现 注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操">
+    <meta name="description" content="Problems  01-Subarray Sums 与 Solution - Books 做法类似。不同之处在于，更新 ansans 时改为判断 当前子数组之和 curcur 是否等于 目标和 xx ，是的话 ans+1ans+1 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1660 n, x &#x3D; map(int, input().split()) arr &#x3D; list(ma">
 <meta property="og:type" content="article">
-<meta property="og:title" content="05_Priority Queues 优先队列">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_Sorting%20&%20Searching/05_Priority%20Queues%20%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/index.html">
+<meta property="og:title" content="Two Pointer - Problems">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_Sorting%20&%20Searching/%E9%A2%98%E7%9B%AE/%E5%8F%8C%E6%8C%87%E9%92%88%20-%20Problems/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Priority Queues 优先队列 简介 优先队列（Priority Queue 或 Heap）支持以下操作： - 插入元素 - 删除最高优先级元素 - 获取最高优先级元素 以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现 注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操">
+<meta property="og:description" content="Problems  01-Subarray Sums 与 Solution - Books 做法类似。不同之处在于，更新 ansans 时改为判断 当前子数组之和 curcur 是否等于 目标和 xx ，是的话 ans+1ans+1 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1660 n, x &#x3D; map(int, input().split()) arr &#x3D; list(ma">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-30T09:02:14.000Z">
-<meta property="article:modified_time" content="2026-09-13T15:48:27.228Z">
+<meta property="article:published_time" content="2026-04-30T09:02:12.000Z">
+<meta property="article:modified_time" content="2026-09-19T15:26:37.066Z">
 <meta property="article:author" content="Ming">
-<meta property="article:tag" content="Heap">
-<meta property="article:tag" content="Priority Queue">
-<meta property="article:tag" content="优先队列">
-<meta property="article:tag" content="堆">
+<meta property="article:tag" content="双指针">
+<meta property="article:tag" content="滑动窗口">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>05_Priority Queues 优先队列 - Ming&#39;s Blog</title>
+  <title>Two Pointer - Problems - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="05_Priority Queues 优先队列"></span>
+            <span id="subtitle" data-typed-text="Two Pointer - Problems"></span>
           
         </div>
 
@@ -232,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          628 字
+          307 字
         
       </span>
     
@@ -243,7 +241,7 @@
         
         
         
-          6 分钟
+          3 分钟
         
       </span>
     
@@ -289,12 +287,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">05_Priority Queues 优先队列</h1>
+            <h1 id="seo-header">Two Pointer - Problems</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-13T23:48:27+08:00
+                    本文最后更新于 2026-09-19T23:26:37+08:00
                   
                   
 
@@ -304,123 +302,68 @@
             
               <div class="markdown-body">
                 
-                <h1 id="priority-queues-优先队列">Priority Queues 优先队列</h1>
-<h2 id="简介">简介</h2>
-<p>优先队列（Priority Queue 或 Heap）支持以下操作： - 插入元素 -
-删除最高优先级元素 - 获取最高优先级元素</p>
-<p>以上操作的时间复杂度均为 <strong>O(log N)</strong>。</p>
-<p>优先队列比集合更简单更快，应尽可能使用优先队列。</p>
-<h2 id="python-实现">Python 实现</h2>
-<p><strong>注意</strong>：Python（与 C++
-不同）中删除和获取的是<strong>最小元素</strong>。</p>
-<p><code>heapq</code>
-不是封装好的类，而是直接操作传入的列表，将其转换为堆。</p>
-<p><strong>警告</strong>：由于堆的结构特性，打印 pq
-不会按排序顺序打印元素，而是直接打印列表。</p>
-<h3 id="基本操作">基本操作</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
+                <h1 id="problems">Problems </h1>
+<h2 id="subarray-sums">01-Subarray Sums</h2>
+<p>与 <a href="双指针%20-%20Problems.md#Solution%20-%20Books">Solution -
+Books</a> 做法类似。不同之处在于，更新
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ans</annotation></semantics></math>
+时改为判断 当前子数组之和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>u</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">cur</annotation></semantics></math>
+是否等于 目标和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+，是的话
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">ans+1</annotation></semantics></math></p>
+<p>https://cses.fi/problemset/task/1660</p>
+<div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+arr = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
 
-pq = []
-
-<span class="hljs-comment"># 对于长度大于1的列表，需要用 heapify 转换为堆</span>
-heapq.heapify(pq)
-
-heapq.heappush(pq, <span class="hljs-number">7</span>)  <span class="hljs-comment"># [7]</span>
-heapq.heappush(pq, <span class="hljs-number">2</span>)  <span class="hljs-comment"># [7, 2]</span>
-heapq.heappush(pq, <span class="hljs-number">1</span>)  <span class="hljs-comment"># [7, 2, 1]</span>
-heapq.heappush(pq, <span class="hljs-number">5</span>)  <span class="hljs-comment"># [7, 5, 2, 1]</span>
-<span class="hljs-built_in">print</span>(pq[<span class="hljs-number">0</span>])  <span class="hljs-comment"># 1 （获取最小元素）</span>
-
-heapq.heappop(pq)  <span class="hljs-comment"># 弹出最小值 [7, 5, 2]</span>
-heapq.heappop(pq)  <span class="hljs-comment"># 弹出最小值 [7, 5]</span>
-heapq.heappush(pq, <span class="hljs-number">6</span>)  <span class="hljs-comment"># [7, 6, 5]</span></code></pre></div>
-<h3 id="常用方法">常用方法</h3>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>heapq.heappush(pq, x)</code></td>
-<td>插入元素 x</td>
-</tr>
-<tr>
-<td><code>heapq.heappop(pq)</code></td>
-<td>弹出并返回最小值</td>
-</tr>
-<tr>
-<td><code>heapq.heapreplace(pq, x)</code></td>
-<td>弹出最小值并插入 x（原子操作）</td>
-</tr>
-<tr>
-<td><code>heapq.heapify(pq)</code></td>
-<td>将列表转换为堆</td>
-</tr>
-</tbody>
-</table>
-<h3 id="大顶堆">大顶堆</h3>
-<p>Python 的 heapq 只支持小顶堆。要实现大顶堆，可以取负值：</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 大顶堆</span>
-heapq.heappush(heap, -x)   <span class="hljs-comment"># 存入负值</span>
-x = -heapq.heappop(heap)  <span class="hljs-comment"># 取出时再取负，得到原值</span></code></pre></div>
-<h2 id="例题room-allocation">例题：Room Allocation</h2>
-<p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1164">CSES - Room
-Allocation</a></p>
-<h3 id="问题描述">问题描述</h3>
-<p>给定 n 个客户的到达和离开时间，求所需的最少房间数。</p>
-<h3 id="思路">思路</h3>
-<ol type="1">
-<li>按到达时间排序所有客户</li>
-<li>维护一个小顶堆，存储已处理客户的离开时间</li>
-<li>对于每个客户：
-<ul>
-<li>如果堆顶的离开时间 &lt;
-新客户的到达时间，说明有房间空出，弹出堆顶并放入新客户的离开时间</li>
-<li>否则，所有房间都满了，需要分配新房间</li>
-</ul></li>
-</ol>
-<h3 id="代码">代码</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
-
-n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
-timetable = []
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
-    a, b = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
-    timetable.append((a, b, i))
-timetable.sort(key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">0</span>])
-
-heap = []
+l = <span class="hljs-number">0</span>
+cur = <span class="hljs-number">0</span>
 ans = <span class="hljs-number">0</span>
-results = [-<span class="hljs-number">1</span>] * n
 
-<span class="hljs-keyword">for</span> a, b, i <span class="hljs-keyword">in</span> timetable:
-    <span class="hljs-keyword">if</span> heap <span class="hljs-keyword">and</span> a &gt; heap[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]:
-        r = heap[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]
-        heapq.heapreplace(heap, (b, r))
-    <span class="hljs-keyword">else</span>:
+<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    cur += arr[r]
+    <span class="hljs-keyword">while</span> cur &gt; x:
+        cur -= arr[l]
+        l += <span class="hljs-number">1</span>
+    <span class="hljs-keyword">if</span> cur == x:
         ans += <span class="hljs-number">1</span>
-        r = ans
-        heapq.heappush(heap, (b, r))
-    results[i] = r
+        
+<span class="hljs-built_in">print</span>(ans)</code></pre></div>
+<h2 id="sum-of-three-values">02-Sum of Three Values</h2>
+<p>https://cses.fi/problemset/task/1641</p>
+<p>这个问题是两数之和问题的扩展，只是现在涉及三个值。我们可以将第三个指针设置为数组中的某个值，然后问题就变成了本模块前面讨论的两数之和问题。</p>
+<p>首先我们将数组排序。然后我们将遍历所有可能的第三个指针的值，并检查这三个指针是否加起来等于目标值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+，同时它们的位置是不同的。我们可以通过存储所有值 <code>{a[i],i}</code>
+的原始位置来保持它们的位置不变。</p>
+<div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+a = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
 
-<span class="hljs-built_in">print</span>(ans)
-<span class="hljs-built_in">print</span>(*results)</code></pre></div>
-<h3 id="复杂度">复杂度</h3>
-<ul>
-<li>时间复杂度：O(n log n)</li>
-<li>空间复杂度：O(n)</li>
-</ul>
-<h2 id="更多例题">更多例题</h2>
-<h3 id="思路总结">思路总结</h3>
-<p>优先队列常用于： 1.
-<strong>贪心算法</strong>：每次选择最小/最大的元素 2.
-<strong>多路归并</strong>：合并多个有序序列 3. <strong>求 Top
-K</strong>：维护最大的 K 个元素 4.
-<strong>任务调度</strong>：按优先级处理任务 5.
-<strong>滑动窗口</strong>：维护窗口内的最值</p>
+p = [(a[i], i + <span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
+
+p.sort()
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    left = <span class="hljs-number">0</span>
+    right = n - <span class="hljs-number">1</span>
+
+    <span class="hljs-keyword">while</span> left &lt; right:
+        target = x - p[i][<span class="hljs-number">0</span>]
+
+        <span class="hljs-keyword">if</span> left != i <span class="hljs-keyword">and</span> right != i <span class="hljs-keyword">and</span> p[left][<span class="hljs-number">0</span>] + p[right][<span class="hljs-number">0</span>] == target:
+            <span class="hljs-built_in">print</span>(p[left][<span class="hljs-number">1</span>], p[right][<span class="hljs-number">1</span>], p[i][<span class="hljs-number">1</span>])
+            exit()
+
+        <span class="hljs-comment"># increase left if the sum is lower</span>
+        <span class="hljs-keyword">elif</span> p[left][<span class="hljs-number">0</span>] + p[right][<span class="hljs-number">0</span>] &lt; target:
+            left += <span class="hljs-number">1</span>
+
+        <span class="hljs-comment"># otherwise decrease right</span>
+        <span class="hljs-keyword">else</span>:
+            right -= <span class="hljs-number">1</span>
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;IMPOSSIBLE&quot;</span>)</code></pre></div>
 
                 
               </div>
@@ -444,15 +387,8 @@ K</strong>：维护最大的 K 个元素 4.
   
     <span>></span>
     
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/" class="category-chain-item">04_Silver</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-Sorting-Searching/" class="category-chain-item">02_Sorting &amp; Searching</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Silver/02-Sorting-Searching/" class="category-chain-item">02_Sorting &amp; Searching</a>
-  
-  
-
   
 
   
@@ -468,13 +404,9 @@ K</strong>：维护最大的 K 个元素 4.
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Heap/" class="print-no-link">#Heap</a>
+        <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" class="print-no-link">#双指针</a>
       
-        <a href="/tags/Priority-Queue/" class="print-no-link">#Priority Queue</a>
-      
-        <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" class="print-no-link">#优先队列</a>
-      
-        <a href="/tags/%E5%A0%86/" class="print-no-link">#堆</a>
+        <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="print-no-link">#滑动窗口</a>
       
     </div>
   
@@ -486,8 +418,8 @@ K</strong>：维护最大的 K 个元素 4.
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>05_Priority Queues 优先队列</div>
-      <div>https://mingsm17518.github.io/2026/04/30/算法学习/02_Sorting &amp; Searching/05_Priority Queues 优先队列/</div>
+      <div>Two Pointer - Problems</div>
+      <div>https://mingsm17518.github.io/2026/04/30/算法学习/02_Sorting &amp; Searching/题目/双指针 - Problems/</div>
     </div>
     <div class="license-meta">
       
@@ -505,7 +437,7 @@ K</strong>：维护最大的 K 个元素 4.
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2026年9月13日</div>
+          <div>2026年9月19日</div>
         </div>
       
       
@@ -536,9 +468,9 @@ K</strong>：维护最大的 K 个元素 4.
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_Sorting%20&amp;%20Searching/04_Greedy%20Algorithms%20with%20Sorting%20%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%8E%92%E5%BA%8F/" title="Greedy Algorithms with Sorting 贪心算法与排序">
+                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03_Bronze/04_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="Greedy Algorithms 贪心算法">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Greedy Algorithms with Sorting 贪心算法与排序</span>
+                        <span class="hidden-mobile">Greedy Algorithms 贪心算法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -546,8 +478,8 @@ K</strong>：维护最大的 K 个元素 4.
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C/" title="01_Prefix Sums 前缀和">
-                        <span class="hidden-mobile">01_Prefix Sums 前缀和</span>
+                      <a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/" title="expected str, bytes or os.PathLike object, not MultiplexedPath">
+                        <span class="hidden-mobile">expected str, bytes or os.PathLike object, not MultiplexedPath</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

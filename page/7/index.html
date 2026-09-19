@@ -233,15 +233,235 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/02_Money_Sums/" target="_self">
-          Money Sums 题解
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03_Paths%20on%20Grids%20%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" target="_self">
+          03_Paths on Grids 网格路径问题
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/02_Money_Sums/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03_Paths%20on%20Grids%20%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" target="_self">
         <div>
-          Money Sums 题解 题目描述 https://cses.fi/problemset/task/1740 给定 n 枚硬币，每枚硬币价值 xix_i，求能凑成的所有不同金额。 限制： - 1 ≤ n ≤ 100 - 1 ≤ xix_i ≤ 1000 示例： - 输入：4, coins = [4, 2, 5, 2] - 输出：9 种金额：2 4 5 6 7 8 9 11 13  解法 问题类型
+          网格路径问题 Authors: Nathan Chen, Michael Cao, Benjamin Qi, Andrew Wang Contributor: Neo Wang  先决条件  Gold - Introduction to DP (动态规划简介)   教程 网格路径问题概述 DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E7%BD%91%E6%A0%BC/">#网格</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_Introduction%20to%20DP%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/" target="_self">
+          01_Introduction to DP 动态规划简介
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_Introduction%20to%20DP%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/" target="_self">
+        <div>
+          动态规划简介 核心思想 将大问题拆解为小问题，记录子问题的解，避免重复计算。  示例 - 青蛙 1 (Frog 1) 题目描述 https://atcoder.jp/contests/dp/tasks/dp_a 题目要求我们计算青蛙从石头 11 跳到石头 NN (N≤105N \le 10^5) 的最小总成本，已知青蛙只能跳一或两的距离。任意两个石头 ii 和 jj 之间的旅行成本由 |hi−hj
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" target="_self">
+          04_Longest Increasing Subsequence 最长递增子序列
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" target="_self">
+        <div>
+          最长递增子序列 Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang Contributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件  Gold - Introduction to DP (动态规划简介)   教程 令
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/LIS/">#LIS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/0-1%20%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
+          0/1 背包问题
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/0-1%20%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          0/1 背包问题 问题描述 有 NN 件物品，每件物品有重量 wiw_i 和价值 viv_i，求在不超过背包容量 WW 的情况下，选择物品使得总价值最大。  一维 DP 定义：dp[j] 为背包容量为 j 时的最大价值 初始条件：dp[j] = 0 状态转移： dp[j]=max&#8289;(dp[j],dp[j−w]+v)dp[j] = \max(dp[j], dp[j - w] + v) 代
         </div>
       </a>
 
@@ -296,86 +516,7 @@
             
               <a href="/tags/DP/">#DP</a>
             
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
-            
               <a href="/tags/0-1%E8%83%8C%E5%8C%85/">#0-1背包</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
-          完全背包问题
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
-        <div>
-          完全背包问题 什么是完全背包 完全背包（Unbounded Knapsack） 是动态规划中的经典问题：  有 n 种物品，每种物品有重量/价值 wiw_i，每种物品可以无限次使用，求恰好凑成重量 WW 的方案数或最大价值。  特点  物品数量无限：每种物品可以重复使用多次 状态无后效性：只关心当前重量，不关心用了哪些物品 组合方式：求的是组合（无序）还是排列（有序）  做题方法 核心思路：将大问
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-13 23:49" pubdate>
-              2026-09-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/" class="category-chain-item">完全背包</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP/">#DP</a>
-            
-              <a href="/tags/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">#完全背包</a>
             
           </div>
         
@@ -468,6 +609,232 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/02_Money_Sums/" target="_self">
+          Money Sums 题解
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/02_Money_Sums/" target="_self">
+        <div>
+          Money Sums 题解 题目描述 https://cses.fi/problemset/task/1740 给定 n 枚硬币，每枚硬币价值 xix_i，求能凑成的所有不同金额。 限制： - 1 ≤ n ≤ 100 - 1 ≤ xix_i ≤ 1000 示例： - 输入：4, coins = [4, 2, 5, 2] - 输出：9 种金额：2 4 5 6 7 8 9 11 13  解法 问题类型
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-13 23:49" pubdate>
+              2026-09-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/" class="category-chain-item">0-1背包</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+            
+              <a href="/tags/0-1%E8%83%8C%E5%8C%85/">#0-1背包</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/09_Two_Sets_II/" target="_self">
+          Two Sets II 题解
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/09_Two_Sets_II/" target="_self">
+        <div>
+          Two Sets II 题解 题目描述 https://cses.fi/problemset/task/1092 给定数字 1, 2, …, n，求将其分成两个和相等集合的方式数。 限制： - 1 ≤ n ≤ 500 示例： - 输入：7 - 输出：4 - 解释： - {1,3,4,6} 和 {2,5,7} - {1,2,5,6} 和 {3,4,7} - {1,2,4,7} 和 {3,5,6} -
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-13 23:49" pubdate>
+              2026-09-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/" class="category-chain-item">0-1背包</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+            
+              <a href="/tags/0-1%E8%83%8C%E5%8C%85/">#0-1背包</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Solutions/Chicken_Jockey/" target="_self">
+          算法学习/05_动态规划/Solutions/Chicken_Jockey
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Solutions/Chicken_Jockey/" target="_self">
+        <div>
+          Chicken Jockey 题解 题目描述 有 n 个怪物叠在一起，怪物 i (从下到上编号) 初始血量为 h[i]。 一次攻击可以对任意一个怪物造成 1 点伤害。当怪物血量 ≤ 0 时死亡，其上方的所有怪物会掉落。掉落的怪物中，底部的怪物会受到等于其下方怪物数量的摔落伤害。如果摔落后死亡，过程继续。 求最少需要多少次攻击才能消灭所有怪物。  解法 问题类型：线性 DP（状态转移只与前几个状态相
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Solutions/" class="category-chain-item">Solutions</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/02_Coin%20Combinations/" target="_self">
           Coin Combinations
         </a>
@@ -547,15 +914,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E8%BD%B0%E7%82%B8%E6%9C%BA/" target="_self">
-          第3题-轰炸机
+        <a href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
+          完全背包问题
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E8%BD%B0%E7%82%B8%E6%9C%BA/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
         <div>
-          题目 在遥远的星球上有 T 国与 K 国，其中 T 国是由 nn 座城市（编号为 1∼n1 \sim n）和 n−1n - 1 条双向道路组成的，保证任意两座城市之间互通。某天，强大的 K 国决定轰炸 T 国的所有城市，K 国可以进行以下两种操作：  选择一个尚未轰炸的城市，花费 xx 财力，将该城市本身、所有与之直接相连的道路，一并轰炸。 选择一个尚未轰炸的城市，花费 yy 财力，将该城市所在的
+          完全背包问题 什么是完全背包 完全背包（Unbounded Knapsack） 是动态规划中的经典问题：  有 n 种物品，每种物品有重量/价值 wiw_i，每种物品可以无限次使用，求恰好凑成重量 WW 的方案数或最大价值。  特点  物品数量无限：每种物品可以重复使用多次 状态无后效性：只关心当前重量，不关心用了哪些物品 组合方式：求的是组合（无序）还是排列（有序）  做题方法 核心思路：将大问
         </div>
       </a>
 
@@ -563,242 +930,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 16:39" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/" class="category-chain-item">2025年9月7日</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%A0%91%E5%BD%A2DP/">#树形DP</a>
-            
-              <a href="/tags/%E6%9C%80%E5%A4%A7%E7%8B%AC%E7%AB%8B%E9%9B%86/">#最大独立集</a>
-            
-              <a href="/tags/%E6%A0%91/">#树</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E8%A1%8C%E4%B8%BA%E6%9D%83%E9%87%8D2/" target="_self">
-          第2题-行为权重2
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E8%A1%8C%E4%B8%BA%E6%9D%83%E9%87%8D2/" target="_self">
-        <div>
-          题目 在小红书的推荐引擎中，为了评估用户行为序列的「权重」对内容分发的影响，平台将用户的一系列操作映射为一个长度为 nn 的数值数组 (a1,a2,…,an)(a_1, a_2, \ldots, a_n)。系统需要对前 mm 步行为进行聚合评估，但允许丢弃（删除）多达 n−mn - m 步「噪声」操作，每删除一步需支付权值 kk 的代价。 具体地，对于每个 mm（1≤m≤n1 \le m \le
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 16:38" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/" class="category-chain-item">2025年9月7日</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
-            
-              <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
-            
-              <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%B6%85%E7%BA%A7%E9%87%8D%E6%8E%92/" target="_self">
-          第1题-超级重排
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%B6%85%E7%BA%A7%E9%87%8D%E6%8E%92/" target="_self">
-        <div>
-          题目 Tk 有一个长度为 nn 的数组 (a1,a2,…,an)(a_1, a_2, \ldots, a_n)，Tk 定义这个数组的权值为 ∑i=1nai\sum_{i=1}^{n} a_i。为了使数组的权值最大，Tk 提出如下超级重排流程：  将所有元素的十进制表示按原序拼接成一个字符串； 对该字符串中的所有字符进行重新排列； 按照原元素的位数切分字符串，恢复为 nn 个新数字。  换句话说：收
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 16:38" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/" class="category-chain-item">2025年9月7日</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
-            
-              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/13/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/78.%20%E5%AD%90%E9%9B%86/" target="_self">
-          78. 子集
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/13/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/78.%20%E5%AD%90%E9%9B%86/" target="_self">
-        <div>
-          给你一个整数数组 nums，数组中的元素 互不相同。返回该数组所有可能的子集（幂集）。 解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。 示例 1： 输入：nums = [1,2,3] 输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] 示例 2： 输入：nums = [0] 输出：[[],[0]] 提示：  1 &lt;= nums.length
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-13 22:45" pubdate>
+            <time datetime="2026-09-13 23:49" pubdate>
               2026-09-13
             </time>
           </div>
@@ -814,135 +946,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" target="_self">
-          04_队列与栈
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" target="_self">
-        <div>
-          队列 from collections import deque  dq = deque() dq.append(x) dq.appendleft(x) dq.pop() dq.popleft() 单调队列 from collections import deque  # 求窗口最小值（递增队列） q = deque() for i in range(n):     while q and q[0
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-14 00:04" pubdate>
-              2026-09-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
   <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" target="_self">
-          03_集合
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" target="_self">
-        <div>
-          集合 set 是无序集合，元素唯一，支持 O(1) 成员检查。 s = set()  # 从列表创建（去重） nums = [1, 2, 2, 3, 3, 3] unique = set(nums) # &#123;1, 2, 3&#125;  s.add(x) s.remove(x)      # 不存在会报错 s.discard(x)     # 不存在不报错 s.pop()      # 删
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-14 00:04" pubdate>
-              2026-09-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/" class="category-chain-item">完全背包</a>
   
+  
+
   
 
   
@@ -954,6 +971,15 @@
 
           </div>
         
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">#完全背包</a>
+            
+          </div>
         
       </div>
     </article>

@@ -27,7 +27,7 @@
 <meta property="og:description" content="并查集 (DSU) 1. 基础用法（函数式） n &#x3D; 5 parent &#x3D; list(range(n))  def find(x):     if parent[x] !&#x3D; x:         parent[x] &#x3D; find(parent[x])     return parent[x]  def union(x, y):     px, py &#x3D; find(x), find(y)     i">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T12:02:08.150Z">
-<meta property="article:modified_time" content="2026-09-19T12:02:08.150Z">
+<meta property="article:modified_time" content="2026-09-19T15:22:10.097Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -287,6 +287,16 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">08_并查集</h1>
             
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-09-19T23:22:10+08:00
+                  
+                  
+
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
@@ -397,7 +407,7 @@ dsu = DSU(size)
   
     <span>></span>
     
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06-Graphs/" class="category-chain-item">06_Graphs</a>
   
   
 
@@ -435,6 +445,11 @@ dsu = DSU(size)
           <div>2026年9月19日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年9月19日</div>
+        </div>
       
       
         <div class="license-meta-item">
@@ -636,6 +651,33 @@ dsu = DSU(size)
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
