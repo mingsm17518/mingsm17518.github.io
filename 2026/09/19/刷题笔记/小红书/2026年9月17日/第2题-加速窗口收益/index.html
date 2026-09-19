@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 推理集群上排着 mm 项作业，第 pp 项有一个收益 vpv_p（正数表示划算，负数表示亏本）。 调度允许开一次加速窗口：挑一段连续作业 [L,R][L, R]（1≤L≤R≤m1 \le L \le R \le m），把这段里每一项的收益改成原来的两倍。也可以一次都不开。 窗口用完之后（或者根本没用），再从作业序列里取出一段非空的连续作业，使它们的收益加起来尽量大。请给出这个最大和。 取出的">
+    <meta name="description" content="题目  在线练习：codefun2000 P5464  推理集群上排着 mm 项作业，第 pp 项有一个收益 vpv_p（正数表示划算，负数表示亏本）。 调度允许开一次加速窗口：挑一段连续作业 [L,R][L, R]（1≤L≤R≤m1 \le L \le R \le m），把这段里每一项的收益改成原来的两倍。也可以一次都不开。 窗口用完之后（或者根本没用），再从作业序列里取出一段非空的连续作业，使">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第2题-加速窗口收益">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8A%A0%E9%80%9F%E7%AA%97%E5%8F%A3%E6%94%B6%E7%9B%8A/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目 推理集群上排着 mm 项作业，第 pp 项有一个收益 vpv_p（正数表示划算，负数表示亏本）。 调度允许开一次加速窗口：挑一段连续作业 [L,R][L, R]（1≤L≤R≤m1 \le L \le R \le m），把这段里每一项的收益改成原来的两倍。也可以一次都不开。 窗口用完之后（或者根本没用），再从作业序列里取出一段非空的连续作业，使它们的收益加起来尽量大。请给出这个最大和。 取出的">
+<meta property="og:description" content="题目  在线练习：codefun2000 P5464  推理集群上排着 mm 项作业，第 pp 项有一个收益 vpv_p（正数表示划算，负数表示亏本）。 调度允许开一次加速窗口：挑一段连续作业 [L,R][L, R]（1≤L≤R≤m1 \le L \le R \le m），把这段里每一项的收益改成原来的两倍。也可以一次都不开。 窗口用完之后（或者根本没用），再从作业序列里取出一段非空的连续作业，使">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-19T09:11:51.450Z">
-<meta property="article:modified_time" content="2026-09-19T09:11:51.450Z">
+<meta property="article:published_time" content="2026-09-19T09:22:23.841Z">
+<meta property="article:modified_time" content="2026-09-19T09:22:23.846Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="前缀和">
 <meta property="article:tag" content="动态规划">
@@ -219,7 +219,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-19 17:11" pubdate>
+        <time datetime="2026-09-19 17:22" pubdate>
           2026年9月19日 下午
         </time>
       </span>
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          714 字
+          718 字
         
       </span>
     
@@ -290,10 +290,24 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">第2题-加速窗口收益</h1>
             
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-09-19T17:22:23+08:00
+                  
+                  
+
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
                 <h2 id="题目">题目</h2>
+<blockquote>
+<p>在线练习：<a target="_blank" rel="noopener" href="https://codefun2000.com/ide/P5464">codefun2000
+P5464</a></p>
+</blockquote>
 <p>推理集群上排着
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
 项作业，第
@@ -381,8 +395,8 @@
         <span class="hljs-keyword">continue</span>
 
     cur = arr[<span class="hljs-number">0</span>]
-    <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> arr[<span class="hljs-number">1</span>:]:
-        cur = <span class="hljs-built_in">max</span>(num, cur + num)
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arr[<span class="hljs-number">1</span>:]:
+        cur = <span class="hljs-built_in">max</span>(x, cur + x)
         ans = <span class="hljs-built_in">max</span>(ans, cur)
     <span class="hljs-built_in">print</span>(ans * <span class="hljs-number">2</span>, end=<span class="hljs-string">&#x27; &#x27;</span>)</code></pre></div>
 <h3 id="方法二前缀和">方法二：前缀和</h3>
@@ -485,6 +499,11 @@
         </div>
       
       
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年9月19日</div>
+        </div>
+      
       
         <div class="license-meta-item">
           <div>许可协议</div>
@@ -513,18 +532,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%80%89%E6%8B%A9%E9%A2%98/" title="第1题-选择题">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第1题-选择题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/" title="未命名">
-                        <span class="hidden-mobile">未命名</span>
+                      <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%80%89%E6%8B%A9%E9%A2%98/" title="第1题-选择题">
+                        <span class="hidden-mobile">第1题-选择题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -685,6 +698,33 @@
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
