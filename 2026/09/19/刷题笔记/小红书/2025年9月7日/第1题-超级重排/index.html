@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目Tk 有一个长度为 $n$ 的数组 $(a1, a_2, \ldots, a_n)$，Tk 定义这个数组的权值为 $\sum{i&#x3D;1}^{n} a_i$。为了使数组的权值最大，Tk 提出如下超级重排流程：  将所有元素的十进制表示按原序拼接成一个字符串； 对该字符串中的所有字符进行重新排列； 按照原元素的位数切分字符串，恢复为 $n$ 个新数字。  换句话说：收集所有数字的每一个单独的数位；对">
+    <meta name="description" content="题目 Tk 有一个长度为 nn 的数组 (a1,a2,…,an)(a_1, a_2, \ldots, a_n)，Tk 定义这个数组的权值为 ∑i&#x3D;1nai\sum_{i&#x3D;1}^{n} a_i。为了使数组的权值最大，Tk 提出如下超级重排流程：  将所有元素的十进制表示按原序拼接成一个字符串； 对该字符串中的所有字符进行重新排列； 按照原元素的位数切分字符串，恢复为 nn 个新数字。  换句话说：收">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第1题-超级重排">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%B6%85%E7%BA%A7%E9%87%8D%E6%8E%92/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目Tk 有一个长度为 $n$ 的数组 $(a1, a_2, \ldots, a_n)$，Tk 定义这个数组的权值为 $\sum{i&#x3D;1}^{n} a_i$。为了使数组的权值最大，Tk 提出如下超级重排流程：  将所有元素的十进制表示按原序拼接成一个字符串； 对该字符串中的所有字符进行重新排列； 按照原元素的位数切分字符串，恢复为 $n$ 个新数字。  换句话说：收集所有数字的每一个单独的数位；对">
+<meta property="og:description" content="题目 Tk 有一个长度为 nn 的数组 (a1,a2,…,an)(a_1, a_2, \ldots, a_n)，Tk 定义这个数组的权值为 ∑i&#x3D;1nai\sum_{i&#x3D;1}^{n} a_i。为了使数组的权值最大，Tk 提出如下超级重排流程：  将所有元素的十进制表示按原序拼接成一个字符串； 对该字符串中的所有字符进行重新排列； 按照原元素的位数切分字符串，恢复为 nn 个新数字。  换句话说：收">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T08:38:56.490Z">
 <meta property="article:modified_time" content="2026-09-19T08:38:56.876Z">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          528 字
+          533 字
         
       </span>
     
@@ -302,20 +302,54 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Tk 有一个长度为 $n$ 的数组 $(a<em>1, a_2, \ldots, a_n)$，Tk 定义这个数组的权值为 $\sum</em>{i=1}^{n} a_i$。为了使数组的权值最大，Tk 提出如下超级重排流程：</p>
-<ol>
+                <h2 id="题目">题目</h2>
+<p>Tk 有一个长度为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+的数组
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(a_1, a_2, \ldots, a_n)</annotation></semantics></math>，Tk
+定义这个数组的权值为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\sum_{i=1}^{n} a_i</annotation></semantics></math>。为了使数组的权值最大，Tk
+提出如下超级重排流程：</p>
+<ol type="1">
 <li>将所有元素的十进制表示按原序拼接成一个字符串；</li>
 <li>对该字符串中的所有字符进行重新排列；</li>
-<li>按照原元素的位数切分字符串，恢复为 $n$ 个新数字。</li>
+<li>按照原元素的位数切分字符串，恢复为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+个新数字。</li>
 </ol>
-<p>换句话说：收集所有数字的每一个单独的数位；对于每一个原始数字 $a_i$ 记录它的位数，你必须用收集到的所有数位构造 $n$ 个新数字，其中第 $j$ 个新数字的位数必须与原始数组中第 $j$ 个数字 $a_j$ 的位数相同。目标是找到一种分配方式，使这 $n$ 个新数字的总和最大。</p>
+<p>换句话说：收集所有数字的每一个单独的数位；对于每一个原始数字
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>i</mi></msub><annotation encoding="application/x-tex">a_i</annotation></semantics></math>
+记录它的位数，你必须用收集到的所有数位构造
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+个新数字，其中第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+个新数字的位数必须与原始数组中第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+个数字
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>j</mi></msub><annotation encoding="application/x-tex">a_j</annotation></semantics></math>
+的位数相同。目标是找到一种分配方式，使这
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+个新数字的总和最大。</p>
 <p><strong>输入描述</strong></p>
-<p>第一行输入一个整数 $n$，表示数组长度。<br>第二行输入 $n$ 个整数 $a_1, a_2, \ldots, a_n$，题目保证每个元素的十进制表示中不含字符 0。</p>
+<p>第一行输入一个整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>，表示数组长度。
+第二行输入
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+个整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_1, a_2, \ldots, a_n</annotation></semantics></math>，题目保证每个元素的十进制表示中不含字符
+0。</p>
 <p><strong>输出描述</strong></p>
 <p>输出一个整数，表示经过超级重排后数组的最大权值。</p>
 <p>（回忆版无样例，可直接用代码自测）</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>位权贪心：设最大位数为 $v$，一个数在其第 $j$ 位（从最高位对齐编号）上的数位权值是 $10^{v-1-j}$，与它属于哪个数无关。把所有数位降序排序，按「位权从大到小」依次填入空位（位数长的数先占高位），总和最大。实现上逐「位级」<code>j</code> 从高到低，给每个还缺数位的数的当前位分配剩余最大的数位。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<h2 id="思路">思路</h2>
+<p>位权贪心：设最大位数为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>，一个数在其第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+位（从最高位对齐编号）上的数位权值是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mrow><mi>v</mi><mo>−</mo><mn>1</mn><mo>−</mo><mi>j</mi></mrow></msup><annotation encoding="application/x-tex">10^{v-1-j}</annotation></semantics></math>，与它属于哪个数无关。把所有数位降序排序，按「位权从大到小」依次填入空位（位数长的数先占高位），总和最大。实现上逐「位级」<code>j</code>
+从高到低，给每个还缺数位的数的当前位分配剩余最大的数位。</p>
+<h2 id="代码">代码</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
     it = <span class="hljs-built_in">iter</span>(sys.stdin.read().strip().split())
@@ -344,7 +378,8 @@
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
     main()</code></pre></div>
 <blockquote>
-<p>来源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1950980896514613908">25秋招笔试真题-小红书0907（知乎专栏）</a>（回忆版）</p>
+<p>来源：<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1950980896514613908">25秋招笔试真题-小红书0907（知乎专栏）</a>（回忆版）</p>
 </blockquote>
 
                 

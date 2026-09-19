@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 在线练习：codefun2000 P5464  推理集群上排着 $m$ 项作业，第 $p$ 项有一个收益 $v_p$（正数表示划算，负数表示亏本）。 调度允许开一次加速窗口：挑一段连续作业 $[L, R]$（$1 \le L \le R \le m$），把这段里每一项的收益改成原来的两倍。也可以一次都不开。 窗口用完之后（或者根本没用），再从作业序列里取出一段非空的连续作业，使它们的收益加起">
+    <meta name="description" content="题目  在线练习：codefun2000 P5464  推理集群上排着 mm 项作业，第 pp 项有一个收益 vpv_p（正数表示划算，负数表示亏本）。 调度允许开一次加速窗口：挑一段连续作业 [L,R][L, R]（1≤L≤R≤m1 \le L \le R \le m），把这段里每一项的收益改成原来的两倍。也可以一次都不开。 窗口用完之后（或者根本没用），再从作业序列里取出一段非空的连续作业，使">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第2题-加速窗口收益">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8A%A0%E9%80%9F%E7%AA%97%E5%8F%A3%E6%94%B6%E7%9B%8A/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目 在线练习：codefun2000 P5464  推理集群上排着 $m$ 项作业，第 $p$ 项有一个收益 $v_p$（正数表示划算，负数表示亏本）。 调度允许开一次加速窗口：挑一段连续作业 $[L, R]$（$1 \le L \le R \le m$），把这段里每一项的收益改成原来的两倍。也可以一次都不开。 窗口用完之后（或者根本没用），再从作业序列里取出一段非空的连续作业，使它们的收益加起">
+<meta property="og:description" content="题目  在线练习：codefun2000 P5464  推理集群上排着 mm 项作业，第 pp 项有一个收益 vpv_p（正数表示划算，负数表示亏本）。 调度允许开一次加速窗口：挑一段连续作业 [L,R][L, R]（1≤L≤R≤m1 \le L \le R \le m），把这段里每一项的收益改成原来的两倍。也可以一次都不开。 窗口用完之后（或者根本没用），再从作业序列里取出一段非空的连续作业，使">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T09:22:23.841Z">
 <meta property="article:modified_time" content="2026-09-19T09:22:23.846Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          676 字
+          718 字
         
       </span>
     
@@ -303,19 +303,39 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
-<p>在线练习：<a target="_blank" rel="noopener" href="https://codefun2000.com/ide/P5464">codefun2000 P5464</a></p>
+                <h2 id="题目">题目</h2>
+<blockquote>
+<p>在线练习：<a target="_blank" rel="noopener" href="https://codefun2000.com/ide/P5464">codefun2000
+P5464</a></p>
 </blockquote>
-<p>推理集群上排着 $m$ 项作业，第 $p$ 项有一个收益 $v_p$（正数表示划算，负数表示亏本）。</p>
-<p>调度允许开一次加速窗口：挑一段连续作业 $[L, R]$（$1 \le L \le R \le m$），把这段里每一项的收益改成原来的两倍。也可以一次都不开。</p>
+<p>推理集群上排着
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+项作业，第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+项有一个收益
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>p</mi></msub><annotation encoding="application/x-tex">v_p</annotation></semantics></math>（正数表示划算，负数表示亏本）。</p>
+<p>调度允许开一次加速窗口：挑一段连续作业
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>L</mi><mo>,</mo><mi>R</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[L, R]</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>L</mi><mo>≤</mo><mi>R</mi><mo>≤</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">1 \le L \le R \le m</annotation></semantics></math>），把这段里每一项的收益改成原来的两倍。也可以一次都不开。</p>
 <p>窗口用完之后（或者根本没用），再从作业序列里取出一段非空的连续作业，使它们的收益加起来尽量大。请给出这个最大和。</p>
 <p>取出的那段至少要包含一项，不能交空段。</p>
 <p><strong>输入描述</strong></p>
-<p>首行给出正整数 $k$（$1 \le k \le 2 \times 10^1$），即询问组数。</p>
-<p>随后 $k$ 行，每行先写出正整数 $m$（$1 \le m \le 2 \times 10^5$），再跟 $m$ 个整数 $v_1, v_2, \ldots, v_m$（$|v_p| \le 1000000000$），即该组作业条数和各项收益。</p>
-<p>各组 $m$ 加起来不超过 $200000$。</p>
+<p>首行给出正整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mn>2</mn><mo>×</mo><msup><mn>10</mn><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">1 \le k \le 2 \times 10^1</annotation></semantics></math>），即询问组数。</p>
+<p>随后
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+行，每行先写出正整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mn>2</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le m \le 2 \times 10^5</annotation></semantics></math>），再跟
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+个整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">v_1, v_2, \ldots, v_m</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>v</mi><mi>p</mi></msub><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mn>1000000000</mn></mrow><annotation encoding="application/x-tex">|v_p| \le 1000000000</annotation></semantics></math>），即该组作业条数和各项收益。</p>
+<p>各组
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+加起来不超过
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>200000</mn><annotation encoding="application/x-tex">200000</annotation></semantics></math>。</p>
 <p><strong>输出描述</strong></p>
-<p>一行输出 $k$ 个整数，相邻两项用空格隔开，依次为每组询问的最大连续收益和。</p>
+<p>一行输出
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+个整数，相邻两项用空格隔开，依次为每组询问的最大连续收益和。</p>
 <p><strong>样例 1</strong></p>
 <p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-number">2</span>
@@ -323,25 +343,49 @@
 <span class="hljs-symbol">3 </span>-<span class="hljs-number">5</span> -<span class="hljs-number">2</span> -<span class="hljs-number">7</span></code></pre></div>
 <p>输出：</p>
 <div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">8 </span>-<span class="hljs-number">2</span></code></pre></div>
-<p><strong>说明</strong>：</p>
-<ul>
-<li>第一组：把 $[3,3]$（收益 $4$）翻倍，序列变成 $2, -3, 8, -1$。最大连续和是单独的 $8$。</li>
-<li>第二组：全是负数，翻倍只会更亏，不开窗口，答案是最大的一项 $-2$。</li>
-</ul>
+<p><strong>说明</strong>： - 第一组：把
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>3</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[3,3]</annotation></semantics></math>（收益
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>4</mn><annotation encoding="application/x-tex">4</annotation></semantics></math>）翻倍，序列变成
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mi>−</mi><mn>3</mn><mo>,</mo><mn>8</mn><mo>,</mo><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">2, -3, 8, -1</annotation></semantics></math>。最大连续和是单独的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>8</mn><annotation encoding="application/x-tex">8</annotation></semantics></math>。
+- 第二组：全是负数，翻倍只会更亏，不开窗口，答案是最大的一项
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math>。</p>
 <p><strong>样例 2</strong></p>
 <p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-number">1</span>
 <span class="hljs-symbol">6 </span><span class="hljs-number">1</span> <span class="hljs-number">2</span> -<span class="hljs-number">5</span> <span class="hljs-number">3</span> -<span class="hljs-number">1</span> <span class="hljs-number">4</span></code></pre></div>
 <p>输出：</p>
 <div class="code-wrapper"><pre><code class="hljs">12</code></pre></div>
-<p><strong>说明</strong>：把 $[4,6]$（$3, -1, 4$）翻倍，这段和从 $6$ 变成 $12$。左侧 $1, 2, -5$ 接上去会变差，所以最大就是 $12$。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>最大子段和变形。设最终取的答案段为 $S$、窗口为 $W$，总收益 $= \text{sum}(S) + \text{sum}(S \cap W)$；而 $S \cap W$ 本身也是数组的一段连续子段，其和不会超过全局最大子段和，因此上界是 $2 \times$ 最大子段和，并且把窗口恰好开在最大子段上就能取到。</p>
+<p><strong>说明</strong>：把
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>4</mn><mo>,</mo><mn>6</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[4,6]</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>,</mo><mi>−</mi><mn>1</mn><mo>,</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">3, -1, 4</annotation></semantics></math>）翻倍，这段和从
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>6</mn><annotation encoding="application/x-tex">6</annotation></semantics></math>
+变成
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>12</mn><annotation encoding="application/x-tex">12</annotation></semantics></math>。左侧
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>−</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">1, 2, -5</annotation></semantics></math>
+接上去会变差，所以最大就是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>12</mn><annotation encoding="application/x-tex">12</annotation></semantics></math>。</p>
+<h2 id="思路">思路</h2>
+<p>最大子段和变形。设最终取的答案段为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>、窗口为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>，总收益
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mtext mathvariant="normal">sum</mtext><mo stretchy="false" form="prefix">(</mo><mi>S</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mtext mathvariant="normal">sum</mtext><mo stretchy="false" form="prefix">(</mo><mi>S</mi><mo>∩</mo><mi>W</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">= \text{sum}(S) + \text{sum}(S \cap W)</annotation></semantics></math>；而
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>∩</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">S \cap W</annotation></semantics></math>
+本身也是数组的一段连续子段，其和不会超过全局最大子段和，因此上界是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo></mrow><annotation encoding="application/x-tex">2 \times</annotation></semantics></math>
+最大子段和，并且把窗口恰好开在最大子段上就能取到。</p>
 <ul>
-<li>若最大子段和 $\le 0$（所有元素为负）：翻倍只会更小，不开窗口，答案 = 最大元素；</li>
-<li>否则：求最大子段和，答案 $= 2 \times$ 最大子段和。</li>
+<li>若最大子段和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\le 0</annotation></semantics></math>（所有元素为负）：翻倍只会更小，不开窗口，答案
+= 最大元素；</li>
+<li>否则：求最大子段和，答案
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>2</mn><mo>×</mo></mrow><annotation encoding="application/x-tex">= 2 \times</annotation></semantics></math>
+最大子段和。</li>
 </ul>
-<p>两种写法等价：方法一是 Kadane 逐项转移；方法二用前缀和——最大子段和 $= \max<em>i(\text{pref}[i] - \min</em>{j&lt;i} \text{pref}[j])$。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="方法一：Kadane"><a href="#方法一：Kadane" class="headerlink" title="方法一：Kadane"></a>方法一：Kadane</h3><div class="code-wrapper"><pre><code class="hljs python">t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+<p>两种写法等价：方法一是 Kadane 逐项转移；方法二用前缀和——最大子段和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><msub><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><mtext mathvariant="normal">pref</mtext><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo>−</mo><msub><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mrow><mi>j</mi><mo>&lt;</mo><mi>i</mi></mrow></msub><mtext mathvariant="normal">pref</mtext><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">= \max_i(\text{pref}[i] - \min_{j&lt;i} \text{pref}[j])</annotation></semantics></math>。</p>
+<h2 id="代码">代码</h2>
+<h3 id="方法一kadane">方法一：Kadane</h3>
+<div class="code-wrapper"><pre><code class="hljs python">t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(t):
     arr = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))[<span class="hljs-number">1</span>:]
 
@@ -355,7 +399,8 @@
         cur = <span class="hljs-built_in">max</span>(x, cur + x)
         ans = <span class="hljs-built_in">max</span>(ans, cur)
     <span class="hljs-built_in">print</span>(ans * <span class="hljs-number">2</span>, end=<span class="hljs-string">&#x27; &#x27;</span>)</code></pre></div>
-<h3 id="方法二：前缀和"><a href="#方法二：前缀和" class="headerlink" title="方法二：前缀和"></a>方法二：前缀和</h3><div class="code-wrapper"><pre><code class="hljs python">t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+<h3 id="方法二前缀和">方法二：前缀和</h3>
+<div class="code-wrapper"><pre><code class="hljs python">t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>():
     a = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))

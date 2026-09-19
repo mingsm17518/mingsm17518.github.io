@@ -233,15 +233,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
-          01_前缀和
+        <a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
+          04_滑动窗口
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
         <div>
-          前缀和前缀和模板用途：快速求区间和，查询时间 O(1)，预处理 O(n) 原理：prefix[i] 表示前 i 个元素的和，区间 [l, r] 的和 = prefix[r] - prefix[l-1] # 一维前缀和 prefix = [0] * (n + 1) for i in range(1, n + 1):   prefix[i] = prefix[i - 1] + a[i - 1]  #
+          滑动窗口 1. 固定窗口大小（求最大/最小窗口和） 适用场景：给定固定大小 k，求所有窗口中最大/最小的和 def sliding_window(arr, k):     &quot;&quot;&quot;求大小为 k 的窗口的最大和&quot;&quot;&quot;     window_sum = sum(arr[:k])  # 初始化第一个窗口的和     max_sum = windo
         </div>
       </a>
 
@@ -249,7 +249,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-20 00:07" pubdate>
+            <time datetime="2026-09-20 00:16" pubdate>
               2026-09-20
             </time>
           </div>
@@ -302,7 +302,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" target="_self">
         <div>
-          二分查找用途：$O(\log n)$ 定位目标——有序数组上找位置 / 单调判定函数上找边界。 原理：每次与区间中点比较，把搜索范围缩小一半。 模板有序数组：bisect    函数 功能 返回值     lower_bound(x) 第一个 &gt;= x 的位置 第一个 &gt;= x 的元素下标   upper_bound(x) 第一个 &gt; x 的位置 第一个 &gt; x 的元素下标
+          二分查找 用途：O(log&#8289;n)O(\log n) 定位目标——有序数组上找位置 / 单调判定函数上找边界。 原理：每次与区间中点比较，把搜索范围缩小一半。 模板 有序数组：bisect    函数 功能 返回值     lower_bound(x) 第一个 &gt;= x 的位置 第一个 &gt;= x 的元素下标   upper_bound(x) 第一个 &gt; x 的位置 第一
         </div>
       </a>
 
@@ -366,6 +366,67 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
+          01_前缀和
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
+        <div>
+          前缀和 前缀和模板 用途：快速求区间和，查询时间 O(1)，预处理 O(n) 原理：prefix[i] 表示前 i 个元素的和，区间 [l, r] 的和 = prefix[r] - prefix[l-1] # 一维前缀和 prefix = [0] * (n + 1) for i in range(1, n + 1):   prefix[i] = prefix[i - 1] + a[i - 1]
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-20 00:07" pubdate>
+              2026-09-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2026/05/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/BFS-DFS%20%E4%BE%8B%E9%A2%98/" target="_self">
           Graph 图
         </a>
@@ -374,7 +435,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/05/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/BFS-DFS%20%E4%BE%8B%E9%A2%98/" target="_self">
         <div>
-          BFS/DFS 例题连通分量https://cses.fi/problemset/task/1666 一个连通分量是无向图中一个最大的连通节点集合。换句话说，两个节点位于同一个连通分量中，当且仅当它们可以通过图中的边相互到达。 在上述重点问题中，目标是添加尽可能少的边，使得整个图形成一个单一的连通分量。 Solution - Building Roads请注意，每条边会将连通分量的数量减少零个或一
+          BFS/DFS 例题 连通分量 https://cses.fi/problemset/task/1666 一个连通分量是无向图中一个最大的连通节点集合。换句话说，两个节点位于同一个连通分量中，当且仅当它们可以通过图中的边相互到达。 在上述重点问题中，目标是添加尽可能少的边，使得整个图形成一个单一的连通分量。 Solution - Building Roads 请注意，每条边会将连通分量的数量减少零
         </div>
       </a>
 
@@ -439,7 +500,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_%E6%8E%92%E5%BA%8F%E4%B8%8E%E6%90%9C%E7%B4%A2/01_%E5%8F%8C%E6%8C%87%E9%92%88/" target="_self">
         <div>
-          双指针概念双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。  两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。   Sum of Two Valueshttps://cses.fi/problemset/task/1640 Solution我们要找到两个索引 $i$ 和 $j$ ，使得 $a_i + a_j =
+          双指针 概念 双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。 两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。  Sum of Two Values https://cses.fi/problemset/task/1640 Solution 我们要找到两个索引 ii 和 jj ，使得 ai+aj=xa_i +
         </div>
       </a>
 
@@ -509,7 +570,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_%E6%8E%92%E5%BA%8F%E4%B8%8E%E6%90%9C%E7%B4%A2/04_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%8E%92%E5%BA%8F/" target="_self">
         <div>
-          Greedy Algorithms with Sorting贪心算法与排序贪心算法在每一步选择当前最优的选项，通常与排序配合使用。  一、贪心算法基础贪心算法的核心是价值函数：决定哪个选择是最优的。  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的  关键：贪心算法需要证明其正确性，通常通过交换参数证法（exchange argument）。  二、例题1：学习算法（Stu
+          Greedy Algorithms with Sorting 贪心算法与排序 贪心算法在每一步选择当前最优的选项，通常与排序配合使用。  一、贪心算法基础 贪心算法的核心是价值函数：决定哪个选择是最优的。  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的  关键：贪心算法需要证明其正确性，通常通过交换参数证法（exchange argument）。  二、例题1：学习算法（
         </div>
       </a>
 
@@ -579,7 +640,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_%E6%8E%92%E5%BA%8F%E4%B8%8E%E6%90%9C%E7%B4%A2/03_%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/" target="_self">
         <div>
-          Custom Comparators and Coordinate Compression自定义比较器和坐标压缩本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序排序不仅限于数字，还可以用于任意对象。 方法一：使用元组将对象与排序关键字打包成元组： edge_num = 4 edges = [] for _ in range(edge_num):     a, b, wi
+          Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩 本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序 排序不仅限于数字，还可以用于任意对象。 方法一：使用元组 将对象与排序关键字打包成元组： edge_num = 4 edges = [] for _ in range(edge_num):     a, b
         </div>
       </a>
 
@@ -651,7 +712,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" target="_self">
         <div>
-          02_Complete Search 完全搜索什么是完全搜索？完全搜索（Complete Search / Brute Force）是一种通过枚举所有可能的情况来解决问题的算法思想。 完全搜索的特点 枚举所有可能性：遍历问题的整个解空间 简单直接：不需要复杂的数学推导 适合小规模数据：当解空间较小时非常有效 往往能通过 Bronze 题目：数据规模通常在可枚举范围内  适用场景 数据规模较小（通常
+          02_Complete Search 完全搜索 什么是完全搜索？ 完全搜索（Complete Search / Brute Force）是一种通过枚举所有可能的情况来解决问题的算法思想。 完全搜索的特点  枚举所有可能性：遍历问题的整个解空间 简单直接：不需要复杂的数学推导 适合小规模数据：当解空间较小时非常有效 往往能通过 Bronze 题目：数据规模通常在可枚举范围内  适用场景  数据规模较
         </div>
       </a>
 
@@ -723,7 +784,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_%E6%8E%92%E5%BA%8F%E4%B8%8E%E6%90%9C%E7%B4%A2/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" target="_self">
         <div>
-          Priority Queues 优先队列简介优先队列（Priority Queue 或 Heap）支持以下操作：  插入元素 删除最高优先级元素 获取最高优先级元素  以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操作传入的列表，
+          Priority Queues 优先队列 简介 优先队列（Priority Queue 或 Heap）支持以下操作： - 插入元素 - 删除最高优先级元素 - 获取最高优先级元素 以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现 注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操
         </div>
       </a>
 
@@ -797,7 +858,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" target="_self">
         <div>
-          差分数组用途：多次区间修改、最后一次性还原——每次把「区间 $[l, r]$ 整体加 $v$」降为 $O(1)$ 的两个单点修改。 原理：差分是前缀和的逆运算。设 $d[i] = a[i] - a[i-1]$，则对 $d$ 求前缀和就还原出 $a$。区间 $[l, r]$ 加 $v$ 时，只有 $d[l]$ 和 $d[r+1]$ 两个边界变了： d[l] \mathrel{+}= v,\quad
+          差分数组 用途：多次区间修改、最后一次性还原——每次把「区间 [l,r][l, r] 整体加 vv」降为 O(1)O(1) 的两个单点修改。 原理：差分是前缀和的逆运算。设 d[i]=a[i]−a[i−1]d[i] = a[i] - a[i-1]，则对 dd 求前缀和就还原出 aa。区间 [l,r][l, r] 加 vv 时，只有 d[l]d[l] 和 d[r+1]d[r+1] 两个边界变了： d
         </div>
       </a>
 
@@ -843,79 +904,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%B7%AE%E5%88%86/">#差分</a>
-            
               <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%BE%BE%E4%BA%BA%E6%95%B0%E6%8D%AE%E7%9C%8B%E6%9D%BF/" target="_self">
-          第1题-达人数据看板
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%BE%BE%E4%BA%BA%E6%95%B0%E6%8D%AE%E7%9C%8B%E6%9D%BF/" target="_self">
-        <div>
-          第一题 - 项目需求概览：达人数据看板题目项目名称：达人数据看板 本项目面向运营团队，目标是构建一个前后端分离的「达人数据分析看板」Web 应用，帮助运营人员从多维度了解平台达人的成长趋势、内容表现与粉丝画像。系统需预置不少于 500 条达人初始数据，并支持数据持久化与 API 通信。 核心功能包括：  数据概览：展示平台达人总数、本周新增达人、平均互动率、平均粉丝数等关键指标卡片，并显示环比升降
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 23:49" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
+              <a href="/tags/%E5%B7%AE%E5%88%86/">#差分</a>
             
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/" class="category-chain-item">2026年9月13日</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
           </div>
-        
         
       </div>
     </article>

@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="二分查找用途：$O(\log n)$ 定位目标——有序数组上找位置 &#x2F; 单调判定函数上找边界。 原理：每次与区间中点比较，把搜索范围缩小一半。 模板有序数组：bisect    函数 功能 返回值     lower_bound(x) 第一个 &gt;&#x3D; x 的位置 第一个 &gt;&#x3D; x 的元素下标   upper_bound(x) 第一个 &gt; x 的位置 第一个 &gt; x 的元素下标">
+    <meta name="description" content="二分查找 用途：O(log&#8289;n)O(\log n) 定位目标——有序数组上找位置 &#x2F; 单调判定函数上找边界。 原理：每次与区间中点比较，把搜索范围缩小一半。 模板 有序数组：bisect    函数 功能 返回值     lower_bound(x) 第一个 &gt;&#x3D; x 的位置 第一个 &gt;&#x3D; x 的元素下标   upper_bound(x) 第一个 &gt; x 的位置 第一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="03_二分查找">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="二分查找用途：$O(\log n)$ 定位目标——有序数组上找位置 &#x2F; 单调判定函数上找边界。 原理：每次与区间中点比较，把搜索范围缩小一半。 模板有序数组：bisect    函数 功能 返回值     lower_bound(x) 第一个 &gt;&#x3D; x 的位置 第一个 &gt;&#x3D; x 的元素下标   upper_bound(x) 第一个 &gt; x 的位置 第一个 &gt; x 的元素下标">
+<meta property="og:description" content="二分查找 用途：O(log&#8289;n)O(\log n) 定位目标——有序数组上找位置 &#x2F; 单调判定函数上找边界。 原理：每次与区间中点比较，把搜索范围缩小一半。 模板 有序数组：bisect    函数 功能 返回值     lower_bound(x) 第一个 &gt;&#x3D; x 的位置 第一个 &gt;&#x3D; x 的元素下标   upper_bound(x) 第一个 &gt; x 的位置 第一">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T16:07:05.756Z">
 <meta property="article:modified_time" content="2026-09-19T16:09:36.608Z">
@@ -303,9 +303,12 @@
             
               <div class="markdown-body">
                 
-                <h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><p><strong>用途</strong>：$O(\log n)$ 定位目标——有序数组上找位置 / 单调判定函数上找边界。</p>
+                <h2 id="二分查找">二分查找</h2>
+<p><strong>用途</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math>
+定位目标——有序数组上找位置 / 单调判定函数上找边界。</p>
 <p><strong>原理</strong>：每次与区间中点比较，把搜索范围缩小一半。</p>
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><h3 id="有序数组：bisect"><a href="#有序数组：bisect" class="headerlink" title="有序数组：bisect"></a>有序数组：bisect</h3><div class="table-container">
+<h2 id="模板">模板</h2>
+<h3 id="有序数组bisect">有序数组：bisect</h3>
 <table>
 <thead>
 <tr>
@@ -327,7 +330,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> bisect
 
 arr = <span class="hljs-built_in">sorted</span>([...])  <span class="hljs-comment"># 先排序</span>
@@ -337,7 +339,9 @@ pos = bisect.bisect_left(arr, x)
 
 <span class="hljs-comment"># upper_bound: 第一个 &gt; x 的位置</span>
 pos = bisect.bisect_right(arr, x)</code></pre></div>
-<h3 id="有序数组：手写-lower-bound-upper-bound"><a href="#有序数组：手写-lower-bound-upper-bound" class="headerlink" title="有序数组：手写 lower_bound / upper_bound"></a>有序数组：手写 lower_bound / upper_bound</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 查找左边界（第一个 &gt;= target 的位置）</span>
+<h3 id="有序数组手写-lower_bound-upper_bound">有序数组：手写 lower_bound
+/ upper_bound</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 查找左边界（第一个 &gt;= target 的位置）</span>
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">lower_bound</span>(<span class="hljs-params">arr, x</span>):
     lo, hi = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr)
     <span class="hljs-keyword">while</span> lo &lt; hi:
@@ -358,8 +362,10 @@ pos = bisect.bisect_right(arr, x)</code></pre></div>
         <span class="hljs-keyword">else</span>:
             hi = mid
     <span class="hljs-keyword">return</span> lo</code></pre></div>
-<h3 id="单调函数：last-true-first-true"><a href="#单调函数：last-true-first-true" class="headerlink" title="单调函数：last_true / first_true"></a>单调函数：last_true / first_true</h3><div class="table-container">
+<h3 id="单调函数last_true-first_true">单调函数：last_true /
+first_true</h3>
 <table>
+
 <thead>
 <tr>
 <th>模式</th>
@@ -383,7 +389,6 @@ pos = bisect.bisect_right(arr, x)</code></pre></div>
 </tr>
 </tbody>
 </table>
-</div>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">Callable</span>
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">last_true</span>(<span class="hljs-params">lo: <span class="hljs-built_in">int</span>, hi: <span class="hljs-built_in">int</span>, f: <span class="hljs-type">Callable</span>[[<span class="hljs-built_in">int</span>], <span class="hljs-built_in">bool</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:
@@ -407,46 +412,55 @@ pos = bisect.bisect_right(arr, x)</code></pre></div>
         <span class="hljs-keyword">else</span>:
             lo = mid + <span class="hljs-number">1</span>
     <span class="hljs-keyword">return</span> lo</code></pre></div>
-<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><h3 id="单调函数的概念"><a href="#单调函数的概念" class="headerlink" title="单调函数的概念"></a>单调函数的概念</h3><p>当我们需要在<strong>单调函数</strong>上二分时，搜索对象是一个布尔函数 <code>f(x)</code>，满足单调性：</p>
+<h2 id="解释">解释</h2>
+<h3 id="单调函数的概念">单调函数的概念</h3>
+<p>当我们需要在<strong>单调函数</strong>上二分时，搜索对象是一个布尔函数
+<code>f(x)</code>，满足单调性：</p>
 <ul>
-<li>如果 <code>f(x) = true</code>，则 <code>f(y) = true</code> 对所有 <code>y ≤ x</code>（或 <code>y ≥ x</code>）</li>
+<li>如果 <code>f(x) = true</code>，则 <code>f(y) = true</code> 对所有
+<code>y ≤ x</code>（或 <code>y ≥ x</code>）</li>
 </ul>
-<p><strong><code>last_true</code> 适用的条件</strong>：</p>
-<ul>
-<li>如果 <code>f(x) = true</code>，则对所有 <code>y ≤ x</code> 都有 <code>f(y) = true</code></li>
-<li>如果 <code>f(x) = false</code>，则对所有 <code>y ≥ x</code> 都有 <code>f(y) = false</code></li>
-</ul>
-<p><strong><code>first_true</code> 适用的条件</strong>：</p>
-<ul>
-<li>如果 <code>f(x) = true</code>，则对所有 <code>y ≥ x</code> 都有 <code>f(y) = true</code></li>
-<li>如果 <code>f(x) = false</code>，则对所有 <code>y ≤ x</code> 都有 <code>f(y) = false</code></li>
-</ul>
+<p><strong><code>last_true</code> 适用的条件</strong>： - 如果
+<code>f(x) = true</code>，则对所有 <code>y ≤ x</code> 都有
+<code>f(y) = true</code> - 如果 <code>f(x) = false</code>，则对所有
+<code>y ≥ x</code> 都有 <code>f(y) = false</code></p>
+<p><strong><code>first_true</code> 适用的条件</strong>： - 如果
+<code>f(x) = true</code>，则对所有 <code>y ≥ x</code> 都有
+<code>f(y) = true</code> - 如果 <code>f(x) = false</code>，则对所有
+<code>y ≤ x</code> 都有 <code>f(y) = false</code></p>
 <p>例如，对于以下函数：</p>
 <div class="code-wrapper"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-number">1</span>)</span></span> = true, <span class="hljs-built_in">f</span>(<span class="hljs-number">2</span>) = true, <span class="hljs-built_in">f</span>(<span class="hljs-number">3</span>) = true, <span class="hljs-built_in">f</span>(<span class="hljs-number">4</span>) = true, <span class="hljs-built_in">f</span>(<span class="hljs-number">5</span>) = true
 <span class="hljs-function"><span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-number">6</span>)</span></span> = false, <span class="hljs-built_in">f</span>(<span class="hljs-number">7</span>) = false, <span class="hljs-built_in">f</span>(<span class="hljs-number">8</span>) = false</code></pre></div>
-<p>则 <code>last_true(1, 8, f) = 5</code>，<code>first_true(1, 8, f) = 1</code>。</p>
-<h3 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h3><p><strong>错误 1：mid 取整方向错误</strong>。当 <code>lo = 0, hi = 1</code> 时，如果使用向下取整：</p>
+<p>则
+<code>last_true(1, 8, f) = 5</code>，<code>first_true(1, 8, f) = 1</code>。</p>
+<h3 id="常见错误">常见错误</h3>
+<p><strong>错误 1：mid 取整方向错误</strong>。当
+<code>lo = 0, hi = 1</code> 时，如果使用向下取整：</p>
 <div class="code-wrapper"><pre><code class="hljs python">mid = (lo + hi) // <span class="hljs-number">2</span>  <span class="hljs-comment"># = 0，会导致无限循环</span></code></pre></div>
-<p>修复：根据搜索方向选择正确的取整方式——向右找 true → 向上取整 <code>(hi - lo + 1) // 2</code>；向左找 true → 向下取整 <code>(hi - lo) // 2</code>。</p>
-<p><strong>错误 2：负数边界</strong>。<code>mid = (lo + hi) // 2</code> 对负数会向上取整！修复：</p>
+<p>修复：根据搜索方向选择正确的取整方式——向右找 true → 向上取整
+<code>(hi - lo + 1) // 2</code>；向左找 true → 向下取整
+<code>(hi - lo) // 2</code>。</p>
+<p><strong>错误 2：负数边界</strong>。<code>mid = (lo + hi) // 2</code>
+对负数会向上取整！修复：</p>
 <div class="code-wrapper"><pre><code class="hljs python">mid = lo + (hi - lo) // <span class="hljs-number">2</span></code></pre></div>
-<p><strong>错误 3：整数溢出</strong>。在 C++/Java 中注意使用 <code>long long</code> 类型，避免 <code>lo + hi</code> 溢出。</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="例题-1：Counting-Haybales（有序数组-upper-bound）"><a href="#例题-1：Counting-Haybales（有序数组-upper-bound）" class="headerlink" title="例题 1：Counting Haybales（有序数组 + upper_bound）"></a>例题 1：Counting Haybales（有序数组 + upper_bound）</h3><p>来源：<a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=666">USACO - Haybales</a></p>
-<p>给定 N 个不同位置的干草捆，有 Q 次查询，每次查询区间 [A, B] 内有多少个干草捆。</p>
+<p><strong>错误 3：整数溢出</strong>。在 C++/Java 中注意使用
+<code>long long</code> 类型，避免 <code>lo + hi</code> 溢出。</p>
+<h2 id="例题">例题</h2>
+<h3 id="例题-1counting-haybales有序数组-upper_bound">例题 1：Counting
+Haybales（有序数组 + upper_bound）</h3>
+<p>来源：<a
+target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=666">USACO
+- Haybales</a></p>
+<p>给定 N 个不同位置的干草捆，有 Q 次查询，每次查询区间 [A, B]
+内有多少个干草捆。</p>
 <ul>
 <li>N, Q ≤ 100,000</li>
 <li>坐标范围：0 ~ 1,000,000,000</li>
 </ul>
-<p>思路：</p>
-<ol>
-<li>先将所有干草捆位置排序</li>
-<li>对于每次查询 [A, B]：<ul>
-<li><code>&lt;= B</code> 的个数：<code>upper_bound(B)</code></li>
-<li><code>&lt;= A-1</code> 的个数：<code>upper_bound(A-1)</code></li>
-<li>答案 = <code>upper_bound(B) - upper_bound(A-1)</code></li>
-</ul>
-</li>
-</ol>
+<p>思路： 1. 先将所有干草捆位置排序 2. 对于每次查询 [A, B]： -
+<code>&lt;= B</code> 的个数：<code>upper_bound(B)</code> -
+<code>&lt;= A-1</code> 的个数：<code>upper_bound(A-1)</code> - 答案 =
+<code>upper_bound(B) - upper_bound(A-1)</code></p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 sys.stdin = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;haybales.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)
 sys.stdout = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;haybales.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>)
@@ -469,25 +483,31 @@ arr = <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">list
     a, b = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
     <span class="hljs-built_in">print</span>(at_most(b) - at_most(a - <span class="hljs-number">1</span>))</code></pre></div>
 <p>复杂度：O(N log N + Q log N)</p>
-<h3 id="例题-2：最大中位数（单调函数-last-true）"><a href="#例题-2：最大中位数（单调函数-last-true）" class="headerlink" title="例题 2：最大中位数（单调函数 + last_true）"></a>例题 2：最大中位数（单调函数 + last_true）</h3><p>来源：<a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1201/C">Codeforces - Maximum Median</a></p>
-<p>给定 n 个整数的数组（n 为奇数），可以进行 k 次操作（每次+1），求最大可达中位数。</p>
+<h3 id="例题-2最大中位数单调函数-last_true">例题 2：最大中位数（单调函数
++ last_true）</h3>
+<p>来源：<a
+target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1201/C">Codeforces -
+Maximum Median</a></p>
+<p>给定 n 个整数的数组（n 为奇数），可以进行 k
+次操作（每次+1），求最大可达中位数。</p>
 <p><code>1 ≤ n ≤ 2 × 10^5</code>，<code>1 ≤ k ≤ 10^9</code></p>
 <p>思路：</p>
-<ol>
-<li><p><strong>排序数组</strong>：先对数组进行升序排序</p>
-</li>
-<li><p><strong>观察</strong>：要将中位数提升到 x，需要将所有<strong>大于等于当前中位数</strong>的元素都提升到至少 x</p>
-<p>例如，对于排序后的数组 <code>[1,1,2,3,4,4,5,5,6,8,8]</code>，当前中位数是 4，要将中位数提升到 6，需要：</p>
+<ol type="1">
+<li><p><strong>排序数组</strong>：先对数组进行升序排序</p></li>
+<li><p><strong>观察</strong>：要将中位数提升到
+x，需要将所有<strong>大于等于当前中位数</strong>的元素都提升到至少 x</p>
+<p>例如，对于排序后的数组
+<code>[1,1,2,3,4,4,5,5,6,8,8]</code>，当前中位数是 4，要将中位数提升到
+6，需要：</p>
 <ul>
 <li>将 4 → 6（2 次操作）</li>
 <li>将 5 → 6（1 次操作 × 2 个）</li>
 <li>将 6,8,8 保持不变</li>
-</ul>
-</li>
-<li><p><strong>单调性</strong>：将中位数提升到 x 所需的操作数随着 x 增加而单调递增</p>
-</li>
-<li><p><strong>二分搜索</strong>：使用 <code>last_true</code> 找到最大的 x 使得所需操作数 ≤ k</p>
-</li>
+</ul></li>
+<li><p><strong>单调性</strong>：将中位数提升到 x 所需的操作数随着 x
+增加而单调递增</p></li>
+<li><p><strong>二分搜索</strong>：使用 <code>last_true</code> 找到最大的
+x 使得所需操作数 ≤ k</p></li>
 </ol>
 <div class="code-wrapper"><pre><code class="hljs python">n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 arr = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
@@ -511,25 +531,31 @@ arr.sort()
 
 ans = last_true(<span class="hljs-number">1</span>, <span class="hljs-built_in">int</span>(<span class="hljs-number">2e9</span>), med_reachable)
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h3 id="例题-3：Cow-Dance-Show（first-true-堆模拟）"><a href="#例题-3：Cow-Dance-Show（first-true-堆模拟）" class="headerlink" title="例题 3：Cow Dance Show（first_true + 堆模拟）"></a>例题 3：Cow Dance Show（first_true + 堆模拟）</h3><p>来源：<a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=690">USACO - Cow Dance Show</a></p>
-<p>有 N 头牛按顺序表演，每头牛舞蹈时长为 d(i)。舞台能容纳 K 头牛同时表演。初始时前 K 头牛上台，当其中任何一头牛完成表演后，立即由下一头牛补上（直到所有牛表演完）。求在演出时间不超过 Tmax 的前提下，最小的 K 是多少。</p>
+<h3 id="例题-3cow-dance-showfirst_true-堆模拟">例题 3：Cow Dance
+Show（first_true + 堆模拟）</h3>
+<p>来源：<a
+target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=690">USACO
+- Cow Dance Show</a></p>
+<p>有 N 头牛按顺序表演，每头牛舞蹈时长为 d(i)。舞台能容纳 K
+头牛同时表演。初始时前 K
+头牛上台，当其中任何一头牛完成表演后，立即由下一头牛补上（直到所有牛表演完）。求在演出时间不超过
+Tmax 的前提下，最小的 K 是多少。</p>
 <p><code>1 ≤ N ≤ 10,000</code>，<code>Tmax ≤ 10^6</code>，<code>1 ≤ d(i) ≤ 100,000</code></p>
 <p>思路：</p>
-<ol>
+<ol type="1">
 <li><p><strong>单调性</strong>：K 越大，演出时间 T 越小</p>
 <ul>
 <li>如果 K 可以让演出在 Tmax 内完成，那么 K+1、K+2 也可以</li>
 <li>单调递增：随着 K 增大，T 单调递减</li>
-</ul>
-</li>
-<li><p><strong>二分搜索</strong>：使用 <code>first_true</code> 找到最小的可行 K</p>
-</li>
-<li><p><strong>模拟演出</strong>：使用小顶堆模拟 K 个同时在舞台上的牛</p>
+</ul></li>
+<li><p><strong>二分搜索</strong>：使用 <code>first_true</code>
+找到最小的可行 K</p></li>
+<li><p><strong>模拟演出</strong>：使用小顶堆模拟 K
+个同时在舞台上的牛</p>
 <ul>
 <li>每次取出最早结束的牛，用下一头牛替换</li>
 <li>最终演出时间 = 堆中所有牛完成时间的最大值</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 <span class="hljs-keyword">import</span> heapq
@@ -561,36 +587,38 @@ d = [<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</s
     <span class="hljs-keyword">return</span> lo
 
 <span class="hljs-built_in">print</span>(first_true(<span class="hljs-number">1</span>, n, <span class="hljs-keyword">lambda</span> k: fun(k) &lt;= t))</code></pre></div>
-<p>关键点：</p>
-<ul>
-<li><strong>搜索范围</strong>：<code>[1, N]</code>（最多 N 头牛同时上台）</li>
-<li><strong>单调性</strong>：K 越大 T 越小 → 使用 <code>first_true</code> 找最小可行 K</li>
-<li><strong>堆的作用</strong>：O(N log K) 时间模拟演出过程</li>
-</ul>
-<h3 id="例题-4：Convention-机场接机（first-true-贪心验证）"><a href="#例题-4：Convention-机场接机（first-true-贪心验证）" class="headerlink" title="例题 4：Convention 机场接机（first_true + 贪心验证）"></a>例题 4：Convention 机场接机（first_true + 贪心验证）</h3><p>来源：<a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=858">USACO - Convention</a></p>
-<p>有 N 头奶牛到达机场，时间为 t1…tN。有 M 辆大巴，每辆可乘 C 头奶牛。大巴发车时间 = 最后一头乘坐该大巴的奶牛的到达时间。求最大等待时间（发车时间 - 到达时间）的最小值。</p>
+<p>关键点： - <strong>搜索范围</strong>：<code>[1, N]</code>（最多 N
+头牛同时上台） - <strong>单调性</strong>：K 越大 T 越小 → 使用
+<code>first_true</code> 找最小可行 K - <strong>堆的作用</strong>：O(N
+log K) 时间模拟演出过程</p>
+<h3 id="例题-4convention-机场接机first_true-贪心验证">例题 4：Convention
+机场接机（first_true + 贪心验证）</h3>
+<p>来源：<a
+target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=858">USACO
+- Convention</a></p>
+<p>有 N 头奶牛到达机场，时间为 t1…tN。有 M 辆大巴，每辆可乘 C
+头奶牛。大巴发车时间 =
+最后一头乘坐该大巴的奶牛的到达时间。求最大等待时间（发车时间 -
+到达时间）的最小值。</p>
 <p><code>N, M ≤ 10^5</code>，<code>C ≤ N</code>，<code>ti ≤ 10^9</code></p>
 <p>思路：</p>
-<ol>
-<li><p><strong>排序</strong>：将奶牛到达时间按升序排列</p>
-</li>
-<li><p><strong>问题转化</strong>：不直接问”能否用 M 辆大巴在等待时间 X 内完成”，而是问”在等待时间 X 内最少需要多少辆大巴”</p>
-</li>
+<ol type="1">
+<li><p><strong>排序</strong>：将奶牛到达时间按升序排列</p></li>
+<li><p><strong>问题转化</strong>：不直接问”能否用 M 辆大巴在等待时间 X
+内完成”，而是问”在等待时间 X 内最少需要多少辆大巴”</p></li>
 <li><p><strong>单调性</strong>：</p>
 <ul>
 <li>如果在等待时间 X 下无法完成，那么更小的 X 也不可能完成</li>
 <li>随着 X 增大，所需大巴数单调递减</li>
-</ul>
-</li>
+</ul></li>
 <li><p><strong>验证函数的三种情况</strong>（处理每头牛）：</p>
 <ul>
 <li>添加这头牛会导致第一头牛超过最大等待时间 → 开新大巴</li>
 <li>添加这头牛会导致大巴超载 → 开新大巴</li>
 <li>可以加入当前大巴 → 直接加入</li>
-</ul>
-</li>
-<li><p><strong>二分搜索</strong>：使用 <code>first_true</code> 找到最小的可行 X</p>
-</li>
+</ul></li>
+<li><p><strong>二分搜索</strong>：使用 <code>first_true</code>
+找到最小的可行 X</p></li>
 </ol>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">can_arrange</span>(<span class="hljs-params">x</span>):
     <span class="hljs-string">&quot;&quot;&quot;检查是否能在最大等待时间 x 内用 M 辆大巴接完所有奶牛&quot;&quot;&quot;</span>
@@ -625,23 +653,18 @@ time = <span class="hljs-built_in">sorted</span>([<span class="hljs-built_in">in
 
 ans = first_true(<span class="hljs-number">0</span>, time[-<span class="hljs-number">1</span>] - time[<span class="hljs-number">0</span>], can_arrange)
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<p>关键点：</p>
-<ul>
-<li><strong>搜索范围</strong>：<code>[0, max_time - min_time]</code></li>
-<li><strong>单调性</strong>：X 越大，所需大巴数越少 → 使用 <code>first_true</code></li>
-<li>复杂度：O(N log N)</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>二分搜索的核心思想是<strong>利用单调性</strong>快速缩小搜索区间：</p>
-<ol>
+<p>关键点： -
+<strong>搜索范围</strong>：<code>[0, max_time - min_time]</code> -
+<strong>单调性</strong>：X 越大，所需大巴数越少 → 使用
+<code>first_true</code> - 复杂度：O(N log N)</p>
+<h2 id="总结">总结</h2>
+<p>二分搜索的核心思想是<strong>利用单调性</strong>快速缩小搜索区间：</p>
+<ol type="1">
 <li><strong>在有序数组上</strong>：利用数组的有序性</li>
 <li><strong>在单调函数上</strong>：利用函数的单调性</li>
 </ol>
-<p><strong>关键要点</strong>：</p>
-<ul>
-<li>确保函数是单调的</li>
-<li>选择正确的 mid 取整方向</li>
-<li>使用哨兵简化边界处理</li>
-</ul>
+<p><strong>关键要点</strong>： - 确保函数是单调的 - 选择正确的 mid
+取整方向 - 使用哨兵简化边界处理</p>
 
                 
               </div>
