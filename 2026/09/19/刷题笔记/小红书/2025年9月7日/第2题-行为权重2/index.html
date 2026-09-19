@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 在小红书的推荐引擎中，为了评估用户行为序列的「权重」对内容分发的影响，平台将用户的一系列操作映射为一个长度为 nn 的数值数组 (a1,a2,…,an)(a_1, a_2, \ldots, a_n)。系统需要对前 mm 步行为进行聚合评估，但允许丢弃（删除）多达 n−mn - m 步「噪声」操作，每删除一步需支付权值 kk 的代价。 具体地，对于每个 mm（1≤m≤n1 \le m \le">
+    <meta name="description" content="题目在小红书的推荐引擎中，为了评估用户行为序列的「权重」对内容分发的影响，平台将用户的一系列操作映射为一个长度为 $n$ 的数值数组 $(a_1, a_2, \ldots, a_n)$。系统需要对前 $m$ 步行为进行聚合评估，但允许丢弃（删除）多达 $n - m$ 步「噪声」操作，每删除一步需支付权值 $k$ 的代价。 具体地，对于每个 $m$（$1 \le m \le n$），在原数组上最多执">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第2题-行为权重2">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E8%A1%8C%E4%B8%BA%E6%9D%83%E9%87%8D2/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目 在小红书的推荐引擎中，为了评估用户行为序列的「权重」对内容分发的影响，平台将用户的一系列操作映射为一个长度为 nn 的数值数组 (a1,a2,…,an)(a_1, a_2, \ldots, a_n)。系统需要对前 mm 步行为进行聚合评估，但允许丢弃（删除）多达 n−mn - m 步「噪声」操作，每删除一步需支付权值 kk 的代价。 具体地，对于每个 mm（1≤m≤n1 \le m \le">
+<meta property="og:description" content="题目在小红书的推荐引擎中，为了评估用户行为序列的「权重」对内容分发的影响，平台将用户的一系列操作映射为一个长度为 $n$ 的数值数组 $(a_1, a_2, \ldots, a_n)$。系统需要对前 $m$ 步行为进行聚合评估，但允许丢弃（删除）多达 $n - m$ 步「噪声」操作，每删除一步需支付权值 $k$ 的代价。 具体地，对于每个 $m$（$1 \le m \le n$），在原数组上最多执">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T08:38:57.061Z">
 <meta property="article:modified_time" content="2026-09-19T08:38:57.370Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          639 字
+          611 字
         
       </span>
     
@@ -303,78 +303,17 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目">题目</h2>
-<p>在小红书的推荐引擎中，为了评估用户行为序列的「权重」对内容分发的影响，平台将用户的一系列操作映射为一个长度为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-的数值数组
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(a_1, a_2, \ldots, a_n)</annotation></semantics></math>。系统需要对前
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-步行为进行聚合评估，但允许丢弃（删除）多达
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n - m</annotation></semantics></math>
-步「噪声」操作，每删除一步需支付权值
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-的代价。</p>
-<p>具体地，对于每个
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 \le m \le n</annotation></semantics></math>），在原数组上最多执行
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n - m</annotation></semantics></math>
-次删除操作（删除任意位置的
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>i</mi></msub><annotation encoding="application/x-tex">a_i</annotation></semantics></math>，结果不影响下次计算），然后计算：删除次数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>×</mi><mi>k</mi><mo>+</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></msubsup><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\times k + \sum_{i=1}^{m} a_i</annotation></semantics></math>，其中
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></msubsup><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\sum_{i=1}^{m} a_i</annotation></semantics></math>
-是对删完后新数组的前
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-项求和。</p>
-<p>你需要对每一个
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-输出对应的最小代价。</p>
-<p><strong>注意</strong>：对于每个
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-的计算都是独立的，每次都从完整的初始数组
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
-开始。</p>
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在小红书的推荐引擎中，为了评估用户行为序列的「权重」对内容分发的影响，平台将用户的一系列操作映射为一个长度为 $n$ 的数值数组 $(a_1, a_2, \ldots, a_n)$。系统需要对前 $m$ 步行为进行聚合评估，但允许丢弃（删除）多达 $n - m$ 步「噪声」操作，每删除一步需支付权值 $k$ 的代价。</p>
+<p>具体地，对于每个 $m$（$1 \le m \le n$），在原数组上最多执行 $n - m$ 次删除操作（删除任意位置的 $a<em>i$，结果不影响下次计算），然后计算：删除次数 $\times k + \sum</em>{i=1}^{m} a<em>i$，其中 $\sum</em>{i=1}^{m} a_i$ 是对删完后新数组的前 $m$ 项求和。</p>
+<p>你需要对每一个 $m$ 输出对应的最小代价。</p>
+<p><strong>注意</strong>：对于每个 $m$ 的计算都是独立的，每次都从完整的初始数组 $a$ 开始。</p>
 <p><strong>输入描述</strong></p>
-<p>每个测试文件均包含多组测试数据，第一行输入一个整数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
-代表数据组数。每组测试数据： 第一行输入两个整数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>,</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">n, k</annotation></semantics></math>，分别代表行为序列长度和删除代价。
-第二行输入
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-个整数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_1, a_2, \ldots, a_n</annotation></semantics></math>，表示原始行为权重。</p>
+<p>每个测试文件均包含多组测试数据，第一行输入一个整数 $T$ 代表数据组数。每组测试数据：<br>第一行输入两个整数 $n, k$，分别代表行为序列长度和删除代价。<br>第二行输入 $n$ 个整数 $a_1, a_2, \ldots, a_n$，表示原始行为权重。</p>
 <p><strong>输出描述</strong></p>
-<p>对于每个测试用例，新起一行输出
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-个整数，第
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-个数表示当保留前
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-步行为时的最小代价，按
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-从 1 到
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-顺序用空格分隔。</p>
+<p>对于每个测试用例，新起一行输出 $n$ 个整数，第 $m$ 个数表示当保留前 $m$ 步行为时的最小代价，按 $m$ 从 1 到 $n$ 顺序用空格分隔。</p>
 <p>（回忆版无样例，可直接用代码自测）</p>
-<h2 id="思路">思路</h2>
-<p>枚举前缀 + 排序 + 前缀和：保留的
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-个数必然来自原数组的某个前缀
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mi>.</mi><mi>.</mi><mi>p</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">a[0..p-1]</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≥</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">p \ge m</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-是「用到的最远位置」），且应取其中<strong>最小的
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-个</strong>（求和与顺序无关）。把
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mi>.</mi><mi>.</mi><mi>p</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">a[0..p-1]</annotation></semantics></math>
-排序后做前缀和，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mo stretchy="false" form="prefix">[</mo><mi>m</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">pre[m]</annotation></semantics></math>
-即最小
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-个数之和，代价为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>−</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo><mo>⋅</mo><mi>k</mi><mo>+</mo><mi>p</mi><mi>r</mi><mi>e</mi><mo stretchy="false" form="prefix">[</mo><mi>m</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">(p - m) \cdot k + pre[m]</annotation></semantics></math>；对每个
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-取所有
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-的最小值。复杂度
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2 \log n)</annotation></semantics></math>。</p>
-<h2 id="代码">代码</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>枚举前缀 + 排序 + 前缀和：保留的 $m$ 个数必然来自原数组的某个前缀 $a[0..p-1]$（$p \ge m$，$p$ 是「用到的最远位置」），且应取其中<strong>最小的 $m$ 个</strong>（求和与顺序无关）。把 $a[0..p-1]$ 排序后做前缀和，$pre[m]$ 即最小 $m$ 个数之和，代价为 $(p - m) \cdot k + pre[m]$；对每个 $m$ 取所有 $p$ 的最小值。复杂度 $O(n^2 \log n)$。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
     it = <span class="hljs-built_in">iter</span>(sys.stdin.read().strip().split())
@@ -400,8 +339,7 @@
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
     main()</code></pre></div>
 <blockquote>
-<p>来源：<a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1950980896514613908">25秋招笔试真题-小红书0907（知乎专栏）</a>（回忆版）</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1950980896514613908">25秋招笔试真题-小红书0907（知乎专栏）</a>（回忆版）</p>
 </blockquote>
 
                 
@@ -452,9 +390,9 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/19509808965146
       
         <a href="/tags/%E6%9E%9A%E4%B8%BE/" class="print-no-link">#枚举</a>
       
-        <a href="/tags/%E6%8E%92%E5%BA%8F/" class="print-no-link">#排序</a>
-      
         <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#前缀和</a>
+      
+        <a href="/tags/%E6%8E%92%E5%BA%8F/" class="print-no-link">#排序</a>
       
     </div>
   

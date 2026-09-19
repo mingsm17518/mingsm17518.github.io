@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题描述 USACO 2016 February Contest, Bronze Problem 1. Milk Pails https:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;615 给定 X,Y,MX, Y, M ，求 aX+bYaX + bY 不超过 MM 的最大值，a,ba, b 任意。 样例 输入 17 25 77 输出 76 思">
+    <meta name="description" content="问题描述USACO 2016 February Contest, Bronze Problem 1. Milk Pailshttps:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;615 给定 $X, Y, M$ ，求 $aX + bY$ 不超过 $M$ 的最大值，$a, b$ 任意。 样例输入 17 25 77 输出 76 思路$a$ 的范围为">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Milk Pails">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/01_Milk%20Pails/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="问题描述 USACO 2016 February Contest, Bronze Problem 1. Milk Pails https:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;615 给定 X,Y,MX, Y, M ，求 aX+bYaX + bY 不超过 MM 的最大值，a,ba, b 任意。 样例 输入 17 25 77 输出 76 思">
+<meta property="og:description" content="问题描述USACO 2016 February Contest, Bronze Problem 1. Milk Pailshttps:&#x2F;&#x2F;usaco.org&#x2F;index.php?page&#x3D;viewproblem2&amp;cpid&#x3D;615 给定 $X, Y, M$ ，求 $aX + bY$ 不超过 $M$ 的最大值，$a, b$ 任意。 样例输入 17 25 77 输出 76 思路$a$ 的范围为">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-30T09:00:57.000Z">
 <meta property="article:modified_time" content="2026-09-19T15:45:08.999Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          173 字
+          175 字
         
       </span>
     
@@ -303,46 +303,14 @@
             
               <div class="markdown-body">
                 
-                <h1 id="问题描述">问题描述</h1>
-<p>USACO 2016 February Contest, Bronze Problem 1. Milk Pails
-https://usaco.org/index.php?page=viewproblem2&amp;cpid=615</p>
-<p>给定
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>,</mo><mi>Y</mi><mo>,</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">X, Y, M</annotation></semantics></math>
-，求
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>X</mi><mo>+</mo><mi>b</mi><mi>Y</mi></mrow><annotation encoding="application/x-tex">aX + bY</annotation></semantics></math>
-不超过
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
-的最大值，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a, b</annotation></semantics></math>
-任意。</p>
-<h1 id="样例">样例</h1>
-<p>输入</p>
+                <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>USACO 2016 February Contest, Bronze Problem 1. Milk Pails<br><a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=615">https://usaco.org/index.php?page=viewproblem2&amp;cpid=615</a></p>
+<p>给定 $X, Y, M$ ，求 $aX + bY$ 不超过 $M$ 的最大值，$a, b$ 任意。</p>
+<h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><p>输入</p>
 <div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">17 </span><span class="hljs-number">25</span> <span class="hljs-number">77</span></code></pre></div>
 <p>输出</p>
 <div class="code-wrapper"><pre><code class="hljs">76</code></pre></div>
-<h1 id="思路">思路</h1>
-<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
-的范围为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
-至
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>/</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">M/X</annotation></semantics></math>
-，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
-的范围为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
-至
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>/</mi><mi>Y</mi></mrow><annotation encoding="application/x-tex">M/Y</annotation></semantics></math>
-。 遍历
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
-和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
-，如果
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>X</mi><mo>+</mo><mi>b</mi><mi>Y</mi></mrow><annotation encoding="application/x-tex">aX + bY</annotation></semantics></math>
-不超过
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
-，则
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ans</annotation></semantics></math>
-更新为最大值。</p>
-<h1 id="代码">代码</h1>
-<div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>$a$ 的范围为 $0$ 至 $M/X$  ，$b$ 的范围为 $0$ 至 $M/Y$ 。<br>遍历 $a$ 和 $b$ ，如果 $aX + bY$ 不超过 $M$ ，则 $ans$ 更新为最大值。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><div class="code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
 
 <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
@@ -364,7 +332,6 @@ https://usaco.org/index.php?page=viewproblem2&amp;cpid=615</p>
     cout &lt;&lt; ans;
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre></div>
-
                 
               </div>
             
@@ -470,9 +437,9 @@ https://usaco.org/index.php?page=viewproblem2&amp;cpid=615</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/05_Cow_Gymnastics/" title="Cow Gymnastics">
+                      <a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/04_Counting_Liars/" title="Counting Liars">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Cow Gymnastics</span>
+                        <span class="hidden-mobile">Counting Liars</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

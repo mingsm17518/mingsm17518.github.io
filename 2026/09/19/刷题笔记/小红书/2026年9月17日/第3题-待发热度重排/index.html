@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目  在线练习：codefun2000 P5465  短视频后台里躺着 mm 条待发稿，第 ii 条带着质量分 pip_i 和热度分 hih_i。策划给了一份目标热度排列 t1,t2,…,tmt_1, t_2, \ldots, t_m，要求排完之后每个位置上的热度刚好等于 tt。 运营只能按下面的规则对调两条稿件：当且仅当 pi≤pjp_i \le p_j 且 hi≤hjh_i \le h_j">
+    <meta name="description" content="题目 在线练习：codefun2000 P5465  短视频后台里躺着 $m$ 条待发稿，第 $i$ 条带着质量分 $p_i$ 和热度分 $h_i$。策划给了一份目标热度排列 $t_1, t_2, \ldots, t_m$，要求排完之后每个位置上的热度刚好等于 $t$。 运营只能按下面的规则对调两条稿件：当且仅当 $p_i \le p_j$ 且 $h_i \le h_j$ 时，才允许把第 $i$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第3题-待发热度重排">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目  在线练习：codefun2000 P5465  短视频后台里躺着 mm 条待发稿，第 ii 条带着质量分 pip_i 和热度分 hih_i。策划给了一份目标热度排列 t1,t2,…,tmt_1, t_2, \ldots, t_m，要求排完之后每个位置上的热度刚好等于 tt。 运营只能按下面的规则对调两条稿件：当且仅当 pi≤pjp_i \le p_j 且 hi≤hjh_i \le h_j">
+<meta property="og:description" content="题目 在线练习：codefun2000 P5465  短视频后台里躺着 $m$ 条待发稿，第 $i$ 条带着质量分 $p_i$ 和热度分 $h_i$。策划给了一份目标热度排列 $t_1, t_2, \ldots, t_m$，要求排完之后每个位置上的热度刚好等于 $t$。 运营只能按下面的规则对调两条稿件：当且仅当 $p_i \le p_j$ 且 $h_i \le h_j$ 时，才允许把第 $i$">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T15:21:56.987Z">
 <meta property="article:modified_time" content="2026-09-19T15:21:56.989Z">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          771 字
+          742 字
         
       </span>
     
@@ -302,57 +302,21 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目">题目</h2>
-<blockquote>
-<p>在线练习：<a target="_blank" rel="noopener" href="https://codefun2000.com/ide/P5465">codefun2000
-P5465</a></p>
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
+<p>在线练习：<a target="_blank" rel="noopener" href="https://codefun2000.com/ide/P5465">codefun2000 P5465</a></p>
 </blockquote>
-<p>短视频后台里躺着
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-条待发稿，第
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-条带着质量分
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>
-和热度分
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mi>i</mi></msub><annotation encoding="application/x-tex">h_i</annotation></semantics></math>。策划给了一份目标热度排列
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><msub><mi>t</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>t</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">t_1, t_2, \ldots, t_m</annotation></semantics></math>，要求排完之后每个位置上的热度刚好等于
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>。</p>
-<p>运营只能按下面的规则对调两条稿件：当且仅当
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>≤</mo><msub><mi>p</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">p_i \le p_j</annotation></semantics></math>
-且
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub><mo>≤</mo><msub><mi>h</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">h_i \le h_j</annotation></semantics></math>
-时，才允许把第
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-条和第
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-条互换位置。对调可以做任意多次。</p>
-<p>问能否让最终的热度序列与
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
-完全一致。能则输出 <code>YES</code>，不能则输出
-<code>NO</code>（大小写必须一致）。</p>
+<p>短视频后台里躺着 $m$ 条待发稿，第 $i$ 条带着质量分 $p_i$ 和热度分 $h_i$。策划给了一份目标热度排列 $t_1, t_2, \ldots, t_m$，要求排完之后每个位置上的热度刚好等于 $t$。</p>
+<p>运营只能按下面的规则对调两条稿件：当且仅当 $p_i \le p_j$ 且 $h_i \le h_j$ 时，才允许把第 $i$ 条和第 $j$ 条互换位置。对调可以做任意多次。</p>
+<p>问能否让最终的热度序列与 $t$ 完全一致。能则输出 <code>YES</code>，不能则输出 <code>NO</code>（大小写必须一致）。</p>
 <p><strong>输入描述</strong></p>
-<p>第一行一个整数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>，表示询问组数。（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>q</mi><mo>≤</mo><msup><mn>10</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">1 \le q \le 10^2</annotation></semantics></math>）</p>
-<p>接下来
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
-组，每组三行：</p>
+<p>第一行一个整数 $q$，表示询问组数。（$1 \le q \le 10^2$）</p>
+<p>接下来 $q$ 组，每组三行：</p>
 <ul>
-<li>第一行一个整数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>，表示待发条数。（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le m \le 10^5</annotation></semantics></math>）</li>
-<li>第二行
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">2m</annotation></semantics></math>
-个整数，按
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><msub><mi>h</mi><mn>1</mn></msub><mo>,</mo><msub><mi>p</mi><mn>2</mn></msub><mo>,</mo><msub><mi>h</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>p</mi><mi>m</mi></msub><mo>,</mo><msub><mi>h</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">p_1, h_1, p_2, h_2, \ldots, p_m, h_m</annotation></semantics></math>
-给出每条稿的质量分与热度分。（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><msub><mi>p</mi><mi>i</mi></msub><mo>,</mo><msub><mi>h</mi><mi>i</mi></msub><mo>≤</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le p_i, h_i \le 10^5</annotation></semantics></math>）</li>
-<li>第三行
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-个整数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>i</mi></msub><annotation encoding="application/x-tex">t_i</annotation></semantics></math>，即目标热度排列。（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><msub><mi>t</mi><mi>i</mi></msub><mo>≤</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le t_i \le 10^5</annotation></semantics></math>）</li>
+<li>第一行一个整数 $m$，表示待发条数。（$1 \le m \le 10^5$）</li>
+<li>第二行 $2m$ 个整数，按 $p_1, h_1, p_2, h_2, \ldots, p_m, h_m$ 给出每条稿的质量分与热度分。（$1 \le p_i, h_i \le 10^5$）</li>
+<li>第三行 $m$ 个整数 $t_i$，即目标热度排列。（$1 \le t_i \le 10^5$）</li>
 </ul>
-<p>保证全部询问的
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-之和不超过
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mn>6</mn></msup><annotation encoding="application/x-tex">10^6</annotation></semantics></math>。</p>
+<p>保证全部询问的 $m$ 之和不超过 $10^6$。</p>
 <p><strong>输出描述</strong></p>
 <p>对每组询问输出一行 <code>YES</code> 或 <code>NO</code>。</p>
 <p><strong>样例 1</strong></p>
@@ -371,20 +335,12 @@ P5465</a></p>
 <div class="code-wrapper"><pre><code class="hljs gams"><span class="hljs-keyword">YES</span>
 <span class="hljs-keyword">NO</span>
 <span class="hljs-keyword">YES</span></code></pre></div>
-<p><strong>说明</strong>： -
-第一组：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>
-与
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,3)</annotation></semantics></math>
-可以互换，热度能变成
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mspace width="0.222em"></mspace><mn>1</mn></mrow><annotation encoding="application/x-tex">3\ 1</annotation></semantics></math>。
--
-第二组：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,5)</annotation></semantics></math>
-与
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,1)</annotation></semantics></math>
-互不可比，对调不了，热度变不成
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mspace width="0.222em"></mspace><mn>5</mn></mrow><annotation encoding="application/x-tex">1\ 5</annotation></semantics></math>。
--
-第三组：三条都能经由可比对调连成一块，热度多重集与目标相同，故可以重排。</p>
+<p><strong>说明</strong>：</p>
+<ul>
+<li>第一组：$(1,1)$ 与 $(2,3)$ 可以互换，热度能变成 $3\ 1$。</li>
+<li>第二组：$(1,5)$ 与 $(2,1)$ 互不可比，对调不了，热度变不成 $1\ 5$。</li>
+<li>第三组：三条都能经由可比对调连成一块，热度多重集与目标相同，故可以重排。</li>
+</ul>
 <p><strong>样例 2</strong></p>
 <p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-number">2</span>
@@ -397,41 +353,19 @@ P5465</a></p>
 <p>输出：</p>
 <div class="code-wrapper"><pre><code class="hljs gams"><span class="hljs-keyword">YES</span>
 <span class="hljs-keyword">NO</span></code></pre></div>
-<p><strong>说明</strong>： - 第一组：只有一条，热度已是
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>7</mn><annotation encoding="application/x-tex">7</annotation></semantics></math>。
-- 第二组：质量升、热度降，两两不可比，只能保持
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mspace width="0.222em"></mspace><mn>3</mn><mspace width="0.222em"></mspace><mn>1</mn></mrow><annotation encoding="application/x-tex">5\ 3\ 1</annotation></semantics></math>，对不齐
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mspace width="0.222em"></mspace><mn>3</mn><mspace width="0.222em"></mspace><mn>5</mn></mrow><annotation encoding="application/x-tex">1\ 3\ 5</annotation></semantics></math>。</p>
-<h2 id="思路">思路</h2>
-<p>按
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>h</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(p, h)</annotation></semantics></math>
-双关键字排序后，位置
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-在
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-前面则必有
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>≤</mo><msub><mi>p</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">p_i \le p_j</annotation></semantics></math>，于是「可交换」当且仅当
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub><mo>≤</mo><msub><mi>h</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">h_i \le h_j</annotation></semantics></math>。</p>
-<p>考察相邻两段
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>r</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0, r]</annotation></semantics></math>
-与
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>r</mi><mo>+</mo><mn>1</mn><mo>,</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[r+1, m)</annotation></semantics></math>：</p>
+<p><strong>说明</strong>：</p>
 <ul>
-<li>若前缀的最小热度
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>≤</mo><annotation encoding="application/x-tex">\le</annotation></semantics></math>
-后缀的最大热度（<code>pre_min[r] &lt;= suf_max[r+1]</code>），则存在跨段的可比对，两段连通；</li>
-<li>若前缀最小<strong>严格大于</strong>后缀最大，则任何跨段对的
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
-都是「左大右小」，不可交换——这是一个<strong>不可跨越的分割点</strong>。</li>
+<li>第一组：只有一条，热度已是 $7$。</li>
+<li>第二组：质量升、热度降，两两不可比，只能保持 $5\ 3\ 1$，对不齐 $1\ 3\ 5$。</li>
 </ul>
-<p>据此把序列切成若干块：块内热度可以任意重排，块与块之间完全隔离。答案为
-<code>YES</code> 当且仅当每一块内热度的多重集与目标
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
-对应段一致（排序后逐块比较）。前缀最小 / 后缀最大用
-<code>itertools.accumulate</code> 一遍预处理，总复杂度
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(m \log m)</annotation></semantics></math>。</p>
-<h2 id="代码">代码</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> accumulate
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>按 $(p, h)$ 双关键字排序后，位置 $i$ 在 $j$ 前面则必有 $p_i \le p_j$，于是「可交换」当且仅当 $h_i \le h_j$。</p>
+<p>考察相邻两段 $[0, r]$ 与 $[r+1, m)$：</p>
+<ul>
+<li>若前缀的最小热度 $\le$ 后缀的最大热度（<code>pre_min[r] &lt;= suf_max[r+1]</code>），则存在跨段的可比对，两段连通；</li>
+<li>若前缀最小<strong>严格大于</strong>后缀最大，则任何跨段对的 $h$ 都是「左大右小」，不可交换——这是一个<strong>不可跨越的分割点</strong>。</li>
+</ul>
+<p>据此把序列切成若干块：块内热度可以任意重排，块与块之间完全隔离。答案为 <code>YES</code> 当且仅当每一块内热度的多重集与目标 $t$ 对应段一致（排序后逐块比较）。前缀最小 / 后缀最大用 <code>itertools.accumulate</code> 一遍预处理，总复杂度 $O(m \log m)$。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> accumulate
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>():
     m = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
@@ -576,9 +510,9 @@ q = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</sp
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" title="01_前缀和">
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" title="07_Python工具函数">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">01_前缀和</span>
+                        <span class="hidden-mobile">07_Python工具函数</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
