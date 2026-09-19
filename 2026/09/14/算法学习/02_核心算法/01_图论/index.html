@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="图论邻接表建图# 邻接表 adj &#x3D; [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历&#x2F;搜索 DFS（深度优先搜索）核心思想“一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到无路可走，再回">
+    <meta name="description" content="图论 邻接表建图 # 邻接表 adj &#x3D; [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历&#x2F;搜索 ## DFS（深度优先搜索） 核心思想 “一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01_图论">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%9B%BE%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="图论邻接表建图# 邻接表 adj &#x3D; [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历&#x2F;搜索 DFS（深度优先搜索）核心思想“一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到无路可走，再回">
+<meta property="og:description" content="图论 邻接表建图 # 邻接表 adj &#x3D; [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历&#x2F;搜索 ## DFS（深度优先搜索） 核心思想 “一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-13T16:04:38.514Z">
 <meta property="article:modified_time" content="2026-09-13T16:04:38.514Z">
@@ -290,16 +290,23 @@
             
               <div class="markdown-body">
                 
-                <h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1><h2 id="邻接表建图"><a href="#邻接表建图" class="headerlink" title="邻接表建图"></a>邻接表建图</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 邻接表</span>
+                <h1 id="图论">图论</h1>
+<h2 id="邻接表建图">邻接表建图</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 邻接表</span>
 adj = [[] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
 <span class="hljs-comment"># 无向图</span>
 adj[u].append(v)
 adj[v].append(u)
 
 adj[u].append((v, w))    <span class="hljs-comment"># 带权重</span></code></pre></div>
-<p><strong>图论基础</strong>：BFS 适合求最短路，DFS 适合遍历/搜索</p>
-<h2 id="DFS（深度优先搜索）"><a href="#DFS（深度优先搜索）" class="headerlink" title="DFS（深度优先搜索）"></a>DFS（深度优先搜索）</h2><h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p><strong>“一条路走到黑，走不通就回头。”</strong> DFS 沿着一个方向一直往深处走，直到无路可走，再回退到上一个岔路口尝试另一个方向。可以用 <strong>递归</strong> 实现。</p>
-<h3 id="递归模板"><a href="#递归模板" class="headerlink" title="递归模板"></a>递归模板</h3><div class="code-wrapper"><pre><code class="hljs python">visited = [<span class="hljs-literal">False</span>] * n
+<p><strong>图论基础</strong>：BFS 适合求最短路，DFS 适合遍历/搜索 ##
+DFS（深度优先搜索）</p>
+<h3 id="核心思想">核心思想</h3>
+<p><strong>“一条路走到黑，走不通就回头。”</strong> DFS
+沿着一个方向一直往深处走，直到无路可走，再回退到上一个岔路口尝试另一个方向。可以用
+<strong>递归</strong> 实现。</p>
+<h3 id="递归模板">递归模板</h3>
+<div class="code-wrapper"><pre><code class="hljs python">visited = [<span class="hljs-literal">False</span>] * n
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">u</span>):
     visited[u] = <span class="hljs-literal">True</span>
@@ -311,11 +318,14 @@ adj[u].append((v, w))    <span class="hljs-comment"># 带权重</span></code></p
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[i]:
         dfs(i)</code></pre></div>
-<h3 id="网格-DFS-—-LC-200-岛屿数量"><a href="#网格-DFS-—-LC-200-岛屿数量" class="headerlink" title="网格 DFS — LC 200 岛屿数量"></a>网格 DFS — LC 200 岛屿数量</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-islands/">https://leetcode.cn/problems/number-of-islands/</a></p>
+<h3 id="网格-dfs-lc-200-岛屿数量">网格 DFS — LC 200 岛屿数量</h3>
+<p>https://leetcode.cn/problems/number-of-islands/</p>
 <blockquote>
-<p>给定一个 <code>&#39;1&#39;</code>（陆地）和 <code>&#39;0&#39;</code>（水）组成的二维网格，计算岛屿的数量。</p>
+<p>给定一个 <code>'1'</code>（陆地）和
+<code>'0'</code>（水）组成的二维网格，计算岛屿的数量。</p>
 </blockquote>
-<p><strong>思路</strong>：遍历每个格子，遇到 <code>&#39;1&#39;</code> 就启动一次 DFS 把整座岛”淹掉”（标记为已访问），岛屿计数 +1。</p>
+<p><strong>思路</strong>：遍历每个格子，遇到 <code>'1'</code> 就启动一次
+DFS 把整座岛”淹掉”（标记为已访问），岛屿计数 +1。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">numIslands</span>(<span class="hljs-params">grid</span>):
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> grid:
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
@@ -336,8 +346,15 @@ adj[u].append((v, w))    <span class="hljs-comment"># 带权重</span></code></p
                 count += <span class="hljs-number">1</span>
                 dfs(r, c)
     <span class="hljs-keyword">return</span> count</code></pre></div>
-<h2 id="BFS（广度优先搜索）"><a href="#BFS（广度优先搜索）" class="headerlink" title="BFS（广度优先搜索）"></a>BFS（广度优先搜索）</h2><h3 id="核心思想-1"><a href="#核心思想-1" class="headerlink" title="核心思想"></a>核心思想</h3><p><strong>“逐层扩散，像水波纹一样。”</strong> BFS 从起点出发，先访问距离为 1 的节点，再访问距离为 2 的节点，依此类推。因为一层一层扩展，<strong>BFS 天然能求最短路径</strong>（边权相等时）。用 <strong>队列（deque）</strong> 实现。</p>
-<h3 id="BFS-模板"><a href="#BFS-模板" class="headerlink" title="BFS 模板"></a>BFS 模板</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<h2 id="bfs广度优先搜索">BFS（广度优先搜索）</h2>
+<h3 id="核心思想-1">核心思想</h3>
+<p><strong>“逐层扩散，像水波纹一样。”</strong> BFS
+从起点出发，先访问距离为 1 的节点，再访问距离为 2
+的节点，依此类推。因为一层一层扩展，<strong>BFS
+天然能求最短路径</strong>（边权相等时）。用
+<strong>队列（deque）</strong> 实现。</p>
+<h3 id="bfs-模板">BFS 模板</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
 visited = [<span class="hljs-literal">False</span>] * n
 
@@ -355,7 +372,8 @@ visited = [<span class="hljs-literal">False</span>] * n
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[i]:
         bfs(i)</code></pre></div>
-<h3 id="分层-BFS-模板"><a href="#分层-BFS-模板" class="headerlink" title="分层 BFS 模板"></a>分层 BFS 模板</h3><p>很多题目需要知道”当前是第几层”（比如求最短距离），用分层写法：</p>
+<h3 id="分层-bfs-模板">分层 BFS 模板</h3>
+<p>很多题目需要知道”当前是第几层”（比如求最短距离），用分层写法：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">bfs_level</span>(<span class="hljs-params">start, graph</span>):
@@ -372,11 +390,16 @@ visited = [<span class="hljs-literal">False</span>] * n
                     queue.append(neighbor)
         level += <span class="hljs-number">1</span>                       <span class="hljs-comment"># 一层处理完，层数 +1</span>
     <span class="hljs-keyword">return</span> level</code></pre></div>
-<h3 id="多源-BFS-—-LC-994-腐烂的橘子"><a href="#多源-BFS-—-LC-994-腐烂的橘子" class="headerlink" title="多源 BFS — LC 994 腐烂的橘子"></a>多源 BFS — LC 994 腐烂的橘子</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rotting-oranges/">https://leetcode.cn/problems/rotting-oranges/</a></p>
+<h3 id="多源-bfs-lc-994-腐烂的橘子">多源 BFS — LC 994 腐烂的橘子</h3>
+<p>https://leetcode.cn/problems/rotting-oranges/</p>
 <blockquote>
-<p>网格中 <code>0</code> 是空格，<code>1</code> 是新鲜橘子，<code>2</code> 是腐烂橘子。每分钟腐烂橘子会让上下左右的新鲜橘子腐烂。求所有橘子腐烂的最短时间，不可能则返回 -1。</p>
+<p>网格中 <code>0</code> 是空格，<code>1</code>
+是新鲜橘子，<code>2</code>
+是腐烂橘子。每分钟腐烂橘子会让上下左右的新鲜橘子腐烂。求所有橘子腐烂的最短时间，不可能则返回
+-1。</p>
 </blockquote>
-<p><strong>思路</strong>：把所有腐烂橘子同时作为 BFS 起点（多源 BFS），一层层向外扩散，每扩一层就是 1 分钟。</p>
+<p><strong>思路</strong>：把所有腐烂橘子同时作为 BFS 起点（多源
+BFS），一层层向外扩散，每扩一层就是 1 分钟。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">orangesRotting</span>(<span class="hljs-params">grid</span>):
@@ -409,7 +432,7 @@ visited = [<span class="hljs-literal">False</span>] * n
         minutes += <span class="hljs-number">1</span>
     <span class="hljs-comment"># 最后一轮多加了 1，需要减掉</span>
     <span class="hljs-keyword">return</span> minutes - <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> fresh == <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> -<span class="hljs-number">1</span></code></pre></div>
-<h2 id="DFS-vs-BFS-对比"><a href="#DFS-vs-BFS-对比" class="headerlink" title="DFS vs BFS 对比"></a>DFS vs BFS 对比</h2><div class="table-container">
+<h2 id="dfs-vs-bfs-对比">DFS vs BFS 对比</h2>
 <table>
 <thead>
 <tr>
@@ -446,19 +469,23 @@ visited = [<span class="hljs-literal">False</span>] * n
 </tr>
 </tbody>
 </table>
-</div>
-<p><strong>选择建议</strong>：</p>
-<ul>
-<li>求<strong>连通性、所有路径、是否可达</strong> → DFS（代码简洁）</li>
-<li>求<strong>最短距离、最少步数</strong> → BFS（天然最短）</li>
-<li>网格/树的层序遍历 → BFS</li>
-</ul>
-<hr>
-<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><p>拓扑排序针对<strong>有向无环图（DAG）</strong>，把所有节点排成一条线，使得每条边的起点都排在终点前面。典型场景是<strong>任务调度、课程依赖</strong>。核心概念是<strong>入度</strong>（指向该节点的边数），入度为 0 的节点没有前置依赖，可以最先处理。</p>
-<h3 id="LC-207-课程表"><a href="#LC-207-课程表" class="headerlink" title="LC 207 课程表"></a>LC 207 课程表</h3><blockquote>
-<p>共 <code>numCourses</code> 门课，<code>prerequisites[i] = [a, b]</code> 表示学 a 之前要先学 b。判断是否能完成所有课程（即图中是否有环）。</p>
+<p><strong>选择建议</strong>： -
+求<strong>连通性、所有路径、是否可达</strong> → DFS（代码简洁） -
+求<strong>最短距离、最少步数</strong> → BFS（天然最短） -
+网格/树的层序遍历 → BFS</p>
+<hr />
+<h2 id="拓扑排序">拓扑排序</h2>
+<p>拓扑排序针对<strong>有向无环图（DAG）</strong>，把所有节点排成一条线，使得每条边的起点都排在终点前面。典型场景是<strong>任务调度、课程依赖</strong>。核心概念是<strong>入度</strong>（指向该节点的边数），入度为
+0 的节点没有前置依赖，可以最先处理。</p>
+<h3 id="lc-207-课程表">LC 207 课程表</h3>
+<blockquote>
+<p>共 <code>numCourses</code>
+门课，<code>prerequisites[i] = [a, b]</code> 表示学 a 之前要先学
+b。判断是否能完成所有课程（即图中是否有环）。</p>
 </blockquote>
-<p><strong>思路</strong>：BFS 拓扑排序（Kahn 算法）。维护入度表，每次取入度为 0 的节点，处理后将其邻居入度 -1。最终处理节点数等于总数则无环。</p>
+<p><strong>思路</strong>：BFS 拓扑排序（Kahn
+算法）。维护入度表，每次取入度为 0 的节点，处理后将其邻居入度
+-1。最终处理节点数等于总数则无环。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque, defaultdict
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">canFinish</span>(<span class="hljs-params">numCourses, prerequisites</span>):
@@ -482,7 +509,10 @@ visited = [<span class="hljs-literal">False</span>] * n
             <span class="hljs-keyword">if</span> in_degree[neighbor] == <span class="hljs-number">0</span>:    <span class="hljs-comment"># 入度变 0，可以学了</span>
                 queue.append(neighbor)
     <span class="hljs-keyword">return</span> count == numCourses   <span class="hljs-comment"># 全部处理完说明无环</span></code></pre></div>
-<h2 id="单源最短路径算法"><a href="#单源最短路径算法" class="headerlink" title="单源最短路径算法"></a>单源最短路径算法</h2><h3 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h3><p><strong>Dijkstra 算法</strong>用于解决<strong>单源最短路径</strong>问题：在一个<strong>边权非负</strong>的有向或无向图中，给定一个起点，计算该起点到<strong>所有其他节点</strong>的最短距离。</p>
+<h2 id="单源最短路径算法">单源最短路径算法</h2>
+<h3 id="dijkstra">Dijkstra</h3>
+<p><strong>Dijkstra
+算法</strong>用于解决<strong>单源最短路径</strong>问题：在一个<strong>边权非负</strong>的有向或无向图中，给定一个起点，计算该起点到<strong>所有其他节点</strong>的最短距离。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">dijkstra</span>(<span class="hljs-params">start, n, adj</span>):
     dist = [<span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)] * n
     dist[start] = <span class="hljs-number">0</span>
@@ -497,16 +527,17 @@ visited = [<span class="hljs-literal">False</span>] * n
                 dist[v] = nd
                 heapq.heappush(pq, (nd, v))
     <span class="hljs-keyword">return</span> dist</code></pre></div>
-<h3 id="Bellman-Ford-算法"><a href="#Bellman-Ford-算法" class="headerlink" title="Bellman-Ford 算法"></a>Bellman-Ford 算法</h3><p><strong>Bellman-Ford</strong> 是另一种单源最短路径算法，与 Dijkstra 的最大区别在于：<strong>它可以处理负权边</strong>，并且能够检测图中是否存在<strong>负权环</strong>（即环的总权重为负数，导致最短路径无下界）。</p>
-<h3 id="核心思想-2"><a href="#核心思想-2" class="headerlink" title="核心思想"></a>核心思想</h3><ul>
-<li><p>对每条边进行 <strong>V-1 次松弛操作</strong>（<code>V</code> 是顶点数）。</p>
-</li>
-<li><p>松弛：如果 <code>dist[u] + w &lt; dist[v]</code>，则更新 <code>dist[v]</code>。</p>
-</li>
-<li><p>因为最短路径最多包含 <code>V-1</code> 条边（无环），所以 V-1 轮后所有最短距离必然确定。</p>
-</li>
-<li><p>再做一轮：如果还能松弛，说明存在负权环。</p>
-</li>
+<h3 id="bellman-ford-算法">Bellman-Ford 算法</h3>
+<p><strong>Bellman-Ford</strong> 是另一种单源最短路径算法，与 Dijkstra
+的最大区别在于：<strong>它可以处理负权边</strong>，并且能够检测图中是否存在<strong>负权环</strong>（即环的总权重为负数，导致最短路径无下界）。</p>
+<h3 id="核心思想-2">核心思想</h3>
+<ul>
+<li><p>对每条边进行 <strong>V-1
+次松弛操作</strong>（<code>V</code> 是顶点数）。</p></li>
+<li><p>松弛：如果 <code>dist[u] + w &lt; dist[v]</code>，则更新 <code>dist[v]</code>。</p></li>
+<li><p>因为最短路径最多包含 <code>V-1</code> 条边（无环），所以 V-1
+轮后所有最短距离必然确定。</p></li>
+<li><p>再做一轮：如果还能松弛，说明存在负权环。</p></li>
 </ul>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">bellman_ford</span>(<span class="hljs-params">n, edges, start</span>):
     <span class="hljs-string">&quot;&quot;&quot;</span>
@@ -539,13 +570,12 @@ visited = [<span class="hljs-literal">False</span>] * n
             <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>   <span class="hljs-comment"># 存在负权环，无法得到最短路径</span>
 
     <span class="hljs-keyword">return</span> dist</code></pre></div>
-<h2 id="Floyd-Warshall-算法"><a href="#Floyd-Warshall-算法" class="headerlink" title="Floyd-Warshall 算法"></a>Floyd-Warshall 算法</h2><h3 id="1-算法作用"><a href="#1-算法作用" class="headerlink" title="1. 算法作用"></a>1. 算法作用</h3><ul>
-<li><p>计算<strong>所有节点对之间的最短路径</strong>。</p>
-</li>
-<li><p>可处理<strong>负权边</strong>（但不能有负权环）。</p>
-</li>
-<li><p>适用于<strong>稠密图</strong>，节点数通常 ≤ 500。</p>
-</li>
+<h2 id="floyd-warshall-算法">Floyd-Warshall 算法</h2>
+<h3 id="算法作用">1. 算法作用</h3>
+<ul>
+<li><p>计算<strong>所有节点对之间的最短路径</strong>。</p></li>
+<li><p>可处理<strong>负权边</strong>（但不能有负权环）。</p></li>
+<li><p>适用于<strong>稠密图</strong>，节点数通常 ≤ 500。</p></li>
 </ul>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">floyd_warshall</span>(<span class="hljs-params">n, edges, directed=<span class="hljs-literal">False</span></span>):
     <span class="hljs-string">&quot;&quot;&quot;</span>
@@ -572,7 +602,8 @@ visited = [<span class="hljs-literal">False</span>] * n
                 <span class="hljs-keyword">if</span> dist[i][k] + dist[k][j] &lt; dist[i][j]:
                     dist[i][j] = dist[i][k] + dist[k][j]
     <span class="hljs-keyword">return</span> dist</code></pre></div>
-<h2 id="Kruskal（最小生成树）"><a href="#Kruskal（最小生成树）" class="headerlink" title="Kruskal（最小生成树）"></a>Kruskal（最小生成树）</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">kruskal</span>(<span class="hljs-params">edges, n</span>):
+<h2 id="kruskal最小生成树">Kruskal（最小生成树）</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">kruskal</span>(<span class="hljs-params">edges, n</span>):
     edges.sort()
     parent = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(n))
 
@@ -589,8 +620,9 @@ visited = [<span class="hljs-literal">False</span>] * n
         <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
 
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(w <span class="hljs-keyword">for</span> w, u, v <span class="hljs-keyword">in</span> edges <span class="hljs-keyword">if</span> union(u, v))</code></pre></div>
-<hr>
-<h2 id="经典题目"><a href="#经典题目" class="headerlink" title="经典题目"></a>经典题目</h2><h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><div class="table-container">
+<hr />
+<h2 id="经典题目">经典题目</h2>
+<h3 id="入门">入门</h3>
 <table>
 <thead>
 <tr>
@@ -617,8 +649,7 @@ visited = [<span class="hljs-literal">False</span>] * n
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><div class="table-container">
+<h3 id="进阶">进阶</h3>
 <table>
 <thead>
 <tr>
@@ -650,8 +681,7 @@ visited = [<span class="hljs-literal">False</span>] * n
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h3><div class="table-container">
+<h3 id="挑战">挑战</h3>
 <table>
 <thead>
 <tr>
@@ -678,15 +708,18 @@ visited = [<span class="hljs-literal">False</span>] * n
 </tr>
 </tbody>
 </table>
-</div>
-<hr>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ol>
-<li><strong>DFS 和 BFS 是图搜索的两大基石</strong>，大量题目都是它们的变体。</li>
+<hr />
+<h2 id="小结">小结</h2>
+<ol type="1">
+<li><strong>DFS 和 BFS
+是图搜索的两大基石</strong>，大量题目都是它们的变体。</li>
 <li>DFS 用递归或栈，擅长路径搜索和连通性判断。</li>
-<li>BFS 用队列，擅长最短路径和层序遍历；多源 BFS 处理”同时出发”的场景。</li>
+<li>BFS 用队列，擅长最短路径和层序遍历；多源 BFS
+处理”同时出发”的场景。</li>
 <li>网格问题本质就是图问题，四方向移动是固定套路。</li>
 <li>拓扑排序用 BFS（Kahn 算法）处理有向无环图的依赖关系。</li>
-<li>刷题时先判断是 DFS 还是 BFS 场景，再套模板，最后根据题意调整细节。</li>
+<li>刷题时先判断是 DFS 还是 BFS
+场景，再套模板，最后根据题意调整细节。</li>
 </ol>
 
                 

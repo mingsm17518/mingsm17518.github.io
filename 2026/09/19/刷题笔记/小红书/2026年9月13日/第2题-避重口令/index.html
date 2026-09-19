@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 在线练习：codefun2000 P5441  短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串 $S$。$S$ 的每一个子序列（含 $S$ 本身与空串）都被视为已经占用的口令，不能再给新专题使用。 求最短的、不是 $S$ 子序列的小写口令长度。 子序列：从原串中删除任意个（可以为零个）字符后，剩余字符保持相对顺序所形成的串。 输入描述 一行，仅含小写字母的字符串 $S$">
+    <meta name="description" content="题目  在线练习：codefun2000 P5441  短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串 SS。SS 的每一个子序列（含 SS 本身与空串）都被视为已经占用的口令，不能再给新专题使用。 求最短的、不是 SS 子序列的小写口令长度。 子序列：从原串中删除任意个（可以为零个）字符后，剩余字符保持相对顺序所形成的串。 输入描述 一行，仅含小写字母的字符串 SS（1≤|">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第2题-避重口令">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E9%81%BF%E9%87%8D%E5%8F%A3%E4%BB%A4/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目 在线练习：codefun2000 P5441  短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串 $S$。$S$ 的每一个子序列（含 $S$ 本身与空串）都被视为已经占用的口令，不能再给新专题使用。 求最短的、不是 $S$ 子序列的小写口令长度。 子序列：从原串中删除任意个（可以为零个）字符后，剩余字符保持相对顺序所形成的串。 输入描述 一行，仅含小写字母的字符串 $S$">
+<meta property="og:description" content="题目  在线练习：codefun2000 P5441  短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串 SS。SS 的每一个子序列（含 SS 本身与空串）都被视为已经占用的口令，不能再给新专题使用。 求最短的、不是 SS 子序列的小写口令长度。 子序列：从原串中删除任意个（可以为零个）字符后，剩余字符保持相对顺序所形成的串。 输入描述 一行，仅含小写字母的字符串 SS（1≤|">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T11:10:17.305Z">
 <meta property="article:modified_time" content="2026-09-19T11:10:49.601Z">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          738 字
+          737 字
         
       </span>
     
@@ -302,14 +302,23 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
-<p>在线练习：<a target="_blank" rel="noopener" href="https://codefun2000.com/ide/P5441">codefun2000 P5441</a></p>
+                <h2 id="题目">题目</h2>
+<blockquote>
+<p>在线练习：<a target="_blank" rel="noopener" href="https://codefun2000.com/ide/P5441">codefun2000
+P5441</a></p>
 </blockquote>
-<p>短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串 $S$。$S$ 的每一个子序列（含 $S$ 本身与空串）都被视为已经占用的口令，不能再给新专题使用。</p>
-<p>求最短的、不是 $S$ 子序列的小写口令长度。</p>
+<p>短视频审核后台要把已过审成片的标题按发布时间依次拼接，得到小写字符串
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+的每一个子序列（含
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+本身与空串）都被视为已经占用的口令，不能再给新专题使用。</p>
+<p>求最短的、不是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+子序列的小写口令长度。</p>
 <p>子序列：从原串中删除任意个（可以为零个）字符后，剩余字符保持相对顺序所形成的串。</p>
 <p><strong>输入描述</strong></p>
-<p>一行，仅含小写字母的字符串 $S$（$1 \le |S| \le 10^5$）。</p>
+<p>一行，仅含小写字母的字符串
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mo stretchy="false" form="prefix">|</mo><mi>S</mi><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le |S| \le 10^5</annotation></semantics></math>）。</p>
 <p><strong>输出描述</strong></p>
 <p>一行一个正整数，即最短未占用口令的长度。</p>
 <p><strong>样例 1</strong></p>
@@ -317,19 +326,59 @@
 <div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">zyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcba</span></code></pre></div>
 <p>输出：</p>
 <div class="code-wrapper"><pre><code class="hljs">3</code></pre></div>
-<p><strong>说明</strong>：$S$ 由两段倒序的 26 个小写字母拼接而成。任意单个字母、任意长度为 2 的小写串都是 $S$ 的子序列（前半段取第一个字符、后半段取第二个字符即可）。$S$ 中字母 <code>a</code> 只出现两次，故 <code>aaa</code> 不是子序列，最短长度为 3。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>要找最短的小写串 <code>t</code>，使得 <code>t</code> 不是 <code>s</code> 的子序列。若 <code>s</code> 里缺了某一种字母，则长度为 <code>1</code> 即可。若 <code>26</code> 种字母都出现过，任意长度为 <code>1</code> 的串都是子序列，答案至少为 <code>2</code>，并可以继续往下推。</p>
-<p>从左到右扫描 <code>s</code>，用集合记录当前这一层已经见过的不同字母。每凑齐 <code>26</code> 种，就说明任意一个字符都能在这一层里被匹配掉，于是层数加一并清空集合。扫完后的层数加 <code>1</code> 就是答案。</p>
-<p>正确性可以两边夹：设凑齐了 <code>X</code> 层。任意长度不超过 <code>X</code> 的串，第 <code>j</code> 个字符都可以在第 <code>j</code> 层里匹配，因而都是子序列。另一方面，记第 <code>j</code> 层最后补齐 <code>26</code> 种的那个字符为 <code>c_j</code>，最后一层之后的后缀里缺的某个字母为 <code>d</code>，则 <code>c_1 c_2 ... c_X d</code> 无法按顺序匹配，故存在长度为 <code>X + 1</code> 的非子序列。</p>
-<p>实现方法：开一个大小为 <code>26</code> 的布尔数组（或集合）记录当前层见过的字母，再记一个计数器。扫到新字母就标记并加一；计数到 <code>26</code> 时答案加一、标记清空。最后输出答案（初始为 <code>1</code>）。</p>
-<p><strong>复杂度分析：</strong> 时间复杂度 <code>O(|s|)</code>；空间复杂度 <code>O(26)</code>，即常数空间。</p>
-<p>贪心分块：从左往右扫描，每当<strong>凑齐全部 26 个字母</strong>就形成一个块并清空计数，设总共得到 $k$ 个块。</p>
+<p><strong>说明</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+由两段倒序的 26 个小写字母拼接而成。任意单个字母、任意长度为 2
+的小写串都是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+的子序列（前半段取第一个字符、后半段取第二个字符即可）。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+中字母 <code>a</code> 只出现两次，故 <code>aaa</code>
+不是子序列，最短长度为 3。</p>
+<h2 id="思路">思路</h2>
+<p>要找最短的小写串 <code>t</code>，使得 <code>t</code> 不是
+<code>s</code> 的子序列。若 <code>s</code> 里缺了某一种字母，则长度为
+<code>1</code> 即可。若 <code>26</code> 种字母都出现过，任意长度为
+<code>1</code> 的串都是子序列，答案至少为
+<code>2</code>，并可以继续往下推。</p>
+<p>从左到右扫描
+<code>s</code>，用集合记录当前这一层已经见过的不同字母。每凑齐
+<code>26</code>
+种，就说明任意一个字符都能在这一层里被匹配掉，于是层数加一并清空集合。扫完后的层数加
+<code>1</code> 就是答案。</p>
+<p>正确性可以两边夹：设凑齐了 <code>X</code> 层。任意长度不超过
+<code>X</code> 的串，第 <code>j</code> 个字符都可以在第 <code>j</code>
+层里匹配，因而都是子序列。另一方面，记第 <code>j</code> 层最后补齐
+<code>26</code> 种的那个字符为
+<code>c_j</code>，最后一层之后的后缀里缺的某个字母为 <code>d</code>，则
+<code>c_1 c_2 ... c_X d</code> 无法按顺序匹配，故存在长度为
+<code>X + 1</code> 的非子序列。</p>
+<p>实现方法：开一个大小为 <code>26</code>
+的布尔数组（或集合）记录当前层见过的字母，再记一个计数器。扫到新字母就标记并加一；计数到
+<code>26</code> 时答案加一、标记清空。最后输出答案（初始为
+<code>1</code>）。</p>
+<p><strong>复杂度分析：</strong> 时间复杂度
+<code>O(|s|)</code>；空间复杂度 <code>O(26)</code>，即常数空间。</p>
+<p>贪心分块：从左往右扫描，每当<strong>凑齐全部 26
+个字母</strong>就形成一个块并清空计数，设总共得到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+个块。</p>
 <ul>
-<li>任何长度 $\le k$ 的串都是 $S$ 的子序列——第 $i$ 个字符总能在第 $i$ 个块里找到；</li>
-<li>而 <code>a</code> 重复 $k+1$ 次不是子序列——每个块至多贡献一个 <code>a</code>。</li>
+<li>任何长度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">\le k</annotation></semantics></math>
+的串都是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+的子序列——第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+个字符总能在第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+个块里找到；</li>
+<li>而 <code>a</code> 重复
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k+1</annotation></semantics></math>
+次不是子序列——每个块至多贡献一个 <code>a</code>。</li>
 </ul>
-<p>所以答案为 $k + 1$，一次线性扫描即可。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-built_in">input</span>().strip()
+<p>所以答案为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k + 1</annotation></semantics></math>，一次线性扫描即可。</p>
+<h2 id="代码">代码</h2>
+<div class="code-wrapper"><pre><code class="hljs python">s = <span class="hljs-built_in">input</span>().strip()
 seen = <span class="hljs-built_in">set</span>()
 ans = <span class="hljs-number">0</span>
 <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s:
@@ -449,6 +498,12 @@ ans = <span class="hljs-number">0</span>
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%BE%BE%E4%BA%BA%E6%95%B0%E6%8D%AE%E7%9C%8B%E6%9D%BF/" title="未命名">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">未命名</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
