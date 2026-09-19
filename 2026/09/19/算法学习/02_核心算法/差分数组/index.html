@@ -19,23 +19,25 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="差分数组 diff &#x3D; &#123;&#125;  # 对区间 [l, r) 加 v diff[l] &#x3D; diff.get(l, 0) + v    # 起点加 v diff[r] &#x3D; diff.get(r, 0) - v    # 终点减 v">
+    <meta name="description" content="差分数组用途：多次区间修改、最后一次性还原——每次把「区间 $[l, r]$ 整体加 $v$」降为 $O(1)$ 的两个单点修改。 原理：差分是前缀和的逆运算。设 $d[i] &#x3D; a[i] - a[i-1]$，则对 $d$ 求前缀和就还原出 $a$。区间 $[l, r]$ 加 $v$ 时，只有 $d[l]$ 和 $d[r+1]$ 两个边界变了： d[l] \mathrel{+}&#x3D; v,\quad">
 <meta property="og:type" content="article">
-<meta property="og:title" content="未命名">
+<meta property="og:title" content="差分数组">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="差分数组 diff &#x3D; &#123;&#125;  # 对区间 [l, r) 加 v diff[l] &#x3D; diff.get(l, 0) + v    # 起点加 v diff[r] &#x3D; diff.get(r, 0) - v    # 终点减 v">
+<meta property="og:description" content="差分数组用途：多次区间修改、最后一次性还原——每次把「区间 $[l, r]$ 整体加 $v$」降为 $O(1)$ 的两个单点修改。 原理：差分是前缀和的逆运算。设 $d[i] &#x3D; a[i] - a[i-1]$，则对 $d$ 求前缀和就还原出 $a$。区间 $[l, r]$ 加 $v$ 时，只有 $d[l]$ 和 $d[r+1]$ 两个边界变了： d[l] \mathrel{+}&#x3D; v,\quad">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-19T11:39:33.947Z">
-<meta property="article:modified_time" content="2026-09-19T11:42:48.578Z">
+<meta property="article:published_time" content="2026-09-19T11:59:06.722Z">
+<meta property="article:modified_time" content="2026-09-19T11:59:06.724Z">
 <meta property="article:author" content="Ming">
+<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="差分">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>未命名 - Ming&#39;s Blog</title>
+  <title>差分数组 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="未命名"></span>
+            <span id="subtitle" data-typed-text="差分数组"></span>
           
         </div>
 
@@ -216,7 +218,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-19 19:39" pubdate>
+        <time datetime="2026-09-19 19:59" pubdate>
           2026年9月19日 晚上
         </time>
       </span>
@@ -228,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          34 字
+          412 字
         
       </span>
     
@@ -239,7 +241,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -285,12 +287,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">未命名</h1>
+            <h1 id="seo-header">差分数组</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-19T19:42:48+08:00
+                    本文最后更新于 2026-09-19T19:59:06+08:00
                   
                   
 
@@ -300,12 +302,45 @@
             
               <div class="markdown-body">
                 
-                <p>差分数组</p>
+                <h2 id="差分数组"><a href="#差分数组" class="headerlink" title="差分数组"></a>差分数组</h2><p><strong>用途</strong>：多次区间修改、最后一次性还原——每次把「区间 $[l, r]$ 整体加 $v$」降为 $O(1)$ 的两个单点修改。</p>
+<p><strong>原理</strong>：差分是前缀和的<strong>逆运算</strong>。设 $d[i] = a[i] - a[i-1]$，则对 $d$ 求前缀和就还原出 $a$。区间 $[l, r]$ 加 $v$ 时，只有 $d[l]$ 和 $d[r+1]$ 两个边界变了：</p>
+<script type="math/tex; mode=display">d[l] \mathrel{+}= v,\quad d[r+1] \mathrel{-}= v</script><div class="code-wrapper"><pre><code class="hljs python">diff = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)   <span class="hljs-comment"># 开 n+1，防止 r+1 越界</span>
+
+<span class="hljs-comment"># 对区间 [l, r] 加 v</span>
+diff[l] += v
+diff[r+<span class="hljs-number">1</span>] -= v
+
+<span class="hljs-comment"># 还原：对 diff 求前缀和</span>
+arr = [<span class="hljs-number">0</span>] * n
+curr = <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    curr += diff[i]
+    arr[i] = curr</code></pre></div>
+<h2 id="字典版（稀疏差分）"><a href="#字典版（稀疏差分）" class="headerlink" title="字典版（稀疏差分）"></a>字典版（稀疏差分）</h2><p>当下标很大或很稀疏（只涉及少数几个位置）时，用字典代替数组：</p>
 <div class="code-wrapper"><pre><code class="hljs python">diff = &#123;&#125;
 
 <span class="hljs-comment"># 对区间 [l, r) 加 v</span>
 diff[l] = diff.get(l, <span class="hljs-number">0</span>) + v    <span class="hljs-comment"># 起点加 v</span>
 diff[r] = diff.get(r, <span class="hljs-number">0</span>) - v    <span class="hljs-comment"># 终点减 v</span></code></pre></div>
+<h2 id="典型例题：LeetCode-1109-航班预订统计"><a href="#典型例题：LeetCode-1109-航班预订统计" class="headerlink" title="典型例题：LeetCode 1109. 航班预订统计"></a>典型例题：LeetCode 1109. 航班预订统计</h2><p>有 <code>n</code> 个航班，<code>bookings[i] = [first, last, seats]</code> 表示预订区间 <code>[first, last]</code> 的每个航班增加 <code>seats</code> 个座位，求各航班最终预订数。典型的「多次区间修改 + 最后还原」：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">corpFlightBookings</span>(<span class="hljs-params">self, bookings: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:
+        diff = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
+        <span class="hljs-keyword">for</span> first, last, seats <span class="hljs-keyword">in</span> bookings:  <span class="hljs-comment"># 题目是 1-indexed</span>
+            diff[first - <span class="hljs-number">1</span>] += seats
+            diff[last] -= seats
+
+        ans = []
+        curr = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+            curr += diff[i]
+            ans.append(curr)
+        <span class="hljs-keyword">return</span> ans</code></pre></div>
+<h2 id="适用场景与限制"><a href="#适用场景与限制" class="headerlink" title="适用场景与限制"></a>适用场景与限制</h2><ul>
+<li><strong>适合</strong>：所有修改先做完、最后统一查询/还原（离线场景），总复杂度 $O(n + m)$</li>
+<li><strong>不适合</strong>：修改和查询<strong>交替</strong>进行（在线场景）——每次查询都要 $O(n)$ 还原，应改用树状数组或线段树</li>
+<li>常见变形：对「区间被覆盖次数」计数（如拼车、会议室占用），同样先差分再前缀和</li>
+</ul>
 
                 
               </div>
@@ -343,6 +378,15 @@ diff[r] = diff.get(r, <span class="hljs-number">0</span>) - v    <span class="hl
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B7%AE%E5%88%86/" class="print-no-link">#差分</a>
+      
+        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#前缀和</a>
+      
+    </div>
+  
 </div>
 
 
@@ -351,7 +395,7 @@ diff[r] = diff.get(r, <span class="hljs-number">0</span>) - v    <span class="hl
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>未命名</div>
+      <div>差分数组</div>
       <div>https://mingsm17518.github.io/2026/09/19/算法学习/02_核心算法/差分数组/</div>
     </div>
     <div class="license-meta">
@@ -401,9 +445,9 @@ diff[r] = diff.get(r, <span class="hljs-number">0</span>) - v    <span class="hl
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/00_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" title="00_数据结构总览">
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86%20(DSU)/" title="未命名">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">00_数据结构总览</span>
+                        <span class="hidden-mobile">未命名</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -411,8 +455,8 @@ diff[r] = diff.get(r, <span class="hljs-number">0</span>) - v    <span class="hl
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/others/%E6%A8%A1%E8%BF%90%E7%AE%97/" title="Modular Arithmetic 模运算">
-                        <span class="hidden-mobile">Modular Arithmetic 模运算</span>
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="06_输入输出">
+                        <span class="hidden-mobile">06_输入输出</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
