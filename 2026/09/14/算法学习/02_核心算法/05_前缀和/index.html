@@ -27,7 +27,7 @@
 <meta property="og:description" content="前缀和 用途：快速求区间和，查询时间 O(1)，预处理 O(n) 原理：prefix[i] 表示前 i 个元素的和，区间 [l, r] 的和 &#x3D; prefix[r] - prefix[l-1] # 一维前缀和 prefix &#x3D; [0] * (n + 1) for i in range(n):   prefix[i + 1] &#x3D; prefix[i] + a[i]  # a 是 0-indexed">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-13T16:04:38.529Z">
-<meta property="article:modified_time" content="2026-09-13T16:04:38.529Z">
+<meta property="article:modified_time" content="2026-09-19T09:10:44.907Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -287,6 +287,16 @@
           <article class="post-content mx-auto">
             <h1 id="seo-header">05_前缀和</h1>
             
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-09-19T17:10:44+08:00
+                  
+                  
+
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
@@ -369,6 +379,11 @@ prefix = [[<span class="hljs-number">0</span>] * (m+<span class="hljs-number">1<
           <div>2026年9月14日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年9月19日</div>
+        </div>
       
       
         <div class="license-meta-item">
@@ -570,6 +585,33 @@ prefix = [[<span class="hljs-number">0</span>] * (m+<span class="hljs-number">1<
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
