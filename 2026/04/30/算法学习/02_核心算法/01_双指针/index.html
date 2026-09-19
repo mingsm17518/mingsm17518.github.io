@@ -19,25 +19,25 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="01_Simulation 模拟什么是模拟算法？模拟算法（Simulation）是最直接的算法思想——按照问题描述直接模拟整个过程。不需要复杂的优化或数学技巧，只需要忠实地执行题目给出的规则。 模拟算法的特点 直观简单：按照题目描述直接实现 无需优化技巧：重点在于正确理解题意 适合入门：Bronze 级别最常见的题型 注意细节：需要仔细处理边界情况和数据范围  适用场景 按照固定规则进行操作的题目">
+    <meta name="description" content="双指针 概念 双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。 两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。  Sum of Two Values https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1640 Solution 我们要找到两个索引 ii 和 jj ，使得 ai+aj&#x3D;xa_i +">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Simulation 模拟">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03_Bronze/01_%E6%A8%A1%E6%8B%9F/index.html">
+<meta property="og:title" content="Two Pointers 双指针">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%8F%8C%E6%8C%87%E9%92%88/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="01_Simulation 模拟什么是模拟算法？模拟算法（Simulation）是最直接的算法思想——按照问题描述直接模拟整个过程。不需要复杂的优化或数学技巧，只需要忠实地执行题目给出的规则。 模拟算法的特点 直观简单：按照题目描述直接实现 无需优化技巧：重点在于正确理解题意 适合入门：Bronze 级别最常见的题型 注意细节：需要仔细处理边界情况和数据范围  适用场景 按照固定规则进行操作的题目">
+<meta property="og:description" content="双指针 概念 双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：  两个指针从数组的两端开始，并相互移动。 两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。  Sum of Two Values https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1640 Solution 我们要找到两个索引 ii 和 jj ，使得 ai+aj&#x3D;xa_i +">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-30T09:02:12.000Z">
-<meta property="article:modified_time" content="2026-09-13T15:48:27.222Z">
+<meta property="article:published_time" content="2026-04-30T09:02:10.000Z">
+<meta property="article:modified_time" content="2026-09-19T16:06:29.337Z">
 <meta property="article:author" content="Ming">
-<meta property="article:tag" content="枚举">
-<meta property="article:tag" content="模拟">
+<meta property="article:tag" content="双指针">
+<meta property="article:tag" content="滑动窗口">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Simulation 模拟 - Ming&#39;s Blog</title>
+  <title>Two Pointers 双指针 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Simulation 模拟"></span>
+            <span id="subtitle" data-typed-text="Two Pointers 双指针"></span>
           
         </div>
 
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          632 字
+          596 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          6 分钟
+          5 分钟
         
       </span>
     
@@ -287,12 +287,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Simulation 模拟</h1>
+            <h1 id="seo-header">Two Pointers 双指针</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-13T23:48:27+08:00
+                    本文最后更新于 2026-09-20T00:06:29+08:00
                   
                   
 
@@ -302,154 +302,98 @@
             
               <div class="markdown-body">
                 
-                <h1 id="01-Simulation-模拟"><a href="#01-Simulation-模拟" class="headerlink" title="01_Simulation 模拟"></a>01_Simulation 模拟</h1><h2 id="什么是模拟算法？"><a href="#什么是模拟算法？" class="headerlink" title="什么是模拟算法？"></a>什么是模拟算法？</h2><p>模拟算法（Simulation）是最直接的算法思想——<strong>按照问题描述直接模拟整个过程</strong>。不需要复杂的优化或数学技巧，只需要忠实地执行题目给出的规则。</p>
-<h3 id="模拟算法的特点"><a href="#模拟算法的特点" class="headerlink" title="模拟算法的特点"></a>模拟算法的特点</h3><ol>
-<li><strong>直观简单</strong>：按照题目描述直接实现</li>
-<li><strong>无需优化技巧</strong>：重点在于正确理解题意</li>
-<li><strong>适合入门</strong>：Bronze 级别最常见的题型</li>
-<li><strong>注意细节</strong>：需要仔细处理边界情况和数据范围</li>
+                <h1 id="双指针">双指针</h1>
+<h2 id="概念">概念</h2>
+<p>双指针方法通过在数组中迭代两个指针来跟踪满足某些条件的索引。有两种常见的变体：</p>
+<ol type="1">
+<li><p>两个指针从数组的两端开始，并相互移动。</p></li>
+<li><p>两个指针以不同速度沿同一方向移动。这种变体被称为滑动窗口算法。</p></li>
 </ol>
-<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
-<li>按照固定规则进行操作的题目</li>
-<li>需要追踪状态变化的题目</li>
-<li>规则明确但过程复杂的题目</li>
-</ul>
-<hr>
-<h2 id="题目列表"><a href="#题目列表" class="headerlink" title="题目列表"></a>题目列表</h2><h3 id="Easier（简单）"><a href="#Easier（简单）" class="headerlink" title="Easier（简单）"></a>Easier（简单）</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>题目</th>
-<th>难度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>01</td>
-<td>The Cow Signal</td>
-<td>⭐</td>
-</tr>
-<tr>
-<td>02</td>
-<td>Speeding Ticket</td>
-<td>⭐</td>
-</tr>
-<tr>
-<td>03</td>
-<td>The Lost Cow</td>
-<td>⭐</td>
-</tr>
-<tr>
-<td>04</td>
-<td>The Bovine Shuffle</td>
-<td>⭐</td>
-</tr>
-<tr>
-<td>05</td>
-<td>The Bucket List</td>
-<td>⭐</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="Example（例题）"><a href="#Example（例题）" class="headerlink" title="Example（例题）"></a>Example（例题）</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>题目</th>
-<th>难度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>01</td>
-<td>Shell Game</td>
-<td>⭐⭐</td>
-</tr>
-<tr>
-<td>02</td>
-<td>Mixing Milk</td>
-<td>⭐⭐</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="Harder（较难）"><a href="#Harder（较难）" class="headerlink" title="Harder（较难）"></a>Harder（较难）</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>题目</th>
-<th>难度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>01</td>
-<td>Measuring Traffic</td>
-<td>⭐⭐⭐</td>
-</tr>
-<tr>
-<td>02</td>
-<td>Circular Barn</td>
-<td>⭐⭐⭐</td>
-</tr>
-<tr>
-<td>03</td>
-<td>Block Game</td>
-<td>⭐⭐⭐</td>
-</tr>
-<tr>
-<td>04</td>
-<td>Team Tic Tac Toe</td>
-<td>⭐⭐⭐</td>
-</tr>
-<tr>
-<td>05</td>
-<td>Mowing the Field</td>
-<td>⭐⭐⭐</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="题目简介"><a href="#题目简介" class="headerlink" title="题目简介"></a>题目简介</h2><h3 id="The-Cow-Signal"><a href="#The-Cow-Signal" class="headerlink" title="The Cow Signal"></a>The Cow Signal</h3><p>给定一个由 ‘G’ 和 ‘M’ 组成的图案，放大 k 倍后输出。</p>
-<p><strong>思路</strong>：将每个字符重复 k 行，每行重复 k 列。</p>
-<hr>
-<h3 id="Speeding-Ticket"><a href="#Speeding-Ticket" class="headerlink" title="Speeding Ticket"></a>Speeding Ticket</h3><p>判断车辆是否超速。</p>
-<p><strong>思路</strong>：直接比较车辆位置和限速区间的起止点。</p>
-<hr>
-<h3 id="The-Lost-Cow"><a href="#The-Lost-Cow" class="headerlink" title="The Lost Cow"></a>The Lost Cow</h3><p>求从起点到目标位置需要经过的格子数（包含起点和终点）。</p>
-<p><strong>思路</strong>：模拟从起点到目标的移动路径，计算总步数。</p>
-<hr>
-<h3 id="The-Bovine-Shuffle"><a href="#The-Bovine-Shuffle" class="headerlink" title="The Bovine Shuffle"></a>The Bovine Shuffle</h3><p>根据给定的置换规则重新排列数组。</p>
-<p><strong>思路</strong>：按照置换数组的映射关系进行重新排列。</p>
-<hr>
-<h3 id="The-Bucket-List"><a href="#The-Bucket-List" class="headerlink" title="The Bucket List"></a>The Bucket List</h3><p>计算农夫需要多少个水桶来满足所有区间的用水需求。</p>
-<p><strong>思路</strong>：合并区间后统计不重叠的区间数量。</p>
-<hr>
-<h3 id="Shell-Game"><a href="#Shell-Game" class="headerlink" title="Shell Game"></a>Shell Game</h3><p>三个杯子交换位置，找出最终球在哪个杯子中。</p>
-<p><strong>思路</strong>：模拟每次交换操作。</p>
-<hr>
-<h3 id="Mixing-Milk"><a href="#Mixing-Milk" class="headerlink" title="Mixing Milk"></a>Mixing Milk</h3><p>多轮倾倒牛奶，求最终每个瓶子的牛奶量。</p>
-<p><strong>思路</strong>：模拟倾倒过程，直到所有瓶子都经历过一轮倾倒。</p>
-<hr>
-<h3 id="Measuring-Traffic"><a href="#Measuring-Traffic" class="headerlink" title="Measuring Traffic"></a>Measuring Traffic</h3><p>计算道路在测量前后的流量范围。</p>
-<p><strong>思路</strong>：考虑测量位置对流量范围的影响，处理三种情况。</p>
-<hr>
-<h3 id="Circular-Barn"><a href="#Circular-Barn" class="headerlink" title="Circular Barn"></a>Circular Barn</h3><p>在环形谷仓中寻找最佳位置。</p>
-<p><strong>思路</strong>：枚举所有可能的位置，计算收益。</p>
-<hr>
-<h3 id="Block-Game"><a href="#Block-Game" class="headerlink" title="Block Game"></a>Block Game</h3><p>根据给出的方块序列判断胜负。</p>
-<p><strong>思路</strong>：分析游戏状态，判断是否存在必胜策略。</p>
-<hr>
-<h3 id="Team-Tic-Tac-Toe"><a href="#Team-Tic-Tac-Toe" class="headerlink" title="Team Tic Tac Toe"></a>Team Tic Tac Toe</h3><p>判断哪个队伍首先连成三子。</p>
-<p><strong>思路</strong>：检查所有可能的连成情况。</p>
-<hr>
-<h3 id="Mowing-the-Field"><a href="#Mowing-the-Field" class="headerlink" title="Mowing the Field"></a>Mowing the Field</h3><p>计算割草机走过指定路径后的面积。</p>
-<p><strong>思路</strong>：模拟割草机的移动轨迹，计算覆盖的格子数。</p>
+<h2 id="sum-of-two-values">Sum of Two Values</h2>
+<p>https://cses.fi/problemset/task/1640</p>
+<h3 id="solution">Solution</h3>
+<p>我们要找到两个索引
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+，使得
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>+</mo><msub><mi>a</mi><mi>j</mi></msub><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">a_i + a_j = x</annotation></semantics></math>。</p>
+<p>我们可以先对数组进行排序。然后，将左指针初始化在数组的开头（
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">l=0</annotation></semantics></math>
+），将右指针初始化在末尾（
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r=N−1</annotation></semantics></math>
+）。</p>
+<p>当
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>&lt;</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">l&lt;r</annotation></semantics></math>
+： 如果
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>r</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">a[l] + a[r] == x</annotation></semantics></math>
+，我们就找到了目标和。 如果
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>r</mi><mo stretchy="false" form="postfix">]</mo><mo>&lt;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">a[l]+a[r]&lt;x</annotation></semantics></math>
+，和太小。为了增加和，我们增加
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>l</mi><annotation encoding="application/x-tex">l</annotation></semantics></math><br />
+如果
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>r</mi><mo stretchy="false" form="postfix">]</mo><mo>&gt;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">a[l]+a[r]&gt;x</annotation></semantics></math>
+，和太大。为了减少和，我们减少
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math></p>
+<p>由于数组已排序，将左指针向右移动永远不会减少和，将右指针向左移动永远不会增加和。</p>
+<h3 id="implementation">Implementation</h3>
+<p><strong>Time Complexity:</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒪</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(N \log N)</annotation></semantics></math>  时间复杂度：
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒪</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(N \log N)</annotation></semantics></math></p>
+<div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+
+nums = [(<span class="hljs-built_in">int</span>(val), i) <span class="hljs-keyword">for</span> i, val <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(<span class="hljs-built_in">input</span>().split())]
+nums.sort()
+
+l = <span class="hljs-number">0</span>
+r = n - <span class="hljs-number">1</span>
+<span class="hljs-keyword">while</span> l &lt; r:
+	<span class="hljs-built_in">sum</span> = nums[l][<span class="hljs-number">0</span>] + nums[r][<span class="hljs-number">0</span>]
+	<span class="hljs-keyword">if</span> <span class="hljs-built_in">sum</span> == x:
+		<span class="hljs-built_in">print</span>(nums[l][<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>, nums[r][<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>)
+		exit()
+	<span class="hljs-keyword">elif</span> <span class="hljs-built_in">sum</span> &lt; x:
+		l += <span class="hljs-number">1</span>
+	<span class="hljs-keyword">else</span>:
+		r -= <span class="hljs-number">1</span>
+
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;IMPOSSIBLE&quot;</span>)</code></pre></div>
+<h2 id="sliding-window">Sliding Window</h2>
+<p>滑动窗口方法是双指针技术的一种变体，其中两个指针沿同一方向移动以维护一个特定的元素范围或”窗口”。虽然标准双指针通常相互靠近移动，但滑动窗口技术用于找到一个满足条件的连续子数组。</p>
+<p>https://codeforces.com/contest/279/problem/B</p>
+<h3 id="solution---books">Solution - Books</h3>
+<p>我们想要找到可以在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+分钟内读完的最长的连续书籍段，即寻找最长的连续子数组，要求子数组的和小于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math></p>
+<p>为了实现这一点，我们可以定义
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtext mathvariant="monospace">𝚕𝚎𝚏𝚝</mtext><annotation encoding="application/x-tex">\texttt{left}</annotation></semantics></math>
+和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtext mathvariant="monospace">𝚛𝚒𝚐𝚑𝚝</mtext><annotation encoding="application/x-tex">\texttt{right}</annotation></semantics></math>
+来表示段的开始和结束。两者都将从数组的开头开始。这些数字可以被视为指针，因此得名”双指针”。</p>
+<p>由于两个指针最多移动
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+次，整体时间复杂度为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒪</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(N)</annotation></semantics></math>
+。</p>
+<p><video src="../../../img/two_pointers.mp4" controls=""><a
+href="../../../img/two_pointers.mp4">Video</a></video></p>
+<h3 id="implementation-1">Implementation</h3>
+<div class="code-wrapper"><pre><code class="hljs python">n, t = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+timeNeed = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
+
+l = <span class="hljs-number">0</span>
+sum_time = <span class="hljs-number">0</span>
+ans = <span class="hljs-number">0</span>
+
+<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    sum_time += timeNeed[r]
+    <span class="hljs-keyword">while</span> sum_time &gt; t <span class="hljs-keyword">and</span> l &lt;= r:
+        sum_time -= timeNeed[l]
+        l += <span class="hljs-number">1</span>
+    ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)
+
+<span class="hljs-built_in">print</span>(ans)</code></pre></div>
 
                 
               </div>
@@ -473,7 +417,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03-Bronze/" class="category-chain-item">03_Bronze</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-%E6%8E%92%E5%BA%8F%E4%B8%8E%E6%90%9C%E7%B4%A2/" class="category-chain-item">04_排序与搜索</a>
   
   
 
@@ -490,9 +434,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%9E%9A%E4%B8%BE/" class="print-no-link">#枚举</a>
+        <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" class="print-no-link">#双指针</a>
       
-        <a href="/tags/%E6%A8%A1%E6%8B%9F/" class="print-no-link">#模拟</a>
+        <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="print-no-link">#滑动窗口</a>
       
     </div>
   
@@ -504,8 +448,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Simulation 模拟</div>
-      <div>https://mingsm17518.github.io/2026/04/30/算法学习/03_Bronze/01_模拟/</div>
+      <div>Two Pointers 双指针</div>
+      <div>https://mingsm17518.github.io/2026/04/30/算法学习/02_核心算法/01_双指针/</div>
     </div>
     <div class="license-meta">
       
@@ -523,7 +467,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2026年9月13日</div>
+          <div>2026年9月20日</div>
         </div>
       
       
@@ -554,9 +498,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" title="Complete Search 完全搜索">
+                      <a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/" title="expected str, bytes or os.PathLike object, not MultiplexedPath">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Complete Search 完全搜索</span>
+                        <span class="hidden-mobile">expected str, bytes or os.PathLike object, not MultiplexedPath</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -564,8 +508,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03_Bronze/03_%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" title="Casework 案例分析">
-                        <span class="hidden-mobile">Casework 案例分析</span>
+                      <a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/04_Counting_Liars/" title="Counting Liars">
+                        <span class="hidden-mobile">Counting Liars</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

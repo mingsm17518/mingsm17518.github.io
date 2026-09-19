@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最大子数组和（Kadane 算法）模板标准版（DP 转移，推荐）def kadane(nums):     cur &#x3D; nums[0]   # 以 i 结尾的最大子数组和     best &#x3D; nums[0]     for x in nums[1:]:         cur &#x3D; max(x, cur + x)   # 要么自己重开，要么接上前缀         best &#x3D; max(best,">
+    <meta name="description" content="最大子数组和（Kadane 算法） 模板 标准版（DP 转移，推荐） def kadane(nums):     cur &#x3D; nums[0]   # 以 i 结尾的最大子数组和     best &#x3D; nums[0]     for x in nums[1:]:         cur &#x3D; max(x, cur + x)   # 要么自己重开，要么接上前缀         best &#x3D; max(be">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最大子数组和（Kadane 算法）">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%EF%BC%88Kadane%20%E7%AE%97%E6%B3%95%EF%BC%89/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="最大子数组和（Kadane 算法）模板标准版（DP 转移，推荐）def kadane(nums):     cur &#x3D; nums[0]   # 以 i 结尾的最大子数组和     best &#x3D; nums[0]     for x in nums[1:]:         cur &#x3D; max(x, cur + x)   # 要么自己重开，要么接上前缀         best &#x3D; max(best,">
+<meta property="og:description" content="最大子数组和（Kadane 算法） 模板 标准版（DP 转移，推荐） def kadane(nums):     cur &#x3D; nums[0]   # 以 i 结尾的最大子数组和     best &#x3D; nums[0]     for x in nums[1:]:         cur &#x3D; max(x, cur + x)   # 要么自己重开，要么接上前缀         best &#x3D; max(be">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T16:28:23.639Z">
 <meta property="article:modified_time" content="2026-09-19T16:28:23.640Z">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          860 字
+          920 字
         
       </span>
     
@@ -303,15 +303,21 @@
             
               <div class="markdown-body">
                 
-                <h2 id="最大子数组和（Kadane-算法）"><a href="#最大子数组和（Kadane-算法）" class="headerlink" title="最大子数组和（Kadane 算法）"></a>最大子数组和（Kadane 算法）</h2><h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><h3 id="标准版（DP-转移，推荐）"><a href="#标准版（DP-转移，推荐）" class="headerlink" title="标准版（DP 转移，推荐）"></a>标准版（DP 转移，推荐）</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">kadane</span>(<span class="hljs-params">nums</span>):
+                <h2 id="最大子数组和kadane-算法">最大子数组和（Kadane 算法）</h2>
+<h2 id="模板">模板</h2>
+<h3 id="标准版dp-转移推荐">标准版（DP 转移，推荐）</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">kadane</span>(<span class="hljs-params">nums</span>):
     cur = nums[<span class="hljs-number">0</span>]   <span class="hljs-comment"># 以 i 结尾的最大子数组和</span>
     best = nums[<span class="hljs-number">0</span>]
     <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> nums[<span class="hljs-number">1</span>:]:
         cur = <span class="hljs-built_in">max</span>(x, cur + x)   <span class="hljs-comment"># 要么自己重开，要么接上前缀</span>
         best = <span class="hljs-built_in">max</span>(best, cur)
     <span class="hljs-keyword">return</span> best</code></pre></div>
-<p>全负数组天然正确（答案 = 最大元素），不需要哨兵值，是三种写法里最不容易出错的。</p>
-<h3 id="竞赛-stdin-版（前缀和重置视角）"><a href="#竞赛-stdin-版（前缀和重置视角）" class="headerlink" title="竞赛 stdin 版（前缀和重置视角）"></a>竞赛 stdin 版（前缀和重置视角）</h3><div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+<p>全负数组天然正确（答案 =
+最大元素），不需要哨兵值，是三种写法里最不容易出错的。</p>
+<h3 id="竞赛-stdin-版前缀和重置视角">竞赛 stdin
+版（前缀和重置视角）</h3>
+<div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 a = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
 
 cur = <span class="hljs-number">0</span>  <span class="hljs-comment"># 以当前位置结尾的最大子数组和</span>
@@ -322,26 +328,53 @@ ans = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;-
     <span class="hljs-keyword">if</span> cur &lt; <span class="hljs-number">0</span>:
         cur = <span class="hljs-number">0</span>  <span class="hljs-comment"># 负数没有贡献，重新开始</span>
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<p>与前一种行为等价，但有两个易错点：<code>ans</code> 必须初始化为 <code>-inf</code>；<strong>必须先更新 ans 再清零 cur</strong>（顺序反了会漏掉全负数组的答案）。</p>
-<h3 id="允许空子数组版"><a href="#允许空子数组版" class="headerlink" title="允许空子数组版"></a>允许空子数组版</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">kadane_allow_empty</span>(<span class="hljs-params">nums</span>):
+<p>与前一种行为等价，但有两个易错点：<code>ans</code> 必须初始化为
+<code>-inf</code>；<strong>必须先更新 ans 再清零
+cur</strong>（顺序反了会漏掉全负数组的答案）。</p>
+<h3 id="允许空子数组版">允许空子数组版</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">kadane_allow_empty</span>(<span class="hljs-params">nums</span>):
     cur = <span class="hljs-number">0</span>
     best = <span class="hljs-number">0</span>
     <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> nums:
         cur = <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, cur + x)
         best = <span class="hljs-built_in">max</span>(best, cur)
     <span class="hljs-keyword">return</span> best</code></pre></div>
-<p>仅当题目允许空子数组（答案 $\ge 0$）时使用。</p>
-<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p><strong>用途</strong>：$O(n)$ 求连续子数组的最大和（LC 53）及其各种变形。</p>
-<p><strong>原理</strong>：动态规划——<code>cur</code> 表示<strong>以当前位置结尾</strong>的最大子数组和，转移为「接着前面累加」或「从当前元素重新开始」二者取大。</p>
-<h3 id="DP-定义与转移"><a href="#DP-定义与转移" class="headerlink" title="DP 定义与转移"></a>DP 定义与转移</h3><p>设 $dp[i]$ 为<strong>以 $i$ 结尾</strong>的最大子数组和：</p>
-<script type="math/tex; mode=display">dp[i] = \max(a[i],\ dp[i-1] + a[i])</script><ul>
-<li>若 $dp[i-1] \ge 0$：前面的累积有贡献，接上更优；</li>
-<li>若 $dp[i-1] &lt; 0$：负前缀只会拖累，不如从 $a[i]$ 重新开始。</li>
+<p>仅当题目允许空子数组（答案
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ge 0</annotation></semantics></math>）时使用。</p>
+<h2 id="解释">解释</h2>
+<p><strong>用途</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math>
+求连续子数组的最大和（LC 53）及其各种变形。</p>
+<p><strong>原理</strong>：动态规划——<code>cur</code>
+表示<strong>以当前位置结尾</strong>的最大子数组和，转移为「接着前面累加」或「从当前元素重新开始」二者取大。</p>
+<h3 id="dp-定义与转移">DP 定义与转移</h3>
+<p>设
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">dp[i]</annotation></semantics></math>
+为<strong>以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+结尾</strong>的最大子数组和：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo>,</mo><mspace width="0.222em"></mspace><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">dp[i] = \max(a[i],\ dp[i-1] + a[i])</annotation></semantics></math></p>
+<ul>
+<li>若
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">dp[i-1] \ge 0</annotation></semantics></math>：前面的累积有贡献，接上更优；</li>
+<li>若
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">dp[i-1] &lt; 0</annotation></semantics></math>：负前缀只会拖累，不如从
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math>
+重新开始。</li>
 </ul>
-<p>答案为 $\max_i dp[i]$（子数组必须非空，所以不是 $dp[n-1]$）。空间上只需一个滚动变量 <code>cur</code>，故 $O(1)$ 空间、$O(n)$ 时间。</p>
-<h3 id="前缀和视角"><a href="#前缀和视角" class="headerlink" title="前缀和视角"></a>前缀和视角</h3><p>Kadane 等价于维护「历史最小前缀和」：最大子段和 $= \max<em>i (\text{pref}[i] - \min</em>{j \le i} \text{pref}[j])$。「负前缀清零」就是在维护这个最小值。这个视角便于推广到带修改的变形（见例题 2）。</p>
-<h3 id="变形速查"><a href="#变形速查" class="headerlink" title="变形速查"></a>变形速查</h3><div class="table-container">
+<p>答案为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mi>i</mi></msub><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">\max_i dp[i]</annotation></semantics></math>（子数组必须非空，所以不是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">dp[n-1]</annotation></semantics></math>）。空间上只需一个滚动变量
+<code>cur</code>，故
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math>
+空间、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math>
+时间。</p>
+<h3 id="前缀和视角">前缀和视角</h3>
+<p>Kadane 等价于维护「历史最小前缀和」：最大子段和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><msub><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mi>i</mi></msub><mo stretchy="false" form="prefix">(</mo><mtext mathvariant="normal">pref</mtext><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo>−</mo><msub><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mrow><mi>j</mi><mo>≤</mo><mi>i</mi></mrow></msub><mtext mathvariant="normal">pref</mtext><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">= \max_i (\text{pref}[i] - \min_{j \le i} \text{pref}[j])</annotation></semantics></math>。「负前缀清零」就是在维护这个最小值。这个视角便于推广到带修改的变形（见例题
+2）。</p>
+<h3 id="变形速查">变形速查</h3>
 <table>
+
 <thead>
 <tr>
 <th>变形</th>
@@ -351,11 +384,12 @@ ans = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;-
 <tbody>
 <tr>
 <td>环形数组最大子段和（LC 918）</td>
-<td>$\max(\text{kadane}(a),\ \text{sum}(a) - \text{minkadane}(a))$，注意全负时取前者</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mtext mathvariant="normal">kadane</mtext><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="0.222em"></mspace><mtext mathvariant="normal">sum</mtext><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mtext mathvariant="normal">minkadane</mtext><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\max(\text{kadane}(a),\ \text{sum}(a) - \text{minkadane}(a))</annotation></semantics></math>，注意全负时取前者</td>
 </tr>
 <tr>
 <td>最大子段和的起止位置</td>
-<td>转移时记录 <code>cur</code> 的起点，更新 <code>best</code> 时保存区间</td>
+<td>转移时记录 <code>cur</code> 的起点，更新 <code>best</code>
+时保存区间</td>
 </tr>
 <tr>
 <td>至多删去一个元素的最大子段和（LC 1186）</td>
@@ -363,7 +397,8 @@ ans = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;-
 </tr>
 <tr>
 <td>允许一次区间翻倍</td>
-<td>见例题 2，上界 $2 \times \text{kadane}$</td>
+<td>见例题 2，上界
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mtext mathvariant="normal">kadane</mtext></mrow><annotation encoding="application/x-tex">2 \times \text{kadane}</annotation></semantics></math></td>
 </tr>
 <tr>
 <td>恰好 k 个不相交子段的最大和</td>
@@ -371,12 +406,32 @@ ans = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;-
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="例题-1：LC-53-最大子数组和（模板直接套）"><a href="#例题-1：LC-53-最大子数组和（模板直接套）" class="headerlink" title="例题 1：LC 53 最大子数组和（模板直接套）"></a>例题 1：LC 53 最大子数组和（模板直接套）</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-subarray/">LeetCode 53</a>（中等）：求整数数组中连续子数组的最大和。模板原题，三种写法任选其一即可。</p>
-<h3 id="例题-2：加速窗口收益（2-×-Kadane）"><a href="#例题-2：加速窗口收益（2-×-Kadane）" class="headerlink" title="例题 2：加速窗口收益（2 × Kadane）"></a>例题 2：加速窗口收益（2 × Kadane）</h3><p><a href="../../刷题笔记/小红书/2026年9月17日/第2题-加速窗口收益.md">第2题-加速窗口收益</a>（小红书机考）：可以开一次窗口把一段连续收益翻倍，再取最大连续和。任取答案段 $S$ 与窗口 $W$，总收益 $= \text{sum}(S) + \text{sum}(S \cap W)$，而 $S \cap W$ 也是连续子段、不超过全局最大子段和，故上界为 $2 \times \text{kadane}$，把窗口开在最大子段上即可取到。</p>
-<h3 id="例题-3：买卖股票的最佳时机（Kadane-变形）"><a href="#例题-3：买卖股票的最佳时机（Kadane-变形）" class="headerlink" title="例题 3：买卖股票的最佳时机（Kadane 变形）"></a>例题 3：买卖股票的最佳时机（Kadane 变形）</h3><p><a href="../../刷题笔记/Hot100/贪心/121.%20买卖股票的最佳时机.md">121. 买卖股票的最佳时机</a>（Hot100/贪心）：一次遍历维护历史最低价、更新最大利润，与「维护历史最小前缀和」的 Kadane 视角同构。</p>
-<h2 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h2><ul>
-<li>滑动窗口 / 双指针笔记：<a href="../02_核心算法/04_滑动窗口.md">04_滑动窗口</a></li>
+<h2 id="例题">例题</h2>
+<h3 id="例题-1lc-53-最大子数组和模板直接套">例题 1：LC 53
+最大子数组和（模板直接套）</h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-subarray/">LeetCode
+53</a>（中等）：求整数数组中连续子数组的最大和。模板原题，三种写法任选其一即可。</p>
+<h3 id="例题-2加速窗口收益2-kadane">例题 2：加速窗口收益（2 ×
+Kadane）</h3>
+<p><a
+href="../../刷题笔记/小红书/2026年9月17日/第2题-加速窗口收益.md">第2题-加速窗口收益</a>（小红书机考）：可以开一次窗口把一段连续收益翻倍，再取最大连续和。任取答案段
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+与窗口
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>，总收益
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mtext mathvariant="normal">sum</mtext><mo stretchy="false" form="prefix">(</mo><mi>S</mi><mo stretchy="false" form="postfix">)</mo><mo>+</mo><mtext mathvariant="normal">sum</mtext><mo stretchy="false" form="prefix">(</mo><mi>S</mi><mo>∩</mo><mi>W</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">= \text{sum}(S) + \text{sum}(S \cap W)</annotation></semantics></math>，而
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>∩</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">S \cap W</annotation></semantics></math>
+也是连续子段、不超过全局最大子段和，故上界为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mtext mathvariant="normal">kadane</mtext></mrow><annotation encoding="application/x-tex">2 \times \text{kadane}</annotation></semantics></math>，把窗口开在最大子段上即可取到。</p>
+<h3 id="例题-3买卖股票的最佳时机kadane-变形">例题
+3：买卖股票的最佳时机（Kadane 变形）</h3>
+<p><a
+href="../../刷题笔记/Hot100/贪心/121.%20买卖股票的最佳时机.md">121.
+买卖股票的最佳时机</a>（Hot100/贪心）：一次遍历维护历史最低价、更新最大利润，与「维护历史最小前缀和」的
+Kadane 视角同构。</p>
+<h2 id="关联">关联</h2>
+<ul>
+<li>滑动窗口 / 双指针笔记：<a
+href="../02_核心算法/04_滑动窗口.md">04_滑动窗口</a></li>
 </ul>
 
                 
@@ -483,6 +538,12 @@ ans = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;-
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" title="01_前缀和">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">01_前缀和</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

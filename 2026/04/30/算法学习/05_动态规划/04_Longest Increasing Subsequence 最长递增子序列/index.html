@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最长递增子序列Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew WangContributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件 Gold - Introduction to DP (动态规划简介)   教程令 $A$">
+    <meta name="description" content="最长递增子序列 Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang Contributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件  Gold - Introduction to DP (动态规划简介)   教程 令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="04_Longest Increasing Subsequence 最长递增子序列">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="最长递增子序列Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew WangContributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件 Gold - Introduction to DP (动态规划简介)   教程令 $A$">
+<meta property="og:description" content="最长递增子序列 Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang Contributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件  Gold - Introduction to DP (动态规划简介)   教程 令">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-30T09:02:14.000Z">
 <meta property="article:modified_time" content="2026-09-19T09:12:11.378Z">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          946 字
+          1k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -304,16 +304,33 @@
             
               <div class="markdown-body">
                 
-                <h1 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h1><p><strong>Authors</strong>: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang<br><strong>Contributors</strong>: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen</p>
-<hr>
-<h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><ul>
+                <h1 id="最长递增子序列">最长递增子序列</h1>
+<p><strong>Authors</strong>: Michael Cao, Benjamin Qi, Andi Qu, Andrew
+Wang <strong>Contributors</strong>: Dong Liu, Siyong Huang, Aryansh
+Shrivastava, Kevin Sheng, Katja Frantzen</p>
+<hr />
+<h2 id="先决条件">先决条件</h2>
+<ul>
 <li>Gold - Introduction to DP (动态规划简介)</li>
 </ul>
-<hr>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>令 $A$ 为我们要寻找最长递增子序列（LIS）的数组。</p>
-<hr>
-<h3 id="慢速解法"><a href="#慢速解法" class="headerlink" title="慢速解法"></a>慢速解法</h3><p><strong>时间复杂度</strong>: $O(N^2)$</p>
-<p>令 $dp[i]$ 表示以 $A[i]$ 结尾的最长递增子序列的长度。我们可以通过简单的方法在 $O(N^2)$ 时间内计算 $dp$（从而得到 LIS）：</p>
+<hr />
+<h2 id="教程">教程</h2>
+<p>令
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+为我们要寻找最长递增子序列（LIS）的数组。</p>
+<hr />
+<h3 id="慢速解法">慢速解法</h3>
+<p><strong>时间复杂度</strong>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></p>
+<p>令
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">dp[i]</annotation></semantics></math>
+表示以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">A[i]</annotation></semantics></math>
+结尾的最长递增子序列的长度。我们可以通过简单的方法在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math>
+时间内计算
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">dp</annotation></semantics></math>（从而得到
+LIS）：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span>
 
 
@@ -327,13 +344,40 @@
         lis = <span class="hljs-built_in">max</span>(lis, dp[i])
     <span class="hljs-keyword">return</span> lis</code></pre></div>
 <p>然而，我们可以做得更好！</p>
-<hr>
-<h3 id="快速解法"><a href="#快速解法" class="headerlink" title="快速解法"></a>快速解法</h3><p><strong>时间复杂度</strong>: $O(N \log N)$</p>
-<p>令 $L_i$ 是一个数组（0 索引），其中 $L_i[j]$ 是从 $A$ 的前 $i$ 个元素中最小的一个元素，它以长度为 $j+1$ 的递增序列结束（如果没有这样的元素则为 $\infty$）。</p>
-<p><strong>引理 1</strong>: $L_i$ 形成一个严格递增的序列。</p>
-<p><strong>引理 2</strong>: 以 $A[i+1]$ 结尾的最长递增子序列的长度等于满足 $L_i[j] \ge A[i+1]$ 的最小索引 $j$。</p>
-<p><strong>引理 3</strong>: $L<em>i$ 和 $L</em>{i+1}$ 之间最多有 1 个元素不同。</p>
-<p>要在 $O(\log N)$ 时间内找到并更新描述的 $j$，我们可以使用带二分查找的列表：</p>
+<hr />
+<h3 id="快速解法">快速解法</h3>
+<p><strong>时间复杂度</strong>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></p>
+<p>令
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>L</mi><mi>i</mi></msub><annotation encoding="application/x-tex">L_i</annotation></semantics></math>
+是一个数组（0 索引），其中
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">L_i[j]</annotation></semantics></math>
+是从
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+的前
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+个元素中最小的一个元素，它以长度为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j+1</annotation></semantics></math>
+的递增序列结束（如果没有这样的元素则为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>∞</mi><annotation encoding="application/x-tex">\infty</annotation></semantics></math>）。</p>
+<p><strong>引理 1</strong>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>L</mi><mi>i</mi></msub><annotation encoding="application/x-tex">L_i</annotation></semantics></math>
+形成一个严格递增的序列。</p>
+<p><strong>引理 2</strong>: 以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">A[i+1]</annotation></semantics></math>
+结尾的最长递增子序列的长度等于满足
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>i</mi></msub><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>≥</mo><mi>A</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">L_i[j] \ge A[i+1]</annotation></semantics></math>
+的最小索引
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>。</p>
+<p><strong>引理 3</strong>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>L</mi><mi>i</mi></msub><annotation encoding="application/x-tex">L_i</annotation></semantics></math>
+和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>L</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">L_{i+1}</annotation></semantics></math>
+之间最多有 1 个元素不同。</p>
+<p>要在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math>
+时间内找到并更新描述的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>，我们可以使用带二分查找的列表：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span>
 <span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> bisect_left
 
@@ -347,24 +391,82 @@
         <span class="hljs-keyword">else</span>:  <span class="hljs-comment"># oh ok, at least we can make the ending element smaller</span>
             min_endings[pos] = i
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(min_endings)</code></pre></div>
-<hr>
-<h3 id="RMQ-数据结构解法"><a href="#RMQ-数据结构解法" class="headerlink" title="RMQ 数据结构解法"></a>RMQ 数据结构解法</h3><p><strong>时间复杂度</strong>: $O(N \log N)$，但可能比之前的解决方案慢一个常数因子。</p>
-<p>设 $dp[k]$ 为以元素 $k \in a$ 结尾的 $a$ 的 LIS 长度。我们的基本情况是 $dp[a[0]] = 1$。由于 LIS 具有最优子结构特性，我们按以下方式进行转换：</p>
-<script type="math/tex; mode=display">dp[t] = \max_{0 \le k < t} dp[k] + 1</script><p>如果 $dp$ 是一个 RMQ 数据结构，$dp[t]$ 的变化只是一个点更新，而 $\max_{0 \le k &lt; t} dp[k]$ 的计算是一个区间查询。</p>
-<hr>
-<h2 id="应用-1-不相交的线段"><a href="#应用-1-不相交的线段" class="headerlink" title="应用 1 - 不相交的线段"></a>应用 1 - 不相交的线段</h2><p>首先，如果两个线段 $(l_1, r_1)$ 和 $(l_2, r_2)$ 相交（假设 $l_1 &lt; l_2$），我们可以注意到 $l_1 &lt; l_2 \implies r_1 &gt; r_2$。</p>
-<p>这意味着一组不相交的线段对于所有对 $(i, j)$ 都满足 $l_i &lt; l_j \implies r_i &lt; r_j$！</p>
-<p>设 $A$ 是一个数组，其中 $A[i] = x$ 表示位于位置 $i$ 的右端点的线段的左端点位于位置 $x$。</p>
-<p>如果我们被要求找出不相交线段集的最大大小，答案将是 $A$ 的最长递增子序列！</p>
-<hr>
-<h2 id="应用-2-最少递增子序列数"><a href="#应用-2-最少递增子序列数" class="headerlink" title="应用 2 - 最少递增子序列数"></a>应用 2 - 最少递增子序列数</h2><p><strong>引理（简单）</strong>: 覆盖 $A$ 所需的最少递增子序列数至少等于 $A$ 最长非递增子序列的长度。</p>
-<p><strong>命题</strong>: 覆盖 $A$ 所需的最少递增子序列的数量等于 $A$ 最长非递增子序列的长度！</p>
-<p><strong>证明</strong>: 设 $f_i$ 表示以 $A_i$ 结尾的最长非递增子序列的长度。那么对于固定的 $t$，满足 $f_i = t$ 的 $A_i$ 对于每个 $t$ 都是一个递增子序列。所以我们用（最长非递增子序列的长度）个递增子序列覆盖了 $A$。</p>
+<hr />
+<h3 id="rmq-数据结构解法">RMQ 数据结构解法</h3>
+<p><strong>时间复杂度</strong>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math>，但可能比之前的解决方案慢一个常数因子。</p>
+<p>设
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>k</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">dp[k]</annotation></semantics></math>
+为以元素
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>∈</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">k \in a</annotation></semantics></math>
+结尾的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+的 LIS 长度。我们的基本情况是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">dp[a[0]] = 1</annotation></semantics></math>。由于
+LIS 具有最优子结构特性，我们按以下方式进行转换：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>t</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><munder><mi mathvariant="normal">max</mi><mrow><mn>0</mn><mo>≤</mo><mi>k</mi><mo>&lt;</mo><mi>t</mi></mrow></munder><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>k</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">dp[t] = \max_{0 \le k &lt; t} dp[k] + 1</annotation></semantics></math></p>
+<p>如果
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">dp</annotation></semantics></math>
+是一个 RMQ
+数据结构，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>t</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">dp[t]</annotation></semantics></math>
+的变化只是一个点更新，而
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mrow><mn>0</mn><mo>≤</mo><mi>k</mi><mo>&lt;</mo><mi>t</mi></mrow></msub><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>k</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">\max_{0 \le k &lt; t} dp[k]</annotation></semantics></math>
+的计算是一个区间查询。</p>
+<hr />
+<h2 id="应用-1---不相交的线段">应用 1 - 不相交的线段</h2>
+<p>首先，如果两个线段
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>l</mi><mn>1</mn></msub><mo>,</mo><msub><mi>r</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(l_1, r_1)</annotation></semantics></math>
+和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>l</mi><mn>2</mn></msub><mo>,</mo><msub><mi>r</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(l_2, r_2)</annotation></semantics></math>
+相交（假设
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>l</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">l_1 &lt; l_2</annotation></semantics></math>），我们可以注意到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>l</mi><mn>2</mn></msub><mo>⟹</mo><msub><mi>r</mi><mn>1</mn></msub><mo>&gt;</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">l_1 &lt; l_2 \implies r_1 &gt; r_2</annotation></semantics></math>。</p>
+<p>这意味着一组不相交的线段对于所有对
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(i, j)</annotation></semantics></math>
+都满足
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mi>i</mi></msub><mo>&lt;</mo><msub><mi>l</mi><mi>j</mi></msub><mo>⟹</mo><msub><mi>r</mi><mi>i</mi></msub><mo>&lt;</mo><msub><mi>r</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">l_i &lt; l_j \implies r_i &lt; r_j</annotation></semantics></math>！</p>
+<p>设
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+是一个数组，其中
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">A[i] = x</annotation></semantics></math>
+表示位于位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+的右端点的线段的左端点位于位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>。</p>
+<p>如果我们被要求找出不相交线段集的最大大小，答案将是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+的最长递增子序列！</p>
+<hr />
+<h2 id="应用-2---最少递增子序列数">应用 2 - 最少递增子序列数</h2>
+<p><strong>引理（简单）</strong>: 覆盖
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+所需的最少递增子序列数至少等于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+最长非递增子序列的长度。</p>
+<p><strong>命题</strong>: 覆盖
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+所需的最少递增子序列的数量等于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+最长非递增子序列的长度！</p>
+<p><strong>证明</strong>: 设
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>f</mi><mi>i</mi></msub><annotation encoding="application/x-tex">f_i</annotation></semantics></math>
+表示以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>
+结尾的最长非递增子序列的长度。那么对于固定的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>，满足
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>i</mi></msub><mo>=</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">f_i = t</annotation></semantics></math>
+的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi>i</mi></msub><annotation encoding="application/x-tex">A_i</annotation></semantics></math>
+对于每个
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+都是一个递增子序列。所以我们用（最长非递增子序列的长度）个递增子序列覆盖了
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>。</p>
 <blockquote>
 <p><strong>另一种证明</strong>: 这只是 Dilworth 定理的一个特例。</p>
 </blockquote>
-<hr>
-<h2 id="示例-PCB"><a href="#示例-PCB" class="headerlink" title="示例 - PCB"></a>示例 - PCB</h2><blockquote>
+<hr />
+<h2 id="示例---pcb">示例 - PCB</h2>
+<blockquote>
 <p><strong>Focus Problem</strong>: 在继续之前，请尽力解决这个问题！</p>
 </blockquote>
 <p>这个问题要求我们找到最小数量的不交线段集。</p>
@@ -389,8 +491,8 @@ endpoints.append(board[<span class="hljs-number">0</span>][<span class="hljs-num
         )  <span class="hljs-comment"># invert list in order to use bisect_left</span>
         endpoints[index] = v
 <span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(endpoints))</code></pre></div>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="table-container">
+<hr />
+<h2 id="总结">总结</h2>
 <table>
 <thead>
 <tr>
@@ -402,24 +504,23 @@ endpoints.append(board[<span class="hljs-number">0</span>][<span class="hljs-num
 <tbody>
 <tr>
 <td>暴力 DP</td>
-<td>$O(N^2)$</td>
-<td>$O(N)$</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></td>
 </tr>
 <tr>
 <td>二分查找优化</td>
-<td>$O(N \log N)$</td>
-<td>$O(N)$</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></td>
 </tr>
 <tr>
 <td>RMQ/线段树</td>
-<td>$O(N \log N)$</td>
-<td>$O(N)$</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></td>
 </tr>
 </tbody>
 </table>
-</div>
-<hr>
-<h2 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h2><div class="table-container">
+<hr />
+<h2 id="经典问题">经典问题</h2>
 <table>
 <thead>
 <tr>
@@ -441,7 +542,6 @@ endpoints.append(board[<span class="hljs-number">0</span>][<span class="hljs-num
 </tr>
 </tbody>
 </table>
-</div>
 
                 
               </div>
@@ -550,9 +650,9 @@ endpoints.append(board[<span class="hljs-number">0</span>][<span class="hljs-num
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_Introduction%20to%20DP%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/" title="01_Introduction to DP 动态规划简介">
+                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02_Knapsack%20DP%20%E8%83%8C%E5%8C%85DP/" title="02_Knapsack DP 背包DP">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">01_Introduction to DP 动态规划简介</span>
+                        <span class="hidden-mobile">02_Knapsack DP 背包DP</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -560,8 +660,8 @@ endpoints.append(board[<span class="hljs-number">0</span>][<span class="hljs-num
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02_Knapsack%20DP%20%E8%83%8C%E5%8C%85DP/" title="02_Knapsack DP 背包DP">
-                        <span class="hidden-mobile">02_Knapsack DP 背包DP</span>
+                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03_Paths%20on%20Grids%20%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" title="03_Paths on Grids 网格路径问题">
+                        <span class="hidden-mobile">03_Paths on Grids 网格路径问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
