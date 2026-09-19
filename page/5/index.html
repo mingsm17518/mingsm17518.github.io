@@ -241,7 +241,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/03_Minimizing%20Coins/" target="_self">
         <div>
-          Minimizing Coins（最少硬币数） 题目描述 https://cses.fi/problemset/task/1634/ 给定 n 种硬币，每种硬币价值为 cic_i，求凑成金额 x 所需的最少硬币数（每种硬币可用无限次）。如果无法凑成，输出 -1。 限制： - 1 ≤ n ≤ 100 - 1 ≤ x ≤ 10610^6 - 1 ≤ c_i ≤ 10610^6  解法 问题类型：完全背
+          Minimizing Coins（最少硬币数）题目描述https://cses.fi/problemset/task/1634/ 给定 n 种硬币，每种硬币价值为 $c_i$，求凑成金额 x 所需的最少硬币数（每种硬币可用无限次）。如果无法凑成，输出 -1。 限制：  1 ≤ n ≤ 100 1 ≤ x ≤ $10^6$ 1 ≤ c_i ≤ $10^6$   解法问题类型：完全背包 定义：dp[j
         </div>
       </a>
 
@@ -320,7 +320,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/Kadane%20%E7%AE%97%E6%B3%95-%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/" target="_self">
         <div>
-          Kadane 算法是一种用来解决 “最大子数组和” 问题的线性时间算法。 问题是：给定一个整数数组，找出一个连续子数组，使得它的元素和最大，返回这个最大和。 例如： text 数组：[-2, 1, -3, 4, -1, 2, 1, -5, 4] 最大子数组：[4, -1, 2, 1] 最大和：6  核心思想 Kadane 算法基于动态规划。 定义： text dp[i] = 以第 i 个元素结尾的
+          Kadane 算法是一种用来解决 “最大子数组和” 问题的线性时间算法。 问题是：给定一个整数数组，找出一个连续子数组，使得它的元素和最大，返回这个最大和。 例如： text 数组：[-2, 1, -3, 4, -1, 2, 1, -5, 4]最大子数组：[4, -1, 2, 1]最大和：6  核心思想Kadane 算法基于动态规划。 定义： text dp[i] = 以第 i 个元素结尾的最大子
         </div>
       </a>
 
@@ -374,7 +374,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_Introduction%20to%20DP%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/" target="_self">
         <div>
-          动态规划简介 核心思想 将大问题拆解为小问题，记录子问题的解，避免重复计算。  示例 - 青蛙 1 (Frog 1) 题目描述 https://atcoder.jp/contests/dp/tasks/dp_a 题目要求我们计算青蛙从石头 11 跳到石头 NN (N≤105N \le 10^5) 的最小总成本，已知青蛙只能跳一或两的距离。任意两个石头 ii 和 jj 之间的旅行成本由 |hi−hj
+          动态规划简介核心思想将大问题拆解为小问题，记录子问题的解，避免重复计算。  示例 - 青蛙 1 (Frog 1)题目描述https://atcoder.jp/contests/dp/tasks/dp_a 题目要求我们计算青蛙从石头 $1$ 跳到石头 $N$ ($N \le 10^5$) 的最小总成本，已知青蛙只能跳一或两的距离。任意两个石头 $i$ 和 $j$ 之间的旅行成本由 $|h_i - h
         </div>
       </a>
 
@@ -446,7 +446,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02_Knapsack%20DP%20%E8%83%8C%E5%8C%85DP/" target="_self">
         <div>
-          背包 DP 背包问题简介 背包问题通常涉及将有限容量的容器用物品的子集填满，我们希望计算或优化与物品相关的某些数量。几乎每次，你可以将每个物品视为具有正重量，而我们选择的物品的总重量不得超过容器的容量，这个容量是一个数字。 背包问题的变体  0/1 背包问题: 选择物品的子集，使得它们总价值最大化，且总重量不超过容器容量 完全背包问题: 找到所有可能的、由任何物品子集实现的总重量，这些总重量不超过
+          背包 DP背包问题简介背包问题通常涉及将有限容量的容器用物品的子集填满，我们希望计算或优化与物品相关的某些数量。几乎每次，你可以将每个物品视为具有正重量，而我们选择的物品的总重量不得超过容器的容量，这个容量是一个数字。 背包问题的变体 0/1 背包问题: 选择物品的子集，使得它们总价值最大化，且总重量不超过容器容量 完全背包问题: 找到所有可能的、由任何物品子集实现的总重量，这些总重量不超过容器容
         </div>
       </a>
 
@@ -512,80 +512,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03_Paths%20on%20Grids%20%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" target="_self">
-          03_Paths on Grids 网格路径问题
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03_Paths%20on%20Grids%20%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" target="_self">
-        <div>
-          网格路径问题 Authors: Nathan Chen, Michael Cao, Benjamin Qi, Andrew Wang Contributor: Neo Wang  先决条件  Gold - Introduction to DP (动态规划简介)   教程 网格路径问题概述 DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-30 17:02" pubdate>
-              2026-04-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP/">#DP</a>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
-            
-              <a href="/tags/%E7%BD%91%E6%A0%BC/">#网格</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" target="_self">
           04_Longest Increasing Subsequence 最长递增子序列
         </a>
@@ -594,7 +520,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" target="_self">
         <div>
-          最长递增子序列 Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang Contributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件  Gold - Introduction to DP (动态规划简介)   教程 令
+          最长递增子序列Authors: Michael Cao, Benjamin Qi, Andi Qu, Andrew WangContributors: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen  先决条件 Gold - Introduction to DP (动态规划简介)   教程令 $A$
         </div>
       </a>
 
@@ -660,6 +586,157 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03_Paths%20on%20Grids%20%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" target="_self">
+          03_Paths on Grids 网格路径问题
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03_Paths%20on%20Grids%20%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          网格路径问题Authors: Nathan Chen, Michael Cao, Benjamin Qi, Andrew WangContributor: Neo Wang  先决条件 Gold - Introduction to DP (动态规划简介)   教程网格路径问题概述DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E7%BD%91%E6%A0%BC/">#网格</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/0-1%20%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
+          0/1 背包问题
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/0-1%20%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          0/1 背包问题问题描述有 $N$ 件物品，每件物品有重量 $w_i$ 和价值 $v_i$，求在不超过背包容量 $W$ 的情况下，选择物品使得总价值最大。  一维 DP定义：dp[j] 为背包容量为 j 时的最大价值 初始条件：dp[j] = 0 状态转移： dp[j] = \max(dp[j], dp[j - w] + v)代码： N, W = map(int, input().split())
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-13 23:49" pubdate>
+              2026-09-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/" class="category-chain-item">0-1背包</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/0-1%E8%83%8C%E5%8C%85/">#0-1背包</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/01_Book_Shop/" target="_self">
           Book Shop 题解
         </a>
@@ -668,7 +745,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/01_Book_Shop/" target="_self">
         <div>
-          Book Shop 题解 题目描述 https://cses.fi/problemset/task/1158 给定 n 本书，每本书有价格 hih_i 和页数 sis_i，总预算为 x，求在预算范围内能获得的最大页数。每本书只能购买一次。 限制： - 1 ≤ n ≤ 1000 - 1 ≤ x ≤ 10510^5 - 1 ≤ h_i, s_i ≤ 1000 示例： - 输入：4 10, h = [4
+          Book Shop 题解题目描述https://cses.fi/problemset/task/1158 给定 n 本书，每本书有价格 $h_i$ 和页数 $s_i$，总预算为 x，求在预算范围内能获得的最大页数。每本书只能购买一次。 限制：  1 ≤ n ≤ 1000 1 ≤ x ≤ $10^5$ 1 ≤ h_i, s_i ≤ 1000  示例：  输入：4 10, h = [4, 8, 5,
         </div>
       </a>
 
@@ -747,7 +824,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/02_Money_Sums/" target="_self">
         <div>
-          Money Sums 题解 题目描述 https://cses.fi/problemset/task/1740 给定 n 枚硬币，每枚硬币价值 xix_i，求能凑成的所有不同金额。 限制： - 1 ≤ n ≤ 100 - 1 ≤ xix_i ≤ 1000 示例： - 输入：4, coins = [4, 2, 5, 2] - 输出：9 种金额：2 4 5 6 7 8 9 11 13  解法 问题类型
+          Money Sums 题解题目描述https://cses.fi/problemset/task/1740 给定 n 枚硬币，每枚硬币价值 $x_i$，求能凑成的所有不同金额。 限制：  1 ≤ n ≤ 100 1 ≤ $x_i$ ≤ 1000  示例：  输入：4, coins = [4, 2, 5, 2] 输出：9 种金额：2 4 5 6 7 8 9 11 13   解法问题类型：0-1 背包
         </div>
       </a>
 
@@ -826,7 +903,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/09_Two_Sets_II/" target="_self">
         <div>
-          Two Sets II 题解 题目描述 https://cses.fi/problemset/task/1092 给定数字 1, 2, …, n，求将其分成两个和相等集合的方式数。 限制： - 1 ≤ n ≤ 500 示例： - 输入：7 - 输出：4 - 解释： - {1,3,4,6} 和 {2,5,7} - {1,2,5,6} 和 {3,4,7} - {1,2,4,7} 和 {3,5,6} -
+          Two Sets II 题解题目描述https://cses.fi/problemset/task/1092 给定数字 1, 2, …, n，求将其分成两个和相等集合的方式数。 限制：  1 ≤ n ≤ 500  示例：  输入：7 输出：4 解释： {1,3,4,6} 和 {2,5,7} {1,2,5,6} 和 {3,4,7} {1,2,4,7} 和 {3,5,6} {1,6,7} 和 {2,3
         </div>
       </a>
 
@@ -886,74 +963,6 @@
               <a href="/tags/0-1%E8%83%8C%E5%8C%85/">#0-1背包</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Solutions/Chicken_Jockey/" target="_self">
-          算法学习/05_动态规划/Solutions/Chicken_Jockey
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Solutions/Chicken_Jockey/" target="_self">
-        <div>
-          Chicken Jockey 题解 题目描述 有 n 个怪物叠在一起，怪物 i (从下到上编号) 初始血量为 h[i]。 一次攻击可以对任意一个怪物造成 1 点伤害。当怪物血量 ≤ 0 时死亡，其上方的所有怪物会掉落。掉落的怪物中，底部的怪物会受到等于其下方怪物数量的摔落伤害。如果摔落后死亡，过程继续。 求最少需要多少次攻击才能消灭所有怪物。  解法 问题类型：线性 DP（状态转移只与前几个状态相
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-30 17:02" pubdate>
-              2026-04-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Solutions/" class="category-chain-item">Solutions</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
         
       </div>
     </article>

@@ -241,7 +241,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" target="_self">
         <div>
-          滑动窗口 1. 固定窗口大小（求最大/最小窗口和） 适用场景：给定固定大小 k，求所有窗口中最大/最小的和 def sliding_window(arr, k):     &quot;&quot;&quot;求大小为 k 的窗口的最大和&quot;&quot;&quot;     window_sum = sum(arr[:k])  # 初始化第一个窗口的和     max_sum = windo
+          滑动窗口1. 固定窗口大小（求最大/最小窗口和）适用场景：给定固定大小 k，求所有窗口中最大/最小的和 def sliding_window(arr, k):     &quot;&quot;&quot;求大小为 k 的窗口的最大和&quot;&quot;&quot;     window_sum = sum(arr[:k])  # 初始化第一个窗口的和     max_sum = window_
         </div>
       </a>
 
@@ -302,7 +302,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" target="_self">
         <div>
-          动态规划 # ===== 1. 背包问题 ===== # 01 背包（每个物品选0或1次） def knapsack_01(n, W, weights, values):     dp = [0] * (W + 1)     for i in range(n):         for w in range(W, weights[i] - 1, -1):  # 倒序遍历             d
+          动态规划# ===== 1. 背包问题 ===== # 01 背包（每个物品选0或1次） def knapsack_01(n, W, weights, values):     dp = [0] * (W + 1)     for i in range(n):         for w in range(W, weights[i] - 1, -1):  # 倒序遍历             dp
         </div>
       </a>
 
@@ -363,7 +363,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%201/" target="_self">
         <div>
-          动态规划 动态规划（Dynamic Programming，简称 DP）是面试中出现频率最高的算法类型。很多同学觉得 DP 难，其实只要掌握了思考框架，绝大多数题目都能拆解出来。  什么是动态规划 核心思想：把一个大问题拆成若干个重叠的子问题，先解决小的子问题，把结果存起来，再用这些结果推导出大问题的答案。 与贪心算法的区别    维度 动态规划 贪心     决策方式 考虑所有子问题，取全局最优
+          动态规划动态规划（Dynamic Programming，简称 DP）是面试中出现频率最高的算法类型。很多同学觉得 DP 难，其实只要掌握了思考框架，绝大多数题目都能拆解出来。  什么是动态规划核心思想：把一个大问题拆成若干个重叠的子问题，先解决小的子问题，把结果存起来，再用这些结果推导出大问题的答案。 与贪心算法的区别    维度 动态规划 贪心     决策方式 考虑所有子问题，取全局最优 每
         </div>
       </a>
 
@@ -424,7 +424,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%9B%BE%E8%AE%BA/" target="_self">
         <div>
-          图论 邻接表建图 # 邻接表 adj = [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历/搜索 ## DFS（深度优先搜索） 核心思想 “一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到
+          图论邻接表建图# 邻接表 adj = [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历/搜索 DFS（深度优先搜索）核心思想“一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到无路可走，再回
         </div>
       </a>
 
@@ -485,7 +485,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" target="_self">
         <div>
-          队列 from collections import deque  dq = deque() dq.append(x) dq.appendleft(x) dq.pop() dq.popleft() 单调队列 from collections import deque  # 求窗口最小值（递增队列） q = deque() for i in range(n):     while q and q[0
+          队列from collections import deque  dq = deque() dq.append(x) dq.appendleft(x) dq.pop() dq.popleft() 单调队列from collections import deque  # 求窗口最小值（递增队列） q = deque() for i in range(n):     while q and q[0][
         </div>
       </a>
 
@@ -546,7 +546,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" target="_self">
         <div>
-          集合 set 是无序集合，元素唯一，支持 O(1) 成员检查。 s = set()  # 从列表创建（去重） nums = [1, 2, 2, 3, 3, 3] unique = set(nums) # &#123;1, 2, 3&#125;  s.add(x) s.remove(x)      # 不存在会报错 s.discard(x)     # 不存在不报错 s.pop()      # 删
+          集合set 是无序集合，元素唯一，支持 O(1) 成员检查。 s = set()  # 从列表创建（去重） nums = [1, 2, 2, 3, 3, 3] unique = set(nums) # &#123;1, 2, 3&#125;  s.add(x) s.remove(x)      # 不存在会报错 s.discard(x)     # 不存在不报错 s.pop()      # 删除
         </div>
       </a>
 
@@ -607,7 +607,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E5%AD%97%E5%85%B8/" target="_self">
         <div>
-          字典/哈希表 d = &#123;&#125; # 创建 person = &#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25&#125; # 访问 person[&quot;name&quot;] # &#x27;Alice&#x27; d.get(key, default)    # 获取值，不存在返回 default
+          字典/哈希表d = &#123;&#125; # 创建 person = &#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25&#125; # 访问 person[&quot;name&quot;] # &#x27;Alice&#x27; d.get(key, default)    # 获取值，不存在返回 default
         </div>
       </a>
 
@@ -668,7 +668,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" target="_self">
         <div>
-          列表 初始化与创建 # 自动初始化为全0 a = [0] * n  # 二维列表（注意：不能用 [[0]*m]*n，是浅拷贝！） grid = [[0] * m for _ in range(n)]  # 列表推导式 squares = [x * x for x in range(n)] evens = [x for x in range(n) if x % 2 == 0]  # 基本格式: [表
+          列表初始化与创建# 自动初始化为全0 a = [0] * n  # 二维列表（注意：不能用 [[0]*m]*n，是浅拷贝！） grid = [[0] * m for _ in range(n)]  # 列表推导式 squares = [x * x for x in range(n)] evens = [x for x in range(n) if x % 2 == 0]  # 基本格式: [表达式
         </div>
       </a>
 
@@ -729,7 +729,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83%E9%A2%98%E5%9E%8B/" target="_self">
         <div>
-          leetcode：熟悉题型和算法，各类型的题选做10-15道（保底5-8道） 针对薄弱知识点查缺补漏题号： 字符串：3，49，30 线性表:86，16，27，732 队列:641，406，899 栈:946，116，117，895 哈希表:61，729，25，554 dfs：105，112，98，494，547，1254 bfs：1091，1129，102，101，752 动态规划类题目也可以适当
+          leetcode：熟悉题型和算法，各类型的题选做10-15道（保底5-8道）针对薄弱知识点查缺补漏题号：字符串：3，49，30线性表:86，16，27，732队列:641，406，899栈:946，116，117，895哈希表:61，729，25，554dfs：105，112，98，494，547，1254bfs：1091，1129，102，101，752动态规划类题目也可以适当熟悉 常考知识点：
         </div>
       </a>
 
@@ -790,7 +790,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/03_Bronze/01_Complete_Search/05_Cow_Gymnastics/" target="_self">
         <div>
-          问题描述 USACO 2019 December Contest, Bronze Problem 1. Cow Gymnastics https://usaco.org/index.php?page=viewproblem2&amp;cpid=963 奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在每次训练课中都表现
+          问题描述USACO 2019 December Contest, Bronze Problem 1. Cow Gymnasticshttps://usaco.org/index.php?page=viewproblem2&amp;cpid=963 奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在每次训练课中都表现得比
         </div>
       </a>
 

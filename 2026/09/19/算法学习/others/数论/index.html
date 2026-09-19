@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数论 向上取整 # 向上取整到 k 的倍数 (n + k - 1) &#x2F;&#x2F; k * k  import math math.ceil(n &#x2F; k) * k      # 更易读 四舍五入 # 1. 四舍五入（通用模板，避免浮点误差） def round_div(a, b):     # 计算 a &#x2F; b，四舍五入到整数     # 原理：判断小数部分是否 &gt;&#x3D; 0.5     return a">
+    <meta name="description" content="数论向上取整# 向上取整到 k 的倍数 (n + k - 1) &#x2F;&#x2F; k * k  import math math.ceil(n &#x2F; k) * k      # 更易读 四舍五入# 1. 四舍五入（通用模板，避免浮点误差） def round_div(a, b):     # 计算 a &#x2F; b，四舍五入到整数     # 原理：判断小数部分是否 &gt;&#x3D; 0.5     return a &#x2F;&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数论">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/others/%E6%95%B0%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="数论 向上取整 # 向上取整到 k 的倍数 (n + k - 1) &#x2F;&#x2F; k * k  import math math.ceil(n &#x2F; k) * k      # 更易读 四舍五入 # 1. 四舍五入（通用模板，避免浮点误差） def round_div(a, b):     # 计算 a &#x2F; b，四舍五入到整数     # 原理：判断小数部分是否 &gt;&#x3D; 0.5     return a">
+<meta property="og:description" content="数论向上取整# 向上取整到 k 的倍数 (n + k - 1) &#x2F;&#x2F; k * k  import math math.ceil(n &#x2F; k) * k      # 更易读 四舍五入# 1. 四舍五入（通用模板，避免浮点误差） def round_div(a, b):     # 计算 a &#x2F; b，四舍五入到整数     # 原理：判断小数部分是否 &gt;&#x3D; 0.5     return a &#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T11:38:13.049Z">
 <meta property="article:modified_time" content="2026-09-19T11:38:13.049Z">
@@ -293,15 +293,12 @@
             
               <div class="markdown-body">
                 
-                <h1 id="数论">数论</h1>
-<h3 id="向上取整">向上取整</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 向上取整到 k 的倍数</span>
+                <h1 id="数论"><a href="#数论" class="headerlink" title="数论"></a>数论</h1><h3 id="向上取整"><a href="#向上取整" class="headerlink" title="向上取整"></a>向上取整</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 向上取整到 k 的倍数</span>
 (n + k - <span class="hljs-number">1</span>) // k * k
 
 <span class="hljs-keyword">import</span> math
 math.ceil(n / k) * k      <span class="hljs-comment"># 更易读</span></code></pre></div>
-<h3 id="四舍五入">四舍五入</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 1. 四舍五入（通用模板，避免浮点误差）</span>
+<h3 id="四舍五入"><a href="#四舍五入" class="headerlink" title="四舍五入"></a>四舍五入</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 1. 四舍五入（通用模板，避免浮点误差）</span>
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">round_div</span>(<span class="hljs-params">a, b</span>):
     <span class="hljs-comment"># 计算 a / b，四舍五入到整数</span>
     <span class="hljs-comment"># 原理：判断小数部分是否 &gt;= 0.5</span>
@@ -314,8 +311,7 @@ n = <span class="hljs-built_in">float</span>(<span class="hljs-built_in">input</
     <span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(n) + <span class="hljs-number">1</span>)
 <span class="hljs-keyword">else</span>:
     <span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(n))</code></pre></div>
-<h3 id="质因数分解">质因数分解</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">prime_factors</span>(<span class="hljs-params">n</span>):
+<h3 id="质因数分解"><a href="#质因数分解" class="headerlink" title="质因数分解"></a>质因数分解</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">prime_factors</span>(<span class="hljs-params">n</span>):
     factors = []
     d = <span class="hljs-number">2</span>
     <span class="hljs-keyword">while</span> d * d &lt;= n:
@@ -326,14 +322,12 @@ n = <span class="hljs-built_in">float</span>(<span class="hljs-built_in">input</
     <span class="hljs-keyword">if</span> n &gt; <span class="hljs-number">1</span>:
         factors.append(n)
     <span class="hljs-keyword">return</span> factors</code></pre></div>
-<h3 id="约瑟夫环">约瑟夫环</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># n 个人围成一圈，每数到 k 就淘汰一人，求最后存活者的初始位置</span>
+<h3 id="约瑟夫环"><a href="#约瑟夫环" class="headerlink" title="约瑟夫环"></a>约瑟夫环</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># n 个人围成一圈，每数到 k 就淘汰一人，求最后存活者的初始位置</span>
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">josephus</span>(<span class="hljs-params">n, k</span>):
     <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
     <span class="hljs-keyword">return</span> (josephus(n-<span class="hljs-number">1</span>, k) + k) % n</code></pre></div>
-<h3 id="k进制转换">K进制转换</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 数字 -&gt; k进制字符串（每位对应字符集 s）</span>
+<h3 id="K进制转换"><a href="#K进制转换" class="headerlink" title="K进制转换"></a>K进制转换</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 数字 -&gt; k进制字符串（每位对应字符集 s）</span>
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">idx_to_password</span>(<span class="hljs-params">idx, k, m, s</span>):
     res = []
     <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):
@@ -347,8 +341,7 @@ n = <span class="hljs-built_in">float</span>(<span class="hljs-built_in">input</
     <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> password:
         idx = idx * k + s.index(ch)
     <span class="hljs-keyword">return</span> idx</code></pre></div>
-<h3 id="约数">约数</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_divisors</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span></span>):
+<h3 id="约数"><a href="#约数" class="headerlink" title="约数"></a>约数</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_divisors</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span></span>):
     <span class="hljs-string">&quot;&quot;&quot;返回 1 到 n 所有数的约数列表&quot;&quot;&quot;</span>
     divs = [[] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>)]
     <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):
@@ -368,8 +361,7 @@ lcm = a * b // g
             <span class="hljs-keyword">if</span> i != n // i:
                 large.append(n // i)
     <span class="hljs-keyword">return</span> small + large[::-<span class="hljs-number">1</span>]</code></pre></div>
-<h3 id="素数">素数</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 素数判断。直接调用 is_prime(n)</span>
+<h3 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 素数判断。直接调用 is_prime(n)</span>
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">is_prime</span>(<span class="hljs-params">n</span>):
     <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">2</span>:
         <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
@@ -381,8 +373,7 @@ lcm = a * b // g
         <span class="hljs-keyword">if</span> n % i == <span class="hljs-number">0</span>:
             <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
     <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span></code></pre></div>
-<h3 id="位运算">位运算</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-number">1</span> &lt;&lt; i           <span class="hljs-comment"># 2^i（左移，i=3 → 8）</span>
+<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-number">1</span> &lt;&lt; i           <span class="hljs-comment"># 2^i（左移，i=3 → 8）</span>
 <span class="hljs-comment"># 判断</span>
 x &amp; (<span class="hljs-number">1</span> &lt;&lt; k)     <span class="hljs-comment"># 检查第 k 位是否为 1</span>
 x &gt;&gt; k &amp; <span class="hljs-number">1</span>       <span class="hljs-comment"># 获取第 k 位的值</span>
@@ -417,8 +408,7 @@ x ^ (x + <span class="hljs-number">1</span>)      <span class="hljs-comment"># �
 
 <span class="hljs-comment"># 最低位 1 的位置</span>
 bit = (x &amp; -x).bit_length() - <span class="hljs-number">1</span></code></pre></div>
-<h3 id="埃拉托斯特尼筛法">埃拉托斯特尼筛法</h3>
-<div class="code-wrapper"><pre><code class="hljs python">minp = []
+<h3 id="埃拉托斯特尼筛法"><a href="#埃拉托斯特尼筛法" class="headerlink" title="埃拉托斯特尼筛法"></a>埃拉托斯特尼筛法</h3><div class="code-wrapper"><pre><code class="hljs python">minp = []
 primes = []
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">sieve</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span></span>):
@@ -438,8 +428,7 @@ primes = []
             minp[i * p] = p
             <span class="hljs-keyword">if</span> p == minp[i]:
                 <span class="hljs-keyword">break</span></code></pre></div>
-<h3 id="快速幂">快速幂</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 快速幂：计算 a^b mod mod，高效处理大数幂运算</span>
+<h3 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 快速幂：计算 a^b mod mod，高效处理大数幂运算</span>
 <span class="hljs-comment"># 使用：pow_mod(2, 10, 1000) = 24 (2^10=1024 mod 1000)</span>
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">pow_mod</span>(<span class="hljs-params">a, b, mod</span>):
     res = <span class="hljs-number">1</span>
@@ -450,8 +439,7 @@ primes = []
         a = a * a % mod
         b &gt;&gt;= <span class="hljs-number">1</span>
     <span class="hljs-keyword">return</span> res</code></pre></div>
-<h3 id="组合数">组合数</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 组合数（预计算）：计算组合数 C(n, k) = n! / (k!(n-k)!)</span>
+<h3 id="组合数"><a href="#组合数" class="headerlink" title="组合数"></a>组合数</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 组合数（预计算）：计算组合数 C(n, k) = n! / (k!(n-k)!)</span>
 <span class="hljs-comment"># - 使用：fact, inv_fact = comb_init(1000000, MOD)</span>
 <span class="hljs-comment"># 		 print(C(100, 50, MOD, fact, inv_fact))</span>
 <span class="hljs-comment"># - 注意：需要 MOD 为质数（常用 10^9+7）</span>
@@ -469,13 +457,11 @@ primes = []
     <span class="hljs-keyword">if</span> k &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> k &gt; n:
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
     <span class="hljs-keyword">return</span> fact[n] * inv_fact[k] % mod * inv_fact[n-k] % mod</code></pre></div>
-<h3 id="乘法逆元">乘法逆元</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 乘法逆元：求 a 在模 mod 下的逆元（即 a^(-1) mod mod）</span>
+<h3 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 乘法逆元：求 a 在模 mod 下的逆元（即 a^(-1) mod mod）</span>
 <span class="hljs-comment"># 使用：modinv(3, 7) = 5（因为 3*5=15≡1 mod 7）</span>
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">modinv</span>(<span class="hljs-params">a, mod</span>):
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">pow</span>(a, mod-<span class="hljs-number">2</span>, mod)</code></pre></div>
-<h3 id="扩展欧几里得">扩展欧几里得</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 扩展欧几里得（求逆元）</span>
+<h3 id="扩展欧几里得"><a href="#扩展欧几里得" class="headerlink" title="扩展欧几里得"></a>扩展欧几里得</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 扩展欧几里得（求逆元）</span>
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">exgcd</span>(<span class="hljs-params">a, b</span>):
     <span class="hljs-keyword">if</span> b == <span class="hljs-number">0</span>:
         <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, a
