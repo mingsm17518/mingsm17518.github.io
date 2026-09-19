@@ -19,23 +19,25 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="二分查找 在有序数组上查找 import bisect  arr &#x3D; sorted([...])  # 先排序  # lower_bound: 第一个 &gt;&#x3D; x 的位置 pos &#x3D; bisect.bisect_left(arr, x)  # upper_bound: 第一个 &gt; x 的位置 pos &#x3D; bisect.bisect_right(arr, x) 手动实现 # 查找左边界（第">
+    <meta name="description" content="Greedy Algorithms with Sorting 贪心算法与排序 贪心算法在每一步选择当前最优的选项，通常与排序配合使用。  一、贪心算法基础 贪心算法的核心是价值函数：决定哪个选择是最优的。  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的  关键：贪心算法需要证明其正确性，通常通过交换参数证法（exchange argument）。  二、例题1：学习算法（">
 <meta property="og:type" content="article">
-<meta property="og:title" content="03_二分查找">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/index.html">
+<meta property="og:title" content="Greedy Algorithms with Sorting 贪心算法与排序">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_%E6%8E%92%E5%BA%8F%E4%B8%8E%E6%90%9C%E7%B4%A2/04_%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E4%B8%8E%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="二分查找 在有序数组上查找 import bisect  arr &#x3D; sorted([...])  # 先排序  # lower_bound: 第一个 &gt;&#x3D; x 的位置 pos &#x3D; bisect.bisect_left(arr, x)  # upper_bound: 第一个 &gt; x 的位置 pos &#x3D; bisect.bisect_right(arr, x) 手动实现 # 查找左边界（第">
+<meta property="og:description" content="Greedy Algorithms with Sorting 贪心算法与排序 贪心算法在每一步选择当前最优的选项，通常与排序配合使用。  一、贪心算法基础 贪心算法的核心是价值函数：决定哪个选择是最优的。  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的  关键：贪心算法需要证明其正确性，通常通过交换参数证法（exchange argument）。  二、例题1：学习算法（">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-19T12:02:08.140Z">
-<meta property="article:modified_time" content="2026-09-19T12:02:08.140Z">
+<meta property="article:published_time" content="2026-04-30T09:02:14.000Z">
+<meta property="article:modified_time" content="2026-09-19T15:40:26.213Z">
 <meta property="article:author" content="Ming">
+<meta property="article:tag" content="排序">
+<meta property="article:tag" content="贪心算法">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>03_二分查找 - Ming&#39;s Blog</title>
+  <title>Greedy Algorithms with Sorting 贪心算法与排序 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="03_二分查找"></span>
+            <span id="subtitle" data-typed-text="Greedy Algorithms with Sorting 贪心算法与排序"></span>
           
         </div>
 
@@ -216,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-19 20:02" pubdate>
-          2026年9月19日 晚上
+        <time datetime="2026-04-30 17:02" pubdate>
+          2026年4月30日 下午
         </time>
       </span>
     
@@ -228,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          220 字
+          898 字
         
       </span>
     
@@ -239,7 +241,7 @@
         
         
         
-          2 分钟
+          8 分钟
         
       </span>
     
@@ -285,66 +287,184 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">03_二分查找</h1>
+            <h1 id="seo-header">Greedy Algorithms with Sorting 贪心算法与排序</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-09-19T23:40:26+08:00
+                  
+                  
+
+                
+              </p>
             
             
               <div class="markdown-body">
                 
-                <h2 id="二分查找">二分查找</h2>
-<p>在有序数组上查找</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> bisect
+                <h1 id="greedy-algorithms-with-sorting">Greedy Algorithms with
+Sorting</h1>
+<h2 id="贪心算法与排序">贪心算法与排序</h2>
+<p>贪心算法在每一步选择当前最优的选项，通常与排序配合使用。</p>
+<hr />
+<h2 id="一贪心算法基础">一、贪心算法基础</h2>
+<p>贪心算法的核心是<strong>价值函数</strong>：决定哪个选择是最优的。</p>
+<ul>
+<li>要最大化某个值 → 每次选择最大的</li>
+<li>要最小化某个值 → 每次选择最小的</li>
+</ul>
+<p><strong>关键</strong>：贪心算法需要证明其正确性，通常通过<strong>交换参数证法</strong>（exchange
+argument）。</p>
+<hr />
+<h2
+id="二例题1学习算法studying-algorithms">二、例题1：学习算法（Studying
+Algorithms）</h2>
+<p><strong>题目来源</strong>: Codeforces - Very Easy</p>
+<p><strong>题目描述</strong>：Steph 有 X 分钟时间学习算法，有 N
+个算法，第 i 个需要 a_i 分钟。求最多能学多少个算法。</p>
+<p><strong>约束条件</strong>：<code>1 ≤ X ≤ 10^4</code>，<code>1 ≤ N ≤ 100</code>，<code>1 ≤ a_i ≤ 100</code></p>
+<h3 id="解题思路">解题思路</h3>
+<ol type="1">
+<li><strong>贪心策略</strong>：先学习用时最短的算法</li>
+<li><strong>排序</strong>：将 a_i 按升序排列</li>
+<li><strong>累加</strong>：依次选择，直到时间用完</li>
+</ol>
+<h3 id="正确性证明">正确性证明</h3>
+<p>假设有两个算法 A（用时短）和 B（用时更长）。如果最优解先选 B，那么把
+B 换成 A： - 不会增加总时间 - 不会减少可选算法的数量</p>
+<p>因此，先选最短的总是最优的。</p>
+<h3 id="代码实现">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python">algorithms.sort()
+count = <span class="hljs-number">0</span>  <span class="hljs-comment"># 已用时间</span>
+i = <span class="hljs-number">0</span>
+<span class="hljs-keyword">while</span> i &lt; N <span class="hljs-keyword">and</span> count + algorithms[i] &lt;= X:
+    count += algorithms[i]
+    i += <span class="hljs-number">1</span>
+<span class="hljs-built_in">print</span>(i)</code></pre></div>
+<p><strong>时间复杂度</strong>：O(N log N)</p>
+<hr />
+<h2 id="三例题2活动安排movie-festival">三、例题2：活动安排（Movie
+Festival）</h2>
+<p><strong>题目来源</strong>: CSES - Easy</p>
+<p><strong>题目描述</strong>：有 N
+个活动，每个活动有开始时间和结束时间。每次只能参加一个活动，参加必须全程参加。求最多能参加多少个活动。</p>
+<h3 id="贪心策略对比">贪心策略对比</h3>
+<h4
+id="错误策略选择下一个最早开始的">错误策略：选择下一个最早开始的</h4>
+<p>反例： <div class="code-wrapper"><pre><code class="hljs prolog">活动: [(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>), (<span class="hljs-number">5</span>,<span class="hljs-number">10</span>), (<span class="hljs-number">6</span>,<span class="hljs-number">7</span>)]
+按<span class="hljs-string">&quot;最早开始&quot;</span> → 只选<span class="hljs-number">1</span>个
+最优解 → 选<span class="hljs-number">2</span>个 [(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>), (<span class="hljs-number">6</span>,<span class="hljs-number">7</span>)]</code></pre></div></p>
+<h4
+id="正确策略选择下一个最早结束的">正确策略：选择下一个最早结束的</h4>
+<p><strong>核心思想</strong>：选择结束最早的活动，为后续活动留出更多时间。</p>
+<h3 id="正确性证明-1">正确性证明</h3>
+<p>设有两个活动 E1 和 E2，E1 比 E2 结束得更早。</p>
+<ul>
+<li>如果能参加 E2 之后的某个活动 X，那么 X 也能接在 E1 之后（因为 E1
+结束更早）</li>
+<li>所以选择 E1 不会比选择 E2 差</li>
+<li>选择 E1 能让后续选择集合更大</li>
+</ul>
+<p>因此，总是选择<strong>最早结束</strong>的活动是最优的。</p>
+<h3 id="代码实现-1">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python">events.sort(key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>])  <span class="hljs-comment"># 按结束时间排序</span>
+current_end = -<span class="hljs-number">1</span>
+ans = <span class="hljs-number">0</span>
 
-arr = <span class="hljs-built_in">sorted</span>([...])  <span class="hljs-comment"># 先排序</span>
+<span class="hljs-keyword">for</span> start, end <span class="hljs-keyword">in</span> events:
+    <span class="hljs-keyword">if</span> start &gt;= current_end:  <span class="hljs-comment"># 可以参加</span>
+        current_end = end
+        ans += <span class="hljs-number">1</span>
 
-<span class="hljs-comment"># lower_bound: 第一个 &gt;= x 的位置</span>
-pos = bisect.bisect_left(arr, x)
-
-<span class="hljs-comment"># upper_bound: 第一个 &gt; x 的位置</span>
-pos = bisect.bisect_right(arr, x)</code></pre></div>
-<p>手动实现</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 查找左边界（第一个 &gt;= target 的位置）</span>
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">lower_bound</span>(<span class="hljs-params">arr, x</span>):
-    lo, hi = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr)
-    <span class="hljs-keyword">while</span> lo &lt; hi:
-        mid = (lo + hi) // <span class="hljs-number">2</span>
-        <span class="hljs-keyword">if</span> arr[mid] &lt; x:
-            lo = mid + <span class="hljs-number">1</span>
-        <span class="hljs-keyword">else</span>:
-            hi = mid
-    <span class="hljs-keyword">return</span> lo
-
-<span class="hljs-comment"># 查找右边界（第一个 &gt; target 的位置）</span>
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">upper_bound</span>(<span class="hljs-params">arr, x</span>):
-    lo, hi = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr)
-    <span class="hljs-keyword">while</span> lo &lt; hi:
-        mid = (lo + hi) // <span class="hljs-number">2</span>
-        <span class="hljs-keyword">if</span> arr[mid] &lt;= x:
-            lo = mid + <span class="hljs-number">1</span>
-        <span class="hljs-keyword">else</span>:
-            hi = mid
-    <span class="hljs-keyword">return</span> lo</code></pre></div>
-<p>在单调函数上查找</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">last_true</span>(<span class="hljs-params">lo: <span class="hljs-built_in">int</span>, hi: <span class="hljs-built_in">int</span>, f: <span class="hljs-type">Callable</span>[[<span class="hljs-built_in">int</span>], <span class="hljs-built_in">bool</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:
-    <span class="hljs-string">&quot;&quot;&quot;查找最大的 x 使得 f(x) = true&quot;&quot;&quot;</span>
-    lo -= <span class="hljs-number">1</span>
-    <span class="hljs-keyword">while</span> lo &lt; hi:
-        mid = lo + (hi - lo + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>  <span class="hljs-comment"># 向上取整</span>
-        <span class="hljs-keyword">if</span> f(mid):
-            lo = mid
-        <span class="hljs-keyword">else</span>:
-            hi = mid - <span class="hljs-number">1</span>
-    <span class="hljs-keyword">return</span> lo
-
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">first_true</span>(<span class="hljs-params">lo: <span class="hljs-built_in">int</span>, hi: <span class="hljs-built_in">int</span>, f: <span class="hljs-type">Callable</span>[[<span class="hljs-built_in">int</span>], <span class="hljs-built_in">bool</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:
-    <span class="hljs-string">&quot;&quot;&quot;查找最小的 x 使得 f(x) = true&quot;&quot;&quot;</span>
-    hi += <span class="hljs-number">1</span>
-    <span class="hljs-keyword">while</span> lo &lt; hi:
-        mid = lo + (hi - lo) // <span class="hljs-number">2</span>  <span class="hljs-comment"># 向下取整</span>
-        <span class="hljs-keyword">if</span> f(mid):
-            hi = mid
-        <span class="hljs-keyword">else</span>:
-            lo = mid + <span class="hljs-number">1</span>
-    <span class="hljs-keyword">return</span> lo</code></pre></div>
+<span class="hljs-built_in">print</span>(ans)</code></pre></div>
+<p><strong>时间复杂度</strong>：O(N log N)</p>
+<hr />
+<h2 id="四贪心算法失效的例子">四、贪心算法失效的例子</h2>
+<h3 id="例1硬币找零coin-change">例1：硬币找零（Coin Change）</h3>
+<p><strong>问题</strong>：给定硬币面额，求组成目标值所需的最少硬币数。</p>
+<p><strong>反例</strong>： - 面额：<code>{1, 3, 4}</code> -
+目标值：<code>6</code> - 贪心解：<code>4 + 1 + 1 = 3</code> 个硬币 -
+最优解：<code>3 + 3 = 2</code> 个硬币</p>
+<p><strong>结论</strong>：贪心只在特定面额系统下有效（如美元、欧元）。</p>
+<h3 id="例2背包问题knapsack">例2：背包问题（Knapsack）</h3>
+<p><strong>问题</strong>：每个物品有重量和价值，求价值最大的选择。</p>
+<p><strong>反例</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>物品</th>
+<th>重量</th>
+<th>价值</th>
+<th>价值/重量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>3</td>
+<td>18</td>
+<td>6</td>
+</tr>
+<tr>
+<td>B</td>
+<td>2</td>
+<td>10</td>
+<td>5</td>
+</tr>
+<tr>
+<td>C</td>
+<td>2</td>
+<td>10</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>容量：4</li>
+<li>贪心解：选 A，价值 18</li>
+<li>最优解：选 B + C，价值 20</li>
+</ul>
+<p><strong>结论</strong>：背包问题需要用动态规划（Gold 级别）解决。</p>
+<hr />
+<h2 id="五总结">五、总结</h2>
+<h3 id="贪心算法适用条件">贪心算法适用条件</h3>
+<ol type="1">
+<li><strong>最优子结构</strong>：局部最优能导出全局最优</li>
+<li><strong>贪心选择性质</strong>：每步选择都是当前最优</li>
+</ol>
+<h3 id="常见贪心策略">常见贪心策略</h3>
+<table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>贪心策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>时间安排</td>
+<td>选最早结束的</td>
+</tr>
+<tr>
+<td>背包（价值/重量）</td>
+<td>无通用贪心</td>
+</tr>
+<tr>
+<td>硬币找零</td>
+<td>仅特定面额</td>
+</tr>
+<tr>
+<td>活动选择</td>
+<td>按结束时间排序</td>
+</tr>
+</tbody>
+</table>
+<h3 id="关键要点">关键要点</h3>
+<ul>
+<li>先排序，再贪心</li>
+<li>用交换参数证法证明正确性</li>
+<li>注意特判反例场景</li>
+</ul>
 
                 
               </div>
@@ -368,7 +488,7 @@ pos = bisect.bisect_right(arr, x)</code></pre></div>
   
     <span>></span>
     
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04-Sorting-Searching/" class="category-chain-item">04_Sorting &amp; Searching</a>
   
   
 
@@ -382,6 +502,15 @@ pos = bisect.bisect_right(arr, x)</code></pre></div>
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8E%92%E5%BA%8F/" class="print-no-link">#排序</a>
+      
+        <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="print-no-link">#贪心算法</a>
+      
+    </div>
+  
 </div>
 
 
@@ -390,8 +519,8 @@ pos = bisect.bisect_right(arr, x)</code></pre></div>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>03_二分查找</div>
-      <div>https://mingsm17518.github.io/2026/09/19/算法学习/02_核心算法/03_二分查找/</div>
+      <div>Greedy Algorithms with Sorting 贪心算法与排序</div>
+      <div>https://mingsm17518.github.io/2026/04/30/算法学习/04_排序与搜索/04_贪心算法与排序/</div>
     </div>
     <div class="license-meta">
       
@@ -403,9 +532,14 @@ pos = bisect.bisect_right(arr, x)</code></pre></div>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年9月19日</div>
+          <div>2026年4月30日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年9月19日</div>
+        </div>
       
       
         <div class="license-meta-item">
@@ -435,9 +569,9 @@ pos = bisect.bisect_right(arr, x)</code></pre></div>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="04_滑动窗口">
+                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/04_%E6%8E%92%E5%BA%8F%E4%B8%8E%E6%90%9C%E7%B4%A2/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" title="05_Priority Queues 优先队列">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">04_滑动窗口</span>
+                        <span class="hidden-mobile">05_Priority Queues 优先队列</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -445,8 +579,8 @@ pos = bisect.bisect_right(arr, x)</code></pre></div>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" title="02_差分数组">
-                        <span class="hidden-mobile">02_差分数组</span>
+                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" title="04_Longest Increasing Subsequence 最长递增子序列">
+                        <span class="hidden-mobile">04_Longest Increasing Subsequence 最长递增子序列</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -607,6 +741,33 @@ pos = bisect.bisect_right(arr, x)</code></pre></div>
   
 
 
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
 
 
   
