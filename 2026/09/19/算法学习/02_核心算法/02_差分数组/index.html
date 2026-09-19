@@ -19,23 +19,25 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="全排列from itertools import permutations, combinations  # 全排列 for perm in permutations(arr):     print(list(perm))  # [1, 2, 3]  # 组合 for comb in combinations(arr, r):     pass">
+    <meta name="description" content="差分数组 用途：多次区间修改、最后一次性还原——每次把「区间 [l,r][l, r] 整体加 vv」降为 O(1)O(1) 的两个单点修改。 原理：差分是前缀和的逆运算。设 d[i]&#x3D;a[i]−a[i−1]d[i] &#x3D; a[i] - a[i-1]，则对 dd 求前缀和就还原出 aa。区间 [l,r][l, r] 加 vv 时，只有 d[l]d[l] 和 d[r+1]d[r+1] 两个边界变了： d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="其他">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%85%A8%E6%8E%92%E5%88%97/index.html">
+<meta property="og:title" content="02_差分数组">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="全排列from itertools import permutations, combinations  # 全排列 for perm in permutations(arr):     print(list(perm))  # [1, 2, 3]  # 组合 for comb in combinations(arr, r):     pass">
+<meta property="og:description" content="差分数组 用途：多次区间修改、最后一次性还原——每次把「区间 [l,r][l, r] 整体加 vv」降为 O(1)O(1) 的两个单点修改。 原理：差分是前缀和的逆运算。设 d[i]&#x3D;a[i]−a[i−1]d[i] &#x3D; a[i] - a[i-1]，则对 dd 求前缀和就还原出 aa。区间 [l,r][l, r] 加 vv 时，只有 d[l]d[l] 和 d[r+1]d[r+1] 两个边界变了： d">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-13T16:04:38.532Z">
-<meta property="article:modified_time" content="2026-09-19T11:57:37.566Z">
+<meta property="article:published_time" content="2026-09-19T12:02:08.138Z">
+<meta property="article:modified_time" content="2026-09-19T12:02:08.138Z">
 <meta property="article:author" content="Ming">
+<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="差分">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>其他 - Ming&#39;s Blog</title>
+  <title>02_差分数组 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="其他"></span>
+            <span id="subtitle" data-typed-text="02_差分数组"></span>
           
         </div>
 
@@ -216,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-14 00:04" pubdate>
-          2026年9月14日 凌晨
+        <time datetime="2026-09-19 20:02" pubdate>
+          2026年9月19日 晚上
         </time>
       </span>
     
@@ -228,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          22 字
+          440 字
         
       </span>
     
@@ -239,7 +241,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -285,30 +287,79 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">其他</h1>
-            
-              <p id="updated-time" class="note note-info" style="display: none">
-                
-                  
-                    本文最后更新于 2026-09-19T19:57:37+08:00
-                  
-                  
-
-                
-              </p>
+            <h1 id="seo-header">02_差分数组</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h1><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> permutations, combinations
+                <h2 id="差分数组">差分数组</h2>
+<p><strong>用途</strong>：多次区间修改、最后一次性还原——每次把「区间
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo>,</mo><mi>r</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math>
+整体加
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>」降为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math>
+的两个单点修改。</p>
+<p><strong>原理</strong>：差分是前缀和的<strong>逆运算</strong>。设
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo>−</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">d[i] = a[i] - a[i-1]</annotation></semantics></math>，则对
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+求前缀和就还原出
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>。区间
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo>,</mo><mi>r</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math>
+加
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+时，只有
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">d[l]</annotation></semantics></math>
+和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">[</mo><mi>r</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">d[r+1]</annotation></semantics></math>
+两个边界变了：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mo>=</mo><mi>v</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>d</mi><mo stretchy="false" form="prefix">[</mo><mi>r</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>−</mo><mo>=</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">d[l] \mathrel{+}= v,\quad d[r+1] \mathrel{-}= v</annotation></semantics></math></p>
+<div class="code-wrapper"><pre><code class="hljs python">diff = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)   <span class="hljs-comment"># 开 n+1，防止 r+1 越界</span>
 
-<span class="hljs-comment"># 全排列</span>
-<span class="hljs-keyword">for</span> perm <span class="hljs-keyword">in</span> permutations(arr):
-    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">list</span>(perm))  <span class="hljs-comment"># [1, 2, 3]</span>
+<span class="hljs-comment"># 对区间 [l, r] 加 v</span>
+diff[l] += v
+diff[r+<span class="hljs-number">1</span>] -= v
 
-<span class="hljs-comment"># 组合</span>
-<span class="hljs-keyword">for</span> comb <span class="hljs-keyword">in</span> combinations(arr, r):
-    <span class="hljs-keyword">pass</span></code></pre></div>
+<span class="hljs-comment"># 还原：对 diff 求前缀和</span>
+arr = [<span class="hljs-number">0</span>] * n
+curr = <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    curr += diff[i]
+    arr[i] = curr</code></pre></div>
+<h2 id="字典版稀疏差分">字典版（稀疏差分）</h2>
+<p>当下标很大或很稀疏（只涉及少数几个位置）时，用字典代替数组：</p>
+<div class="code-wrapper"><pre><code class="hljs python">diff = &#123;&#125;
+
+<span class="hljs-comment"># 对区间 [l, r) 加 v</span>
+diff[l] = diff.get(l, <span class="hljs-number">0</span>) + v    <span class="hljs-comment"># 起点加 v</span>
+diff[r] = diff.get(r, <span class="hljs-number">0</span>) - v    <span class="hljs-comment"># 终点减 v</span></code></pre></div>
+<h2 id="典型例题leetcode-1109.-航班预订统计">典型例题：LeetCode 1109.
+航班预订统计</h2>
+<p>有 <code>n</code>
+个航班，<code>bookings[i] = [first, last, seats]</code> 表示预订区间
+<code>[first, last]</code> 的每个航班增加 <code>seats</code>
+个座位，求各航班最终预订数。典型的「多次区间修改 + 最后还原」：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">corpFlightBookings</span>(<span class="hljs-params">self, bookings: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:
+        diff = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
+        <span class="hljs-keyword">for</span> first, last, seats <span class="hljs-keyword">in</span> bookings:  <span class="hljs-comment"># 题目是 1-indexed</span>
+            diff[first - <span class="hljs-number">1</span>] += seats
+            diff[last] -= seats
+
+        ans = []
+        curr = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+            curr += diff[i]
+            ans.append(curr)
+        <span class="hljs-keyword">return</span> ans</code></pre></div>
+<h2 id="适用场景与限制">适用场景与限制</h2>
+<ul>
+<li><strong>适合</strong>：所有修改先做完、最后统一查询/还原（离线场景），总复杂度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n + m)</annotation></semantics></math></li>
+<li><strong>不适合</strong>：修改和查询<strong>交替</strong>进行（在线场景）——每次查询都要
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math>
+还原，应改用树状数组或线段树</li>
+<li>常见变形：对「区间被覆盖次数」计数（如拼车、会议室占用），同样先差分再前缀和</li>
+</ul>
 
                 
               </div>
@@ -346,6 +397,15 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#前缀和</a>
+      
+        <a href="/tags/%E5%B7%AE%E5%88%86/" class="print-no-link">#差分</a>
+      
+    </div>
+  
 </div>
 
 
@@ -354,8 +414,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>其他</div>
-      <div>https://mingsm17518.github.io/2026/09/14/算法学习/02_核心算法/全排列/</div>
+      <div>02_差分数组</div>
+      <div>https://mingsm17518.github.io/2026/09/19/算法学习/02_核心算法/02_差分数组/</div>
     </div>
     <div class="license-meta">
       
@@ -367,14 +427,9 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年9月14日</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>更新于</div>
           <div>2026年9月19日</div>
         </div>
+      
       
       
         <div class="license-meta-item">
@@ -404,9 +459,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E7%AE%80%E5%8D%95/1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="1. 两数之和">
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="03_二分查找">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">1. 两数之和</span>
+                        <span class="hidden-mobile">03_二分查找</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -414,8 +469,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E5%89%8D%E7%BC%80%E5%92%8C/" title="05_前缀和">
-                        <span class="hidden-mobile">05_前缀和</span>
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" title="01_前缀和">
+                        <span class="hidden-mobile">01_前缀和</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -576,33 +631,6 @@
   
 
 
-
-
-  
-<script>
-  var relativeDate = function() {
-    var updatedTime = document.getElementById('updated-time');
-    if (updatedTime) {
-      var text = updatedTime.textContent;
-      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
-      var matchs = text.match(reg);
-      if (matchs) {
-        var relativeTime = moment(matchs[0]).fromNow();
-        updatedTime.textContent = text.replace(reg, relativeTime);
-      }
-      updatedTime.style.display = '';
-    }
-  };
-  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
-    if (!'zh-cn'.startsWith('en')) {
-      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
-        relativeDate();
-      });
-    } else {
-      relativeDate();
-    }
-  });
-</script>
 
 
   

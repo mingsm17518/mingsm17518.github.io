@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="并查集 (DSU)1. 基础用法（函数式）n &#x3D; 5 parent &#x3D; list(range(n))  def find(x):     if parent[x] !&#x3D; x:         parent[x] &#x3D; find(parent[x])     return parent[x]  def union(x, y):     px, py &#x3D; find(x), find(y)     if">
+    <meta name="description" content="前缀和 用途：快速求区间和，查询时间 O(1)，预处理 O(n) 原理：prefix[i] 表示前 i 个元素的和，区间 [l, r] 的和 &#x3D; prefix[r] - prefix[l-1] # 一维前缀和 prefix &#x3D; [0] * (n + 1) for i in range(n):   prefix[i + 1] &#x3D; prefix[i] + a[i]  # a 是 0-indexed">
 <meta property="og:type" content="article">
-<meta property="og:title" content="未命名">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86%20(DSU)/index.html">
+<meta property="og:title" content="01_前缀和">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="并查集 (DSU)1. 基础用法（函数式）n &#x3D; 5 parent &#x3D; list(range(n))  def find(x):     if parent[x] !&#x3D; x:         parent[x] &#x3D; find(parent[x])     return parent[x]  def union(x, y):     px, py &#x3D; find(x), find(y)     if">
+<meta property="og:description" content="前缀和 用途：快速求区间和，查询时间 O(1)，预处理 O(n) 原理：prefix[i] 表示前 i 个元素的和，区间 [l, r] 的和 &#x3D; prefix[r] - prefix[l-1] # 一维前缀和 prefix &#x3D; [0] * (n + 1) for i in range(n):   prefix[i + 1] &#x3D; prefix[i] + a[i]  # a 是 0-indexed">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-19T11:59:47.179Z">
-<meta property="article:modified_time" content="2026-09-19T11:59:49.494Z">
+<meta property="article:published_time" content="2026-09-19T12:02:08.136Z">
+<meta property="article:modified_time" content="2026-09-19T12:02:08.136Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>未命名 - Ming&#39;s Blog</title>
+  <title>01_前缀和 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="未命名"></span>
+            <span id="subtitle" data-typed-text="01_前缀和"></span>
           
         </div>
 
@@ -216,7 +216,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-19 19:59" pubdate>
+        <time datetime="2026-09-19 20:02" pubdate>
           2026年9月19日 晚上
         </time>
       </span>
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          284 字
+          124 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          3 分钟
+          2 分钟
         
       </span>
     
@@ -285,101 +285,29 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">未命名</h1>
-            
-              <p id="updated-time" class="note note-info" style="display: none">
-                
-                  
-                    本文最后更新于 2026-09-19T19:59:49+08:00
-                  
-                  
-
-                
-              </p>
+            <h1 id="seo-header">01_前缀和</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="并查集-DSU"><a href="#并查集-DSU" class="headerlink" title="并查集 (DSU)"></a>并查集 (DSU)</h1><h4 id="1-基础用法（函数式）"><a href="#1-基础用法（函数式）" class="headerlink" title="1. 基础用法（函数式）"></a>1. 基础用法（函数式）</h4><div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-number">5</span>
-parent = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(n))
+                <h2 id="前缀和">前缀和</h2>
+<p><strong>用途</strong>：快速求区间和，查询时间 O(1)，预处理 O(n)</p>
+<p><strong>原理</strong>：prefix[i] 表示前 i 个元素的和，区间 [l, r]
+的和 = prefix[r] - prefix[l-1]</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 一维前缀和</span>
+prefix = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+  prefix[i + <span class="hljs-number">1</span>] = prefix[i] + a[i]  <span class="hljs-comment"># a 是 0-indexed</span>
 
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">find</span>(<span class="hljs-params">x</span>):
-    <span class="hljs-keyword">if</span> parent[x] != x:
-        parent[x] = find(parent[x])
-    <span class="hljs-keyword">return</span> parent[x]
+<span class="hljs-comment"># 查询区间 [l, r]（1-indexed）</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">query</span>(<span class="hljs-params">l, r</span>):
+  <span class="hljs-keyword">return</span> prefix[r] - prefix[l - <span class="hljs-number">1</span>]
 
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">union</span>(<span class="hljs-params">x, y</span>):
-    px, py = find(x), find(y)
-    <span class="hljs-keyword">if</span> px != py:
-        parent[px] = py
-
-union(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)
-union(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)
-<span class="hljs-built_in">print</span>(find(<span class="hljs-number">0</span>) == find(<span class="hljs-number">2</span>))  <span class="hljs-comment"># True</span></code></pre></div>
-<h4 id="2-朋友圈-连通分量"><a href="#2-朋友圈-连通分量" class="headerlink" title="2. 朋友圈/连通分量"></a>2. 朋友圈/连通分量</h4><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">count_components</span>(<span class="hljs-params">n, edges</span>):
-    parent = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(n))
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">find</span>(<span class="hljs-params">x</span>):
-        <span class="hljs-keyword">if</span> parent[x] != x:
-            parent[x] = find(parent[x])
-        <span class="hljs-keyword">return</span> parent[x]
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">union</span>(<span class="hljs-params">x, y</span>):
-        px, py = find(x), find(y)
-        <span class="hljs-keyword">if</span> px != py:
-            parent[px] = py
-
-    <span class="hljs-keyword">for</span> u, v <span class="hljs-keyword">in</span> edges:
-        union(u, v)
-
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(<span class="hljs-built_in">set</span>(find(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)))</code></pre></div>
-<h4 id="3-类实现（推荐）"><a href="#3-类实现（推荐）" class="headerlink" title="3. 类实现（推荐）"></a>3. 类实现（推荐）</h4><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DSU</span>:
-    <span class="hljs-string">&quot;&quot;&quot;并查集 (Disjoint Set Union) - 带路径压缩 + 按秩合并&quot;&quot;&quot;</span>
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span> = <span class="hljs-number">0</span></span>):
-        <span class="hljs-variable language_">self</span>.init(n)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">init</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>):
-        <span class="hljs-variable language_">self</span>.n = n
-        <span class="hljs-variable language_">self</span>.cnt = n
-        <span class="hljs-variable language_">self</span>.f = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(n))
-        <span class="hljs-variable language_">self</span>.siz = [<span class="hljs-number">1</span>] * n
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">find</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:
-        <span class="hljs-keyword">while</span> x != <span class="hljs-variable language_">self</span>.f[x]:
-            <span class="hljs-variable language_">self</span>.f[x] = <span class="hljs-variable language_">self</span>.f[<span class="hljs-variable language_">self</span>.f[x]]
-        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.f[x]
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">same</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span>, y: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.find(x) == <span class="hljs-variable language_">self</span>.find(y)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">merge</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span>, y: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:
-        x = <span class="hljs-variable language_">self</span>.find(x)
-        y = <span class="hljs-variable language_">self</span>.find(y)
-        <span class="hljs-keyword">if</span> x == y:
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-        <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.siz[x] &lt; <span class="hljs-variable language_">self</span>.siz[y]:
-            x, y = y, x
-        <span class="hljs-variable language_">self</span>.f[y] = x
-        <span class="hljs-variable language_">self</span>.siz[x] += <span class="hljs-variable language_">self</span>.siz[y]
-        <span class="hljs-variable language_">self</span>.cnt -= <span class="hljs-number">1</span>
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">size</span>(<span class="hljs-params">self, x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.siz[<span class="hljs-variable language_">self</span>.find(x)]
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">count</span>(<span class="hljs-params">self</span>) -&gt; <span class="hljs-built_in">int</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.cnt
-
-<span class="hljs-comment"># 竞赛输入输出模板</span>
-size, query_num = [<span class="hljs-built_in">int</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
-dsu = DSU(size)
-<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(query_num):
-    q_type, u, v = [<span class="hljs-built_in">int</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
-    <span class="hljs-keyword">if</span> q_type == <span class="hljs-number">0</span>:
-        dsu.merge(u, v)
-    <span class="hljs-keyword">else</span>:
-        <span class="hljs-built_in">print</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> dsu.same(u, v) <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>)</code></pre></div>
+<span class="hljs-comment"># 二维前缀和</span>
+prefix = [[<span class="hljs-number">0</span>] * (m+<span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n+<span class="hljs-number">1</span>)]
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n+<span class="hljs-number">1</span>):
+    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, m+<span class="hljs-number">1</span>):
+        prefix[i][j] = grid[i-<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>] + prefix[i-<span class="hljs-number">1</span>][j] + prefix[i][j-<span class="hljs-number">1</span>] - prefix[i-<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>]</code></pre></div>
 
                 
               </div>
@@ -398,8 +326,15 @@ dsu = DSU(size)
     
       <span class="category-chain">
         
-  <a href="/categories/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
+  
+  
+
   
 
       </span>
@@ -418,8 +353,8 @@ dsu = DSU(size)
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>未命名</div>
-      <div>https://mingsm17518.github.io/2026/09/19/算法学习/02_核心算法/并查集 (DSU)/</div>
+      <div>01_前缀和</div>
+      <div>https://mingsm17518.github.io/2026/09/19/算法学习/02_核心算法/01_前缀和/</div>
     </div>
     <div class="license-meta">
       
@@ -434,11 +369,6 @@ dsu = DSU(size)
           <div>2026年9月19日</div>
         </div>
       
-      
-        <div class="license-meta-item license-meta-date">
-          <div>更新于</div>
-          <div>2026年9月19日</div>
-        </div>
       
       
         <div class="license-meta-item">
@@ -468,12 +398,18 @@ dsu = DSU(size)
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" title="02_差分数组">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">02_差分数组</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" title="差分数组">
-                        <span class="hidden-mobile">差分数组</span>
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="06_输入输出">
+                        <span class="hidden-mobile">06_输入输出</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -634,33 +570,6 @@ dsu = DSU(size)
   
 
 
-
-
-  
-<script>
-  var relativeDate = function() {
-    var updatedTime = document.getElementById('updated-time');
-    if (updatedTime) {
-      var text = updatedTime.textContent;
-      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
-      var matchs = text.match(reg);
-      if (matchs) {
-        var relativeTime = moment(matchs[0]).fromNow();
-        updatedTime.textContent = text.replace(reg, relativeTime);
-      }
-      updatedTime.style.display = '';
-    }
-  };
-  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
-    if (!'zh-cn'.startsWith('en')) {
-      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
-        relativeDate();
-      });
-    } else {
-      relativeDate();
-    }
-  });
-</script>
 
 
   

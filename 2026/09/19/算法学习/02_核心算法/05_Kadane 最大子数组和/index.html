@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="滑动窗口1. 固定窗口大小（求最大&#x2F;最小窗口和）适用场景：给定固定大小 k，求所有窗口中最大&#x2F;最小的和 def sliding_window(arr, k):     &quot;&quot;&quot;求大小为 k 的窗口的最大和&quot;&quot;&quot;     window_sum &#x3D; sum(arr[:k])  # 初始化第一个窗口的和     max_sum &#x3D; window_">
+    <meta name="description" content="Kadane 算法是一种用来解决 “最大子数组和” 问题的线性时间算法。 问题是：给定一个整数数组，找出一个连续子数组，使得它的元素和最大，返回这个最大和。 例如： text 数组：[-2, 1, -3, 4, -1, 2, 1, -5, 4] 最大子数组：[4, -1, 2, 1] 最大和：6  核心思想 Kadane 算法基于动态规划。 定义： text dp[i] &#x3D; 以第 i 个元素结尾的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="03_滑动窗口">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/index.html">
+<meta property="og:title" content="05_Kadane 最大子数组和">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_Kadane%20%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="滑动窗口1. 固定窗口大小（求最大&#x2F;最小窗口和）适用场景：给定固定大小 k，求所有窗口中最大&#x2F;最小的和 def sliding_window(arr, k):     &quot;&quot;&quot;求大小为 k 的窗口的最大和&quot;&quot;&quot;     window_sum &#x3D; sum(arr[:k])  # 初始化第一个窗口的和     max_sum &#x3D; window_">
+<meta property="og:description" content="Kadane 算法是一种用来解决 “最大子数组和” 问题的线性时间算法。 问题是：给定一个整数数组，找出一个连续子数组，使得它的元素和最大，返回这个最大和。 例如： text 数组：[-2, 1, -3, 4, -1, 2, 1, -5, 4] 最大子数组：[4, -1, 2, 1] 最大和：6  核心思想 Kadane 算法基于动态规划。 定义： text dp[i] &#x3D; 以第 i 个元素结尾的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-13T16:04:38.523Z">
-<meta property="article:modified_time" content="2026-09-13T16:04:38.523Z">
+<meta property="article:published_time" content="2026-09-19T12:02:08.144Z">
+<meta property="article:modified_time" content="2026-09-19T12:02:08.144Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>03_滑动窗口 - Ming&#39;s Blog</title>
+  <title>05_Kadane 最大子数组和 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="03_滑动窗口"></span>
+            <span id="subtitle" data-typed-text="05_Kadane 最大子数组和"></span>
           
         </div>
 
@@ -216,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-14 00:04" pubdate>
-          2026年9月14日 凌晨
+        <time datetime="2026-09-19 20:02" pubdate>
+          2026年9月19日 晚上
         </time>
       </span>
     
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          950 字
+          537 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          8 分钟
+          5 分钟
         
       </span>
     
@@ -285,149 +285,101 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">03_滑动窗口</h1>
+            <h1 id="seo-header">05_Kadane 最大子数组和</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><h4 id="1-固定窗口大小（求最大-最小窗口和）"><a href="#1-固定窗口大小（求最大-最小窗口和）" class="headerlink" title="1. 固定窗口大小（求最大/最小窗口和）"></a>1. 固定窗口大小（求最大/最小窗口和）</h4><p><strong>适用场景</strong>：给定固定大小 k，求所有窗口中最大/最小的和</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">sliding_window</span>(<span class="hljs-params">arr, k</span>):
-    <span class="hljs-string">&quot;&quot;&quot;求大小为 k 的窗口的最大和&quot;&quot;&quot;</span>
-    window_sum = <span class="hljs-built_in">sum</span>(arr[:k])  <span class="hljs-comment"># 初始化第一个窗口的和</span>
-    max_sum = window_sum
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(k, <span class="hljs-built_in">len</span>(arr)):
-        <span class="hljs-comment"># 滑动窗口：加入新元素 arr[i]，移除旧元素 arr[i-k]</span>
-        window_sum += arr[i] - arr[i-k]
-        max_sum = <span class="hljs-built_in">max</span>(max_sum, window_sum)
-    <span class="hljs-keyword">return</span> max_sum</code></pre></div>
-<h4 id="2-对撞指针（双指针从两端向中间）"><a href="#2-对撞指针（双指针从两端向中间）" class="headerlink" title="2. 对撞指针（双指针从两端向中间）"></a>2. 对撞指针（双指针从两端向中间）</h4><p><strong>适用场景</strong>：有序数组中找两个数之和等于目标值</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 找到两个索引 i 和 j，使得 a_i + a_j = x</span>
-<span class="hljs-comment"># 前提：数组已排序</span>
-n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
-x = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
-nums = [(<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>()), i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]  <span class="hljs-comment"># (值, 原索引)</span>
-nums.sort()  <span class="hljs-comment"># 按值排序</span>
-
-l = <span class="hljs-number">0</span>
-r = n - <span class="hljs-number">1</span>
-<span class="hljs-keyword">while</span> l &lt; r:
-    s = nums[l][<span class="hljs-number">0</span>] + nums[r][<span class="hljs-number">0</span>]
-    <span class="hljs-keyword">if</span> s == x:
-        <span class="hljs-built_in">print</span>(nums[l][<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>, nums[r][<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>)  <span class="hljs-comment"># 输出原索引（1-indexed）</span>
-        exit()
-    <span class="hljs-keyword">elif</span> s &lt; x:
-        l += <span class="hljs-number">1</span>  <span class="hljs-comment"># 和太小，左指针右移</span>
-    <span class="hljs-keyword">else</span>:
-        r -= <span class="hljs-number">1</span>  <span class="hljs-comment"># 和太大，右指针左移</span>
-<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;IMPOSSIBLE&quot;</span>)</code></pre></div>
-<h4 id="3-可变窗口（双指针同向）"><a href="#3-可变窗口（双指针同向）" class="headerlink" title="3. 可变窗口（双指针同向）"></a>3. 可变窗口（双指针同向）</h4><h5 id="场景一：满足条件的最长-最短窗口"><a href="#场景一：满足条件的最长-最短窗口" class="headerlink" title="场景一：满足条件的最长/最短窗口"></a>场景一：满足条件的最长/最短窗口</h5><p><strong>适用场景</strong>：窗口和 ≤ t 的最大长度</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 求时间总和不超过 t 的最多任务数</span>
-n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
-t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
-timeNeed = [<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>()) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
-
-l = <span class="hljs-number">0</span>
-sum_time = <span class="hljs-number">0</span>
-ans = <span class="hljs-number">0</span>
-<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
-    sum_time += timeNeed[r]  <span class="hljs-comment"># 右指针扩展窗口</span>
-    <span class="hljs-keyword">while</span> sum_time &gt; t <span class="hljs-keyword">and</span> l &lt;= r:  <span class="hljs-comment"># 窗口不满足条件，左指针收缩</span>
-        sum_time -= timeNeed[l]
-        l += <span class="hljs-number">1</span>
-    ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)  <span class="hljs-comment"># 更新最大窗口长度</span>
-<span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h5 id="场景二：无重复元素的最长窗口"><a href="#场景二：无重复元素的最长窗口" class="headerlink" title="场景二：无重复元素的最长窗口"></a>场景二：无重复元素的最长窗口</h5><p><strong>适用场景</strong>：求不含重复元素的最长子串/子数组</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 求无重复字符的最长子串长度</span>
-s = <span class="hljs-built_in">input</span>().strip()
-n = <span class="hljs-built_in">len</span>(s)
-arr = <span class="hljs-built_in">list</span>(s)
-
-window = <span class="hljs-built_in">set</span>()
-l = <span class="hljs-number">0</span>
-ans = <span class="hljs-number">0</span>
-<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
-    <span class="hljs-keyword">while</span> arr[r] <span class="hljs-keyword">in</span> window:  <span class="hljs-comment"># 当前字符已存在，收缩窗口</span>
-        window.remove(arr[l])
-        l += <span class="hljs-number">1</span>
-    window.add(arr[r])
-    ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)
-<span class="hljs-built_in">print</span>(ans)
-
-<span class="hljs-comment"># 示例：</span>
-<span class="hljs-comment"># 输入：&quot;abcabcbb&quot;</span>
-<span class="hljs-comment"># 输出：3（&quot;abc&quot;）</span></code></pre></div>
-<h4 id="滑动窗口通用模板"><a href="#滑动窗口通用模板" class="headerlink" title="滑动窗口通用模板"></a>滑动窗口通用模板</h4><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 通用框架</span>
-l = <span class="hljs-number">0</span>
-ans = <span class="hljs-number">0</span>  <span class="hljs-comment"># 或其他初始化</span>
-<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
-    <span class="hljs-comment"># 1. 将 arr[r] 加入窗口（扩展右边界）</span>
-    <span class="hljs-comment"># ...</span>
-
-    <span class="hljs-comment"># 2. 窗口不满足条件时，收缩左边界</span>
-    <span class="hljs-keyword">while</span> 不满足条件:
-        <span class="hljs-comment"># 移除 arr[l]</span>
-        <span class="hljs-comment"># ...</span>
-        l += <span class="hljs-number">1</span>
-
-    <span class="hljs-comment"># 3. 更新答案</span>
-    ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)</code></pre></div>
-<h5 id="场景三：离线区间查询（莫队思想）"><a href="#场景三：离线区间查询（莫队思想）" class="headerlink" title="场景三：离线区间查询（莫队思想）"></a>场景三：离线区间查询（莫队思想）</h5><p><strong>适用场景</strong>：多个区间查询，按端点排序后用双指针处理</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 区间不同种类数查询（离线 + 双指针）</span>
-<span class="hljs-comment"># 输入: n=种类数, w=区间跨度, K=查询数, M=记录数</span>
-<span class="hljs-comment"># 记录格式: (时间, 种类ID)</span>
-<span class="hljs-comment"># 查询: 给定起始时间 S，求 [S, S+w-1] 区间内的不同种类数</span>
-
-<span class="hljs-comment"># 1. 构建查询 (起始, 结束, 索引)</span>
-queries = [(S[i], S[i] + w - <span class="hljs-number">1</span>, i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(K)]
-queries.sort(key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>])  <span class="hljs-comment"># 按结束时间排序（离线处理关键）</span>
-
-<span class="hljs-comment"># 2. 记录按时间排序</span>
-records.sort()
-
-<span class="hljs-comment"># 3. 双指针滑动窗口</span>
-ans = [<span class="hljs-number">0</span>] * K
-l = r = <span class="hljs-number">0</span>
-cnt = <span class="hljs-number">0</span>
-appear = &#123;&#125;  <span class="hljs-comment"># 种类ID -&gt; 出现次数</span>
-
-<span class="hljs-keyword">for</span> start, end, idx <span class="hljs-keyword">in</span> queries:
-    <span class="hljs-comment"># 右指针：扩展到 end</span>
-    <span class="hljs-keyword">while</span> r &lt; <span class="hljs-built_in">len</span>(records) <span class="hljs-keyword">and</span> records[r][<span class="hljs-number">0</span>] &lt;= end:
-        <span class="hljs-built_in">id</span> = records[r][<span class="hljs-number">1</span>]
-        appear[<span class="hljs-built_in">id</span>] = appear.get(<span class="hljs-built_in">id</span>, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>
-        <span class="hljs-keyword">if</span> appear[<span class="hljs-built_in">id</span>] == <span class="hljs-number">1</span>:
-            cnt += <span class="hljs-number">1</span>
-        r += <span class="hljs-number">1</span>
-
-    <span class="hljs-comment"># 左指针：收缩到 start</span>
-    <span class="hljs-keyword">while</span> l &lt; <span class="hljs-built_in">len</span>(records) <span class="hljs-keyword">and</span> records[l][<span class="hljs-number">0</span>] &lt; start:
-        <span class="hljs-built_in">id</span> = records[l][<span class="hljs-number">1</span>]
-        appear[<span class="hljs-built_in">id</span>] -= <span class="hljs-number">1</span>
-        <span class="hljs-keyword">if</span> appear[<span class="hljs-built_in">id</span>] == <span class="hljs-number">0</span>:
-            cnt -= <span class="hljs-number">1</span>
-        l += <span class="hljs-number">1</span>
-
-    ans[idx] = cnt
-
-<span class="hljs-comment"># 离线处理优势：利用区间端点的单调性，避免重复计算</span>
-<span class="hljs-comment"># 时间复杂度：O(M log K + M) = O(M log K)</span></code></pre></div>
-<h3 id="最大子数组和（Kadane-算法）"><a href="#最大子数组和（Kadane-算法）" class="headerlink" title="最大子数组和（Kadane 算法）"></a>最大子数组和（Kadane 算法）</h3><p><strong>适用场景</strong>：求连续子数组的最大和</p>
-<p><strong>算法思想</strong>：动态规划，<code>cur</code> 表示以当前位置结尾的最大子数组和</p>
+                <p><strong>Kadane
+算法</strong>是一种用来解决 <strong>“最大子数组和”</strong> 问题的线性时间算法。</p>
+<p>问题是：给定一个整数数组，找出一个<strong>连续子数组</strong>，使得它的元素和最大，返回这个最大和。</p>
+<p>例如：</p>
+<p>text</p>
+<p>数组：[-2, 1, -3, 4, -1, 2, 1, -5, 4] 最大子数组：[4, -1, 2, 1]
+最大和：6</p>
+<hr />
+<h2 id="核心思想">核心思想</h2>
+<p>Kadane 算法基于动态规划。</p>
+<p>定义：</p>
+<p>text</p>
+<p>dp[i] = 以第 i 个元素结尾的最大子数组和</p>
+<p>状态转移：</p>
+<p>text</p>
+<p>dp[i] = max(nums[i], dp[i-1] + nums[i])</p>
+<p>意思是：</p>
 <ul>
-<li>若 <code>cur &gt;= 0</code>：继续累加（对后续有贡献）</li>
-<li>若 <code>cur &lt; 0</code>：重置为 0（负数只会让和更小，不如重新开始）</li>
+<li><p>要么从当前元素重新开始一个子数组；</p></li>
+<li><p>要么把当前元素接到前面的子数组后面。</p></li>
 </ul>
-<div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
-a = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
+<p>最终答案是所有 <code>dp[i]</code> 中的最大值。</p>
+<p>由于只需要前一个状态，所以可以优化成两个变量：</p>
+<p>text</p>
+<p>current = max(nums[i], current + nums[i]) best = max(best,
+current)</p>
+<hr />
+<h2 id="代码示例">代码示例</h2>
+<div class="code-wrapper"><pre><code class="hljs sql">python
 
-cur = <span class="hljs-number">0</span>  <span class="hljs-comment"># 以当前位置结尾的最大子数组和</span>
-ans = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;-inf&#x27;</span>)  <span class="hljs-comment"># 全局最大和</span>
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
-    cur += a[i]
-    ans = <span class="hljs-built_in">max</span>(ans, cur)
-    <span class="hljs-keyword">if</span> cur &lt; <span class="hljs-number">0</span>:
-        cur = <span class="hljs-number">0</span>  <span class="hljs-comment"># 负数没有贡献，重新开始</span>
-<span class="hljs-built_in">print</span>(ans)</code></pre></div>
+def kadane(nums):
+    <span class="hljs-keyword">current</span> <span class="hljs-operator">=</span> nums[<span class="hljs-number">0</span>]
+    best <span class="hljs-operator">=</span> nums[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> nums[<span class="hljs-number">1</span>:]:
+        <span class="hljs-keyword">current</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">max</span>(x, <span class="hljs-keyword">current</span> <span class="hljs-operator">+</span> x)
+        best <span class="hljs-operator">=</span> <span class="hljs-built_in">max</span>(best, <span class="hljs-keyword">current</span>)
+    <span class="hljs-keyword">return</span> best</code></pre></div>
+<p>如果允许空子数组，可以这样写：</p>
+<div class="code-wrapper"><pre><code class="hljs sql">python
+
+def kadane_allow_empty(nums):
+    <span class="hljs-keyword">current</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>
+    best <span class="hljs-operator">=</span> <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> nums:
+        <span class="hljs-keyword">current</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, <span class="hljs-keyword">current</span> <span class="hljs-operator">+</span> x)
+        best <span class="hljs-operator">=</span> <span class="hljs-built_in">max</span>(best, <span class="hljs-keyword">current</span>)
+    <span class="hljs-keyword">return</span> best</code></pre></div>
+<hr />
+<h2 id="复杂度">复杂度</h2>
+<ul>
+<li><p>时间复杂度：<code>O(n)</code></p></li>
+<li><p>空间复杂度：<code>O(1)</code></p></li>
+</ul>
+<hr />
+<h2 id="直观理解">直观理解</h2>
+<p>遍历数组时，维护一个“以当前元素结尾的最大和”。</p>
+<p>如果前面的累加和已经变成负数，那么它对后面的元素没有帮助，不如直接从当前元素重新开始。</p>
+<p>例如：</p>
+<p>text</p>
+<p>current = -5 下一个元素是 3</p>
+<p>那么：</p>
+<p>text</p>
+<p>current + 3 = -2</p>
+<p>不如直接从 3 开始，所以选择：</p>
+<p>text</p>
+<p>current = 3</p>
+<hr />
+<h2 id="注意事项">注意事项</h2>
+<ol type="1">
+<li><p><strong>如果数组全是负数</strong>：</p>
+<ul>
+<li><p>要求非空子数组时，答案是最大的那个负数；</p></li>
+<li><p>允许空子数组时，答案是 <code>0</code>。</p></li>
+</ul></li>
+<li><p><strong>可以扩展记录子数组起止位置</strong>：</p>
+<ul>
+<li><p>当选择从当前元素重新开始时，更新起点；</p></li>
+<li><p>当 <code>best</code> 被更新时，记录当前起点和终点。</p></li>
+</ul></li>
+<li><p><strong>二维扩展</strong>：</p>
+<ul>
+<li>求最大子矩阵和时，可以固定上下边界，把列压缩成一维数组，再对压缩数组跑
+Kadane 算法。</li>
+</ul></li>
+</ol>
+<p>一句话总结：</p>
+<blockquote>
+<p>Kadane
+算法通过动态规划思想，在 <code>O(n)</code> 时间内求出数组中连续子数组的最大和。</p>
+</blockquote>
 
                 
               </div>
@@ -473,8 +425,8 @@ ans = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;-
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>03_滑动窗口</div>
-      <div>https://mingsm17518.github.io/2026/09/14/算法学习/02_核心算法/03_滑动窗口/</div>
+      <div>05_Kadane 最大子数组和</div>
+      <div>https://mingsm17518.github.io/2026/09/19/算法学习/02_核心算法/05_Kadane 最大子数组和/</div>
     </div>
     <div class="license-meta">
       
@@ -486,7 +438,7 @@ ans = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;-
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年9月14日</div>
+          <div>2026年9月19日</div>
         </div>
       
       
@@ -518,9 +470,9 @@ ans = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;-
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="04_二分查找">
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E5%85%A8%E6%8E%92%E5%88%97/" title="06_全排列">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">04_二分查找</span>
+                        <span class="hidden-mobile">06_全排列</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -528,8 +480,8 @@ ans = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;-
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="02_动态规划">
-                        <span class="hidden-mobile">02_动态规划</span>
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="04_滑动窗口">
+                        <span class="hidden-mobile">04_滑动窗口</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

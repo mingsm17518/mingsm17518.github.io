@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据结构复杂度速查    数据结构 操作 时间复杂度     列表 索引访问&#x2F;切片 O(1) &#x2F; O(k)    append&#x2F;pop(末尾) O(1)    insert&#x2F;pop(开头) O(n)    in 检查 O(n)   集合&#x2F;字典 in 检查 O(1) 平均    add&#x2F;insert O(1) 平均    remove&#x2F;delete O(1) 平均   堆 push&#x2F;pop O(lo">
+    <meta name="description" content="数据结构 复杂度速查    数据结构 操作 时间复杂度     列表 索引访问&#x2F;切片 O(1) &#x2F; O(k)    append&#x2F;pop(末尾) O(1)    insert&#x2F;pop(开头) O(n)    in 检查 O(n)   集合&#x2F;字典 in 检查 O(1) 平均    add&#x2F;insert O(1) 平均    remove&#x2F;delete O(1) 平均   堆 push&#x2F;pop O(l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="00_数据结构总览">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/00_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="数据结构复杂度速查    数据结构 操作 时间复杂度     列表 索引访问&#x2F;切片 O(1) &#x2F; O(k)    append&#x2F;pop(末尾) O(1)    insert&#x2F;pop(开头) O(n)    in 检查 O(n)   集合&#x2F;字典 in 检查 O(1) 平均    add&#x2F;insert O(1) 平均    remove&#x2F;delete O(1) 平均   堆 push&#x2F;pop O(lo">
+<meta property="og:description" content="数据结构 复杂度速查    数据结构 操作 时间复杂度     列表 索引访问&#x2F;切片 O(1) &#x2F; O(k)    append&#x2F;pop(末尾) O(1)    insert&#x2F;pop(开头) O(n)    in 检查 O(n)   集合&#x2F;字典 in 检查 O(1) 平均    add&#x2F;insert O(1) 平均    remove&#x2F;delete O(1) 平均   堆 push&#x2F;pop O(l">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T11:42:30.730Z">
 <meta property="article:modified_time" content="2026-09-19T11:42:30.730Z">
@@ -290,7 +290,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="复杂度速查"><a href="#复杂度速查" class="headerlink" title="复杂度速查"></a>复杂度速查</h2><div class="table-container">
+                <h1 id="数据结构">数据结构</h1>
+<h2 id="复杂度速查">复杂度速查</h2>
 <table>
 <thead>
 <tr>
@@ -357,11 +358,11 @@
 </tr>
 </tbody>
 </table>
-</div>
 <blockquote>
 <p>注：集合/字典的 O(1) 是平均情况，最坏情况可能为 O(n)</p>
 </blockquote>
-<h2 id="堆（优先队列）"><a href="#堆（优先队列）" class="headerlink" title="堆（优先队列）"></a>堆（优先队列）</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
+<h2 id="堆优先队列">堆（优先队列）</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
 heap = []              <span class="hljs-comment"># 小顶堆（Python 只有小顶堆）</span>
 heapq.heapify(heap)   <span class="hljs-comment"># 转堆</span>
 heapq.heappush(heap, x)  <span class="hljs-comment"># 插入</span>

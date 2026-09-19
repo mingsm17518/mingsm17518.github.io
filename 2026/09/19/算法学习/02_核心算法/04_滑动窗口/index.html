@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="动态规划# &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 1. 背包问题 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; # 01 背包（每个物品选0或1次） def knapsack_01(n, W, weights, values):     dp &#x3D; [0] * (W + 1)     for i in range(n):         for w in range(W, weights[i] - 1, -1):  # 倒序遍历             dp">
+    <meta name="description" content="滑动窗口 1. 固定窗口大小（求最大&#x2F;最小窗口和） 适用场景：给定固定大小 k，求所有窗口中最大&#x2F;最小的和 def sliding_window(arr, k):     &quot;&quot;&quot;求大小为 k 的窗口的最大和&quot;&quot;&quot;     window_sum &#x3D; sum(arr[:k])  # 初始化第一个窗口的和     max_sum &#x3D; windo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="02_动态规划">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
+<meta property="og:title" content="04_滑动窗口">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="动态规划# &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 1. 背包问题 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; # 01 背包（每个物品选0或1次） def knapsack_01(n, W, weights, values):     dp &#x3D; [0] * (W + 1)     for i in range(n):         for w in range(W, weights[i] - 1, -1):  # 倒序遍历             dp">
+<meta property="og:description" content="滑动窗口 1. 固定窗口大小（求最大&#x2F;最小窗口和） 适用场景：给定固定大小 k，求所有窗口中最大&#x2F;最小的和 def sliding_window(arr, k):     &quot;&quot;&quot;求大小为 k 的窗口的最大和&quot;&quot;&quot;     window_sum &#x3D; sum(arr[:k])  # 初始化第一个窗口的和     max_sum &#x3D; windo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-13T16:04:38.520Z">
-<meta property="article:modified_time" content="2026-09-13T16:04:38.520Z">
+<meta property="article:published_time" content="2026-09-19T12:02:08.142Z">
+<meta property="article:modified_time" content="2026-09-19T12:02:08.142Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>02_动态规划 - Ming&#39;s Blog</title>
+  <title>04_滑动窗口 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="02_动态规划"></span>
+            <span id="subtitle" data-typed-text="04_滑动窗口"></span>
           
         </div>
 
@@ -216,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-14 00:04" pubdate>
-          2026年9月14日 凌晨
+        <time datetime="2026-09-19 20:02" pubdate>
+          2026年9月19日 晚上
         </time>
       </span>
     
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          490 字
+          950 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          5 分钟
+          8 分钟
         
       </span>
     
@@ -285,109 +285,166 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">02_动态规划</h1>
+            <h1 id="seo-header">04_滑动窗口</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># ===== 1. 背包问题 =====</span>
-<span class="hljs-comment"># 01 背包（每个物品选0或1次）</span>
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">knapsack_01</span>(<span class="hljs-params">n, W, weights, values</span>):
-    dp = [<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</span>)
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
-        <span class="hljs-keyword">for</span> w <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(W, weights[i] - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):  <span class="hljs-comment"># 倒序遍历</span>
-            dp[w] = <span class="hljs-built_in">max</span>(dp[w], dp[w - weights[i]] + values[i])
-    <span class="hljs-keyword">return</span> dp[W]
+                <h2 id="滑动窗口">滑动窗口</h2>
+<h4 id="固定窗口大小求最大最小窗口和">1.
+固定窗口大小（求最大/最小窗口和）</h4>
+<p><strong>适用场景</strong>：给定固定大小
+k，求所有窗口中最大/最小的和</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">sliding_window</span>(<span class="hljs-params">arr, k</span>):
+    <span class="hljs-string">&quot;&quot;&quot;求大小为 k 的窗口的最大和&quot;&quot;&quot;</span>
+    window_sum = <span class="hljs-built_in">sum</span>(arr[:k])  <span class="hljs-comment"># 初始化第一个窗口的和</span>
+    max_sum = window_sum
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(k, <span class="hljs-built_in">len</span>(arr)):
+        <span class="hljs-comment"># 滑动窗口：加入新元素 arr[i]，移除旧元素 arr[i-k]</span>
+        window_sum += arr[i] - arr[i-k]
+        max_sum = <span class="hljs-built_in">max</span>(max_sum, window_sum)
+    <span class="hljs-keyword">return</span> max_sum</code></pre></div>
+<h4 id="对撞指针双指针从两端向中间">2.
+对撞指针（双指针从两端向中间）</h4>
+<p><strong>适用场景</strong>：有序数组中找两个数之和等于目标值</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 找到两个索引 i 和 j，使得 a_i + a_j = x</span>
+<span class="hljs-comment"># 前提：数组已排序</span>
+n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+x = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+nums = [(<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>()), i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]  <span class="hljs-comment"># (值, 原索引)</span>
+nums.sort()  <span class="hljs-comment"># 按值排序</span>
 
-<span class="hljs-comment"># 完全背包（每个物品可选无限次）</span>
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">knapsack_complete</span>(<span class="hljs-params">n, W, weights, values</span>):
-    dp = [<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</span>)
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
-        <span class="hljs-keyword">for</span> w <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(weights[i], W + <span class="hljs-number">1</span>):  <span class="hljs-comment"># 正序遍历</span>
-            dp[w] = <span class="hljs-built_in">max</span>(dp[w], dp[w - weights[i]] + values[i])
-    <span class="hljs-keyword">return</span> dp[W]
+l = <span class="hljs-number">0</span>
+r = n - <span class="hljs-number">1</span>
+<span class="hljs-keyword">while</span> l &lt; r:
+    s = nums[l][<span class="hljs-number">0</span>] + nums[r][<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">if</span> s == x:
+        <span class="hljs-built_in">print</span>(nums[l][<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>, nums[r][<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>)  <span class="hljs-comment"># 输出原索引（1-indexed）</span>
+        exit()
+    <span class="hljs-keyword">elif</span> s &lt; x:
+        l += <span class="hljs-number">1</span>  <span class="hljs-comment"># 和太小，左指针右移</span>
+    <span class="hljs-keyword">else</span>:
+        r -= <span class="hljs-number">1</span>  <span class="hljs-comment"># 和太大，右指针左移</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;IMPOSSIBLE&quot;</span>)</code></pre></div>
+<h4 id="可变窗口双指针同向">3. 可变窗口（双指针同向）</h4>
+<h5
+id="场景一满足条件的最长最短窗口">场景一：满足条件的最长/最短窗口</h5>
+<p><strong>适用场景</strong>：窗口和 ≤ t 的最大长度</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 求时间总和不超过 t 的最多任务数</span>
+n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+timeNeed = [<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>()) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
 
-<span class="hljs-comment"># 多重背包（每个物品可选有限次）- 二进制优化</span>
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">knapsack_multi</span>(<span class="hljs-params">n, W, weights, values, counts</span>):
-    items = []  <span class="hljs-comment"># 转化为01背包</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
-        k = <span class="hljs-number">1</span>
-        c = counts[i]
-        <span class="hljs-keyword">while</span> c &gt; <span class="hljs-number">0</span>:
-            take = <span class="hljs-built_in">min</span>(k, c)
-            items.append((weights[i] * take, values[i] * take))
-            c -= take
-            k *= <span class="hljs-number">2</span>
-    dp = [<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</span>)
-    <span class="hljs-keyword">for</span> w, v <span class="hljs-keyword">in</span> items:
-        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(W, w - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):
-            dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - w] + v)
-    <span class="hljs-keyword">return</span> dp[W]
+l = <span class="hljs-number">0</span>
+sum_time = <span class="hljs-number">0</span>
+ans = <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    sum_time += timeNeed[r]  <span class="hljs-comment"># 右指针扩展窗口</span>
+    <span class="hljs-keyword">while</span> sum_time &gt; t <span class="hljs-keyword">and</span> l &lt;= r:  <span class="hljs-comment"># 窗口不满足条件，左指针收缩</span>
+        sum_time -= timeNeed[l]
+        l += <span class="hljs-number">1</span>
+    ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)  <span class="hljs-comment"># 更新最大窗口长度</span>
+<span class="hljs-built_in">print</span>(ans)</code></pre></div>
+<h5 id="场景二无重复元素的最长窗口">场景二：无重复元素的最长窗口</h5>
+<p><strong>适用场景</strong>：求不含重复元素的最长子串/子数组</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 求无重复字符的最长子串长度</span>
+s = <span class="hljs-built_in">input</span>().strip()
+n = <span class="hljs-built_in">len</span>(s)
+arr = <span class="hljs-built_in">list</span>(s)
 
-<span class="hljs-comment"># ===== 计数DP（爬楼梯/骰子问题）=====</span>
-<span class="hljs-comment"># 每次可以走1~k步，求到达n级台阶的走法数</span>
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">count_ways</span>(<span class="hljs-params">n, k</span>):
-    dp = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
-    dp[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>  <span class="hljs-comment"># 基础情况：到达0级只有1种方式（不走）</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):
-        dp[i] = <span class="hljs-built_in">sum</span>(dp[<span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, i-k):i]) % MOD
-    <span class="hljs-keyword">return</span> dp[n]
+window = <span class="hljs-built_in">set</span>()
+l = <span class="hljs-number">0</span>
+ans = <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    <span class="hljs-keyword">while</span> arr[r] <span class="hljs-keyword">in</span> window:  <span class="hljs-comment"># 当前字符已存在，收缩窗口</span>
+        window.remove(arr[l])
+        l += <span class="hljs-number">1</span>
+    window.add(arr[r])
+    ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)
+<span class="hljs-built_in">print</span>(ans)
 
-<span class="hljs-comment"># 简化为：每次走1~6步（骰子问题）</span>
-dp = [<span class="hljs-number">1</span>]
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())):
-    dp.append(<span class="hljs-built_in">sum</span>(dp[-<span class="hljs-number">6</span>:]) % MOD)
-<span class="hljs-built_in">print</span>(dp[-<span class="hljs-number">1</span>])
+<span class="hljs-comment"># 示例：</span>
+<span class="hljs-comment"># 输入：&quot;abcabcbb&quot;</span>
+<span class="hljs-comment"># 输出：3（&quot;abc&quot;）</span></code></pre></div>
+<h4 id="滑动窗口通用模板">滑动窗口通用模板</h4>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 通用框架</span>
+l = <span class="hljs-number">0</span>
+ans = <span class="hljs-number">0</span>  <span class="hljs-comment"># 或其他初始化</span>
+<span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    <span class="hljs-comment"># 1. 将 arr[r] 加入窗口（扩展右边界）</span>
+    <span class="hljs-comment"># ...</span>
 
-<span class="hljs-comment"># ===== 2. 最长上升子序列 (LIS) =====</span>
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">lis</span>(<span class="hljs-params">arr</span>):
-    <span class="hljs-keyword">import</span> bisect
-    dp = []
-    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arr:
-        pos = bisect.bisect_left(dp, x)
-        <span class="hljs-keyword">if</span> pos == <span class="hljs-built_in">len</span>(dp):
-            dp.append(x)
-        <span class="hljs-keyword">else</span>:
-            dp[pos] = x
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(dp)
+    <span class="hljs-comment"># 2. 窗口不满足条件时，收缩左边界</span>
+    <span class="hljs-keyword">while</span> 不满足条件:
+        <span class="hljs-comment"># 移除 arr[l]</span>
+        <span class="hljs-comment"># ...</span>
+        l += <span class="hljs-number">1</span>
 
-<span class="hljs-comment"># ===== 3. 最长公共子序列 (LCS) =====</span>
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">lcs</span>(<span class="hljs-params">s1, s2</span>):
-    n, m = <span class="hljs-built_in">len</span>(s1), <span class="hljs-built_in">len</span>(s2)
-    dp = [[<span class="hljs-number">0</span>] * (m+<span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n+<span class="hljs-number">1</span>)]
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n+<span class="hljs-number">1</span>):
-        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, m+<span class="hljs-number">1</span>):
-            <span class="hljs-keyword">if</span> s1[i-<span class="hljs-number">1</span>] == s2[j-<span class="hljs-number">1</span>]:
-                dp[i][j] = dp[i-<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>
-            <span class="hljs-keyword">else</span>:
-                dp[i][j] = <span class="hljs-built_in">max</span>(dp[i-<span class="hljs-number">1</span>][j], dp[i][j-<span class="hljs-number">1</span>])
-    <span class="hljs-keyword">return</span> dp[n][m]
+    <span class="hljs-comment"># 3. 更新答案</span>
+    ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)</code></pre></div>
+<h5
+id="场景三离线区间查询莫队思想">场景三：离线区间查询（莫队思想）</h5>
+<p><strong>适用场景</strong>：多个区间查询，按端点排序后用双指针处理</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 区间不同种类数查询（离线 + 双指针）</span>
+<span class="hljs-comment"># 输入: n=种类数, w=区间跨度, K=查询数, M=记录数</span>
+<span class="hljs-comment"># 记录格式: (时间, 种类ID)</span>
+<span class="hljs-comment"># 查询: 给定起始时间 S，求 [S, S+w-1] 区间内的不同种类数</span>
 
-<span class="hljs-comment"># ===== 4. 编辑距离 =====</span>
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">edit_distance</span>(<span class="hljs-params">s1, s2</span>):
-    n, m = <span class="hljs-built_in">len</span>(s1), <span class="hljs-built_in">len</span>(s2)
-    dp = [[<span class="hljs-number">0</span>] * (m+<span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n+<span class="hljs-number">1</span>)]
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n+<span class="hljs-number">1</span>):
-        dp[i][<span class="hljs-number">0</span>] = i
-    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m+<span class="hljs-number">1</span>):
-        dp[<span class="hljs-number">0</span>][j] = j
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n+<span class="hljs-number">1</span>):
-        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, m+<span class="hljs-number">1</span>):
-            <span class="hljs-keyword">if</span> s1[i-<span class="hljs-number">1</span>] == s2[j-<span class="hljs-number">1</span>]:
-                dp[i][j] = dp[i-<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>]
-            <span class="hljs-keyword">else</span>:
-                dp[i][j] = <span class="hljs-number">1</span> + <span class="hljs-built_in">min</span>(dp[i-<span class="hljs-number">1</span>][j], dp[i][j-<span class="hljs-number">1</span>], dp[i-<span class="hljs-number">1</span>][j-<span class="hljs-number">1</span>])
-    <span class="hljs-keyword">return</span> dp[n][m]
+<span class="hljs-comment"># 1. 构建查询 (起始, 结束, 索引)</span>
+queries = [(S[i], S[i] + w - <span class="hljs-number">1</span>, i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(K)]
+queries.sort(key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>])  <span class="hljs-comment"># 按结束时间排序（离线处理关键）</span>
 
-<span class="hljs-comment"># ===== 5. 区间 DP =====</span>
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">interval_dp</span>(<span class="hljs-params">n, cost</span>):
-    <span class="hljs-comment"># dp[i][j] = 合并 i~j 的最小代价</span>
-    dp = [[<span class="hljs-number">0</span>] * n <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
-    <span class="hljs-keyword">for</span> length <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, n+<span class="hljs-number">1</span>):
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n-length+<span class="hljs-number">1</span>):
-            j = i + length - <span class="hljs-number">1</span>
-            dp[i][j] = <span class="hljs-built_in">min</span>(dp[i][k] + dp[k+<span class="hljs-number">1</span>][j] <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i, j))
-    <span class="hljs-keyword">return</span> dp[<span class="hljs-number">0</span>][n-<span class="hljs-number">1</span>]</code></pre></div>
+<span class="hljs-comment"># 2. 记录按时间排序</span>
+records.sort()
+
+<span class="hljs-comment"># 3. 双指针滑动窗口</span>
+ans = [<span class="hljs-number">0</span>] * K
+l = r = <span class="hljs-number">0</span>
+cnt = <span class="hljs-number">0</span>
+appear = &#123;&#125;  <span class="hljs-comment"># 种类ID -&gt; 出现次数</span>
+
+<span class="hljs-keyword">for</span> start, end, idx <span class="hljs-keyword">in</span> queries:
+    <span class="hljs-comment"># 右指针：扩展到 end</span>
+    <span class="hljs-keyword">while</span> r &lt; <span class="hljs-built_in">len</span>(records) <span class="hljs-keyword">and</span> records[r][<span class="hljs-number">0</span>] &lt;= end:
+        <span class="hljs-built_in">id</span> = records[r][<span class="hljs-number">1</span>]
+        appear[<span class="hljs-built_in">id</span>] = appear.get(<span class="hljs-built_in">id</span>, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>
+        <span class="hljs-keyword">if</span> appear[<span class="hljs-built_in">id</span>] == <span class="hljs-number">1</span>:
+            cnt += <span class="hljs-number">1</span>
+        r += <span class="hljs-number">1</span>
+
+    <span class="hljs-comment"># 左指针：收缩到 start</span>
+    <span class="hljs-keyword">while</span> l &lt; <span class="hljs-built_in">len</span>(records) <span class="hljs-keyword">and</span> records[l][<span class="hljs-number">0</span>] &lt; start:
+        <span class="hljs-built_in">id</span> = records[l][<span class="hljs-number">1</span>]
+        appear[<span class="hljs-built_in">id</span>] -= <span class="hljs-number">1</span>
+        <span class="hljs-keyword">if</span> appear[<span class="hljs-built_in">id</span>] == <span class="hljs-number">0</span>:
+            cnt -= <span class="hljs-number">1</span>
+        l += <span class="hljs-number">1</span>
+
+    ans[idx] = cnt
+
+<span class="hljs-comment"># 离线处理优势：利用区间端点的单调性，避免重复计算</span>
+<span class="hljs-comment"># 时间复杂度：O(M log K + M) = O(M log K)</span></code></pre></div>
+<h3 id="最大子数组和kadane-算法">最大子数组和（Kadane 算法）</h3>
+<p><strong>适用场景</strong>：求连续子数组的最大和</p>
+<p><strong>算法思想</strong>：动态规划，<code>cur</code>
+表示以当前位置结尾的最大子数组和</p>
+<ul>
+<li>若 <code>cur &gt;= 0</code>：继续累加（对后续有贡献）</li>
+<li>若 <code>cur &lt; 0</code>：重置为
+0（负数只会让和更小，不如重新开始）</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+a = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
+
+cur = <span class="hljs-number">0</span>  <span class="hljs-comment"># 以当前位置结尾的最大子数组和</span>
+ans = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;-inf&#x27;</span>)  <span class="hljs-comment"># 全局最大和</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    cur += a[i]
+    ans = <span class="hljs-built_in">max</span>(ans, cur)
+    <span class="hljs-keyword">if</span> cur &lt; <span class="hljs-number">0</span>:
+        cur = <span class="hljs-number">0</span>  <span class="hljs-comment"># 负数没有贡献，重新开始</span>
+<span class="hljs-built_in">print</span>(ans)</code></pre></div>
+
                 
               </div>
             
@@ -432,8 +489,8 @@ dp = [<span class="hljs-number">1</span>]
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>02_动态规划</div>
-      <div>https://mingsm17518.github.io/2026/09/14/算法学习/02_核心算法/02_动态规划/</div>
+      <div>04_滑动窗口</div>
+      <div>https://mingsm17518.github.io/2026/09/19/算法学习/02_核心算法/04_滑动窗口/</div>
     </div>
     <div class="license-meta">
       
@@ -445,7 +502,7 @@ dp = [<span class="hljs-number">1</span>]
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年9月14日</div>
+          <div>2026年9月19日</div>
         </div>
       
       
@@ -477,9 +534,9 @@ dp = [<span class="hljs-number">1</span>]
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="03_滑动窗口">
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_Kadane%20%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/" title="05_Kadane 最大子数组和">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">03_滑动窗口</span>
+                        <span class="hidden-mobile">05_Kadane 最大子数组和</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -487,8 +544,8 @@ dp = [<span class="hljs-number">1</span>]
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%201/" title="02_动态规划 1">
-                        <span class="hidden-mobile">02_动态规划 1</span>
+                      <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="03_二分查找">
+                        <span class="hidden-mobile">03_二分查找</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
