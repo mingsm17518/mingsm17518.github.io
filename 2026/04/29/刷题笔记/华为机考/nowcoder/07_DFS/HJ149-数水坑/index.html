@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目描述 由于降雨，水在农夫约翰的田地里积聚成水坑。田地是一个 N×M 的矩形网格，每个格子要么是水 W，要么是干地 .。 若两个水格子在八连通（上下左右及四条对角线）意义下互达，则它们属于同一个水坑。 给出田地示意图，计算水坑数量。">
+    <meta name="description" content="题目描述由于降雨，水在农夫约翰的田地里积聚成水坑。田地是一个 N×M 的矩形网格，每个格子要么是水 W，要么是干地 .。 若两个水格子在八连通（上下左右及四条对角线）意义下互达，则它们属于同一个水坑。 给出田地示意图，计算水坑数量。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HJ149 数水坑">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目描述 由于降雨，水在农夫约翰的田地里积聚成水坑。田地是一个 N×M 的矩形网格，每个格子要么是水 W，要么是干地 .。 若两个水格子在八连通（上下左右及四条对角线）意义下互达，则它们属于同一个水坑。 给出田地示意图，计算水坑数量。">
+<meta property="og:description" content="题目描述由于降雨，水在农夫约翰的田地里积聚成水坑。田地是一个 N×M 的矩形网格，每个格子要么是水 W，要么是干地 .。 若两个水格子在八连通（上下左右及四条对角线）意义下互达，则它们属于同一个水坑。 给出田地示意图，计算水坑数量。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-28T16:00:00.000Z">
 <meta property="article:modified_time" content="2026-09-13T15:48:27.203Z">
@@ -303,31 +303,21 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目描述">题目描述</h2>
-<p>由于降雨，水在农夫约翰的田地里积聚成水坑。田地是一个 N×M
-的矩形网格，每个格子要么是水 <code>W</code>，要么是干地
-<code>.</code>。</p>
+                <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>由于降雨，水在农夫约翰的田地里积聚成水坑。田地是一个 N×M 的矩形网格，每个格子要么是水 <code>W</code>，要么是干地 <code>.</code>。</p>
 <p>若两个水格子在<strong>八连通</strong>（上下左右及四条对角线）意义下互达，则它们属于同一个水坑。</p>
 <p>给出田地示意图，计算水坑数量。</p>
 <span id="more"></span>
-<h2 id="解题思路">解题思路</h2>
-<p>这是一道经典的 <strong>Flood Fill（洪水填充）</strong>
-问题，本质是求<strong>连通分量个数</strong>。</p>
-<h3 id="核心思路">核心思路</h3>
-<ol type="1">
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这是一道经典的 <strong>Flood Fill（洪水填充）</strong> 问题，本质是求<strong>连通分量个数</strong>。</p>
+<h3 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h3><ol>
 <li><strong>遍历网格</strong>：逐个扫描每个格子</li>
-<li><strong>发现新水坑</strong>：遇到未访问的 <code>W</code> 时，计数器
-+1</li>
-<li><strong>标记整个水坑</strong>：用 DFS 将该 <code>W</code>
-及其所有八连通的 <code>W</code> 标记为已访问</li>
+<li><strong>发现新水坑</strong>：遇到未访问的 <code>W</code> 时，计数器 +1</li>
+<li><strong>标记整个水坑</strong>：用 DFS 将该 <code>W</code> 及其所有八连通的 <code>W</code> 标记为已访问</li>
 <li><strong>继续遍历</strong>：寻找下一个未访问的 <code>W</code></li>
 </ol>
-<h3 id="八连通方向">八连通方向</h3>
-<div class="code-wrapper"><pre><code class="hljs">  ← ↖ ↑ ↗ →
+<h3 id="八连通方向"><a href="#八连通方向" class="headerlink" title="八连通方向"></a>八连通方向</h3><div class="code-wrapper"><pre><code class="hljs">  ← ↖ ↑ ↗ →
 ↙ ↓ ↘</code></pre></div>
 <p>共 8 个方向：(±1, ±1) 和 (±1, 0) 和 (0, ±1)</p>
-<h2 id="代码实现">代码实现</h2>
-<div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 grid = [<span class="hljs-built_in">list</span>(<span class="hljs-built_in">input</span>().strip()) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
 
 visited = [[<span class="hljs-literal">False</span>] * m <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
@@ -350,9 +340,7 @@ count = <span class="hljs-number">0</span>
             count += <span class="hljs-number">1</span>
 
 <span class="hljs-built_in">print</span>(count)</code></pre></div>
-<h2 id="代码解析">代码解析</h2>
-<h3 id="核心函数-dfsx-y">核心函数 <code>dfs(x, y)</code></h3>
-<p><strong>作用</strong>：将 (x, y) 所属的整个水坑标记为已访问</p>
+<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="核心函数-dfs-x-y"><a href="#核心函数-dfs-x-y" class="headerlink" title="核心函数 dfs(x, y)"></a>核心函数 <code>dfs(x, y)</code></h3><p><strong>作用</strong>：将 (x, y) 所属的整个水坑标记为已访问</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">x, y</span>):
     visited[x][y] = <span class="hljs-literal">True</span>  <span class="hljs-comment"># 标记当前格子</span>
     <span class="hljs-comment"># 遍历 8 个方向</span>
@@ -364,36 +352,29 @@ count = <span class="hljs-number">0</span>
             <span class="hljs-comment"># 边界检查 + 未访问 + 是水</span>
             <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> visited[nx][ny] <span class="hljs-keyword">and</span> grid[nx][ny] == <span class="hljs-string">&#x27;W&#x27;</span>:
                 dfs(nx, ny)</code></pre></div>
-<h3 id="算法流程">算法流程</h3>
-<div class="code-wrapper"><pre><code class="hljs routeros">遍历网格：
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><div class="code-wrapper"><pre><code class="hljs routeros">遍历网格：
 (0,0)是<span class="hljs-string">&#x27;W&#x27;</span>且未访问 → <span class="hljs-attribute">count</span>=1, DFS标记整个水坑
 (0,1)是<span class="hljs-string">&#x27;.&#x27;</span> → 跳过
 (0,2)是<span class="hljs-string">&#x27;W&#x27;</span>且未访问 → <span class="hljs-attribute">count</span>=2, DFS标记整个水坑
 <span class="hljs-built_in">..</span>.</code></pre></div>
-<h3 id="示例演示">示例演示</h3>
-<p><strong>输入</strong>： <div class="code-wrapper"><pre><code class="hljs lasso">W<span class="hljs-params">...</span><span class="hljs-params">...</span>..WW.
+<h3 id="示例演示"><a href="#示例演示" class="headerlink" title="示例演示"></a>示例演示</h3><p><strong>输入</strong>：<br><div class="code-wrapper"><pre><code class="hljs lasso">W<span class="hljs-params">...</span><span class="hljs-params">...</span>..WW.
 .WWW<span class="hljs-params">...</span>..WWW
 <span class="hljs-params">...</span>.WW<span class="hljs-params">...</span>WW.</code></pre></div></p>
-<p><strong>过程</strong>： <div class="code-wrapper"><pre><code class="hljs routeros">第1个水坑: (0,0) → 只有这一个，<span class="hljs-attribute">count</span>=1
+<p><strong>过程</strong>：<br><div class="code-wrapper"><pre><code class="hljs routeros">第1个水坑: (0,0) → 只有这一个，<span class="hljs-attribute">count</span>=1
 第2个水坑: (1,1) → (1,2) → (1,3)，<span class="hljs-attribute">count</span>=2
 第3个水坑: (0,9) → (0,10) → (1,10) → (2,10)，<span class="hljs-attribute">count</span>=3
 <span class="hljs-built_in">..</span>.</code></pre></div></p>
 <p><strong>输出</strong>：<code>3</code></p>
-<h2 id="关键点">关键点</h2>
-<ol type="1">
-<li><strong>八连通</strong>：注意对角线也要考虑，用双重循环
-<code>dx, dy in [-1, 0, 1]</code></li>
+<h2 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h2><ol>
+<li><strong>八连通</strong>：注意对角线也要考虑，用双重循环 <code>dx, dy in [-1, 0, 1]</code></li>
 <li><strong>跳过自身</strong>：<code>if dx == 0 and dy == 0: continue</code></li>
-<li><strong>visited
-标记</strong>：防止重复访问，确保每个水坑只计数一次</li>
+<li><strong>visited 标记</strong>：防止重复访问，确保每个水坑只计数一次</li>
 </ol>
-<h2 id="复杂度分析">复杂度分析</h2>
-<ul>
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
 <li><strong>时间复杂度</strong>：O(N × M) - 每个格子最多访问一次</li>
-<li><strong>空间复杂度</strong>：O(N × M) - visited 数组 +
-递归栈深度</li>
+<li><strong>空间复杂度</strong>：O(N × M) - visited 数组 + 递归栈深度</li>
 </ul>
-<h2 id="变种问题">变种问题</h2>
+<h2 id="变种问题"><a href="#变种问题" class="headerlink" title="变种问题"></a>变种问题</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -420,10 +401,9 @@ count = <span class="hljs-number">0</span>
 </tr>
 </tbody>
 </table>
-<h2 id="优化建议">优化建议</h2>
-<ol type="1">
-<li><strong>原地标记</strong>：直接把访问过的 <code>W</code> 改为
-<code>.</code>，省去 visited 数组</li>
+</div>
+<h2 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h2><ol>
+<li><strong>原地标记</strong>：直接把访问过的 <code>W</code> 改为 <code>.</code>，省去 visited 数组</li>
 <li><strong>BFS 避免爆栈</strong>：对于极大网格，BFS 更安全</li>
 <li><strong>并查集</strong>：适合需要频繁合并/查询的场景</li>
 </ol>
