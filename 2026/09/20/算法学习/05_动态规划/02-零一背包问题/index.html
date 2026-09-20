@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="0-1背包,DP">
   
-    <meta name="description" content="0&#x2F;1 背包问题 问题描述 有 NN 件物品，每件物品有重量 wiw_i 和价值 viv_i，求在不超过背包容量 WW 的情况下，选择物品使得总价值最大。  一维 DP 定义：dp[j] 为背包容量为 j 时的最大价值 初始条件：dp[j] &#x3D; 0 状态转移： dp[j]&#x3D;max&#8289;(dp[j],dp[j−w]+v)dp[j] &#x3D; \max(dp[j], dp[j - w] + v) 代">
+    <meta name="description" content="0&#x2F;1 背包问题问题描述有 $N$ 件物品，每件物品有重量 $w_i$ 和价值 $v_i$，求在不超过背包容量 $W$ 的情况下，选择物品使得总价值最大。  一维 DP定义：dp[j] 为背包容量为 j 时的最大价值 初始条件：dp[j] &#x3D; 0 状态转移： dp[j] &#x3D; \max(dp[j], dp[j - w] + v)代码： N, W &#x3D; map(int, input().split())">
 <meta property="og:type" content="article">
 <meta property="og:title" content="0&#x2F;1 背包问题">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E9%9B%B6%E4%B8%80%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="0&#x2F;1 背包问题 问题描述 有 NN 件物品，每件物品有重量 wiw_i 和价值 viv_i，求在不超过背包容量 WW 的情况下，选择物品使得总价值最大。  一维 DP 定义：dp[j] 为背包容量为 j 时的最大价值 初始条件：dp[j] &#x3D; 0 状态转移： dp[j]&#x3D;max&#8289;(dp[j],dp[j−w]+v)dp[j] &#x3D; \max(dp[j], dp[j - w] + v) 代">
+<meta property="og:description" content="0&#x2F;1 背包问题问题描述有 $N$ 件物品，每件物品有重量 $w_i$ 和价值 $v_i$，求在不超过背包容量 $W$ 的情况下，选择物品使得总价值最大。  一维 DP定义：dp[j] 为背包容量为 j 时的最大价值 初始条件：dp[j] &#x3D; 0 状态转移： dp[j] &#x3D; \max(dp[j], dp[j - w] + v)代码： N, W &#x3D; map(int, input().split())">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-20T09:55:08.231Z">
-<meta property="article:modified_time" content="2026-09-20T09:55:08.232Z">
+<meta property="article:modified_time" content="2026-09-20T09:57:32.950Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="0-1背包">
 <meta property="article:tag" content="DP">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.4k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          13 分钟
+          12 分钟
         
       </span>
     
@@ -292,7 +292,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-20T17:55:08+08:00
+                    本文最后更新于 2026-09-20T17:57:32+08:00
                   
                   
 
@@ -302,24 +302,12 @@
             
               <div class="markdown-body">
                 
-                <h1 id="背包问题">0/1 背包问题</h1>
-<h2 id="问题描述">问题描述</h2>
-<p>有
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
-件物品，每件物品有重量
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>w</mi><mi>i</mi></msub><annotation encoding="application/x-tex">w_i</annotation></semantics></math>
-和价值
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>i</mi></msub><annotation encoding="application/x-tex">v_i</annotation></semantics></math>，求在不超过背包容量
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>
-的情况下，选择物品使得总价值最大。</p>
-<hr />
-<h2 id="一维-dp">一维 DP</h2>
-<p><strong>定义</strong>：<code>dp[j]</code> 为背包容量为 j
-时的最大价值</p>
+                <h1 id="0-1-背包问题"><a href="#0-1-背包问题" class="headerlink" title="0/1 背包问题"></a>0/1 背包问题</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>有 $N$ 件物品，每件物品有重量 $w_i$ 和价值 $v_i$，求在不超过背包容量 $W$ 的情况下，选择物品使得总价值最大。</p>
+<hr>
+<h2 id="一维-DP"><a href="#一维-DP" class="headerlink" title="一维 DP"></a>一维 DP</h2><p><strong>定义</strong>：<code>dp[j]</code> 为背包容量为 j 时的最大价值</p>
 <p><strong>初始条件</strong>：<code>dp[j] = 0</code></p>
-<p><strong>状态转移</strong>：
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>,</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mi>w</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">dp[j] = \max(dp[j], dp[j - w] + v)</annotation></semantics></math></p>
-<p><strong>代码</strong>：</p>
+<p><strong>状态转移</strong>：</p>
+<script type="math/tex; mode=display">dp[j] = \max(dp[j], dp[j - w] + v)</script><p><strong>代码</strong>：</p>
 <div class="code-wrapper"><pre><code class="hljs python">N, W = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 dp = [<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</span>)
 
@@ -331,45 +319,35 @@ dp = [<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</sp
 <span class="hljs-built_in">print</span>(dp[W])</code></pre></div>
 <p><strong>空间复杂度</strong>：O(W)</p>
 <blockquote>
-<p><strong>注意</strong>：一维 DP
-中，内层循环需要<strong>倒序</strong>遍历，以确保每个物品只被使用一次。</p>
+<p><strong>注意</strong>：一维 DP 中，内层循环需要<strong>倒序</strong>遍历，以确保每个物品只被使用一次。</p>
 </blockquote>
-<hr />
-<h2 id="为什么要倒序">为什么要倒序？</h2>
-<p><strong>原因</strong>：避免同一物品被重复使用</p>
+<hr>
+<h2 id="为什么要倒序？"><a href="#为什么要倒序？" class="headerlink" title="为什么要倒序？"></a>为什么要倒序？</h2><p><strong>原因</strong>：避免同一物品被重复使用</p>
 <p>以物品 (w=3, v=5) 为例：</p>
-<h3 id="正序遍历错误">正序遍历（错误）</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(w, W + <span class="hljs-number">1</span>):  <span class="hljs-comment"># 正序</span>
+<h3 id="正序遍历（错误）"><a href="#正序遍历（错误）" class="headerlink" title="正序遍历（错误）"></a>正序遍历（错误）</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(w, W + <span class="hljs-number">1</span>):  <span class="hljs-comment"># 正序</span>
     dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j-w] + v)</code></pre></div>
 <p>假设 W=6，初始 dp=[0,0,0,0,0,0,0]</p>
 <div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">j</span>=<span class="hljs-number">3</span>: dp[<span class="hljs-number">3</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">0</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # 放了这个物品
 <span class="hljs-attribute">j</span>=<span class="hljs-number">4</span>: dp[<span class="hljs-number">4</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">1</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">1</span>] 是 <span class="hljs-number">0</span>
 <span class="hljs-attribute">j</span>=<span class="hljs-number">5</span>: dp[<span class="hljs-number">5</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">2</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">2</span>] 是 <span class="hljs-number">0</span>
 <span class="hljs-attribute">j</span>=<span class="hljs-number">6</span>: dp[<span class="hljs-number">6</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">3</span>]+<span class="hljs-number">5</span>) = max(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>+<span class="hljs-number">5</span>) = <span class="hljs-number">10</span>   # 出问题了！</code></pre></div>
-<p><strong>问题</strong>：<code>dp[3]</code> 刚刚被更新成 5，现在
-<code>dp[6]</code> 又去查
-<code>dp[3]</code>，相当于<strong>同一个物品用了两次</strong>！</p>
-<h3 id="倒序遍历正确">倒序遍历（正确）</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(W, w - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):  <span class="hljs-comment"># 倒序</span>
+<p><strong>问题</strong>：<code>dp[3]</code> 刚刚被更新成 5，现在 <code>dp[6]</code> 又去查 <code>dp[3]</code>，相当于<strong>同一个物品用了两次</strong>！</p>
+<h3 id="倒序遍历（正确）"><a href="#倒序遍历（正确）" class="headerlink" title="倒序遍历（正确）"></a>倒序遍历（正确）</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(W, w - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):  <span class="hljs-comment"># 倒序</span>
     dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j-w] + v)</code></pre></div>
 <div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">j</span>=<span class="hljs-number">6</span>: dp[<span class="hljs-number">6</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">3</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">3</span>] 还是 <span class="hljs-number">0</span>（未被当前物品更新）
 <span class="hljs-attribute">j</span>=<span class="hljs-number">5</span>: dp[<span class="hljs-number">5</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">2</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">2</span>] 还是 <span class="hljs-number">0</span>
 <span class="hljs-attribute">j</span>=<span class="hljs-number">4</span>: dp[<span class="hljs-number">4</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">1</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">1</span>] 还是 <span class="hljs-number">0</span>
 <span class="hljs-attribute">j</span>=<span class="hljs-number">3</span>: dp[<span class="hljs-number">3</span>] = max(<span class="hljs-number">0</span>, dp[<span class="hljs-number">0</span>]+<span class="hljs-number">5</span>) = <span class="hljs-number">5</span>    # dp[<span class="hljs-number">0</span>] 是 <span class="hljs-number">0</span></code></pre></div>
-<p><strong>原因</strong>：倒序时，大 j 先更新，小 j 后更新。大 j 用到的
-<code>dp[j-w]</code>
-还是<strong>旧值</strong>，没被当前物品污染，确保每个物品只选一次。</p>
-<hr />
-<h2 id="二维-dp">二维 DP</h2>
-<p><strong>定义</strong>：<code>dp[i][j]</code> 为考虑前 i
-件物品，背包容量为 j 时的最大价值</p>
-<p><strong>初始条件</strong>：<code>dp[0][j] = 0</code>（没有物品时价值为
-0）</p>
-<p><strong>状态转移</strong>： - 不选第 i
-件物品：<code>dp[i][j] = dp[i-1][j]</code> - 选第 i
-件物品：<code>dp[i][j] = dp[i-1][j-w_i] + v_i</code></p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>,</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><msub><mi>w</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">]</mo><mo>+</mo><msub><mi>v</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">dp[i][j] = \max(dp[i-1][j], dp[i-1][j-w_i] + v_i)</annotation></semantics></math></p>
-<p><strong>代码</strong>：</p>
+<p><strong>原因</strong>：倒序时，大 j 先更新，小 j 后更新。大 j 用到的 <code>dp[j-w]</code> 还是<strong>旧值</strong>，没被当前物品污染，确保每个物品只选一次。</p>
+<hr>
+<h2 id="二维-DP"><a href="#二维-DP" class="headerlink" title="二维 DP"></a>二维 DP</h2><p><strong>定义</strong>：<code>dp[i][j]</code> 为考虑前 i 件物品，背包容量为 j 时的最大价值</p>
+<p><strong>初始条件</strong>：<code>dp[0][j] = 0</code>（没有物品时价值为 0）</p>
+<p><strong>状态转移</strong>：</p>
+<ul>
+<li>不选第 i 件物品：<code>dp[i][j] = dp[i-1][j]</code></li>
+<li>选第 i 件物品：<code>dp[i][j] = dp[i-1][j-w_i] + v_i</code></li>
+</ul>
+<script type="math/tex; mode=display">dp[i][j] = \max(dp[i-1][j], dp[i-1][j-w_i] + v_i)</script><p><strong>代码</strong>：</p>
 <div class="code-wrapper"><pre><code class="hljs python">N, W = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 dp = [[<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(N + <span class="hljs-number">1</span>)]
 
@@ -381,26 +359,14 @@ dp = [[<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</s
             dp[i][j] = <span class="hljs-built_in">max</span>(dp[i][j], dp[i-<span class="hljs-number">1</span>][j-w] + v)
 
 <span class="hljs-built_in">print</span>(dp[N][W])</code></pre></div>
-<p><strong>时间复杂度</strong>：O(N × W)
-<strong>空间复杂度</strong>：O(N × W)</p>
-<hr />
-<h2 id="例题">例题</h2>
-<h3 id="例题-1book-shop0-1-背包模板题">例题 1：Book Shop（0-1
-背包模板题）</h3>
-<p>来源：<a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1158">CSES - Book
-Shop</a></p>
-<p>给定 n 本书，每本书有价格
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mi>i</mi></msub><annotation encoding="application/x-tex">h_i</annotation></semantics></math>
-和页数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>s</mi><mi>i</mi></msub><annotation encoding="application/x-tex">s_i</annotation></semantics></math>，总预算为
-x，求在预算范围内能获得的最大页数。每本书只能购买一次。</p>
-<p>限制：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">1 \le n \le 1000</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le x \le 10^5</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><msub><mi>h</mi><mi>i</mi></msub><mo>,</mo><msub><mi>s</mi><mi>i</mi></msub><mo>≤</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">1 \le h_i, s_i \le 1000</annotation></semantics></math>。</p>
-<p>示例：输入 <code>4 10</code>，h = [4, 8, 5, 3]，s = [5, 12, 8,
-1]；输出 13（购买第 1 和第 3 本书，价格 4+5=9，页数 5+8=13）。</p>
-<p>思路：0-1 背包（每本书只能选一次）。<code>dp[j]</code> 为花费不超过 j
-时能获得的最大页数，初始 <code>dp[j] = 0</code>，转移：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>,</mo><mspace width="0.222em"></mspace><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><msub><mi>h</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">]</mo><mo>+</mo><msub><mi>s</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">dp[j] = \max(dp[j],\ dp[j - h_i] + s_i)</annotation></semantics></math></p>
-<p>对每本书尝试加入背包，倒序遍历 j 确保每本书只被使用一次。</p>
+<p><strong>时间复杂度</strong>：O(N × W)<br><strong>空间复杂度</strong>：O(N × W)</p>
+<hr>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="例题-1：Book-Shop（0-1-背包模板题）"><a href="#例题-1：Book-Shop（0-1-背包模板题）" class="headerlink" title="例题 1：Book Shop（0-1 背包模板题）"></a>例题 1：Book Shop（0-1 背包模板题）</h3><p>来源：<a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1158">CSES - Book Shop</a></p>
+<p>给定 n 本书，每本书有价格 $h_i$ 和页数 $s_i$，总预算为 x，求在预算范围内能获得的最大页数。每本书只能购买一次。</p>
+<p><strong>限制</strong>：$1 \le n \le 1000$，$1 \le x \le 10^5$，$1 \le h_i, s_i \le 1000$。</p>
+<p><strong>示例</strong>：输入 <code>4 10</code>，h = [4, 8, 5, 3]，s = [5, 12, 8, 1]；输出 13（购买第 1 和第 3 本书，价格 4+5=9，页数 5+8=13）。</p>
+<p><strong>思路</strong>：<strong>0-1 背包</strong>（每本书只能选一次）。<code>dp[j]</code> 为花费不超过 j 时能获得的最大页数，初始 <code>dp[j] = 0</code>，转移：</p>
+<script type="math/tex; mode=display">dp[j] = \max(dp[j],\ dp[j - h_i] + s_i)</script><p>对每本书尝试加入背包，<strong>倒序遍历</strong> j 确保每本书只被使用一次。</p>
 <div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 cost = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
 pages = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
@@ -412,23 +378,14 @@ dp = [<span class="hljs-number">0</span>] * (x + <span class="hljs-number">1</sp
         dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - cost[i]] + pages[i])
 
 <span class="hljs-built_in">print</span>(dp[x])</code></pre></div>
-<p>复杂度：时间 O(n × x)，空间 O(x)。</p>
-<p>注意：0-1
-背包需要倒序遍历，确保每本书只选一次；完全背包则正序遍历。</p>
-<h3 id="例题-2money-sums可行性背包">例题 2：Money
-Sums（可行性背包）</h3>
-<p>来源：<a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1745">CSES - Money
-Sums</a></p>
-<p>给定 n 枚硬币，每枚硬币价值
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math>，求能凑成的所有不同金额。</p>
-<p>限制：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">1 \le n \le 100</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><msub><mi>x</mi><mi>i</mi></msub><mo>≤</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">1 \le x_i \le 1000</annotation></semantics></math>。</p>
-<p>示例：输入 <code>4</code>，coins = [4, 2, 5, 2]；输出 9 种金额：2 4 5
-6 7 8 9 11 13。</p>
-<p>思路：0-1 背包求可行性（每枚硬币只能用一次）。<code>dp[j]</code>
-表示能否凑成金额 j，初始
-<code>dp[0] = True</code>（什么都不选），转移：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mspace width="0.222em"></mspace><mtext mathvariant="normal">或</mtext><mspace width="0.222em"></mspace><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">]</mo><mspace width="1.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>j</mi><mo>−</mo><msub><mi>x</mi><mi>i</mi></msub><mo>≥</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">dp[j] = dp[j]\ \text{或}\ dp[j - x_i] \quad (j - x_i \geq 0)</annotation></semantics></math></p>
-<div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+<p><strong>复杂度</strong>：时间 O(n × x)，空间 O(x)。</p>
+<p><strong>注意</strong>：0-1 背包需要倒序遍历，确保每本书只选一次；完全背包则正序遍历。</p>
+<h3 id="例题-2：Money-Sums（可行性背包）"><a href="#例题-2：Money-Sums（可行性背包）" class="headerlink" title="例题 2：Money Sums（可行性背包）"></a>例题 2：Money Sums（可行性背包）</h3><p>来源：<a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1745">CSES - Money Sums</a></p>
+<p>给定 n 枚硬币，每枚硬币价值 $x_i$，求能凑成的所有不同金额。</p>
+<p><strong>限制</strong>：$1 \le n \le 100$，$1 \le x_i \le 1000$。</p>
+<p><strong>示例</strong>：输入 <code>4</code>，coins = [4, 2, 5, 2]；输出 9 种金额：2 4 5 6 7 8 9 11 13。</p>
+<p><strong>思路</strong>：<strong>0-1 背包求可行性</strong>（每枚硬币只能用一次）。<code>dp[j]</code> 表示能否凑成金额 j，初始 <code>dp[0] = True</code>（什么都不选），转移：</p>
+<script type="math/tex; mode=display">dp[j] = dp[j]\ \text{或}\ dp[j - x_i] \quad (j - x_i \geq 0)</script><div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 coins = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
 
 max_sum = <span class="hljs-built_in">sum</span>(coins)
@@ -444,30 +401,20 @@ res = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</
 
 <span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(res))
 <span class="hljs-built_in">print</span>(*res)</code></pre></div>
-<p>复杂度：时间 O(n × max_sum)，空间 O(max_sum)。</p>
-<h3 id="例题-3two-sets-ii计数背包">例题 3：Two Sets II（计数背包）</h3>
-<p>来源：<a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1093">CSES - Two Sets
-II</a></p>
-<p>给定数字 1, 2, …, n，求将其分成两个和相等集合的方式数（对
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math>
-取模）。</p>
-<p>限制：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>500</mn></mrow><annotation encoding="application/x-tex">1 \le n \le 500</annotation></semantics></math>。</p>
-<p>示例：输入 <code>7</code>，输出 <code>4</code>：</p>
+<p><strong>复杂度</strong>：时间 O(n × max_sum)，空间 O(max_sum)。</p>
+<h3 id="例题-3：Two-Sets-II（计数背包）"><a href="#例题-3：Two-Sets-II（计数背包）" class="headerlink" title="例题 3：Two Sets II（计数背包）"></a>例题 3：Two Sets II（计数背包）</h3><p>来源：<a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1093">CSES - Two Sets II</a></p>
+<p>给定数字 1, 2, …, n，求将其分成两个和相等集合的方式数（对 $10^9+7$ 取模）。</p>
+<p><strong>限制</strong>：$1 \le n \le 500$。</p>
+<p><strong>示例</strong>：输入 <code>7</code>，输出 <code>4</code>：</p>
 <ul>
 <li>{1,3,4,6} 和 {2,5,7}</li>
 <li>{1,2,5,6} 和 {3,4,7}</li>
 <li>{1,2,4,7} 和 {3,5,6}</li>
 <li>{1,6,7} 和 {2,3,4,5}</li>
 </ul>
-<p>思路：0-1 背包求方案数（每个数字只能用一次）。</p>
-<p>分析：数字 1~n 的总和为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">S = n(n+1)/2</annotation></semantics></math>；S
-为奇数无法平分输出 0；否则目标是在一半和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">S/2</annotation></semantics></math>
-内放入一些数字。<code>dp[j]</code> 为凑成和 j 的方式数，初始
-<code>dp[0] = 1</code>（什么都不选），转移：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">for all </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi><mtext mathvariant="normal">（倒序）</mtext></mrow><annotation encoding="application/x-tex">dp[j] = dp[j] + dp[j - i] \quad \text{for all } i \text{（倒序）}</annotation></semantics></math></p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<p><strong>思路</strong>：<strong>0-1 背包求方案数</strong>（每个数字只能用一次）。</p>
+<p><strong>分析</strong>：数字 1~n 的总和为 $S = n(n+1)/2$；S 为奇数无法平分输出 0；否则目标是在一半和 $S/2$ 内放入一些数字。<code>dp[j]</code> 为凑成和 j 的方式数，初始 <code>dp[0] = 1</code>（什么都不选），转移：</p>
+<script type="math/tex; mode=display">dp[j] = dp[j] + dp[j - i] \quad \text{for all } i \text{（倒序）}</script><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 MOD = <span class="hljs-number">10</span>**<span class="hljs-number">9</span> + <span class="hljs-number">7</span>
 
@@ -489,16 +436,10 @@ dp[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>
         dp[j] = (dp[j] + dp[j - i]) % MOD
 
 <span class="hljs-built_in">print</span>(dp[target])</code></pre></div>
-<p>复杂度：时间 O(n × target)，空间 O(target)。</p>
-<p><strong>为什么只用 1~n-1？</strong> 假设 n
-在较小的那组，那么较小那组的最大可能和为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mi>…</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1+2+\dots+(n-1) = n(n-1)/2</annotation></semantics></math>；由于
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>/</mi><mn>2</mn><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>4</mn><mo>&gt;</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">S/2 = n(n+1)/4 &gt; n(n-1)/4</annotation></semantics></math>，n
-不可能在较小的那组。因此 n 一定在较大的那组，只需用 1~n-1 来凑成
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">S/2</annotation></semantics></math>。</p>
-<p>验证：n = 7，总和 = 28，目标 = 14。用数字 1~6 凑成 14 的 4
-种方式，加上数字 7，正好对应 4 种分组方式。</p>
-<hr />
+<p><strong>复杂度</strong>：时间 O(n × target)，空间 O(target)。</p>
+<p><strong>为什么只用 1~n-1？</strong> 假设 n 在较小的那组，那么较小那组的最大可能和为 $1+2+\dots+(n-1) = n(n-1)/2$；由于 $S/2 = n(n+1)/4 &gt; n(n-1)/4$，n 不可能在较小的那组。因此 n 一定在较大的那组，只需用 1~n-1 来凑成 $S/2$。</p>
+<p><strong>验证</strong>：n = 7，总和 = 28，目标 = 14。用数字 1~6 凑成 14 的 4 种方式，加上数字 7，正好对应 4 种分组方式。</p>
+<hr>
 
                 
               </div>

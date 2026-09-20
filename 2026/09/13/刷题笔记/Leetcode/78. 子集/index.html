@@ -301,10 +301,8 @@
             
               <div class="markdown-body">
                 
-                <p>给你一个整数数组 <code>nums</code>，数组中的元素
-<strong>互不相同</strong>。返回该数组所有可能的子集（幂集）。</p>
-<p>解集 <strong>不能</strong> 包含重复的子集。你可以按
-<strong>任意顺序</strong> 返回解集。</p>
+                <p>给你一个整数数组 <code>nums</code>，数组中的元素 <strong>互不相同</strong>。返回该数组所有可能的子集（幂集）。</p>
+<p>解集 <strong>不能</strong> 包含重复的子集。你可以按 <strong>任意顺序</strong> 返回解集。</p>
 <p><strong>示例 1</strong>：</p>
 <p><strong>输入</strong>：nums = [1,2,3]</p>
 <p><strong>输出</strong>：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]</p>
@@ -317,24 +315,20 @@
 <li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
 <li><code>nums</code> 中的所有元素 <strong>互不相同</strong></li>
 </ul>
-<h2 id="思路">思路</h2>
-<h3 id="思路一库函数">思路一：库函数</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="思路一：库函数"><a href="#思路一：库函数" class="headerlink" title="思路一：库函数"></a>思路一：库函数</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">subsets</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:
         res = []
         <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)+<span class="hljs-number">1</span>):
             <span class="hljs-keyword">for</span> tmp <span class="hljs-keyword">in</span> itertools.combinations(nums, i):
                 res.append(tmp)
         <span class="hljs-keyword">return</span> res</code></pre></div>
-<h3 id="思路二迭代">思路二：迭代</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
+<h3 id="思路二：迭代"><a href="#思路二：迭代" class="headerlink" title="思路二：迭代"></a>思路二：迭代</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">subsets</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:
         res = [[]]
         <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> nums:
             res = res + [[i] + num <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> res]
         <span class="hljs-keyword">return</span> res</code></pre></div>
-<h3 id="思路三递归回溯算法">思路三：递归（回溯算法）</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
+<h3 id="思路三：递归（回溯算法）"><a href="#思路三：递归（回溯算法）" class="headerlink" title="思路三：递归（回溯算法）"></a>思路三：递归（回溯算法）</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">subsets</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:
         res = []
         n = <span class="hljs-built_in">len</span>(nums)

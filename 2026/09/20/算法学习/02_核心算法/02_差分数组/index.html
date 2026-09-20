@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="差分,前缀和">
   
-    <meta name="description" content="差分数组 模板 diff &#x3D; [0] * (n + 1)   # 开 n+1，防止 r+1 越界  # 对区间 [l, r] 加 v diff[l] +&#x3D; v diff[r+1] -&#x3D; v  # 还原：对 diff 求前缀和 arr &#x3D; [0] * n curr &#x3D; 0 for i in range(n):     curr +&#x3D; diff[i]     arr[i] &#x3D; curr 字典版（稀疏差">
+    <meta name="description" content="差分数组模板diff &#x3D; [0] * (n + 1)   # 开 n+1，防止 r+1 越界  # 对区间 [l, r] 加 v diff[l] +&#x3D; v diff[r+1] -&#x3D; v  # 还原：对 diff 求前缀和 arr &#x3D; [0] * n curr &#x3D; 0 for i in range(n):     curr +&#x3D; diff[i]     arr[i] &#x3D; curr 字典版（稀疏差分）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="02_差分数组">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="差分数组 模板 diff &#x3D; [0] * (n + 1)   # 开 n+1，防止 r+1 越界  # 对区间 [l, r] 加 v diff[l] +&#x3D; v diff[r+1] -&#x3D; v  # 还原：对 diff 求前缀和 arr &#x3D; [0] * n curr &#x3D; 0 for i in range(n):     curr +&#x3D; diff[i]     arr[i] &#x3D; curr 字典版（稀疏差">
+<meta property="og:description" content="差分数组模板diff &#x3D; [0] * (n + 1)   # 开 n+1，防止 r+1 越界  # 对区间 [l, r] 加 v diff[l] +&#x3D; v diff[r+1] -&#x3D; v  # 还原：对 diff 求前缀和 arr &#x3D; [0] * n curr &#x3D; 0 for i in range(n):     curr +&#x3D; diff[i]     arr[i] &#x3D; curr 字典版（稀疏差分）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T16:33:03.815Z">
 <meta property="article:modified_time" content="2026-09-20T08:34:35.655Z">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          445 字
+          417 字
         
       </span>
     
@@ -302,9 +302,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="差分数组">差分数组</h2>
-<h2 id="模板">模板</h2>
-<div class="code-wrapper"><pre><code class="hljs python">diff = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)   <span class="hljs-comment"># 开 n+1，防止 r+1 越界</span>
+                <h2 id="差分数组"><a href="#差分数组" class="headerlink" title="差分数组"></a>差分数组</h2><h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><div class="code-wrapper"><pre><code class="hljs python">diff = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)   <span class="hljs-comment"># 开 n+1，防止 r+1 越界</span>
 
 <span class="hljs-comment"># 对区间 [l, r] 加 v</span>
 diff[l] += v
@@ -316,40 +314,15 @@ curr = <span class="hljs-number">0</span>
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
     curr += diff[i]
     arr[i] = curr</code></pre></div>
-<h2 id="字典版稀疏差分">字典版（稀疏差分）</h2>
-<p>当下标很大或很稀疏（只涉及少数几个位置）时，用字典代替数组：</p>
+<h2 id="字典版（稀疏差分）"><a href="#字典版（稀疏差分）" class="headerlink" title="字典版（稀疏差分）"></a>字典版（稀疏差分）</h2><p>当下标很大或很稀疏（只涉及少数几个位置）时，用字典代替数组：</p>
 <div class="code-wrapper"><pre><code class="hljs python">diff = &#123;&#125;
 
 <span class="hljs-comment"># 对区间 [l, r) 加 v</span>
 diff[l] = diff.get(l, <span class="hljs-number">0</span>) + v    <span class="hljs-comment"># 起点加 v</span>
 diff[r] = diff.get(r, <span class="hljs-number">0</span>) - v    <span class="hljs-comment"># 终点减 v</span></code></pre></div>
-<h2 id="解释">解释</h2>
-<p><strong>用途</strong>：多次区间修改、最后一次性还原——每次把「区间
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo>,</mo><mi>r</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math>
-整体加
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>」降为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math>
-的两个单点修改。</p>
-<p><strong>原理</strong>：差分是前缀和的<strong>逆运算</strong>。设
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo>−</mo><mi>a</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">d[i] = a[i] - a[i-1]</annotation></semantics></math>，则对
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
-求前缀和就还原出
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>。区间
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo>,</mo><mi>r</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math>
-加
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
-时，只有
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">d[l]</annotation></semantics></math>
-和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">[</mo><mi>r</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">d[r+1]</annotation></semantics></math>
-两个边界变了：</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false" form="prefix">[</mo><mi>l</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mo>=</mo><mi>v</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>d</mi><mo stretchy="false" form="prefix">[</mo><mi>r</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>−</mo><mo>=</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">d[l] \mathrel{+}= v,\quad d[r+1] \mathrel{-}= v</annotation></semantics></math></p>
-<h2 id="典型例题leetcode-1109.-航班预订统计">典型例题：LeetCode 1109.
-航班预订统计</h2>
-<p>有 <code>n</code>
-个航班，<code>bookings[i] = [first, last, seats]</code> 表示预订区间
-<code>[first, last]</code> 的每个航班增加 <code>seats</code>
-个座位，求各航班最终预订数。典型的「多次区间修改 + 最后还原」：</p>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p><strong>用途</strong>：多次区间修改、最后一次性还原——每次把「区间 $[l, r]$ 整体加 $v$」降为 $O(1)$ 的两个单点修改。</p>
+<p><strong>原理</strong>：差分是前缀和的<strong>逆运算</strong>。设 $d[i] = a[i] - a[i-1]$，则对 $d$ 求前缀和就还原出 $a$。区间 $[l, r]$ 加 $v$ 时，只有 $d[l]$ 和 $d[r+1]$ 两个边界变了：</p>
+<script type="math/tex; mode=display">d[l] \mathrel{+}= v,\quad d[r+1] \mathrel{-}= v</script><h2 id="典型例题：LeetCode-1109-航班预订统计"><a href="#典型例题：LeetCode-1109-航班预订统计" class="headerlink" title="典型例题：LeetCode 1109. 航班预订统计"></a>典型例题：LeetCode 1109. 航班预订统计</h2><p>有 <code>n</code> 个航班，<code>bookings[i] = [first, last, seats]</code> 表示预订区间 <code>[first, last]</code> 的每个航班增加 <code>seats</code> 个座位，求各航班最终预订数。典型的「多次区间修改 + 最后还原」：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">corpFlightBookings</span>(<span class="hljs-params">self, bookings: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:
         diff = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
@@ -363,13 +336,9 @@ diff[r] = diff.get(r, <span class="hljs-number">0</span>) - v    <span class="hl
             curr += diff[i]
             ans.append(curr)
         <span class="hljs-keyword">return</span> ans</code></pre></div>
-<h2 id="适用场景与限制">适用场景与限制</h2>
-<ul>
-<li><strong>适合</strong>：所有修改先做完、最后统一查询/还原（离线场景），总复杂度
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n + m)</annotation></semantics></math></li>
-<li><strong>不适合</strong>：修改和查询<strong>交替</strong>进行（在线场景）——每次查询都要
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math>
-还原，应改用树状数组或线段树</li>
+<h2 id="适用场景与限制"><a href="#适用场景与限制" class="headerlink" title="适用场景与限制"></a>适用场景与限制</h2><ul>
+<li><strong>适合</strong>：所有修改先做完、最后统一查询/还原（离线场景），总复杂度 $O(n + m)$</li>
+<li><strong>不适合</strong>：修改和查询<strong>交替</strong>进行（在线场景）——每次查询都要 $O(n)$ 还原，应改用树状数组或线段树</li>
 <li>常见变形：对「区间被覆盖次数」计数（如拼车、会议室占用），同样先差分再前缀和</li>
 </ul>
 
@@ -412,9 +381,9 @@ diff[r] = diff.get(r, <span class="hljs-number">0</span>) - v    <span class="hl
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#前缀和</a>
-      
         <a href="/tags/%E5%B7%AE%E5%88%86/" class="print-no-link">#差分</a>
+      
+        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#前缀和</a>
       
     </div>
   
