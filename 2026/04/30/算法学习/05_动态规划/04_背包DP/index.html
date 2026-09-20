@@ -17,28 +17,29 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Ming">
-  <meta name="keywords" content="0-1背包,0-1背包,DP,题解">
+  <meta name="keywords" content="DP,动态规划,算法,背包">
   
-    <meta name="description" content="Two Sets II 题解 题目描述 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1092 给定数字 1, 2, …, n，求将其分成两个和相等集合的方式数。 限制： - 1 ≤ n ≤ 500 示例： - 输入：7 - 输出：4 - 解释： - {1,3,4,6} 和 {2,5,7} - {1,2,5,6} 和 {3,4,7} - {1,2,4,7} 和 {3,5,6} -">
+    <meta name="description" content="背包 DP 背包问题简介 背包问题通常涉及将有限容量的容器用物品的子集填满，我们希望计算或优化与物品相关的某些数量。几乎每次，你可以将每个物品视为具有正重量，而我们选择的物品的总重量不得超过容器的容量，这个容量是一个数字。 背包问题的变体  0&#x2F;1 背包问题: 选择物品的子集，使得它们总价值最大化，且总重量不超过容器容量  02-01背包问题  完全背包问题: 找到所有可能的、由任何物品子集实现的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Two Sets II 题解">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/09_Two_Sets_II/index.html">
+<meta property="og:title" content="02_Knapsack DP 背包DP">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_%E8%83%8C%E5%8C%85DP/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Two Sets II 题解 题目描述 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1092 给定数字 1, 2, …, n，求将其分成两个和相等集合的方式数。 限制： - 1 ≤ n ≤ 500 示例： - 输入：7 - 输出：4 - 解释： - {1,3,4,6} 和 {2,5,7} - {1,2,5,6} 和 {3,4,7} - {1,2,4,7} 和 {3,5,6} -">
+<meta property="og:description" content="背包 DP 背包问题简介 背包问题通常涉及将有限容量的容器用物品的子集填满，我们希望计算或优化与物品相关的某些数量。几乎每次，你可以将每个物品视为具有正重量，而我们选择的物品的总重量不得超过容器的容量，这个容量是一个数字。 背包问题的变体  0&#x2F;1 背包问题: 选择物品的子集，使得它们总价值最大化，且总重量不超过容器容量  02-01背包问题  完全背包问题: 找到所有可能的、由任何物品子集实现的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-13T15:49:24.486Z">
-<meta property="article:modified_time" content="2026-09-20T08:34:35.652Z">
+<meta property="article:published_time" content="2026-04-30T09:02:14.000Z">
+<meta property="article:modified_time" content="2026-09-20T09:49:35.743Z">
 <meta property="article:author" content="Ming">
-<meta property="article:tag" content="0-1背包">
 <meta property="article:tag" content="DP">
-<meta property="article:tag" content="题解">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="背包">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Two Sets II 题解 - Ming&#39;s Blog</title>
+  <title>02_Knapsack DP 背包DP - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -208,7 +209,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Two Sets II 题解"></span>
+            <span id="subtitle" data-typed-text="02_Knapsack DP 背包DP"></span>
           
         </div>
 
@@ -219,8 +220,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-13 23:49" pubdate>
-          2026年9月13日 晚上
+        <time datetime="2026-04-30 17:02" pubdate>
+          2026年4月30日 下午
         </time>
       </span>
     
@@ -231,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          579 字
+          622 字
         
       </span>
     
@@ -242,7 +243,7 @@
         
         
         
-          5 分钟
+          6 分钟
         
       </span>
     
@@ -288,12 +289,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Two Sets II 题解</h1>
+            <h1 id="seo-header">02_Knapsack DP 背包DP</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-20T16:34:35+08:00
+                    本文最后更新于 2026-09-20T17:49:35+08:00
                   
                   
 
@@ -303,82 +304,100 @@
             
               <div class="markdown-body">
                 
-                <h1 id="two-sets-ii-题解">Two Sets II 题解</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>https://cses.fi/problemset/task/1092</p>
-<p>给定数字 1, 2, …, n，求将其分成两个和相等集合的方式数。</p>
-<p><strong>限制</strong>： - 1 ≤ n ≤ 500</p>
-<p><strong>示例</strong>： - 输入：7 - 输出：4 - 解释： - {1,3,4,6} 和
-{2,5,7} - {1,2,5,6} 和 {3,4,7} - {1,2,4,7} 和 {3,5,6} - {1,6,7} 和
-{2,3,4,5}</p>
-<hr />
-<h2 id="解法">解法</h2>
-<p><strong>问题类型</strong>：0-1
-背包（每个数字只能用一次，求方案数）</p>
-<p><strong>分析</strong>： - 数字 1~n 的总和为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">S = n(n+1)/2</annotation></semantics></math>
-- 如果 S 为奇数，无法平分，输出 0 - 如果 S 为偶数，目标是在一半和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">S/2</annotation></semantics></math>
-内放入一些数字</p>
-<p><strong>定义</strong>：<code>dp[j]</code> 为凑成和 j 的方式数</p>
-<p><strong>初始条件</strong>：<code>dp[0] = 1</code>（和为 0
-有一种方式：什么都不选）</p>
-<p><strong>状态转移</strong>：
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">for all </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> (倒序)</mtext></mrow></mrow><annotation encoding="application/x-tex">dp[j] = dp[j] + dp[j - i] \quad \text{for all } i \text{ (倒序)}</annotation></semantics></math></p>
-<p><strong>解释</strong>：遍历数字 1~n-1（最后数字 n
-必须放在较大的一组，所以只用
-1~n-1），尝试将每个数字加入集合中。倒序遍历确保每个数字只用一次。</p>
-<h3 id="代码">代码</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
-
-MOD = <span class="hljs-number">10</span>**<span class="hljs-number">9</span> + <span class="hljs-number">7</span>
-
-n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
-
-sum_elem = n * (n + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>
-
-<span class="hljs-keyword">if</span> sum_elem % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>:
-    <span class="hljs-built_in">print</span>(<span class="hljs-number">0</span>)
-    sys.exit()
-
-target = sum_elem // <span class="hljs-number">2</span>
-
-dp = [<span class="hljs-number">0</span>] * (target + <span class="hljs-number">1</span>)
-dp[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>
-
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):
-    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(target, i - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):
-        dp[j] = (dp[j] + dp[j - i]) % MOD
-
-<span class="hljs-built_in">print</span>(dp[target])</code></pre></div>
-<p><strong>时间复杂度</strong>：O(n × target)
-<strong>空间复杂度</strong>：O(target)</p>
+                <h1 id="背包-dp">背包 DP</h1>
+<h2 id="背包问题简介">背包问题简介</h2>
+<p>背包问题通常涉及将有限容量的容器用物品的子集填满，我们希望计算或优化与物品相关的某些数量。几乎每次，你可以将每个物品视为具有正重量，而我们选择的物品的总重量不得超过容器的容量，这个容量是一个数字。</p>
+<h3 id="背包问题的变体">背包问题的变体</h3>
+<ul>
+<li><strong>0/1 背包问题</strong>:
+选择物品的子集，使得它们总价值最大化，且总重量不超过容器容量
+<ul>
+<li><a href="02-01背包问题.md">02-01背包问题</a></li>
+</ul></li>
+<li><strong>完全背包问题</strong>:
+找到所有可能的、由任何物品子集实现的总重量，这些总重量不超过容器容量
+<ul>
+<li><a href="03-完全背包问题.md">03-完全背包问题</a></li>
+</ul></li>
+<li><strong>计数问题</strong>:
+计算有多少种物品序列能够完全填满容器，这意味着总重量正好等于容器的容量（顺序可能重要也可能不重要）</li>
+</ul>
 <blockquote>
-<p><strong>注意</strong>：只需遍历 1~n-1，因为数字 n
-必须放在较大的一组（如果总和是偶数，较大的那组一定包含 n）。</p>
+<p><strong>提示</strong>:
+背包问题的动态规划解法通常包含一个状态来跟踪背包的容量，状态转移涉及尝试将一个物品添加到背包中。在竞赛编程中，你可以预期经典背包问题会被赋予变化、伪装和额外的状态信息。</p>
 </blockquote>
 <hr />
-<h2 id="算法详解">算法详解</h2>
-<h3 id="为什么只用-1n-1">为什么只用 1~n-1？</h3>
-<p>设总和为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">S = n(n+1)/2</annotation></semantics></math>，目标值为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">S/2</annotation></semantics></math>。</p>
-<ul>
-<li>假设 n 在较小的那组，那么较小那组的最大可能和为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1+2+...+(n-1) = n(n-1)/2</annotation></semantics></math></li>
-<li>由于
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>/</mi><mn>2</mn><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>4</mn><mo>&gt;</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">S/2 = n(n+1)/4 &gt; n(n-1)/4</annotation></semantics></math>，所以
-n 不可能在较小的那组</li>
-<li>因此 n 一定在较大的那组，只需用 1~n-1 来凑成 S/2</li>
-</ul>
-<h3 id="示例">示例</h3>
-<p>n = 7，总和 = 28，目标 = 14</p>
-<p>用数字 1~6 凑成 14 的方式：</p>
-<div class="code-wrapper"><pre><code class="hljs dust"><span class="hljs-template-variable">&#123;1,3,4,6&#125;</span><span class="language-xml"> = 14</span>
-<span class="language-xml"></span><span class="hljs-template-variable">&#123;1,2,5,6&#125;</span><span class="language-xml"> = 14</span>
-<span class="language-xml"></span><span class="hljs-template-variable">&#123;1,2,4,7&#125;</span><span class="language-xml"> 错误（7 超出范围）</span>
-<span class="language-xml"></span><span class="hljs-template-variable">&#123;1,6,7&#125;</span><span class="language-xml">    错误（7 超出范围）</span></code></pre></div>
-<p>实际上用 1~6 凑 14 的 4 种方式，加上数字 7，就是 4 种分组方式。</p>
+<h2 id="多重背包问题">多重背包问题</h2>
+<h3 id="问题描述">问题描述</h3>
+<p>有
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+种物品，每种物品有重量
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>w</mi><mi>i</mi></msub><annotation encoding="application/x-tex">w_i</annotation></semantics></math>、价值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>i</mi></msub><annotation encoding="application/x-tex">v_i</annotation></semantics></math>
+和数量
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>i</mi></msub><annotation encoding="application/x-tex">c_i</annotation></semantics></math>，求在不超过背包容量
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>
+的情况下，选择物品使得总价值最大。</p>
+<h3 id="解法">解法</h3>
+<p><strong>定义</strong>：<code>dp[j]</code> 为背包容量为 j
+时的最大价值</p>
+<p><strong>初始条件</strong>：<code>dp[j] = 0</code></p>
+<p><strong>状态转移</strong>：将数量
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>i</mi></msub><annotation encoding="application/x-tex">c_i</annotation></semantics></math>
+拆分成
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>8</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">1, 2, 4, 8, \dots</annotation></semantics></math>
+的物品件数，转化为 0/1 背包问题</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>,</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mi>w</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">dp[j] = \max(dp[j], dp[j - w] + v)</annotation></semantics></math></p>
+<h3 id="代码实现">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 多重背包 - 二进制优化</span>
+N, W = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+items = []
+
+<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(N):
+    w, v, c = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+    k = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">while</span> c &gt; <span class="hljs-number">0</span>:
+        take = <span class="hljs-built_in">min</span>(k, c)
+        items.append((w * take, v * take))
+        c -= take
+        k *= <span class="hljs-number">2</span>
+
+dp = [<span class="hljs-number">0</span>] * (W + <span class="hljs-number">1</span>)
+<span class="hljs-keyword">for</span> w, v <span class="hljs-keyword">in</span> items:
+    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(W, w - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):
+        dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - w] + v)
+
+<span class="hljs-built_in">print</span>(dp[W])</code></pre></div>
+<p><strong>时间复杂度</strong>：O(N × log(c_i) × W)
+<strong>空间复杂度</strong>：O(W)</p>
+<hr />
+<h2 id="总结">总结</h2>
+<table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>状态转移</th>
+<th>内层循环方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0/01 背包</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>,</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mi>w</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">dp[j] = \max(dp[j], dp[j-w] + v)</annotation></semantics></math></td>
+<td>倒序</td>
+</tr>
+<tr>
+<td>完全背包</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>,</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mi>w</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>v</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">dp[j] = \max(dp[j], dp[j-w] + v)</annotation></semantics></math></td>
+<td>正序</td>
+</tr>
+<tr>
+<td>多重背包</td>
+<td>二进制优化转为 0/01 背包</td>
+<td>倒序</td>
+</tr>
+</tbody>
+</table>
 
                 
               </div>
@@ -405,13 +424,6 @@ n 不可能在较小的那组</li>
   <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/" class="category-chain-item">0-1背包</a>
-  
-  
-
-  
 
   
 
@@ -428,9 +440,11 @@ n 不可能在较小的那组</li>
       
         <a href="/tags/DP/" class="print-no-link">#DP</a>
       
-        <a href="/tags/%E9%A2%98%E8%A7%A3/" class="print-no-link">#题解</a>
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
       
-        <a href="/tags/0-1%E8%83%8C%E5%8C%85/" class="print-no-link">#0-1背包</a>
+        <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
+      
+        <a href="/tags/%E8%83%8C%E5%8C%85/" class="print-no-link">#背包</a>
       
     </div>
   
@@ -442,8 +456,8 @@ n 不可能在较小的那组</li>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Two Sets II 题解</div>
-      <div>https://mingsm17518.github.io/2026/09/13/算法学习/05_动态规划/0-1背包/09_Two_Sets_II/</div>
+      <div>02_Knapsack DP 背包DP</div>
+      <div>https://mingsm17518.github.io/2026/04/30/算法学习/05_动态规划/04_背包DP/</div>
     </div>
     <div class="license-meta">
       
@@ -455,7 +469,7 @@ n 不可能在较小的那组</li>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年9月13日</div>
+          <div>2026年4月30日</div>
         </div>
       
       
@@ -492,9 +506,9 @@ n 不可能在较小的那组</li>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/02_Money_Sums/" title="Money Sums 题解">
+                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" title="04_Longest Increasing Subsequence 最长递增子序列">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Money Sums 题解</span>
+                        <span class="hidden-mobile">04_Longest Increasing Subsequence 最长递增子序列</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -502,8 +516,8 @@ n 不可能在较小的那组</li>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/13/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85/01_Book_Shop/" title="Book Shop 题解">
-                        <span class="hidden-mobile">Book Shop 题解</span>
+                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" title="Rectangle Geometry 矩形几何">
+                        <span class="hidden-mobile">Rectangle Geometry 矩形几何</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

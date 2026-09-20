@@ -27,7 +27,7 @@
 <meta property="og:description" content="输入输出 基础输入 # 单个整数 n &#x3D; int(input())  # 多个整数（空格分隔） a, b &#x3D; map(int, input().split())  # 一行整数转列表 arr &#x3D; list(map(int, input().split()))  # 去除换行符 s &#x3D; input().strip()  # 去除首尾空白（含 \n）  # 读取 n 行到列表 arr &#x3D; [int(i">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T11:48:16.585Z">
-<meta property="article:modified_time" content="2026-09-20T08:34:35.653Z">
+<meta property="article:modified_time" content="2026-09-20T09:45:48.912Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="输入输出">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          745 字
+          792 字
         
       </span>
     
@@ -292,7 +292,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-20T16:34:35+08:00
+                    本文最后更新于 2026-09-20T17:45:48+08:00
                   
                   
 
@@ -326,6 +326,12 @@ arr = [<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input<
         <span class="hljs-keyword">break</span>
     a, b = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, line.split())
     <span class="hljs-built_in">print</span>(a + b)</code></pre></div>
+<hr />
+<div class="code-wrapper"><pre><code class="hljs python">results = [-<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>]
+<span class="hljs-built_in">print</span>(*results)
+<span class="hljs-comment"># 输出：-1 -1 -1 -1 -1</span></code></pre></div>
+<p>这里的 <code>*results</code> 是 <strong>解包</strong>，意思是把 <code>results</code> 列表里的每个元素拆开，作为单独的参数传给 <code>print()</code>。</p>
+<hr />
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># ⚠️ input() 会保留换行符，需要 strip()</span>
 s = <span class="hljs-built_in">input</span>().strip()  <span class="hljs-comment"># 去除 &#x27;\n&#x27;</span>
 
