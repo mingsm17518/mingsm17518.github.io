@@ -19,23 +19,26 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="小红书9月13日机考题目与解析 题目内容 某技术社区举办「全能作者季」。你在 nn 个专栏方向上各有若干成稿：第 ii 个方向现有 aiai​ 篇。 你可以把一篇成稿从方向 ii 改挂到方向 jj（须保证该方向改挂后篇数非负）。每改挂一篇计一次操作，最多操作 kk 次。 改挂结束后，设 xx 为成稿数不少于 bb 篇的方向个数，y&#x3D;min⁡(a1,a2,…,an)y&#x3D;min(a1​,a2​,…,a">
+    <meta name="description" content="小红书9月13日机考题目与解析 某技术社区举办「全能作者季」。你在 nn 个专栏方向上各有若干成稿：第 ii 个方向现有 aia_i 篇。 你可以把一篇成稿从方向 ii 改挂到方向 jj（须保证该方向改挂后篇数非负）。每改挂一篇计一次操作，最多操作 kk 次。 改挂结束后，设 xx 为成稿数不少于 bb 篇的方向个数，y&#x3D;min&#8289;(a1,a2,…,an)y &#x3D; \min(a_1, a_">
 <meta property="og:type" content="article">
-<meta property="og:title" content="未命名">
+<meta property="og:title" content="第3题-专栏改挂后的最大综合评分">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E4%B8%93%E6%A0%8F%E6%94%B9%E6%8C%82%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E7%BB%BC%E5%90%88%E8%AF%84%E5%88%86/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="小红书9月13日机考题目与解析 题目内容 某技术社区举办「全能作者季」。你在 nn 个专栏方向上各有若干成稿：第 ii 个方向现有 aiai​ 篇。 你可以把一篇成稿从方向 ii 改挂到方向 jj（须保证该方向改挂后篇数非负）。每改挂一篇计一次操作，最多操作 kk 次。 改挂结束后，设 xx 为成稿数不少于 bb 篇的方向个数，y&#x3D;min⁡(a1,a2,…,an)y&#x3D;min(a1​,a2​,…,a">
+<meta property="og:description" content="小红书9月13日机考题目与解析 某技术社区举办「全能作者季」。你在 nn 个专栏方向上各有若干成稿：第 ii 个方向现有 aia_i 篇。 你可以把一篇成稿从方向 ii 改挂到方向 jj（须保证该方向改挂后篇数非负）。每改挂一篇计一次操作，最多操作 kk 次。 改挂结束后，设 xx 为成稿数不少于 bb 篇的方向个数，y&#x3D;min&#8289;(a1,a2,…,an)y &#x3D; \min(a_1, a_">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-19T17:15:44.286Z">
-<meta property="article:modified_time" content="2026-09-20T03:33:12.468Z">
+<meta property="article:published_time" content="2026-09-20T08:32:52.409Z">
+<meta property="article:modified_time" content="2026-09-20T08:32:52.409Z">
 <meta property="article:author" content="Ming">
+<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="排序">
+<meta property="article:tag" content="贪心">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>未命名 - Ming&#39;s Blog</title>
+  <title>第3题-专栏改挂后的最大综合评分 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="未命名"></span>
+            <span id="subtitle" data-typed-text="第3题-专栏改挂后的最大综合评分"></span>
           
         </div>
 
@@ -216,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-20 01:15" pubdate>
-          2026年9月20日 凌晨
+        <time datetime="2026-09-20 16:32" pubdate>
+          2026年9月20日 下午
         </time>
       </span>
     
@@ -228,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          320 字
+          1.9k 字
         
       </span>
     
@@ -239,7 +242,7 @@
         
         
         
-          3 分钟
+          17 分钟
         
       </span>
     
@@ -285,48 +288,281 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">未命名</h1>
-            
-              <p id="updated-time" class="note note-info" style="display: none">
-                
-                  
-                    本文最后更新于 2026-09-20T11:33:12+08:00
-                  
-                  
-
-                
-              </p>
+            <h1 id="seo-header">第3题-专栏改挂后的最大综合评分</h1>
             
             
               <div class="markdown-body">
                 
                 <h1 id="小红书9月13日机考题目与解析">小红书9月13日机考题目与解析</h1>
-<h1 id="题目内容">题目内容</h1>
-<p>某技术社区举办「全能作者季」。你在 nn 个专栏方向上各有若干成稿：第 ii 个方向现有 aiai​ 篇。</p>
-<p>你可以把一篇成稿从方向 ii 改挂到方向 jj（须保证该方向改挂后篇数非负）。每改挂一篇计一次操作，最多操作 kk 次。</p>
-<p>改挂结束后，设 xx 为成稿数不少于 bb 篇的方向个数，y=min⁡(a1,a2,…,an)y=min(a1​,a2​,…,an​)，综合评分定义为</p>
-<p>x⋅c1+min⁡(y,b)⋅c2x⋅c1​+min(y,b)⋅c2​</p>
-<p>保证 c1≥c2c1​≥c2​。请最大化综合评分。</p>
-<h1 id="输入描述">输入描述</h1>
-<p>第一行五个整数 nn、kk、bb、c1c1​、c2c2​。</p>
-<p>第二行 nn 个整数 a1,a2,…,ana1​,a2​,…,an​。</p>
-<h1 id="输出描述">输出描述</h1>
+<p>某技术社区举办「全能作者季」。你在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+个专栏方向上各有若干成稿：第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+个方向现有
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>i</mi></msub><annotation encoding="application/x-tex">a_i</annotation></semantics></math>
+篇。</p>
+<p>你可以把一篇成稿从方向
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+改挂到方向
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>（须保证该方向改挂后篇数非负）。每改挂一篇计一次操作，最多操作
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+次。</p>
+<p>改挂结束后，设
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+为成稿数不少于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+篇的方向个数，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">y = \min(a_1, a_2, \ldots, a_n)</annotation></semantics></math>，综合评分定义为</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>⋅</mo><msub><mi>c</mi><mn>1</mn></msub><mo>+</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>⋅</mo><msub><mi>c</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x \cdot c_1 + \min(y, b) \cdot c_2</annotation></semantics></math></p>
+<p>保证
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>≥</mo><msub><mi>c</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">c_1 \ge c_2</annotation></semantics></math>。请最大化综合评分。</p>
+<p><strong>输入描述</strong></p>
+<p>第一行五个整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mn>1</mn></msub><annotation encoding="application/x-tex">c_1</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mn>2</mn></msub><annotation encoding="application/x-tex">c_2</annotation></semantics></math>。
+第二行
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+个整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_1, a_2, \ldots, a_n</annotation></semantics></math>。</p>
+<p><strong>输出描述</strong></p>
 <p>输出一个整数，表示可达到的综合评分最大值。</p>
-<h1 id="约束条件">约束条件</h1>
+<p><strong>约束条件</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le n \le 10^5</annotation></semantics></math>；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>k</mi><mo>,</mo><msub><mi>a</mi><mi>i</mi></msub><mo>≤</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">0 \le k, a_i \le 10^9</annotation></semantics></math>；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>b</mi><mo>,</mo><msub><mi>c</mi><mn>1</mn></msub><mo>,</mo><msub><mi>c</mi><mn>2</mn></msub><mo>≤</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">1 \le b, c_1, c_2 \le 10^9</annotation></semantics></math>；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>≥</mo><msub><mi>c</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">c_1 \ge c_2</annotation></semantics></math>。</p>
+<p><strong>样例 1</strong></p>
+<p>输入：</p>
+<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">5 </span><span class="hljs-number">3</span> <span class="hljs-number">4</span> <span class="hljs-number">4</span> <span class="hljs-number">1</span>
+<span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">5</span> <span class="hljs-number">0</span> <span class="hljs-number">3</span></code></pre></div>
+<p>输出：</p>
+<div class="code-wrapper"><pre><code class="hljs">9</code></pre></div>
+<p><strong>说明</strong>：从第 3 个方向改挂 1 篇到第 5 个方向，再从第 2
+个方向改挂 1 篇到第 4 个方向，各方向成稿数为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[1,1,4,1,4]</annotation></semantics></math>。此时
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x=2</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">y=1</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>,</mo><mi>b</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\min(y,b)=1</annotation></semantics></math>，评分为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>4</mn><mo>+</mo><mn>1</mn><mo>×</mo><mn>1</mn><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">2 \times 4 + 1 \times 1 = 9</annotation></semantics></math>。</p>
+<h2 id="代码">代码</h2>
+<div class="code-wrapper"><pre><code class="hljs python">n, k, b, c1, c2 = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+a = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
+a.sort()
+
+<span class="hljs-comment"># 前缀和</span>
+pre = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    pre[i + <span class="hljs-number">1</span>] = pre[i] + a[i]
+
+total = pre[n]
+
+<span class="hljs-comment"># cost[i] = 把前 i 个元素都提升到 a[i-1] 所需操作数</span>
+cost = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):
+    cost[i] = a[i - <span class="hljs-number">1</span>] * i - pre[i]
+
+ans = <span class="hljs-number">0</span>
+cost_b = <span class="hljs-number">0</span>          <span class="hljs-comment"># 让最大的 x 个方向达到 b 的最小花费</span>
+cnt = n             <span class="hljs-comment"># 单调指针，维护最大的满足 cost[cnt] &lt;= rest 的 cnt</span>
+
+<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>):
+    <span class="hljs-comment"># 至少需要 x * b 篇，总篇数不够则不可能</span>
+    <span class="hljs-keyword">if</span> total &lt; x * b:
+        <span class="hljs-keyword">break</span>
+    <span class="hljs-comment"># cost_b 单调不减，一旦超过 k，后续 x 更不可能</span>
+    <span class="hljs-keyword">if</span> cost_b &gt; k:
+        <span class="hljs-keyword">break</span>
+
+    m = n - x
+    <span class="hljs-keyword">if</span> m == <span class="hljs-number">0</span>:
+        <span class="hljs-comment"># 所有方向都 &gt;= b</span>
+        ans = <span class="hljs-built_in">max</span>(ans, x * c1 + b * c2)
+    <span class="hljs-keyword">else</span>:
+        rest = k - cost_b
+
+        <span class="hljs-comment"># 剩余的是最小的 m 个方向，cnt 只减不增</span>
+        <span class="hljs-keyword">if</span> cnt &gt; m:
+            cnt = m
+        <span class="hljs-keyword">while</span> cnt &gt; <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> cost[cnt] &gt; rest:
+            cnt -= <span class="hljs-number">1</span>
+
+        <span class="hljs-comment"># 用剩余预算尽量抬高这 m 个方向的最小值</span>
+        y1 = a[cnt - <span class="hljs-number">1</span>] + (rest - cost[cnt]) // cnt
+        <span class="hljs-comment"># 总篇数限制下的最大值</span>
+        y2 = (total - x * b) // m
+        y = <span class="hljs-built_in">min</span>(b, y1, y2)
+
+        ans = <span class="hljs-built_in">max</span>(ans, x * c1 + y * c2)
+
+    <span class="hljs-comment"># 为下一个 x 累加花费：把剩余中最大的那个提升到 b</span>
+    <span class="hljs-keyword">if</span> m &gt; <span class="hljs-number">0</span>:
+        cost_b += <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, b - a[m - <span class="hljs-number">1</span>])
+
+<span class="hljs-built_in">print</span>(ans)</code></pre></div>
+<h2 id="逐段解析">逐段解析</h2>
+<h3 id="一问题回顾">一、问题回顾</h3>
+<p>有 <code>n</code> 个方向，每个方向有 <code>a[i]</code>
+篇成稿。最多进行 <code>k</code> 次改挂操作：每次从某个方向拿 1
+篇放到另一个方向（保证来源非负）。改挂后：</p>
 <ul>
-<li>1≤n≤1051≤n≤105</li>
-<li>0≤k,ai≤1090≤k,ai​≤109</li>
-<li>1≤b,c1,c2≤1091≤b,c1​,c2​≤109</li>
-<li>c1≥c2c1​≥c2​</li>
+<li><code>x</code>：成稿数 ≥ <code>b</code> 的方向个数；</li>
+<li><code>y = min(a[1..n])</code>：所有方向中的最小成稿数；</li>
+<li>综合评分 = <code>x * c1 + min(y, b) * c2</code>。</li>
 </ul>
-<h2 id="样例1">样例1</h2>
-<p><strong>输入</strong></p>
-<div class="code-wrapper"><pre><code class="hljs none">5 3 4 4 1
-1 2 5 0 3</code></pre></div>
-<p><strong>输出</strong></p>
-<div class="code-wrapper"><pre><code class="hljs none">9</code></pre></div>
-<p><strong>说明</strong></p>
-<p>一种方案：从第 33 个方向改挂 11 篇到第 55 个方向，再从第 22 个方向改挂 11 篇到第 44 个方向，各方向成稿数为 [1,1,4,1,4][1,1,4,1,4]。此时 x=2x=2，y=1y=1，min⁡(y,b)=1min(y,b)=1，评分为 2×4+1×1=92×4+1×1=9。</p>
+<p>已知 <code>c1 &gt;= c2</code>，要求最大化评分。</p>
+<h3 id="二整体思路">二、整体思路</h3>
+<ol type="1">
+<li><strong>排序</strong>：将 <code>a</code>
+从小到大排序。这样方便贪心选择最大的若干个方向去满足
+<code>b</code>，以及处理剩余的最小若干个方向。</li>
+<li><strong>枚举 <code>x</code></strong>：最终有多少个方向的成稿数 ≥
+<code>b</code>。<code>x</code> 从 <code>0</code> 到
+<code>n</code>。</li>
+<li><strong>贪心满足
+<code>b</code></strong>：为了让操作次数最少，一定选择原本最大的
+<code>x</code> 个方向去补到 <code>b</code>。记录这个最小花费
+<code>cost_b</code>。</li>
+<li><strong>处理剩余方向</strong>：剩下 <code>m = n - x</code>
+个方向（它们是最小的 <code>m</code> 个）。用剩余操作数
+<code>rest = k - cost_b</code> 尽可能提高这 <code>m</code>
+个方向的最小值 <code>y</code>。</li>
+<li><strong>计算评分</strong>：<code>x * c1 + min(y, b) * c2</code>，更新最大值。</li>
+</ol>
+<h3 id="三代码逐段解释">三、代码逐段解释</h3>
+<p><strong>输入与预处理</strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs python">data = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, sys.stdin.buffer.read().split()))
+n, k, b, c1, c2 = data[:<span class="hljs-number">5</span>]
+a = data[<span class="hljs-number">5</span>:<span class="hljs-number">5</span> + n]
+a.sort()
+pre = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+    pre[i + <span class="hljs-number">1</span>] = pre[i] + a[i]
+total = pre[n]</code></pre></div>
+<ul>
+<li>快速读入所有数据。</li>
+<li><code>a</code> 排序后，<code>pre[i]</code> 表示前 <code>i</code>
+个元素的和。</li>
+<li><code>total</code> 是所有成稿的总数。改挂操作不改变总篇数。</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs python">cost = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):
+    cost[i] = a[i - <span class="hljs-number">1</span>] * i - pre[i]</code></pre></div>
+<ul>
+<li><code>cost[i]</code>：把最小的 <code>i</code> 个元素都提升到
+<code>a[i-1]</code> 所需的操作数。
+<ul>
+<li>例如 <code>i=3</code>，最小的三个是
+<code>a[0], a[1], a[2]</code>，都拉到 <code>a[2]</code>，需要增加
+<code>(a[2]-a[0]) + (a[2]-a[1]) + 0 = 3*a[2] - (a[0]+a[1]+a[2]) = a[2]*3 - pre[3]</code>。</li>
+</ul></li>
+<li>这个数组用于后续快速计算「拉平」最小若干个元素的花费。</li>
+</ul>
+<p><strong>主循环：枚举 <code>x</code></strong>：</p>
+<div class="code-wrapper"><pre><code class="hljs python">ans = <span class="hljs-number">0</span>
+cost_b = <span class="hljs-number">0</span>          <span class="hljs-comment"># 让最大的 x 个方向达到 b 的最小花费</span>
+cnt = n             <span class="hljs-comment"># 单调指针，维护最大的满足 cost[cnt] &lt;= rest 的 cnt</span>
+<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>):
+    <span class="hljs-keyword">if</span> total &lt; x * b:
+        <span class="hljs-keyword">break</span>
+    <span class="hljs-keyword">if</span> cost_b &gt; k:
+        <span class="hljs-keyword">break</span>
+    m = n - x
+    <span class="hljs-keyword">if</span> m == <span class="hljs-number">0</span>:
+        ans = <span class="hljs-built_in">max</span>(ans, x * c1 + b * c2)
+    <span class="hljs-keyword">else</span>:
+        rest = k - cost_b
+        <span class="hljs-keyword">if</span> cnt &gt; m:
+            cnt = m
+        <span class="hljs-keyword">while</span> cnt &gt; <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> cost[cnt] &gt; rest:
+            cnt -= <span class="hljs-number">1</span>
+        y1 = a[cnt - <span class="hljs-number">1</span>] + (rest - cost[cnt]) // cnt
+        y2 = (total - x * b) // m
+        y = <span class="hljs-built_in">min</span>(b, y1, y2)
+        ans = <span class="hljs-built_in">max</span>(ans, x * c1 + y * c2)
+    <span class="hljs-keyword">if</span> m &gt; <span class="hljs-number">0</span>:
+        cost_b += <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, b - a[m - <span class="hljs-number">1</span>])</code></pre></div>
+<p><strong>循环条件</strong>：</p>
+<ul>
+<li><code>total &lt; x * b</code>：总篇数不足以让 <code>x</code>
+个方向都达到 <code>b</code>，后续更大的 <code>x</code>
+更不可能，直接退出。</li>
+<li><code>cost_b &gt; k</code>：让最大的 <code>x</code> 个方向达到
+<code>b</code> 的花费已经超过 <code>k</code>，后续 <code>x</code>
+更大花费更多，退出。</li>
+</ul>
+<p><strong>处理 <code>m == 0</code></strong>：</p>
+<ul>
+<li>所有方向都达到了 <code>b</code>，此时 <code>y &gt;= b</code>，所以
+<code>min(y, b) = b</code>。</li>
+<li>评分 = <code>x * c1 + b * c2</code>。</li>
+</ul>
+<p><strong>处理剩余 <code>m</code> 个方向</strong>：</p>
+<ul>
+<li><code>rest = k - cost_b</code>：剩余可用操作数。</li>
+<li><code>m = n - x</code>：剩余方向个数，它们是最小的 <code>m</code>
+个（因为最大的 <code>x</code> 个已经被补到 <code>b</code>）。</li>
+<li><strong>单调指针 <code>cnt</code></strong>：
+<ul>
+<li>我们要用 <code>rest</code> 次操作提高这 <code>m</code>
+个方向的最小值。</li>
+<li>策略：把最小的 <code>cnt</code> 个方向「拉平」到
+<code>a[cnt-1]</code>。所需花费为 <code>cost[cnt]</code>。</li>
+<li>随着 <code>x</code> 增大，<code>m</code> 减小，<code>rest</code>
+减小，所以满足 <code>cost[cnt] &lt;= rest</code> 的最大 <code>cnt</code>
+只会减小。因此用全局指针 <code>cnt</code>
+从大到小移动即可，无需二分。</li>
+<li><code>if cnt &gt; m: cnt = m</code> 保证 <code>cnt</code>
+不超过剩余方向数。</li>
+<li><code>while cnt &gt; 1 and cost[cnt] &gt; rest: cnt -= 1</code>
+找到最大的可行 <code>cnt</code>。</li>
+</ul></li>
+<li><strong>计算 <code>y1</code></strong>：
+<ul>
+<li>拉平前 <code>cnt</code> 个到 <code>a[cnt-1]</code> 后，还剩
+<code>rest - cost[cnt]</code> 次操作。</li>
+<li>平均分给这 <code>cnt</code> 个方向，每个还能增加
+<code>(rest - cost[cnt]) // cnt</code> 篇。</li>
+<li>所以这 <code>cnt</code> 个方向的最小值可达
+<code>y1 = a[cnt-1] + (rest - cost[cnt]) // cnt</code>。</li>
+</ul></li>
+<li><strong>计算 <code>y2</code></strong>：
+<ul>
+<li>总篇数限制：已经保证 <code>x</code> 个方向各有至少 <code>b</code>
+篇，占用了 <code>x * b</code> 篇。</li>
+<li>剩余 <code>m</code> 个方向总共最多有 <code>total - x * b</code>
+篇，平均每个方向最多 <code>y2 = (total - x * b) // m</code> 篇。</li>
+</ul></li>
+<li><strong>最终 <code>y</code></strong>：不能超过
+<code>b</code>（评分只取 <code>min(y, b)</code>）、不能超过
+<code>y1</code>（操作数限制）、不能超过
+<code>y2</code>（总篇数限制），所以
+<code>y = min(b, y1, y2)</code>。</li>
+<li>更新答案：<code>ans = max(ans, x * c1 + y * c2)</code>。</li>
+</ul>
+<p><strong>为下一个 <code>x</code> 更新
+<code>cost_b</code></strong>：</p>
+<ul>
+<li>当前 <code>m = n - x</code>，剩余方向中最大的是
+<code>a[m-1]</code>（数组已排序，最大的 <code>x</code>
+个被移除，剩下索引 <code>0</code> 到 <code>m-1</code>）。</li>
+<li>下一个 <code>x</code> 会多让一个方向达到
+<code>b</code>，这个方向就是当前剩余中最大的 <code>a[m-1]</code>。</li>
+<li>将它提升到 <code>b</code> 需要 <code>max(0, b - a[m-1])</code>
+次操作，累加到 <code>cost_b</code>。</li>
+</ul>
+<h3 id="四为什么正确">四、为什么正确？</h3>
+<ol type="1">
+<li><strong>贪心选择最大的 <code>x</code> 个去满足
+<code>b</code></strong>：因为这样花费最少，剩下的操作数最多，有利于提高最小值。</li>
+<li><strong>拉平策略最大化最小值</strong>：在剩余操作数下，要让一组数的最小值最大，最优做法就是先把最小的若干个「拉平」到某个值，再均分剩余操作数。</li>
+<li><strong>单调指针代替二分</strong>：随着 <code>x</code>
+增大，剩余方向数 <code>m</code> 和剩余操作数 <code>rest</code>
+都单调不增，所以满足 <code>cost[cnt] &lt;= rest</code> 的最大
+<code>cnt</code> 也单调不增。指针只需从 <code>n</code> 递减，总移动次数
+<code>O(n)</code>。</li>
+<li><strong>总篇数与 <code>b</code> 的限制</strong>：通过
+<code>y2</code> 和 <code>min(b, ...)</code> 正确处理。</li>
+</ol>
+<h3 id="五复杂度">五、复杂度</h3>
+<ul>
+<li>排序：<code>O(n log n)</code></li>
+<li>主循环：<code>O(n)</code></li>
+<li>单调指针总移动：<code>O(n)</code></li>
+<li>总时间复杂度：<code>O(n log n)</code>，空间复杂度
+<code>O(n)</code></li>
+</ul>
 
                 
               </div>
@@ -371,6 +607,17 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#前缀和</a>
+      
+        <a href="/tags/%E6%8E%92%E5%BA%8F/" class="print-no-link">#排序</a>
+      
+        <a href="/tags/%E8%B4%AA%E5%BF%83/" class="print-no-link">#贪心</a>
+      
+    </div>
+  
 </div>
 
 
@@ -379,7 +626,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>未命名</div>
+      <div>第3题-专栏改挂后的最大综合评分</div>
       <div>https://mingsm17518.github.io/2026/09/20/刷题笔记/小红书/2026年9月13日/第3题-专栏改挂后的最大综合评分/</div>
     </div>
     <div class="license-meta">
@@ -395,11 +642,6 @@
           <div>2026年9月20日</div>
         </div>
       
-      
-        <div class="license-meta-item license-meta-date">
-          <div>更新于</div>
-          <div>2026年9月20日</div>
-        </div>
       
       
         <div class="license-meta-item">
@@ -429,18 +671,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="贪心算法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">贪心算法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E6%9C%80%E5%B0%8F%E5%8C%96%E5%B3%B0%E5%80%BC%E5%B9%B2%E6%89%B0/" title="未命名">
-                        <span class="hidden-mobile">未命名</span>
+                      <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" title="第2题-双通道评测格网">
+                        <span class="hidden-mobile">第2题-双通道评测格网</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -601,33 +837,6 @@
   
 
 
-
-
-  
-<script>
-  var relativeDate = function() {
-    var updatedTime = document.getElementById('updated-time');
-    if (updatedTime) {
-      var text = updatedTime.textContent;
-      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
-      var matchs = text.match(reg);
-      if (matchs) {
-        var relativeTime = moment(matchs[0]).fromNow();
-        updatedTime.textContent = text.replace(reg, relativeTime);
-      }
-      updatedTime.style.display = '';
-    }
-  };
-  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
-    if (!'zh-cn'.startsWith('en')) {
-      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
-        relativeDate();
-      });
-    } else {
-      relativeDate();
-    }
-  });
-</script>
 
 
   

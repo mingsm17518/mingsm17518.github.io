@@ -19,15 +19,15 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前缀和 前缀和模板 # 一维前缀和 prefix &#x3D; [0] * (n + 1) for i in range(1, n + 1):   prefix[i] &#x3D; prefix[i - 1] + a[i - 1]  # a 是 0-indexed  # 查询区间 [l, r]（1-indexed） def query(l, r):   return prefix[r] - prefix[l - 1]">
+    <meta name="description" content="前缀和 前缀和模板 # 一维前缀和 prefix &#x3D; [0] * (n + 1) for i in range(n):   prefix[i + 1] &#x3D; prefix[i] + a[i]  # a 是 0-indexed  # 查询区间 [l, r]（1-indexed） def query(l, r):   return prefix[r] - prefix[l - 1] # 二维前缀和 pr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01_前缀和">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="前缀和 前缀和模板 # 一维前缀和 prefix &#x3D; [0] * (n + 1) for i in range(1, n + 1):   prefix[i] &#x3D; prefix[i - 1] + a[i - 1]  # a 是 0-indexed  # 查询区间 [l, r]（1-indexed） def query(l, r):   return prefix[r] - prefix[l - 1]">
+<meta property="og:description" content="前缀和 前缀和模板 # 一维前缀和 prefix &#x3D; [0] * (n + 1) for i in range(n):   prefix[i + 1] &#x3D; prefix[i] + a[i]  # a 是 0-indexed  # 查询区间 [l, r]（1-indexed） def query(l, r):   return prefix[r] - prefix[l - 1] # 二维前缀和 pr">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T16:31:18.007Z">
-<meta property="article:modified_time" content="2026-09-19T16:31:18.013Z">
+<meta property="article:modified_time" content="2026-09-20T07:59:57.572Z">
 <meta property="article:author" content="Ming">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -290,7 +290,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-20T00:31:18+08:00
+                    本文最后更新于 2026-09-20T15:59:57+08:00
                   
                   
 
@@ -304,8 +304,8 @@
 <h2 id="前缀和模板">前缀和模板</h2>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 一维前缀和</span>
 prefix = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):
-  prefix[i] = prefix[i - <span class="hljs-number">1</span>] + a[i - <span class="hljs-number">1</span>]  <span class="hljs-comment"># a 是 0-indexed</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+  prefix[i + <span class="hljs-number">1</span>] = prefix[i] + a[i]  <span class="hljs-comment"># a 是 0-indexed</span>
 
 <span class="hljs-comment"># 查询区间 [l, r]（1-indexed）</span>
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">query</span>(<span class="hljs-params">l, r</span>):
