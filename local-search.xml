@@ -8,7 +8,7 @@
     <link href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     <url>/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
     
-    <content type="html"><![CDATA[<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><h3 id="有序数组：bisect"><a href="#有序数组：bisect" class="headerlink" title="有序数组：bisect"></a>有序数组：bisect</h3><p><code>bisect</code> 就是 Python 版的 <code>lower_bound</code> / <code>upper_bound</code>，不用手写：</p><div class="table-container"><table><thead><tr><th>bisect 函数</th><th>对应 C++</th><th>含义</th></tr></thead><tbody><tr><td><code>bisect.bisect_left(arr, x)</code></td><td><code>lower_bound</code></td><td>第一个 <strong>&gt;= x</strong> 的下标</td></tr><tr><td><code>bisect.bisect_right(arr, x)</code></td><td><code>upper_bound</code></td><td>第一个 <strong>&gt; x</strong> 的下标</td></tr></tbody></table></div><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> bisectarr = <span class="hljs-built_in">sorted</span>([...])  <span class="hljs-comment"># 先排序</span><span class="hljs-comment"># lower_bound: 第一个 &gt;= x 的位置</span>pos = bisect.bisect_left(arr, x)<span class="hljs-comment"># upper_bound: 第一个 &gt; x 的位置</span>pos = bisect.bisect_right(arr, x)</code></pre></div><p>常用派生技巧：</p><div class="code-wrapper"><pre><code class="hljs python">x 的个数          = bisect_right(arr, x) - bisect_left(arr, x)&lt;= x 的个数       = bisect_right(arr, x)&lt;  x 的个数       = bisect_left(arr, x)值域 [l, r] 内个数 = bisect_right(arr, r) - bisect_left(arr, l)等于 x 的下标区间  = [bisect_left(arr, x), bisect_right(arr, x))</code></pre></div><h3 id="单调函数：max-ok-min-ok"><a href="#单调函数：max-ok-min-ok" class="headerlink" title="单调函数：max_ok / min_ok"></a>单调函数：max_ok / min_ok</h3><div class="table-container"><table><thead><tr><th>模式</th><th>函数</th><th>功能</th><th>无解时返回</th></tr></thead><tbody><tr><td>找最大可行值</td><td><code>max_ok(lo, hi, check)</code></td><td>找最大的 x 使得 check(x)=True</td><td>lo - 1</td></tr><tr><td>找最小可行值</td><td><code>min_ok(lo, hi, check)</code></td><td>找最小的 x 使得 check(x)=True</td><td>hi + 1</td></tr></tbody></table></div><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">Callable</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">max_ok</span>(<span class="hljs-params">lo: <span class="hljs-built_in">int</span>, hi: <span class="hljs-built_in">int</span>, check: <span class="hljs-type">Callable</span>[[<span class="hljs-built_in">int</span>], <span class="hljs-built_in">bool</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:    <span class="hljs-string">&quot;&quot;&quot;查找最大的 x 使得 check(x) = True&quot;&quot;&quot;</span>    lo -= <span class="hljs-number">1</span>    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = lo + (hi - lo + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>  <span class="hljs-comment"># 向上取整</span>        <span class="hljs-keyword">if</span> check(mid):            lo = mid        <span class="hljs-keyword">else</span>:            hi = mid - <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> lo<span class="hljs-keyword">def</span> <span class="hljs-title function_">min_ok</span>(<span class="hljs-params">lo: <span class="hljs-built_in">int</span>, hi: <span class="hljs-built_in">int</span>, check: <span class="hljs-type">Callable</span>[[<span class="hljs-built_in">int</span>], <span class="hljs-built_in">bool</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:    <span class="hljs-string">&quot;&quot;&quot;查找最小的 x 使得 check(x) = True&quot;&quot;&quot;</span>    hi += <span class="hljs-number">1</span>    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = lo + (hi - lo) // <span class="hljs-number">2</span>  <span class="hljs-comment"># 向下取整</span>        <span class="hljs-keyword">if</span> check(mid):            hi = mid        <span class="hljs-keyword">else</span>:            lo = mid + <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> lo</code></pre></div><h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p><strong>用途</strong>：$O(\log n)$ 定位目标——有序数组上找位置 / 单调判定函数上找边界。</p><p><strong>原理</strong>：每次与区间中点比较，把搜索范围缩小一半。</p><h3 id="有序数组：手写-lower-bound-upper-bound"><a href="#有序数组：手写-lower-bound-upper-bound" class="headerlink" title="有序数组：手写 lower_bound / upper_bound"></a>有序数组：手写 lower_bound / upper_bound</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 查找左边界（第一个 &gt;= target 的位置）</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">lower_bound</span>(<span class="hljs-params">arr, x</span>):    lo, hi = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr)    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = (lo + hi) // <span class="hljs-number">2</span>        <span class="hljs-keyword">if</span> arr[mid] &lt; x:            lo = mid + <span class="hljs-number">1</span>        <span class="hljs-keyword">else</span>:            hi = mid    <span class="hljs-keyword">return</span> lo<span class="hljs-comment"># 查找右边界（第一个 &gt; target 的位置）</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">upper_bound</span>(<span class="hljs-params">arr, x</span>):    lo, hi = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr)    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = (lo + hi) // <span class="hljs-number">2</span>        <span class="hljs-keyword">if</span> arr[mid] &lt;= x:            lo = mid + <span class="hljs-number">1</span>        <span class="hljs-keyword">else</span>:            hi = mid    <span class="hljs-keyword">return</span> lo</code></pre></div><h3 id="单调函数的概念"><a href="#单调函数的概念" class="headerlink" title="单调函数的概念"></a>单调函数的概念</h3><p>当我们需要在<strong>单调函数</strong>上二分时，搜索对象是一个布尔函数 <code>check(x)</code>，满足单调性：</p><ul><li>如果 <code>check(x) = True</code>，则 <code>check(y) = True</code> 对所有 <code>y ≤ x</code>（或 <code>y ≥ x</code>）</li></ul><p><strong><code>max_ok</code> 适用的条件</strong>：</p><ul><li>如果 <code>check(x) = True</code>，则对所有 <code>y ≤ x</code> 都有 <code>check(y) = True</code></li><li>如果 <code>check(x) = False</code>，则对所有 <code>y ≥ x</code> 都有 <code>f(y) = false</code></li></ul><p><strong><code>min_ok</code> 适用的条件</strong>：</p><ul><li>如果 <code>check(x) = True</code>，则对所有 <code>y ≥ x</code> 都有 <code>check(y) = True</code></li><li>如果 <code>check(x) = False</code>，则对所有 <code>y ≤ x</code> 都有 <code>f(y) = false</code></li></ul><p>例如，对于以下函数：</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">check</span>(<span class="hljs-number">1</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">True</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">2</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">True</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">3</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">True</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">4</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">True</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">5</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">True</span><span class="hljs-keyword">check</span>(<span class="hljs-number">6</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">False</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">7</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">False</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">8</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">False</span></code></pre></div><p>则 <code>max_ok(1, 8, check) = 5</code>，<code>min_ok(1, 8, check) = 1</code>。</p><h3 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h3><p><strong>错误 1：mid 取整方向错误</strong>。当 <code>lo = 0, hi = 1</code> 时，如果使用向下取整：</p><div class="code-wrapper"><pre><code class="hljs python">mid = (lo + hi) // <span class="hljs-number">2</span>  <span class="hljs-comment"># = 0，会导致无限循环</span></code></pre></div><p>修复：根据搜索方向选择正确的取整方式——找最大可行值（向右收缩）→ 向上取整 <code>(hi - lo + 1) // 2</code>；找最小可行值（向左收缩）→ 向下取整 <code>(hi - lo) // 2</code>。</p><p><strong>错误 2：负数边界</strong>。<code>mid = (lo + hi) // 2</code> 对负数会向上取整！修复：</p><div class="code-wrapper"><pre><code class="hljs python">mid = lo + (hi - lo) // <span class="hljs-number">2</span></code></pre></div><p><strong>错误 3：整数溢出</strong>。在 C++/Java 中注意使用 <code>long long</code> 类型，避免 <code>lo + hi</code> 溢出。</p><h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="例题-1：Counting-Haybales"><a href="#例题-1：Counting-Haybales" class="headerlink" title="例题 1：Counting Haybales"></a>例题 1：Counting Haybales</h3><p>来源：<a href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=666">USACO - Haybales</a></p><p>给定 N 个不同位置的干草捆，有 Q 次查询，每次查询区间 [A, B] 内有多少个干草捆。</p><ul><li>N, Q ≤ 100,000</li><li>坐标范围：0 ~ 1,000,000,000</li></ul><p>思路：</p><ol><li>先将所有干草捆位置排序</li><li>对于每次查询 [A, B]：<ul><li><code>&lt;= B</code> 的个数：<code>upper_bound(B)</code></li><li><code>&lt;= A-1</code> 的个数：<code>upper_bound(A-1)</code></li><li>答案 = <code>upper_bound(B) - upper_bound(A-1)</code></li></ul></li></ol><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> bisect_rightsys.stdin = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;haybales.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)sys.stdout = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;haybales.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>)N, Q = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())arr = <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())))<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(Q):    a, b = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())    <span class="hljs-built_in">print</span>(bisect_right(arr, b) - bisect_right(arr, a - <span class="hljs-number">1</span>))</code></pre></div><p>复杂度：O(N log N + Q log N)</p><h3 id="例题-2：最大中位数（单调函数-max-ok）"><a href="#例题-2：最大中位数（单调函数-max-ok）" class="headerlink" title="例题 2：最大中位数（单调函数 + max_ok）"></a>例题 2：最大中位数（单调函数 + max_ok）</h3><p>来源：<a href="https://codeforces.com/problemset/problem/1201/C">Codeforces - Maximum Median</a></p><p>给定 n 个整数的数组（n 为奇数），可以进行 k 次操作（每次+1），求最大可达中位数。</p><p><code>1 ≤ n ≤ 2 × 10^5</code>，<code>1 ≤ k ≤ 10^9</code></p><p>思路：</p><ol><li><p><strong>排序数组</strong>：先对数组进行升序排序</p></li><li><p><strong>观察</strong>：要将中位数提升到 x，需要将所有<strong>大于等于当前中位数</strong>的元素都提升到至少 x</p><p>例如，对于排序后的数组 <code>[1,1,2,3,4,4,5,5,6,8,8]</code>，当前中位数是 4，要将中位数提升到 6，需要：</p><ul><li>将 4 → 6（2 次操作）</li><li>将 5 → 6（1 次操作 × 2 个）</li><li>将 6,8,8 保持不变</li></ul></li><li><p><strong>单调性</strong>：将中位数提升到 x 所需的操作数随着 x 增加而单调递增</p></li><li><p><strong>二分搜索</strong>：使用 <code>max_ok</code> 找到最大的 x 使得所需操作数 ≤ k</p></li></ol><div class="code-wrapper"><pre><code class="hljs python">n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())arr = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]arr.sort()<span class="hljs-keyword">def</span> <span class="hljs-title function_">max_ok</span>(<span class="hljs-params">lo, hi, check</span>):    lo -= <span class="hljs-number">1</span>    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = lo + (hi - lo + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>        <span class="hljs-keyword">if</span> check(mid):            lo = mid        <span class="hljs-keyword">else</span>:            hi = mid - <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> lo<span class="hljs-keyword">def</span> <span class="hljs-title function_">med_reachable</span>(<span class="hljs-params">x</span>):    ops = <span class="hljs-number">0</span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>((n - <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>, n):        ops += <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, x - arr[i])    <span class="hljs-keyword">return</span> ops &lt;= kans = max_ok(<span class="hljs-number">1</span>, <span class="hljs-built_in">int</span>(<span class="hljs-number">2e9</span>), med_reachable)<span class="hljs-built_in">print</span>(ans)</code></pre></div><h3 id="例题-3：Cow-Dance-Show（min-ok-堆模拟）"><a href="#例题-3：Cow-Dance-Show（min-ok-堆模拟）" class="headerlink" title="例题 3：Cow Dance Show（min_ok + 堆模拟）"></a>例题 3：Cow Dance Show（min_ok + 堆模拟）</h3><p>来源：<a href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=690">USACO - Cow Dance Show</a></p><p>有 N 头牛按顺序表演，每头牛舞蹈时长为 d(i)。舞台能容纳 K 头牛同时表演。初始时前 K 头牛上台，当其中任何一头牛完成表演后，立即由下一头牛补上（直到所有牛表演完）。求在演出时间不超过 Tmax 的前提下，最小的 K 是多少。</p><p><code>1 ≤ N ≤ 10,000</code>，<code>Tmax ≤ 10^6</code>，<code>1 ≤ d(i) ≤ 100,000</code></p><p>思路：</p><ol><li><p><strong>单调性</strong>：K 越大，演出时间 T 越小</p><ul><li>如果 K 可以让演出在 Tmax 内完成，那么 K+1、K+2 也可以</li><li>单调递增：随着 K 增大，T 单调递减</li></ul></li><li><p><strong>二分搜索</strong>：使用 <code>min_ok</code> 找到最小的可行 K</p></li><li><p><strong>模拟演出</strong>：使用小顶堆模拟 K 个同时在舞台上的牛</p><ul><li>每次取出最早结束的牛，用下一头牛替换</li><li>最终演出时间 = 堆中所有牛完成时间的最大值</li></ul></li></ol><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<span class="hljs-keyword">import</span> heapqsys.stdin = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;cowdance.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)sys.stdout = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;cowdance.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>)n, t = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())d = [<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>()) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<span class="hljs-keyword">def</span> <span class="hljs-title function_">fun</span>(<span class="hljs-params">k</span>):    <span class="hljs-string">&quot;&quot;&quot;模拟舞台大小为 k 时的演出时间&quot;&quot;&quot;</span>    show = d[:k]    heapq.heapify(show)    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(k, n):        earliest = heapq.heappop(show)  <span class="hljs-comment"># 最早结束的牛</span>        heapq.heappush(show, earliest + d[i])  <span class="hljs-comment"># 下一头牛上台</span>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(show)  <span class="hljs-comment"># 最终演出时间</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">min_ok</span>(<span class="hljs-params">lo, hi, check</span>):    <span class="hljs-string">&quot;&quot;&quot;查找最小的 x 使得 check(x) = True&quot;&quot;&quot;</span>    hi += <span class="hljs-number">1</span>    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = lo + (hi - lo) // <span class="hljs-number">2</span>        <span class="hljs-keyword">if</span> check(mid):            hi = mid        <span class="hljs-keyword">else</span>:            lo = mid + <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> lo<span class="hljs-built_in">print</span>(min_ok(<span class="hljs-number">1</span>, n, <span class="hljs-keyword">lambda</span> k: fun(k) &lt;= t))</code></pre></div><p>关键点：</p><ul><li><strong>搜索范围</strong>：<code>[1, N]</code>（最多 N 头牛同时上台）</li><li><strong>单调性</strong>：K 越大 T 越小 → 使用 <code>min_ok</code> 找最小可行 K</li><li><strong>堆的作用</strong>：O(N log K) 时间模拟演出过程</li></ul><h3 id="例题-4：Convention-机场接机（min-ok-贪心验证）"><a href="#例题-4：Convention-机场接机（min-ok-贪心验证）" class="headerlink" title="例题 4：Convention 机场接机（min_ok + 贪心验证）"></a>例题 4：Convention 机场接机（min_ok + 贪心验证）</h3><p>来源：<a href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=858">USACO - Convention</a></p><p>有 N 头奶牛到达机场，时间为 t1…tN。有 M 辆大巴，每辆可乘 C 头奶牛。大巴发车时间 = 最后一头乘坐该大巴的奶牛的到达时间。求最大等待时间（发车时间 - 到达时间）的最小值。</p><p><code>N, M ≤ 10^5</code>，<code>C ≤ N</code>，<code>ti ≤ 10^9</code></p><p>思路：</p><ol><li><p><strong>排序</strong>：将奶牛到达时间按升序排列</p></li><li><p><strong>问题转化</strong>：不直接问”能否用 M 辆大巴在等待时间 X 内完成”，而是问”在等待时间 X 内最少需要多少辆大巴”</p></li><li><p><strong>单调性</strong>：</p><ul><li>如果在等待时间 X 下无法完成，那么更小的 X 也不可能完成</li><li>随着 X 增大，所需大巴数单调递减</li></ul></li><li><p><strong>验证函数的三种情况</strong>（处理每头牛）：</p><ul><li>添加这头牛会导致第一头牛超过最大等待时间 → 开新大巴</li><li>添加这头牛会导致大巴超载 → 开新大巴</li><li>可以加入当前大巴 → 直接加入</li></ul></li><li><p><strong>二分搜索</strong>：使用 <code>min_ok</code> 找到最小的可行 X</p></li></ol><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">can_arrange</span>(<span class="hljs-params">x</span>):    <span class="hljs-string">&quot;&quot;&quot;检查是否能在最大等待时间 x 内用 M 辆大巴接完所有奶牛&quot;&quot;&quot;</span>    need_bus = <span class="hljs-number">1</span>          <span class="hljs-comment"># 第一辆大巴</span>    first_ind = <span class="hljs-number">0</span>         <span class="hljs-comment"># 当前大巴上第一头牛的索引</span>    cow_up = <span class="hljs-number">1</span>            <span class="hljs-comment"># 当前大巴上的牛数量</span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):        <span class="hljs-comment"># 等待时间超限或容量满，新开大巴</span>        <span class="hljs-keyword">if</span> time[i] - time[first_ind] &gt; x <span class="hljs-keyword">or</span> cow_up == c:            first_ind = i            need_bus += <span class="hljs-number">1</span>            cow_up = <span class="hljs-number">1</span>        <span class="hljs-keyword">else</span>:            cow_up += <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> need_bus &lt;= m<span class="hljs-keyword">def</span> <span class="hljs-title function_">min_ok</span>(<span class="hljs-params">lo, hi, check</span>):    <span class="hljs-string">&quot;&quot;&quot;查找最小的 x 使得 check(x) = True&quot;&quot;&quot;</span>    hi += <span class="hljs-number">1</span>    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = lo + (hi - lo) // <span class="hljs-number">2</span>        <span class="hljs-keyword">if</span> check(mid):            hi = mid        <span class="hljs-keyword">else</span>:            lo = mid + <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> lon, m, c = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())time = <span class="hljs-built_in">sorted</span>([<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()])ans = min_ok(<span class="hljs-number">0</span>, time[-<span class="hljs-number">1</span>] - time[<span class="hljs-number">0</span>], can_arrange)<span class="hljs-built_in">print</span>(ans)</code></pre></div><p>关键点：</p><ul><li><strong>搜索范围</strong>：<code>[0, max_time - min_time]</code></li><li><strong>单调性</strong>：X 越大，所需大巴数越少 → 使用 <code>min_ok</code></li><li>复杂度：O(N log N)</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>二分搜索的核心思想是<strong>利用单调性</strong>快速缩小搜索区间：</p><ol><li><strong>在有序数组上</strong>：直接用 <code>bisect_left</code> / <code>bisect_right</code>，别手写</li><li><strong>在单调判定函数上</strong>：用 <code>max_ok</code> / <code>min_ok</code> 模板</li></ol><p><strong>关键要点</strong>：</p><ul><li>确保函数是单调的</li><li>选择正确的 mid 取整方向</li><li>使用哨兵简化边界处理</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><h3 id="有序数组：bisect"><a href="#有序数组：bisect" class="headerlink" title="有序数组：bisect"></a>有序数组：bisect</h3><div class="table-container"><table><thead><tr><th>bisect 函数</th><th>对应 C++</th><th>含义</th></tr></thead><tbody><tr><td><code>bisect.bisect_left(arr, x)</code></td><td><code>lower_bound</code></td><td>第一个 <strong>&gt;= x</strong> 的下标</td></tr><tr><td><code>bisect.bisect_right(arr, x)</code></td><td><code>upper_bound</code></td><td>第一个 <strong>&gt; x</strong> 的下标</td></tr></tbody></table></div><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> bisectarr = <span class="hljs-built_in">sorted</span>([...])  <span class="hljs-comment"># 先排序</span><span class="hljs-comment"># lower_bound: 第一个 &gt;= x 的位置</span>pos = bisect.bisect_left(arr, x)<span class="hljs-comment"># upper_bound: 第一个 &gt; x 的位置</span>pos = bisect.bisect_right(arr, x)</code></pre></div><p>常用派生技巧：</p><div class="code-wrapper"><pre><code class="hljs python">x 的个数          = bisect_right(arr, x) - bisect_left(arr, x)&lt;= x 的个数       = bisect_right(arr, x)&lt;  x 的个数       = bisect_left(arr, x)值域 [l, r] 内个数 = bisect_right(arr, r) - bisect_left(arr, l)等于 x 的下标区间  = [bisect_left(arr, x), bisect_right(arr, x))</code></pre></div><h3 id="单调函数：max-ok-min-ok"><a href="#单调函数：max-ok-min-ok" class="headerlink" title="单调函数：max_ok / min_ok"></a>单调函数：max_ok / min_ok</h3><div class="table-container"><table><thead><tr><th>模式</th><th>函数</th><th>功能</th><th>无解时返回</th></tr></thead><tbody><tr><td>找最大可行值</td><td><code>max_ok(lo, hi, check)</code></td><td>找最大的 x 使得 check(x)=True</td><td>lo - 1</td></tr><tr><td>找最小可行值</td><td><code>min_ok(lo, hi, check)</code></td><td>找最小的 x 使得 check(x)=True</td><td>hi + 1</td></tr></tbody></table></div><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">Callable</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">max_ok</span>(<span class="hljs-params">lo: <span class="hljs-built_in">int</span>, hi: <span class="hljs-built_in">int</span>, check: <span class="hljs-type">Callable</span>[[<span class="hljs-built_in">int</span>], <span class="hljs-built_in">bool</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:    <span class="hljs-string">&quot;&quot;&quot;查找最大的 x 使得 check(x) = True&quot;&quot;&quot;</span>    lo -= <span class="hljs-number">1</span>    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = lo + (hi - lo + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>  <span class="hljs-comment"># 向上取整</span>        <span class="hljs-keyword">if</span> check(mid):            lo = mid        <span class="hljs-keyword">else</span>:            hi = mid - <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> lo<span class="hljs-keyword">def</span> <span class="hljs-title function_">min_ok</span>(<span class="hljs-params">lo: <span class="hljs-built_in">int</span>, hi: <span class="hljs-built_in">int</span>, check: <span class="hljs-type">Callable</span>[[<span class="hljs-built_in">int</span>], <span class="hljs-built_in">bool</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:    <span class="hljs-string">&quot;&quot;&quot;查找最小的 x 使得 check(x) = True&quot;&quot;&quot;</span>    hi += <span class="hljs-number">1</span>    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = lo + (hi - lo) // <span class="hljs-number">2</span>  <span class="hljs-comment"># 向下取整</span>        <span class="hljs-keyword">if</span> check(mid):            hi = mid        <span class="hljs-keyword">else</span>:            lo = mid + <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> lo</code></pre></div><h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p><strong>用途</strong>：$O(\log n)$ 定位目标——有序数组上找位置 / 单调判定函数上找边界。</p><p><strong>原理</strong>：每次与区间中点比较，把搜索范围缩小一半。</p><h3 id="手写二分搜索"><a href="#手写二分搜索" class="headerlink" title="手写二分搜索"></a>手写二分搜索</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 查找左边界（第一个 &gt;= target 的位置）</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">lower_bound</span>(<span class="hljs-params">arr, x</span>):    lo, hi = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr)    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = (lo + hi) // <span class="hljs-number">2</span>        <span class="hljs-keyword">if</span> arr[mid] &lt; x:            lo = mid + <span class="hljs-number">1</span>        <span class="hljs-keyword">else</span>:            hi = mid    <span class="hljs-keyword">return</span> lo<span class="hljs-comment"># 查找右边界（第一个 &gt; target 的位置）</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">upper_bound</span>(<span class="hljs-params">arr, x</span>):    lo, hi = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr)    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = (lo + hi) // <span class="hljs-number">2</span>        <span class="hljs-keyword">if</span> arr[mid] &lt;= x:            lo = mid + <span class="hljs-number">1</span>        <span class="hljs-keyword">else</span>:            hi = mid    <span class="hljs-keyword">return</span> lo</code></pre></div><h3 id="单调函数的概念"><a href="#单调函数的概念" class="headerlink" title="单调函数的概念"></a>单调函数的概念</h3><p>当我们需要在<strong>单调函数</strong>上二分时，搜索对象是一个布尔函数 <code>check(x)</code>，满足单调性：</p><ul><li>如果 <code>check(x) = True</code>，则 <code>check(y) = True</code> 对所有 <code>y ≤ x</code>（或 <code>y ≥ x</code>）</li></ul><p><strong><code>max_ok</code> 适用的条件</strong>：</p><ul><li>如果 <code>check(x) = True</code>，则对所有 <code>y ≤ x</code> 都有 <code>check(y) = True</code></li><li>如果 <code>check(x) = False</code>，则对所有 <code>y ≥ x</code> 都有 <code>f(y) = false</code></li></ul><p><strong><code>min_ok</code> 适用的条件</strong>：</p><ul><li>如果 <code>check(x) = True</code>，则对所有 <code>y ≥ x</code> 都有 <code>check(y) = True</code></li><li>如果 <code>check(x) = False</code>，则对所有 <code>y ≤ x</code> 都有 <code>f(y) = false</code></li></ul><p>例如，对于以下函数：</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">check</span>(<span class="hljs-number">1</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">True</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">2</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">True</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">3</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">True</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">4</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">True</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">5</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">True</span><span class="hljs-keyword">check</span>(<span class="hljs-number">6</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">False</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">7</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">False</span>, <span class="hljs-keyword">check</span>(<span class="hljs-number">8</span>) <span class="hljs-operator">=</span> <span class="hljs-literal">False</span></code></pre></div><p>则 <code>max_ok(1, 8, check) = 5</code>，<code>min_ok(1, 8, check) = 1</code>。</p><h3 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h3><p><strong>错误 1：mid 取整方向错误</strong>。当 <code>lo = 0, hi = 1</code> 时，如果使用向下取整：</p><div class="code-wrapper"><pre><code class="hljs python">mid = (lo + hi) // <span class="hljs-number">2</span>  <span class="hljs-comment"># = 0，会导致无限循环</span></code></pre></div><p>修复：根据搜索方向选择正确的取整方式——找最大可行值（向右收缩）→ 向上取整 <code>(hi - lo + 1) // 2</code>；找最小可行值（向左收缩）→ 向下取整 <code>(hi - lo) // 2</code>。</p><p><strong>错误 2：负数边界</strong>。<code>mid = (lo + hi) // 2</code> 对负数会向上取整！修复：</p><div class="code-wrapper"><pre><code class="hljs python">mid = lo + (hi - lo) // <span class="hljs-number">2</span></code></pre></div><p><strong>错误 3：整数溢出</strong>。在 C++/Java 中注意使用 <code>long long</code> 类型，避免 <code>lo + hi</code> 溢出。</p><h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="例题-1：Counting-Haybales"><a href="#例题-1：Counting-Haybales" class="headerlink" title="例题 1：Counting Haybales"></a>例题 1：Counting Haybales</h3><p>来源：<a href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=666">USACO - Haybales</a></p><p>给定 N 个不同位置的干草捆，有 Q 次查询，每次查询区间 [A, B] 内有多少个干草捆。</p><ul><li>N, Q ≤ 100,000</li><li>坐标范围：0 ~ 1,000,000,000</li></ul><p>思路：</p><ol><li>先将所有干草捆位置排序</li><li>对于每次查询 [A, B]：<ul><li><code>&lt;= B</code> 的个数：<code>upper_bound(B)</code></li><li><code>&lt;= A-1</code> 的个数：<code>upper_bound(A-1)</code></li><li>答案 = <code>upper_bound(B) - upper_bound(A-1)</code></li></ul></li></ol><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> bisect_rightsys.stdin = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;haybales.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)sys.stdout = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;haybales.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>)N, Q = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())arr = <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())))<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(Q):    a, b = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())    <span class="hljs-built_in">print</span>(bisect_right(arr, b) - bisect_right(arr, a - <span class="hljs-number">1</span>))</code></pre></div><p>复杂度：O(N log N + Q log N)</p><h3 id="例题-2：最大中位数（单调函数-max-ok）"><a href="#例题-2：最大中位数（单调函数-max-ok）" class="headerlink" title="例题 2：最大中位数（单调函数 + max_ok）"></a>例题 2：最大中位数（单调函数 + max_ok）</h3><p>来源：<a href="https://codeforces.com/problemset/problem/1201/C">Codeforces - Maximum Median</a></p><p>给定 n 个整数的数组（n 为奇数），可以进行 k 次操作（每次+1），求最大可达中位数。</p><p><code>1 ≤ n ≤ 2 × 10^5</code>，<code>1 ≤ k ≤ 10^9</code></p><p>思路：</p><ol><li><p><strong>排序数组</strong>：先对数组进行升序排序</p></li><li><p><strong>观察</strong>：要将中位数提升到 x，需要将所有<strong>大于等于当前中位数</strong>的元素都提升到至少 x</p><p>例如，对于排序后的数组 <code>[1,1,2,3,4,4,5,5,6,8,8]</code>，当前中位数是 4，要将中位数提升到 6，需要：</p><ul><li>将 4 → 6（2 次操作）</li><li>将 5 → 6（1 次操作 × 2 个）</li><li>将 6,8,8 保持不变</li></ul></li><li><p><strong>单调性</strong>：将中位数提升到 x 所需的操作数随着 x 增加而单调递增</p></li><li><p><strong>二分搜索</strong>：使用 <code>max_ok</code> 找到最大的 x 使得所需操作数 ≤ k</p></li></ol><div class="code-wrapper"><pre><code class="hljs python">n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())arr = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]arr.sort()<span class="hljs-keyword">def</span> <span class="hljs-title function_">max_ok</span>(<span class="hljs-params">lo, hi, check</span>):    lo -= <span class="hljs-number">1</span>    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = lo + (hi - lo + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>        <span class="hljs-keyword">if</span> check(mid):            lo = mid        <span class="hljs-keyword">else</span>:            hi = mid - <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> lo<span class="hljs-keyword">def</span> <span class="hljs-title function_">med_reachable</span>(<span class="hljs-params">x</span>):    ops = <span class="hljs-number">0</span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>((n - <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>, n):        ops += <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, x - arr[i])    <span class="hljs-keyword">return</span> ops &lt;= kans = max_ok(<span class="hljs-number">1</span>, <span class="hljs-built_in">int</span>(<span class="hljs-number">2e9</span>), med_reachable)<span class="hljs-built_in">print</span>(ans)</code></pre></div><h3 id="例题-3：Cow-Dance-Show（min-ok-堆模拟）"><a href="#例题-3：Cow-Dance-Show（min-ok-堆模拟）" class="headerlink" title="例题 3：Cow Dance Show（min_ok + 堆模拟）"></a>例题 3：Cow Dance Show（min_ok + 堆模拟）</h3><p>来源：<a href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=690">USACO - Cow Dance Show</a></p><p>有 N 头牛按顺序表演，每头牛舞蹈时长为 d(i)。舞台能容纳 K 头牛同时表演。初始时前 K 头牛上台，当其中任何一头牛完成表演后，立即由下一头牛补上（直到所有牛表演完）。求在演出时间不超过 Tmax 的前提下，最小的 K 是多少。</p><p><code>1 ≤ N ≤ 10,000</code>，<code>Tmax ≤ 10^6</code>，<code>1 ≤ d(i) ≤ 100,000</code></p><p>思路：</p><ol><li><p><strong>单调性</strong>：K 越大，演出时间 T 越小</p><ul><li>如果 K 可以让演出在 Tmax 内完成，那么 K+1、K+2 也可以</li><li>单调递增：随着 K 增大，T 单调递减</li></ul></li><li><p><strong>二分搜索</strong>：使用 <code>min_ok</code> 找到最小的可行 K</p></li><li><p><strong>模拟演出</strong>：使用小顶堆模拟 K 个同时在舞台上的牛</p><ul><li>每次取出最早结束的牛，用下一头牛替换</li><li>最终演出时间 = 堆中所有牛完成时间的最大值</li></ul></li></ol><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<span class="hljs-keyword">import</span> heapqsys.stdin = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;cowdance.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)sys.stdout = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;cowdance.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>)n, t = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())d = [<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>()) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<span class="hljs-keyword">def</span> <span class="hljs-title function_">fun</span>(<span class="hljs-params">k</span>):    <span class="hljs-string">&quot;&quot;&quot;模拟舞台大小为 k 时的演出时间&quot;&quot;&quot;</span>    show = d[:k]    heapq.heapify(show)    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(k, n):        earliest = heapq.heappop(show)  <span class="hljs-comment"># 最早结束的牛</span>        heapq.heappush(show, earliest + d[i])  <span class="hljs-comment"># 下一头牛上台</span>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(show)  <span class="hljs-comment"># 最终演出时间</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">min_ok</span>(<span class="hljs-params">lo, hi, check</span>):    <span class="hljs-string">&quot;&quot;&quot;查找最小的 x 使得 check(x) = True&quot;&quot;&quot;</span>    hi += <span class="hljs-number">1</span>    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = lo + (hi - lo) // <span class="hljs-number">2</span>        <span class="hljs-keyword">if</span> check(mid):            hi = mid        <span class="hljs-keyword">else</span>:            lo = mid + <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> lo<span class="hljs-built_in">print</span>(min_ok(<span class="hljs-number">1</span>, n, <span class="hljs-keyword">lambda</span> k: fun(k) &lt;= t))</code></pre></div><p>关键点：</p><ul><li><strong>搜索范围</strong>：<code>[1, N]</code>（最多 N 头牛同时上台）</li><li><strong>单调性</strong>：K 越大 T 越小 → 使用 <code>min_ok</code> 找最小可行 K</li><li><strong>堆的作用</strong>：O(N log K) 时间模拟演出过程</li></ul><h3 id="例题-4：Convention-机场接机（min-ok-贪心验证）"><a href="#例题-4：Convention-机场接机（min-ok-贪心验证）" class="headerlink" title="例题 4：Convention 机场接机（min_ok + 贪心验证）"></a>例题 4：Convention 机场接机（min_ok + 贪心验证）</h3><p>来源：<a href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=858">USACO - Convention</a></p><p>有 N 头奶牛到达机场，时间为 t1…tN。有 M 辆大巴，每辆可乘 C 头奶牛。大巴发车时间 = 最后一头乘坐该大巴的奶牛的到达时间。求最大等待时间（发车时间 - 到达时间）的最小值。</p><p><code>N, M ≤ 10^5</code>，<code>C ≤ N</code>，<code>ti ≤ 10^9</code></p><p>思路：</p><ol><li><p><strong>排序</strong>：将奶牛到达时间按升序排列</p></li><li><p><strong>问题转化</strong>：不直接问”能否用 M 辆大巴在等待时间 X 内完成”，而是问”在等待时间 X 内最少需要多少辆大巴”</p></li><li><p><strong>单调性</strong>：</p><ul><li>如果在等待时间 X 下无法完成，那么更小的 X 也不可能完成</li><li>随着 X 增大，所需大巴数单调递减</li></ul></li><li><p><strong>验证函数的三种情况</strong>（处理每头牛）：</p><ul><li>添加这头牛会导致第一头牛超过最大等待时间 → 开新大巴</li><li>添加这头牛会导致大巴超载 → 开新大巴</li><li>可以加入当前大巴 → 直接加入</li></ul></li><li><p><strong>二分搜索</strong>：使用 <code>min_ok</code> 找到最小的可行 X</p></li></ol><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">can_arrange</span>(<span class="hljs-params">x</span>):    <span class="hljs-string">&quot;&quot;&quot;检查是否能在最大等待时间 x 内用 M 辆大巴接完所有奶牛&quot;&quot;&quot;</span>    need_bus = <span class="hljs-number">1</span>          <span class="hljs-comment"># 第一辆大巴</span>    first_ind = <span class="hljs-number">0</span>         <span class="hljs-comment"># 当前大巴上第一头牛的索引</span>    cow_up = <span class="hljs-number">1</span>            <span class="hljs-comment"># 当前大巴上的牛数量</span>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):        <span class="hljs-comment"># 等待时间超限或容量满，新开大巴</span>        <span class="hljs-keyword">if</span> time[i] - time[first_ind] &gt; x <span class="hljs-keyword">or</span> cow_up == c:            first_ind = i            need_bus += <span class="hljs-number">1</span>            cow_up = <span class="hljs-number">1</span>        <span class="hljs-keyword">else</span>:            cow_up += <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> need_bus &lt;= m<span class="hljs-keyword">def</span> <span class="hljs-title function_">min_ok</span>(<span class="hljs-params">lo, hi, check</span>):    <span class="hljs-string">&quot;&quot;&quot;查找最小的 x 使得 check(x) = True&quot;&quot;&quot;</span>    hi += <span class="hljs-number">1</span>    <span class="hljs-keyword">while</span> lo &lt; hi:        mid = lo + (hi - lo) // <span class="hljs-number">2</span>        <span class="hljs-keyword">if</span> check(mid):            hi = mid        <span class="hljs-keyword">else</span>:            lo = mid + <span class="hljs-number">1</span>    <span class="hljs-keyword">return</span> lon, m, c = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())time = <span class="hljs-built_in">sorted</span>([<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()])ans = min_ok(<span class="hljs-number">0</span>, time[-<span class="hljs-number">1</span>] - time[<span class="hljs-number">0</span>], can_arrange)<span class="hljs-built_in">print</span>(ans)</code></pre></div><p>关键点：</p><ul><li><strong>搜索范围</strong>：<code>[0, max_time - min_time]</code></li><li><strong>单调性</strong>：X 越大，所需大巴数越少 → 使用 <code>min_ok</code></li><li>复杂度：O(N log N)</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>二分搜索的核心思想是<strong>利用单调性</strong>快速缩小搜索区间：</p><ol><li><strong>在有序数组上</strong>：直接用 <code>bisect_left</code> / <code>bisect_right</code>，别手写</li><li><strong>在单调判定函数上</strong>：用 <code>max_ok</code> / <code>min_ok</code> 模板</li></ol><p><strong>关键要点</strong>：</p><ul><li>确保函数是单调的</li><li>选择正确的 mid 取整方向</li><li>使用哨兵简化边界处理</li></ul>]]></content>
     
     
     <categories>
@@ -80,9 +80,9 @@
     
     <tags>
       
-      <tag>排序</tag>
-      
       <tag>前缀和</tag>
+      
+      <tag>排序</tag>
       
       <tag>贪心</tag>
       
@@ -204,9 +204,9 @@
     
     <tags>
       
-      <tag>前缀和</tag>
-      
       <tag>差分</tag>
+      
+      <tag>前缀和</tag>
       
     </tags>
     
@@ -437,9 +437,9 @@
     
     <tags>
       
-      <tag>递归</tag>
-      
       <tag>穷举搜索</tag>
+      
+      <tag>递归</tag>
       
     </tags>
     
@@ -528,9 +528,9 @@
       
       <tag>并查集</tag>
       
-      <tag>图</tag>
-      
       <tag>DSU</tag>
+      
+      <tag>图</tag>
       
       <tag>数据结构</tag>
       
@@ -561,9 +561,9 @@
       
       <tag>Python</tag>
       
-      <tag>itertools</tag>
-      
       <tag>前缀和</tag>
+      
+      <tag>itertools</tag>
       
     </tags>
     
@@ -623,9 +623,9 @@
     
     <tags>
       
-      <tag>二叉树</tag>
-      
       <tag>递归</tag>
+      
+      <tag>二叉树</tag>
       
     </tags>
     
@@ -663,37 +663,6 @@
   
   
   <entry>
-    <title>136. 只出现一次的数字</title>
-    <link href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/"/>
-    <url>/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/</url>
-    
-    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/single-number/">136. 只出现一次的数字</a>（简单）</p><p>给你一个 <strong>非空</strong> 整数数组 <code>nums</code>，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现一次的元素。</p><p>你必须设计并实现线性时间复杂度的算法来解决此问题，且该算法只使用常量额外空间。</p><p><strong>示例 1：</strong></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[2,2,1]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs">1</code></pre></div><p><strong>示例 2：</strong></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs accesslog"><span class="hljs-string">[4,1,2,1,2]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs">4</code></pre></div><p><strong>示例 3：</strong></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[1]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs">1</code></pre></div><p><strong>提示：</strong></p><ul><li><code>1 &lt;= nums.length &lt;= 3 * 10^4</code></li><li><code>-3 * 10^4 &lt;= nums[i] &lt;= 3 * 10^4</code></li><li>除了某个元素只出现一次以外，其余每个元素均出现两次。</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>异或运算性质：$a \oplus a = 0$，$a \oplus 0 = a$，且满足交换律结合律。把所有数异或起来，成对的数互相抵消为 0，最后剩下的就是只出现一次的那个数。一次遍历、$O(1)$ 空间，恰好满足题目要求。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:    <span class="hljs-keyword">def</span> <span class="hljs-title function_">singleNumber</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:        res = <span class="hljs-number">0</span>        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:            res ^= num        <span class="hljs-keyword">return</span> res</code></pre></div>]]></content>
-    
-    
-    <categories>
-      
-      <category>刷题笔记</category>
-      
-      <category>Hot100</category>
-      
-      <category>位运算</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>位运算</tag>
-      
-      <tag>数组</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>338. 比特位计数</title>
     <link href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/338.%20%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/"/>
     <url>/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/338.%20%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/</url>
@@ -717,6 +686,37 @@
       <tag>动态规划</tag>
       
       <tag>位运算</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>136. 只出现一次的数字</title>
+    <link href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/"/>
+    <url>/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/single-number/">136. 只出现一次的数字</a>（简单）</p><p>给你一个 <strong>非空</strong> 整数数组 <code>nums</code>，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现一次的元素。</p><p>你必须设计并实现线性时间复杂度的算法来解决此问题，且该算法只使用常量额外空间。</p><p><strong>示例 1：</strong></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[2,2,1]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs">1</code></pre></div><p><strong>示例 2：</strong></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs accesslog"><span class="hljs-string">[4,1,2,1,2]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs">4</code></pre></div><p><strong>示例 3：</strong></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[1]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs">1</code></pre></div><p><strong>提示：</strong></p><ul><li><code>1 &lt;= nums.length &lt;= 3 * 10^4</code></li><li><code>-3 * 10^4 &lt;= nums[i] &lt;= 3 * 10^4</code></li><li>除了某个元素只出现一次以外，其余每个元素均出现两次。</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>异或运算性质：$a \oplus a = 0$，$a \oplus 0 = a$，且满足交换律结合律。把所有数异或起来，成对的数互相抵消为 0，最后剩下的就是只出现一次的那个数。一次遍历、$O(1)$ 空间，恰好满足题目要求。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:    <span class="hljs-keyword">def</span> <span class="hljs-title function_">singleNumber</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:        res = <span class="hljs-number">0</span>        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:            res ^= num        <span class="hljs-keyword">return</span> res</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>刷题笔记</category>
+      
+      <category>Hot100</category>
+      
+      <category>位运算</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>位运算</tag>
+      
+      <tag>数组</tag>
       
     </tags>
     
@@ -847,39 +847,6 @@
   
   
   <entry>
-    <title>226. 翻转二叉树</title>
-    <link href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    <url>/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
-    
-    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/invert-binary-tree/">226. 翻转二叉树</a>（简单）</p><p>给你一棵二叉树的根节点 <code>root</code>，翻转这棵二叉树，并返回其根节点。</p><p><strong>示例 1：</strong></p><p><img src="https://assets.leetcode.com/uploads/2021/03/14/invert1-tree.jpg" alt=""></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs accesslog"><span class="hljs-string">[4,2,7,1,3,6,9]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs accesslog"><span class="hljs-string">[4,7,2,9,6,3,1]</span></code></pre></div><p><strong>示例 2：</strong></p><p><img src="https://assets.leetcode.com/uploads/2021/03/14/invert2-tree.jpg" alt=""></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[2,1,3]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[2,3,1]</span></code></pre></div><p><strong>示例 3：</strong></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[]</span></code></pre></div><p><strong>提示：</strong></p><ul><li>树中节点数目范围在 <code>[0, 100]</code> 内</li><li><code>-100 &lt;= Node.val &lt;= 100</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>递归交换：对每个节点，先递归翻转左右子树，再交换 <code>root.left</code> 和 <code>root.right</code>，返回 <code>root</code>。空节点直接返回。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Definition for a binary tree node.</span><span class="hljs-comment"># class TreeNode:</span><span class="hljs-comment">#     def __init__(self, val=0, left=None, right=None):</span><span class="hljs-comment">#         self.val = val</span><span class="hljs-comment">#         self.left = left</span><span class="hljs-comment">#         self.right = right</span><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:    <span class="hljs-keyword">def</span> <span class="hljs-title function_">invertTree</span>(<span class="hljs-params">self, root: <span class="hljs-type">Optional</span>[TreeNode]</span>) -&gt; <span class="hljs-type">Optional</span>[TreeNode]:        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:            <span class="hljs-keyword">return</span> root        <span class="hljs-variable language_">self</span>.invertTree(root.left)        <span class="hljs-variable language_">self</span>.invertTree(root.right)        root.right, root.left = root.left, root.right        <span class="hljs-keyword">return</span> root</code></pre></div>]]></content>
-    
-    
-    <categories>
-      
-      <category>刷题笔记</category>
-      
-      <category>Hot100</category>
-      
-      <category>二叉树</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>DFS</tag>
-      
-      <tag>二叉树</tag>
-      
-      <tag>递归</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>543. 二叉树的直径</title>
     <link href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/543.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/"/>
     <url>/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/543.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/</url>
@@ -902,9 +869,42 @@
       
       <tag>DFS</tag>
       
+      <tag>递归</tag>
+      
       <tag>二叉树</tag>
       
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>226. 翻转二叉树</title>
+    <link href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <url>/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.cn/problems/invert-binary-tree/">226. 翻转二叉树</a>（简单）</p><p>给你一棵二叉树的根节点 <code>root</code>，翻转这棵二叉树，并返回其根节点。</p><p><strong>示例 1：</strong></p><p><img src="https://assets.leetcode.com/uploads/2021/03/14/invert1-tree.jpg" alt=""></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs accesslog"><span class="hljs-string">[4,2,7,1,3,6,9]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs accesslog"><span class="hljs-string">[4,7,2,9,6,3,1]</span></code></pre></div><p><strong>示例 2：</strong></p><p><img src="https://assets.leetcode.com/uploads/2021/03/14/invert2-tree.jpg" alt=""></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[2,1,3]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[2,3,1]</span></code></pre></div><p><strong>示例 3：</strong></p><p>输入：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[]</span></code></pre></div><p>输出：</p><div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[]</span></code></pre></div><p><strong>提示：</strong></p><ul><li>树中节点数目范围在 <code>[0, 100]</code> 内</li><li><code>-100 &lt;= Node.val &lt;= 100</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>递归交换：对每个节点，先递归翻转左右子树，再交换 <code>root.left</code> 和 <code>root.right</code>，返回 <code>root</code>。空节点直接返回。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Definition for a binary tree node.</span><span class="hljs-comment"># class TreeNode:</span><span class="hljs-comment">#     def __init__(self, val=0, left=None, right=None):</span><span class="hljs-comment">#         self.val = val</span><span class="hljs-comment">#         self.left = left</span><span class="hljs-comment">#         self.right = right</span><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:    <span class="hljs-keyword">def</span> <span class="hljs-title function_">invertTree</span>(<span class="hljs-params">self, root: <span class="hljs-type">Optional</span>[TreeNode]</span>) -&gt; <span class="hljs-type">Optional</span>[TreeNode]:        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:            <span class="hljs-keyword">return</span> root        <span class="hljs-variable language_">self</span>.invertTree(root.left)        <span class="hljs-variable language_">self</span>.invertTree(root.right)        root.right, root.left = root.left, root.right        <span class="hljs-keyword">return</span> root</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>刷题笔记</category>
+      
+      <category>Hot100</category>
+      
+      <category>二叉树</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>DFS</tag>
+      
       <tag>递归</tag>
+      
+      <tag>二叉树</tag>
       
     </tags>
     
@@ -935,9 +935,9 @@
       
       <tag>DFS</tag>
       
-      <tag>二叉树</tag>
-      
       <tag>递归</tag>
+      
+      <tag>二叉树</tag>
       
     </tags>
     
@@ -968,9 +968,9 @@
       
       <tag>DFS</tag>
       
-      <tag>二叉树</tag>
-      
       <tag>递归</tag>
+      
+      <tag>二叉树</tag>
       
     </tags>
     
@@ -1585,9 +1585,9 @@
       
       <tag>枚举</tag>
       
-      <tag>排序</tag>
-      
       <tag>前缀和</tag>
+      
+      <tag>排序</tag>
       
     </tags>
     
@@ -2054,6 +2054,41 @@
   
   
   <entry>
+    <title>字符串排序（HJ14）</title>
+    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/14_sort_strings/"/>
+    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/14_sort_strings/</url>
+    
+    <content type="html"><![CDATA[<h1 id="字符串排序"><a href="#字符串排序" class="headerlink" title="字符串排序"></a>字符串排序</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775720180207">https://www.nowcoder.com/share/jump/5832603751775720180207</a></p><p>给定 n 个字符串，按字典序从小到大排序后输出。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：<br><div class="code-wrapper"><pre><code class="hljs stata">5<span class="hljs-keyword">cap</span><span class="hljs-keyword">cat</span>card<span class="hljs-keyword">two</span>up</code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs stata"><span class="hljs-keyword">cap</span>card<span class="hljs-keyword">cat</span><span class="hljs-keyword">two</span>up</code></pre></div></p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="Python-内置排序"><a href="#Python-内置排序" class="headerlink" title="Python 内置排序"></a>Python 内置排序</h3><p>Python 的 <code>list.sort()</code> 方法默认按字典序（字典顺序）排序字符串，直接使用即可。</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())arr = [<span class="hljs-built_in">input</span>().strip() <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]arr.sort()<span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> arr:    <span class="hljs-built_in">print</span>(s)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="arr-sort-就地排序"><a href="#arr-sort-就地排序" class="headerlink" title="arr.sort() - 就地排序"></a><code>arr.sort()</code> - 就地排序</h3><div class="code-wrapper"><pre><code class="hljs python">arr.sort()  <span class="hljs-comment"># 直接修改 arr，不返回新列表</span></code></pre></div><p><strong>字典序规则</strong>：逐字符比较 ASCII 码</p><div class="code-wrapper"><pre><code class="hljs abnf"><span class="hljs-string">&quot;cap&quot;</span> vs <span class="hljs-string">&quot;card&quot;</span><span class="hljs-attribute">c</span> <span class="hljs-operator">=</span> c      → 相等<span class="hljs-attribute">a</span> <span class="hljs-operator">=</span> a      → 相等p &lt; d      → <span class="hljs-string">&quot;cap&quot;</span> &lt; <span class="hljs-string">&quot;card&quot;</span> (False)</code></pre></div><p>实际上 <code>p</code> (112) &gt; <code>d</code> (100)，所以 <code>&quot;card&quot; &lt; &quot;cap&quot;</code></p><h3 id="输出排序结果"><a href="#输出排序结果" class="headerlink" title="输出排序结果"></a>输出排序结果</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> arr:    <span class="hljs-built_in">print</span>(s)  <span class="hljs-comment"># 逐行输出</span></code></pre></div><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul><li>O(n log n × m) - n 个字符串，每个平均长度 m，排序比较 O(m)</li></ul><h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ul><li>O(n × m) - 存储 n 个字符串</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>刷题笔记</category>
+      
+      <category>华为机考</category>
+      
+      <category>nowcoder</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>题解</tag>
+      
+      <tag>Python</tag>
+      
+      <tag>排序</tag>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>明文分组（HJ3）</title>
     <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/"/>
     <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/</url>
@@ -2087,11 +2122,11 @@
   
   
   <entry>
-    <title>第一个只出现一次的字符（HJ13）</title>
-    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/"/>
-    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/</url>
+    <title>字符串变换（HJ15）</title>
+    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/"/>
+    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/</url>
     
-    <content type="html"><![CDATA[<h1 id="第一个只出现一次的字符"><a href="#第一个只出现一次的字符" class="headerlink" title="第一个只出现一次的字符"></a>第一个只出现一次的字符</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775720154472">https://www.nowcoder.com/share/jump/5832603751775720154472</a></p><p>给定一个字符串，找出其中第一个只出现一次的字符。如果没有这样的字符，输出 -1。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：<br><div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">asdfasdfo</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">o</span></code></pre></div><br>解释：o 只出现 1 次，且是第一个满足条件的字符</p><p>输入：<br><div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">aabbcc</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs diff"><span class="hljs-deletion">-1</span></code></pre></div><br>解释：所有字符都出现多次</p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="哈希表统计-顺序查找"><a href="#哈希表统计-顺序查找" class="headerlink" title="哈希表统计 + 顺序查找"></a>哈希表统计 + 顺序查找</h3><ol><li>使用 <code>Counter</code> 统计每个字符的出现次数</li><li>按原字符串顺序遍历，找到第一个计数为 1 的字符</li><li>若遍历完未找到，返回 -1</li></ol><p><strong>关键点</strong>：必须遍历<strong>原字符串</strong>而非字典，保证找到的是”第一个”符合条件的字符。</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> Counters = <span class="hljs-built_in">input</span>().strip()cnt = Counter(s)<span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s:    <span class="hljs-keyword">if</span> cnt[ch] == <span class="hljs-number">1</span>:        <span class="hljs-built_in">print</span>(ch)        exit()<span class="hljs-built_in">print</span>(-<span class="hljs-number">1</span>)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="Counter-s-字符频率统计"><a href="#Counter-s-字符频率统计" class="headerlink" title="Counter(s) - 字符频率统计"></a><code>Counter(s)</code> - 字符频率统计</h3><div class="code-wrapper"><pre><code class="hljs python">Counter(<span class="hljs-string">&quot;asdfasdfo&quot;</span>)<span class="hljs-comment"># → Counter(&#123;&#x27;a&#x27;: 2, &#x27;s&#x27;: 2, &#x27;d&#x27;: 2, &#x27;f&#x27;: 2, &#x27;o&#x27;: 1&#125;)</span></code></pre></div><h3 id="遍历原字符串保证顺序"><a href="#遍历原字符串保证顺序" class="headerlink" title="遍历原字符串保证顺序"></a>遍历原字符串保证顺序</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s:          <span class="hljs-comment"># 按原顺序遍历</span>    <span class="hljs-keyword">if</span> cnt[ch] == <span class="hljs-number">1</span>:  <span class="hljs-comment"># 第一个计数为1的即为答案</span>        <span class="hljs-built_in">print</span>(ch)        exit()        <span class="hljs-comment"># 找到后立即退出</span></code></pre></div><p><strong>为什么不能遍历 <code>cnt.keys()</code>？</strong></p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># cnt.keys() 的顺序是随机的（Python 3.7+ 字典保持插入顺序，但Counter的顺序不保证对应原字符串）</span><span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> cnt:  <span class="hljs-comment"># ❌ 错误：无法保证是原字符串中的&quot;第一个&quot;</span>    <span class="hljs-keyword">if</span> cnt[ch] == <span class="hljs-number">1</span>:        <span class="hljs-built_in">print</span>(ch)</code></pre></div><h3 id="exit-提前退出程序"><a href="#exit-提前退出程序" class="headerlink" title="exit() - 提前退出程序"></a><code>exit()</code> - 提前退出程序</h3><p>找到答案后立即退出，避免继续无效遍历。</p><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul><li>O(n) - Counter 统计 O(n)，顺序查找 O(n)</li></ul><h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ul><li>O(k) - 存储字符频率，k 为字符种类数</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="字符串变换"><a href="#字符串变换" class="headerlink" title="字符串变换"></a>字符串变换</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775720361603">https://www.nowcoder.com/share/jump/5832603751775720361603</a></p><p>输入两个字符串 s1 和 s2：</p><ul><li>s1：字母进行大小写转换并后移 1 位，数字后移 1 位</li><li>s2：字母进行大小写转换并前移 1 位，数字前移 1 位</li></ul><p>字母移动范围在 26 个字母内循环，数字移动范围在 0-9 内循环。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：<br><div class="code-wrapper"><pre><code class="hljs nginx"><span class="hljs-attribute">abc123</span>XYZ987</code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs mipsasm"><span class="hljs-keyword">BCD234</span><span class="hljs-keyword"></span>wyz876</code></pre></div></p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="统一变换函数"><a href="#统一变换函数" class="headerlink" title="统一变换函数"></a>统一变换函数</h3><p>通过 <code>flag</code> 参数控制变换方向：</p><ul><li><code>flag = 1</code>：后移（+1）</li><li><code>flag = -1</code>：前移（-1）</li></ul><p><strong>变换规则</strong>：</p><ol><li>小写字母 → 大写字母 + 移位</li><li>大写字母 → 小写字母 + 移位</li><li>数字 → 数字 + 移位</li></ol><p>使用模运算实现循环移动。</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">s1 = <span class="hljs-built_in">input</span>().strip()s2 = <span class="hljs-built_in">input</span>().strip()<span class="hljs-keyword">def</span> <span class="hljs-title function_">fun</span>(<span class="hljs-params">s, flag</span>):    res = []    <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s:        cur = <span class="hljs-built_in">ord</span>(ch)        <span class="hljs-keyword">if</span> ch.isalpha():            <span class="hljs-keyword">if</span> ch.islower():                base = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)                new = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>)            <span class="hljs-keyword">else</span>:                base = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>)                new = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)            cur = (cur - base + flag) % <span class="hljs-number">26</span> + new        <span class="hljs-keyword">else</span>:            cur = (cur - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>) + flag) % <span class="hljs-number">10</span> + <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>)        res.append(<span class="hljs-built_in">chr</span>(cur))    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;&#x27;</span>.join(res))fun(s1, <span class="hljs-number">1</span>)fun(s2, -<span class="hljs-number">1</span>)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="字母变换逻辑"><a href="#字母变换逻辑" class="headerlink" title="字母变换逻辑"></a>字母变换逻辑</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">if</span> ch.islower():    base = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)  <span class="hljs-comment"># 97</span>    new = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>)   <span class="hljs-comment"># 65</span><span class="hljs-keyword">else</span>:    base = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>)  <span class="hljs-comment"># 65</span>    new = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)   <span class="hljs-comment"># 97</span>cur = (cur - base + flag) % <span class="hljs-number">26</span> + new</code></pre></div><p><strong>以 ‘c’ 后移 1 位为例</strong>：<br><div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. ord(&#x27;c&#x27;) - ord(&#x27;a&#x27;) = <span class="hljs-number">2</span>      # 归一化到 <span class="hljs-number">0</span>-<span class="hljs-number">25</span><span class="hljs-attribute">2</span>. <span class="hljs-number">2</span> + <span class="hljs-number">1</span> = <span class="hljs-number">3</span>                     # 后移 <span class="hljs-number">1</span> 位<span class="hljs-attribute">3</span>. <span class="hljs-number">3</span> % <span class="hljs-number">26</span> = <span class="hljs-number">3</span>                    # 模 <span class="hljs-number">26</span> 循环<span class="hljs-attribute">4</span>. <span class="hljs-number">3</span> + ord(&#x27;A&#x27;) = <span class="hljs-number">68</span>             # 转回 ASCII<span class="hljs-attribute">5</span>. chr(<span class="hljs-number">68</span>) = &#x27;D&#x27;                 # 最终结果</code></pre></div></p><h3 id="数字变换逻辑"><a href="#数字变换逻辑" class="headerlink" title="数字变换逻辑"></a>数字变换逻辑</h3><div class="code-wrapper"><pre><code class="hljs python">cur = (cur - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>) + flag) % <span class="hljs-number">10</span> + <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>)</code></pre></div><p><strong>以 ‘3’ 后移 1 位为例</strong>：<br><div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. ord(&#x27;<span class="hljs-number">3</span>&#x27;) - ord(&#x27;<span class="hljs-number">0</span>&#x27;) = <span class="hljs-number">3</span>       # 归一化到 <span class="hljs-number">0</span>-<span class="hljs-number">9</span><span class="hljs-attribute">2</span>. <span class="hljs-number">3</span> + <span class="hljs-number">1</span> = <span class="hljs-number">4</span>                     # 后移 <span class="hljs-number">1</span> 位<span class="hljs-attribute">3</span>. <span class="hljs-number">4</span> % <span class="hljs-number">10</span> = <span class="hljs-number">4</span>                    # 模 <span class="hljs-number">10</span> 循环<span class="hljs-attribute">4</span>. <span class="hljs-number">4</span> + ord(&#x27;<span class="hljs-number">0</span>&#x27;) = <span class="hljs-number">52</span>             # 转回 ASCII<span class="hljs-attribute">5</span>. chr(<span class="hljs-number">52</span>) = &#x27;<span class="hljs-number">4</span>&#x27;                 # 最终结果</code></pre></div></p><p><strong>以 ‘0’ 前移 1 位为例</strong>：<br><div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. <span class="hljs-number">0</span> - <span class="hljs-number">1</span> = -<span class="hljs-number">1</span>                    # 前移 <span class="hljs-number">1</span> 位<span class="hljs-attribute">2</span>. -<span class="hljs-number">1</span> % <span class="hljs-number">10</span> = <span class="hljs-number">9</span>                   # Python 模运算保证非负<span class="hljs-attribute">3</span>. 结果为 &#x27;<span class="hljs-number">9</span>&#x27;</code></pre></div></p><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul><li>O(n) - 遍历字符串一次</li></ul><h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ul><li>O(n) - 存储变换后的结果</li></ul>]]></content>
     
     
     <categories>
@@ -2110,8 +2145,6 @@
       <tag>题解</tag>
       
       <tag>Python</tag>
-      
-      <tag>哈希表</tag>
       
       <tag>字符串</tag>
       
@@ -2157,144 +2190,6 @@
   
   
   <entry>
-    <title>字符串字符匹配（HJ17）</title>
-    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/17_string_match/"/>
-    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/17_string_match/</url>
-    
-    <content type="html"><![CDATA[<h1 id="字符串字符匹配"><a href="#字符串字符匹配" class="headerlink" title="字符串字符匹配"></a>字符串字符匹配</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775720180207">https://www.nowcoder.com/share/jump/5832603751775720180207</a></p><p>给定两个字符串，判断第一个字符串中的每个字符是否都在第二个字符串中出现。全部出现输出 <code>true</code>，否则输出 <code>false</code>。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：<br><div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">abc</span><span class="hljs-attribute">efgh</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-literal">false</span></code></pre></div><br>解释：a、b、c 都不在 efgh 中</p><p>输入：<br><div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">abc</span><span class="hljs-attribute">aabbcc</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-literal">true</span></code></pre></div><br>解释：a、b、c 都在 aabbcc 中</p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="集合子集判断"><a href="#集合子集判断" class="headerlink" title="集合子集判断"></a>集合子集判断</h3><p>将两个字符串转为字符集合，判断第一个集合是否是第二个集合的子集。</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># HJ17 字符串字符匹配</span>s = <span class="hljs-built_in">set</span>(<span class="hljs-built_in">input</span>())t = <span class="hljs-built_in">set</span>(<span class="hljs-built_in">input</span>())flag = s &lt;= t<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;true&quot;</span>) <span class="hljs-keyword">if</span> flag <span class="hljs-keyword">else</span> <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;false&quot;</span>)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="s-lt-t-子集判断"><a href="#s-lt-t-子集判断" class="headerlink" title="s &lt;= t - 子集判断"></a><code>s &lt;= t</code> - 子集判断</h3><div class="code-wrapper"><pre><code class="hljs python">s = &#123;<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>&#125;t = &#123;<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>&#125;s &lt;= t  <span class="hljs-comment"># True，s 是 t 的子集</span></code></pre></div><p>等价写法：<br><div class="code-wrapper"><pre><code class="hljs python">s &lt;= t           <span class="hljs-comment"># 运算符写法（推荐）</span>s.issubset(t)    <span class="hljs-comment"># 方法写法</span><span class="hljs-built_in">all</span>(ch <span class="hljs-keyword">in</span> t <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s)  <span class="hljs-comment"># 逐个检查</span></code></pre></div></p><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul><li>O(n + m) - 构建两个集合，n 和 m 为字符串长度</li></ul><h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ul><li>O(k) - 存储字符集合，k 为字符种类数</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>刷题笔记</category>
-      
-      <category>华为机考</category>
-      
-      <category>nowcoder</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>题解</tag>
-      
-      <tag>Python</tag>
-      
-      <tag>字符串</tag>
-      
-      <tag>集合</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>字符串变换（HJ15）</title>
-    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/"/>
-    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/</url>
-    
-    <content type="html"><![CDATA[<h1 id="字符串变换"><a href="#字符串变换" class="headerlink" title="字符串变换"></a>字符串变换</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775720361603">https://www.nowcoder.com/share/jump/5832603751775720361603</a></p><p>输入两个字符串 s1 和 s2：</p><ul><li>s1：字母进行大小写转换并后移 1 位，数字后移 1 位</li><li>s2：字母进行大小写转换并前移 1 位，数字前移 1 位</li></ul><p>字母移动范围在 26 个字母内循环，数字移动范围在 0-9 内循环。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：<br><div class="code-wrapper"><pre><code class="hljs nginx"><span class="hljs-attribute">abc123</span>XYZ987</code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs mipsasm"><span class="hljs-keyword">BCD234</span><span class="hljs-keyword"></span>wyz876</code></pre></div></p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="统一变换函数"><a href="#统一变换函数" class="headerlink" title="统一变换函数"></a>统一变换函数</h3><p>通过 <code>flag</code> 参数控制变换方向：</p><ul><li><code>flag = 1</code>：后移（+1）</li><li><code>flag = -1</code>：前移（-1）</li></ul><p><strong>变换规则</strong>：</p><ol><li>小写字母 → 大写字母 + 移位</li><li>大写字母 → 小写字母 + 移位</li><li>数字 → 数字 + 移位</li></ol><p>使用模运算实现循环移动。</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">s1 = <span class="hljs-built_in">input</span>().strip()s2 = <span class="hljs-built_in">input</span>().strip()<span class="hljs-keyword">def</span> <span class="hljs-title function_">fun</span>(<span class="hljs-params">s, flag</span>):    res = []    <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s:        cur = <span class="hljs-built_in">ord</span>(ch)        <span class="hljs-keyword">if</span> ch.isalpha():            <span class="hljs-keyword">if</span> ch.islower():                base = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)                new = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>)            <span class="hljs-keyword">else</span>:                base = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>)                new = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)            cur = (cur - base + flag) % <span class="hljs-number">26</span> + new        <span class="hljs-keyword">else</span>:            cur = (cur - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>) + flag) % <span class="hljs-number">10</span> + <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>)        res.append(<span class="hljs-built_in">chr</span>(cur))    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;&#x27;</span>.join(res))fun(s1, <span class="hljs-number">1</span>)fun(s2, -<span class="hljs-number">1</span>)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="字母变换逻辑"><a href="#字母变换逻辑" class="headerlink" title="字母变换逻辑"></a>字母变换逻辑</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">if</span> ch.islower():    base = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)  <span class="hljs-comment"># 97</span>    new = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>)   <span class="hljs-comment"># 65</span><span class="hljs-keyword">else</span>:    base = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>)  <span class="hljs-comment"># 65</span>    new = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)   <span class="hljs-comment"># 97</span>cur = (cur - base + flag) % <span class="hljs-number">26</span> + new</code></pre></div><p><strong>以 ‘c’ 后移 1 位为例</strong>：<br><div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. ord(&#x27;c&#x27;) - ord(&#x27;a&#x27;) = <span class="hljs-number">2</span>      # 归一化到 <span class="hljs-number">0</span>-<span class="hljs-number">25</span><span class="hljs-attribute">2</span>. <span class="hljs-number">2</span> + <span class="hljs-number">1</span> = <span class="hljs-number">3</span>                     # 后移 <span class="hljs-number">1</span> 位<span class="hljs-attribute">3</span>. <span class="hljs-number">3</span> % <span class="hljs-number">26</span> = <span class="hljs-number">3</span>                    # 模 <span class="hljs-number">26</span> 循环<span class="hljs-attribute">4</span>. <span class="hljs-number">3</span> + ord(&#x27;A&#x27;) = <span class="hljs-number">68</span>             # 转回 ASCII<span class="hljs-attribute">5</span>. chr(<span class="hljs-number">68</span>) = &#x27;D&#x27;                 # 最终结果</code></pre></div></p><h3 id="数字变换逻辑"><a href="#数字变换逻辑" class="headerlink" title="数字变换逻辑"></a>数字变换逻辑</h3><div class="code-wrapper"><pre><code class="hljs python">cur = (cur - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>) + flag) % <span class="hljs-number">10</span> + <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;0&#x27;</span>)</code></pre></div><p><strong>以 ‘3’ 后移 1 位为例</strong>：<br><div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. ord(&#x27;<span class="hljs-number">3</span>&#x27;) - ord(&#x27;<span class="hljs-number">0</span>&#x27;) = <span class="hljs-number">3</span>       # 归一化到 <span class="hljs-number">0</span>-<span class="hljs-number">9</span><span class="hljs-attribute">2</span>. <span class="hljs-number">3</span> + <span class="hljs-number">1</span> = <span class="hljs-number">4</span>                     # 后移 <span class="hljs-number">1</span> 位<span class="hljs-attribute">3</span>. <span class="hljs-number">4</span> % <span class="hljs-number">10</span> = <span class="hljs-number">4</span>                    # 模 <span class="hljs-number">10</span> 循环<span class="hljs-attribute">4</span>. <span class="hljs-number">4</span> + ord(&#x27;<span class="hljs-number">0</span>&#x27;) = <span class="hljs-number">52</span>             # 转回 ASCII<span class="hljs-attribute">5</span>. chr(<span class="hljs-number">52</span>) = &#x27;<span class="hljs-number">4</span>&#x27;                 # 最终结果</code></pre></div></p><p><strong>以 ‘0’ 前移 1 位为例</strong>：<br><div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>. <span class="hljs-number">0</span> - <span class="hljs-number">1</span> = -<span class="hljs-number">1</span>                    # 前移 <span class="hljs-number">1</span> 位<span class="hljs-attribute">2</span>. -<span class="hljs-number">1</span> % <span class="hljs-number">10</span> = <span class="hljs-number">9</span>                   # Python 模运算保证非负<span class="hljs-attribute">3</span>. 结果为 &#x27;<span class="hljs-number">9</span>&#x27;</code></pre></div></p><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul><li>O(n) - 遍历字符串一次</li></ul><h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ul><li>O(n) - 存储变换后的结果</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>刷题笔记</category>
-      
-      <category>华为机考</category>
-      
-      <category>nowcoder</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>题解</tag>
-      
-      <tag>Python</tag>
-      
-      <tag>字符串</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>查找两个字符串a,b中的最长公共子串（HJ21）</title>
-    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/21_longest_common_substring/"/>
-    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/21_longest_common_substring/</url>
-    
-    <content type="html"><![CDATA[<h1 id="查找两个字符串a-b中的最长公共子串-题解"><a href="#查找两个字符串a-b中的最长公共子串-题解" class="headerlink" title="查找两个字符串a,b中的最长公共子串 题解"></a>查找两个字符串a,b中的最长公共子串 题解</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775928180959">https://www.nowcoder.com/share/jump/5832603751775928180959</a></p><p>给定两个字符串 s 和 t，找出它们的最长公共子串。如果存在多个答案，输出在较短串中最先出现的那个。</p><p><strong>输入</strong>：</p><ul><li>第一行：字符串 s（1 ≤ len(s) ≤ 300）</li><li>第二行：字符串 t（1 ≤ len(t) ≤ 300）</li></ul><p><strong>输出</strong>：最长公共子串</p><p><strong>示例</strong>：</p><ul><li>输入：<div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">awaabb</span><span class="hljs-attribute">aawbb</span></code></pre></div></li><li>输出：<code>aa</code></li></ul><hr><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>问题类型</strong>：最长公共子串</p><p><strong>思路</strong>：</p><ol><li>确保 s 是较短串（保证优先输出较短串中先出现的）</li><li>枚举 s 的所有子串，检查是否在 t 中</li><li>记录最长的匹配子串</li></ol><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="code-wrapper"><pre><code class="hljs python">a = <span class="hljs-built_in">input</span>()b = <span class="hljs-built_in">input</span>()<span class="hljs-comment"># 确保 a 是较短的字符串</span><span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(a) &gt; <span class="hljs-built_in">len</span>(b):    a, b = b, ares = <span class="hljs-string">&#x27;&#x27;</span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(a)):    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i, <span class="hljs-built_in">len</span>(a)):        sub = a[i:j + <span class="hljs-number">1</span>]        <span class="hljs-keyword">if</span> sub <span class="hljs-keyword">in</span> b <span class="hljs-keyword">and</span> <span class="hljs-built_in">len</span>(sub) &gt; <span class="hljs-built_in">len</span>(res):            res = sub<span class="hljs-built_in">print</span>(res)</code></pre></div><p><strong>时间复杂度</strong>：O(n³)，n 为较短串长度<br><strong>空间复杂度</strong>：O(1)</p><blockquote><p><strong>优化思路</strong>：可使用动态规划优化到 O(n×m)，但 n ≤ 300 时暴力法足够。</p></blockquote>]]></content>
-    
-    
-    <categories>
-      
-      <category>刷题笔记</category>
-      
-      <category>华为机考</category>
-      
-      <category>nowcoder</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>题解</tag>
-      
-      <tag>Python</tag>
-      
-      <tag>动态规划</tag>
-      
-      <tag>字符串</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>字符串排序（HJ14）</title>
-    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/14_sort_strings/"/>
-    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/14_sort_strings/</url>
-    
-    <content type="html"><![CDATA[<h1 id="字符串排序"><a href="#字符串排序" class="headerlink" title="字符串排序"></a>字符串排序</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775720180207">https://www.nowcoder.com/share/jump/5832603751775720180207</a></p><p>给定 n 个字符串，按字典序从小到大排序后输出。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：<br><div class="code-wrapper"><pre><code class="hljs stata">5<span class="hljs-keyword">cap</span><span class="hljs-keyword">cat</span>card<span class="hljs-keyword">two</span>up</code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs stata"><span class="hljs-keyword">cap</span>card<span class="hljs-keyword">cat</span><span class="hljs-keyword">two</span>up</code></pre></div></p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="Python-内置排序"><a href="#Python-内置排序" class="headerlink" title="Python 内置排序"></a>Python 内置排序</h3><p>Python 的 <code>list.sort()</code> 方法默认按字典序（字典顺序）排序字符串，直接使用即可。</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())arr = [<span class="hljs-built_in">input</span>().strip() <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]arr.sort()<span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> arr:    <span class="hljs-built_in">print</span>(s)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="arr-sort-就地排序"><a href="#arr-sort-就地排序" class="headerlink" title="arr.sort() - 就地排序"></a><code>arr.sort()</code> - 就地排序</h3><div class="code-wrapper"><pre><code class="hljs python">arr.sort()  <span class="hljs-comment"># 直接修改 arr，不返回新列表</span></code></pre></div><p><strong>字典序规则</strong>：逐字符比较 ASCII 码</p><div class="code-wrapper"><pre><code class="hljs abnf"><span class="hljs-string">&quot;cap&quot;</span> vs <span class="hljs-string">&quot;card&quot;</span><span class="hljs-attribute">c</span> <span class="hljs-operator">=</span> c      → 相等<span class="hljs-attribute">a</span> <span class="hljs-operator">=</span> a      → 相等p &lt; d      → <span class="hljs-string">&quot;cap&quot;</span> &lt; <span class="hljs-string">&quot;card&quot;</span> (False)</code></pre></div><p>实际上 <code>p</code> (112) &gt; <code>d</code> (100)，所以 <code>&quot;card&quot; &lt; &quot;cap&quot;</code></p><h3 id="输出排序结果"><a href="#输出排序结果" class="headerlink" title="输出排序结果"></a>输出排序结果</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> arr:    <span class="hljs-built_in">print</span>(s)  <span class="hljs-comment"># 逐行输出</span></code></pre></div><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul><li>O(n log n × m) - n 个字符串，每个平均长度 m，排序比较 O(m)</li></ul><h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ul><li>O(n × m) - 存储 n 个字符串</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>刷题笔记</category>
-      
-      <category>华为机考</category>
-      
-      <category>nowcoder</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>排序</tag>
-      
-      <tag>题解</tag>
-      
-      <tag>Python</tag>
-      
-      <tag>字符串</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>最长回文子串（HJ16）</title>
     <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/16_palindrome/"/>
     <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/16_palindrome/</url>
@@ -2330,11 +2225,11 @@
   
   
   <entry>
-    <title>查找兄弟单词（HJ20）</title>
-    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/20_brother_words/"/>
-    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/20_brother_words/</url>
+    <title>字符串字符匹配（HJ17）</title>
+    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/17_string_match/"/>
+    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/17_string_match/</url>
     
-    <content type="html"><![CDATA[<h1 id="查找兄弟单词-题解"><a href="#查找兄弟单词-题解" class="headerlink" title="查找兄弟单词 题解"></a>查找兄弟单词 题解</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775927842238">https://www.nowcoder.com/share/jump/5832603751775927842238</a></p><p>定义一个字符串 s 的”兄弟单词”为：将 s 重新排序后得到的与原字符串不同的新字符串。</p><p>给定 n 个字符串和另一个字符串 x，需要：</p><ol><li>统计这 n 个字符串中，有多少个是 x 的”兄弟单词”</li><li>将这些兄弟单词按字典序排序，输出第 k 个</li></ol><p><strong>输入</strong>：</p><ul><li>n：字符串个数</li><li>n 个字符串</li><li>x：目标字符串</li><li>k：要查找的第 k 小的兄弟单词</li></ul><p><strong>输出</strong>：</p><ul><li>第一行：兄弟单词数量</li><li>第二行：第 k 个兄弟单词（如果存在）</li></ul><p><strong>示例</strong>：</p><ul><li>输入：<code>3 abc bca cab abc 1</code></li><li>输出：<div class="code-wrapper"><pre><code class="hljs">2bca</code></pre></div></li></ul><hr><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>问题类型</strong>：字符串匹配 + 排序</p><p><strong>思路</strong>：</p><ol><li>判断两个字符串是否互为兄弟单词：字母排序后相同，且不是同一个单词</li><li>遍历所有字符串，筛选出 x 的兄弟单词</li><li>按字典序排序，输出第 k 个</li></ol><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="code-wrapper"><pre><code class="hljs python">line = <span class="hljs-built_in">input</span>().split()n = <span class="hljs-built_in">int</span>(line[<span class="hljs-number">0</span>])arr = line[<span class="hljs-number">1</span>: n + <span class="hljs-number">1</span>]x = line[n + <span class="hljs-number">1</span>]x_sort = <span class="hljs-built_in">sorted</span>(x)k = <span class="hljs-built_in">int</span>(line[-<span class="hljs-number">1</span>])res = []<span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> arr:    <span class="hljs-keyword">if</span> <span class="hljs-built_in">sorted</span>(s) == x_sort <span class="hljs-keyword">and</span> s != x:        res.append(s)res.sort()<span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(res))<span class="hljs-keyword">if</span> k &lt;= <span class="hljs-built_in">len</span>(res):    <span class="hljs-built_in">print</span>(res[k - <span class="hljs-number">1</span>])</code></pre></div><p><strong>时间复杂度</strong>：O(n × m log m)，m 为字符串长度（最坏10）<br><strong>空间复杂度</strong>：O(n)</p><blockquote><p><strong>注意</strong>：兄弟单词必须满足两个条件：①字母组成相同 ②不是同一个单词</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h1 id="字符串字符匹配"><a href="#字符串字符匹配" class="headerlink" title="字符串字符匹配"></a>字符串字符匹配</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775720180207">https://www.nowcoder.com/share/jump/5832603751775720180207</a></p><p>给定两个字符串，判断第一个字符串中的每个字符是否都在第二个字符串中出现。全部出现输出 <code>true</code>，否则输出 <code>false</code>。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：<br><div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">abc</span><span class="hljs-attribute">efgh</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-literal">false</span></code></pre></div><br>解释：a、b、c 都不在 efgh 中</p><p>输入：<br><div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">abc</span><span class="hljs-attribute">aabbcc</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-literal">true</span></code></pre></div><br>解释：a、b、c 都在 aabbcc 中</p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="集合子集判断"><a href="#集合子集判断" class="headerlink" title="集合子集判断"></a>集合子集判断</h3><p>将两个字符串转为字符集合，判断第一个集合是否是第二个集合的子集。</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># HJ17 字符串字符匹配</span>s = <span class="hljs-built_in">set</span>(<span class="hljs-built_in">input</span>())t = <span class="hljs-built_in">set</span>(<span class="hljs-built_in">input</span>())flag = s &lt;= t<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;true&quot;</span>) <span class="hljs-keyword">if</span> flag <span class="hljs-keyword">else</span> <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;false&quot;</span>)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="s-lt-t-子集判断"><a href="#s-lt-t-子集判断" class="headerlink" title="s &lt;= t - 子集判断"></a><code>s &lt;= t</code> - 子集判断</h3><div class="code-wrapper"><pre><code class="hljs python">s = &#123;<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>&#125;t = &#123;<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>&#125;s &lt;= t  <span class="hljs-comment"># True，s 是 t 的子集</span></code></pre></div><p>等价写法：<br><div class="code-wrapper"><pre><code class="hljs python">s &lt;= t           <span class="hljs-comment"># 运算符写法（推荐）</span>s.issubset(t)    <span class="hljs-comment"># 方法写法</span><span class="hljs-built_in">all</span>(ch <span class="hljs-keyword">in</span> t <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s)  <span class="hljs-comment"># 逐个检查</span></code></pre></div></p><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul><li>O(n + m) - 构建两个集合，n 和 m 为字符串长度</li></ul><h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ul><li>O(k) - 存储字符集合，k 为字符种类数</li></ul>]]></content>
     
     
     <categories>
@@ -2350,13 +2245,13 @@
     
     <tags>
       
-      <tag>排序</tag>
-      
       <tag>题解</tag>
       
       <tag>Python</tag>
       
       <tag>字符串</tag>
+      
+      <tag>集合</tag>
       
     </tags>
     
@@ -2385,11 +2280,116 @@
     
     <tags>
       
+      <tag>题解</tag>
+      
+      <tag>Python</tag>
+      
       <tag>排序</tag>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>第一个只出现一次的字符（HJ13）</title>
+    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/"/>
+    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/</url>
+    
+    <content type="html"><![CDATA[<h1 id="第一个只出现一次的字符"><a href="#第一个只出现一次的字符" class="headerlink" title="第一个只出现一次的字符"></a>第一个只出现一次的字符</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775720154472">https://www.nowcoder.com/share/jump/5832603751775720154472</a></p><p>给定一个字符串，找出其中第一个只出现一次的字符。如果没有这样的字符，输出 -1。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：<br><div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">asdfasdfo</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">o</span></code></pre></div><br>解释：o 只出现 1 次，且是第一个满足条件的字符</p><p>输入：<br><div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">aabbcc</span></code></pre></div><br>输出：<br><div class="code-wrapper"><pre><code class="hljs diff"><span class="hljs-deletion">-1</span></code></pre></div><br>解释：所有字符都出现多次</p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="哈希表统计-顺序查找"><a href="#哈希表统计-顺序查找" class="headerlink" title="哈希表统计 + 顺序查找"></a>哈希表统计 + 顺序查找</h3><ol><li>使用 <code>Counter</code> 统计每个字符的出现次数</li><li>按原字符串顺序遍历，找到第一个计数为 1 的字符</li><li>若遍历完未找到，返回 -1</li></ol><p><strong>关键点</strong>：必须遍历<strong>原字符串</strong>而非字典，保证找到的是”第一个”符合条件的字符。</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> Counters = <span class="hljs-built_in">input</span>().strip()cnt = Counter(s)<span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s:    <span class="hljs-keyword">if</span> cnt[ch] == <span class="hljs-number">1</span>:        <span class="hljs-built_in">print</span>(ch)        exit()<span class="hljs-built_in">print</span>(-<span class="hljs-number">1</span>)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="Counter-s-字符频率统计"><a href="#Counter-s-字符频率统计" class="headerlink" title="Counter(s) - 字符频率统计"></a><code>Counter(s)</code> - 字符频率统计</h3><div class="code-wrapper"><pre><code class="hljs python">Counter(<span class="hljs-string">&quot;asdfasdfo&quot;</span>)<span class="hljs-comment"># → Counter(&#123;&#x27;a&#x27;: 2, &#x27;s&#x27;: 2, &#x27;d&#x27;: 2, &#x27;f&#x27;: 2, &#x27;o&#x27;: 1&#125;)</span></code></pre></div><h3 id="遍历原字符串保证顺序"><a href="#遍历原字符串保证顺序" class="headerlink" title="遍历原字符串保证顺序"></a>遍历原字符串保证顺序</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> s:          <span class="hljs-comment"># 按原顺序遍历</span>    <span class="hljs-keyword">if</span> cnt[ch] == <span class="hljs-number">1</span>:  <span class="hljs-comment"># 第一个计数为1的即为答案</span>        <span class="hljs-built_in">print</span>(ch)        exit()        <span class="hljs-comment"># 找到后立即退出</span></code></pre></div><p><strong>为什么不能遍历 <code>cnt.keys()</code>？</strong></p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># cnt.keys() 的顺序是随机的（Python 3.7+ 字典保持插入顺序，但Counter的顺序不保证对应原字符串）</span><span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> cnt:  <span class="hljs-comment"># ❌ 错误：无法保证是原字符串中的&quot;第一个&quot;</span>    <span class="hljs-keyword">if</span> cnt[ch] == <span class="hljs-number">1</span>:        <span class="hljs-built_in">print</span>(ch)</code></pre></div><h3 id="exit-提前退出程序"><a href="#exit-提前退出程序" class="headerlink" title="exit() - 提前退出程序"></a><code>exit()</code> - 提前退出程序</h3><p>找到答案后立即退出，避免继续无效遍历。</p><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul><li>O(n) - Counter 统计 O(n)，顺序查找 O(n)</li></ul><h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><ul><li>O(k) - 存储字符频率，k 为字符种类数</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>刷题笔记</category>
+      
+      <category>华为机考</category>
+      
+      <category>nowcoder</category>
+      
+    </categories>
+    
+    
+    <tags>
       
       <tag>题解</tag>
       
       <tag>Python</tag>
+      
+      <tag>哈希表</tag>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>查找兄弟单词（HJ20）</title>
+    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/20_brother_words/"/>
+    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/20_brother_words/</url>
+    
+    <content type="html"><![CDATA[<h1 id="查找兄弟单词-题解"><a href="#查找兄弟单词-题解" class="headerlink" title="查找兄弟单词 题解"></a>查找兄弟单词 题解</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775927842238">https://www.nowcoder.com/share/jump/5832603751775927842238</a></p><p>定义一个字符串 s 的”兄弟单词”为：将 s 重新排序后得到的与原字符串不同的新字符串。</p><p>给定 n 个字符串和另一个字符串 x，需要：</p><ol><li>统计这 n 个字符串中，有多少个是 x 的”兄弟单词”</li><li>将这些兄弟单词按字典序排序，输出第 k 个</li></ol><p><strong>输入</strong>：</p><ul><li>n：字符串个数</li><li>n 个字符串</li><li>x：目标字符串</li><li>k：要查找的第 k 小的兄弟单词</li></ul><p><strong>输出</strong>：</p><ul><li>第一行：兄弟单词数量</li><li>第二行：第 k 个兄弟单词（如果存在）</li></ul><p><strong>示例</strong>：</p><ul><li>输入：<code>3 abc bca cab abc 1</code></li><li>输出：<div class="code-wrapper"><pre><code class="hljs">2bca</code></pre></div></li></ul><hr><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>问题类型</strong>：字符串匹配 + 排序</p><p><strong>思路</strong>：</p><ol><li>判断两个字符串是否互为兄弟单词：字母排序后相同，且不是同一个单词</li><li>遍历所有字符串，筛选出 x 的兄弟单词</li><li>按字典序排序，输出第 k 个</li></ol><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="code-wrapper"><pre><code class="hljs python">line = <span class="hljs-built_in">input</span>().split()n = <span class="hljs-built_in">int</span>(line[<span class="hljs-number">0</span>])arr = line[<span class="hljs-number">1</span>: n + <span class="hljs-number">1</span>]x = line[n + <span class="hljs-number">1</span>]x_sort = <span class="hljs-built_in">sorted</span>(x)k = <span class="hljs-built_in">int</span>(line[-<span class="hljs-number">1</span>])res = []<span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> arr:    <span class="hljs-keyword">if</span> <span class="hljs-built_in">sorted</span>(s) == x_sort <span class="hljs-keyword">and</span> s != x:        res.append(s)res.sort()<span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(res))<span class="hljs-keyword">if</span> k &lt;= <span class="hljs-built_in">len</span>(res):    <span class="hljs-built_in">print</span>(res[k - <span class="hljs-number">1</span>])</code></pre></div><p><strong>时间复杂度</strong>：O(n × m log m)，m 为字符串长度（最坏10）<br><strong>空间复杂度</strong>：O(n)</p><blockquote><p><strong>注意</strong>：兄弟单词必须满足两个条件：①字母组成相同 ②不是同一个单词</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>刷题笔记</category>
+      
+      <category>华为机考</category>
+      
+      <category>nowcoder</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>题解</tag>
+      
+      <tag>Python</tag>
+      
+      <tag>排序</tag>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>查找两个字符串a,b中的最长公共子串（HJ21）</title>
+    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/21_longest_common_substring/"/>
+    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/21_longest_common_substring/</url>
+    
+    <content type="html"><![CDATA[<h1 id="查找两个字符串a-b中的最长公共子串-题解"><a href="#查找两个字符串a-b中的最长公共子串-题解" class="headerlink" title="查找两个字符串a,b中的最长公共子串 题解"></a>查找两个字符串a,b中的最长公共子串 题解</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://www.nowcoder.com/share/jump/5832603751775928180959">https://www.nowcoder.com/share/jump/5832603751775928180959</a></p><p>给定两个字符串 s 和 t，找出它们的最长公共子串。如果存在多个答案，输出在较短串中最先出现的那个。</p><p><strong>输入</strong>：</p><ul><li>第一行：字符串 s（1 ≤ len(s) ≤ 300）</li><li>第二行：字符串 t（1 ≤ len(t) ≤ 300）</li></ul><p><strong>输出</strong>：最长公共子串</p><p><strong>示例</strong>：</p><ul><li>输入：<div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">awaabb</span><span class="hljs-attribute">aawbb</span></code></pre></div></li><li>输出：<code>aa</code></li></ul><hr><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>问题类型</strong>：最长公共子串</p><p><strong>思路</strong>：</p><ol><li>确保 s 是较短串（保证优先输出较短串中先出现的）</li><li>枚举 s 的所有子串，检查是否在 t 中</li><li>记录最长的匹配子串</li></ol><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="code-wrapper"><pre><code class="hljs python">a = <span class="hljs-built_in">input</span>()b = <span class="hljs-built_in">input</span>()<span class="hljs-comment"># 确保 a 是较短的字符串</span><span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(a) &gt; <span class="hljs-built_in">len</span>(b):    a, b = b, ares = <span class="hljs-string">&#x27;&#x27;</span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(a)):    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i, <span class="hljs-built_in">len</span>(a)):        sub = a[i:j + <span class="hljs-number">1</span>]        <span class="hljs-keyword">if</span> sub <span class="hljs-keyword">in</span> b <span class="hljs-keyword">and</span> <span class="hljs-built_in">len</span>(sub) &gt; <span class="hljs-built_in">len</span>(res):            res = sub<span class="hljs-built_in">print</span>(res)</code></pre></div><p><strong>时间复杂度</strong>：O(n³)，n 为较短串长度<br><strong>空间复杂度</strong>：O(1)</p><blockquote><p><strong>优化思路</strong>：可使用动态规划优化到 O(n×m)，但 n ≤ 300 时暴力法足够。</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>刷题笔记</category>
+      
+      <category>华为机考</category>
+      
+      <category>nowcoder</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>题解</tag>
+      
+      <tag>Python</tag>
+      
+      <tag>动态规划</tag>
       
       <tag>字符串</tag>
       
@@ -2547,6 +2547,39 @@
   
   
   <entry>
+    <title>04_Longest Increasing Subsequence 最长递增子序列</title>
+    <link href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/"/>
+    <url>/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+    
+    <content type="html"><![CDATA[<h1 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h1><p><strong>Authors</strong>: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang<br><strong>Contributors</strong>: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen</p><hr><h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><ul><li>Gold - Introduction to DP (动态规划简介)</li></ul><hr><h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>令 $A$ 为我们要寻找最长递增子序列（LIS）的数组。</p><hr><h3 id="慢速解法"><a href="#慢速解法" class="headerlink" title="慢速解法"></a>慢速解法</h3><p><strong>时间复杂度</strong>: $O(N^2)$</p><p>令 $dp[i]$ 表示以 $A[i]$ 结尾的最长递增子序列的长度。我们可以通过简单的方法在 $O(N^2)$ 时间内计算 $dp$（从而得到 LIS）：</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_lis</span>(<span class="hljs-params">a: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:    lis = <span class="hljs-number">0</span>    dp = [<span class="hljs-number">1</span>] * <span class="hljs-built_in">len</span>(a)    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(a)):        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i):            <span class="hljs-keyword">if</span> a[j] &lt; a[i]:                dp[i] = <span class="hljs-built_in">max</span>(dp[i], dp[j] + <span class="hljs-number">1</span>)        lis = <span class="hljs-built_in">max</span>(lis, dp[i])    <span class="hljs-keyword">return</span> lis</code></pre></div><p>然而，我们可以做得更好！</p><hr><h3 id="快速解法"><a href="#快速解法" class="headerlink" title="快速解法"></a>快速解法</h3><p><strong>时间复杂度</strong>: $O(N \log N)$</p><p>令 $L_i$ 是一个数组（0 索引），其中 $L_i[j]$ 是从 $A$ 的前 $i$ 个元素中最小的一个元素，它以长度为 $j+1$ 的递增序列结束（如果没有这样的元素则为 $\infty$）。</p><p><strong>引理 1</strong>: $L_i$ 形成一个严格递增的序列。</p><p><strong>引理 2</strong>: 以 $A[i+1]$ 结尾的最长递增子序列的长度等于满足 $L_i[j] \ge A[i+1]$ 的最小索引 $j$。</p><p><strong>引理 3</strong>: $L<em>i$ 和 $L</em>{i+1}$ 之间最多有 1 个元素不同。</p><p>要在 $O(\log N)$ 时间内找到并更新描述的 $j$，我们可以使用带二分查找的列表：</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> bisect_left<span class="hljs-keyword">def</span> <span class="hljs-title function_">find_lis</span>(<span class="hljs-params">arr: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:    min_endings = []    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> arr:        pos = bisect_left(min_endings, i)        <span class="hljs-keyword">if</span> pos == <span class="hljs-built_in">len</span>(min_endings):  <span class="hljs-comment"># we can have a new, longer increasing subsequence!</span>            min_endings.append(i)        <span class="hljs-keyword">else</span>:  <span class="hljs-comment"># oh ok, at least we can make the ending element smaller</span>            min_endings[pos] = i    <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(min_endings)</code></pre></div><hr><h3 id="RMQ-数据结构解法"><a href="#RMQ-数据结构解法" class="headerlink" title="RMQ 数据结构解法"></a>RMQ 数据结构解法</h3><p><strong>时间复杂度</strong>: $O(N \log N)$，但可能比之前的解决方案慢一个常数因子。</p><p>设 $dp[k]$ 为以元素 $k \in a$ 结尾的 $a$ 的 LIS 长度。我们的基本情况是 $dp[a[0]] = 1$。由于 LIS 具有最优子结构特性，我们按以下方式进行转换：</p><script type="math/tex; mode=display">dp[t] = \max_{0 \le k < t} dp[k] + 1</script><p>如果 $dp$ 是一个 RMQ 数据结构，$dp[t]$ 的变化只是一个点更新，而 $\max_{0 \le k &lt; t} dp[k]$ 的计算是一个区间查询。</p><hr><h2 id="应用-1-不相交的线段"><a href="#应用-1-不相交的线段" class="headerlink" title="应用 1 - 不相交的线段"></a>应用 1 - 不相交的线段</h2><p>首先，如果两个线段 $(l_1, r_1)$ 和 $(l_2, r_2)$ 相交（假设 $l_1 &lt; l_2$），我们可以注意到 $l_1 &lt; l_2 \implies r_1 &gt; r_2$。</p><p>这意味着一组不相交的线段对于所有对 $(i, j)$ 都满足 $l_i &lt; l_j \implies r_i &lt; r_j$！</p><p>设 $A$ 是一个数组，其中 $A[i] = x$ 表示位于位置 $i$ 的右端点的线段的左端点位于位置 $x$。</p><p>如果我们被要求找出不相交线段集的最大大小，答案将是 $A$ 的最长递增子序列！</p><hr><h2 id="应用-2-最少递增子序列数"><a href="#应用-2-最少递增子序列数" class="headerlink" title="应用 2 - 最少递增子序列数"></a>应用 2 - 最少递增子序列数</h2><p><strong>引理（简单）</strong>: 覆盖 $A$ 所需的最少递增子序列数至少等于 $A$ 最长非递增子序列的长度。</p><p><strong>命题</strong>: 覆盖 $A$ 所需的最少递增子序列的数量等于 $A$ 最长非递增子序列的长度！</p><p><strong>证明</strong>: 设 $f_i$ 表示以 $A_i$ 结尾的最长非递增子序列的长度。那么对于固定的 $t$，满足 $f_i = t$ 的 $A_i$ 对于每个 $t$ 都是一个递增子序列。所以我们用（最长非递增子序列的长度）个递增子序列覆盖了 $A$。</p><blockquote><p><strong>另一种证明</strong>: 这只是 Dilworth 定理的一个特例。</p></blockquote><hr><h2 id="示例-PCB"><a href="#示例-PCB" class="headerlink" title="示例 - PCB"></a>示例 - PCB</h2><blockquote><p><strong>Focus Problem</strong>: 在继续之前，请尽力解决这个问题！</p></blockquote><p>这个问题要求我们找到最小数量的不交线段集。</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> bisect_leftn = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())board = []endpoints = []<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):    l, r = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())    board.append((l, r))board.sort()endpoints.append(board[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>])<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):    v = board[x][<span class="hljs-number">1</span>]    <span class="hljs-keyword">if</span> v &lt; endpoints[-<span class="hljs-number">1</span>]:        endpoints.append(v)    <span class="hljs-keyword">else</span>:        index = bisect_left(            [-x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> endpoints], -v        )  <span class="hljs-comment"># invert list in order to use bisect_left</span>        endpoints[index] = v<span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(endpoints))</code></pre></div><hr><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="table-container"><table><thead><tr><th>解法</th><th>时间复杂度</th><th>空间复杂度</th></tr></thead><tbody><tr><td>暴力 DP</td><td>$O(N^2)$</td><td>$O(N)$</td></tr><tr><td>二分查找优化</td><td>$O(N \log N)$</td><td>$O(N)$</td></tr><tr><td>RMQ/线段树</td><td>$O(N \log N)$</td><td>$O(N)$</td></tr></tbody></table></div><hr><h2 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h2><div class="table-container"><table><thead><tr><th>题目</th><th>难度</th><th>描述</th></tr></thead><tbody><tr><td>Increasing Subsequence</td><td>Easy</td><td>计算最长递增子序列长度</td></tr><tr><td>PCB</td><td>Hard</td><td>不相交线段集问题</td></tr></tbody></table></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法学习</category>
+      
+      <category>05_动态规划</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>DP</tag>
+      
+      <tag>LIS</tag>
+      
+      <tag>动态规划</tag>
+      
+      <tag>算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>01_Introduction to DP 动态规划简介</title>
     <link href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_Introduction%20to%20DP%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/"/>
     <url>/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_Introduction%20to%20DP%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/</url>
@@ -2636,39 +2669,6 @@
       <tag>算法</tag>
       
       <tag>网格</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>04_Longest Increasing Subsequence 最长递增子序列</title>
-    <link href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/"/>
-    <url>/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/</url>
-    
-    <content type="html"><![CDATA[<h1 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h1><p><strong>Authors</strong>: Michael Cao, Benjamin Qi, Andi Qu, Andrew Wang<br><strong>Contributors</strong>: Dong Liu, Siyong Huang, Aryansh Shrivastava, Kevin Sheng, Katja Frantzen</p><hr><h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><ul><li>Gold - Introduction to DP (动态规划简介)</li></ul><hr><h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>令 $A$ 为我们要寻找最长递增子序列（LIS）的数组。</p><hr><h3 id="慢速解法"><a href="#慢速解法" class="headerlink" title="慢速解法"></a>慢速解法</h3><p><strong>时间复杂度</strong>: $O(N^2)$</p><p>令 $dp[i]$ 表示以 $A[i]$ 结尾的最长递增子序列的长度。我们可以通过简单的方法在 $O(N^2)$ 时间内计算 $dp$（从而得到 LIS）：</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_lis</span>(<span class="hljs-params">a: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:    lis = <span class="hljs-number">0</span>    dp = [<span class="hljs-number">1</span>] * <span class="hljs-built_in">len</span>(a)    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(a)):        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i):            <span class="hljs-keyword">if</span> a[j] &lt; a[i]:                dp[i] = <span class="hljs-built_in">max</span>(dp[i], dp[j] + <span class="hljs-number">1</span>)        lis = <span class="hljs-built_in">max</span>(lis, dp[i])    <span class="hljs-keyword">return</span> lis</code></pre></div><p>然而，我们可以做得更好！</p><hr><h3 id="快速解法"><a href="#快速解法" class="headerlink" title="快速解法"></a>快速解法</h3><p><strong>时间复杂度</strong>: $O(N \log N)$</p><p>令 $L_i$ 是一个数组（0 索引），其中 $L_i[j]$ 是从 $A$ 的前 $i$ 个元素中最小的一个元素，它以长度为 $j+1$ 的递增序列结束（如果没有这样的元素则为 $\infty$）。</p><p><strong>引理 1</strong>: $L_i$ 形成一个严格递增的序列。</p><p><strong>引理 2</strong>: 以 $A[i+1]$ 结尾的最长递增子序列的长度等于满足 $L_i[j] \ge A[i+1]$ 的最小索引 $j$。</p><p><strong>引理 3</strong>: $L<em>i$ 和 $L</em>{i+1}$ 之间最多有 1 个元素不同。</p><p>要在 $O(\log N)$ 时间内找到并更新描述的 $j$，我们可以使用带二分查找的列表：</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> bisect_left<span class="hljs-keyword">def</span> <span class="hljs-title function_">find_lis</span>(<span class="hljs-params">arr: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:    min_endings = []    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> arr:        pos = bisect_left(min_endings, i)        <span class="hljs-keyword">if</span> pos == <span class="hljs-built_in">len</span>(min_endings):  <span class="hljs-comment"># we can have a new, longer increasing subsequence!</span>            min_endings.append(i)        <span class="hljs-keyword">else</span>:  <span class="hljs-comment"># oh ok, at least we can make the ending element smaller</span>            min_endings[pos] = i    <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(min_endings)</code></pre></div><hr><h3 id="RMQ-数据结构解法"><a href="#RMQ-数据结构解法" class="headerlink" title="RMQ 数据结构解法"></a>RMQ 数据结构解法</h3><p><strong>时间复杂度</strong>: $O(N \log N)$，但可能比之前的解决方案慢一个常数因子。</p><p>设 $dp[k]$ 为以元素 $k \in a$ 结尾的 $a$ 的 LIS 长度。我们的基本情况是 $dp[a[0]] = 1$。由于 LIS 具有最优子结构特性，我们按以下方式进行转换：</p><script type="math/tex; mode=display">dp[t] = \max_{0 \le k < t} dp[k] + 1</script><p>如果 $dp$ 是一个 RMQ 数据结构，$dp[t]$ 的变化只是一个点更新，而 $\max_{0 \le k &lt; t} dp[k]$ 的计算是一个区间查询。</p><hr><h2 id="应用-1-不相交的线段"><a href="#应用-1-不相交的线段" class="headerlink" title="应用 1 - 不相交的线段"></a>应用 1 - 不相交的线段</h2><p>首先，如果两个线段 $(l_1, r_1)$ 和 $(l_2, r_2)$ 相交（假设 $l_1 &lt; l_2$），我们可以注意到 $l_1 &lt; l_2 \implies r_1 &gt; r_2$。</p><p>这意味着一组不相交的线段对于所有对 $(i, j)$ 都满足 $l_i &lt; l_j \implies r_i &lt; r_j$！</p><p>设 $A$ 是一个数组，其中 $A[i] = x$ 表示位于位置 $i$ 的右端点的线段的左端点位于位置 $x$。</p><p>如果我们被要求找出不相交线段集的最大大小，答案将是 $A$ 的最长递增子序列！</p><hr><h2 id="应用-2-最少递增子序列数"><a href="#应用-2-最少递增子序列数" class="headerlink" title="应用 2 - 最少递增子序列数"></a>应用 2 - 最少递增子序列数</h2><p><strong>引理（简单）</strong>: 覆盖 $A$ 所需的最少递增子序列数至少等于 $A$ 最长非递增子序列的长度。</p><p><strong>命题</strong>: 覆盖 $A$ 所需的最少递增子序列的数量等于 $A$ 最长非递增子序列的长度！</p><p><strong>证明</strong>: 设 $f_i$ 表示以 $A_i$ 结尾的最长非递增子序列的长度。那么对于固定的 $t$，满足 $f_i = t$ 的 $A_i$ 对于每个 $t$ 都是一个递增子序列。所以我们用（最长非递增子序列的长度）个递增子序列覆盖了 $A$。</p><blockquote><p><strong>另一种证明</strong>: 这只是 Dilworth 定理的一个特例。</p></blockquote><hr><h2 id="示例-PCB"><a href="#示例-PCB" class="headerlink" title="示例 - PCB"></a>示例 - PCB</h2><blockquote><p><strong>Focus Problem</strong>: 在继续之前，请尽力解决这个问题！</p></blockquote><p>这个问题要求我们找到最小数量的不交线段集。</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> bisect_leftn = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())board = []endpoints = []<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):    l, r = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())    board.append((l, r))board.sort()endpoints.append(board[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>])<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):    v = board[x][<span class="hljs-number">1</span>]    <span class="hljs-keyword">if</span> v &lt; endpoints[-<span class="hljs-number">1</span>]:        endpoints.append(v)    <span class="hljs-keyword">else</span>:        index = bisect_left(            [-x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> endpoints], -v        )  <span class="hljs-comment"># invert list in order to use bisect_left</span>        endpoints[index] = v<span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(endpoints))</code></pre></div><hr><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="table-container"><table><thead><tr><th>解法</th><th>时间复杂度</th><th>空间复杂度</th></tr></thead><tbody><tr><td>暴力 DP</td><td>$O(N^2)$</td><td>$O(N)$</td></tr><tr><td>二分查找优化</td><td>$O(N \log N)$</td><td>$O(N)$</td></tr><tr><td>RMQ/线段树</td><td>$O(N \log N)$</td><td>$O(N)$</td></tr></tbody></table></div><hr><h2 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h2><div class="table-container"><table><thead><tr><th>题目</th><th>难度</th><th>描述</th></tr></thead><tbody><tr><td>Increasing Subsequence</td><td>Easy</td><td>计算最长递增子序列长度</td></tr><tr><td>PCB</td><td>Hard</td><td>不相交线段集问题</td></tr></tbody></table></div>]]></content>
-    
-    
-    <categories>
-      
-      <category>算法学习</category>
-      
-      <category>05_动态规划</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>DP</tag>
-      
-      <tag>动态规划</tag>
-      
-      <tag>算法</tag>
-      
-      <tag>LIS</tag>
       
     </tags>
     
@@ -2770,6 +2770,39 @@
   
   
   <entry>
+    <title>无重复字符的最长子串（Longest Substring Without Repeating Characters）</title>
+    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/"/>
+    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/</url>
+    
+    <content type="html"><![CDATA[<h1 id="无重复字符的最长子串"><a href="#无重复字符的最长子串" class="headerlink" title="无重复字符的最长子串"></a>无重复字符的最长子串</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">https://leetcode.cn/problems/longest-substring-without-repeating-characters/</a></p><p>给定一个字符串 s，请你找出其中不含有重复字符的最长子串的长度。</p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="核心观察"><a href="#核心观察" class="headerlink" title="核心观察"></a>核心观察</h3><p>使用滑动窗口维护一个不包含重复字符的子串。窗口左边界为 l，右边界为 r（当前遍历到的字符）。</p><h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><ol><li>使用集合 <code>a</code> 存储当前窗口中的字符</li><li>右指针 r 不断向右扩展</li><li>如果新字符 s[r] 已存在于窗口中，则收缩左边界 l，直到窗口中不再包含该字符</li><li>更新最长子串长度 ans</li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> syss = sys.stdin.readline().strip()a = <span class="hljs-built_in">set</span>()l = <span class="hljs-number">0</span>ans = <span class="hljs-number">0</span><span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):    <span class="hljs-keyword">while</span> s[r] <span class="hljs-keyword">in</span> a:        a.remove(s[l])        l += <span class="hljs-number">1</span>    a.add(s[r])    ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)<span class="hljs-built_in">print</span>(ans)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><ul><li><code>a</code> 集合：存储当前滑动窗口中的字符</li><li><code>l</code>：窗口左边界</li><li><code>r</code>：窗口右边界（遍历指针）</li><li>当遇到重复字符时，不断移除左边界字符直到窗口中不存在该字符</li></ul><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul><li>每个字符最多被左、右指针访问一次：O(n)</li><li>集合操作平均 O(1)</li><li>总计：O(n)</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>刷题笔记</category>
+      
+      <category>华为机考</category>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>题解</tag>
+      
+      <tag>Python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>最长回文子串（Longest Palindromic Substring）</title>
     <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/05_longest_palindrome/"/>
     <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/05_longest_palindrome/</url>
@@ -2840,64 +2873,6 @@
   
   
   <entry>
-    <title>无重复字符的最长子串（Longest Substring Without Repeating Characters）</title>
-    <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/"/>
-    <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/</url>
-    
-    <content type="html"><![CDATA[<h1 id="无重复字符的最长子串"><a href="#无重复字符的最长子串" class="headerlink" title="无重复字符的最长子串"></a>无重复字符的最长子串</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">https://leetcode.cn/problems/longest-substring-without-repeating-characters/</a></p><p>给定一个字符串 s，请你找出其中不含有重复字符的最长子串的长度。</p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="核心观察"><a href="#核心观察" class="headerlink" title="核心观察"></a>核心观察</h3><p>使用滑动窗口维护一个不包含重复字符的子串。窗口左边界为 l，右边界为 r（当前遍历到的字符）。</p><h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><ol><li>使用集合 <code>a</code> 存储当前窗口中的字符</li><li>右指针 r 不断向右扩展</li><li>如果新字符 s[r] 已存在于窗口中，则收缩左边界 l，直到窗口中不再包含该字符</li><li>更新最长子串长度 ans</li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> syss = sys.stdin.readline().strip()a = <span class="hljs-built_in">set</span>()l = <span class="hljs-number">0</span>ans = <span class="hljs-number">0</span><span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):    <span class="hljs-keyword">while</span> s[r] <span class="hljs-keyword">in</span> a:        a.remove(s[l])        l += <span class="hljs-number">1</span>    a.add(s[r])    ans = <span class="hljs-built_in">max</span>(ans, r - l + <span class="hljs-number">1</span>)<span class="hljs-built_in">print</span>(ans)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><ul><li><code>a</code> 集合：存储当前滑动窗口中的字符</li><li><code>l</code>：窗口左边界</li><li><code>r</code>：窗口右边界（遍历指针）</li><li>当遇到重复字符时，不断移除左边界字符直到窗口中不存在该字符</li></ul><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><ul><li>每个字符最多被左、右指针访问一次：O(n)</li><li>集合操作平均 O(1)</li><li>总计：O(n)</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>刷题笔记</category>
-      
-      <category>华为机考</category>
-      
-      <category>leetcode</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>滑动窗口</tag>
-      
-      <tag>题解</tag>
-      
-      <tag>Python</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>huggingface</title>
-    <link href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/"/>
-    <url>/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/</url>
-    
-    <content type="html"><![CDATA[<h1 id="huggingface"><a href="#huggingface" class="headerlink" title="huggingface"></a>huggingface</h1><h2 id="加速下载"><a href="#加速下载" class="headerlink" title="加速下载"></a>加速下载</h2><p>在服务器中下载huggingface model</p><p>首先，安装huggingface-cli。</p><div class="code-wrapper"><pre><code class="hljs shell">pip install -U huggingface_hub</code></pre></div><p>接着，设置环境变量。</p><div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">写入 ~/.bashrc</span>export HF_ENDPOINT=https://hf-mirror.comsource .bashrc</code></pre></div><p>最后下载即可。</p><div class="code-wrapper"><pre><code class="hljs shell">hf download  &#123;model_name&#125; --local-dir &#123;path/to/your/local_dir&#125;</code></pre></div><h2 id="配置镜像源"><a href="#配置镜像源" class="headerlink" title="配置镜像源"></a>配置镜像源</h2><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> HF_ENDPOINT=https://hf-mirror.com</code></pre></div>]]></content>
-    
-    
-    <categories>
-      
-      <category>开发杂记</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>常用命令</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Casework 案例分析</title>
     <link href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/03_%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/"/>
     <url>/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/03_%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/</url>
@@ -2919,31 +2894,6 @@
       <tag>枚举</tag>
       
       <tag>案例分析</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>git</title>
-    <link href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/"/>
-    <url>/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/</url>
-    
-    <content type="html"><![CDATA[<h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><h2 id="远程"><a href="#远程" class="headerlink" title="远程"></a>远程</h2><p>推送本地项目到远程仓库  </p><div class="code-wrapper"><pre><code class="hljs bash">git init git add .git commit -m <span class="hljs-string">&quot;first_commit&quot;</span>git remote add origin &lt;远程仓库地址&gt;git push -u origin <span class="hljs-string">&quot;main&quot;</span></code></pre></div><p>重新设置远程仓库</p><div class="code-wrapper"><pre><code class="hljs bash">git remote set-url origin &lt;远程仓库地址&gt;</code></pre></div><p>查看远程地址别名及路径</p><div class="code-wrapper"><pre><code class="hljs bash">git remote -v</code></pre></div><p>查看工作区、暂存区的状态（哪些文件被修改/未跟踪）</p><div class="code-wrapper"><pre><code class="hljs bash">git status</code></pre></div><h2 id="更新-gitignore"><a href="#更新-gitignore" class="headerlink" title="更新 .gitignore"></a>更新 <code>.gitignore</code></h2><div class="code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">rm</span> -r --cached .git add .git commit -m <span class="hljs-string">&#x27;update .gitignore&#x27;</span></code></pre></div><h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>查看本地分支列表，<code>-a</code> 查看所有分支（含远程）</p><div class="code-wrapper"><pre><code class="hljs bash">git branch</code></pre></div><p>创建新分支</p><div class="code-wrapper"><pre><code class="hljs bash">git branch &lt;分支名&gt;</code></pre></div><p>切换到指定分支（<code>switch</code> 是更直观的新命令）</p><div class="code-wrapper"><pre><code class="hljs bash">git checkout &lt;分支名&gt;或git switch &lt;分支名&gt;</code></pre></div><p>  创建并切换到新分支。</p><div class="code-wrapper"><pre><code class="hljs bash">git checkout -b &lt;新分支名&gt;或git switch -c &lt;新分支名&gt;</code></pre></div><p>将指定分支合并到当前分支</p><div class="code-wrapper"><pre><code class="hljs bash">git merge &lt;分支名&gt;</code></pre></div><p>将当前分支的提交变基到目标分支</p><div class="code-wrapper"><pre><code class="hljs bash">git rebase &lt;分支名&gt;</code></pre></div><p>删除本地分支；<code>-D</code> 强制删除未合并的分支。</p><div class="code-wrapper"><pre><code class="hljs bash">git branch -d &lt;分支名&gt;</code></pre></div><div class="code-wrapper"><pre><code class="hljs bash"></code></pre></div><div class="code-wrapper"><pre><code class="hljs bash"></code></pre></div>]]></content>
-    
-    
-    <categories>
-      
-      <category>开发杂记</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>常用命令</tag>
       
     </tags>
     
@@ -2996,6 +2946,56 @@
     <tags>
       
       <tag>bug修复</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>git</title>
+    <link href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/"/>
+    <url>/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/</url>
+    
+    <content type="html"><![CDATA[<h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><h2 id="远程"><a href="#远程" class="headerlink" title="远程"></a>远程</h2><p>推送本地项目到远程仓库  </p><div class="code-wrapper"><pre><code class="hljs bash">git init git add .git commit -m <span class="hljs-string">&quot;first_commit&quot;</span>git remote add origin &lt;远程仓库地址&gt;git push -u origin <span class="hljs-string">&quot;main&quot;</span></code></pre></div><p>重新设置远程仓库</p><div class="code-wrapper"><pre><code class="hljs bash">git remote set-url origin &lt;远程仓库地址&gt;</code></pre></div><p>查看远程地址别名及路径</p><div class="code-wrapper"><pre><code class="hljs bash">git remote -v</code></pre></div><p>查看工作区、暂存区的状态（哪些文件被修改/未跟踪）</p><div class="code-wrapper"><pre><code class="hljs bash">git status</code></pre></div><h2 id="更新-gitignore"><a href="#更新-gitignore" class="headerlink" title="更新 .gitignore"></a>更新 <code>.gitignore</code></h2><div class="code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">rm</span> -r --cached .git add .git commit -m <span class="hljs-string">&#x27;update .gitignore&#x27;</span></code></pre></div><h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>查看本地分支列表，<code>-a</code> 查看所有分支（含远程）</p><div class="code-wrapper"><pre><code class="hljs bash">git branch</code></pre></div><p>创建新分支</p><div class="code-wrapper"><pre><code class="hljs bash">git branch &lt;分支名&gt;</code></pre></div><p>切换到指定分支（<code>switch</code> 是更直观的新命令）</p><div class="code-wrapper"><pre><code class="hljs bash">git checkout &lt;分支名&gt;或git switch &lt;分支名&gt;</code></pre></div><p>  创建并切换到新分支。</p><div class="code-wrapper"><pre><code class="hljs bash">git checkout -b &lt;新分支名&gt;或git switch -c &lt;新分支名&gt;</code></pre></div><p>将指定分支合并到当前分支</p><div class="code-wrapper"><pre><code class="hljs bash">git merge &lt;分支名&gt;</code></pre></div><p>将当前分支的提交变基到目标分支</p><div class="code-wrapper"><pre><code class="hljs bash">git rebase &lt;分支名&gt;</code></pre></div><p>删除本地分支；<code>-D</code> 强制删除未合并的分支。</p><div class="code-wrapper"><pre><code class="hljs bash">git branch -d &lt;分支名&gt;</code></pre></div><div class="code-wrapper"><pre><code class="hljs bash"></code></pre></div><div class="code-wrapper"><pre><code class="hljs bash"></code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>开发杂记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>常用命令</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>huggingface</title>
+    <link href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/"/>
+    <url>/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/</url>
+    
+    <content type="html"><![CDATA[<h1 id="huggingface"><a href="#huggingface" class="headerlink" title="huggingface"></a>huggingface</h1><h2 id="加速下载"><a href="#加速下载" class="headerlink" title="加速下载"></a>加速下载</h2><p>在服务器中下载huggingface model</p><p>首先，安装huggingface-cli。</p><div class="code-wrapper"><pre><code class="hljs shell">pip install -U huggingface_hub</code></pre></div><p>接着，设置环境变量。</p><div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">写入 ~/.bashrc</span>export HF_ENDPOINT=https://hf-mirror.comsource .bashrc</code></pre></div><p>最后下载即可。</p><div class="code-wrapper"><pre><code class="hljs shell">hf download  &#123;model_name&#125; --local-dir &#123;path/to/your/local_dir&#125;</code></pre></div><h2 id="配置镜像源"><a href="#配置镜像源" class="headerlink" title="配置镜像源"></a>配置镜像源</h2><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> HF_ENDPOINT=https://hf-mirror.com</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>开发杂记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>常用命令</tag>
       
     </tags>
     
@@ -3213,11 +3213,11 @@
   
   
   <entry>
-    <title>HJ148 迷宫寻路</title>
-    <link href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ148-%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF/"/>
-    <url>/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ148-%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF/</url>
+    <title>HJ149 数水坑</title>
+    <link href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/"/>
+    <url>/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/</url>
     
-    <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>旺仔哥哥被困在一个 n×m 的矩形迷宫里。每个格子要么是空地（用符号 <code>.</code> 表示），要么是墙（用符号 <code>#</code> 表示）。旺仔哥哥只能从一个空地移动到其上下左右相邻的空地。</p><p>已知旺仔哥哥的起点为左上角 (1,1)，终点为右下角 (n,m)。请判断他是否能够到达终点。</p><p>保证起点和终点均为空地。</p><span id="more"></span><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这是一道典型的<strong>迷宫寻路</strong>问题，使用<strong>深度优先搜索(DFS)</strong>即可解决。</p><h3 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h3><ol><li><strong>从起点开始DFS遍历</strong>：每次尝试向四个方向（上下左右）移动</li><li><strong>边界检查</strong>：确保不越界（0 ≤ x &lt; n，0 ≤ y &lt; m）</li><li><strong>合法性检查</strong>：只能移动到空地（<code>.</code>）且未访问过的格子</li><li><strong>标记已访问</strong>：使用 <code>visited</code> 数组避免重复访问，防止死循环</li><li><strong>终止条件</strong>：到达终点 (n-1, m-1) 时返回成功</li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())s = [<span class="hljs-built_in">list</span>(<span class="hljs-built_in">input</span>()) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]visited = [[<span class="hljs-literal">False</span>] * m <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">x, y</span>):    <span class="hljs-keyword">if</span> x == n - <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> y == m - <span class="hljs-number">1</span>:        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>    visited[x][y] = <span class="hljs-literal">True</span>    <span class="hljs-keyword">for</span> dx, dy <span class="hljs-keyword">in</span> [(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">0</span>), (-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>)]:        nx, ny = x + dx, y + dy        <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> visited[nx][ny] <span class="hljs-keyword">and</span> s[nx][ny] == <span class="hljs-string">&#x27;.&#x27;</span>:            <span class="hljs-keyword">if</span> dfs(nx, ny):                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Yes&quot;</span> <span class="hljs-keyword">if</span> dfs(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;No&quot;</span>)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="核心函数-dfs-x-y"><a href="#核心函数-dfs-x-y" class="headerlink" title="核心函数 dfs(x, y)"></a>核心函数 <code>dfs(x, y)</code></h3><div class="table-container"><table><thead><tr><th>参数</th><th>含义</th></tr></thead><tbody><tr><td><code>x, y</code></td><td>当前位置的坐标</td></tr></tbody></table></div><h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><div class="code-wrapper"><pre><code class="hljs scss"><span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)    ↓    标记 (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>) 为已访问    ↓    尝试四个方向    ↓    ┌───┴───┬───┴───┐    ↓       ↓       ↓       ↓   向右    向左    向下    向上   (<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)  越界    (<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)   越界    ↓       ↓       ↓       ↓   继续DFS  跳过   继续DFS  跳过</code></pre></div><h3 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h3><ol><li><strong>方向数组</strong>：<code>[(0, 1), (0, -1), (1, 0), (-1, 0)]</code> 分别代表右、左、下、上</li><li><strong>访问标记</strong>：进入格子时立即标记，防止后续重复访问</li><li><strong>早期返回</strong>：一旦找到通往终点的路径，立即返回 <code>True</code>，不再搜索其他路径</li></ol><h2 id="示例演示"><a href="#示例演示" class="headerlink" title="示例演示"></a>示例演示</h2><p><strong>输入</strong>：<br><div class="code-wrapper"><pre><code class="hljs clean"><span class="hljs-number">3</span> <span class="hljs-number">5</span>.##.#.#......#.</code></pre></div></p><p><strong>搜索过程</strong>：<br><div class="code-wrapper"><pre><code class="hljs scss">(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>) → (<span class="hljs-number">1</span>,<span class="hljs-number">0</span>) → (<span class="hljs-number">2</span>,<span class="hljs-number">0</span>) → (<span class="hljs-number">2</span>,<span class="hljs-number">1</span>) → (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>) → (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>) → (<span class="hljs-number">1</span>,<span class="hljs-number">3</span>) → (<span class="hljs-number">1</span>,<span class="hljs-number">4</span>) → (<span class="hljs-number">2</span>,<span class="hljs-number">4</span>) ✓</code></pre></div></p><p><strong>输出</strong>：<code>Yes</code></p><h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul><li><strong>时间复杂度</strong>：O(n × m) - 最坏情况下遍历所有格子</li><li><strong>空间复杂度</strong>：O(n × m) - visited 数组 + 递归栈深度</li></ul><h2 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h2><ol><li><strong>BFS解法</strong>：若需要求最短路径，可用 BFS 并记录距离</li><li><strong>路径记录</strong>：可用 <code>path</code> 数组记录来路，输出具体路径</li><li><strong>原地标记</strong>：可直接将访问过的 <code>.</code> 改为 <code>#</code>，省去 visited 数组</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>由于降雨，水在农夫约翰的田地里积聚成水坑。田地是一个 N×M 的矩形网格，每个格子要么是水 <code>W</code>，要么是干地 <code>.</code>。</p><p>若两个水格子在<strong>八连通</strong>（上下左右及四条对角线）意义下互达，则它们属于同一个水坑。</p><p>给出田地示意图，计算水坑数量。</p><span id="more"></span><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这是一道经典的 <strong>Flood Fill（洪水填充）</strong> 问题，本质是求<strong>连通分量个数</strong>。</p><h3 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h3><ol><li><strong>遍历网格</strong>：逐个扫描每个格子</li><li><strong>发现新水坑</strong>：遇到未访问的 <code>W</code> 时，计数器 +1</li><li><strong>标记整个水坑</strong>：用 DFS 将该 <code>W</code> 及其所有八连通的 <code>W</code> 标记为已访问</li><li><strong>继续遍历</strong>：寻找下一个未访问的 <code>W</code></li></ol><h3 id="八连通方向"><a href="#八连通方向" class="headerlink" title="八连通方向"></a>八连通方向</h3><div class="code-wrapper"><pre><code class="hljs">  ← ↖ ↑ ↗ →↙ ↓ ↘</code></pre></div><p>共 8 个方向：(±1, ±1) 和 (±1, 0) 和 (0, ±1)</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())grid = [<span class="hljs-built_in">list</span>(<span class="hljs-built_in">input</span>().strip()) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]visited = [[<span class="hljs-literal">False</span>] * m <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">x, y</span>):    visited[x][y] = <span class="hljs-literal">True</span>    <span class="hljs-keyword">for</span> dx <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:        <span class="hljs-keyword">for</span> dy <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:            <span class="hljs-keyword">if</span> dx == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> dy == <span class="hljs-number">0</span>:                <span class="hljs-keyword">continue</span>            nx, ny = x + dx, y + dy            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> visited[nx][ny] <span class="hljs-keyword">and</span> grid[nx][ny] == <span class="hljs-string">&#x27;W&#x27;</span>:                dfs(nx, ny)count = <span class="hljs-number">0</span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[i][j] <span class="hljs-keyword">and</span> grid[i][j] == <span class="hljs-string">&#x27;W&#x27;</span>:            dfs(i, j)            count += <span class="hljs-number">1</span><span class="hljs-built_in">print</span>(count)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="核心函数-dfs-x-y"><a href="#核心函数-dfs-x-y" class="headerlink" title="核心函数 dfs(x, y)"></a>核心函数 <code>dfs(x, y)</code></h3><p><strong>作用</strong>：将 (x, y) 所属的整个水坑标记为已访问</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">x, y</span>):    visited[x][y] = <span class="hljs-literal">True</span>  <span class="hljs-comment"># 标记当前格子</span>    <span class="hljs-comment"># 遍历 8 个方向</span>    <span class="hljs-keyword">for</span> dx <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:        <span class="hljs-keyword">for</span> dy <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:            <span class="hljs-keyword">if</span> dx == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> dy == <span class="hljs-number">0</span>:  <span class="hljs-comment"># 跳过自己</span>                <span class="hljs-keyword">continue</span>            nx, ny = x + dx, y + dy            <span class="hljs-comment"># 边界检查 + 未访问 + 是水</span>            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> visited[nx][ny] <span class="hljs-keyword">and</span> grid[nx][ny] == <span class="hljs-string">&#x27;W&#x27;</span>:                dfs(nx, ny)</code></pre></div><h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><div class="code-wrapper"><pre><code class="hljs routeros">遍历网格：(0,0)是<span class="hljs-string">&#x27;W&#x27;</span>且未访问 → <span class="hljs-attribute">count</span>=1, DFS标记整个水坑(0,1)是<span class="hljs-string">&#x27;.&#x27;</span> → 跳过(0,2)是<span class="hljs-string">&#x27;W&#x27;</span>且未访问 → <span class="hljs-attribute">count</span>=2, DFS标记整个水坑<span class="hljs-built_in">..</span>.</code></pre></div><h3 id="示例演示"><a href="#示例演示" class="headerlink" title="示例演示"></a>示例演示</h3><p><strong>输入</strong>：<br><div class="code-wrapper"><pre><code class="hljs lasso">W<span class="hljs-params">...</span><span class="hljs-params">...</span>..WW..WWW<span class="hljs-params">...</span>..WWW<span class="hljs-params">...</span>.WW<span class="hljs-params">...</span>WW.</code></pre></div></p><p><strong>过程</strong>：<br><div class="code-wrapper"><pre><code class="hljs routeros">第1个水坑: (0,0) → 只有这一个，<span class="hljs-attribute">count</span>=1第2个水坑: (1,1) → (1,2) → (1,3)，<span class="hljs-attribute">count</span>=2第3个水坑: (0,9) → (0,10) → (1,10) → (2,10)，<span class="hljs-attribute">count</span>=3<span class="hljs-built_in">..</span>.</code></pre></div></p><p><strong>输出</strong>：<code>3</code></p><h2 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h2><ol><li><strong>八连通</strong>：注意对角线也要考虑，用双重循环 <code>dx, dy in [-1, 0, 1]</code></li><li><strong>跳过自身</strong>：<code>if dx == 0 and dy == 0: continue</code></li><li><strong>visited 标记</strong>：防止重复访问，确保每个水坑只计数一次</li></ol><h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul><li><strong>时间复杂度</strong>：O(N × M) - 每个格子最多访问一次</li><li><strong>空间复杂度</strong>：O(N × M) - visited 数组 + 递归栈深度</li></ul><h2 id="变种问题"><a href="#变种问题" class="headerlink" title="变种问题"></a>变种问题</h2><div class="table-container"><table><thead><tr><th>问题</th><th>修改点</th></tr></thead><tbody><tr><td><strong>求最大水坑面积</strong></td><td>DFS 时返回该连通块的大小</td></tr><tr><td><strong>四连通水坑</strong></td><td>方向数组改为上下左右 4 个方向</td></tr><tr><td><strong>BFS 解法</strong></td><td>用队列代替递归，避免栈溢出</td></tr><tr><td><strong>并查集解法</strong></td><td>将相连的水坑合并到同一个集合</td></tr></tbody></table></div><h2 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h2><ol><li><strong>原地标记</strong>：直接把访问过的 <code>W</code> 改为 <code>.</code>，省去 visited 数组</li><li><strong>BFS 避免爆栈</strong>：对于极大网格，BFS 更安全</li><li><strong>并查集</strong>：适合需要频繁合并/查询的场景</li></ol><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 原地标记优化版</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">x, y</span>):    grid[x][y] = <span class="hljs-string">&#x27;.&#x27;</span>  <span class="hljs-comment"># 直接改为干地</span>    <span class="hljs-keyword">for</span> dx <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:        <span class="hljs-keyword">for</span> dy <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:            <span class="hljs-keyword">if</span> dx == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> dy == <span class="hljs-number">0</span>:                <span class="hljs-keyword">continue</span>            nx, ny = x + dx, y + dy            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m <span class="hljs-keyword">and</span> grid[nx][ny] == <span class="hljs-string">&#x27;W&#x27;</span>:                dfs(nx, ny)</code></pre></div>]]></content>
     
     
     <categories>
@@ -3235,9 +3235,9 @@
       
       <tag>DFS</tag>
       
-      <tag>图搜索</tag>
+      <tag>Flood Fill</tag>
       
-      <tag>迷宫</tag>
+      <tag>连通区域</tag>
       
     </tags>
     
@@ -3279,11 +3279,11 @@
   
   
   <entry>
-    <title>HJ149 数水坑</title>
-    <link href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/"/>
-    <url>/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/</url>
+    <title>HJ148 迷宫寻路</title>
+    <link href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ148-%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF/"/>
+    <url>/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ148-%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF/</url>
     
-    <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>由于降雨，水在农夫约翰的田地里积聚成水坑。田地是一个 N×M 的矩形网格，每个格子要么是水 <code>W</code>，要么是干地 <code>.</code>。</p><p>若两个水格子在<strong>八连通</strong>（上下左右及四条对角线）意义下互达，则它们属于同一个水坑。</p><p>给出田地示意图，计算水坑数量。</p><span id="more"></span><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这是一道经典的 <strong>Flood Fill（洪水填充）</strong> 问题，本质是求<strong>连通分量个数</strong>。</p><h3 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h3><ol><li><strong>遍历网格</strong>：逐个扫描每个格子</li><li><strong>发现新水坑</strong>：遇到未访问的 <code>W</code> 时，计数器 +1</li><li><strong>标记整个水坑</strong>：用 DFS 将该 <code>W</code> 及其所有八连通的 <code>W</code> 标记为已访问</li><li><strong>继续遍历</strong>：寻找下一个未访问的 <code>W</code></li></ol><h3 id="八连通方向"><a href="#八连通方向" class="headerlink" title="八连通方向"></a>八连通方向</h3><div class="code-wrapper"><pre><code class="hljs">  ← ↖ ↑ ↗ →↙ ↓ ↘</code></pre></div><p>共 8 个方向：(±1, ±1) 和 (±1, 0) 和 (0, ±1)</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())grid = [<span class="hljs-built_in">list</span>(<span class="hljs-built_in">input</span>().strip()) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]visited = [[<span class="hljs-literal">False</span>] * m <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">x, y</span>):    visited[x][y] = <span class="hljs-literal">True</span>    <span class="hljs-keyword">for</span> dx <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:        <span class="hljs-keyword">for</span> dy <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:            <span class="hljs-keyword">if</span> dx == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> dy == <span class="hljs-number">0</span>:                <span class="hljs-keyword">continue</span>            nx, ny = x + dx, y + dy            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> visited[nx][ny] <span class="hljs-keyword">and</span> grid[nx][ny] == <span class="hljs-string">&#x27;W&#x27;</span>:                dfs(nx, ny)count = <span class="hljs-number">0</span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[i][j] <span class="hljs-keyword">and</span> grid[i][j] == <span class="hljs-string">&#x27;W&#x27;</span>:            dfs(i, j)            count += <span class="hljs-number">1</span><span class="hljs-built_in">print</span>(count)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="核心函数-dfs-x-y"><a href="#核心函数-dfs-x-y" class="headerlink" title="核心函数 dfs(x, y)"></a>核心函数 <code>dfs(x, y)</code></h3><p><strong>作用</strong>：将 (x, y) 所属的整个水坑标记为已访问</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">x, y</span>):    visited[x][y] = <span class="hljs-literal">True</span>  <span class="hljs-comment"># 标记当前格子</span>    <span class="hljs-comment"># 遍历 8 个方向</span>    <span class="hljs-keyword">for</span> dx <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:        <span class="hljs-keyword">for</span> dy <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:            <span class="hljs-keyword">if</span> dx == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> dy == <span class="hljs-number">0</span>:  <span class="hljs-comment"># 跳过自己</span>                <span class="hljs-keyword">continue</span>            nx, ny = x + dx, y + dy            <span class="hljs-comment"># 边界检查 + 未访问 + 是水</span>            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> visited[nx][ny] <span class="hljs-keyword">and</span> grid[nx][ny] == <span class="hljs-string">&#x27;W&#x27;</span>:                dfs(nx, ny)</code></pre></div><h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><div class="code-wrapper"><pre><code class="hljs routeros">遍历网格：(0,0)是<span class="hljs-string">&#x27;W&#x27;</span>且未访问 → <span class="hljs-attribute">count</span>=1, DFS标记整个水坑(0,1)是<span class="hljs-string">&#x27;.&#x27;</span> → 跳过(0,2)是<span class="hljs-string">&#x27;W&#x27;</span>且未访问 → <span class="hljs-attribute">count</span>=2, DFS标记整个水坑<span class="hljs-built_in">..</span>.</code></pre></div><h3 id="示例演示"><a href="#示例演示" class="headerlink" title="示例演示"></a>示例演示</h3><p><strong>输入</strong>：<br><div class="code-wrapper"><pre><code class="hljs lasso">W<span class="hljs-params">...</span><span class="hljs-params">...</span>..WW..WWW<span class="hljs-params">...</span>..WWW<span class="hljs-params">...</span>.WW<span class="hljs-params">...</span>WW.</code></pre></div></p><p><strong>过程</strong>：<br><div class="code-wrapper"><pre><code class="hljs routeros">第1个水坑: (0,0) → 只有这一个，<span class="hljs-attribute">count</span>=1第2个水坑: (1,1) → (1,2) → (1,3)，<span class="hljs-attribute">count</span>=2第3个水坑: (0,9) → (0,10) → (1,10) → (2,10)，<span class="hljs-attribute">count</span>=3<span class="hljs-built_in">..</span>.</code></pre></div></p><p><strong>输出</strong>：<code>3</code></p><h2 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h2><ol><li><strong>八连通</strong>：注意对角线也要考虑，用双重循环 <code>dx, dy in [-1, 0, 1]</code></li><li><strong>跳过自身</strong>：<code>if dx == 0 and dy == 0: continue</code></li><li><strong>visited 标记</strong>：防止重复访问，确保每个水坑只计数一次</li></ol><h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul><li><strong>时间复杂度</strong>：O(N × M) - 每个格子最多访问一次</li><li><strong>空间复杂度</strong>：O(N × M) - visited 数组 + 递归栈深度</li></ul><h2 id="变种问题"><a href="#变种问题" class="headerlink" title="变种问题"></a>变种问题</h2><div class="table-container"><table><thead><tr><th>问题</th><th>修改点</th></tr></thead><tbody><tr><td><strong>求最大水坑面积</strong></td><td>DFS 时返回该连通块的大小</td></tr><tr><td><strong>四连通水坑</strong></td><td>方向数组改为上下左右 4 个方向</td></tr><tr><td><strong>BFS 解法</strong></td><td>用队列代替递归，避免栈溢出</td></tr><tr><td><strong>并查集解法</strong></td><td>将相连的水坑合并到同一个集合</td></tr></tbody></table></div><h2 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h2><ol><li><strong>原地标记</strong>：直接把访问过的 <code>W</code> 改为 <code>.</code>，省去 visited 数组</li><li><strong>BFS 避免爆栈</strong>：对于极大网格，BFS 更安全</li><li><strong>并查集</strong>：适合需要频繁合并/查询的场景</li></ol><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 原地标记优化版</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">x, y</span>):    grid[x][y] = <span class="hljs-string">&#x27;.&#x27;</span>  <span class="hljs-comment"># 直接改为干地</span>    <span class="hljs-keyword">for</span> dx <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:        <span class="hljs-keyword">for</span> dy <span class="hljs-keyword">in</span> [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]:            <span class="hljs-keyword">if</span> dx == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> dy == <span class="hljs-number">0</span>:                <span class="hljs-keyword">continue</span>            nx, ny = x + dx, y + dy            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m <span class="hljs-keyword">and</span> grid[nx][ny] == <span class="hljs-string">&#x27;W&#x27;</span>:                dfs(nx, ny)</code></pre></div>]]></content>
+    <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>旺仔哥哥被困在一个 n×m 的矩形迷宫里。每个格子要么是空地（用符号 <code>.</code> 表示），要么是墙（用符号 <code>#</code> 表示）。旺仔哥哥只能从一个空地移动到其上下左右相邻的空地。</p><p>已知旺仔哥哥的起点为左上角 (1,1)，终点为右下角 (n,m)。请判断他是否能够到达终点。</p><p>保证起点和终点均为空地。</p><span id="more"></span><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这是一道典型的<strong>迷宫寻路</strong>问题，使用<strong>深度优先搜索(DFS)</strong>即可解决。</p><h3 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h3><ol><li><strong>从起点开始DFS遍历</strong>：每次尝试向四个方向（上下左右）移动</li><li><strong>边界检查</strong>：确保不越界（0 ≤ x &lt; n，0 ≤ y &lt; m）</li><li><strong>合法性检查</strong>：只能移动到空地（<code>.</code>）且未访问过的格子</li><li><strong>标记已访问</strong>：使用 <code>visited</code> 数组避免重复访问，防止死循环</li><li><strong>终止条件</strong>：到达终点 (n-1, m-1) 时返回成功</li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())s = [<span class="hljs-built_in">list</span>(<span class="hljs-built_in">input</span>()) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]visited = [[<span class="hljs-literal">False</span>] * m <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">x, y</span>):    <span class="hljs-keyword">if</span> x == n - <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> y == m - <span class="hljs-number">1</span>:        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>    visited[x][y] = <span class="hljs-literal">True</span>    <span class="hljs-keyword">for</span> dx, dy <span class="hljs-keyword">in</span> [(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">0</span>), (-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>)]:        nx, ny = x + dx, y + dy        <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> visited[nx][ny] <span class="hljs-keyword">and</span> s[nx][ny] == <span class="hljs-string">&#x27;.&#x27;</span>:            <span class="hljs-keyword">if</span> dfs(nx, ny):                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Yes&quot;</span> <span class="hljs-keyword">if</span> dfs(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>) <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;No&quot;</span>)</code></pre></div><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><h3 id="核心函数-dfs-x-y"><a href="#核心函数-dfs-x-y" class="headerlink" title="核心函数 dfs(x, y)"></a>核心函数 <code>dfs(x, y)</code></h3><div class="table-container"><table><thead><tr><th>参数</th><th>含义</th></tr></thead><tbody><tr><td><code>x, y</code></td><td>当前位置的坐标</td></tr></tbody></table></div><h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><div class="code-wrapper"><pre><code class="hljs scss"><span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)    ↓    标记 (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>) 为已访问    ↓    尝试四个方向    ↓    ┌───┴───┬───┴───┐    ↓       ↓       ↓       ↓   向右    向左    向下    向上   (<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)  越界    (<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)   越界    ↓       ↓       ↓       ↓   继续DFS  跳过   继续DFS  跳过</code></pre></div><h3 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h3><ol><li><strong>方向数组</strong>：<code>[(0, 1), (0, -1), (1, 0), (-1, 0)]</code> 分别代表右、左、下、上</li><li><strong>访问标记</strong>：进入格子时立即标记，防止后续重复访问</li><li><strong>早期返回</strong>：一旦找到通往终点的路径，立即返回 <code>True</code>，不再搜索其他路径</li></ol><h2 id="示例演示"><a href="#示例演示" class="headerlink" title="示例演示"></a>示例演示</h2><p><strong>输入</strong>：<br><div class="code-wrapper"><pre><code class="hljs clean"><span class="hljs-number">3</span> <span class="hljs-number">5</span>.##.#.#......#.</code></pre></div></p><p><strong>搜索过程</strong>：<br><div class="code-wrapper"><pre><code class="hljs scss">(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>) → (<span class="hljs-number">1</span>,<span class="hljs-number">0</span>) → (<span class="hljs-number">2</span>,<span class="hljs-number">0</span>) → (<span class="hljs-number">2</span>,<span class="hljs-number">1</span>) → (<span class="hljs-number">2</span>,<span class="hljs-number">2</span>) → (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>) → (<span class="hljs-number">1</span>,<span class="hljs-number">3</span>) → (<span class="hljs-number">1</span>,<span class="hljs-number">4</span>) → (<span class="hljs-number">2</span>,<span class="hljs-number">4</span>) ✓</code></pre></div></p><p><strong>输出</strong>：<code>Yes</code></p><h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul><li><strong>时间复杂度</strong>：O(n × m) - 最坏情况下遍历所有格子</li><li><strong>空间复杂度</strong>：O(n × m) - visited 数组 + 递归栈深度</li></ul><h2 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h2><ol><li><strong>BFS解法</strong>：若需要求最短路径，可用 BFS 并记录距离</li><li><strong>路径记录</strong>：可用 <code>path</code> 数组记录来路，输出具体路径</li><li><strong>原地标记</strong>：可直接将访问过的 <code>.</code> 改为 <code>#</code>，省去 visited 数组</li></ol>]]></content>
     
     
     <categories>
@@ -3301,9 +3301,9 @@
       
       <tag>DFS</tag>
       
-      <tag>Flood Fill</tag>
+      <tag>图搜索</tag>
       
-      <tag>连通区域</tag>
+      <tag>迷宫</tag>
       
     </tags>
     
