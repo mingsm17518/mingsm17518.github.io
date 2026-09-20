@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="算法,刷题,题解,LeetCode,Hot100,小红书机考,USACO,动态规划,图论,数据结构,Python">
   
-    <meta name="description" content="列表初始化与创建# 自动初始化为全0 a &#x3D; [0] * n  # 二维列表（注意：不能用 [[0]*m]*n，是浅拷贝！） grid &#x3D; [[0] * m for _ in range(n)]  # 列表推导式 squares &#x3D; [x * x for x in range(n)] evens &#x3D; [x for x in range(n) if x % 2 &#x3D;&#x3D; 0]  # 基本格式: [表达式">
+    <meta name="description" content="列表 初始化与创建 # 自动初始化为全0 a &#x3D; [0] * n  # 二维列表（注意：不能用 [[0]*m]*n，是浅拷贝！） grid &#x3D; [[0] * m for _ in range(n)]  # 列表推导式 squares &#x3D; [x * x for x in range(n)] evens &#x3D; [x for x in range(n) if x % 2 &#x3D;&#x3D; 0]  # 基本格式: [表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01_列表">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="列表初始化与创建# 自动初始化为全0 a &#x3D; [0] * n  # 二维列表（注意：不能用 [[0]*m]*n，是浅拷贝！） grid &#x3D; [[0] * m for _ in range(n)]  # 列表推导式 squares &#x3D; [x * x for x in range(n)] evens &#x3D; [x for x in range(n) if x % 2 &#x3D;&#x3D; 0]  # 基本格式: [表达式">
+<meta property="og:description" content="列表 初始化与创建 # 自动初始化为全0 a &#x3D; [0] * n  # 二维列表（注意：不能用 [[0]*m]*n，是浅拷贝！） grid &#x3D; [[0] * m for _ in range(n)]  # 列表推导式 squares &#x3D; [x * x for x in range(n)] evens &#x3D; [x for x in range(n) if x % 2 &#x3D;&#x3D; 0]  # 基本格式: [表">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-13T16:04:38.497Z">
 <meta property="article:modified_time" content="2026-09-13T16:04:38.497Z">
@@ -291,7 +291,9 @@
             
               <div class="markdown-body">
                 
-                <h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="初始化与创建"><a href="#初始化与创建" class="headerlink" title="初始化与创建"></a>初始化与创建</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 自动初始化为全0</span>
+                <h2 id="列表">列表</h2>
+<h3 id="初始化与创建">初始化与创建</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 自动初始化为全0</span>
 a = [<span class="hljs-number">0</span>] * n
 
 <span class="hljs-comment"># 二维列表（注意：不能用 [[0]*m]*n，是浅拷贝！）</span>
@@ -304,7 +306,8 @@ evens = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in
 <span class="hljs-comment"># 基本格式: [表达式 for 变量 in 可迭代对象 if 条件]</span>
 <span class="hljs-comment"># 示例: 读取 q 行整数</span>
 S_list = [<span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>()) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(q)]</code></pre></div>
-<h3 id="增删改操作"><a href="#增删改操作" class="headerlink" title="增删改操作"></a>增删改操作</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 尾部操作（O(1)）</span>
+<h3 id="增删改操作">增删改操作</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 尾部操作（O(1)）</span>
 a.append(x)      <span class="hljs-comment"># 尾部添加</span>
 a.pop()          <span class="hljs-comment"># 尾部删除</span>
 
@@ -321,7 +324,8 @@ a.remove(x)      <span class="hljs-comment"># 删除值为 x 的第一个元素<
 a.extend([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])    <span class="hljs-comment"># 追加多个元素</span>
 a += [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]         <span class="hljs-comment"># 同上</span>
 a.clear()              <span class="hljs-comment"># 清空列表</span></code></pre></div>
-<h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 最大/最小值</span>
+<h3 id="查询操作">查询操作</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 最大/最小值</span>
 mx = <span class="hljs-built_in">max</span>(a)
 mn = <span class="hljs-built_in">min</span>(a)
 idx = a.index(<span class="hljs-built_in">max</span>(a))  <span class="hljs-comment"># 最大值的索引</span>
@@ -348,7 +352,8 @@ a.index(x, start, end)  <span class="hljs-comment"># 在指定范围内查找</s
 <span class="hljs-comment"># 2. zip - 并行遍历多个列表 </span>
 <span class="hljs-keyword">for</span> a, b <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(list1, list2): 
 	<span class="hljs-built_in">print</span>(a, b)</code></pre></div>
-<h3 id="排序操作"><a href="#排序操作" class="headerlink" title="排序操作"></a>排序操作</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 原地排序</span>
+<h3 id="排序操作">排序操作</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 原地排序</span>
 a.sort()                <span class="hljs-comment"># 升序</span>
 a.sort(reverse=<span class="hljs-literal">True</span>)    <span class="hljs-comment"># 降序</span>
 
@@ -363,7 +368,8 @@ a.sort(key=<span class="hljs-keyword">lambda</span> x: (-x[<span class="hljs-num
 x = [<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>]
 y = [<span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>]
 <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">zip</span>(x, y))  <span class="hljs-comment"># → [(1, &#x27;a&#x27;), (2, &#x27;b&#x27;), (3, &#x27;c&#x27;)]</span></code></pre></div>
-<h3 id="切片与反转"><a href="#切片与反转" class="headerlink" title="切片与反转"></a>切片与反转</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 切片（不修改原列表）</span>
+<h3 id="切片与反转">切片与反转</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 切片（不修改原列表）</span>
 a[start:end]      <span class="hljs-comment"># [start, end)，左闭右开</span>
 a[start:end:step] <span class="hljs-comment"># 带步长</span>
 a[::-<span class="hljs-number">1</span>]           <span class="hljs-comment"># 反转</span>
@@ -374,6 +380,7 @@ a[-<span class="hljs-number">3</span>:]            <span class="hljs-comment"># 
 <span class="hljs-comment"># 反转（修改原列表）</span>
 a.reverse()       <span class="hljs-comment"># 原地反转</span>
 a = a[::-<span class="hljs-number">1</span>]       <span class="hljs-comment"># 创建新列表</span></code></pre></div>
+
                 
               </div>
             

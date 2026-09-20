@@ -17,20 +17,19 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Ming">
-  <meta name="keywords" content="Heap,Priority-Queue,优先队列,堆">
+  <meta name="keywords" content="堆,优先队列,heapq">
   
-    <meta name="description" content="Priority Queues 优先队列简介优先队列（Priority Queue 或 Heap）支持以下操作：  插入元素 删除最高优先级元素 获取最高优先级元素  以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操作传入的列表，">
+    <meta name="description" content="优先队列 模板 import heapq  pq &#x3D; [] heapq.heapify(pq)            # 把已有列表原地转成堆，O(n)  heapq.heappush(pq, x)        # 插入元素 smallest &#x3D; pq[0]             # 获取最小元素（不弹出） smallest &#x3D; heapq.heappop(pq) # 弹出并返回最小值">
 <meta property="og:type" content="article">
-<meta property="og:title" content="05_Priority Queues 优先队列">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/index.html">
+<meta property="og:title" content="05_优先队列">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Priority Queues 优先队列简介优先队列（Priority Queue 或 Heap）支持以下操作：  插入元素 删除最高优先级元素 获取最高优先级元素  以上操作的时间复杂度均为 O(log N)。 优先队列比集合更简单更快，应尽可能使用优先队列。 Python 实现注意：Python（与 C++ 不同）中删除和获取的是最小元素。 heapq 不是封装好的类，而是直接操作传入的列表，">
+<meta property="og:description" content="优先队列 模板 import heapq  pq &#x3D; [] heapq.heapify(pq)            # 把已有列表原地转成堆，O(n)  heapq.heappush(pq, x)        # 插入元素 smallest &#x3D; pq[0]             # 获取最小元素（不弹出） smallest &#x3D; heapq.heappop(pq) # 弹出并返回最小值">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-30T09:02:14.000Z">
-<meta property="article:modified_time" content="2026-09-20T08:34:35.654Z">
+<meta property="article:published_time" content="2026-09-20T09:32:36.063Z">
+<meta property="article:modified_time" content="2026-09-20T09:32:36.063Z">
 <meta property="article:author" content="Ming">
-<meta property="article:tag" content="Heap">
-<meta property="article:tag" content="Priority-Queue">
+<meta property="article:tag" content="heapq">
 <meta property="article:tag" content="优先队列">
 <meta property="article:tag" content="堆">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,7 +38,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>05_Priority Queues 优先队列 - Ming&#39;s Blog</title>
+  <title>05_优先队列 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="05_Priority Queues 优先队列"></span>
+            <span id="subtitle" data-typed-text="05_优先队列"></span>
           
         </div>
 
@@ -220,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-04-30 17:02" pubdate>
-          2026年4月30日 下午
+        <time datetime="2026-09-20 17:32" pubdate>
+          2026年9月20日 下午
         </time>
       </span>
     
@@ -232,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          624 字
+          702 字
         
       </span>
     
@@ -289,50 +288,23 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">05_Priority Queues 优先队列</h1>
-            
-              <p id="updated-time" class="note note-info" style="display: none">
-                
-                  
-                    本文最后更新于 2026-09-20T16:34:35+08:00
-                  
-                  
-
-                
-              </p>
+            <h1 id="seo-header">05_优先队列</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Priority-Queues-优先队列"><a href="#Priority-Queues-优先队列" class="headerlink" title="Priority Queues 优先队列"></a>Priority Queues 优先队列</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>优先队列（Priority Queue 或 Heap）支持以下操作：</p>
-<ul>
-<li>插入元素</li>
-<li>删除最高优先级元素</li>
-<li>获取最高优先级元素</li>
-</ul>
-<p>以上操作的时间复杂度均为 <strong>O(log N)</strong>。</p>
-<p>优先队列比集合更简单更快，应尽可能使用优先队列。</p>
-<h2 id="Python-实现"><a href="#Python-实现" class="headerlink" title="Python 实现"></a>Python 实现</h2><p><strong>注意</strong>：Python（与 C++ 不同）中删除和获取的是<strong>最小元素</strong>。</p>
-<p><code>heapq</code> 不是封装好的类，而是直接操作传入的列表，将其转换为堆。</p>
-<p><strong>警告</strong>：由于堆的结构特性，打印 pq 不会按排序顺序打印元素，而是直接打印列表。</p>
-<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
+                <h1 id="优先队列">优先队列</h1>
+<h2 id="模板">模板</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
 
 pq = []
+heapq.heapify(pq)            <span class="hljs-comment"># 把已有列表原地转成堆，O(n)</span>
 
-<span class="hljs-comment"># 对于长度大于1的列表，需要用 heapify 转换为堆</span>
-heapq.heapify(pq)
-
-heapq.heappush(pq, <span class="hljs-number">7</span>)  <span class="hljs-comment"># [7]</span>
-heapq.heappush(pq, <span class="hljs-number">2</span>)  <span class="hljs-comment"># [7, 2]</span>
-heapq.heappush(pq, <span class="hljs-number">1</span>)  <span class="hljs-comment"># [7, 2, 1]</span>
-heapq.heappush(pq, <span class="hljs-number">5</span>)  <span class="hljs-comment"># [7, 5, 2, 1]</span>
-<span class="hljs-built_in">print</span>(pq[<span class="hljs-number">0</span>])  <span class="hljs-comment"># 1 （获取最小元素）</span>
-
-heapq.heappop(pq)  <span class="hljs-comment"># 弹出最小值 [7, 5, 2]</span>
-heapq.heappop(pq)  <span class="hljs-comment"># 弹出最小值 [7, 5]</span>
-heapq.heappush(pq, <span class="hljs-number">6</span>)  <span class="hljs-comment"># [7, 6, 5]</span></code></pre></div>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><div class="table-container">
+heapq.heappush(pq, x)        <span class="hljs-comment"># 插入元素</span>
+smallest = pq[<span class="hljs-number">0</span>]             <span class="hljs-comment"># 获取最小元素（不弹出）</span>
+smallest = heapq.heappop(pq) <span class="hljs-comment"># 弹出并返回最小值</span></code></pre></div>
 <table>
+
 <thead>
 <tr>
 <th>方法</th>
@@ -350,31 +322,68 @@ heapq.heappush(pq, <span class="hljs-number">6</span>)  <span class="hljs-commen
 </tr>
 <tr>
 <td><code>heapq.heapreplace(pq, x)</code></td>
-<td>弹出最小值并插入 x（原子操作）</td>
+<td>先弹最小值再插入 x（一次下沉，比 pop+push 快）</td>
+</tr>
+<tr>
+<td><code>heapq.heappushpop(pq, x)</code></td>
+<td>先插入 x 再弹最小值</td>
 </tr>
 <tr>
 <td><code>heapq.heapify(pq)</code></td>
-<td>将列表转换为堆</td>
+<td>将列表原地转换为堆</td>
+</tr>
+<tr>
+<td><code>heapq.nlargest(k, a)</code> /
+<code>heapq.nsmallest(k, a)</code></td>
+<td>最大的 k 个 / 最小的 k 个</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="大顶堆"><a href="#大顶堆" class="headerlink" title="大顶堆"></a>大顶堆</h3><p>Python 的 heapq 只支持小顶堆。要实现大顶堆，可以取负值：</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 大顶堆</span>
-heapq.heappush(heap, -x)   <span class="hljs-comment"># 存入负值</span>
-x = -heapq.heappop(heap)  <span class="hljs-comment"># 取出时再取负，得到原值</span></code></pre></div>
-<h2 id="例题：Room-Allocation"><a href="#例题：Room-Allocation" class="headerlink" title="例题：Room Allocation"></a>例题：Room Allocation</h2><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1164">CSES - Room Allocation</a></p>
-<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>给定 n 个客户的到达和离开时间，求所需的最少房间数。</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
-<li>按到达时间排序所有客户</li>
-<li>维护一个小顶堆，存储已处理客户的离开时间</li>
-<li>对于每个客户：<ul>
-<li>如果堆顶的离开时间 &lt; 新客户的到达时间，说明有房间空出，弹出堆顶并放入新客户的离开时间</li>
-<li>否则，所有房间都满了，需要分配新房间</li>
-</ul>
-</li>
+<h3 id="大顶堆">大顶堆</h3>
+<p>Python 的 heapq 只有小顶堆，大顶堆用取负实现：</p>
+<div class="code-wrapper"><pre><code class="hljs python">heapq.heappush(heap, -x)      <span class="hljs-comment"># 存入负值</span>
+x = -heapq.heappop(heap)      <span class="hljs-comment"># 取出时再取负，得到原值</span></code></pre></div>
+<h3 id="堆元素是元组时">堆元素是元组时</h3>
+<p>按元组第一关键字排序（第一关键字相同时看第二关键字），常用于「按
+(距离, 节点) 取最近」：</p>
+<div class="code-wrapper"><pre><code class="hljs python">heapq.heappush(pq, (dist, node))
+d, u = heapq.heappop(pq)</code></pre></div>
+<h2 id="解释">解释</h2>
+<p><strong>用途</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>N</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math>
+插入 / 删除 /
+获取最高优先级元素。凡是「反复取当前最大/最小」的场景（贪心、多路归并、Top
+K）都用它。</p>
+<p>优先队列（Priority Queue /
+Heap）比有序集合更简单更快，能用堆就不要维护排序数组。</p>
+<p>使用 heapq 的三个注意点：</p>
+<ol type="1">
+<li>Python（与 C++ 的 <code>priority_queue</code>
+相反）删除和获取的是<strong>最小元素</strong></li>
+<li><code>heapq</code>
+不是封装好的类，而是直接操作传入的列表——传同一个列表就是在操作同一个堆</li>
+<li>堆内部列表<strong>不保证有序</strong>，<code>print(pq)</code>
+看到的是数组布局而非排序结果，只有 <code>pq[0]</code> 保证是最小值</li>
 </ol>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
+<h2 id="例题">例题</h2>
+<h3 id="例题-1room-allocation小顶堆-贪心">例题 1：Room
+Allocation（小顶堆 + 贪心）</h3>
+<p>来源：<a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1164">CSES - Room
+Allocation</a></p>
+<p>给定 n
+个客户的到达和离开时间，求所需的最少房间数，并输出每人分配的房间编号。</p>
+<p>思路：</p>
+<ol type="1">
+<li>按到达时间排序所有客户</li>
+<li>维护一个小顶堆，存储（已入住客户的离开时间, 房间号）</li>
+<li>对于每个客户：
+<ul>
+<li>若堆顶的离开时间 &lt;
+新客户的到达时间，说明有房间空出，<code>heapreplace</code>
+复用该房间</li>
+<li>否则所有房间都满了，开新房间</li>
+</ul></li>
+</ol>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
 
 n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 timetable = []
@@ -390,26 +399,25 @@ results = [-<span class="hljs-number">1</span>] * n
 <span class="hljs-keyword">for</span> a, b, i <span class="hljs-keyword">in</span> timetable:
     <span class="hljs-keyword">if</span> heap <span class="hljs-keyword">and</span> a &gt; heap[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]:
         r = heap[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]
-        heapq.heapreplace(heap, (b, r))
+        heapq.heapreplace(heap, (b, r))   <span class="hljs-comment"># 复用房间：弹最早的离开时间，放新客户的</span>
     <span class="hljs-keyword">else</span>:
         ans += <span class="hljs-number">1</span>
         r = ans
-        heapq.heappush(heap, (b, r))
+        heapq.heappush(heap, (b, r))      <span class="hljs-comment"># 新开房间</span>
     results[i] = r
 
 <span class="hljs-built_in">print</span>(ans)
 <span class="hljs-built_in">print</span>(*results)</code></pre></div>
-<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><ul>
-<li>时间复杂度：O(n log n)</li>
-<li>空间复杂度：O(n)</li>
-</ul>
-<h2 id="更多例题"><a href="#更多例题" class="headerlink" title="更多例题"></a>更多例题</h2><h3 id="思路总结"><a href="#思路总结" class="headerlink" title="思路总结"></a>思路总结</h3><p>优先队列常用于：</p>
-<ol>
+<p>复杂度：时间 O(n log n)，空间 O(n)</p>
+<h2 id="适用场景">适用场景</h2>
+<ol type="1">
 <li><strong>贪心算法</strong>：每次选择最小/最大的元素</li>
 <li><strong>多路归并</strong>：合并多个有序序列</li>
-<li><strong>求 Top K</strong>：维护最大的 K 个元素</li>
+<li><strong>求 Top K</strong>：维护大小为 K 的堆（配
+<code>nlargest</code> / <code>nsmallest</code>）</li>
 <li><strong>任务调度</strong>：按优先级处理任务</li>
-<li><strong>滑动窗口</strong>：维护窗口内的最值</li>
+<li><strong>Dijkstra
+最短路</strong>：每次取出距离最小的节点（见《06_Graphs/07_图论》）</li>
 </ol>
 
                 
@@ -451,13 +459,11 @@ results = [-<span class="hljs-number">1</span>] * n
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Heap/" class="print-no-link">#Heap</a>
-      
-        <a href="/tags/Priority-Queue/" class="print-no-link">#Priority-Queue</a>
+        <a href="/tags/%E5%A0%86/" class="print-no-link">#堆</a>
       
         <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" class="print-no-link">#优先队列</a>
       
-        <a href="/tags/%E5%A0%86/" class="print-no-link">#堆</a>
+        <a href="/tags/heapq/" class="print-no-link">#heapq</a>
       
     </div>
   
@@ -469,8 +475,8 @@ results = [-<span class="hljs-number">1</span>] * n
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>05_Priority Queues 优先队列</div>
-      <div>https://mingsm17518.github.io/2026/04/30/算法学习/02_核心算法/05_优先队列/</div>
+      <div>05_优先队列</div>
+      <div>https://mingsm17518.github.io/2026/09/20/算法学习/02_核心算法/05_优先队列/</div>
     </div>
     <div class="license-meta">
       
@@ -482,14 +488,9 @@ results = [-<span class="hljs-number">1</span>] * n
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年4月30日</div>
-        </div>
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>更新于</div>
           <div>2026年9月20日</div>
         </div>
+      
       
       
         <div class="license-meta-item">
@@ -519,18 +520,12 @@ results = [-<span class="hljs-number">1</span>] * n
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/12_longest_digit_substring/" title="最长数字子串（HJ12）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">最长数字子串（HJ12）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_Longest%20Increasing%20Subsequence%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" title="04_Longest Increasing Subsequence 最长递增子序列">
-                        <span class="hidden-mobile">04_Longest Increasing Subsequence 最长递增子序列</span>
+                      <a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="03_二分查找">
+                        <span class="hidden-mobile">03_二分查找</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -691,33 +686,6 @@ results = [-<span class="hljs-number">1</span>] * n
   
 
 
-
-
-  
-<script>
-  var relativeDate = function() {
-    var updatedTime = document.getElementById('updated-time');
-    if (updatedTime) {
-      var text = updatedTime.textContent;
-      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
-      var matchs = text.match(reg);
-      if (matchs) {
-        var relativeTime = moment(matchs[0]).fromNow();
-        updatedTime.textContent = text.replace(reg, relativeTime);
-      }
-      updatedTime.style.display = '';
-    }
-  };
-  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
-    if (!'zh-cn'.startsWith('en')) {
-      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
-        relativeDate();
-      });
-    } else {
-      relativeDate();
-    }
-  });
-</script>
 
 
   

@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="DFS,图,拓扑排序,环检测">
   
-    <meta name="description" content="有向图中的环检测在有向图中检测是否存在环（Cycle）是一个经典问题。环是指从某个节点出发，沿着有向边最终能回到该节点的路径。  方法一：DFS + 三色标记算法思想使用三种颜色标记节点的状态：  白色 (0)：未访问 灰色 (1)：正在访问（在当前递归栈中） 黑色 (2)：已访问完成（不在递归栈中）  如果在 DFS 过程中遇到灰色节点，说明找到了环。 为什么有效？ 灰色节点表示当前路径上的节点">
+    <meta name="description" content="有向图中的环检测 在有向图中检测是否存在环（Cycle）是一个经典问题。环是指从某个节点出发，沿着有向边最终能回到该节点的路径。  方法一：DFS + 三色标记 算法思想 使用三种颜色标记节点的状态： - 白色 (0)：未访问 - 灰色 (1)：正在访问（在当前递归栈中） - 黑色 (2)：已访问完成（不在递归栈中） 如果在 DFS 过程中遇到灰色节点，说明找到了环。 为什么有效？  灰色节点表示">
 <meta property="og:type" content="article">
 <meta property="og:title" content="06_Cycle Detection in Directed Graph 有向图环检测">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/05/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/06_Cycle%20Detection%20in%20Directed%20Graph%20%E6%9C%89%E5%90%91%E5%9B%BE%E7%8E%AF%E6%A3%80%E6%B5%8B/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="有向图中的环检测在有向图中检测是否存在环（Cycle）是一个经典问题。环是指从某个节点出发，沿着有向边最终能回到该节点的路径。  方法一：DFS + 三色标记算法思想使用三种颜色标记节点的状态：  白色 (0)：未访问 灰色 (1)：正在访问（在当前递归栈中） 黑色 (2)：已访问完成（不在递归栈中）  如果在 DFS 过程中遇到灰色节点，说明找到了环。 为什么有效？ 灰色节点表示当前路径上的节点">
+<meta property="og:description" content="有向图中的环检测 在有向图中检测是否存在环（Cycle）是一个经典问题。环是指从某个节点出发，沿着有向边最终能回到该节点的路径。  方法一：DFS + 三色标记 算法思想 使用三种颜色标记节点的状态： - 白色 (0)：未访问 - 灰色 (1)：正在访问（在当前递归栈中） - 黑色 (2)：已访问完成（不在递归栈中） 如果在 DFS 过程中遇到灰色节点，说明找到了环。 为什么有效？  灰色节点表示">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-05-07T15:51:58.361Z">
 <meta property="article:modified_time" content="2026-09-20T08:34:35.655Z">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          687 字
+          697 字
         
       </span>
     
@@ -304,21 +304,23 @@
             
               <div class="markdown-body">
                 
-                <h1 id="有向图中的环检测"><a href="#有向图中的环检测" class="headerlink" title="有向图中的环检测"></a>有向图中的环检测</h1><p>在有向图中检测是否存在环（Cycle）是一个经典问题。环是指从某个节点出发，沿着有向边最终能回到该节点的路径。</p>
-<hr>
-<h2 id="方法一：DFS-三色标记"><a href="#方法一：DFS-三色标记" class="headerlink" title="方法一：DFS + 三色标记"></a>方法一：DFS + 三色标记</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>使用三种颜色标记节点的状态：</p>
-<ul>
-<li><strong>白色 (0)</strong>：未访问</li>
-<li><strong>灰色 (1)</strong>：正在访问（在当前递归栈中）</li>
-<li><strong>黑色 (2)</strong>：已访问完成（不在递归栈中）</li>
-</ul>
+                <h1 id="有向图中的环检测">有向图中的环检测</h1>
+<p>在有向图中检测是否存在环（Cycle）是一个经典问题。环是指从某个节点出发，沿着有向边最终能回到该节点的路径。</p>
+<hr />
+<h2 id="方法一dfs-三色标记">方法一：DFS + 三色标记</h2>
+<h3 id="算法思想">算法思想</h3>
+<p>使用三种颜色标记节点的状态： - <strong>白色 (0)</strong>：未访问 -
+<strong>灰色 (1)</strong>：正在访问（在当前递归栈中） - <strong>黑色
+(2)</strong>：已访问完成（不在递归栈中）</p>
 <p>如果在 DFS 过程中遇到<strong>灰色节点</strong>，说明找到了环。</p>
-<h3 id="为什么有效？"><a href="#为什么有效？" class="headerlink" title="为什么有效？"></a>为什么有效？</h3><ul>
+<h3 id="为什么有效">为什么有效？</h3>
+<ul>
 <li>灰色节点表示当前路径上的节点</li>
 <li>如果再次遇到灰色节点，说明从该节点出发有一条边能回到当前路径</li>
 <li>这就形成了一个环</li>
 </ul>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">has_cycle_dfs</span>(<span class="hljs-params">n, graph</span>):
+<h3 id="代码实现">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">has_cycle_dfs</span>(<span class="hljs-params">n, graph</span>):
     state = [<span class="hljs-number">0</span>] * n   <span class="hljs-comment"># 0未访问，1访问中，2已完成</span>
     
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">node</span>):
@@ -337,24 +339,29 @@
             <span class="hljs-keyword">if</span> dfs(node):
                 <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
     <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span></code></pre></div>
-<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
-<li><strong>时间</strong>：$O(V + E)$，每个节点和边访问一次</li>
-<li><strong>空间</strong>：$O(V)$，存储颜色数组和递归栈</li>
+<h3 id="时间复杂度">时间复杂度</h3>
+<ul>
+<li><strong>时间</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo>+</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(V + E)</annotation></semantics></math>，每个节点和边访问一次</li>
+<li><strong>空间</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(V)</annotation></semantics></math>，存储颜色数组和递归栈</li>
 </ul>
-<hr>
-<h2 id="方法二：拓扑排序（Kahn-算法）"><a href="#方法二：拓扑排序（Kahn-算法）" class="headerlink" title="方法二：拓扑排序（Kahn 算法）"></a>方法二：拓扑排序（Kahn 算法）</h2><h3 id="算法思想-1"><a href="#算法思想-1" class="headerlink" title="算法思想"></a>算法思想</h3><ol>
+<hr />
+<h2 id="方法二拓扑排序kahn-算法">方法二：拓扑排序（Kahn 算法）</h2>
+<h3 id="算法思想-1">算法思想</h3>
+<ol type="1">
 <li>计算所有节点的入度</li>
 <li>将入度为 0 的节点加入队列</li>
 <li>不断从队列取出节点，将其邻居的入度减 1</li>
 <li>如果邻居入度变为 0，加入队列</li>
 <li>如果处理的节点数 &lt; 总节点数，说明存在环</li>
 </ol>
-<h3 id="为什么有效？-1"><a href="#为什么有效？-1" class="headerlink" title="为什么有效？"></a>为什么有效？</h3><ul>
+<h3 id="为什么有效-1">为什么有效？</h3>
+<ul>
 <li>有向无环图（DAG）至少存在一个入度为 0 的节点</li>
 <li>如果有环，环内所有节点的入度都至少为 1</li>
 <li>这些节点永远不会被加入队列</li>
 </ul>
-<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<h3 id="代码实现-1">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">has_cycle_topological</span>(<span class="hljs-params">n, adj</span>):
     <span class="hljs-string">&quot;&quot;&quot;</span>
@@ -403,13 +410,15 @@
     n2 = <span class="hljs-number">3</span>
     adj2 = [[<span class="hljs-number">1</span>], [<span class="hljs-number">2</span>], []]
     <span class="hljs-built_in">print</span>(has_cycle_topological(n2, adj2))  <span class="hljs-comment"># False</span></code></pre></div>
-<h3 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
-<li><strong>时间</strong>：$O(V + E)$</li>
-<li><strong>空间</strong>：$O(V)$，存储入度和队列</li>
+<h3 id="时间复杂度-1">时间复杂度</h3>
+<ul>
+<li><strong>时间</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo>+</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(V + E)</annotation></semantics></math></li>
+<li><strong>空间</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(V)</annotation></semantics></math>，存储入度和队列</li>
 </ul>
-<hr>
-<h2 id="两种方法对比"><a href="#两种方法对比" class="headerlink" title="两种方法对比"></a>两种方法对比</h2><div class="table-container">
+<hr />
+<h2 id="两种方法对比">两种方法对比</h2>
 <table>
+
 <thead>
 <tr>
 <th>方法</th>
@@ -433,7 +442,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 
                 
               </div>
