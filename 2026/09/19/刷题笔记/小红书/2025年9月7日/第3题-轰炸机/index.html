@@ -17,17 +17,17 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Ming">
-  <meta name="keywords" content="">
+  <meta name="keywords" content="树形DP,最大独立集,树">
   
-    <meta name="description" content="题目 在遥远的星球上有 T 国与 K 国，其中 T 国是由 nn 座城市（编号为 1∼n1 \sim n）和 n−1n - 1 条双向道路组成的，保证任意两座城市之间互通。某天，强大的 K 国决定轰炸 T 国的所有城市，K 国可以进行以下两种操作：  选择一个尚未轰炸的城市，花费 xx 财力，将该城市本身、所有与之直接相连的道路，一并轰炸。 选择一个尚未轰炸的城市，花费 yy 财力，将该城市所在的">
+    <meta name="description" content="题目在遥远的星球上有 T 国与 K 国，其中 T 国是由 $n$ 座城市（编号为 $1 \sim n$）和 $n - 1$ 条双向道路组成的，保证任意两座城市之间互通。某天，强大的 K 国决定轰炸 T 国的所有城市，K 国可以进行以下两种操作：  选择一个尚未轰炸的城市，花费 $x$ 财力，将该城市本身、所有与之直接相连的道路，一并轰炸。 选择一个尚未轰炸的城市，花费 $y$ 财力，将该城市所在的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第3题-轰炸机">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E8%BD%B0%E7%82%B8%E6%9C%BA/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目 在遥远的星球上有 T 国与 K 国，其中 T 国是由 nn 座城市（编号为 1∼n1 \sim n）和 n−1n - 1 条双向道路组成的，保证任意两座城市之间互通。某天，强大的 K 国决定轰炸 T 国的所有城市，K 国可以进行以下两种操作：  选择一个尚未轰炸的城市，花费 xx 财力，将该城市本身、所有与之直接相连的道路，一并轰炸。 选择一个尚未轰炸的城市，花费 yy 财力，将该城市所在的">
+<meta property="og:description" content="题目在遥远的星球上有 T 国与 K 国，其中 T 国是由 $n$ 座城市（编号为 $1 \sim n$）和 $n - 1$ 条双向道路组成的，保证任意两座城市之间互通。某天，强大的 K 国决定轰炸 T 国的所有城市，K 国可以进行以下两种操作：  选择一个尚未轰炸的城市，花费 $x$ 财力，将该城市本身、所有与之直接相连的道路，一并轰炸。 选择一个尚未轰炸的城市，花费 $y$ 财力，将该城市所在的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T08:39:14.478Z">
-<meta property="article:modified_time" content="2026-09-19T08:39:14.791Z">
+<meta property="article:modified_time" content="2026-09-20T08:34:35.645Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="最大独立集">
 <meta property="article:tag" content="树">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          719 字
+          705 字
         
       </span>
     
@@ -293,7 +293,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-19T16:39:14+08:00
+                    本文最后更新于 2026-09-20T16:34:35+08:00
                   
                   
 
@@ -303,56 +303,20 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目">题目</h2>
-<p>在遥远的星球上有 T 国与 K 国，其中 T 国是由
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-座城市（编号为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>∼</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 \sim n</annotation></semantics></math>）和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - 1</annotation></semantics></math>
-条双向道路组成的，保证任意两座城市之间互通。某天，强大的 K 国决定轰炸 T
-国的所有城市，K 国可以进行以下两种操作：</p>
-<ol type="1">
-<li>选择一个尚未轰炸的城市，花费
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
-财力，将该城市本身、所有与之直接相连的道路，一并轰炸。</li>
-<li>选择一个尚未轰炸的城市，花费
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
-财力，将该城市所在的由尚未轰炸的城市与道路构成的连通块内，所有城市和道路，一并轰炸。</li>
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在遥远的星球上有 T 国与 K 国，其中 T 国是由 $n$ 座城市（编号为 $1 \sim n$）和 $n - 1$ 条双向道路组成的，保证任意两座城市之间互通。某天，强大的 K 国决定轰炸 T 国的所有城市，K 国可以进行以下两种操作：</p>
+<ol>
+<li>选择一个尚未轰炸的城市，花费 $x$ 财力，将该城市本身、所有与之直接相连的道路，一并轰炸。</li>
+<li>选择一个尚未轰炸的城市，花费 $y$ 财力，将该城市所在的由尚未轰炸的城市与道路构成的连通块内，所有城市和道路，一并轰炸。</li>
 </ol>
-<p>每种操作可反复使用，直至所有城市被轰毁。为了彰显财力，K
-国希望使用最多的财力来摧毁所有城市，请你计算并输出这个最大财力消耗。</p>
+<p>每种操作可反复使用，直至所有城市被轰毁。为了彰显财力，K 国希望使用最多的财力来摧毁所有城市，请你计算并输出这个最大财力消耗。</p>
 <p><strong>输入描述</strong></p>
-<p>每个测试文件均包含多组测试数据。第一行输入一个整数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
-代表数据组数，每组测试数据描述如下： 第一行输入三个整数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>,</mo><mi>x</mi><mo>,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">n, x, y</annotation></semantics></math>，分别表示城市数量和两种轰炸操作的财力消耗；
-接下来
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - 1</annotation></semantics></math>
-行每行输入两个整数
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u, v</annotation></semantics></math>，表示道路两端的城市编号。</p>
+<p>每个测试文件均包含多组测试数据。第一行输入一个整数 $T$ 代表数据组数，每组测试数据描述如下：<br>第一行输入三个整数 $n, x, y$，分别表示城市数量和两种轰炸操作的财力消耗；<br>接下来 $n - 1$ 行每行输入两个整数 $u, v$，表示道路两端的城市编号。</p>
 <p><strong>输出描述</strong></p>
 <p>对于每组测试数据，新起一行，输出一个整数，表示最大财力消耗。</p>
 <p>（回忆版无样例，可直接用代码自测）</p>
-<h2 id="思路">思路</h2>
-<p>若
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≥</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x \ge y</annotation></semantics></math>：全用操作
-1，答案
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>⋅</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">n \cdot x</annotation></semantics></math>（操作
-2 至少覆盖一个城市，不划算）。</p>
-<p>若
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x &lt; y</annotation></semantics></math>：先把每个城市都按操作
-1 计入花费
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>⋅</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">n \cdot x</annotation></semantics></math>，再尽量把一些城市「升级」为操作
-2（每升级一个多花
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y - x</annotation></semantics></math>）。能够用操作
-2
-处理的城市在树上构成一个<strong>独立集</strong>（相邻城市若都被单独升级会互相破坏连通块结构），因此最多升级的个数为树的最大独立集（MIS），答案为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>⋅</mo><mi>x</mi><mo>+</mo><mtext mathvariant="normal">MIS</mtext><mo>⋅</mo><mo stretchy="false" form="prefix">(</mo><mi>y</mi><mo>−</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">n \cdot x + \text{MIS} \cdot (y - x)</annotation></semantics></math>。MIS
-用树形 DP：<code>dp1[u] = Σ dp0[v] + 1</code>（选
-u）、<code>dp0[u] = Σ max(dp1[v], dp0[v])</code>（不选），迭代写法用栈序
-+ 逆序转移避免递归深度问题。</p>
-<h2 id="代码">代码</h2>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>若 $x \ge y$：全用操作 1，答案 $n \cdot x$（操作 2 至少覆盖一个城市，不划算）。</p>
+<p>若 $x &lt; y$：先把每个城市都按操作 1 计入花费 $n \cdot x$，再尽量把一些城市「升级」为操作 2（每升级一个多花 $y - x$）。能够用操作 2 处理的城市在树上构成一个<strong>独立集</strong>（相邻城市若都被单独升级会互相破坏连通块结构），因此最多升级的个数为树的最大独立集（MIS），答案为 $n \cdot x + \text{MIS} \cdot (y - x)$。MIS 用树形 DP：<code>dp1[u] = Σ dp0[v] + 1</code>（选 u）、<code>dp0[u] = Σ max(dp1[v], dp0[v])</code>（不选），迭代写法用栈序 + 逆序转移避免递归深度问题。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
     it = <span class="hljs-built_in">iter</span>(sys.stdin.read().strip().split())
@@ -398,8 +362,7 @@ u）、<code>dp0[u] = Σ max(dp1[v], dp0[v])</code>（不选），迭代写法�
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
     main()</code></pre></div>
 <blockquote>
-<p>来源：<a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1950980896514613908">25秋招笔试真题-小红书0907（知乎专栏）</a>（回忆版）</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1950980896514613908">25秋招笔试真题-小红书0907（知乎专栏）</a>（回忆版）</p>
 </blockquote>
 
                 
@@ -483,7 +446,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/19509808965146
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2026年9月19日</div>
+          <div>2026年9月20日</div>
         </div>
       
       

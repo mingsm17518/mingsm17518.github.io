@@ -17,21 +17,24 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Ming">
-  <meta name="keywords" content="">
+  <meta name="keywords" content="链表,递归">
   
-    <meta name="description" content="题目 206. 反转链表（简单） 给你单链表的头节点 head，请你反转链表，并返回反转后的链表。 示例 1：  输入： [1,2,3,4,5] 输出： [5,4,3,2,1] 示例 2：  输入： [1,2] 输出： [2,1] 示例 3： 输入： [] 输出： [] 提示：  链表中节点的数目范围是 [0, 5000] -5000 &lt;&#x3D; Node.val &lt;&#x3D; 5000  思路 方">
+    <meta name="description" content="题目206. 反转链表（简单） 给你单链表的头节点 head，请你反转链表，并返回反转后的链表。 示例 1：  输入： [1,2,3,4,5] 输出： [5,4,3,2,1] 示例 2：  输入： [1,2] 输出： [2,1] 示例 3： 输入： [] 输出： [] 提示：  链表中节点的数目范围是 [0, 5000] -5000 &lt;&#x3D; Node.val &lt;&#x3D; 5000  思路方法一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="206. 反转链表">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="题目 206. 反转链表（简单） 给你单链表的头节点 head，请你反转链表，并返回反转后的链表。 示例 1：  输入： [1,2,3,4,5] 输出： [5,4,3,2,1] 示例 2：  输入： [1,2] 输出： [2,1] 示例 3： 输入： [] 输出： [] 提示：  链表中节点的数目范围是 [0, 5000] -5000 &lt;&#x3D; Node.val &lt;&#x3D; 5000  思路 方">
+<meta property="og:description" content="题目206. 反转链表（简单） 给你单链表的头节点 head，请你反转链表，并返回反转后的链表。 示例 1：  输入： [1,2,3,4,5] 输出： [5,4,3,2,1] 示例 2：  输入： [1,2] 输出： [2,1] 示例 3： 输入： [] 输出： [] 提示：  链表中节点的数目范围是 [0, 5000] -5000 &lt;&#x3D; Node.val &lt;&#x3D; 5000  思路方法一">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg">
 <meta property="article:published_time" content="2026-09-19T12:07:03.958Z">
-<meta property="article:modified_time" content="2026-09-19T12:07:04.261Z">
+<meta property="article:modified_time" content="2026-09-20T08:34:35.639Z">
 <meta property="article:author" content="Ming">
 <meta property="article:tag" content="递归">
 <meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -292,7 +295,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-19T20:07:04+08:00
+                    本文最后更新于 2026-09-20T16:34:35+08:00
                   
                   
 
@@ -302,21 +305,16 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题目">题目</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/">206.
-反转链表</a>（简单）</p>
-<p>给你单链表的头节点
-<code>head</code>，请你反转链表，并返回反转后的链表。</p>
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/">206. 反转链表</a>（简单）</p>
+<p>给你单链表的头节点 <code>head</code>，请你反转链表，并返回反转后的链表。</p>
 <p><strong>示例 1：</strong></p>
-<p><img
-src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs accesslog"><span class="hljs-string">[1,2,3,4,5]</span></code></pre></div>
 <p>输出：</p>
 <div class="code-wrapper"><pre><code class="hljs accesslog"><span class="hljs-string">[5,4,3,2,1]</span></code></pre></div>
 <p><strong>示例 2：</strong></p>
-<p><img
-src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[1,2]</span></code></pre></div>
 <p>输出：</p>
@@ -331,18 +329,9 @@ src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg" srcset="/img/lo
 <li>链表中节点的数目范围是 <code>[0, 5000]</code></li>
 <li><code>-5000 &lt;= Node.val &lt;= 5000</code></li>
 </ul>
-<h2 id="思路">思路</h2>
-<p>方法一迭代：三指针
-<code>prev</code>/<code>curr</code>/<code>nxt</code>，每步先存下后继，再把当前节点的
-<code>next</code> 反指向 <code>prev</code>，然后整体右移，遍历结束后
-<code>prev</code> 即新头。</p>
-<p>方法二递归：先反转 <code>head.next</code> 之后的部分得到
-<code>new_head</code>，再让原来的第二个节点指回
-<code>head</code>（<code>head.next.next = head</code>），并把
-<code>head.next</code> 置空防止成环。</p>
-<h2 id="代码">代码</h2>
-<h3 id="方法一迭代">方法一：迭代</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Definition for singly-linked list.</span>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法一迭代：三指针 <code>prev</code>/<code>curr</code>/<code>nxt</code>，每步先存下后继，再把当前节点的 <code>next</code> 反指向 <code>prev</code>，然后整体右移，遍历结束后 <code>prev</code> 即新头。</p>
+<p>方法二递归：先反转 <code>head.next</code> 之后的部分得到 <code>new_head</code>，再让原来的第二个节点指回 <code>head</code>（<code>head.next.next = head</code>），并把 <code>head.next</code> 置空防止成环。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="方法一：迭代"><a href="#方法一：迭代" class="headerlink" title="方法一：迭代"></a>方法一：迭代</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Definition for singly-linked list.</span>
 <span class="hljs-comment"># class ListNode:</span>
 <span class="hljs-comment">#     def __init__(self, val=0, next=None):</span>
 <span class="hljs-comment">#         self.val = val</span>
@@ -357,8 +346,7 @@ src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg" srcset="/img/lo
             prev = curr
             curr = nxt
         <span class="hljs-keyword">return</span> prev</code></pre></div>
-<h3 id="方法二递归">方法二：递归</h3>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Definition for singly-linked list.</span>
+<h3 id="方法二：递归"><a href="#方法二：递归" class="headerlink" title="方法二：递归"></a>方法二：递归</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Definition for singly-linked list.</span>
 <span class="hljs-comment"># class ListNode:</span>
 <span class="hljs-comment">#     def __init__(self, val=0, next=None):</span>
 <span class="hljs-comment">#         self.val = val</span>
@@ -451,7 +439,7 @@ src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg" srcset="/img/lo
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2026年9月19日</div>
+          <div>2026年9月20日</div>
         </div>
       
       
@@ -492,8 +480,8 @@ src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg" srcset="/img/lo
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/160.%20%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" title="160. 相交链表">
-                        <span class="hidden-mobile">160. 相交链表</span>
+                      <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/283.%20%E7%A7%BB%E5%8A%A8%E9%9B%B6/" title="283. 移动零">
+                        <span class="hidden-mobile">283. 移动零</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

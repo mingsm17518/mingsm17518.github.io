@@ -17,14 +17,17 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Ming">
-  <meta name="keywords" content="">
+  <meta name="keywords" content="算法,刷题,题解,LeetCode,Hot100,小红书机考,USACO,动态规划,图论,数据结构,Python">
   
-    <meta property="og:type" content="website">
+    <meta name="description" content="算法学习笔记与机考真题题解：LeetCode Hot100、小红书机考真题、USACO 分级训练、动态规划、图论、数据结构与 Python 竞赛模板。">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Ming&#39;s Blog">
 <meta property="og:url" content="https://mingsm17518.github.io/page/12/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
+<meta property="og:description" content="算法学习笔记与机考真题题解：LeetCode Hot100、小红书机考真题、USACO 分级训练、动态规划、图论、数据结构与 Python 竞赛模板。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Ming">
+<meta property="article:tag" content="算法,刷题,题解,LeetCode,Hot100,小红书机考,USACO,动态规划,图论,数据结构,Python">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -233,15 +236,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/" target="_self">
-          无重复字符的最长子串（Longest Substring Without Repeating Characters）
+        <a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" target="_self">
+          01_列表
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" target="_self">
         <div>
-          无重复字符的最长子串 题目描述 https://leetcode.cn/problems/longest-substring-without-repeating-characters/ 给定一个字符串 s，请你找出其中不含有重复字符的最长子串的长度。 解题思路 核心观察 使用滑动窗口维护一个不包含重复字符的子串。窗口左边界为 l，右边界为 r（当前遍历到的字符）。 算法步骤  使用集合 a 存储当
+          列表初始化与创建# 自动初始化为全0 a = [0] * n  # 二维列表（注意：不能用 [[0]*m]*n，是浅拷贝！） grid = [[0] * m for _ in range(n)]  # 列表推导式 squares = [x * x for x in range(n)] evens = [x for x in range(n) if x % 2 == 0]  # 基本格式: [表达式
         </div>
       </a>
 
@@ -249,8 +252,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-30 17:02" pubdate>
-              2026-04-30
+            <time datetime="2026-09-14 00:04" pubdate>
+              2026-09-14
             </time>
           </div>
         
@@ -265,20 +268,13 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/" class="category-chain-item">华为机考</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/" class="category-chain-item">leetcode</a>
-  
-  
-
   
 
   
@@ -290,17 +286,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
-            
-              <a href="/tags/Python/">#Python</a>
-            
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
-            
-          </div>
         
       </div>
     </article>
@@ -312,15 +297,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/01_two_sum/" target="_self">
-          两数之和（Two Sum）
+        <a href="/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83%E9%A2%98%E5%9E%8B/" target="_self">
+          华为机考题型
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/01_two_sum/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83%E9%A2%98%E5%9E%8B/" target="_self">
         <div>
-          两数之和 题目描述 https://leetcode.cn/problems/two-sum/ 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target 的那两个整数，并返回它们的数组下标。 你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。 你可以按任意顺序返回答案。 解题思路 核心观察 对于每个元素 nums[i]，我们需要查找是否
+          leetcode：熟悉题型和算法，各类型的题选做10-15道（保底5-8道）针对薄弱知识点查缺补漏题号：字符串：3，49，30线性表:86，16，27，732队列:641，406，899栈:946，116，117，895哈希表:61，729，25，554dfs：105，112，98，494，547，1254bfs：1091，1129，102，101，752动态规划类题目也可以适当熟悉 常考知识点：
         </div>
       </a>
 
@@ -328,8 +313,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-30 17:02" pubdate>
-              2026-04-30
+            <time datetime="2026-09-14 00:04" pubdate>
+              2026-09-14
             </time>
           </div>
         
@@ -352,13 +337,6 @@
   <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/" class="category-chain-item">华为机考</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/" class="category-chain-item">leetcode</a>
-  
-  
-
-  
 
   
 
@@ -369,17 +347,6 @@
 
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Python/">#Python</a>
-            
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
-            
-              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">#哈希表</a>
-            
-          </div>
         
       </div>
     </article>
