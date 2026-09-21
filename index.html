@@ -236,15 +236,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/2/" target="_self">
-          未命名 1
+        <a href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" target="_self">
+          06_排序
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/2/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" target="_self">
         <div>
-          明白了。现在完整规则应该是：  n q 初始数组全是 0 有 q 个操作：  1 x：反转第 x 个位置 2 l r：只对区间 [l,r] 执行你说的 tmp 规则，并输出 ans  规则：  tmp 为空 → 当前数字放入 tmp tmp 不为空：  当前数字 == tmp → 什么都不做 当前数字 != tmp → ans += 1，然后 tmp 清空    例如： 0 0 1 1 0 1 执
+          排序 模板 Python 内置排序（优先使用） 竞赛中绝大多数时候直接用内置的 Timsort（稳定，O(nlog&#8289;n)O(n \log n)）： arr.sort()                        # 原地排序 b = sorted(arr)                   # 返回新列表 arr.sort(reverse=True)            # 降
         </div>
       </a>
 
@@ -252,8 +252,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-20 21:02" pubdate>
-              2026-09-20
+            <time datetime="2026-09-22 01:03" pubdate>
+              2026-09-22
             </time>
           </div>
         
@@ -268,8 +268,87 @@
     
       <span class="category-chain">
         
-  <a href="/categories/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/" class="category-chain-item">2026年9月20日</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
+            
+              <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">#快速排序</a>
+            
+              <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">#归并排序</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Chicken_Jockey%20%E9%A2%98%E8%A7%A3/" target="_self">
+          算法学习/05_动态规划/Chicken_Jockey 题解
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Chicken_Jockey%20%E9%A2%98%E8%A7%A3/" target="_self">
+        <div>
+          Chicken Jockey 题解 题目描述 有 n 个怪物叠在一起，怪物 i (从下到上编号) 初始血量为 h[i]。 一次攻击可以对任意一个怪物造成 1 点伤害。当怪物血量 ≤ 0 时死亡，其上方的所有怪物会掉落。掉落的怪物中，底部的怪物会受到等于其下方怪物数量的摔落伤害。如果摔落后死亡，过程继续。 求最少需要多少次攻击才能消灭所有怪物。  解法 问题类型：线性 DP（状态转移只与前几个状态相
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-04-30 17:02" pubdate>
+              2026-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  
+  
+
   
 
       </span>
@@ -322,8 +401,90 @@
     
       <span class="category-chain">
         
-  <a href="/categories/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/" class="category-chain-item">2026年9月20日</a>
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/" class="category-chain-item">2026年9月20日</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/2/" target="_self">
+          未命名 1
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/2/" target="_self">
+        <div>
+          明白了。现在完整规则应该是：  n q 初始数组全是 0 有 q 个操作：  1 x：反转第 x 个位置 2 l r：只对区间 [l,r] 执行你说的 tmp 规则，并输出 ans  规则：  tmp 为空 → 当前数字放入 tmp tmp 不为空：  当前数字 == tmp → 什么都不做 当前数字 != tmp → ans += 1，然后 tmp 清空    例如： 0 0 1 1 0 1 执
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-20 21:02" pubdate>
+              2026-09-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/" class="category-chain-item">2026年9月20日</a>
+  
+  
+
+  
+
   
 
       </span>
@@ -767,137 +928,6 @@
               <a href="/tags/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2/">#二分搜索</a>
             
               <a href="/tags/bisect/">#bisect</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/20/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/conda%20%E4%B8%8E%20uv/" target="_self">
-          conda 与 uv
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/conda%20%E4%B8%8E%20uv/" target="_self">
-        <div>
-          conda 创建新环境 conda create -n &lt;env_name&gt; python=3.8 conda activate &lt;env_name&gt; 删除环境 conda env list conda env remove -n &lt;env_name&gt; uv uv init uv venv .venv source .venv/bin/activate
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-20 16:51" pubdate>
-              2026-09-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/" class="category-chain-item">开发杂记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">#常用命令</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" target="_self">
-          02_差分数组
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" target="_self">
-        <div>
-          差分数组 模板 diff = [0] * (n + 1)   # 开 n+1，防止 r+1 越界  # 对区间 [l, r] 加 v diff[l] += v diff[r+1] -= v  # 还原：对 diff 求前缀和 arr = [0] * n curr = 0 for i in range(n):     curr += diff[i]     arr[i] = curr 字典版（稀疏差
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-20 00:33" pubdate>
-              2026-09-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
-            
-              <a href="/tags/%E5%B7%AE%E5%88%86/">#差分</a>
             
           </div>
         
