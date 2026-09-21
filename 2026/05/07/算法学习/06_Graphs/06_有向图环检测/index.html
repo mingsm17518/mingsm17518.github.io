@@ -17,28 +17,29 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Ming">
-  <meta name="keywords" content="DP,完全背包,题解">
+  <meta name="keywords" content="DFS,图,拓扑排序,环检测">
   
-    <meta name="description" content="Dice Combinations 题解题目描述https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1633 给定一个目标整数 $N$，计算有多少种骰子投掷序列，使得骰子顶面的和为 $N$。 限制：$1 \le N \le 10^6$  解法问题类型：完全背包（计数问题，每种骰子点数可用无限次） 定义：dp[i] 为掷骰子得到的和为 $i$ 的所有序列的数量 初始条件：dp[0] &#x3D;">
+    <meta name="description" content="有向图中的环检测 在有向图中检测是否存在环（Cycle）是一个经典问题。环是指从某个节点出发，沿着有向边最终能回到该节点的路径。  方法一：DFS + 三色标记 算法思想 使用三种颜色标记节点的状态： - 白色 (0)：未访问 - 灰色 (1)：正在访问（在当前递归栈中） - 黑色 (2)：已访问完成（不在递归栈中） 如果在 DFS 过程中遇到灰色节点，说明找到了环。 为什么有效？  灰色节点表示">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dice Combinations 题解">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/01_Dice_Combinations/index.html">
+<meta property="og:title" content="06_Cycle Detection in Directed Graph 有向图环检测">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/05/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/06_%E6%9C%89%E5%90%91%E5%9B%BE%E7%8E%AF%E6%A3%80%E6%B5%8B/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Dice Combinations 题解题目描述https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1633 给定一个目标整数 $N$，计算有多少种骰子投掷序列，使得骰子顶面的和为 $N$。 限制：$1 \le N \le 10^6$  解法问题类型：完全背包（计数问题，每种骰子点数可用无限次） 定义：dp[i] 为掷骰子得到的和为 $i$ 的所有序列的数量 初始条件：dp[0] &#x3D;">
+<meta property="og:description" content="有向图中的环检测 在有向图中检测是否存在环（Cycle）是一个经典问题。环是指从某个节点出发，沿着有向边最终能回到该节点的路径。  方法一：DFS + 三色标记 算法思想 使用三种颜色标记节点的状态： - 白色 (0)：未访问 - 灰色 (1)：正在访问（在当前递归栈中） - 黑色 (2)：已访问完成（不在递归栈中） 如果在 DFS 过程中遇到灰色节点，说明找到了环。 为什么有效？  灰色节点表示">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-04-30T09:02:19.000Z">
-<meta property="article:modified_time" content="2026-09-20T08:34:35.652Z">
+<meta property="article:published_time" content="2026-05-07T15:51:58.361Z">
+<meta property="article:modified_time" content="2026-09-20T08:34:35.655Z">
 <meta property="article:author" content="Ming">
-<meta property="article:tag" content="DP">
-<meta property="article:tag" content="完全背包">
-<meta property="article:tag" content="题解">
+<meta property="article:tag" content="DFS">
+<meta property="article:tag" content="图">
+<meta property="article:tag" content="拓扑排序">
+<meta property="article:tag" content="环检测">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Dice Combinations 题解 - Ming&#39;s Blog</title>
+  <title>06_Cycle Detection in Directed Graph 有向图环检测 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -208,7 +209,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Dice Combinations 题解"></span>
+            <span id="subtitle" data-typed-text="06_Cycle Detection in Directed Graph 有向图环检测"></span>
           
         </div>
 
@@ -219,8 +220,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-04-30 17:02" pubdate>
-          2026年4月30日 下午
+        <time datetime="2026-05-07 23:51" pubdate>
+          2026年5月7日 晚上
         </time>
       </span>
     
@@ -231,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          238 字
+          697 字
         
       </span>
     
@@ -242,7 +243,7 @@
         
         
         
-          2 分钟
+          6 分钟
         
       </span>
     
@@ -288,7 +289,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Dice Combinations 题解</h1>
+            <h1 id="seo-header">06_Cycle Detection in Directed Graph 有向图环检测</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
@@ -303,25 +304,144 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Dice-Combinations-题解"><a href="#Dice-Combinations-题解" class="headerlink" title="Dice Combinations 题解"></a>Dice Combinations 题解</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1633">https://cses.fi/problemset/task/1633</a></p>
-<p>给定一个目标整数 $N$，计算有多少种骰子投掷序列，使得骰子顶面的和为 $N$。</p>
-<p><strong>限制</strong>：$1 \le N \le 10^6$</p>
-<hr>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><strong>问题类型</strong>：完全背包（计数问题，每种骰子点数可用无限次）</p>
-<p><strong>定义</strong>：<code>dp[i]</code> 为掷骰子得到的和为 $i$ 的所有序列的数量</p>
-<p><strong>初始条件</strong>：<code>dp[0] = 1</code>（和为 0 只有一种方式：什么都不投），当 $i &lt; 0$ 时忽略</p>
-<p><strong>状态转移</strong>：</p>
-<script type="math/tex; mode=display">dp[i] = dp[i-1] + dp[i-2] + dp[i-3] + dp[i-4] + dp[i-5] + dp[i-6]</script><p><strong>解释</strong>：考虑最后一个掷出的骰子点数。如果是 1，则前面和为 $i-1$；如果是 2，则前面和为 $i-2$；… 依此类直到 6。将所有可能的情况相加。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="code-wrapper"><pre><code class="hljs python">MOD = <span class="hljs-number">10</span>**<span class="hljs-number">9</span> + <span class="hljs-number">7</span>
-n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
-dp = [<span class="hljs-number">1</span>]
+                <h1 id="有向图中的环检测">有向图中的环检测</h1>
+<p>在有向图中检测是否存在环（Cycle）是一个经典问题。环是指从某个节点出发，沿着有向边最终能回到该节点的路径。</p>
+<hr />
+<h2 id="方法一dfs-三色标记">方法一：DFS + 三色标记</h2>
+<h3 id="算法思想">算法思想</h3>
+<p>使用三种颜色标记节点的状态： - <strong>白色 (0)</strong>：未访问 -
+<strong>灰色 (1)</strong>：正在访问（在当前递归栈中） - <strong>黑色
+(2)</strong>：已访问完成（不在递归栈中）</p>
+<p>如果在 DFS 过程中遇到<strong>灰色节点</strong>，说明找到了环。</p>
+<h3 id="为什么有效">为什么有效？</h3>
+<ul>
+<li>灰色节点表示当前路径上的节点</li>
+<li>如果再次遇到灰色节点，说明从该节点出发有一条边能回到当前路径</li>
+<li>这就形成了一个环</li>
+</ul>
+<h3 id="代码实现">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">has_cycle_dfs</span>(<span class="hljs-params">n, graph</span>):
+    state = [<span class="hljs-number">0</span>] * n   <span class="hljs-comment"># 0未访问，1访问中，2已完成</span>
+    
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">node</span>):
+        state[node] = <span class="hljs-number">1</span>
+        <span class="hljs-keyword">for</span> nei <span class="hljs-keyword">in</span> graph[node]:
+            <span class="hljs-keyword">if</span> state[nei] == <span class="hljs-number">1</span>:      <span class="hljs-comment"># 遇到还在递归栈中的节点</span>
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+            <span class="hljs-keyword">if</span> state[nei] == <span class="hljs-number">0</span>:
+                <span class="hljs-keyword">if</span> dfs(nei):
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+        state[node] = <span class="hljs-number">2</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+        
+    <span class="hljs-keyword">for</span> node <span class="hljs-keyword">in</span> graph:
+        <span class="hljs-keyword">if</span> state[node] == <span class="hljs-number">0</span>:
+            <span class="hljs-keyword">if</span> dfs(node):
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span></code></pre></div>
+<h3 id="时间复杂度">时间复杂度</h3>
+<ul>
+<li><strong>时间</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo>+</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(V + E)</annotation></semantics></math>，每个节点和边访问一次</li>
+<li><strong>空间</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(V)</annotation></semantics></math>，存储颜色数组和递归栈</li>
+</ul>
+<hr />
+<h2 id="方法二拓扑排序kahn-算法">方法二：拓扑排序（Kahn 算法）</h2>
+<h3 id="算法思想-1">算法思想</h3>
+<ol type="1">
+<li>计算所有节点的入度</li>
+<li>将入度为 0 的节点加入队列</li>
+<li>不断从队列取出节点，将其邻居的入度减 1</li>
+<li>如果邻居入度变为 0，加入队列</li>
+<li>如果处理的节点数 &lt; 总节点数，说明存在环</li>
+</ol>
+<h3 id="为什么有效-1">为什么有效？</h3>
+<ul>
+<li>有向无环图（DAG）至少存在一个入度为 0 的节点</li>
+<li>如果有环，环内所有节点的入度都至少为 1</li>
+<li>这些节点永远不会被加入队列</li>
+</ul>
+<h3 id="代码实现-1">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
-    total = <span class="hljs-built_in">sum</span>(dp[-<span class="hljs-number">6</span>:])
-    dp.append(total % MOD)
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">has_cycle_topological</span>(<span class="hljs-params">n, adj</span>):
+    <span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">    使用拓扑排序检测有向图中的环</span>
+<span class="hljs-string">    </span>
+<span class="hljs-string">    Args:</span>
+<span class="hljs-string">        n: 节点数量</span>
+<span class="hljs-string">        adj: 邻接表 adj[u] 表示从 u 能到达的所有节点</span>
+<span class="hljs-string">    </span>
+<span class="hljs-string">    Returns:</span>
+<span class="hljs-string">        bool: 是否存在环</span>
+<span class="hljs-string">    &quot;&quot;&quot;</span>
+    <span class="hljs-comment"># 计算入度</span>
+    in_degree = [<span class="hljs-number">0</span>] * n
+    <span class="hljs-keyword">for</span> u <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+        <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> adj[u]:
+            in_degree[v] += <span class="hljs-number">1</span>
+    
+    <span class="hljs-comment"># 将入度为 0 的节点加入队列</span>
+    q = deque([i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n) <span class="hljs-keyword">if</span> in_degree[i] == <span class="hljs-number">0</span>])
+    
+    <span class="hljs-comment"># 计数已处理的节点</span>
+    count = <span class="hljs-number">0</span>
+    
+    <span class="hljs-keyword">while</span> q:
+        u = q.popleft()
+        count += <span class="hljs-number">1</span>
+        
+        <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> adj[u]:
+            in_degree[v] -= <span class="hljs-number">1</span>
+            <span class="hljs-keyword">if</span> in_degree[v] == <span class="hljs-number">0</span>:
+                q.append(v)
+    
+    <span class="hljs-comment"># 如果处理的节点数 &lt; 总节点数，说明存在环</span>
+    <span class="hljs-keyword">return</span> count &lt; n
 
-<span class="hljs-built_in">print</span>(dp[-<span class="hljs-number">1</span>])</code></pre></div>
-<p><strong>时间复杂度</strong>：O(N)<br><strong>空间复杂度</strong>：O(N)</p>
+
+<span class="hljs-comment"># 示例用法</span>
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    <span class="hljs-comment"># 有环的图: 0 -&gt; 1 -&gt; 2 -&gt; 0</span>
+    n1 = <span class="hljs-number">3</span>
+    adj1 = [[<span class="hljs-number">1</span>], [<span class="hljs-number">2</span>], [<span class="hljs-number">0</span>]]
+    <span class="hljs-built_in">print</span>(has_cycle_topological(n1, adj1))  <span class="hljs-comment"># True</span>
+    
+    <span class="hljs-comment"># 无环的图: 0 -&gt; 1 -&gt; 2</span>
+    n2 = <span class="hljs-number">3</span>
+    adj2 = [[<span class="hljs-number">1</span>], [<span class="hljs-number">2</span>], []]
+    <span class="hljs-built_in">print</span>(has_cycle_topological(n2, adj2))  <span class="hljs-comment"># False</span></code></pre></div>
+<h3 id="时间复杂度-1">时间复杂度</h3>
+<ul>
+<li><strong>时间</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo>+</mo><mi>E</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(V + E)</annotation></semantics></math></li>
+<li><strong>空间</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>V</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(V)</annotation></semantics></math>，存储入度和队列</li>
+</ul>
+<hr />
+<h2 id="两种方法对比">两种方法对比</h2>
+<table>
+
+<thead>
+<tr>
+<th>方法</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DFS + 三色标记</strong></td>
+<td>代码简洁，递归自然</td>
+<td>可能栈溢出</td>
+<td>需要找到具体环的节点</td>
+</tr>
+<tr>
+<td><strong>拓扑排序</strong></td>
+<td>迭代实现，无栈溢出风险</td>
+<td>需要额外计算入度</td>
+<td>只需判断是否有环</td>
+</tr>
+</tbody>
+</table>
 
                 
               </div>
@@ -345,15 +465,8 @@ dp = [<span class="hljs-number">1</span>]
   
     <span>></span>
     
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">05_动态规划</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06-Graphs/" class="category-chain-item">06_Graphs</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/" class="category-chain-item">完全背包</a>
-  
-  
-
   
 
   
@@ -369,11 +482,13 @@ dp = [<span class="hljs-number">1</span>]
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%A2%98%E8%A7%A3/" class="print-no-link">#题解</a>
+        <a href="/tags/DFS/" class="print-no-link">#DFS</a>
       
-        <a href="/tags/DP/" class="print-no-link">#DP</a>
+        <a href="/tags/%E5%9B%BE/" class="print-no-link">#图</a>
       
-        <a href="/tags/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/" class="print-no-link">#完全背包</a>
+        <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" class="print-no-link">#拓扑排序</a>
+      
+        <a href="/tags/%E7%8E%AF%E6%A3%80%E6%B5%8B/" class="print-no-link">#环检测</a>
       
     </div>
   
@@ -385,8 +500,8 @@ dp = [<span class="hljs-number">1</span>]
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Dice Combinations 题解</div>
-      <div>https://mingsm17518.github.io/2026/04/30/算法学习/05_动态规划/完全背包/01_Dice_Combinations/</div>
+      <div>06_Cycle Detection in Directed Graph 有向图环检测</div>
+      <div>https://mingsm17518.github.io/2026/05/07/算法学习/06_Graphs/06_有向图环检测/</div>
     </div>
     <div class="license-meta">
       
@@ -398,7 +513,7 @@ dp = [<span class="hljs-number">1</span>]
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年4月30日</div>
+          <div>2026年5月7日</div>
         </div>
       
       
@@ -435,9 +550,9 @@ dp = [<span class="hljs-number">1</span>]
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E9%A2%98%E7%9B%AE/Chicken_Jockey%20%E9%A2%98%E8%A7%A3/" title="算法学习/05_动态规划/题目/Chicken_Jockey 题解">
+                      <a href="/2026/05/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/BFS-DFS%20%E4%BE%8B%E9%A2%98/" title="Graph 图">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">算法学习/05_动态规划/题目/Chicken_Jockey 题解</span>
+                        <span class="hidden-mobile">Graph 图</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -445,8 +560,8 @@ dp = [<span class="hljs-number">1</span>]
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/tumx/" title="tumx">
-                        <span class="hidden-mobile">tumx</span>
+                      <a href="/2026/05/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ150_%E5%85%A8%E6%8E%92%E5%88%97/" title="HJ150 全排列">
+                        <span class="hidden-mobile">HJ150 全排列</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

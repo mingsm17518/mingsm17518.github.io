@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="动态规划,位运算">
   
-    <meta name="description" content="小红书9月10日机考题目与解析给定一张 $N$ 行 $M$ 列的评测格网。格子 $(i,j)$ 上有两个通道分 $X{i,j}$ 与 $Y{i,j}$。 从 $(1,1)$ 走到 $(N,M)$，每次只能向右走到 $(i,j+1)$ 或向下走到 $(i+1,j)$，不可越界。 路径上每个格子（含起终点）须把 $X{i,j}$ 与 $Y{i,j}$ 分别记入主账户与对照账户，二者各得其一。 设主账户">
+    <meta name="description" content="小红书9月10日机考题目与解析 给定一张 NN 行 MM 列的评测格网。格子 (i,j)(i,j) 上有两个通道分 Xi,jX_{i,j} 与 Yi,jY_{i,j}。 从 (1,1)(1,1) 走到 (N,M)(N,M)，每次只能向右走到 (i,j+1)(i,j+1) 或向下走到 (i+1,j)(i+1,j)，不可越界。 路径上每个格子（含起终点）须把 Xi,jX_{i,j} 与 Yi,jY_{">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第2题-双通道评测格网">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="小红书9月10日机考题目与解析给定一张 $N$ 行 $M$ 列的评测格网。格子 $(i,j)$ 上有两个通道分 $X{i,j}$ 与 $Y{i,j}$。 从 $(1,1)$ 走到 $(N,M)$，每次只能向右走到 $(i,j+1)$ 或向下走到 $(i+1,j)$，不可越界。 路径上每个格子（含起终点）须把 $X{i,j}$ 与 $Y{i,j}$ 分别记入主账户与对照账户，二者各得其一。 设主账户">
+<meta property="og:description" content="小红书9月10日机考题目与解析 给定一张 NN 行 MM 列的评测格网。格子 (i,j)(i,j) 上有两个通道分 Xi,jX_{i,j} 与 Yi,jY_{i,j}。 从 (1,1)(1,1) 走到 (N,M)(N,M)，每次只能向右走到 (i,j+1)(i,j+1) 或向下走到 (i+1,j)(i+1,j)，不可越界。 路径上每个格子（含起终点）须把 Xi,jX_{i,j} 与 Yi,jY_{">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-20T08:32:09.036Z">
 <meta property="article:modified_time" content="2026-09-20T08:34:35.647Z">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          667 字
+          744 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          6 分钟
+          7 分钟
         
       </span>
     
@@ -302,15 +302,55 @@
             
               <div class="markdown-body">
                 
-                <h1 id="小红书9月10日机考题目与解析"><a href="#小红书9月10日机考题目与解析" class="headerlink" title="小红书9月10日机考题目与解析"></a>小红书9月10日机考题目与解析</h1><p>给定一张 $N$ 行 $M$ 列的评测格网。格子 $(i,j)$ 上有两个通道分 $X<em>{i,j}$ 与 $Y</em>{i,j}$。</p>
-<p>从 $(1,1)$ 走到 $(N,M)$，每次只能向右走到 $(i,j+1)$ 或向下走到 $(i+1,j)$，不可越界。</p>
-<p>路径上每个格子（含起终点）须把 $X<em>{i,j}$ 与 $Y</em>{i,j}$ 分别记入主账户与对照账户，二者各得其一。</p>
-<p>设主账户合计为 $S$，对照账户合计为 $T$。求所有合法路径与分配方案下 $|S - T|$ 的最小值。</p>
+                <h1 id="小红书9月10日机考题目与解析">小红书9月10日机考题目与解析</h1>
+<p>给定一张
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+行
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+列的评测格网。格子
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(i,j)</annotation></semantics></math>
+上有两个通道分
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">X_{i,j}</annotation></semantics></math>
+与
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Y</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">Y_{i,j}</annotation></semantics></math>。</p>
+<p>从
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>
+走到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>,</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(N,M)</annotation></semantics></math>，每次只能向右走到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(i,j+1)</annotation></semantics></math>
+或向下走到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>,</mo><mi>j</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(i+1,j)</annotation></semantics></math>，不可越界。</p>
+<p>路径上每个格子（含起终点）须把
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">X_{i,j}</annotation></semantics></math>
+与
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Y</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">Y_{i,j}</annotation></semantics></math>
+分别记入主账户与对照账户，二者各得其一。</p>
+<p>设主账户合计为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>，对照账户合计为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>。求所有合法路径与分配方案下
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>S</mi><mo>−</mo><mi>T</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|S - T|</annotation></semantics></math>
+的最小值。</p>
 <p><strong>输入描述</strong></p>
-<p>输入共 $2N+1$ 行。第一行两个整数 $N$ 和 $M$；接下来 $N$ 行每行 $M$ 个整数，表示 $X<em>{i,j}$；再接下来 $N$ 行每行 $M$ 个整数，表示 $Y</em>{i,j}$。</p>
-<p><strong>数据范围</strong>：$1 \le N, M \le 80$，$0 \le X<em>{i,j}, Y</em>{i,j} \le 80$。</p>
+<p>输入共
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>N</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2N+1</annotation></semantics></math>
+行。第一行两个整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>；接下来
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+行每行
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+个整数，表示
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>X</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">X_{i,j}</annotation></semantics></math>；再接下来
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+行每行
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+个整数，表示
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Y</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">Y_{i,j}</annotation></semantics></math>。</p>
+<p><strong>数据范围</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>N</mi><mo>,</mo><mi>M</mi><mo>≤</mo><mn>80</mn></mrow><annotation encoding="application/x-tex">1 \le N, M \le 80</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>X</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>,</mo><msub><mi>Y</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>≤</mo><mn>80</mn></mrow><annotation encoding="application/x-tex">0 \le X_{i,j}, Y_{i,j} \le 80</annotation></semantics></math>。</p>
 <p><strong>输出描述</strong></p>
-<p>输出一行一个整数，即最小的 $|S - T|$。</p>
+<p>输出一行一个整数，即最小的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>S</mi><mo>−</mo><mi>T</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|S - T|</annotation></semantics></math>。</p>
 <p><strong>样例 1</strong></p>
 <p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">2 </span><span class="hljs-number">2</span>
@@ -320,11 +360,45 @@
 <span class="hljs-symbol">6 </span><span class="hljs-number">1</span></code></pre></div>
 <p>输出：</p>
 <div class="code-wrapper"><pre><code class="hljs">0</code></pre></div>
-<p><strong>说明</strong>：路径 $(1,1) \to (1,2) \to (2,2)$。$(1,1)$：主账户记 $2$，对照账户记 $4$；$(1,2)$：主账户记 $1$，对照账户记 $3$；$(2,2)$：主账户记 $5$，对照账户记 $1$。此时 $S=8$，$T=8$，$|S-T|=0$。另一条路径 $(1,1) \to (2,1) \to (2,2)$ 上，$|S-T|$ 至少为 $2$，更差。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>路径 DP + 可达集合（bitset）。每个格子的贡献是 $\pm d_{ij}$（$d = X - Y$：$X$ 记主账户得 $+d$，$Y$ 记主账户得 $-d$），问题变成：路径上给每个 $d$ 选符号，最小化总和的绝对值。</p>
-<p>用 DP 维护「走到 $(i,j)$ 时所有可达差值」的集合。路径长度 $N+M-1 \le 159$、数值 $\le 80$，差值范围 $[-12720, 12720]$，把集合编码成一个大整数的位掩码（第 $\text{diff}+\text{OFF}$ 位为 1 表示可达），转移只需一次移位：</p>
-<script type="math/tex; mode=display">\text{dp}[i][j] = (\text{cur} \ll |d_{ij}|)\ \vert\ (\text{cur} \gg |d_{ij}|)</script><p>其中 <code>cur = dp[i-1][j] | dp[i][j-1]</code>（向右/向下两来源合并）。Python 大整数位运算一次处理整个集合，复杂度约 $O(NM \cdot R / w)$（$R$ 为差值范围，$w$ 为机器字长），远快于逐值布尔 DP。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+<p><strong>说明</strong>：路径
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1) \to (1,2) \to (2,2)</annotation></semantics></math>。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>：主账户记
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>，对照账户记
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>4</mn><annotation encoding="application/x-tex">4</annotation></semantics></math>；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,2)</annotation></semantics></math>：主账户记
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>，对照账户记
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,2)</annotation></semantics></math>：主账户记
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>5</mn><annotation encoding="application/x-tex">5</annotation></semantics></math>，对照账户记
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>。此时
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">S=8</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">T=8</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>S</mi><mo>−</mo><mi>T</mi><mo stretchy="false" form="prefix">|</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">|S-T|=0</annotation></semantics></math>。另一条路径
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1) \to (2,1) \to (2,2)</annotation></semantics></math>
+上，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>S</mi><mo>−</mo><mi>T</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">|S-T|</annotation></semantics></math>
+至少为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>，更差。</p>
+<h2 id="思路">思路</h2>
+<p>路径 DP + 可达集合（bitset）。每个格子的贡献是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>±</mi><msub><mi>d</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\pm d_{ij}</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mi>X</mi><mo>−</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">d = X - Y</annotation></semantics></math>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+记主账户得
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">+d</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math>
+记主账户得
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">-d</annotation></semantics></math>），问题变成：路径上给每个
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+选符号，最小化总和的绝对值。</p>
+<p>用 DP 维护「走到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(i,j)</annotation></semantics></math>
+时所有可达差值」的集合。路径长度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>+</mo><mi>M</mi><mo>−</mo><mn>1</mn><mo>≤</mo><mn>159</mn></mrow><annotation encoding="application/x-tex">N+M-1 \le 159</annotation></semantics></math>、数值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>80</mn></mrow><annotation encoding="application/x-tex">\le 80</annotation></semantics></math>，差值范围
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mi>−</mi><mn>12720</mn><mo>,</mo><mn>12720</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[-12720, 12720]</annotation></semantics></math>，把集合编码成一个大整数的位掩码（第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">diff</mtext><mo>+</mo><mtext mathvariant="normal">OFF</mtext></mrow><annotation encoding="application/x-tex">\text{diff}+\text{OFF}</annotation></semantics></math>
+位为 1 表示可达），转移只需一次移位：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">dp</mtext><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mtext mathvariant="normal">cur</mtext><mo>≪</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>d</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="false" form="prefix">|</mo><mo stretchy="false" form="postfix">)</mo><mspace width="0.222em"></mspace><mo stretchy="false" form="postfix">|</mo><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mtext mathvariant="normal">cur</mtext><mo>≫</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>d</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="false" form="prefix">|</mo><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\text{dp}[i][j] = (\text{cur} \ll |d_{ij}|)\ \vert\ (\text{cur} \gg |d_{ij}|)</annotation></semantics></math></p>
+<p>其中
+<code>cur = dp[i-1][j] | dp[i][j-1]</code>（向右/向下两来源合并）。Python
+大整数位运算一次处理整个集合，复杂度约
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mi>M</mi><mo>⋅</mo><mi>R</mi><mi>/</mi><mi>w</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(NM \cdot R / w)</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+为差值范围，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+为机器字长），远快于逐值布尔 DP。</p>
+<h2 id="代码">代码</h2>
+<div class="code-wrapper"><pre><code class="hljs python">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 X = [<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
 Y = [<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
 

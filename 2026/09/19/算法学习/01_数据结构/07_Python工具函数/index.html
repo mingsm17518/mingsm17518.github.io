@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="Python,itertools,前缀和">
   
-    <meta name="description" content="Python 工具函数itertools.accumulate —— 前缀和 &#x2F; 前缀最值签名：itertools.accumulate(iterable, func&#x3D;operator.add, *, initial&#x3D;None) 一遍扫描累积出「每一步的折叠结果」，默认就是前缀和： from itertools import accumulate from operator import mul">
+    <meta name="description" content="Python 工具函数 itertools.accumulate —— 前缀和 &#x2F; 前缀最值 签名：itertools.accumulate(iterable, func&#x3D;operator.add, *, initial&#x3D;None) 一遍扫描累积出「每一步的折叠结果」，默认就是前缀和： from itertools import accumulate from operator import mu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="07_Python工具函数">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Python 工具函数itertools.accumulate —— 前缀和 &#x2F; 前缀最值签名：itertools.accumulate(iterable, func&#x3D;operator.add, *, initial&#x3D;None) 一遍扫描累积出「每一步的折叠结果」，默认就是前缀和： from itertools import accumulate from operator import mul">
+<meta property="og:description" content="Python 工具函数 itertools.accumulate —— 前缀和 &#x2F; 前缀最值 签名：itertools.accumulate(iterable, func&#x3D;operator.add, *, initial&#x3D;None) 一遍扫描累积出「每一步的折叠结果」，默认就是前缀和： from itertools import accumulate from operator import mu">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T15:30:16.677Z">
 <meta property="article:modified_time" content="2026-09-20T08:34:35.653Z">
@@ -303,7 +303,10 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Python-工具函数"><a href="#Python-工具函数" class="headerlink" title="Python 工具函数"></a>Python 工具函数</h1><h2 id="itertools-accumulate-——-前缀和-前缀最值"><a href="#itertools-accumulate-——-前缀和-前缀最值" class="headerlink" title="itertools.accumulate —— 前缀和 / 前缀最值"></a>itertools.accumulate —— 前缀和 / 前缀最值</h2><p><strong>签名</strong>：<code>itertools.accumulate(iterable, func=operator.add, *, initial=None)</code></p>
+                <h1 id="python-工具函数">Python 工具函数</h1>
+<h2 id="itertools.accumulate-前缀和-前缀最值">itertools.accumulate ——
+前缀和 / 前缀最值</h2>
+<p><strong>签名</strong>：<code>itertools.accumulate(iterable, func=operator.add, *, initial=None)</code></p>
 <p>一遍扫描累积出「每一步的折叠结果」，默认就是前缀和：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> accumulate
 <span class="hljs-keyword">from</span> operator <span class="hljs-keyword">import</span> mul
@@ -313,7 +316,8 @@ a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <sp
 <span class="hljs-built_in">list</span>(accumulate(a))             <span class="hljs-comment"># [1, 3, 6, 10]  前缀和（默认 operator.add）</span>
 <span class="hljs-built_in">list</span>(accumulate(a, initial=<span class="hljs-number">0</span>))  <span class="hljs-comment"># [0, 1, 3, 6, 10]  头部多一个初值（Python 3.8+）</span>
 <span class="hljs-built_in">list</span>(accumulate(a, mul))        <span class="hljs-comment"># [1, 2, 6, 24]  前缀积</span></code></pre></div>
-<p><strong>换 <code>func</code> 得到前缀最值</strong>——竞赛里最常用的形态：</p>
+<p><strong>换 <code>func</code>
+得到前缀最值</strong>——竞赛里最常用的形态：</p>
 <div class="code-wrapper"><pre><code class="hljs python">b = [<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>]
 
 <span class="hljs-built_in">list</span>(accumulate(b, <span class="hljs-built_in">min</span>))  <span class="hljs-comment"># [3, 1, 1, 1, 1]  前缀最小</span>
@@ -324,7 +328,8 @@ suf_max = <span class="hljs-built_in">list</span>(accumulate(<span class="hljs-b
 
 <span class="hljs-comment"># 后缀最小</span>
 suf_min = <span class="hljs-built_in">list</span>(accumulate(<span class="hljs-built_in">reversed</span>(a), <span class="hljs-built_in">min</span>))[::-<span class="hljs-number">1</span>]</code></pre></div>
-<p><strong>配合索引恢复位置</strong>（第 i 个前缀最值来自哪个下标）：</p>
+<p><strong>配合索引恢复位置</strong>（第 i
+个前缀最值来自哪个下标）：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># pre_min[i] = min(a[:i+1])，arg[i] = 取到该最小值的最后位置</span>
 pre_min, arg = [], []
 cur, pos = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>), -<span class="hljs-number">1</span>
@@ -333,14 +338,22 @@ cur, pos = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#
         cur, pos = x, i
     pre_min.append(cur)
     arg.append(pos)</code></pre></div>
-<p><strong>实战</strong>：<a href="../../刷题笔记/小红书/2026年9月17日/第3题-待发热度重排.md">第3题-待发热度重排</a> 用 <code>pre_min = accumulate(hs, min)</code> 与 <code>suf_max = accumulate(reversed(hs), max)[::-1]</code> 判定序列的不可跨越分割点（前缀最小严格大于后缀最大处切块）。</p>
+<p><strong>实战</strong>：<a
+href="../../刷题笔记/小红书/2026年9月17日/第3题-待发热度重排.md">第3题-待发热度重排</a>
+用 <code>pre_min = accumulate(hs, min)</code> 与
+<code>suf_max = accumulate(reversed(hs), max)[::-1]</code>
+判定序列的不可跨越分割点（前缀最小严格大于后缀最大处切块）。</p>
 <p><strong>注意</strong>：</p>
 <ul>
-<li><code>accumulate</code> 返回<strong>迭代器</strong>，需要 <code>list(...)</code> 物化才能索引</li>
-<li><code>initial</code> 会让结果长度多 1（<code>n+1</code> 个），适合构造 <code>pre[0] = 0</code> 形式的前缀和数组</li>
-<li>空 iterable 且不给 <code>initial</code> 时返回空迭代器；给了 <code>initial</code> 至少产出初值一项</li>
+<li><code>accumulate</code> 返回<strong>迭代器</strong>，需要
+<code>list(...)</code> 物化才能索引</li>
+<li><code>initial</code> 会让结果长度多 1（<code>n+1</code>
+个），适合构造 <code>pre[0] = 0</code> 形式的前缀和数组</li>
+<li>空 iterable 且不给 <code>initial</code> 时返回空迭代器；给了
+<code>initial</code> 至少产出初值一项</li>
 </ul>
-<h2 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> permutations, combinations
+<h2 id="全排列">全排列</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> permutations, combinations
 
 <span class="hljs-comment"># 全排列</span>
 <span class="hljs-keyword">for</span> perm <span class="hljs-keyword">in</span> permutations(arr):
@@ -349,6 +362,7 @@ cur, pos = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#
 <span class="hljs-comment"># 组合</span>
 <span class="hljs-keyword">for</span> comb <span class="hljs-keyword">in</span> combinations(arr, r):
     <span class="hljs-keyword">pass</span></code></pre></div>
+
                 
               </div>
             
@@ -388,11 +402,11 @@ cur, pos = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#前缀和</a>
-      
         <a href="/tags/Python/" class="print-no-link">#Python</a>
       
         <a href="/tags/itertools/" class="print-no-link">#itertools</a>
+      
+        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#前缀和</a>
       
     </div>
   
