@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="DP,动态规划,算法,网格">
   
-    <meta name="description" content="网格路径问题 问题概述 DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的序列，其移动仅限于在 xx 轴的一个方向和 yy 轴的一个方向（例如，你可能只能向下或向右移动）。通常，路径还必须从网格的一个角落开始，并在另一个角落结束。问题可能要求你计算满足某些属性的路径数量，或者可能要求你在所有路径中找到某个量的最大值或最小值。">
+    <meta name="description" content="网格路径问题问题概述DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的序列，其移动仅限于在 $x$ 轴的一个方向和 $y$ 轴的一个方向（例如，你可能只能向下或向右移动）。通常，路径还必须从网格的一个角落开始，并在另一个角落结束。问题可能要求你计算满足某些属性的路径数量，或者可能要求你在所有路径中找到某个量的最大值或最小值。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="03_Paths on Grids 网格路径问题">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/05_%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="网格路径问题 问题概述 DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的序列，其移动仅限于在 xx 轴的一个方向和 yy 轴的一个方向（例如，你可能只能向下或向右移动）。通常，路径还必须从网格的一个角落开始，并在另一个角落结束。问题可能要求你计算满足某些属性的路径数量，或者可能要求你在所有路径中找到某个量的最大值或最小值。">
+<meta property="og:description" content="网格路径问题问题概述DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的序列，其移动仅限于在 $x$ 轴的一个方向和 $y$ 轴的一个方向（例如，你可能只能向下或向右移动）。通常，路径还必须从网格的一个角落开始，并在另一个角落结束。问题可能要求你计算满足某些属性的路径数量，或者可能要求你在所有路径中找到某个量的最大值或最小值。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-30T09:02:14.000Z">
 <meta property="article:modified_time" content="2026-09-20T10:42:45.789Z">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          1.4k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          13 分钟
+          12 分钟
         
       </span>
     
@@ -304,65 +304,34 @@
             
               <div class="markdown-body">
                 
-                <h1 id="网格路径问题">网格路径问题</h1>
-<h3 id="问题概述">问题概述</h3>
-<p>DP 问题的一个常见原型涉及由正方形单元格组成的 2D
-网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的序列，其移动仅限于在
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
-轴的一个方向和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
-轴的一个方向（例如，你可能只能向下或向右移动）。通常，路径还必须从网格的一个角落开始，并在另一个角落结束。问题可能要求你计算满足某些属性的路径数量，或者可能要求你在所有路径中找到某个量的最大值或最小值。</p>
-<hr />
-<h3 id="基本网格路径-dp">基本网格路径 DP</h3>
-<p><strong>问题</strong>：计算从
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>
-到
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>N</mi><mo>,</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(N,M)</annotation></semantics></math>
-的路径数量，只能向正
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
-方向和正
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
-方向移动。</p>
-<p><strong>定义</strong>：<code>dp[x][y]</code> 为从
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>
-到
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math>
-的路径数量</p>
+                <h1 id="网格路径问题"><a href="#网格路径问题" class="headerlink" title="网格路径问题"></a>网格路径问题</h1><h3 id="问题概述"><a href="#问题概述" class="headerlink" title="问题概述"></a>问题概述</h3><p>DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的序列，其移动仅限于在 $x$ 轴的一个方向和 $y$ 轴的一个方向（例如，你可能只能向下或向右移动）。通常，路径还必须从网格的一个角落开始，并在另一个角落结束。问题可能要求你计算满足某些属性的路径数量，或者可能要求你在所有路径中找到某个量的最大值或最小值。</p>
+<hr>
+<h3 id="基本网格路径-DP"><a href="#基本网格路径-DP" class="headerlink" title="基本网格路径 DP"></a>基本网格路径 DP</h3><p><strong>问题</strong>：计算从 $(1,1)$ 到 $(N,M)$ 的路径数量，只能向正 $x$ 方向和正 $y$ 方向移动。</p>
+<p><strong>定义</strong>：<code>dp[x][y]</code> 为从 $(1,1)$ 到 $(x,y)$ 的路径数量</p>
 <p><strong>初始条件</strong>：<code>dp[1][1] = 1</code>（起点只有一种方式）</p>
-<p><strong>状态转移</strong>：
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>x</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>y</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>y</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>x</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>y</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">dp[x][y] = dp[x-1][y] + dp[x][y-1]</annotation></semantics></math></p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(M):
+<p><strong>状态转移</strong>：</p>
+<script type="math/tex; mode=display">dp[x][y] = dp[x-1][y] + dp[x][y-1]</script><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(M):
     <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(N):
         <span class="hljs-keyword">if</span> j &gt; <span class="hljs-number">0</span>:
             dp[j][i] += dp[j - <span class="hljs-number">1</span>][i]
         <span class="hljs-keyword">if</span> i &gt; <span class="hljs-number">0</span>:
             dp[j][i] += dp[j][i - <span class="hljs-number">1</span>]</code></pre></div>
 <blockquote>
-<p><strong>注意</strong>: 代码中的坐标是以 (x 坐标, y 坐标)
-的形式表示的。大多数情况下，将点视为 (行, 列)
-更方便，这会交换坐标的顺序。</p>
+<p><strong>注意</strong>: 代码中的坐标是以 (x 坐标, y 坐标) 的形式表示的。大多数情况下，将点视为 (行, 列) 更方便，这会交换坐标的顺序。</p>
 </blockquote>
-<hr />
-<h2 id="示例---网格路径-grid-paths">示例 - 网格路径 (Grid Paths)</h2>
-<blockquote>
+<hr>
+<h2 id="示例-网格路径-Grid-Paths"><a href="#示例-网格路径-Grid-Paths" class="headerlink" title="示例 - 网格路径 (Grid Paths)"></a>示例 - 网格路径 (Grid Paths)</h2><blockquote>
 <p><strong>Focus Problem</strong>: 在继续之前，请尽力解决这个问题！</p>
 </blockquote>
-<h3 id="题目描述">题目描述</h3>
-<p>在这个问题中，我们直接得到一个二维网格，必须计算从角落到角落的路径数量，这些路径只能向下（正
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
-方向）和向右（正
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
-方向）移动，有一个特殊的限制：**路径不能使用标有星号 (*)
-的单元格**。</p>
-<h3 id="解法">解法</h3>
-<p><strong>定义</strong>：<code>dp[i][j]</code> 为到达单元格 (i, j)
-的合法路径数量</p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>在这个问题中，我们直接得到一个二维网格，必须计算从角落到角落的路径数量，这些路径只能向下（正 $y$ 方向）和向右（正 $x$ 方向）移动，有一个特殊的限制：<strong>路径不能使用标有星号 (*) 的单元格</strong>。</p>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p><strong>定义</strong>：<code>dp[i][j]</code> 为到达单元格 (i, j) 的合法路径数量</p>
 <p><strong>初始条件</strong>：<code>dp[0][0] = 1</code>（起点可达）</p>
-<p><strong>状态转移</strong>： - 如果单元格 (i, j)
-是障碍物：<code>dp[i][j] = 0</code> -
-否则：<code>dp[i][j] = dp[i-1][j] + dp[i][j-1]</code></p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="false" form="postfix">)</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is a trap</mtext></mrow></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mtd><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">otherwise</mtext></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">dp[i][j] = \begin{cases} 0 &amp; \text{if } (i,j) \text{ is a trap} \\ dp[i-1][j] + dp[i][j-1] &amp; \text{otherwise} \end{cases}</annotation></semantics></math></p>
-<div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+<p><strong>状态转移</strong>：</p>
+<ul>
+<li>如果单元格 (i, j) 是障碍物：<code>dp[i][j] = 0</code></li>
+<li>否则：<code>dp[i][j] = dp[i-1][j] + dp[i][j-1]</code></li>
+</ul>
+<script type="math/tex; mode=display">dp[i][j] = \begin{cases} 0 & \text{if } (i,j) \text{ is a trap} \\ dp[i-1][j] + dp[i][j-1] & \text{otherwise} \end{cases}</script><div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 ok = [[char == <span class="hljs-string">&quot;.&quot;</span> <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>()] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
 dp = [[<span class="hljs-number">0</span>] * n <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
 dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>
@@ -383,94 +352,39 @@ dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <sp
 
 <span class="hljs-built_in">print</span>(dp[n - <span class="hljs-number">1</span>][n - <span class="hljs-number">1</span>])</code></pre></div>
 <blockquote>
-<p><strong>注意</strong>: 在读取输入时，坐标现在是以 (row, column)
-的形式出现的。</p>
+<p><strong>注意</strong>: 在读取输入时，坐标现在是以 (row, column) 的形式出现的。</p>
 </blockquote>
-<hr />
-<h2 id="示例---最长公共子序列-longest-common-subsequence">示例 -
-最长公共子序列 (Longest Common Subsequence)</h2>
-<blockquote>
+<hr>
+<h2 id="示例-最长公共子序列-Longest-Common-Subsequence"><a href="#示例-最长公共子序列-Longest-Common-Subsequence" class="headerlink" title="示例 - 最长公共子序列 (Longest Common Subsequence)"></a>示例 - 最长公共子序列 (Longest Common Subsequence)</h2><blockquote>
 <p><strong>Focus Problem</strong>: 在继续之前，请尽力解决这个问题！</p>
 </blockquote>
-<h3 id="什么是网格">什么是网格？</h3>
-<p>最长公共子序列是一个经典的字符串问题，但网格在哪里？实际上，我们可以创建一个网格来解决这个问题。</p>
-<p>考虑以下算法来在两个字符串
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
-和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
-之间创建任意（不一定是最长）的子序列：</p>
-<ol type="1">
-<li>我们用两个指针
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>，每个指针都从
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
-开始。</li>
-<li>我们在每个时间步执行一些”操作”，直到没有更多的可用”操作”。一个”操作”可以是以下任何一种：
-<ul>
-<li>将
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-的值增加
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>（仅当
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>&lt;</mo><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">i &lt; |A|</annotation></semantics></math>
-时有效）</li>
-<li>将
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-的值增加
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>（仅当
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>&lt;</mo><mo stretchy="false" form="prefix">|</mo><mi>B</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">j &lt; |B|</annotation></semantics></math>
-时有效）</li>
-<li>仅当
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>=</mo><msub><mi>B</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A_i = B_j</annotation></semantics></math>
-时，将
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-的值增加
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>，并将那个字符追加到公共子序列中（仅当
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>&lt;</mo><mo stretchy="false" form="prefix">|</mo><mi>A</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">i &lt; |A|</annotation></semantics></math>
-和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>&lt;</mo><mo stretchy="false" form="prefix">|</mo><mi>B</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">j &lt; |B|</annotation></semantics></math>
-时有效）</li>
-</ul></li>
+<h3 id="什么是网格？"><a href="#什么是网格？" class="headerlink" title="什么是网格？"></a>什么是网格？</h3><p>最长公共子序列是一个经典的字符串问题，但网格在哪里？实际上，我们可以创建一个网格来解决这个问题。</p>
+<p>考虑以下算法来在两个字符串 $A$ 和 $B$ 之间创建任意（不一定是最长）的子序列：</p>
+<ol>
+<li>我们用两个指针 $i$ 和 $j$，每个指针都从 $0$ 开始。</li>
+<li>我们在每个时间步执行一些”操作”，直到没有更多的可用”操作”。一个”操作”可以是以下任何一种：<ul>
+<li>将 $i$ 的值增加 $1$（仅当 $i &lt; |A|$ 时有效）</li>
+<li>将 $j$ 的值增加 $1$（仅当 $j &lt; |B|$ 时有效）</li>
+<li>仅当 $A_i = B_j$ 时，将 $i$ 和 $j$ 的值增加 $1$，并将那个字符追加到公共子序列中（仅当 $i &lt; |A|$ 和 $j &lt; |B|$ 时有效）</li>
+</ul>
+</li>
 </ol>
-<h3 id="网格表示">网格表示</h3>
-<p>这个算法也可以在网格上进行说明。设
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>:=</mo><mi>x</mi><mi>a</mi><mi>b</mi><mi>c</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">A := xabcd</annotation></semantics></math>
-和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>:=</mo><mi>y</mi><mi>a</mi><mi>z</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">B := yazc</annotation></semantics></math>。然后，算法的当前状态可以用我们之前讨论的
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-的值定义为一个特定的点
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(i,j)</annotation></semantics></math>。指针增加的过程可以看作是向右移动（如果
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-增加）、向下移动（如果
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-增加）或对角线移动（如果
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-都增加）。可以看到，<strong>每次对角线移动都会使公共子序列的长度增加一</strong>。</p>
+<h3 id="网格表示"><a href="#网格表示" class="headerlink" title="网格表示"></a>网格表示</h3><p>这个算法也可以在网格上进行说明。设 $A := xabcd$ 和 $B := yazc$。然后，算法的当前状态可以用我们之前讨论的 $i$ 和 $j$ 的值定义为一个特定的点 $(i,j)$。指针增加的过程可以看作是向右移动（如果 $i$ 增加）、向下移动（如果 $j$ 增加）或对角线移动（如果 $i$ 和 $j$ 都增加）。可以看到，<strong>每次对角线移动都会使公共子序列的长度增加一</strong>。</p>
 <p>现在，我们将”最长公共子序列的长度”重新表述为”从网格左上角到右下角路径中的最大’对角线移动’次数”。因此，我们已经构建了一个网格型动态规划问题。</p>
 <div class="code-wrapper"><pre><code class="hljs apache">       <span class="hljs-attribute">x</span>    a    b    c    d
 <span class="hljs-attribute">y</span>      <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>    <span class="hljs-number">0</span>
 <span class="hljs-attribute">a</span>      <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>
 <span class="hljs-attribute">z</span>      <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>
 <span class="hljs-attribute">c</span>      <span class="hljs-number">0</span>    <span class="hljs-number">1</span>    <span class="hljs-number">1</span>    <span class="hljs-number">2</span>    <span class="hljs-number">2</span></code></pre></div>
-<p>在上面的网格中，可以看到加粗的路径在字符 “a” 和 “c”
-处有对角线移动。这意味着 “xabcd” 和 “yazc” 之间的最长公共子序列是
-“ac”。</p>
-<h3 id="解法-1">解法</h3>
-<p><strong>定义</strong>：<code>dp[i][j]</code> 为 A[0..i-1] 和
-B[0..j-1] 的最长公共子序列长度</p>
-<p><strong>初始条件</strong>：<code>dp[0][j] = dp[i][0] = 0</code>（空串的
-LCS 为 0）</p>
-<p><strong>状态转移</strong>： - 如果
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>=</mo><msub><mi>B</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">A_i = B_j</annotation></semantics></math>：<code>dp[i][j] = dp[i-1][j-1] + 1</code>
-- 否则：<code>dp[i][j] = max(dp[i-1][j], dp[i][j-1])</code></p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mn>1</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><msub><mi>A</mi><mi>i</mi></msub><mo>=</mo><msub><mi>B</mi><mi>j</mi></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo><mo>,</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mtext mathvariant="normal">otherwise</mtext></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">dp[i][j] = \begin{cases} dp[i-1][j-1] + 1 &amp; \text{if } A_i = B_j \\ \max(dp[i-1][j], dp[i][j-1]) &amp; \text{otherwise} \end{cases}</annotation></semantics></math></p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
+<p>在上面的网格中，可以看到加粗的路径在字符 “a” 和 “c” 处有对角线移动。这意味着 “xabcd” 和 “yazc” 之间的最长公共子序列是 “ac”。</p>
+<h3 id="解法-1"><a href="#解法-1" class="headerlink" title="解法"></a>解法</h3><p><strong>定义</strong>：<code>dp[i][j]</code> 为 A[0..i-1] 和 B[0..j-1] 的最长公共子序列长度</p>
+<p><strong>初始条件</strong>：<code>dp[0][j] = dp[i][0] = 0</code>（空串的 LCS 为 0）</p>
+<p><strong>状态转移</strong>：</p>
+<ul>
+<li>如果 $A_i = B_j$：<code>dp[i][j] = dp[i-1][j-1] + 1</code></li>
+<li>否则：<code>dp[i][j] = max(dp[i-1][j], dp[i][j-1])</code></li>
+</ul>
+<script type="math/tex; mode=display">dp[i][j] = \begin{cases} dp[i-1][j-1] + 1 & \text{if } A_i = B_j \\ \max(dp[i-1][j], dp[i][j-1]) & \text{otherwise} \end{cases}</script><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">longestCommonSubsequence</span>(<span class="hljs-params">self, a: <span class="hljs-built_in">str</span>, b: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:
         dp = [[<span class="hljs-number">0</span>] * (<span class="hljs-built_in">len</span>(b) + <span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(a) + <span class="hljs-number">1</span>)]
         <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(a) + <span class="hljs-number">1</span>):
@@ -480,10 +394,9 @@ LCS 为 0）</p>
                 <span class="hljs-keyword">else</span>:
                     dp[i][j] = <span class="hljs-built_in">max</span>(dp[i - <span class="hljs-number">1</span>][j], dp[i][j - <span class="hljs-number">1</span>])
         <span class="hljs-keyword">return</span> dp[<span class="hljs-built_in">len</span>(a)][<span class="hljs-built_in">len</span>(b)]</code></pre></div>
-<hr />
-<h2 id="总结">总结</h2>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="table-container">
 <table>
-
 <thead>
 <tr>
 <th>问题类型</th>
@@ -494,37 +407,24 @@ LCS 为 0）</p>
 <tbody>
 <tr>
 <td>基本网格路径</td>
-<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>x</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>y</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">dp[x][y]</annotation></semantics></math>:
-从
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math>
-到
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math>
-的路径数</td>
-<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>x</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>y</mi><mo stretchy="false" form="postfix">]</mo><mo>=</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>y</mi><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>x</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>y</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">dp[x][y] = dp[x-1][y] + dp[x][y-1]</annotation></semantics></math></td>
+<td>$dp[x][y]$: 从 $(1,1)$ 到 $(x,y)$ 的路径数</td>
+<td>$dp[x][y] = dp[x-1][y] + dp[x][y-1]$</td>
 </tr>
 <tr>
 <td>带障碍网格</td>
-<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>x</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>y</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">dp[x][y]</annotation></semantics></math>:
-到达
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math>
-的合法路径数</td>
-<td>障碍物处
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">dp = 0</annotation></semantics></math></td>
+<td>$dp[x][y]$: 到达 $(x,y)$ 的合法路径数</td>
+<td>障碍物处 $dp = 0$</td>
 </tr>
 <tr>
 <td>最长公共子序列</td>
-<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false" form="prefix">[</mo><mi>i</mi><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">[</mo><mi>j</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">dp[i][j]</annotation></semantics></math>:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mi>.</mi><mi>.</mi><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">A[0..i-1]</annotation></semantics></math>
-和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mi>.</mi><mi>.</mi><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">B[0..j-1]</annotation></semantics></math>
-的 LCS 长度</td>
-<td>匹配时
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math>，否则取最大值</td>
+<td>$dp[i][j]$: $A[0..i-1]$ 和 $B[0..j-1]$ 的 LCS 长度</td>
+<td>匹配时 $+1$，否则取最大值</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="经典问题">经典问题</h2>
+</div>
+<hr>
+<h2 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -546,6 +446,7 @@ LCS 为 0）</p>
 </tr>
 </tbody>
 </table>
+</div>
 
                 
               </div>

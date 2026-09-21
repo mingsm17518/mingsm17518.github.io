@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="双指针,滑动窗口">
   
-    <meta name="description" content="Problems  01-Subarray Sums 与 Solution - Books 做法类似。不同之处在于，更新 ansans 时改为判断 当前子数组之和 curcur 是否等于 目标和 xx ，是的话 ans+1ans+1 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1660 n, x &#x3D; map(int, input().split()) arr &#x3D; list(ma">
+    <meta name="description" content="Problems01-Subarray Sums与 Solution - Books 做法类似。不同之处在于，更新 $ans$ 时改为判断 当前子数组之和 $cur$  是否等于 目标和 $x$ ，是的话 $ans+1$  https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1660 n, x &#x3D; map(int, input().split()) arr &#x3D; list(map(int">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Two Pointer - Problems">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8F%8C%E6%8C%87%E9%92%88%20-%20Problems/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Problems  01-Subarray Sums 与 Solution - Books 做法类似。不同之处在于，更新 ansans 时改为判断 当前子数组之和 curcur 是否等于 目标和 xx ，是的话 ans+1ans+1 https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1660 n, x &#x3D; map(int, input().split()) arr &#x3D; list(ma">
+<meta property="og:description" content="Problems01-Subarray Sums与 Solution - Books 做法类似。不同之处在于，更新 $ans$ 时改为判断 当前子数组之和 $cur$  是否等于 目标和 $x$ ，是的话 $ans+1$  https:&#x2F;&#x2F;cses.fi&#x2F;problemset&#x2F;task&#x2F;1660 n, x &#x3D; map(int, input().split()) arr &#x3D; list(map(int">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-30T09:02:12.000Z">
 <meta property="article:modified_time" content="2026-09-20T08:34:35.635Z">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          307 字
+          309 字
         
       </span>
     
@@ -302,18 +302,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="problems">Problems </h1>
-<h2 id="subarray-sums">01-Subarray Sums</h2>
-<p>与 <a href="双指针%20-%20Problems.md#Solution%20-%20Books">Solution -
-Books</a> 做法类似。不同之处在于，更新
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ans</annotation></semantics></math>
-时改为判断 当前子数组之和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>u</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">cur</annotation></semantics></math>
-是否等于 目标和
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
-，是的话
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">ans+1</annotation></semantics></math></p>
-<p>https://cses.fi/problemset/task/1660</p>
+                <h1 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h1><h2 id="01-Subarray-Sums"><a href="#01-Subarray-Sums" class="headerlink" title="01-Subarray Sums"></a>01-Subarray Sums</h2><p>与 <a href="双指针%20-%20Problems.md#Solution%20-%20Books">Solution - Books</a> 做法类似。不同之处在于，更新 $ans$ 时改为判断 当前子数组之和 $cur$  是否等于 目标和 $x$ ，是的话 $ans+1$ </p>
+<p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1660">https://cses.fi/problemset/task/1660</a></p>
 <div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 arr = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
 
@@ -330,13 +320,9 @@ ans = <span class="hljs-number">0</span>
         ans += <span class="hljs-number">1</span>
         
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h2 id="sum-of-three-values">02-Sum of Three Values</h2>
-<p>https://cses.fi/problemset/task/1641</p>
+<h2 id="02-Sum-of-Three-Values"><a href="#02-Sum-of-Three-Values" class="headerlink" title="02-Sum of Three Values"></a>02-Sum of Three Values</h2><p><a target="_blank" rel="noopener" href="https://cses.fi/problemset/task/1641">https://cses.fi/problemset/task/1641</a></p>
 <p>这个问题是两数之和问题的扩展，只是现在涉及三个值。我们可以将第三个指针设置为数组中的某个值，然后问题就变成了本模块前面讨论的两数之和问题。</p>
-<p>首先我们将数组排序。然后我们将遍历所有可能的第三个指针的值，并检查这三个指针是否加起来等于目标值
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
-，同时它们的位置是不同的。我们可以通过存储所有值 <code>{a[i],i}</code>
-的原始位置来保持它们的位置不变。</p>
+<p>首先我们将数组排序。然后我们将遍历所有可能的第三个指针的值，并检查这三个指针是否加起来等于目标值 $x$ ，同时它们的位置是不同的。我们可以通过存储所有值 <code>{a[i],i}</code> 的原始位置来保持它们的位置不变。</p>
 <div class="code-wrapper"><pre><code class="hljs python">n, x = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 a = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
 
@@ -471,8 +457,8 @@ p.sort()
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/" title="git">
-                        <span class="hidden-mobile">git</span>
+                      <a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/" title="huggingface">
+                        <span class="hidden-mobile">huggingface</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -17,26 +17,27 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Ming">
-  <meta name="keywords" content="算法,刷题,题解,LeetCode,Hot100,小红书机考,USACO,动态规划,图论,数据结构,Python">
+  <meta name="keywords" content="线段树,数据结构">
   
-    <meta name="description" content="明白了。现在完整规则应该是：  n q 初始数组全是 0 有 q 个操作：  1 x：反转第 x 个位置 2 l r：只对区间 [l,r] 执行你说的 tmp 规则，并输出 ans  规则：  tmp 为空 → 当前数字放入 tmp tmp 不为空：  当前数字 &#x3D;&#x3D; tmp → 什么都不做 当前数字 !&#x3D; tmp → ans +&#x3D; 1，然后 tmp 清空    例如： 0 0 1 1 0 1 执">
+    <meta name="description" content="小红书9月20日机考题目与解析（题意按回忆整理）第一行 n q，初始有一个长度为 n 的全 0 数组，q 个操作：  1 x：反转第 x 个位置（0 变 1、1 变 0） 2 l r：只对区间 [l, r] 从左到右执行下面的 tmp 规则，并输出 ans： tmp 为空 → 当前数字放入 tmp 当前数字 &#x3D;&#x3D; tmp → 什么都不做 当前数字 !&#x3D; tmp → ans +&#x3D; 1，然后 tmp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="未命名 1">
-<meta property="og:url" content="https://mingsm17518.github.io/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/2/index.html">
+<meta property="og:title" content="第2题-区间配对计数">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8C%BA%E9%97%B4%E9%85%8D%E5%AF%B9%E8%AE%A1%E6%95%B0/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="明白了。现在完整规则应该是：  n q 初始数组全是 0 有 q 个操作：  1 x：反转第 x 个位置 2 l r：只对区间 [l,r] 执行你说的 tmp 规则，并输出 ans  规则：  tmp 为空 → 当前数字放入 tmp tmp 不为空：  当前数字 &#x3D;&#x3D; tmp → 什么都不做 当前数字 !&#x3D; tmp → ans +&#x3D; 1，然后 tmp 清空    例如： 0 0 1 1 0 1 执">
+<meta property="og:description" content="小红书9月20日机考题目与解析（题意按回忆整理）第一行 n q，初始有一个长度为 n 的全 0 数组，q 个操作：  1 x：反转第 x 个位置（0 变 1、1 变 0） 2 l r：只对区间 [l, r] 从左到右执行下面的 tmp 规则，并输出 ans： tmp 为空 → 当前数字放入 tmp 当前数字 &#x3D;&#x3D; tmp → 什么都不做 当前数字 !&#x3D; tmp → ans +&#x3D; 1，然后 tmp">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-20T13:02:37.204Z">
-<meta property="article:modified_time" content="2026-09-21T07:08:36.683Z">
+<meta property="article:published_time" content="2026-09-21T17:08:22.625Z">
+<meta property="article:modified_time" content="2026-09-21T17:08:22.943Z">
 <meta property="article:author" content="Ming">
-<meta property="article:tag" content="算法,刷题,题解,LeetCode,Hot100,小红书机考,USACO,动态规划,图论,数据结构,Python">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="线段树">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>未命名 1 - Ming&#39;s Blog</title>
+  <title>第2题-区间配对计数 - Ming&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -206,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="未命名 1"></span>
+            <span id="subtitle" data-typed-text="第2题-区间配对计数"></span>
           
         </div>
 
@@ -217,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-20 21:02" pubdate>
-          2026年9月20日 晚上
+        <time datetime="2026-09-22 01:08" pubdate>
+          2026年9月22日 凌晨
         </time>
       </span>
     
@@ -229,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          1.2k 字
         
       </span>
     
@@ -240,7 +241,7 @@
         
         
         
-          14 分钟
+          11 分钟
         
       </span>
     
@@ -286,12 +287,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">未命名 1</h1>
+            <h1 id="seo-header">第2题-区间配对计数</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-21T15:08:36+08:00
+                    本文最后更新于 2026-09-22T01:08:22+08:00
                   
                   
 
@@ -301,48 +302,153 @@
             
               <div class="markdown-body">
                 
-                <p>明白了。现在完整规则应该是：</p>
+                <h1 id="小红书9月20日机考题目与解析"><a href="#小红书9月20日机考题目与解析" class="headerlink" title="小红书9月20日机考题目与解析"></a>小红书9月20日机考题目与解析</h1><p>（题意按回忆整理）第一行 <code>n q</code>，初始有一个长度为 n 的<strong>全 0</strong> 数组，q 个操作：</p>
 <ul>
-<li><code>n q</code></li>
-<li>初始数组全是 <code>0</code></li>
-<li>有 <code>q</code> 个操作：
-<ul>
-<li><code>1 x</code>：反转第 <code>x</code> 个位置</li>
-<li><code>2 l r</code>：只对区间 <code>[l,r]</code> 执行你说的
-<code>tmp</code> 规则，并输出 <code>ans</code></li>
-</ul></li>
-<li>规则：
-<ul>
-<li><code>tmp</code> 为空 → 当前数字放入 <code>tmp</code></li>
-<li><code>tmp</code> 不为空：
-<ul>
-<li>当前数字 == <code>tmp</code> → 什么都不做</li>
-<li>当前数字 != <code>tmp</code> → <code>ans += 1</code>，然后
-<code>tmp</code> 清空</li>
-</ul></li>
-</ul></li>
+<li><code>1 x</code>：反转第 x 个位置（0 变 1、1 变 0）</li>
+<li><code>2 l r</code>：只对区间 <code>[l, r]</code> 从左到右执行下面的 tmp 规则，并输出 ans：<ul>
+<li>tmp 为空 → 当前数字放入 tmp</li>
+<li>当前数字 == tmp → 什么都不做</li>
+<li>当前数字 != tmp → <code>ans += 1</code>，然后 tmp 清空（<strong>当前这个数不放入新的 tmp</strong>）</li>
 </ul>
-<p>例如：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span></code></pre></div>
-<p>执行 <code>2 1 6</code>：</p>
+</li>
+</ul>
+<p>例如 <code>[0, 0, 1, 1, 0, 1]</code> 执行 <code>2 1 6</code>：</p>
 <div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span>→ tmp=<span class="hljs-number">0</span>
-<span class="hljs-symbol">0 </span>→ 不变
-<span class="hljs-symbol">1 </span>→ 不同，ans=<span class="hljs-number">1</span>，tmp清空
+<span class="hljs-symbol">0 </span>→ 相同，不变
+<span class="hljs-symbol">1 </span>→ 不同，ans=<span class="hljs-number">1</span>，tmp 清空
 <span class="hljs-symbol">1 </span>→ tmp=<span class="hljs-number">1</span>
-<span class="hljs-symbol">0 </span>→ 不同，ans=<span class="hljs-number">2</span>，tmp清空
+<span class="hljs-symbol">0 </span>→ 不同，ans=<span class="hljs-number">2</span>，tmp 清空
 <span class="hljs-symbol">1 </span>→ tmp=<span class="hljs-number">1</span></code></pre></div>
-<p>所以答案是 <code>2</code>。</p>
-<hr />
-<p>这个问题适合用<strong>线段树维护区间信息</strong>。</p>
-<p>对于每个区间，我们维护：</p>
+<p>答案是 <code>2</code>。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><strong>本质</strong>：把区间里连续相同的数字压缩成段，规则等价于<strong>从左到右每两个段配一对</strong>（0-1 配、1-0 配），多余段剩下。</p>
+<div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>  →  压缩成 <span class="hljs-number">0</span> | <span class="hljs-number">1</span> | <span class="hljs-number">0</span> | <span class="hljs-number">1</span>  →  (<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>) 两对，ans = <span class="hljs-number">2</span></code></pre></div>
+<p>所以：</p>
+<script type="math/tex; mode=display">\text{ans} = \text{压缩后的段数} \,//\, 2</script><p>而段数只取决于「相邻元素不同的次数」：</p>
+<script type="math/tex; mode=display">\text{ans} = (\text{changes} + 1)\ //\ 2</script><p>单点翻转 + 区间查询 → <strong>线段树</strong>，每个节点维护三元组：</p>
 <ul>
-<li><code>first</code>：区间第一个有效数字</li>
-<li><code>last</code>：区间最后一个有效数字</li>
-<li><code>cnt</code>：按照规则处理这个区间得到的 <code>ans</code></li>
-<li><code>empty</code>：处理完以后 <code>tmp</code> 是否为空</li>
+<li><code>first</code>：区间第一个数</li>
+<li><code>last</code>：区间最后一个数</li>
+<li><code>changes</code>：区间内部相邻不同的次数</li>
 </ul>
-<p>不过因为只有 <code>0/1</code>，可以进一步简化。</p>
-<p>我先给你一个比较容易理解的线段树版本：</p>
+<p>合并 <code>L | R</code>：<code>changes = L.changes + R.changes + (L.last != R.first)</code>。</p>
+<h2 id="方法一：三元组线段树（推荐提交版）"><a href="#方法一：三元组线段树（推荐提交版）" class="headerlink" title="方法一：三元组线段树（推荐提交版）"></a>方法一：三元组线段树（推荐提交版）</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+
+<span class="hljs-built_in">input</span> = sys.stdin.readline
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SegmentTree</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, n</span>):
+        <span class="hljs-variable language_">self</span>.n = n
+        <span class="hljs-comment"># first, last, changes</span>
+        <span class="hljs-variable language_">self</span>.first = [<span class="hljs-number">0</span>] * (<span class="hljs-number">4</span> * n)
+        <span class="hljs-variable language_">self</span>.last = [<span class="hljs-number">0</span>] * (<span class="hljs-number">4</span> * n)
+        <span class="hljs-variable language_">self</span>.changes = [<span class="hljs-number">0</span>] * (<span class="hljs-number">4</span> * n)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">push_up</span>(<span class="hljs-params">self, p</span>):
+        left = p * <span class="hljs-number">2</span>
+        right = p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>
+
+        <span class="hljs-variable language_">self</span>.first[p] = <span class="hljs-variable language_">self</span>.first[left]
+        <span class="hljs-variable language_">self</span>.last[p] = <span class="hljs-variable language_">self</span>.last[right]
+
+        <span class="hljs-variable language_">self</span>.changes[p] = (
+            <span class="hljs-variable language_">self</span>.changes[left]
+            + <span class="hljs-variable language_">self</span>.changes[right]
+            + (<span class="hljs-variable language_">self</span>.last[left] != <span class="hljs-variable language_">self</span>.first[right])
+        )
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">build</span>(<span class="hljs-params">self, p, l, r</span>):
+        <span class="hljs-keyword">if</span> l == r:
+            <span class="hljs-variable language_">self</span>.first[p] = <span class="hljs-number">0</span>
+            <span class="hljs-variable language_">self</span>.last[p] = <span class="hljs-number">0</span>
+            <span class="hljs-variable language_">self</span>.changes[p] = <span class="hljs-number">0</span>
+            <span class="hljs-keyword">return</span>
+
+        mid = (l + r) // <span class="hljs-number">2</span>
+
+        <span class="hljs-variable language_">self</span>.build(p * <span class="hljs-number">2</span>, l, mid)
+        <span class="hljs-variable language_">self</span>.build(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r)
+
+        <span class="hljs-variable language_">self</span>.push_up(p)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">self, p, l, r, pos</span>):
+        <span class="hljs-keyword">if</span> l == r:
+            <span class="hljs-comment"># 0 -&gt; 1 或 1 -&gt; 0</span>
+            <span class="hljs-variable language_">self</span>.first[p] ^= <span class="hljs-number">1</span>
+            <span class="hljs-variable language_">self</span>.last[p] ^= <span class="hljs-number">1</span>
+            <span class="hljs-keyword">return</span>
+
+        mid = (l + r) // <span class="hljs-number">2</span>
+
+        <span class="hljs-keyword">if</span> pos &lt;= mid:
+            <span class="hljs-variable language_">self</span>.update(p * <span class="hljs-number">2</span>, l, mid, pos)
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-variable language_">self</span>.update(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r, pos)
+
+        <span class="hljs-variable language_">self</span>.push_up(p)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">query</span>(<span class="hljs-params">self, p, l, r, ql, qr</span>):
+        <span class="hljs-comment"># 返回 (first, last, changes)</span>
+        <span class="hljs-keyword">if</span> ql &lt;= l <span class="hljs-keyword">and</span> r &lt;= qr:
+            <span class="hljs-keyword">return</span> (
+                <span class="hljs-variable language_">self</span>.first[p],
+                <span class="hljs-variable language_">self</span>.last[p],
+                <span class="hljs-variable language_">self</span>.changes[p]
+            )
+
+        mid = (l + r) // <span class="hljs-number">2</span>
+
+        <span class="hljs-keyword">if</span> qr &lt;= mid:
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span>, l, mid, ql, qr)
+
+        <span class="hljs-keyword">if</span> ql &gt; mid:
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r, ql, qr)
+
+        left = <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span>, l, mid, ql, qr)
+        right = <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r, qr)
+
+        first1, last1, changes1 = left
+        first2, last2, changes2 = right
+
+        <span class="hljs-keyword">return</span> (
+            first1,
+            last2,
+            changes1 + changes2 + (last1 != first2)
+        )
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>():
+    n, q = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
+
+    seg = SegmentTree(n)
+    seg.build(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>)
+
+    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(q):
+        op = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
+
+        <span class="hljs-keyword">if</span> op[<span class="hljs-number">0</span>] == <span class="hljs-number">1</span>:
+            <span class="hljs-comment"># 1 x：翻转第 x 个位置</span>
+            x = op[<span class="hljs-number">1</span>] - <span class="hljs-number">1</span>
+            seg.update(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>, x)
+
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># 2 l r：查询 [l, r]</span>
+            l = op[<span class="hljs-number">1</span>] - <span class="hljs-number">1</span>
+            r = op[<span class="hljs-number">2</span>] - <span class="hljs-number">1</span>
+
+            first, last, changes = seg.query(
+                <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>, l, r
+            )
+
+            <span class="hljs-comment"># 段数 = changes + 1，每两段贡献一次 ans</span>
+            ans = (changes + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>
+
+            <span class="hljs-built_in">print</span>(ans)
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    solve()</code></pre></div>
+<h2 id="方法二：Node-版线段树（直接模拟-tmp）"><a href="#方法二：Node-版线段树（直接模拟-tmp）" class="headerlink" title="方法二：Node 版线段树（直接模拟 tmp）"></a>方法二：Node 版线段树（直接模拟 tmp）</h2><p>不利用「段数 // 2」的结论，直接把 tmp 规则做成可合并的区间信息，每个节点维护 <code>first / last / ans / empty</code>（empty 表示处理完该区间后 tmp 是否为空）：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 <span class="hljs-built_in">input</span> = sys.stdin.readline
@@ -368,8 +474,8 @@
     <span class="hljs-comment"># A 的答案 + B 的答案</span>
     res.ans = A.ans + B.ans
 
-    <span class="hljs-comment"># A 处理完以后，如果 tmp 不为空，</span>
-    <span class="hljs-comment"># 需要拿 A 的 tmp 和 B 的第一个值继续处理</span>
+    <span class="hljs-comment"># A 处理完以后 tmp 不为空，</span>
+    <span class="hljs-comment"># 拿 A 的 tmp（即 A.last）和 B 的第一个值继续处理</span>
     <span class="hljs-keyword">if</span> A.last != B.first:
         res.ans += <span class="hljs-number">1</span>
 
@@ -449,10 +555,10 @@
             <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span>, l, mid, ql, qr)
 
         <span class="hljs-keyword">if</span> ql &gt; mid:
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r, ql, qr)
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r, qr)
 
         left = <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span>, l, mid, ql, qr)
-        right = <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r, ql, qr)
+        right = <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r, qr)
 
         <span class="hljs-keyword">return</span> merge(left, right)
 
@@ -489,259 +595,13 @@
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
     solve()</code></pre></div>
-<p>不过这里有一个地方需要特别确认：<strong>你说的 <code>tmp 清除</code>
-是在发现不同以后，当前这个数也不放入新的
-<code>tmp</code>，对吧？</strong></p>
-<p>比如：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">1</span> <span class="hljs-number">1</span></code></pre></div>
-<p>按照你的描述：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span>→ tmp=<span class="hljs-number">0</span>
-<span class="hljs-symbol">1 </span>→ 不同，ans=<span class="hljs-number">1</span>，tmp清空
-<span class="hljs-symbol">1 </span>→ tmp=<span class="hljs-number">1</span></code></pre></div>
-<p>答案是 <code>1</code>。</p>
-<p>如果是这个规则，我可以把上面的线段树进一步<strong>简化成只维护 3
-个值</strong>，代码会短很多，也更适合比赛提交。</p>
-<p>对</p>
-<p>对，那就可以大幅简化。</p>
-<p>你的规则实际上等价于：</p>
-<blockquote>
-<p>把区间连续相同的数字压缩成若干段，<code>ans = 段数 // 2</code>。</p>
-</blockquote>
-<p>例如：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span></code></pre></div>
-<p>压缩：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span>| <span class="hljs-number">1</span> | <span class="hljs-number">0</span> | <span class="hljs-number">1</span></code></pre></div>
-<p>有 <code>4</code> 段，所以：</p>
-<div class="code-wrapper"><pre><code class="hljs abnf"><span class="hljs-attribute">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">4</span> // <span class="hljs-number">2</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span></code></pre></div>
-<p>因此我们只需要维护区间里有多少次相邻元素不同。</p>
-<p>设：</p>
-<div class="code-wrapper"><pre><code class="hljs abnf"><span class="hljs-attribute">changes</span> <span class="hljs-operator">=</span> 相邻不同的次数</code></pre></div>
-<p>那么：</p>
-<div class="code-wrapper"><pre><code class="hljs vim">段数 = <span class="hljs-keyword">changes</span> + <span class="hljs-number">1</span>
-ans = (<span class="hljs-keyword">changes</span> + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span></code></pre></div>
-<h3 id="线段树">线段树</h3>
-<p>每个节点维护：</p>
+<h2 id="规则确认与验证"><a href="#规则确认与验证" class="headerlink" title="规则确认与验证"></a>规则确认与验证</h2><p><strong>关键规则点</strong>：发现不同后 <code>ans += 1</code>、tmp 清空时，<strong>当前这个数不放入新的 tmp</strong>。例如 <code>[0, 1, 1]</code>：<code>0 → tmp=0</code>；<code>1 → 不同，ans=1，tmp 清空</code>；<code>1 → tmp=1</code>。答案 1。这也正是「每两段配一对」配法的来源：<code>01</code> 配对、<code>10</code> 配对、剩余单段。</p>
+<p>完整走一遍 <code>n=6</code>，数组 <code>0 0 1 1 0 1</code>：</p>
 <ul>
-<li><code>first</code>：区间第一个数</li>
-<li><code>last</code>：区间最后一个数</li>
-<li><code>changes</code>：区间内部相邻不同的次数</li>
+<li>查询 <code>2 1 6</code>：压缩成 <code>00 | 11 | 0 | 1</code> 共 4 段，<code>changes = 3</code>，<code>ans = (3+1)//2 = 2</code> ✓</li>
+<li>执行 <code>1 3</code> 后数组变 <code>0 0 0 1 0 1</code>：压缩成 <code>000 | 1 | 0 | 1</code> 还是 4 段，<code>ans = 2</code></li>
 </ul>
-<p>合并两个区间 <code>L</code> 和 <code>R</code>：</p>
-<div class="code-wrapper"><pre><code class="hljs vim"><span class="hljs-keyword">changes</span> = L.<span class="hljs-keyword">changes</span> + R.<span class="hljs-keyword">changes</span>
-         + (L.<span class="hljs-keyword">last</span> != R.<span class="hljs-keyword">first</span>)</code></pre></div>
-<p>这样：</p>
-<ul>
-<li><code>1 x</code> 单点翻转：<code>O(log n)</code></li>
-<li><code>2 l r</code> 区间查询：<code>O(log n)</code></li>
-</ul>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
-
-<span class="hljs-built_in">input</span> = sys.stdin.readline
-
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">SegmentTree</span>:
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, n</span>):
-        <span class="hljs-variable language_">self</span>.n = n
-
-        <span class="hljs-comment"># first, last, changes</span>
-        <span class="hljs-variable language_">self</span>.first = [<span class="hljs-number">0</span>] * (<span class="hljs-number">4</span> * n)
-        <span class="hljs-variable language_">self</span>.last = [<span class="hljs-number">0</span>] * (<span class="hljs-number">4</span> * n)
-        <span class="hljs-variable language_">self</span>.changes = [<span class="hljs-number">0</span>] * (<span class="hljs-number">4</span> * n)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">push_up</span>(<span class="hljs-params">self, p</span>):
-        left = p * <span class="hljs-number">2</span>
-        right = p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>
-
-        <span class="hljs-variable language_">self</span>.first[p] = <span class="hljs-variable language_">self</span>.first[left]
-        <span class="hljs-variable language_">self</span>.last[p] = <span class="hljs-variable language_">self</span>.last[right]
-
-        <span class="hljs-variable language_">self</span>.changes[p] = (
-            <span class="hljs-variable language_">self</span>.changes[left]
-            + <span class="hljs-variable language_">self</span>.changes[right]
-            + (<span class="hljs-variable language_">self</span>.last[left] != <span class="hljs-variable language_">self</span>.first[right])
-        )
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">build</span>(<span class="hljs-params">self, p, l, r</span>):
-        <span class="hljs-keyword">if</span> l == r:
-            <span class="hljs-variable language_">self</span>.first[p] = <span class="hljs-number">0</span>
-            <span class="hljs-variable language_">self</span>.last[p] = <span class="hljs-number">0</span>
-            <span class="hljs-variable language_">self</span>.changes[p] = <span class="hljs-number">0</span>
-            <span class="hljs-keyword">return</span>
-
-        mid = (l + r) // <span class="hljs-number">2</span>
-
-        <span class="hljs-variable language_">self</span>.build(p * <span class="hljs-number">2</span>, l, mid)
-        <span class="hljs-variable language_">self</span>.build(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r)
-
-        <span class="hljs-variable language_">self</span>.push_up(p)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>(<span class="hljs-params">self, p, l, r, pos</span>):
-        <span class="hljs-keyword">if</span> l == r:
-            <span class="hljs-comment"># 0 -&gt; 1 或 1 -&gt; 0</span>
-            <span class="hljs-variable language_">self</span>.first[p] ^= <span class="hljs-number">1</span>
-            <span class="hljs-variable language_">self</span>.last[p] ^= <span class="hljs-number">1</span>
-            <span class="hljs-keyword">return</span>
-
-        mid = (l + r) // <span class="hljs-number">2</span>
-
-        <span class="hljs-keyword">if</span> pos &lt;= mid:
-            <span class="hljs-variable language_">self</span>.update(p * <span class="hljs-number">2</span>, l, mid, pos)
-        <span class="hljs-keyword">else</span>:
-            <span class="hljs-variable language_">self</span>.update(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r, pos)
-
-        <span class="hljs-variable language_">self</span>.push_up(p)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">query</span>(<span class="hljs-params">self, p, l, r, ql, qr</span>):
-        <span class="hljs-comment"># 返回：</span>
-        <span class="hljs-comment"># (first, last, changes)</span>
-        <span class="hljs-keyword">if</span> ql &lt;= l <span class="hljs-keyword">and</span> r &lt;= qr:
-            <span class="hljs-keyword">return</span> (
-                <span class="hljs-variable language_">self</span>.first[p],
-                <span class="hljs-variable language_">self</span>.last[p],
-                <span class="hljs-variable language_">self</span>.changes[p]
-            )
-
-        mid = (l + r) // <span class="hljs-number">2</span>
-
-        <span class="hljs-keyword">if</span> qr &lt;= mid:
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span>, l, mid, ql, qr)
-
-        <span class="hljs-keyword">if</span> ql &gt; mid:
-            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r, ql, qr)
-
-        left = <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span>, l, mid, ql, qr)
-        right = <span class="hljs-variable language_">self</span>.query(p * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, mid + <span class="hljs-number">1</span>, r, ql, qr)
-
-        first1, last1, changes1 = left
-        first2, last2, changes2 = right
-
-        <span class="hljs-keyword">return</span> (
-            first1,
-            last2,
-            changes1 + changes2 + (last1 != first2)
-        )
-
-
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>():
-    n, q = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
-
-    seg = SegmentTree(n)
-    seg.build(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>)
-
-    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(q):
-        op = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))
-
-        <span class="hljs-keyword">if</span> op[<span class="hljs-number">0</span>] == <span class="hljs-number">1</span>:
-            <span class="hljs-comment"># 1 x：翻转第 x 个位置</span>
-            x = op[<span class="hljs-number">1</span>] - <span class="hljs-number">1</span>
-            seg.update(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>, x)
-
-        <span class="hljs-keyword">else</span>:
-            <span class="hljs-comment"># 2 l r：查询 [l, r]</span>
-            l = op[<span class="hljs-number">1</span>] - <span class="hljs-number">1</span>
-            r = op[<span class="hljs-number">2</span>] - <span class="hljs-number">1</span>
-
-            first, last, changes = seg.query(
-                <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>, l, r
-            )
-
-            <span class="hljs-comment"># 段数 = changes + 1</span>
-            <span class="hljs-comment"># 每两段贡献一次 ans</span>
-            ans = (changes + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>
-
-            <span class="hljs-built_in">print</span>(ans)
-
-
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
-    solve()</code></pre></div>
-<h3 id="举个完整例子">举个完整例子</h3>
-<div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">n</span> = <span class="hljs-number">6</span>
-
-<span class="hljs-attribute">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span></code></pre></div>
-<p>区间 <code>1 6</code>：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> | <span class="hljs-number">1</span> <span class="hljs-number">1</span> | <span class="hljs-number">0</span> | <span class="hljs-number">1</span></code></pre></div>
-<p><code>changes = 3</code></p>
-<p>所以：</p>
-<div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">ans</span> = (<span class="hljs-number">3</span> + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span> = <span class="hljs-number">2</span></code></pre></div>
-<p>如果执行：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">1 </span><span class="hljs-number">3</span></code></pre></div>
-<p>数组变成：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span></code></pre></div>
-<p>区间 <code>1 6</code>：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">0</span> | <span class="hljs-number">1</span> | <span class="hljs-number">0</span> | <span class="hljs-number">1</span></code></pre></div>
-<p>还是 <code>4</code> 段：</p>
-<div class="code-wrapper"><pre><code class="hljs abnf"><span class="hljs-attribute">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span></code></pre></div>
-<p><strong>复杂度：</strong></p>
-<ul>
-<li>建树：<code>O(n)</code></li>
-<li><code>1 x</code>：<code>O(log n)</code></li>
-<li><code>2 l r</code>：<code>O(log n)</code></li>
-<li>总计：<code>O(n + q log n)</code></li>
-<li>空间：<code>O(n)</code></li>
-</ul>
-<p>这里其实不需要维护
-<code>tmp</code>，因为这个规则最终只和<strong>连续段的数量</strong>有关。</p>
-<p>不对啊0 0 1 1 0 1 0 1配对，然后10配对，1余下</p>
-<p>对，你说得对。刚才我把规则理解错了。</p>
-<p>按照你现在明确的规则：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span></code></pre></div>
-<p>处理过程是：</p>
-<div class="code-wrapper"><pre><code class="hljs tap">第1个<span class="hljs-number"> 0 </span>→ tmp = 0
-第2个<span class="hljs-number"> 0 </span>→ 和 tmp 相同，不操作
-第3个<span class="hljs-number"> 1 </span>→ 和 tmp 不同
-             ans += 1
-             tmp 清空
-
-第4个<span class="hljs-number"> 1 </span>→ tmp = 1
-第5个<span class="hljs-number"> 0 </span>→ 和 tmp 不同
-             ans += 1
-             tmp 清空
-
-第6个<span class="hljs-number"> 1 </span>→ tmp = 1</code></pre></div>
-<p>所以：</p>
-<div class="code-wrapper"><pre><code class="hljs abnf"><span class="hljs-attribute">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span></code></pre></div>
-<p>也就是你说的：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">01 </span>配对
-<span class="hljs-symbol">10 </span>配对
-<span class="hljs-symbol">1 </span>余下</code></pre></div>
-<h3 id="正确的本质">正确的本质</h3>
-<p>把连续相同的数字压缩：</p>
-<div class="code-wrapper"><pre><code class="hljs tap">0<span class="hljs-number"> 0 </span>1<span class="hljs-number"> 1 </span>0 1
-↓
-0<span class="hljs-number"> 1 </span>0 1</code></pre></div>
-<p>然后<strong>从左到右每两个段配一对</strong>：</p>
-<div class="code-wrapper"><pre><code class="hljs clojure">(<span class="hljs-number">0</span><span class="hljs-punctuation">,</span> <span class="hljs-number">1</span>) (<span class="hljs-number">0</span><span class="hljs-punctuation">,</span> <span class="hljs-number">1</span>)</code></pre></div>
-<p>所以答案就是：</p>
-<div class="code-wrapper"><pre><code class="hljs 1c">压缩后的段数 <span class="hljs-comment">// 2</span></code></pre></div>
-<p>这个结论本身是对的。</p>
-<p>但是我上一条代码里对 <code>changes</code>
-的理解导致边界合并时容易混淆。实际上对于：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span></code></pre></div>
-<p><code>changes = 3</code>，段数 <code>= 4</code>：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">4 </span>// <span class="hljs-number">2</span> = <span class="hljs-number">2</span></code></pre></div>
-<p>所以这个例子的答案确实是 <code>2</code>。</p>
-<hr />
-<h3 id="更重要的是区间查询">更重要的是区间查询</h3>
-<p>例如查询：</p>
-<div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">2 </span>l r</code></pre></div>
-<p>我们只需要知道 <code>[l,r]</code> 中：</p>
-<ol type="1">
-<li>第一个数</li>
-<li>最后一个数</li>
-<li>相邻不同的次数</li>
-</ol>
-<p>合并两个区间：</p>
-<div class="code-wrapper"><pre><code class="hljs less"><span class="hljs-selector-tag">A</span> | <span class="hljs-selector-tag">B</span></code></pre></div>
-<p>如果：</p>
-<div class="code-wrapper"><pre><code class="hljs applescript">A.<span class="hljs-keyword">last</span> != B.<span class="hljs-keyword">first</span></code></pre></div>
-<p>就多一个变化。</p>
-<p>因此线段树维护：</p>
-<div class="code-wrapper"><pre><code class="hljs vim">(<span class="hljs-keyword">first</span>, <span class="hljs-keyword">last</span>, <span class="hljs-keyword">changes</span>)</code></pre></div>
-<p>最后：</p>
-<div class="code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">ans</span> = (changes + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span></code></pre></div>
-<p>这个公式对于你的规则是正确的。</p>
-<p>如果你有一个<strong>具体样例的完整输入输出</strong>，发给我，我可以拿样例逐步跑一遍，确认
-<code>1 x</code> 和 <code>2 l r</code> 的所有边界情况。</p>
+<p><strong>复杂度</strong>：建树 <code>O(n)</code>，每个操作 <code>O(log n)</code>，总计 <code>O(n + q log n)</code>，空间 <code>O(n)</code>。</p>
 
                 
               </div>
@@ -786,6 +646,15 @@ ans = (<span class="hljs-keyword">changes</span> + <span class="hljs-number">1</
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="print-no-link">#数据结构</a>
+      
+        <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="print-no-link">#线段树</a>
+      
+    </div>
+  
 </div>
 
 
@@ -794,8 +663,8 @@ ans = (<span class="hljs-keyword">changes</span> + <span class="hljs-number">1</
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>未命名 1</div>
-      <div>https://mingsm17518.github.io/2026/09/20/刷题笔记/小红书/2026年9月20日/2/</div>
+      <div>第2题-区间配对计数</div>
+      <div>https://mingsm17518.github.io/2026/09/22/刷题笔记/小红书/2026年9月20日/第2题-区间配对计数/</div>
     </div>
     <div class="license-meta">
       
@@ -807,13 +676,13 @@ ans = (<span class="hljs-keyword">changes</span> + <span class="hljs-number">1</
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年9月20日</div>
+          <div>2026年9月22日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2026年9月21日</div>
+          <div>2026年9月22日</div>
         </div>
       
       
@@ -844,18 +713,12 @@ ans = (<span class="hljs-keyword">changes</span> + <span class="hljs-number">1</
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" title="06_排序">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">06_排序</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/1/" title="未命名">
-                        <span class="hidden-mobile">未命名</span>
+                      <a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%9B%B6%E5%92%8C%E5%8C%BA%E9%97%B4%E5%88%A0%E9%99%A4/" title="第1题-零和区间删除">
+                        <span class="hidden-mobile">第1题-零和区间删除</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

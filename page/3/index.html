@@ -244,7 +244,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/06_%E6%95%B0%E8%AE%BA/" target="_self">
         <div>
-          数论 取整 # 向上取整到 k 的倍数 (n + k - 1) // k * k  import math math.ceil(n / k) * k      # 更易读 # 四舍五入（整数版，避免浮点误差） def round_div(a, b):     # 计算 a / b，四舍五入到整数     # 原理：判断小数部分是否 &gt;= 0.5     return a // b + (2
+          数论取整# 向上取整到 k 的倍数 (n + k - 1) // k * k  import math math.ceil(n / k) * k      # 更易读 # 四舍五入（整数版，避免浮点误差） def round_div(a, b):     # 计算 a / b，四舍五入到整数     # 原理：判断小数部分是否 &gt;= 0.5     return a // b + (2 *
         </div>
       </a>
 
@@ -312,76 +312,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" target="_self">
-          07_使用递归的穷举搜索
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" target="_self">
-        <div>
-          使用递归的穷举搜索 Subsets  子集 https://cses.fi/problemset/task/1623 递归生成子集 编写一个递归函数，遍历所有可能的分组方式。 在某个索引处，我们要么将 𝚊𝚙𝚙𝚕𝚎i\texttt{apple}_i​ 添加到第一个集合，要么添加到第二个集合，存储两个总和 𝚜𝚞𝚖1\texttt{sum}_1​ 和 𝚜𝚞𝚖2\texttt{sum
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 23:40" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/" class="category-chain-item">其他算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/">#穷举搜索</a>
-            
-              <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" target="_self">
           Rectangle Geometry 矩形几何
         </a>
@@ -390,7 +320,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" target="_self">
         <div>
-          Rectangle Geometry 矩形几何 什么是矩形几何问题？ 矩形几何问题是指涉及边平行于坐标轴的矩形的计算问题。这类问题在 USACO Bronze 中非常常见，主要考察对矩形面积、交集等概念的理解。 矩形表示方法 通常使用两个对角顶点来表示矩形： - 左下角 (bottom-left)：(bl_x, bl_y) - 右上角 (top-right)：(tr_x, tr_y) 注意：blx
+          Rectangle Geometry 矩形几何什么是矩形几何问题？矩形几何问题是指涉及边平行于坐标轴的矩形的计算问题。这类问题在 USACO Bronze 中非常常见，主要考察对矩形面积、交集等概念的理解。 矩形表示方法通常使用两个对角顶点来表示矩形：  左下角 (bottom-left)：(bl_x, bl_y) 右上角 (top-right)：(tr_x, tr_y)  注意：$bl_x &l
         </div>
       </a>
 
@@ -452,6 +382,76 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" target="_self">
+          07_使用递归的穷举搜索
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" target="_self">
+        <div>
+          使用递归的穷举搜索Subsets  子集https://cses.fi/problemset/task/1623 递归生成子集编写一个递归函数，遍历所有可能的分组方式。 在某个索引处，我们要么将 $\texttt{apple}_i$​ 添加到第一个集合，要么添加到第二个集合，存储两个总和 $\texttt{sum}_1$​ 和 $\texttt{sum}_2$​ ，分别表示每个集合中值的总和。 一
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 23:40" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/" class="category-chain-item">其他算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/">#穷举搜索</a>
+            
+              <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" target="_self">
           贪心算法
         </a>
@@ -460,7 +460,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" target="_self">
         <div>
-          贪心算法 策略速查 贪心在每一步选择当前最优的选项，通常与排序配合使用（先排序，再贪心）。核心是价值函数——决定哪个选择是最优的：  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的     问题类型 贪心策略     最多选 k 个（耗时/体积受限） 按耗时/体积升序选   活动安排 / 区间选点 按结束时间排序，选最早结束的   最少段覆盖不匹配 逐位扫描，段计数   间
+          贪心算法策略速查贪心在每一步选择当前最优的选项，通常与排序配合使用（先排序，再贪心）。核心是价值函数——决定哪个选择是最优的：  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的      问题类型 贪心策略     最多选 k 个（耗时/体积受限） 按耗时/体积升序选   活动安排 / 区间选点 按结束时间排序，选最早结束的   最少段覆盖不匹配 逐位扫描，段计数   间隔
         </div>
       </a>
 
@@ -524,160 +524,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC1%E9%A2%98%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C/" target="_self">
-          第1题：数列求和
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC1%E9%A2%98%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C/" target="_self">
-        <div>
-          题目 内存限制： C/C++ 语言 32768KB；其他语言 557056KB 题目描述 数列的定义如下：数列的第一项为 nn，以后各项为前一项的平方根，求数列的前 mm 项的和。 输入描述 输入数据有多组，每组占一行，由两个整数 nn（n&lt;10000n &lt; 10000）和 mm（m&lt;1000m &lt; 1000）组成，nn 和 mm 的含义如前所述。 输出描述 对于每组输入数
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 19:10" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/" class="category-chain-item">练习题</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%A8%A1%E6%8B%9F/">#模拟</a>
-            
-              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC2%E9%A2%98%EF%BC%9A%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" target="_self">
-          第2题：水仙花数
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC2%E9%A2%98%EF%BC%9A%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" target="_self">
-        <div>
-          题目 题目描述 春天是鲜花的季节，水仙花就是其中最迷人的代表，数学上有个水仙花数，他是这样定义的： 「水仙花数」是指一个三位数，它的各位数字的立方和等于其本身，比如：153=13+53+33153 = 1^3 + 5^3 + 3^3。 现在要求输出所有在 mm 和 nn 范围内的水仙花数。 输入描述 输入数据有多组，每组占一行，包括两个整数 mm 和 nn（100≤m≤n≤999100 \le m
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-19 19:10" pubdate>
-              2026-09-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/" class="category-chain-item">练习题</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
-            
-              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/" target="_self">
           第3题-待发热度重排
         </a>
@@ -686,7 +532,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/" target="_self">
         <div>
-          小红书9月17日机考题目与解析 短视频后台里躺着 mm 条待发稿，第 ii 条带着质量分 pip_i 和热度分 hih_i。策划给了一份目标热度排列 t1,t2,…,tmt_1, t_2, \ldots, t_m，要求排完之后每个位置上的热度刚好等于 tt。 运营只能按下面的规则对调两条稿件：当且仅当 pi≤pjp_i \le p_j 且 hi≤hjh_i \le h_j 时，才允许把第 ii 条
+          小红书9月17日机考题目与解析短视频后台里躺着 $m$ 条待发稿，第 $i$ 条带着质量分 $p_i$ 和热度分 $h_i$。策划给了一份目标热度排列 $t_1, t_2, \ldots, t_m$，要求排完之后每个位置上的热度刚好等于 $t$。 运营只能按下面的规则对调两条稿件：当且仅当 $p_i \le p_j$ 且 $h_i \le h_j$ 时，才允许把第 $i$ 条和第 $j$ 条互换位
         </div>
       </a>
 
@@ -755,6 +601,237 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC2%E9%A2%98%EF%BC%9A%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" target="_self">
+          第2题：水仙花数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC2%E9%A2%98%EF%BC%9A%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" target="_self">
+        <div>
+          题目题目描述 春天是鲜花的季节，水仙花就是其中最迷人的代表，数学上有个水仙花数，他是这样定义的： 「水仙花数」是指一个三位数，它的各位数字的立方和等于其本身，比如：$153 = 1^3 + 5^3 + 3^3$。 现在要求输出所有在 $m$ 和 $n$ 范围内的水仙花数。 输入描述 输入数据有多组，每组占一行，包括两个整数 $m$ 和 $n$（$100 \le m \le n \le 999$）。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 19:10" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/" class="category-chain-item">练习题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC1%E9%A2%98%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C/" target="_self">
+          第1题：数列求和
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC1%E9%A2%98%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C/" target="_self">
+        <div>
+          题目内存限制： C/C++ 语言 32768KB；其他语言 557056KB 题目描述 数列的定义如下：数列的第一项为 $n$，以后各项为前一项的平方根，求数列的前 $m$ 项的和。 输入描述 输入数据有多组，每组占一行，由两个整数 $n$（$n &lt; 10000$）和 $m$（$m &lt; 1000$）组成，$n$ 和 $m$ 的含义如前所述。 输出描述 对于每组输入数据，输出该数列的和，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-19 19:10" pubdate>
+              2026-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/" class="category-chain-item">练习题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%A8%A1%E6%8B%9F/">#模拟</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" target="_self">
+          第2题-双通道评测格网
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" target="_self">
+        <div>
+          小红书9月10日机考题目与解析给定一张 $N$ 行 $M$ 列的评测格网。格子 $(i,j)$ 上有两个通道分 $X{i,j}$ 与 $Y{i,j}$。 从 $(1,1)$ 走到 $(N,M)$，每次只能向右走到 $(i,j+1)$ 或向下走到 $(i+1,j)$，不可越界。 路径上每个格子（含起终点）须把 $X{i,j}$ 与 $Y{i,j}$ 分别记入主账户与对照账户，二者各得其一。 设主账户
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-09-20 16:32" pubdate>
+              2026-09-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/" class="category-chain-item">2026年9月10日</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%80%89%E6%8B%A9%E9%A2%98/" target="_self">
           第1题-选择题
         </a>
@@ -763,7 +840,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%80%89%E6%8B%A9%E9%A2%98/" target="_self">
         <div>
-          小红书9月17日机考题目与解析 1、IO 多路复用 园区门禁闸机要把多路套接字日志收进同一采集线程。IO 多路复用允许在单个线程中同时监视和处理多个 I/O 操作，以下不属于 IO 多路复用的技术是（）  A. poll 用描述符数组等待多个套接字就绪 B. eselect IO多路复用 C. epoll 用内核事件表减少每次等待的用户态拷贝 D. select 在用户态传入描述符集合并阻塞等待就
+          小红书9月17日机考题目与解析1、IO 多路复用园区门禁闸机要把多路套接字日志收进同一采集线程。IO 多路复用允许在单个线程中同时监视和处理多个 I/O 操作，以下不属于 IO 多路复用的技术是（）  A. poll 用描述符数组等待多个套接字就绪 B. eselect IO多路复用 C. epoll 用内核事件表减少每次等待的用户态拷贝 D. select 在用户态传入描述符集合并阻塞等待就绪
         </div>
       </a>
 
@@ -840,7 +917,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8A%A0%E9%80%9F%E7%AA%97%E5%8F%A3%E6%94%B6%E7%9B%8A/" target="_self">
         <div>
-          小红书9月17日机考题目与解析 推理集群上排着 mm 项作业，第 pp 项有一个收益 vpv_p（正数表示划算，负数表示亏本）。 调度允许开一次加速窗口：挑一段连续作业 [L,R][L, R]（1≤L≤R≤m1 \le L \le R \le m），把这段里每一项的收益改成原来的两倍。也可以一次都不开。 窗口用完之后（或者根本没用），再从作业序列里取出一段非空的连续作业，使它们的收益加起来尽量大。
+          小红书9月17日机考题目与解析推理集群上排着 $m$ 项作业，第 $p$ 项有一个收益 $v_p$（正数表示划算，负数表示亏本）。 调度允许开一次加速窗口：挑一段连续作业 $[L, R]$（$1 \le L \le R \le m$），把这段里每一项的收益改成原来的两倍。也可以一次都不开。 窗口用完之后（或者根本没用），再从作业序列里取出一段非空的连续作业，使它们的收益加起来尽量大。请给出这个最大
         </div>
       </a>
 
@@ -898,83 +975,6 @@
               <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
             
               <a href="/tags/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%AE%B5%E5%92%8C/">#最大子段和</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" target="_self">
-          第2题-双通道评测格网
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" target="_self">
-        <div>
-          小红书9月10日机考题目与解析 给定一张 NN 行 MM 列的评测格网。格子 (i,j)(i,j) 上有两个通道分 Xi,jX_{i,j} 与 Yi,jY_{i,j}。 从 (1,1)(1,1) 走到 (N,M)(N,M)，每次只能向右走到 (i,j+1)(i,j+1) 或向下走到 (i+1,j)(i+1,j)，不可越界。 路径上每个格子（含起终点）须把 Xi,jX_{i,j} 与 Yi,jY_{
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-20 16:32" pubdate>
-              2026-09-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="category-chain-item">小红书</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/" class="category-chain-item">2026年9月10日</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
             
           </div>
         

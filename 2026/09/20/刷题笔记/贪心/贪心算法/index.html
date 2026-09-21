@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="贪心算法,排序,交换论证">
   
-    <meta name="description" content="贪心算法 策略速查 贪心在每一步选择当前最优的选项，通常与排序配合使用（先排序，再贪心）。核心是价值函数——决定哪个选择是最优的：  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的     问题类型 贪心策略     最多选 k 个（耗时&#x2F;体积受限） 按耗时&#x2F;体积升序选   活动安排 &#x2F; 区间选点 按结束时间排序，选最早结束的   最少段覆盖不匹配 逐位扫描，段计数   间">
+    <meta name="description" content="贪心算法策略速查贪心在每一步选择当前最优的选项，通常与排序配合使用（先排序，再贪心）。核心是价值函数——决定哪个选择是最优的：  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的      问题类型 贪心策略     最多选 k 个（耗时&#x2F;体积受限） 按耗时&#x2F;体积升序选   活动安排 &#x2F; 区间选点 按结束时间排序，选最早结束的   最少段覆盖不匹配 逐位扫描，段计数   间隔">
 <meta property="og:type" content="article">
 <meta property="og:title" content="贪心算法">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="贪心算法 策略速查 贪心在每一步选择当前最优的选项，通常与排序配合使用（先排序，再贪心）。核心是价值函数——决定哪个选择是最优的：  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的     问题类型 贪心策略     最多选 k 个（耗时&#x2F;体积受限） 按耗时&#x2F;体积升序选   活动安排 &#x2F; 区间选点 按结束时间排序，选最早结束的   最少段覆盖不匹配 逐位扫描，段计数   间">
+<meta property="og:description" content="贪心算法策略速查贪心在每一步选择当前最优的选项，通常与排序配合使用（先排序，再贪心）。核心是价值函数——决定哪个选择是最优的：  要最大化某个值 → 每次选择最大的 要最小化某个值 → 每次选择最小的      问题类型 贪心策略     最多选 k 个（耗时&#x2F;体积受限） 按耗时&#x2F;体积升序选   活动安排 &#x2F; 区间选点 按结束时间排序，选最早结束的   最少段覆盖不匹配 逐位扫描，段计数   间隔">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-20T03:36:12.050Z">
 <meta property="article:modified_time" content="2026-09-20T08:34:35.648Z">
@@ -303,13 +303,12 @@
             
               <div class="markdown-body">
                 
-                <h1 id="贪心算法">贪心算法</h1>
-<h2 id="策略速查">策略速查</h2>
-<p>贪心在每一步选择当前最优的选项，<strong>通常与排序配合使用</strong>（先排序，再贪心）。核心是<strong>价值函数</strong>——决定哪个选择是最优的：</p>
+                <h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><h2 id="策略速查"><a href="#策略速查" class="headerlink" title="策略速查"></a>策略速查</h2><p>贪心在每一步选择当前最优的选项，<strong>通常与排序配合使用</strong>（先排序，再贪心）。核心是<strong>价值函数</strong>——决定哪个选择是最优的：</p>
 <ul>
 <li>要最大化某个值 → 每次选择最大的</li>
 <li>要最小化某个值 → 每次选择最小的</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -332,10 +331,7 @@
 </tr>
 <tr>
 <td>间隔合并 vs 分开</td>
-<td>比较合并代价与新建代价（如
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>a</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">gap</annotation></semantics></math>
-vs
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K+1</annotation></semantics></math>）</td>
+<td>比较合并代价与新建代价（如 $gap$ vs $K+1$）</td>
 </tr>
 <tr>
 <td>只能左移的重排</td>
@@ -351,17 +347,14 @@ vs
 </tr>
 </tbody>
 </table>
-<h2 id="解释">解释</h2>
-<h3 id="贪心算法的特点">贪心算法的特点</h3>
-<ol type="1">
+</div>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><h3 id="贪心算法的特点"><a href="#贪心算法的特点" class="headerlink" title="贪心算法的特点"></a>贪心算法的特点</h3><ol>
 <li><strong>贪心选择性质</strong>：每一步都做出当前最优的选择</li>
 <li><strong>最优子结构</strong>：问题的最优解包含子问题的最优解</li>
 <li><strong>不可回溯</strong>：一旦做出选择，就不再考虑其他可能</li>
 </ol>
-<p>正确性通常通过<strong>交换参数证法</strong>（exchange
-argument）证明：假设最优解中选了 B 而不是更优的 A，把 B 换成 A
-不会变差，矛盾。</p>
-<h3 id="贪心-vs-动态规划">贪心 vs 动态规划</h3>
+<p>正确性通常通过<strong>交换参数证法</strong>（exchange argument）证明：假设最优解中选了 B 而不是更优的 A，把 B 换成 A 不会变差，矛盾。</p>
+<h3 id="贪心-vs-动态规划"><a href="#贪心-vs-动态规划" class="headerlink" title="贪心 vs 动态规划"></a>贪心 vs 动态规划</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -393,14 +386,11 @@ argument）证明：假设最优解中选了 B 而不是更优的 A，把 B 换�
 </tr>
 </tbody>
 </table>
-<p>何时使用贪心：具有贪心选择性质 + 最优子结构 +
-问题规模较大需要高效算法。</p>
-<h3 id="贪心失效的例子">贪心失效的例子</h3>
-<p><strong>硬币找零</strong>：面额 <code>{1, 3, 4}</code>、目标
-<code>6</code>——贪心解 <code>4+1+1</code> 用 3 枚，最优解
-<code>3+3</code> 只要 2
-枚。贪心只在特定面额系统（如美元、欧元）下有效。</p>
+</div>
+<p>何时使用贪心：具有贪心选择性质 + 最优子结构 + 问题规模较大需要高效算法。</p>
+<h3 id="贪心失效的例子"><a href="#贪心失效的例子" class="headerlink" title="贪心失效的例子"></a>贪心失效的例子</h3><p><strong>硬币找零</strong>：面额 <code>{1, 3, 4}</code>、目标 <code>6</code>——贪心解 <code>4+1+1</code> 用 3 枚，最优解 <code>3+3</code> 只要 2 枚。贪心只在特定面额系统（如美元、欧元）下有效。</p>
 <p><strong>背包问题</strong>：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -431,17 +421,12 @@ argument）证明：假设最优解中选了 B 而不是更优的 A，把 B 换�
 </tr>
 </tbody>
 </table>
-<p>容量 4：贪心按价值/重量选 A（18），最优是
-B+C（20）。背包需要动态规划解决。</p>
-<h2 id="例题">例题</h2>
-<h3 id="例题-1学习算法排序贪心入门">例题
-1：学习算法（排序贪心入门）</h3>
-<p>来源：Codeforces - Very Easy</p>
-<p>Steph 有 X 分钟时间学习算法，有 N 个算法，第 i 个需要 a_i
-分钟。求最多能学多少个算法。（<code>1 ≤ X ≤ 10^4</code>，<code>1 ≤ N ≤ 100</code>）</p>
+</div>
+<p>容量 4：贪心按价值/重量选 A（18），最优是 B+C（20）。背包需要动态规划解决。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="例题-1：学习算法（排序贪心入门）"><a href="#例题-1：学习算法（排序贪心入门）" class="headerlink" title="例题 1：学习算法（排序贪心入门）"></a>例题 1：学习算法（排序贪心入门）</h3><p>来源：Codeforces - Very Easy</p>
+<p>Steph 有 X 分钟时间学习算法，有 N 个算法，第 i 个需要 a_i 分钟。求最多能学多少个算法。（<code>1 ≤ X ≤ 10^4</code>，<code>1 ≤ N ≤ 100</code>）</p>
 <p>思路：先学用时最短的——a_i 升序排列后依次累加，直到时间用完。</p>
-<p>正确性（交换论证）：若最优解先选了用时更长的 B，把它换成用时更短的
-A，总时间不增、可选数量不减，故先选最短总是最优。</p>
+<p>正确性（交换论证）：若最优解先选了用时更长的 B，把它换成用时更短的 A，总时间不增、可选数量不减，故先选最短总是最优。</p>
 <div class="code-wrapper"><pre><code class="hljs python">algorithms.sort()
 count = <span class="hljs-number">0</span>  <span class="hljs-comment"># 已用时间</span>
 i = <span class="hljs-number">0</span>
@@ -450,16 +435,11 @@ i = <span class="hljs-number">0</span>
     i += <span class="hljs-number">1</span>
 <span class="hljs-built_in">print</span>(i)</code></pre></div>
 <p>复杂度：O(N log N)</p>
-<h3 id="例题-2活动安排-movie-festival按结束时间排序">例题 2：活动安排
-Movie Festival（按结束时间排序）</h3>
-<p>来源：CSES - Easy</p>
-<p>有 N
-个活动，每个活动有开始和结束时间，每次只能全程参加一个。求最多能参加多少个活动。</p>
-<p><strong>错误策略</strong>：选最早开始的。反例：<code>[(0,6), (5,10), (6,7)]</code>——按最早开始只能选
-1 个，最优是 <code>[(0,6), (6,7)]</code> 两个。</p>
+<h3 id="例题-2：活动安排-Movie-Festival（按结束时间排序）"><a href="#例题-2：活动安排-Movie-Festival（按结束时间排序）" class="headerlink" title="例题 2：活动安排 Movie Festival（按结束时间排序）"></a>例题 2：活动安排 Movie Festival（按结束时间排序）</h3><p>来源：CSES - Easy</p>
+<p>有 N 个活动，每个活动有开始和结束时间，每次只能全程参加一个。求最多能参加多少个活动。</p>
+<p><strong>错误策略</strong>：选最早开始的。反例：<code>[(0,6), (5,10), (6,7)]</code>——按最早开始只能选 1 个，最优是 <code>[(0,6), (6,7)]</code> 两个。</p>
 <p><strong>正确策略</strong>：选<strong>最早结束</strong>的，为后续留出更多时间。</p>
-<p>正确性：设 E1 比 E2 结束早。能接在 E2 之后的活动 X 必然也能接在 E1
-之后，所以选 E1 不会更差、后续可选集合更大。</p>
+<p>正确性：设 E1 比 E2 结束早。能接在 E2 之后的活动 X 必然也能接在 E1 之后，所以选 E1 不会更差、后续可选集合更大。</p>
 <div class="code-wrapper"><pre><code class="hljs python">events.sort(key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>])  <span class="hljs-comment"># 按结束时间排序</span>
 current_end = -<span class="hljs-number">1</span>
 ans = <span class="hljs-number">0</span>
@@ -471,14 +451,9 @@ ans = <span class="hljs-number">0</span>
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
 <p>复杂度：O(N log N)</p>
-<h3 id="例题-3mad-scientist不匹配段计数">例题 3：Mad
-Scientist（不匹配段计数）</h3>
-<p>来源：USACO Bronze - Mad Scientist（文件名 breedflip）</p>
-<p>给定两个长度为 n 的字符串 a 和 b，每次操作可以将 a
-的任意连续子串反转。求最少多少次操作将 a 变成 b。</p>
-<p>思路：每次反转恰好消除一个连续的不匹配段，所以<strong>答案 =
-不匹配段的个数</strong>。用 flag 扫描：不在段中遇到
-<code>a[i] != b[i]</code> 就开新段计数，段中遇到相等就结束段。</p>
+<h3 id="例题-3：Mad-Scientist（不匹配段计数）"><a href="#例题-3：Mad-Scientist（不匹配段计数）" class="headerlink" title="例题 3：Mad Scientist（不匹配段计数）"></a>例题 3：Mad Scientist（不匹配段计数）</h3><p>来源：USACO Bronze - Mad Scientist（文件名 breedflip）</p>
+<p>给定两个长度为 n 的字符串 a 和 b，每次操作可以将 a 的任意连续子串反转。求最少多少次操作将 a 变成 b。</p>
+<p>思路：每次反转恰好消除一个连续的不匹配段，所以<strong>答案 = 不匹配段的个数</strong>。用 flag 扫描：不在段中遇到 <code>a[i] != b[i]</code> 就开新段计数，段中遇到相等就结束段。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 sys.stdin = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;breedflip.in&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>)
@@ -502,31 +477,10 @@ ans = <span class="hljs-number">0</span>
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
 <p>复杂度：时间 O(n)，空间 O(1)</p>
-<h3 id="例题-4watching-mooloo间隔合并-or-分开">例题 4：Watching
-Mooloo（间隔合并 or 分开）</h3>
-<p>来源：<a
-target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=1301">USACO
-Bronze - Watching Mooloo</a></p>
-<p>农民 John 要观看 N 个电影，第
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>i</mi></msub><annotation encoding="application/x-tex">d_i</annotation></semantics></math>
-天上映（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><msub><mi>d</mi><mi>i</mi></msub><mo>≤</mo><msup><mn>10</mn><mn>14</mn></msup></mrow><annotation encoding="application/x-tex">1 \leq d_i \leq 10^{14}</annotation></semantics></math>，递增）。订阅连续
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
-天费用为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>+</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">d + K</annotation></semantics></math>
-美元（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>K</mi><mo>≤</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">1 \leq K \leq 10^9</annotation></semantics></math>），可多次订阅。求看完全部电影的最小总费用。</p>
-<p>思路：比较相邻两部电影的间隔
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>a</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">gap</annotation></semantics></math>——合并进当前订阅花费
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>a</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">gap</annotation></semantics></math>，新开订阅花费
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K+1</annotation></semantics></math>（订
-1 天付
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">1+K</annotation></semantics></math>）。当
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>a</mi><mi>p</mi><mo>&gt;</mo><mi>K</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">gap &gt; K + 1</annotation></semantics></math>
-时分开更划算，否则合并。</p>
-<p>正确性（交换论证）：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>a</mi><mi>p</mi><mo>≤</mo><mi>K</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">gap \le K+1</annotation></semantics></math>
-时合并费用
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>a</mi><mi>p</mi><mo>+</mo><mi>K</mi><mo>≤</mo><mn>2</mn><mo stretchy="false" form="prefix">(</mo><mi>K</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">gap+K \le 2(K+1)</annotation></semantics></math>
-不劣于两次独立订阅；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>a</mi><mi>p</mi><mo>&gt;</mo><mi>K</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">gap &gt; K+1</annotation></semantics></math>
-时分开严格更优。每个间隔的决策互不影响，局部最优叠加即全局最优。</p>
+<h3 id="例题-4：Watching-Mooloo（间隔合并-or-分开）"><a href="#例题-4：Watching-Mooloo（间隔合并-or-分开）" class="headerlink" title="例题 4：Watching Mooloo（间隔合并 or 分开）"></a>例题 4：Watching Mooloo（间隔合并 or 分开）</h3><p>来源：<a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=1301">USACO Bronze - Watching Mooloo</a></p>
+<p>农民 John 要观看 N 个电影，第 $d_i$ 天上映（$1 \leq d_i \leq 10^{14}$，递增）。订阅连续 $d$ 天费用为 $d + K$ 美元（$1 \leq K \leq 10^9$），可多次订阅。求看完全部电影的最小总费用。</p>
+<p>思路：比较相邻两部电影的间隔 $gap$——合并进当前订阅花费 $gap$，新开订阅花费 $K+1$（订 1 天付 $1+K$）。当 $gap &gt; K + 1$ 时分开更划算，否则合并。</p>
+<p>正确性（交换论证）：$gap \le K+1$ 时合并费用 $gap+K \le 2(K+1)$ 不劣于两次独立订阅；$gap &gt; K+1$ 时分开严格更优。每个间隔的决策互不影响，局部最优叠加即全局最优。</p>
 <div class="code-wrapper"><pre><code class="hljs python">n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 arr = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
 ans = k + <span class="hljs-number">1</span>
@@ -539,22 +493,11 @@ ans = k + <span class="hljs-number">1</span>
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
 <p>复杂度：时间 O(n)，空间 O(1)</p>
-<p>关键点：每个订阅必须从某个观影日期开始；第一部电影也需要新订阅（费用
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K+1</annotation></semantics></math>）。</p>
-<h3 id="例题-5cow-tipping从右下角逆序处理">例题 5：Cow
-Tipping（从右下角逆序处理）</h3>
-<p>来源：<a
-target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=1060">USACO
-Bronze - Cow Tipping</a></p>
-<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>×</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">N \times N</annotation></semantics></math>
-格子（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≤</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">N \leq 10</annotation></semantics></math>），<code>1</code>
-表示躺下。每次操作翻转左上角 <code>(0,0)</code>、右下角
-<code>(r,c)</code> 的矩形。求最少操作次数使全变 0。</p>
-<p>思路：从右下角 <code>(N-1, N-1)</code> 开始逐格处理——若当前格是
-1，<strong>必须</strong>操作以它为右下角的矩形（这是唯一能改变它且不影响已处理格子的方式），计数
-+1。</p>
-<p>正确性：操作只影响左上方向，从右下开始保证已处理的格子不被破坏；每个
-1 至少需要一次包含它的操作，贪心恰好达到该下界。</p>
+<p>关键点：每个订阅必须从某个观影日期开始；第一部电影也需要新订阅（费用 $K+1$）。</p>
+<h3 id="例题-5：Cow-Tipping（从右下角逆序处理）"><a href="#例题-5：Cow-Tipping（从右下角逆序处理）" class="headerlink" title="例题 5：Cow Tipping（从右下角逆序处理）"></a>例题 5：Cow Tipping（从右下角逆序处理）</h3><p>来源：<a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=1060">USACO Bronze - Cow Tipping</a></p>
+<p>$N \times N$ 格子（$N \leq 10$），<code>1</code> 表示躺下。每次操作翻转左上角 <code>(0,0)</code>、右下角 <code>(r,c)</code> 的矩形。求最少操作次数使全变 0。</p>
+<p>思路：从右下角 <code>(N-1, N-1)</code> 开始逐格处理——若当前格是 1，<strong>必须</strong>操作以它为右下角的矩形（这是唯一能改变它且不影响已处理格子的方式），计数 +1。</p>
+<p>正确性：操作只影响左上方向，从右下开始保证已处理的格子不被破坏；每个 1 至少需要一次包含它的操作，贪心恰好达到该下界。</p>
 <div class="code-wrapper"><pre><code class="hljs python">TIPPED = <span class="hljs-string">&quot;0&quot;</span>
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">flip</span>(<span class="hljs-params">r: <span class="hljs-built_in">int</span>, c: <span class="hljs-built_in">int</span>, cows</span>):
@@ -588,22 +531,10 @@ y = width - <span class="hljs-number">1</span>
         x = y
 
 <span class="hljs-built_in">print</span>(min_flips, file=<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;cowtip.out&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>))</code></pre></div>
-<p>复杂度：时间 O(N³)（最多
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>N</mi><mn>2</mn></msup><annotation encoding="application/x-tex">N^2</annotation></semantics></math>
-次操作、每次影响
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math>
-格），空间 O(N²)</p>
-<h3 id="例题-6photo-shoot-2只能左移的重排">例题 6：Photo Shoot
-2（只能左移的重排）</h3>
-<p>来源：<a
-target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=1237">USACO
-Bronze - Photo Shoot 2</a></p>
-<p>给定两个长度为 N 的排列 a 和
-b。每次操作可将一头牛向左移动任意多位置（不能向右）。求最少操作次数把 a
-变成 b。</p>
-<p>思路：双指针从左到右匹配目标排列——j
-扫过当前排列中未被移动的牛；若第一个未移动的牛恰好是目标牛则指针后移，否则这头目标牛必须从后面移动过来，计数
-+1 并标记 <code>moved</code>。</p>
+<p>复杂度：时间 O(N³)（最多 $N^2$ 次操作、每次影响 $O(N^2)$ 格），空间 O(N²)</p>
+<h3 id="例题-6：Photo-Shoot-2（只能左移的重排）"><a href="#例题-6：Photo-Shoot-2（只能左移的重排）" class="headerlink" title="例题 6：Photo Shoot 2（只能左移的重排）"></a>例题 6：Photo Shoot 2（只能左移的重排）</h3><p>来源：<a target="_blank" rel="noopener" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=1237">USACO Bronze - Photo Shoot 2</a></p>
+<p>给定两个长度为 N 的排列 a 和 b。每次操作可将一头牛向左移动任意多位置（不能向右）。求最少操作次数把 a 变成 b。</p>
+<p>思路：双指针从左到右匹配目标排列——j 扫过当前排列中未被移动的牛；若第一个未移动的牛恰好是目标牛则指针后移，否则这头目标牛必须从后面移动过来，计数 +1 并标记 <code>moved</code>。</p>
 <p>正确性：只能左移，所以从前向后匹配是唯一策略；每头需要移动的牛至少操作一次，贪心恰好达到该下界。</p>
 <div class="code-wrapper"><pre><code class="hljs python">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 arr = [<span class="hljs-built_in">int</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]
@@ -624,12 +555,9 @@ j = <span class="hljs-number">0</span>
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
 <p>复杂度：时间 O(n)，空间 O(n)</p>
-<p>关键点：<code>moved</code> 数组避免重复计已移动的牛；指针 j
-单调右移保证整体线性。</p>
-<h2 id="总结">总结</h2>
-<ul>
-<li>适用条件：<strong>最优子结构</strong> +
-<strong>贪心选择性质</strong></li>
+<p>关键点：<code>moved</code> 数组避免重复计已移动的牛；指针 j 单调右移保证整体线性。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>适用条件：<strong>最优子结构</strong> + <strong>贪心选择性质</strong></li>
 <li>先排序，再贪心；按结束时间排序是活动安排类问题的万能起点</li>
 <li>用交换参数证法证明正确性</li>
 <li>遇到硬币找零、背包等经典反例场景，果断换 DP</li>
