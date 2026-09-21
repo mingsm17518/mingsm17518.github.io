@@ -244,7 +244,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" target="_self">
         <div>
-          排序 模板 Python 内置排序（优先使用） 竞赛中绝大多数时候直接用内置的 Timsort（稳定，O(nlog&#8289;n)O(n \log n)）： arr.sort()                        # 原地排序 b = sorted(arr)                   # 返回新列表 arr.sort(reverse=True)            # 降
+          排序 竞赛中优先使用内置 sorted / list.sort（Timsort，稳定 O(nlog&#8289;n)O(n \log n)）；手写六大排序主要用于理解算法与应付考点。排序本身很少是考点，考点是排序后的性质——贪心按序取、双指针要求有序、二分要求有序。 arr.sort(key=lambda x: (-x[0], x[1]))   # 第一维降序、第二维升序 b = sorted(a
         </div>
       </a>
 
@@ -252,7 +252,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-22 01:03" pubdate>
+            <time datetime="2026-09-22 01:05" pubdate>
               2026-09-22
             </time>
           </div>
@@ -295,6 +295,8 @@
               <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">#快速排序</a>
             
               <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">#归并排序</a>
+            
+              <a href="/tags/%E5%A0%86%E6%8E%92%E5%BA%8F/">#堆排序</a>
             
           </div>
         
@@ -369,15 +371,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/1/" target="_self">
-          未命名
+        <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/2/" target="_self">
+          未命名 1
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/1/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/2/" target="_self">
         <div>
-          假设原数组是： [1, -1, 2, 3, -5, 4] 如果一个连续区间的和为 0，就可以删除它。 由于删除以后左右拼接，可能继续形成新的零和窗口。但实际上，最终被删除的元素，可以看成若干个互不重叠的、原数组中的零和子数组。 所以问题变成：  找若干个互不重叠的零和子数组，使它们的总长度最大。   前缀和 + DP 定义： prefix[i] = a[0] + ... + a[i-1] 如果：
+          明白了。现在完整规则应该是：  n q 初始数组全是 0 有 q 个操作：  1 x：反转第 x 个位置 2 l r：只对区间 [l,r] 执行你说的 tmp 规则，并输出 ans  规则：  tmp 为空 → 当前数字放入 tmp tmp 不为空：  当前数字 == tmp → 什么都不做 当前数字 != tmp → ans += 1，然后 tmp 清空    例如： 0 0 1 1 0 1 执
         </div>
       </a>
 
@@ -385,7 +387,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-20 21:01" pubdate>
+            <time datetime="2026-09-20 21:02" pubdate>
               2026-09-20
             </time>
           </div>
@@ -437,15 +439,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/2/" target="_self">
-          未命名 1
+        <a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/1/" target="_self">
+          未命名
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/2/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/1/" target="_self">
         <div>
-          明白了。现在完整规则应该是：  n q 初始数组全是 0 有 q 个操作：  1 x：反转第 x 个位置 2 l r：只对区间 [l,r] 执行你说的 tmp 规则，并输出 ans  规则：  tmp 为空 → 当前数字放入 tmp tmp 不为空：  当前数字 == tmp → 什么都不做 当前数字 != tmp → ans += 1，然后 tmp 清空    例如： 0 0 1 1 0 1 执
+          假设原数组是： [1, -1, 2, 3, -5, 4] 如果一个连续区间的和为 0，就可以删除它。 由于删除以后左右拼接，可能继续形成新的零和窗口。但实际上，最终被删除的元素，可以看成若干个互不重叠的、原数组中的零和子数组。 所以问题变成：  找若干个互不重叠的零和子数组，使它们的总长度最大。   前缀和 + DP 定义： prefix[i] = a[0] + ... + a[i-1] 如果：
         </div>
       </a>
 
@@ -453,7 +455,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-09-20 21:02" pubdate>
+            <time datetime="2026-09-20 21:01" pubdate>
               2026-09-20
             </time>
           </div>

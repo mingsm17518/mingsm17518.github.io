@@ -17,18 +17,19 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Ming">
-  <meta name="keywords" content="排序,快速排序,归并排序">
+  <meta name="keywords" content="排序,快速排序,归并排序,堆排序">
   
-    <meta name="description" content="排序 模板 Python 内置排序（优先使用） 竞赛中绝大多数时候直接用内置的 Timsort（稳定，O(nlog&#8289;n)O(n \log n)）： arr.sort()                        # 原地排序 b &#x3D; sorted(arr)                   # 返回新列表 arr.sort(reverse&#x3D;True)            # 降">
+    <meta name="description" content="排序 竞赛中优先使用内置 sorted &#x2F; list.sort（Timsort，稳定 O(nlog&#8289;n)O(n \log n)）；手写六大排序主要用于理解算法与应付考点。排序本身很少是考点，考点是排序后的性质——贪心按序取、双指针要求有序、二分要求有序。 arr.sort(key&#x3D;lambda x: (-x[0], x[1]))   # 第一维降序、第二维升序 b &#x3D; sorted(a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="06_排序">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="排序 模板 Python 内置排序（优先使用） 竞赛中绝大多数时候直接用内置的 Timsort（稳定，O(nlog&#8289;n)O(n \log n)）： arr.sort()                        # 原地排序 b &#x3D; sorted(arr)                   # 返回新列表 arr.sort(reverse&#x3D;True)            # 降">
+<meta property="og:description" content="排序 竞赛中优先使用内置 sorted &#x2F; list.sort（Timsort，稳定 O(nlog&#8289;n)O(n \log n)）；手写六大排序主要用于理解算法与应付考点。排序本身很少是考点，考点是排序后的性质——贪心按序取、双指针要求有序、二分要求有序。 arr.sort(key&#x3D;lambda x: (-x[0], x[1]))   # 第一维降序、第二维升序 b &#x3D; sorted(a">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-21T17:03:56.688Z">
-<meta property="article:modified_time" content="2026-09-21T17:03:56.690Z">
+<meta property="article:published_time" content="2026-09-21T17:05:53.042Z">
+<meta property="article:modified_time" content="2026-09-21T17:05:53.047Z">
 <meta property="article:author" content="Ming">
+<meta property="article:tag" content="堆排序">
 <meta property="article:tag" content="归并排序">
 <meta property="article:tag" content="快速排序">
 <meta property="article:tag" content="排序">
@@ -219,7 +220,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-22 01:03" pubdate>
+        <time datetime="2026-09-22 01:05" pubdate>
           2026年9月22日 凌晨
         </time>
       </span>
@@ -231,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          791 字
+          1.2k 字
         
       </span>
     
@@ -242,7 +243,7 @@
         
         
         
-          7 分钟
+          11 分钟
         
       </span>
     
@@ -293,7 +294,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2026-09-22T01:03:56+08:00
+                    本文最后更新于 2026-09-22T01:05:53+08:00
                   
                   
 
@@ -304,23 +305,66 @@
               <div class="markdown-body">
                 
                 <h1 id="排序">排序</h1>
-<h2 id="模板">模板</h2>
-<h3 id="python-内置排序优先使用">Python 内置排序（优先使用）</h3>
-<p>竞赛中绝大多数时候直接用内置的
-Timsort（稳定，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math>）：</p>
-<div class="code-wrapper"><pre><code class="hljs python">arr.sort()                        <span class="hljs-comment"># 原地排序</span>
-b = <span class="hljs-built_in">sorted</span>(arr)                   <span class="hljs-comment"># 返回新列表</span>
-arr.sort(reverse=<span class="hljs-literal">True</span>)            <span class="hljs-comment"># 降序</span>
-
-<span class="hljs-comment"># 按 key 排序</span>
-arr.sort(key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>])      <span class="hljs-comment"># 按第二维升序</span>
-arr.sort(key=<span class="hljs-keyword">lambda</span> x: (-x[<span class="hljs-number">0</span>], x[<span class="hljs-number">1</span>]))   <span class="hljs-comment"># 第一维降序、第二维升序</span>
-
-<span class="hljs-comment"># 自定义比较函数（需要 cmp_to_key 包装）</span>
-<span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> cmp_to_key
-arr.sort(key=cmp_to_key(<span class="hljs-keyword">lambda</span> a, b: a - b))</code></pre></div>
-<p>多关键字、绝对值排序等技巧详见《其他算法/08_自定义比较器和坐标压缩》。</p>
-<h3 id="快速排序手写">快速排序（手写）</h3>
+<p>竞赛中优先使用内置 <code>sorted</code> /
+<code>list.sort</code>（Timsort，稳定
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math>）；手写六大排序主要用于理解算法与应付考点。排序本身很少是考点，考点是<strong>排序后的性质</strong>——贪心按序取、双指针要求有序、二分要求有序。</p>
+<div class="code-wrapper"><pre><code class="hljs python">arr.sort(key=<span class="hljs-keyword">lambda</span> x: (-x[<span class="hljs-number">0</span>], x[<span class="hljs-number">1</span>]))   <span class="hljs-comment"># 第一维降序、第二维升序</span>
+b = <span class="hljs-built_in">sorted</span>(arr, key=<span class="hljs-keyword">lambda</span> x: <span class="hljs-built_in">abs</span>(x))   <span class="hljs-comment"># 按绝对值</span></code></pre></div>
+<h2 id="冒泡排序">冒泡排序</h2>
+<p>相邻两两比较，每轮把当前最大值「冒泡」到末尾。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">bubble_sort</span>(<span class="hljs-params">arr</span>):
+    n = <span class="hljs-built_in">len</span>(arr)
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>):
+        swapped = <span class="hljs-literal">False</span>
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span> - i):
+            <span class="hljs-keyword">if</span> arr[j] &gt; arr[j + <span class="hljs-number">1</span>]:
+                arr[j], arr[j + <span class="hljs-number">1</span>] = arr[j + <span class="hljs-number">1</span>], arr[j]
+                swapped = <span class="hljs-literal">True</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> swapped:        <span class="hljs-comment"># 一轮无交换说明已有序，提前结束</span>
+            <span class="hljs-keyword">break</span>
+    <span class="hljs-keyword">return</span> arr</code></pre></div>
+<p>时间
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math>（有序输入
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math>），空间
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math>，<strong>稳定</strong>。</p>
+<h2 id="选择排序">选择排序</h2>
+<p>每轮从未排序部分选出最小值，放到已排序部分的末尾。交换次数最少（至多
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math>
+次），但比较次数固定
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math>。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">selection_sort</span>(<span class="hljs-params">arr</span>):
+    n = <span class="hljs-built_in">len</span>(arr)
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>):
+        mn = i
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, n):
+            <span class="hljs-keyword">if</span> arr[j] &lt; arr[mn]:
+                mn = j
+        arr[i], arr[mn] = arr[mn], arr[i]
+    <span class="hljs-keyword">return</span> arr</code></pre></div>
+<p>时间
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math>，空间
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math>，<strong>不稳定</strong>（交换会跨越相等元素）。</p>
+<h2 id="插入排序">插入排序</h2>
+<p>像整理扑克牌：把新元素插入到前面已排序部分的正确位置。小规模或基本有序的数据非常快，是
+Timsort 的组成部分。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">insertion_sort</span>(<span class="hljs-params">arr</span>):
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(arr)):
+        key = arr[i]
+        j = i - <span class="hljs-number">1</span>
+        <span class="hljs-keyword">while</span> j &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> arr[j] &gt; key:
+            arr[j + <span class="hljs-number">1</span>] = arr[j]   <span class="hljs-comment"># 后移腾位</span>
+            j -= <span class="hljs-number">1</span>
+        arr[j + <span class="hljs-number">1</span>] = key
+    <span class="hljs-keyword">return</span> arr</code></pre></div>
+<p>时间
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math>（基本有序时接近
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math>），空间
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math>，<strong>稳定</strong>。</p>
+<h2 id="快速排序">快速排序</h2>
+<p>分治：<code>partition</code>
+选一个基准（pivot），把比它小的换到左边，基准归位，再对左右两段递归。平均
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math>；数组已有序且总取首元素为基准时退化
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math>（随机化基准可规避）。<strong>不稳定</strong>。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">quick_sort</span>(<span class="hljs-params">arr, low=<span class="hljs-literal">None</span>, high=<span class="hljs-literal">None</span></span>):
     <span class="hljs-keyword">if</span> low <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
         low = <span class="hljs-number">0</span>
@@ -350,7 +394,11 @@ arr.sort(key=cmp_to_key(<span class="hljs-keyword">lambda</span> a, b: a - b))</
     nums = [<span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>]
     quick_sort(nums)
     <span class="hljs-built_in">print</span>(nums)  <span class="hljs-comment"># [1, 1, 2, 3, 6, 8, 10]</span></code></pre></div>
-<h3 id="归并排序手写">归并排序（手写）</h3>
+<h2 id="归并排序">归并排序</h2>
+<p>分治：递归拆成两半各自排好，再线性<strong>归并</strong>两个有序段。任何输入都稳定
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math>，代价是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math>
+辅助数组。<strong>稳定</strong>（相等时先取左半段）。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">merge_sort</span>(<span class="hljs-params">arr</span>):
     <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(arr) &lt;= <span class="hljs-number">1</span>:
         <span class="hljs-keyword">return</span> arr
@@ -374,10 +422,47 @@ arr.sort(key=cmp_to_key(<span class="hljs-keyword">lambda</span> a, b: a - b))</
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
     nums = [<span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>]
     <span class="hljs-built_in">print</span>(merge_sort(nums))  <span class="hljs-comment"># [1, 1, 2, 3, 6, 8, 10]</span></code></pre></div>
-<h2 id="解释">解释</h2>
-<p><strong>用途</strong>：排序本身 rarely
-是考点，考点是<strong>排序后的性质</strong>——贪心按序取、双指针要求有序、二分要求有序。先想清楚「排完序能利用什么性质」。</p>
-<h3 id="复杂度与特性对比">复杂度与特性对比</h3>
+<p><strong>经典应用——逆序对计数</strong>：归并时每当从右半段取走
+<code>right[j]</code>，左半段剩余元素都和它构成逆序对，<code>cnt += len(left) - i</code>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math>
+数完逆序对。</p>
+<h2 id="堆排序">堆排序</h2>
+<p>建大顶堆后反复「取堆顶 + 下沉」。竞赛中直接用
+<code>heapq</code>（见《05_优先队列》）；手写版理解堆的
+<code>sift down</code> 机制：</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">heap_sort</span>(<span class="hljs-params">arr</span>):
+    n = <span class="hljs-built_in">len</span>(arr)
+
+    <span class="hljs-comment"># 自底向上建大顶堆：从最后一个非叶子节点开始下沉</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n // <span class="hljs-number">2</span> - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):
+        sift_down(arr, i, n)
+
+    <span class="hljs-comment"># 每次把最大值换到末尾，堆范围 -1，重新下沉</span>
+    <span class="hljs-keyword">for</span> end <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):
+        arr[<span class="hljs-number">0</span>], arr[end] = arr[end], arr[<span class="hljs-number">0</span>]
+        sift_down(arr, <span class="hljs-number">0</span>, end)
+
+    <span class="hljs-keyword">return</span> arr
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">sift_down</span>(<span class="hljs-params">arr, i, n</span>):
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        largest = i
+        l, r = <span class="hljs-number">2</span> * i + <span class="hljs-number">1</span>, <span class="hljs-number">2</span> * i + <span class="hljs-number">2</span>
+        <span class="hljs-keyword">if</span> l &lt; n <span class="hljs-keyword">and</span> arr[l] &gt; arr[largest]:
+            largest = l
+        <span class="hljs-keyword">if</span> r &lt; n <span class="hljs-keyword">and</span> arr[r] &gt; arr[largest]:
+            largest = r
+        <span class="hljs-keyword">if</span> largest == i:
+            <span class="hljs-keyword">return</span>
+        arr[i], arr[largest] = arr[largest], arr[i]
+        i = largest
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    nums = [<span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>]
+    <span class="hljs-built_in">print</span>(heap_sort(nums))  <span class="hljs-comment"># [1, 1, 2, 3, 6, 8, 10]</span></code></pre></div>
+<p>时间
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math>，空间
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math>，<strong>不稳定</strong>。</p>
+<h2 id="总结">总结</h2>
 <table style="width:100%;">
 
 <thead>
@@ -392,12 +477,29 @@ arr.sort(key=cmp_to_key(<span class="hljs-keyword">lambda</span> a, b: a - b))</
 </thead>
 <tbody>
 <tr>
-<td>Python <code>sort</code></td>
-<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></td>
-<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></td>
-<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></td>
+<td>冒泡排序</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></td>
 <td>✅</td>
-<td>Timsort，实际最快</td>
+<td>有序输入
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></td>
+</tr>
+<tr>
+<td>选择排序</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></td>
+<td>❌</td>
+<td>交换次数最少</td>
+</tr>
+<tr>
+<td>插入排序</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></td>
+<td>✅</td>
+<td>基本有序时最快</td>
 </tr>
 <tr>
 <td>快速排序</td>
@@ -406,7 +508,7 @@ arr.sort(key=cmp_to_key(<span class="hljs-keyword">lambda</span> a, b: a - b))</
 <td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math>
 栈</td>
 <td>❌</td>
-<td>基准随机化可避开最坏</td>
+<td>随机化基准防退化</td>
 </tr>
 <tr>
 <td>归并排序</td>
@@ -416,30 +518,27 @@ arr.sort(key=cmp_to_key(<span class="hljs-keyword">lambda</span> a, b: a - b))</
 <td>✅</td>
 <td>可数逆序对</td>
 </tr>
+<tr>
+<td>堆排序</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></td>
+<td>❌</td>
+<td>竞赛用 heapq</td>
+</tr>
+<tr>
+<td>Python <code>sort</code></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></td>
+<td>✅</td>
+<td>Timsort，首选</td>
+</tr>
 </tbody>
 </table>
-<h3 id="快速排序">快速排序</h3>
-<p>分治：<code>partition</code>
-选一个基准（pivot），把比它小的换到左边、大的留在右边，基准归位；再对左右两段递归。平均
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math>；数组已有序且总取首元素为基准时退化为
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math>（随机化基准可规避）。<strong>不稳定</strong>（交换会打乱相等元素的相对顺序）。</p>
-<h3 id="归并排序">归并排序</h3>
-<p>分治：递归拆成两半各自排好，再线性<strong>归并</strong>两个有序段。任何输入都是稳定
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math>，代价是
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math>
-辅助数组。<strong>稳定</strong>（<code>merge</code>
-里相等时先取左半段）。</p>
-<p><strong>经典应用——逆序对计数</strong>：归并时每当从右半段取走
-<code>right[j]</code>，说明左半段剩余的元素都和它构成逆序对，<code>cnt += len(left) - i</code>。这样在
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math>
-内数完逆序对（比树状数组好写）。</p>
-<h2 id="关联">关联</h2>
-<ul>
-<li>排序配合贪心的经典套路：见《<a
-href="../../刷题笔记/贪心/贪心算法.md">贪心算法</a>》——先排序再贪心</li>
-<li>自定义比较器 /
-坐标压缩（离散化）：见《其他算法/08_自定义比较器和坐标压缩》</li>
-</ul>
+<p><strong>关联</strong>：排序配合贪心的经典套路见《<a
+href="../../刷题笔记/贪心/贪心算法.md">贪心算法</a>》；自定义比较器 /
+坐标压缩见《其他算法/08_自定义比较器和坐标压缩》。</p>
 
                 
               </div>
@@ -485,6 +584,8 @@ href="../../刷题笔记/贪心/贪心算法.md">贪心算法</a>》——先排
         <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="print-no-link">#快速排序</a>
       
         <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" class="print-no-link">#归并排序</a>
+      
+        <a href="/tags/%E5%A0%86%E6%8E%92%E5%BA%8F/" class="print-no-link">#堆排序</a>
       
     </div>
   
