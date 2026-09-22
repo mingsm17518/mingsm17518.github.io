@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="二分查找,贪心">
   
-    <meta name="description" content="小红书9月10日机考题目与解析要将 $m$ 项探测任务按给定顺序安排到连续 $n$ 个时隙。第 $j$ 个时隙的干扰强度为 $a_j$，第 $i$ 项任务占用连续 $b_i$ 个时隙。记 $l_i$ 为第 $i$ 项任务的起始时隙，则其占用区间为 $[l_i,\ l_i + b_i - 1]$。 安排须满足：  任务占用互不重叠：对任意 $i &lt; j$，有 $l_i + b_i - 1 &amp;l">
+    <meta name="description" content="小红书9月10日机考题目与解析 要将 mm 项探测任务按给定顺序安排到连续 nn 个时隙。第 jj 个时隙的干扰强度为 aja_j，第 ii 项任务占用连续 bib_i 个时隙。记 lil_i 为第 ii 项任务的起始时隙，则其占用区间为 [li,li+bi−1][l_i,\ l_i + b_i - 1]。 安排须满足：  任务占用互不重叠：对任意 i&lt;ji &lt; j，有 li+bi−1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第1题-最小化峰值干扰">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E6%9C%80%E5%B0%8F%E5%8C%96%E5%B3%B0%E5%80%BC%E5%B9%B2%E6%89%B0/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="小红书9月10日机考题目与解析要将 $m$ 项探测任务按给定顺序安排到连续 $n$ 个时隙。第 $j$ 个时隙的干扰强度为 $a_j$，第 $i$ 项任务占用连续 $b_i$ 个时隙。记 $l_i$ 为第 $i$ 项任务的起始时隙，则其占用区间为 $[l_i,\ l_i + b_i - 1]$。 安排须满足：  任务占用互不重叠：对任意 $i &lt; j$，有 $l_i + b_i - 1 &amp;l">
+<meta property="og:description" content="小红书9月10日机考题目与解析 要将 mm 项探测任务按给定顺序安排到连续 nn 个时隙。第 jj 个时隙的干扰强度为 aja_j，第 ii 项任务占用连续 bib_i 个时隙。记 lil_i 为第 ii 项任务的起始时隙，则其占用区间为 [li,li+bi−1][l_i,\ l_i + b_i - 1]。 安排须满足：  任务占用互不重叠：对任意 i&lt;ji &lt; j，有 li+bi−1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-20T08:31:47.721Z">
 <meta property="article:modified_time" content="2026-09-20T08:34:35.646Z">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          733 字
+          803 字
         
       </span>
     
@@ -280,6 +280,59 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+<style>
+.doc-tree {
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.doc-tree .dt-title {
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+}
+.doc-tree details {
+  margin-left: 0;
+}
+.doc-tree details details {
+  margin-left: 0.85em;
+}
+.doc-tree summary {
+  cursor: pointer;
+  padding: 1px 0.5rem;
+  border-radius: 6px;
+  color: var(--text-3, #555);
+  user-select: none;
+}
+.doc-tree summary:hover {
+  background: rgba(128, 128, 128, 0.12);
+}
+.doc-tree a {
+  display: block;
+  padding: 1px 0.5rem 1px 1.7em;
+  color: var(--text-3, #666);
+  text-decoration: none;
+  border-radius: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.doc-tree a:hover {
+  background: rgba(128, 128, 128, 0.12);
+  color: var(--primary, #333);
+}
+.doc-tree a.current {
+  color: #fff;
+  background: var(--primary, #2f4154);
+}
+</style>
+
+
+
+<div class="doc-tree">
+  <div class="dt-title">目录树</div>
+  <details open><summary>刷题笔记</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/00-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E6%80%BB%E8%A7%88/" title="刷题笔记总览">刷题笔记总览</a><a href="/2026/05/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/BFS-DFS%20%E4%BE%8B%E9%A2%98/" title="Graph 图">Graph 图</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8F%8C%E6%8C%87%E9%92%88%20-%20Problems/" title="Two Pointer - Problems">Two Pointer - Problems</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/03_%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" title="Casework 案例分析">Casework 案例分析</a><details><summary>Hot100</summary><details><summary>中等</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%B8%AD%E7%AD%89/2.%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" title="2. 两数相加">2. 两数相加</a></details><details><summary>二叉树</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/101.%20%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" title="101. 对称二叉树">101. 对称二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/104.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" title="104. 二叉树的最大深度">104. 二叉树的最大深度</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" title="226. 翻转二叉树">226. 翻转二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/617.%20%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/" title="617. 合并二叉树">617. 合并二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/543.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" title="543. 二叉树的直径">543. 二叉树的直径</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/94.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" title="94. 二叉树的中序遍历">94. 二叉树的中序遍历</a></details><details><summary>位运算</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" title="136. 只出现一次的数字">136. 只出现一次的数字</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/338.%20%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" title="338. 比特位计数">338. 比特位计数</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/461.%20%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" title="461. 汉明距离">461. 汉明距离</a></details><details><summary>动态规划</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/70.%20%E7%88%AC%E6%A5%BC%E6%A2%AF/" title="70. 爬楼梯">70. 爬楼梯</a></details><details><summary>双指针</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/283.%20%E7%A7%BB%E5%8A%A8%E9%9B%B6/" title="283. 移动零">283. 移动零</a></details><details><summary>哈希</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="1. 两数之和">1. 两数之和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/169.%20%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/" title="169. 多数元素">169. 多数元素</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/448.%20%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" title="448. 找到所有数组中消失的数字">448. 找到所有数组中消失的数字</a></details><details><summary>栈</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" title="20. 有效的括号">20. 有效的括号</a></details><details><summary>贪心</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机">121. 买卖股票的最佳时机</a></details><details><summary>链表</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" title="141. 环形链表">141. 环形链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="206. 反转链表">206. 反转链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/160.%20%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" title="160. 相交链表">160. 相交链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/21.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" title="21. 合并两个有序链表">21. 合并两个有序链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/234.%20%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" title="234. 回文链表">234. 回文链表</a></details></details><details><summary>Leetcode</summary><a href="/2026/09/13/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/78.%20%E5%AD%90%E9%9B%86/" title="78. 子集">78. 子集</a></details><details><summary>华为机考</summary><a href="/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83%E9%A2%98%E5%9E%8B/" title="华为机考题型">华为机考题型</a><details><summary>leetcode</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/" title="无重复字符的最长子串（Longest Substring Without Repeating Characters）">无重复字符的最长子串（Longest Substring Without Repeating Characters）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/06_zigzag_convert/" title="Z 字形变换（Zigzag Conversion）">Z 字形变换（Zigzag Conversion）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/01_two_sum/" title="两数之和（Two Sum）">两数之和（Two Sum）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/05_longest_palindrome/" title="最长回文子串（Longest Palindromic Substring）">最长回文子串（Longest Palindromic Substring）</a></details><details><summary>nowcoder</summary><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/HJ114-%E5%AE%9D%E7%9F%B3%E6%89%8B%E4%B8%B2/" title="HJ114 宝石手串">HJ114 宝石手串</a><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ113-%E7%81%AB%E8%BD%A6%E8%BF%9B%E7%AB%99/" title="HJ113 火车进站">HJ113 火车进站</a><a href="/2026/05/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ150_%E5%85%A8%E6%8E%92%E5%88%97/" title="HJ150 全排列">HJ150 全排列</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/" title="HJ149 数水坑">HJ149 数水坑</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ59-%E6%95%B0%E7%BB%84%E5%88%86%E7%BB%84/" title="HJ59 数组分组">HJ59 数组分组</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ148-%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF/" title="HJ148 迷宫寻路">HJ148 迷宫寻路</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/" title="明文分组（HJ3）">明文分组（HJ3）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/12_longest_digit_substring/" title="最长数字子串（HJ12）">最长数字子串（HJ12）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/07_remove_least_freq_chars/" title="删除出现次数最少的字符（HJ7）">删除出现次数最少的字符（HJ7）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/14_sort_strings/" title="字符串排序（HJ14）">字符串排序（HJ14）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/16_palindrome/" title="最长回文子串（HJ16）">最长回文子串（HJ16）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/" title="第一个只出现一次的字符（HJ13）">第一个只出现一次的字符（HJ13）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/19_string_sort/" title="字符串排序（HJ19）">字符串排序（HJ19）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/17_string_match/" title="字符串字符匹配（HJ17）">字符串字符匹配（HJ17）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/20_brother_words/" title="查找兄弟单词（HJ20）">查找兄弟单词（HJ20）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/" title="字符串变换（HJ15）">字符串变换（HJ15）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/21_longest_common_substring/" title="查找两个字符串a,b中的最长公共子串（HJ21）">查找两个字符串a,b中的最长公共子串（HJ21）</a></details></details><details><summary>小红书</summary><details><summary>2025年9月7日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%B6%85%E7%BA%A7%E9%87%8D%E6%8E%92/" title="第1题-超级重排">第1题-超级重排</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E8%A1%8C%E4%B8%BA%E6%9D%83%E9%87%8D2/" title="第2题-行为权重2">第2题-行为权重2</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E8%BD%B0%E7%82%B8%E6%9C%BA/" title="第3题-轰炸机">第3题-轰炸机</a></details><details><summary>2026年9月10日</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E6%9C%80%E5%B0%8F%E5%8C%96%E5%B3%B0%E5%80%BC%E5%B9%B2%E6%89%B0/" class="current" title="第1题-最小化峰值干扰">第1题-最小化峰值干扰</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" title="第2题-双通道评测格网">第2题-双通道评测格网</a></details><details><summary>2026年9月13日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%BE%BE%E4%BA%BA%E6%95%B0%E6%8D%AE%E7%9C%8B%E6%9D%BF/" title="第1题-达人数据看板">第1题-达人数据看板</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E4%B8%93%E6%A0%8F%E6%94%B9%E6%8C%82%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E7%BB%BC%E5%90%88%E8%AF%84%E5%88%86/" title="第3题-专栏改挂后的最大综合评分">第3题-专栏改挂后的最大综合评分</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E9%81%BF%E9%87%8D%E5%8F%A3%E4%BB%A4/" title="第2题-避重口令">第2题-避重口令</a></details><details><summary>2026年9月17日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8A%A0%E9%80%9F%E7%AA%97%E5%8F%A3%E6%94%B6%E7%9B%8A/" title="第2题-加速窗口收益">第2题-加速窗口收益</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/" title="第3题-待发热度重排">第3题-待发热度重排</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%80%89%E6%8B%A9%E9%A2%98/" title="第1题-选择题">第1题-选择题</a></details><details><summary>2026年9月20日</summary><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%9B%B6%E5%92%8C%E5%8C%BA%E9%97%B4%E5%88%A0%E9%99%A4/" title="第1题-零和区间删除">第1题-零和区间删除</a><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8C%BA%E9%97%B4%E9%85%8D%E5%AF%B9%E8%AE%A1%E6%95%B0/" title="第2题-区间配对计数">第2题-区间配对计数</a></details><details><summary>练习题</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC1%E9%A2%98%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C/" title="第1题：数列求和">第1题：数列求和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC2%E9%A2%98%EF%BC%9A%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" title="第2题：水仙花数">第2题：水仙花数</a></details></details><details><summary>贪心</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="贪心算法">贪心算法</a></details><details><summary>题目-完全搜索</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/01_Milk%20Pails/" title="Milk Pails">Milk Pails</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/02_Diamond_Collector/" title="Diamond Collector">Diamond Collector</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/04_Counting_Liars/" title="Counting Liars">Counting Liars</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" title="Complete Search 完全搜索">Complete Search 完全搜索</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/05_Cow_Gymnastics/" title="Cow Gymnastics">Cow Gymnastics</a></details></details><details open><summary>开发杂记</summary><a href="/2026/09/20/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/conda%20%E4%B8%8E%20uv/" title="conda 与 uv">conda 与 uv</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/" title="bug修复：GPU内存不足问题">bug修复：GPU内存不足问题</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/" title="expected str, bytes or os.PathLike object, not MultiplexedPath">expected str, bytes or os.PathLike object, not MultiplexedPath</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/" title="git">git</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/" title="huggingface">huggingface</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/tumx/" title="tumx">tumx</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/push%20%E5%88%B0%20github%20%E6%97%B6%E5%87%BA%E9%94%99/" title="push 到 github 时出错">push 到 github 时出错</a></details><details open><summary>算法学习</summary><details><summary>01_数据结构</summary><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" title="01_列表">01_列表</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/00_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" title="00_数据结构总览">00_数据结构总览</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E5%AD%97%E5%85%B8/" title="02_字典">02_字典</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" title="03_集合">03_集合</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" title="04_队列与栈">04_队列与栈</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" title="07_Python工具函数">07_Python工具函数</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/05_%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="05_字符串">05_字符串</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/08_%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="08_高级数据结构">08_高级数据结构</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="06_输入输出">06_输入输出</a></details><details><summary>02_核心算法</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" title="01_前缀和">01_前缀和</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" title="02_差分数组">02_差分数组</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="03_二分查找">03_二分查找</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="04_滑动窗口">04_滑动窗口</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" title="05_优先队列">05_优先队列</a><a href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" title="06_排序">06_排序</a></details><details><summary>05_动态规划</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E8%83%8C%E5%8C%85DP/" title="02-背包DP">02-背包DP</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/" title="01_Introduction to DP 动态规划简介">01_Introduction to DP 动态规划简介</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" title="04_Longest Increasing Subsequence 最长递增子序列">04_Longest Increasing Subsequence 最长递增子序列</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/05_%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" title="03_Paths on Grids 网格路径问题">03_Paths on Grids 网格路径问题</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%EF%BC%88Kadane%20%E7%AE%97%E6%B3%95%EF%BC%89/" title="最大子数组和（Kadane 算法）">最大子数组和（Kadane 算法）</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Chicken_Jockey%20%E9%A2%98%E8%A7%A3/" title="算法学习/05_动态规划/Chicken_Jockey 题解">算法学习/05_动态规划/Chicken_Jockey 题解</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="09_动态规划">09_动态规划</a></details><details><summary>06_Graphs</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/05_%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="05_并查集">05_并查集</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/" title="07_图论">07_图论</a><a href="/2026/05/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/06_%E6%9C%89%E5%90%91%E5%9B%BE%E7%8E%AF%E6%A3%80%E6%B5%8B/" title="06_Cycle Detection in Directed Graph 有向图环检测">06_Cycle Detection in Directed Graph 有向图环检测</a></details><details><summary>其他算法</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/06_%E6%95%B0%E8%AE%BA/" title="07_数论">07_数论</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" title="Rectangle Geometry 矩形几何">Rectangle Geometry 矩形几何</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="07_使用递归的穷举搜索">07_使用递归的穷举搜索</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/08_%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/" title="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩">Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩</a></details></details>
+</div>
 
     </div>
 
@@ -302,21 +355,56 @@
             
               <div class="markdown-body">
                 
-                <h1 id="小红书9月10日机考题目与解析"><a href="#小红书9月10日机考题目与解析" class="headerlink" title="小红书9月10日机考题目与解析"></a>小红书9月10日机考题目与解析</h1><p>要将 $m$ 项探测任务按给定顺序安排到连续 $n$ 个时隙。第 $j$ 个时隙的干扰强度为 $a_j$，第 $i$ 项任务占用连续 $b_i$ 个时隙。记 $l_i$ 为第 $i$ 项任务的起始时隙，则其占用区间为 $[l_i,\ l_i + b_i - 1]$。</p>
+                <h1 id="小红书9月10日机考题目与解析">小红书9月10日机考题目与解析</h1>
+<p>要将
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+项探测任务按给定顺序安排到连续
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+个时隙。第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+个时隙的干扰强度为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>j</mi></msub><annotation encoding="application/x-tex">a_j</annotation></semantics></math>，第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+项任务占用连续
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>i</mi></msub><annotation encoding="application/x-tex">b_i</annotation></semantics></math>
+个时隙。记
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>l</mi><mi>i</mi></msub><annotation encoding="application/x-tex">l_i</annotation></semantics></math>
+为第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+项任务的起始时隙，则其占用区间为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><msub><mi>l</mi><mi>i</mi></msub><mo>,</mo><mspace width="0.222em"></mspace><msub><mi>l</mi><mi>i</mi></msub><mo>+</mo><msub><mi>b</mi><mi>i</mi></msub><mo>−</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[l_i,\ l_i + b_i - 1]</annotation></semantics></math>。</p>
 <p>安排须满足：</p>
-<ol>
-<li>任务占用互不重叠：对任意 $i &lt; j$，有 $l_i + b_i - 1 &lt; l_j$；任务之间可空出任意个时隙。</li>
-<li>任务保持给定顺序：$l_1 &lt; l_2 &lt; \cdots &lt; l_m$。</li>
-<li>均落在时隙范围内：$1 \le l_i$ 且 $l_i + b_i - 1 \le n$。</li>
+<ol type="1">
+<li>任务占用互不重叠：对任意
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i &lt; j</annotation></semantics></math>，有
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mi>i</mi></msub><mo>+</mo><msub><mi>b</mi><mi>i</mi></msub><mo>−</mo><mn>1</mn><mo>&lt;</mo><msub><mi>l</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">l_i + b_i - 1 &lt; l_j</annotation></semantics></math>；任务之间可空出任意个时隙。</li>
+<li>任务保持给定顺序：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>l</mi><mn>2</mn></msub><mo>&lt;</mo><mi>⋯</mi><mo>&lt;</mo><msub><mi>l</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">l_1 &lt; l_2 &lt; \cdots &lt; l_m</annotation></semantics></math>。</li>
+<li>均落在时隙范围内：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><msub><mi>l</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">1 \le l_i</annotation></semantics></math>
+且
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mi>i</mi></msub><mo>+</mo><msub><mi>b</mi><mi>i</mi></msub><mo>−</mo><mn>1</mn><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">l_i + b_i - 1 \le n</annotation></semantics></math>。</li>
 </ol>
 <p>峰值干扰为</p>
-<script type="math/tex; mode=display">\max_{i=1}^{m}\ \max_{j=l_i}^{l_i + b_i - 1} a_j</script><p>求所有合法安排下峰值干扰的最小值。</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munderover><mi mathvariant="normal">max</mi><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><mspace width="0.222em"></mspace><munderover><mi mathvariant="normal">max</mi><mrow><mi>j</mi><mo>=</mo><msub><mi>l</mi><mi>i</mi></msub></mrow><mrow><msub><mi>l</mi><mi>i</mi></msub><mo>+</mo><msub><mi>b</mi><mi>i</mi></msub><mo>−</mo><mn>1</mn></mrow></munderover><msub><mi>a</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\max_{i=1}^{m}\ \max_{j=l_i}^{l_i + b_i - 1} a_j</annotation></semantics></math></p>
+<p>求所有合法安排下峰值干扰的最小值。</p>
 <p><strong>输入描述</strong></p>
-<p>第一行一个正整数 $T$，表示测试数据组数。</p>
-<p>对于每组测试数据：<br>第一行两个正整数 $n, m$，表示时隙数和任务数；<br>第二行 $n$ 个正整数 $a_1, a_2, \ldots, a_n$，表示每个时隙的干扰强度；<br>第三行 $m$ 个正整数 $b_1, b_2, \ldots, b_m$，表示每项任务占用的时隙数。</p>
+<p>第一行一个正整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>，表示测试数据组数。</p>
+<p>对于每组测试数据： 第一行两个正整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>,</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n, m</annotation></semantics></math>，表示时隙数和任务数；
+第二行
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+个正整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">a_1, a_2, \ldots, a_n</annotation></semantics></math>，表示每个时隙的干扰强度；
+第三行
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+个正整数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>b</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">b_1, b_2, \ldots, b_m</annotation></semantics></math>，表示每项任务占用的时隙数。</p>
 <p><strong>输出描述</strong></p>
 <p>对于每组测试数据，输出一行一个整数，表示峰值干扰的最小值。</p>
-<p><strong>数据范围</strong>：$1 \le T \le 2 \times 10^5$，所有测试数据的 $n$ 之和 $\le 2 \times 10^5$，$1 \le m \le n$，$1 \le a_i \le 10^9$，$1 \le b_i \le n$，$\sum b_i \le n$。</p>
+<p><strong>数据范围</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>T</mi><mo>≤</mo><mn>2</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">1 \le T \le 2 \times 10^5</annotation></semantics></math>，所有测试数据的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+之和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mn>2</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">\le 2 \times 10^5</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 \le m \le n</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><msub><mi>a</mi><mi>i</mi></msub><mo>≤</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">1 \le a_i \le 10^9</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><msub><mi>b</mi><mi>i</mi></msub><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 \le b_i \le n</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><msub><mi>b</mi><mi>i</mi></msub><mo>≤</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\sum b_i \le n</annotation></semantics></math>。</p>
 <p><strong>样例 1</strong></p>
 <p>输入：</p>
 <div class="code-wrapper"><pre><code class="hljs basic"><span class="hljs-number">2</span>
@@ -329,15 +417,49 @@
 <p>输出：</p>
 <div class="code-wrapper"><pre><code class="hljs">4
 3</code></pre></div>
-<p><strong>说明</strong>：</p>
-<ul>
-<li>第一组：第一项任务放在 $[2,3]$（覆盖 $1, 3$，最大值 $3$），第二项放在 $[5,7]$（覆盖 $2, 1, 4$，最大值 $4$），峰值 $\max(3,4)=4$。若要求峰值不超过 $3$，则时隙 $1$、$4$、$7$ 不可用，剩余连续段长度不足以放下长度为 $3$ 的第二项任务。</li>
-<li>第二组：三项任务分别放在时隙 $1$、$3$ 与 $[4,5]$（覆盖 $2$；$1$；$1,3$），峰值 $\max(2,1,3)=3$。若要求峰值不超过 $2$，则时隙 $2$、$5$ 不可用，无法为第三项任务找到长度为 $2$ 的连续段。</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>二分答案 + 贪心验证。「峰值干扰的最小值」满足单调性：上限 $x$ 越大越容易安排。</p>
-<p>验证 <code>fun(x)</code>：干扰 $\le x$ 的时隙视为可用，任务必须<strong>整段放进同一个连续可用段</strong>且保持顺序。顺序扫描：累计当前连续可用长度 <code>last</code>，凑够 $b_i$ 就放置并清零；扫描结束前放完全部 $m$ 项则可行。注意不可用时隙会把连续段打断（<code>last</code> 清零）。</p>
-<p>在 $[\min a,\ \max a]$ 上二分最小可行 $x$，验证 $O(n)$，总复杂度 $O(n \log \max a)$。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><div class="code-wrapper"><pre><code class="hljs python">t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
+<p><strong>说明</strong>： - 第一组：第一项任务放在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[2,3]</annotation></semantics></math>（覆盖
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">1, 3</annotation></semantics></math>，最大值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>），第二项放在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>5</mn><mo>,</mo><mn>7</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[5,7]</annotation></semantics></math>（覆盖
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">2, 1, 4</annotation></semantics></math>，最大值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>4</mn><annotation encoding="application/x-tex">4</annotation></semantics></math>），峰值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">\max(3,4)=4</annotation></semantics></math>。若要求峰值不超过
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>，则时隙
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>4</mn><annotation encoding="application/x-tex">4</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>7</mn><annotation encoding="application/x-tex">7</annotation></semantics></math>
+不可用，剩余连续段长度不足以放下长度为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>
+的第二项任务。 - 第二组：三项任务分别放在时隙
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>
+与
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[4,5]</annotation></semantics></math>（覆盖
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">1,3</annotation></semantics></math>），峰值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\max(2,1,3)=3</annotation></semantics></math>。若要求峰值不超过
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>，则时隙
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>5</mn><annotation encoding="application/x-tex">5</annotation></semantics></math>
+不可用，无法为第三项任务找到长度为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>
+的连续段。</p>
+<h2 id="思路">思路</h2>
+<p>二分答案 + 贪心验证。「峰值干扰的最小值」满足单调性：上限
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+越大越容易安排。</p>
+<p>验证 <code>fun(x)</code>：干扰
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\le x</annotation></semantics></math>
+的时隙视为可用，任务必须<strong>整段放进同一个连续可用段</strong>且保持顺序。顺序扫描：累计当前连续可用长度
+<code>last</code>，凑够
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>i</mi></msub><annotation encoding="application/x-tex">b_i</annotation></semantics></math>
+就放置并清零；扫描结束前放完全部
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+项则可行。注意不可用时隙会把连续段打断（<code>last</code> 清零）。</p>
+<p>在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mi>a</mi><mo>,</mo><mspace width="0.222em"></mspace><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mi>a</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[\min a,\ \max a]</annotation></semantics></math>
+上二分最小可行
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>，验证
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math>，总复杂度
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false" form="prefix">(</mo><mi>n</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">O(n \log \max a)</annotation></semantics></math>。</p>
+<h2 id="代码">代码</h2>
+<div class="code-wrapper"><pre><code class="hljs python">t = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>():
     n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())

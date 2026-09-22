@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="坐标压缩,排序,自定义比较器">
   
-    <meta name="description" content="Custom Comparators and Coordinate Compression自定义比较器和坐标压缩本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序排序不仅限于数字，还可以用于任意对象。 方法一：使用元组将对象与排序关键字打包成元组： edge_num &#x3D; 4 edges &#x3D; [] for _ in range(edge_num):     a, b, wi">
+    <meta name="description" content="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩 本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序 排序不仅限于数字，还可以用于任意对象。 方法一：使用元组 将对象与排序关键字打包成元组： edge_num &#x3D; 4 edges &#x3D; [] for _ in range(edge_num):     a, b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/08_%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="Custom Comparators and Coordinate Compression自定义比较器和坐标压缩本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序排序不仅限于数字，还可以用于任意对象。 方法一：使用元组将对象与排序关键字打包成元组： edge_num &#x3D; 4 edges &#x3D; [] for _ in range(edge_num):     a, b, wi">
+<meta property="og:description" content="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩 本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。  一、自定义排序 排序不仅限于数字，还可以用于任意对象。 方法一：使用元组 将对象与排序关键字打包成元组： edge_num &#x3D; 4 edges &#x3D; [] for _ in range(edge_num):     a, b">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-30T09:02:14.000Z">
 <meta property="article:modified_time" content="2026-09-20T08:34:35.650Z">
@@ -281,6 +281,59 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+<style>
+.doc-tree {
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.doc-tree .dt-title {
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+}
+.doc-tree details {
+  margin-left: 0;
+}
+.doc-tree details details {
+  margin-left: 0.85em;
+}
+.doc-tree summary {
+  cursor: pointer;
+  padding: 1px 0.5rem;
+  border-radius: 6px;
+  color: var(--text-3, #555);
+  user-select: none;
+}
+.doc-tree summary:hover {
+  background: rgba(128, 128, 128, 0.12);
+}
+.doc-tree a {
+  display: block;
+  padding: 1px 0.5rem 1px 1.7em;
+  color: var(--text-3, #666);
+  text-decoration: none;
+  border-radius: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.doc-tree a:hover {
+  background: rgba(128, 128, 128, 0.12);
+  color: var(--primary, #333);
+}
+.doc-tree a.current {
+  color: #fff;
+  background: var(--primary, #2f4154);
+}
+</style>
+
+
+
+<div class="doc-tree">
+  <div class="dt-title">目录树</div>
+  <details open><summary>刷题笔记</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/00-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E6%80%BB%E8%A7%88/" title="刷题笔记总览">刷题笔记总览</a><a href="/2026/05/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/BFS-DFS%20%E4%BE%8B%E9%A2%98/" title="Graph 图">Graph 图</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8F%8C%E6%8C%87%E9%92%88%20-%20Problems/" title="Two Pointer - Problems">Two Pointer - Problems</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/03_%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" title="Casework 案例分析">Casework 案例分析</a><details><summary>Hot100</summary><details><summary>中等</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%B8%AD%E7%AD%89/2.%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" title="2. 两数相加">2. 两数相加</a></details><details><summary>二叉树</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/101.%20%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" title="101. 对称二叉树">101. 对称二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/104.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" title="104. 二叉树的最大深度">104. 二叉树的最大深度</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" title="226. 翻转二叉树">226. 翻转二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/617.%20%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/" title="617. 合并二叉树">617. 合并二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/543.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" title="543. 二叉树的直径">543. 二叉树的直径</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/94.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" title="94. 二叉树的中序遍历">94. 二叉树的中序遍历</a></details><details><summary>位运算</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" title="136. 只出现一次的数字">136. 只出现一次的数字</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/338.%20%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" title="338. 比特位计数">338. 比特位计数</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/461.%20%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" title="461. 汉明距离">461. 汉明距离</a></details><details><summary>动态规划</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/70.%20%E7%88%AC%E6%A5%BC%E6%A2%AF/" title="70. 爬楼梯">70. 爬楼梯</a></details><details><summary>双指针</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/283.%20%E7%A7%BB%E5%8A%A8%E9%9B%B6/" title="283. 移动零">283. 移动零</a></details><details><summary>哈希</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="1. 两数之和">1. 两数之和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/169.%20%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/" title="169. 多数元素">169. 多数元素</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/448.%20%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" title="448. 找到所有数组中消失的数字">448. 找到所有数组中消失的数字</a></details><details><summary>栈</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" title="20. 有效的括号">20. 有效的括号</a></details><details><summary>贪心</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机">121. 买卖股票的最佳时机</a></details><details><summary>链表</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" title="141. 环形链表">141. 环形链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="206. 反转链表">206. 反转链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/160.%20%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" title="160. 相交链表">160. 相交链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/21.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" title="21. 合并两个有序链表">21. 合并两个有序链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/234.%20%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" title="234. 回文链表">234. 回文链表</a></details></details><details><summary>Leetcode</summary><a href="/2026/09/13/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/78.%20%E5%AD%90%E9%9B%86/" title="78. 子集">78. 子集</a></details><details><summary>华为机考</summary><a href="/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83%E9%A2%98%E5%9E%8B/" title="华为机考题型">华为机考题型</a><details><summary>leetcode</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/" title="无重复字符的最长子串（Longest Substring Without Repeating Characters）">无重复字符的最长子串（Longest Substring Without Repeating Characters）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/06_zigzag_convert/" title="Z 字形变换（Zigzag Conversion）">Z 字形变换（Zigzag Conversion）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/01_two_sum/" title="两数之和（Two Sum）">两数之和（Two Sum）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/05_longest_palindrome/" title="最长回文子串（Longest Palindromic Substring）">最长回文子串（Longest Palindromic Substring）</a></details><details><summary>nowcoder</summary><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/HJ114-%E5%AE%9D%E7%9F%B3%E6%89%8B%E4%B8%B2/" title="HJ114 宝石手串">HJ114 宝石手串</a><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ113-%E7%81%AB%E8%BD%A6%E8%BF%9B%E7%AB%99/" title="HJ113 火车进站">HJ113 火车进站</a><a href="/2026/05/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ150_%E5%85%A8%E6%8E%92%E5%88%97/" title="HJ150 全排列">HJ150 全排列</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/" title="HJ149 数水坑">HJ149 数水坑</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ59-%E6%95%B0%E7%BB%84%E5%88%86%E7%BB%84/" title="HJ59 数组分组">HJ59 数组分组</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ148-%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF/" title="HJ148 迷宫寻路">HJ148 迷宫寻路</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/" title="明文分组（HJ3）">明文分组（HJ3）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/12_longest_digit_substring/" title="最长数字子串（HJ12）">最长数字子串（HJ12）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/07_remove_least_freq_chars/" title="删除出现次数最少的字符（HJ7）">删除出现次数最少的字符（HJ7）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/14_sort_strings/" title="字符串排序（HJ14）">字符串排序（HJ14）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/16_palindrome/" title="最长回文子串（HJ16）">最长回文子串（HJ16）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/" title="第一个只出现一次的字符（HJ13）">第一个只出现一次的字符（HJ13）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/19_string_sort/" title="字符串排序（HJ19）">字符串排序（HJ19）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/17_string_match/" title="字符串字符匹配（HJ17）">字符串字符匹配（HJ17）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/20_brother_words/" title="查找兄弟单词（HJ20）">查找兄弟单词（HJ20）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/" title="字符串变换（HJ15）">字符串变换（HJ15）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/21_longest_common_substring/" title="查找两个字符串a,b中的最长公共子串（HJ21）">查找两个字符串a,b中的最长公共子串（HJ21）</a></details></details><details><summary>小红书</summary><details><summary>2025年9月7日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%B6%85%E7%BA%A7%E9%87%8D%E6%8E%92/" title="第1题-超级重排">第1题-超级重排</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E8%A1%8C%E4%B8%BA%E6%9D%83%E9%87%8D2/" title="第2题-行为权重2">第2题-行为权重2</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E8%BD%B0%E7%82%B8%E6%9C%BA/" title="第3题-轰炸机">第3题-轰炸机</a></details><details><summary>2026年9月10日</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E6%9C%80%E5%B0%8F%E5%8C%96%E5%B3%B0%E5%80%BC%E5%B9%B2%E6%89%B0/" title="第1题-最小化峰值干扰">第1题-最小化峰值干扰</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" title="第2题-双通道评测格网">第2题-双通道评测格网</a></details><details><summary>2026年9月13日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%BE%BE%E4%BA%BA%E6%95%B0%E6%8D%AE%E7%9C%8B%E6%9D%BF/" title="第1题-达人数据看板">第1题-达人数据看板</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E4%B8%93%E6%A0%8F%E6%94%B9%E6%8C%82%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E7%BB%BC%E5%90%88%E8%AF%84%E5%88%86/" title="第3题-专栏改挂后的最大综合评分">第3题-专栏改挂后的最大综合评分</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E9%81%BF%E9%87%8D%E5%8F%A3%E4%BB%A4/" title="第2题-避重口令">第2题-避重口令</a></details><details><summary>2026年9月17日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8A%A0%E9%80%9F%E7%AA%97%E5%8F%A3%E6%94%B6%E7%9B%8A/" title="第2题-加速窗口收益">第2题-加速窗口收益</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/" title="第3题-待发热度重排">第3题-待发热度重排</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%80%89%E6%8B%A9%E9%A2%98/" title="第1题-选择题">第1题-选择题</a></details><details><summary>2026年9月20日</summary><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%9B%B6%E5%92%8C%E5%8C%BA%E9%97%B4%E5%88%A0%E9%99%A4/" title="第1题-零和区间删除">第1题-零和区间删除</a><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8C%BA%E9%97%B4%E9%85%8D%E5%AF%B9%E8%AE%A1%E6%95%B0/" title="第2题-区间配对计数">第2题-区间配对计数</a></details><details><summary>练习题</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC1%E9%A2%98%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C/" title="第1题：数列求和">第1题：数列求和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC2%E9%A2%98%EF%BC%9A%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" title="第2题：水仙花数">第2题：水仙花数</a></details></details><details><summary>贪心</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="贪心算法">贪心算法</a></details><details><summary>题目-完全搜索</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/01_Milk%20Pails/" title="Milk Pails">Milk Pails</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/02_Diamond_Collector/" title="Diamond Collector">Diamond Collector</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/04_Counting_Liars/" title="Counting Liars">Counting Liars</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" title="Complete Search 完全搜索">Complete Search 完全搜索</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/05_Cow_Gymnastics/" title="Cow Gymnastics">Cow Gymnastics</a></details></details><details open><summary>开发杂记</summary><a href="/2026/09/20/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/conda%20%E4%B8%8E%20uv/" title="conda 与 uv">conda 与 uv</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/" title="bug修复：GPU内存不足问题">bug修复：GPU内存不足问题</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/" title="expected str, bytes or os.PathLike object, not MultiplexedPath">expected str, bytes or os.PathLike object, not MultiplexedPath</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/" title="git">git</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/" title="huggingface">huggingface</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/tumx/" title="tumx">tumx</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/push%20%E5%88%B0%20github%20%E6%97%B6%E5%87%BA%E9%94%99/" title="push 到 github 时出错">push 到 github 时出错</a></details><details open><summary>算法学习</summary><details><summary>01_数据结构</summary><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" title="01_列表">01_列表</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/00_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" title="00_数据结构总览">00_数据结构总览</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E5%AD%97%E5%85%B8/" title="02_字典">02_字典</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" title="03_集合">03_集合</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" title="04_队列与栈">04_队列与栈</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" title="07_Python工具函数">07_Python工具函数</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/05_%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="05_字符串">05_字符串</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/08_%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="08_高级数据结构">08_高级数据结构</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="06_输入输出">06_输入输出</a></details><details><summary>02_核心算法</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" title="01_前缀和">01_前缀和</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" title="02_差分数组">02_差分数组</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="03_二分查找">03_二分查找</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="04_滑动窗口">04_滑动窗口</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" title="05_优先队列">05_优先队列</a><a href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" title="06_排序">06_排序</a></details><details><summary>05_动态规划</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E8%83%8C%E5%8C%85DP/" title="02-背包DP">02-背包DP</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/" title="01_Introduction to DP 动态规划简介">01_Introduction to DP 动态规划简介</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" title="04_Longest Increasing Subsequence 最长递增子序列">04_Longest Increasing Subsequence 最长递增子序列</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/05_%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" title="03_Paths on Grids 网格路径问题">03_Paths on Grids 网格路径问题</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%EF%BC%88Kadane%20%E7%AE%97%E6%B3%95%EF%BC%89/" title="最大子数组和（Kadane 算法）">最大子数组和（Kadane 算法）</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Chicken_Jockey%20%E9%A2%98%E8%A7%A3/" title="算法学习/05_动态规划/Chicken_Jockey 题解">算法学习/05_动态规划/Chicken_Jockey 题解</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="09_动态规划">09_动态规划</a></details><details><summary>06_Graphs</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/05_%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="05_并查集">05_并查集</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/" title="07_图论">07_图论</a><a href="/2026/05/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/06_%E6%9C%89%E5%90%91%E5%9B%BE%E7%8E%AF%E6%A3%80%E6%B5%8B/" title="06_Cycle Detection in Directed Graph 有向图环检测">06_Cycle Detection in Directed Graph 有向图环检测</a></details><details><summary>其他算法</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/06_%E6%95%B0%E8%AE%BA/" title="07_数论">07_数论</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" title="Rectangle Geometry 矩形几何">Rectangle Geometry 矩形几何</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="07_使用递归的穷举搜索">07_使用递归的穷举搜索</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/08_%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/" class="current" title="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩">Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩</a></details></details>
+</div>
 
     </div>
 
@@ -303,10 +356,15 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Custom-Comparators-and-Coordinate-Compression"><a href="#Custom-Comparators-and-Coordinate-Compression" class="headerlink" title="Custom Comparators and Coordinate Compression"></a>Custom Comparators and Coordinate Compression</h1><h2 id="自定义比较器和坐标压缩"><a href="#自定义比较器和坐标压缩" class="headerlink" title="自定义比较器和坐标压缩"></a>自定义比较器和坐标压缩</h2><p>本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。</p>
-<hr>
-<h2 id="一、自定义排序"><a href="#一、自定义排序" class="headerlink" title="一、自定义排序"></a>一、自定义排序</h2><p>排序不仅限于数字，还可以用于任意对象。</p>
-<h3 id="方法一：使用元组"><a href="#方法一：使用元组" class="headerlink" title="方法一：使用元组"></a>方法一：使用元组</h3><p>将对象与排序关键字打包成元组：</p>
+                <h1 id="custom-comparators-and-coordinate-compression">Custom
+Comparators and Coordinate Compression</h1>
+<h2 id="自定义比较器和坐标压缩">自定义比较器和坐标压缩</h2>
+<p>本文介绍两种在竞赛编程中常用的技术：自定义排序和坐标压缩。</p>
+<hr />
+<h2 id="一自定义排序">一、自定义排序</h2>
+<p>排序不仅限于数字，还可以用于任意对象。</p>
+<h3 id="方法一使用元组">方法一：使用元组</h3>
+<p>将对象与排序关键字打包成元组：</p>
 <div class="code-wrapper"><pre><code class="hljs python">edge_num = <span class="hljs-number">4</span>
 edges = []
 <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(edge_num):
@@ -316,7 +374,8 @@ edges.sort()  <span class="hljs-comment"># 按 width 升序排序</span>
 
 <span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> edges:
     <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;(<span class="hljs-subst">&#123;e[<span class="hljs-number">1</span>]&#125;</span>, <span class="hljs-subst">&#123;e[<span class="hljs-number">2</span>]&#125;</span>): <span class="hljs-subst">&#123;e[<span class="hljs-number">0</span>]&#125;</span>&quot;</span>)</code></pre></div>
-<h3 id="方法二：Key-函数"><a href="#方法二：Key-函数" class="headerlink" title="方法二：Key 函数"></a>方法二：Key 函数</h3><p>使用 <code>key</code> 参数指定排序依据：</p>
+<h3 id="方法二key-函数">方法二：Key 函数</h3>
+<p>使用 <code>key</code> 参数指定排序依据：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Edge</span>:
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, a: <span class="hljs-built_in">int</span>, b: <span class="hljs-built_in">int</span>, width: <span class="hljs-built_in">int</span></span>):
         <span class="hljs-variable language_">self</span>.a = a
@@ -328,7 +387,8 @@ edges.sort(key=<span class="hljs-keyword">lambda</span> e: e.width)  <span class
 
 <span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> edges:
     <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;(<span class="hljs-subst">&#123;e.a&#125;</span>, <span class="hljs-subst">&#123;e.b&#125;</span>): <span class="hljs-subst">&#123;e.width&#125;</span>&quot;</span>)</code></pre></div>
-<h3 id="方法三：Comparator（比较器）"><a href="#方法三：Comparator（比较器）" class="headerlink" title="方法三：Comparator（比较器）"></a>方法三：Comparator（比较器）</h3><p>使用 <code>functools.cmp_to_key</code> 将比较函数转换为 key：</p>
+<h3 id="方法三comparator比较器">方法三：Comparator（比较器）</h3>
+<p>使用 <code>functools.cmp_to_key</code> 将比较函数转换为 key：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> cmp_to_key
 
 <span class="hljs-keyword">class</span> <span class="hljs-title class_">Edge</span>:
@@ -339,14 +399,12 @@ edges.sort(key=<span class="hljs-keyword">lambda</span> e: e.width)  <span class
 
 edges = [Edge(*[<span class="hljs-built_in">int</span>(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">input</span>().split()]) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(edge_num)]
 edges.sort(key=cmp_to_key(<span class="hljs-keyword">lambda</span> x, y: x.width - y.width))</code></pre></div>
-<p><strong>比较器必须满足</strong>：</p>
-<ul>
-<li><code>x &lt; y</code> 时返回 -1</li>
-<li><code>x &gt; y</code> 时返回 1</li>
-<li><code>x == y</code> 时返回 0</li>
-</ul>
-<hr>
-<h2 id="二、多条件排序"><a href="#二、多条件排序" class="headerlink" title="二、多条件排序"></a>二、多条件排序</h2><h3 id="按多个关键字升序排序"><a href="#按多个关键字升序排序" class="headerlink" title="按多个关键字升序排序"></a>按多个关键字升序排序</h3><p>利用元组的字典序特性：</p>
+<p><strong>比较器必须满足</strong>： - <code>x &lt; y</code> 时返回 -1 -
+<code>x &gt; y</code> 时返回 1 - <code>x == y</code> 时返回 0</p>
+<hr />
+<h2 id="二多条件排序">二、多条件排序</h2>
+<h3 id="按多个关键字升序排序">按多个关键字升序排序</h3>
+<p>利用元组的字典序特性：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 按 width 升序，width 相同时按 a 升序</span>
 edges.sort(key=<span class="hljs-keyword">lambda</span> edge: (edge.width, edge.a))</code></pre></div>
 <p>或者使用比较器：</p>
@@ -356,22 +414,22 @@ edges.sort(key=<span class="hljs-keyword">lambda</span> edge: (edge.width, edge.
     <span class="hljs-keyword">return</span> x.a - y.a
 
 edges.sort(key=cmp_to_key(compare))</code></pre></div>
-<h3 id="降序排序"><a href="#降序排序" class="headerlink" title="降序排序"></a>降序排序</h3><div class="code-wrapper"><pre><code class="hljs python">edges.sort(key=<span class="hljs-keyword">lambda</span> e: e.width, reverse=<span class="hljs-literal">True</span>)</code></pre></div>
-<hr>
-<h2 id="三、坐标压缩"><a href="#三、坐标压缩" class="headerlink" title="三、坐标压缩"></a>三、坐标压缩</h2><h3 id="什么是坐标压缩？"><a href="#什么是坐标压缩？" class="headerlink" title="什么是坐标压缩？"></a>什么是坐标压缩？</h3><p>将大范围的值映射到连续的自然数索引。</p>
-<p><strong>示例</strong>：</p>
-<ul>
-<li>原始列表：<code>{7, 3, 4, 1}</code></li>
-<li>排序后：<code>{1, 3, 4, 7}</code></li>
-<li>压缩结果：<code>{3, 1, 2, 0}</code></li>
-</ul>
-<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><p>当值域很大但需要用值作为数组索引时：</p>
-<ul>
-<li>值域：<code>0 ~ 10^9</code>（无法直接作为数组索引）</li>
-<li>实际不同值数量：<code>N ≤ 10^6</code></li>
-<li>压缩后：<code>0 ~ N-1</code>（可直接作为数组索引）</li>
-</ul>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 方法1：简单压缩</span>
+<h3 id="降序排序">降序排序</h3>
+<div class="code-wrapper"><pre><code class="hljs python">edges.sort(key=<span class="hljs-keyword">lambda</span> e: e.width, reverse=<span class="hljs-literal">True</span>)</code></pre></div>
+<hr />
+<h2 id="三坐标压缩">三、坐标压缩</h2>
+<h3 id="什么是坐标压缩">什么是坐标压缩？</h3>
+<p>将大范围的值映射到连续的自然数索引。</p>
+<p><strong>示例</strong>： - 原始列表：<code>{7, 3, 4, 1}</code> -
+排序后：<code>{1, 3, 4, 7}</code> -
+压缩结果：<code>{3, 1, 2, 0}</code></p>
+<h3 id="适用场景">适用场景</h3>
+<p>当值域很大但需要用值作为数组索引时： -
+值域：<code>0 ~ 10^9</code>（无法直接作为数组索引） -
+实际不同值数量：<code>N ≤ 10^6</code> -
+压缩后：<code>0 ~ N-1</code>（可直接作为数组索引）</p>
+<h3 id="代码实现">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 方法1：简单压缩</span>
 values = [<span class="hljs-number">7</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>]
 sorted_unique = <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(values))  <span class="hljs-comment"># [1, 3, 4, 7]</span>
 compress = &#123;v: i <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(sorted_unique)&#125;
@@ -382,10 +440,13 @@ compressed = [compress[v] <span class="hljs-keyword">for</span> v <span class="h
 indices = <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(values))
 compress = &#123;v: i <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(indices)&#125;
 decompress = &#123;i: v <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(indices)&#125;</code></pre></div>
-<hr>
-<h2 id="四、例题：Rectangular-Pasture"><a href="#四、例题：Rectangular-Pasture" class="headerlink" title="四、例题：Rectangular Pasture"></a>四、例题：Rectangular Pasture</h2><p><strong>题目来源</strong>: USACO Silver - Rectangular Pasture</p>
-<p><strong>核心思想</strong>：使用坐标压缩将坐标映射到 <code>0 ~ N-1</code> 范围，以便使用二维前缀和数组。</p>
-<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<hr />
+<h2 id="四例题rectangular-pasture">四、例题：Rectangular Pasture</h2>
+<p><strong>题目来源</strong>: USACO Silver - Rectangular Pasture</p>
+<p><strong>核心思想</strong>：使用坐标压缩将坐标映射到
+<code>0 ~ N-1</code> 范围，以便使用二维前缀和数组。</p>
+<h3 id="代码实现-1">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
 
 <span class="hljs-built_in">input</span> = sys.stdin.readline
 
@@ -425,50 +486,51 @@ ans = n + <span class="hljs-number">1</span>
         ans += (above + <span class="hljs-number">1</span>) * (below + <span class="hljs-number">1</span>)
 
 <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h3 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h3><ul>
+<h3 id="关键点">关键点</h3>
+<ul>
 <li>坐标压缩后，原有坐标值不再需要，只用压缩后的索引</li>
 <li>压缩后坐标范围：<code>0 ~ N-1</code>，可直接作为数组下标</li>
 </ul>
-<hr>
-<h2 id="五、例题：Static-Range-Queries"><a href="#五、例题：Static-Range-Queries" class="headerlink" title="五、例题：Static Range Queries"></a>五、例题：Static Range Queries</h2><p><strong>题目来源</strong>: Codeforces - Hard</p>
-<p><strong>题目描述</strong>：</p>
-<ul>
-<li>有 N 个区间更新操作：每次在区间 <code>[l, r)</code> 上加 <code>v</code></li>
-<li>有 Q 个查询操作：查询区间 <code>[l, r)</code> 的元素之和</li>
-<li>坐标范围：<code>0 ~ 10^9</code>，需要高效处理</li>
-</ul>
-<p><strong>核心思想</strong>：</p>
-<ol>
-<li><strong>特殊索引</strong>：输入中出现的所有坐标（每个更新的左右端点、每个查询的左右端点）</li>
-<li><strong>特殊区间</strong>：两个相邻特殊索引之间的区间，区间内所有元素值相同</li>
-<li><strong>差分数组</strong>：用 <code>+v</code> 标记左端点，<code>-v</code> 标记右端点，求前缀和得到实际值</li>
-<li><strong>双向映射</strong>：既要能用原始值找压缩索引（<code>index[v]</code>），也要能用压缩索引找原始值（<code>coordinates[i]</code>）</li>
-</ol>
-<h3 id="详细解释"><a href="#详细解释" class="headerlink" title="详细解释"></a>详细解释</h3><h4 id="1-特殊索引与特殊区间"><a href="#1-特殊索引与特殊区间" class="headerlink" title="1. 特殊索引与特殊区间"></a>1. 特殊索引与特殊区间</h4><p>在整个范围 <code>1 ~ 10^9</code> 中，并非每个索引都会在更新中使用。输入中提到的每个索引称为<strong>特殊索引</strong>。两个连续的特殊索引之间的区间内，每个位置的值都相同——因为不可能有更新操作插入到两个特殊索引之间（否则会产生新的特殊索引）。</p>
-<p>例如：更新 <code>[3, 10) += 5</code>，查询 <code>[5, 8)</code>，则特殊索引为 <code>{3, 5, 8, 10}</code>，特殊区间为 <code>[3,5)</code>、<code>[5,8)</code>、<code>[8,10)</code>。</p>
-<h4 id="2-差分数组"><a href="#2-差分数组" class="headerlink" title="2. 差分数组"></a>2. 差分数组</h4><p>对区间 <code>[l, r)</code> 加 <code>v</code> 时：</p>
-<ul>
-<li>在位置 <code>l</code> 标记 <code>+v</code>（表示从 l 开始增加 v）</li>
-<li>在位置 <code>r</code> 标记 <code>-v</code>（表示从 r 开始减少 v）</li>
-</ul>
+<hr />
+<h2 id="五例题static-range-queries">五、例题：Static Range Queries</h2>
+<p><strong>题目来源</strong>: Codeforces - Hard</p>
+<p><strong>题目描述</strong>： - 有 N 个区间更新操作：每次在区间
+<code>[l, r)</code> 上加 <code>v</code> - 有 Q 个查询操作：查询区间
+<code>[l, r)</code> 的元素之和 -
+坐标范围：<code>0 ~ 10^9</code>，需要高效处理</p>
+<p><strong>核心思想</strong>： 1.
+<strong>特殊索引</strong>：输入中出现的所有坐标（每个更新的左右端点、每个查询的左右端点）
+2.
+<strong>特殊区间</strong>：两个相邻特殊索引之间的区间，区间内所有元素值相同
+3. <strong>差分数组</strong>：用 <code>+v</code>
+标记左端点，<code>-v</code> 标记右端点，求前缀和得到实际值 4.
+<strong>双向映射</strong>：既要能用原始值找压缩索引（<code>index[v]</code>），也要能用压缩索引找原始值（<code>coordinates[i]</code>）</p>
+<h3 id="详细解释">详细解释</h3>
+<h4 id="特殊索引与特殊区间">1. 特殊索引与特殊区间</h4>
+<p>在整个范围 <code>1 ~ 10^9</code>
+中，并非每个索引都会在更新中使用。输入中提到的每个索引称为<strong>特殊索引</strong>。两个连续的特殊索引之间的区间内，每个位置的值都相同——因为不可能有更新操作插入到两个特殊索引之间（否则会产生新的特殊索引）。</p>
+<p>例如：更新 <code>[3, 10) += 5</code>，查询
+<code>[5, 8)</code>，则特殊索引为 <code>{3, 5, 8, 10}</code>，特殊区间为
+<code>[3,5)</code>、<code>[5,8)</code>、<code>[8,10)</code>。</p>
+<h4 id="差分数组">2. 差分数组</h4>
+<p>对区间 <code>[l, r)</code> 加 <code>v</code> 时： - 在位置
+<code>l</code> 标记 <code>+v</code>（表示从 l 开始增加 v） - 在位置
+<code>r</code> 标记 <code>-v</code>（表示从 r 开始减少 v）</p>
 <p>对这个差分数组求前缀和，就得到每个位置的<strong>值</strong>。</p>
-<h4 id="3-前缀和与区间求和"><a href="#3-前缀和与区间求和" class="headerlink" title="3. 前缀和与区间求和"></a>3. 前缀和与区间求和</h4><p>对于查询 <code>[l, r)</code> 的和：</p>
-<ul>
-<li>区间和 = 区间内每个元素的值 × 区间长度</li>
-<li>如果我们知道每个特殊区间的值和长度，就可以求和</li>
-</ul>
-<p>这引出了<strong>双重前缀和</strong>：</p>
-<ul>
-<li>第一层前缀和：从差分数组得到每个特殊区间的值</li>
-<li>第二层前缀和：从特殊区间的”值 × 长度”得到区间累计和</li>
-</ul>
-<h4 id="4-双向坐标映射"><a href="#4-双向坐标映射" class="headerlink" title="4. 双向坐标映射"></a>4. 双向坐标映射</h4><p>与上一题（Rectangular Pasture）不同，本题需要<strong>同时</strong>知道：</p>
-<ul>
-<li>原始值 → 压缩索引：<code>index[value]</code> 用于定位</li>
-<li>压缩索引 → 原始值：<code>coordinates[i]</code> 用于计算区间长度</li>
-</ul>
+<h4 id="前缀和与区间求和">3. 前缀和与区间求和</h4>
+<p>对于查询 <code>[l, r)</code> 的和： - 区间和 = 区间内每个元素的值 ×
+区间长度 - 如果我们知道每个特殊区间的值和长度，就可以求和</p>
+<p>这引出了<strong>双重前缀和</strong>： -
+第一层前缀和：从差分数组得到每个特殊区间的值 -
+第二层前缀和：从特殊区间的”值 × 长度”得到区间累计和</p>
+<h4 id="双向坐标映射">4. 双向坐标映射</h4>
+<p>与上一题（Rectangular
+Pasture）不同，本题需要<strong>同时</strong>知道： - 原始值 →
+压缩索引：<code>index[value]</code> 用于定位 - 压缩索引 →
+原始值：<code>coordinates[i]</code> 用于计算区间长度</p>
 <p>因为我们需要知道相邻特殊索引之间的距离（即特殊区间的长度）。</p>
-<h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># https://codeforces.com/gym/102951/problem/D</span>
+<h3 id="代码实现-2">代码实现</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># https://codeforces.com/gym/102951/problem/D</span>
 
 n, q = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())
 diff_dict = <span class="hljs-built_in">dict</span>()
@@ -506,14 +568,19 @@ prefix_sum = [<span class="hljs-number">0</span>]
         right_idx = idx_dict[r]
         ans = prefix_sum[right_idx] - prefix_sum[left_idx]
         <span class="hljs-built_in">print</span>(ans)</code></pre></div>
-<h3 id="关键点-1"><a href="#关键点-1" class="headerlink" title="关键点"></a>关键点</h3><ul>
-<li><strong>双向映射</strong>：<code>index[v]</code> 获取压缩索引，<code>coordinates[i]</code> 获取原始值</li>
-<li><strong>差分数组技巧</strong>：用 <code>+v</code>、<code>-v</code> 标记区间起止，前缀和得到实际值</li>
-<li><strong>空间优化</strong>：只需存储出现的坐标，最多 <code>2·(N+Q)</code> 个</li>
-<li><strong>时间复杂度</strong>：预处理 O((N+Q) log(N+Q))，查询 O(1)</li>
+<h3 id="关键点-1">关键点</h3>
+<ul>
+<li><strong>双向映射</strong>：<code>index[v]</code>
+获取压缩索引，<code>coordinates[i]</code> 获取原始值</li>
+<li><strong>差分数组技巧</strong>：用 <code>+v</code>、<code>-v</code>
+标记区间起止，前缀和得到实际值</li>
+<li><strong>空间优化</strong>：只需存储出现的坐标，最多
+<code>2·(N+Q)</code> 个</li>
+<li><strong>时间复杂度</strong>：预处理 O((N+Q) log(N+Q))，查询
+O(1)</li>
 </ul>
-<hr>
-<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><div class="table-container">
+<hr />
+<h2 id="六总结">六、总结</h2>
 <table>
 <thead>
 <tr>
@@ -536,7 +603,6 @@ prefix_sum = [<span class="hljs-number">0</span>]
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>核心思想</strong>：将问题转化为可以用数组下标处理的形式。</p>
 
                 
@@ -654,8 +720,8 @@ prefix_sum = [<span class="hljs-number">0</span>]
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/01_two_sum/" title="两数之和（Two Sum）">
-                        <span class="hidden-mobile">两数之和（Two Sum）</span>
+                      <a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/" title="无重复字符的最长子串（Longest Substring Without Repeating Characters）">
+                        <span class="hidden-mobile">无重复字符的最长子串（Longest Substring Without Repeating Characters）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
