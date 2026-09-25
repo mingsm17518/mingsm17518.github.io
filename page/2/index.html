@@ -244,7 +244,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8C%BA%E9%97%B4%E9%85%8D%E5%AF%B9%E8%AE%A1%E6%95%B0/" target="_self">
         <div>
-          小红书9月20日机考题目与解析（题意按回忆整理）第一行 n q，初始有一个长度为 n 的全 0 数组，q 个操作：  1 x：反转第 x 个位置（0 变 1、1 变 0） 2 l r：只对区间 [l, r] 从左到右执行下面的 tmp 规则，并输出 ans： tmp 为空 → 当前数字放入 tmp 当前数字 == tmp → 什么都不做 当前数字 != tmp → ans += 1，然后 tmp
+          小红书9月20日机考题目与解析 （题意按回忆整理）第一行 n q，初始有一个长度为 n 的全 0 数组，q 个操作：  1 x：反转第 x 个位置（0 变 1、1 变 0） 2 l r：只对区间 [l, r] 从左到右执行下面的 tmp 规则，并输出 ans：  tmp 为空 → 当前数字放入 tmp 当前数字 == tmp → 什么都不做 当前数字 != tmp → ans += 1，然后 tm
         </div>
       </a>
 
@@ -321,7 +321,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" target="_self">
         <div>
-          排序竞赛中优先使用内置 sorted / list.sort（Timsort，稳定 $O(n \log n)$）；手写六大排序主要用于理解算法与应付考点。排序本身很少是考点，考点是排序后的性质——贪心按序取、双指针要求有序、二分要求有序。 arr.sort(key=lambda x: (-x[0], x[1]))   # 第一维降序、第二维升序 b = sorted(arr, key=lambda
+          排序 竞赛中优先使用内置 sorted / list.sort（Timsort，稳定 O(nlog&#8289;n)O(n \log n)）；手写六大排序主要用于理解算法与应付考点。排序本身很少是考点，考点是排序后的性质——贪心按序取、双指针要求有序、二分要求有序。 arr.sort(key=lambda x: (-x[0], x[1]))   # 第一维降序、第二维升序 b = sorted(a
         </div>
       </a>
 
@@ -395,7 +395,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%9B%B6%E5%92%8C%E5%8C%BA%E9%97%B4%E5%88%A0%E9%99%A4/" target="_self">
         <div>
-          小红书9月20日机考题目与解析（题意按回忆整理）给定数组，可以反复删除和为 0 的连续子数组——删除后左右两侧拼接，拼接产生的新零和区间可以继续删。求最多能删除多少个元素。 例如原数组： [1, -1, 2, 3, -5, 4] 任何一个和为 0 的连续区间都可以删。 思路关键转化：删除后左右拼接、继续删除的过程，最终效果等价于——选若干个互不重叠的、原数组中的零和子数组，使总长度最大。 以 [1
+          小红书9月20日机考题目与解析 （题意按回忆整理）给定数组，可以反复删除和为 0 的连续子数组——删除后左右两侧拼接，拼接产生的新零和区间可以继续删。求最多能删除多少个元素。 例如原数组： [1, -1, 2, 3, -5, 4] 任何一个和为 0 的连续区间都可以删。 思路 关键转化：删除后左右拼接、继续删除的过程，最终效果等价于——选若干个互不重叠的、原数组中的零和子数组，使总长度最大。 以
         </div>
       </a>
 
@@ -474,7 +474,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Chicken_Jockey%20%E9%A2%98%E8%A7%A3/" target="_self">
         <div>
-          Chicken Jockey 题解题目描述有 n 个怪物叠在一起，怪物 i (从下到上编号) 初始血量为 h[i]。 一次攻击可以对任意一个怪物造成 1 点伤害。当怪物血量 ≤ 0 时死亡，其上方的所有怪物会掉落。掉落的怪物中，底部的怪物会受到等于其下方怪物数量的摔落伤害。如果摔落后死亡，过程继续。 求最少需要多少次攻击才能消灭所有怪物。  解法问题类型：线性 DP（状态转移只与前几个状态相关，呈
+          Chicken Jockey 题解 题目描述 有 n 个怪物叠在一起，怪物 i (从下到上编号) 初始血量为 h[i]。 一次攻击可以对任意一个怪物造成 1 点伤害。当怪物血量 ≤ 0 时死亡，其上方的所有怪物会掉落。掉落的怪物中，底部的怪物会受到等于其下方怪物数量的摔落伤害。如果摔落后死亡，过程继续。 求最少需要多少次攻击才能消灭所有怪物。  解法 问题类型：线性 DP（状态转移只与前几个状态相
         </div>
       </a>
 
@@ -535,7 +535,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/05_%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" target="_self">
         <div>
-          网格路径问题问题概述DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的序列，其移动仅限于在 $x$ 轴的一个方向和 $y$ 轴的一个方向（例如，你可能只能向下或向右移动）。通常，路径还必须从网格的一个角落开始，并在另一个角落结束。问题可能要求你计算满足某些属性的路径数量，或者可能要求你在所有路径中找到某个量的最大值或最小值。
+          网格路径问题 问题概述 DP 问题的一个常见原型涉及由正方形单元格组成的 2D 网格（类似于方格纸），我们需要分析”路径”。路径是一系列单元格的序列，其移动仅限于在 xx 轴的一个方向和 yy 轴的一个方向（例如，你可能只能向下或向右移动）。通常，路径还必须从网格的一个角落开始，并在另一个角落结束。问题可能要求你计算满足某些属性的路径数量，或者可能要求你在所有路径中找到某个量的最大值或最小值。
         </div>
       </a>
 
@@ -609,7 +609,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" target="_self">
         <div>
-          最长递增子序列令 $A$ 为我们要寻找最长递增子序列（LIS）的数组。 慢速解法令 $dp[i]$ 表示以 $arr[i]$ 结尾的最长递增子序列的长度。我们可以通过简单的方法在 $O(N^2)$ 时间内计算 $dp$（从而得到 ans）： from typing import List   def find_lis(arr: List[int]) -&gt; int:     ans = 0
+          最长递增子序列 令 AA 为我们要寻找最长递增子序列（LIS）的数组。 慢速解法 令 dp[i]dp[i] 表示以 arr[i]arr[i] 结尾的最长递增子序列的长度。我们可以通过简单的方法在 O(N2)O(N^2) 时间内计算 dpdp（从而得到 ans）： from typing import List   def find_lis(arr: List[int]) -&gt; int:
         </div>
       </a>
 
@@ -657,11 +657,11 @@
             
               <a href="/tags/DP/">#DP</a>
             
+              <a href="/tags/LIS/">#LIS</a>
+            
               <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
             
               <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
-            
-              <a href="/tags/LIS/">#LIS</a>
             
           </div>
         
@@ -683,7 +683,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E8%83%8C%E5%8C%85DP/" target="_self">
         <div>
-          背包DP模板0-1 背包（倒序）N, W = map(int, input().split()) w = list(map(int, input().split())) v = list(map(int, input().split())) dp = [0] * (W + 1)  for i in range(N):     for j in range(W, w[i] - 1, -1):
+          背包DP 模板 0-1 背包（倒序） N, W = map(int, input().split()) w = list(map(int, input().split())) v = list(map(int, input().split())) dp = [0] * (W + 1)  for i in range(N):     for j in range(W, w[i] - 1, -1):
         </div>
       </a>
 
@@ -757,7 +757,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" target="_self">
         <div>
-          输入输出基础输入# 单个整数 n = int(input())  # 多个整数（空格分隔） a, b = map(int, input().split())  # 一行整数转列表 arr = list(map(int, input().split()))  # 去除换行符 s = input().strip()  # 去除首尾空白（含 \n）  # 读取 n 行到列表 arr = [int(inp
+          输入输出 基础输入 # 单个整数 n = int(input())  # 多个整数（空格分隔） a, b = map(int, input().split())  # 一行整数转列表 arr = list(map(int, input().split()))  # 去除换行符 s = input().strip()  # 去除首尾空白（含 \n）  # 读取 n 行到列表 arr = [int(i
         </div>
       </a>
 
@@ -827,7 +827,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" target="_self">
         <div>
-          优先队列模板import heapq  pq = [] heapq.heapify(pq)            # 把已有列表原地转成堆，O(n)  heapq.heappush(pq, x)        # 插入元素 smallest = pq[0]             # 获取最小元素（不弹出） smallest = heapq.heappop(pq) # 弹出并返回最小值     方
+          优先队列 模板 import heapq  pq = [] heapq.heapify(pq)            # 把已有列表原地转成堆，O(n)  heapq.heappush(pq, x)        # 插入元素 smallest = pq[0]             # 获取最小元素（不弹出） smallest = heapq.heappop(pq) # 弹出并返回最小值
         </div>
       </a>
 
@@ -899,7 +899,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" target="_self">
         <div>
-          二分查找模板有序数组：bisect    bisect 函数 对应 C++ 含义     bisect.bisect_left(arr, x) lower_bound 第一个 &gt;= x 的下标   bisect.bisect_right(arr, x) upper_bound 第一个 &gt; x 的下标     import bisect  arr = sorted([...])  # 先
+          二分查找 模板 有序数组：bisect     bisect 函数 对应 C++ 含义     bisect.bisect_left(arr, x) lower_bound 第一个 &gt;= x 的下标   bisect.bisect_right(arr, x) upper_bound 第一个 &gt; x 的下标    import bisect  arr = sorted([...])  #
         </div>
       </a>
 

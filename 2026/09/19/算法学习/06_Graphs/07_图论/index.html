@@ -19,12 +19,12 @@
   <meta name="author" content="Ming">
   <meta name="keywords" content="算法,刷题,题解,LeetCode,Hot100,小红书机考,USACO,动态规划,图论,数据结构,Python">
   
-    <meta name="description" content="图论邻接表建图# 邻接表 adj &#x3D; [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历&#x2F;搜索 DFS（深度优先搜索）核心思想“一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到无路可走，再回">
+    <meta name="description" content="图论 邻接表建图 # 邻接表 adj &#x3D; [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历&#x2F;搜索 ## DFS（深度优先搜索） 核心思想 “一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="07_图论">
 <meta property="og:url" content="https://mingsm17518.github.io/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Ming&#39;s Blog">
-<meta property="og:description" content="图论邻接表建图# 邻接表 adj &#x3D; [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历&#x2F;搜索 DFS（深度优先搜索）核心思想“一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到无路可走，再回">
+<meta property="og:description" content="图论 邻接表建图 # 邻接表 adj &#x3D; [[] for _ in range(n)] # 无向图 adj[u].append(v) adj[v].append(u)  adj[u].append((v, w))    # 带权重 图论基础：BFS 适合求最短路，DFS 适合遍历&#x2F;搜索 ## DFS（深度优先搜索） 核心思想 “一条路走到黑，走不通就回头。” DFS 沿着一个方向一直往深处走，直到">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-19T12:02:08.148Z">
 <meta property="article:modified_time" content="2026-09-19T15:38:54.156Z">
@@ -330,7 +330,7 @@
 
 <div class="doc-tree">
   <div class="dt-title">目录树</div>
-  <details open><summary>刷题笔记</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/00-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E6%80%BB%E8%A7%88/" title="刷题笔记总览">刷题笔记总览</a><a href="/2026/05/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/BFS-DFS%20%E4%BE%8B%E9%A2%98/" title="Graph 图">Graph 图</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/03_%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" title="Casework 案例分析">Casework 案例分析</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8F%8C%E6%8C%87%E9%92%88%20-%20Problems/" title="Two Pointer - Problems">Two Pointer - Problems</a><details><summary>Hot100</summary><details><summary>二叉树</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/104.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" title="104. 二叉树的最大深度">104. 二叉树的最大深度</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/101.%20%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" title="101. 对称二叉树">101. 对称二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" title="226. 翻转二叉树">226. 翻转二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/543.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" title="543. 二叉树的直径">543. 二叉树的直径</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/617.%20%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/" title="617. 合并二叉树">617. 合并二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/94.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" title="94. 二叉树的中序遍历">94. 二叉树的中序遍历</a></details><details><summary>位运算</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/338.%20%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" title="338. 比特位计数">338. 比特位计数</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" title="136. 只出现一次的数字">136. 只出现一次的数字</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/461.%20%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" title="461. 汉明距离">461. 汉明距离</a></details><details><summary>动态规划</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/70.%20%E7%88%AC%E6%A5%BC%E6%A2%AF/" title="70. 爬楼梯">70. 爬楼梯</a></details><details><summary>双指针</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/283.%20%E7%A7%BB%E5%8A%A8%E9%9B%B6/" title="283. 移动零">283. 移动零</a><a href="/2026/09/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/3.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" title="3. 无重复字符的最长子串">3. 无重复字符的最长子串</a></details><details><summary>哈希</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="1. 两数之和">1. 两数之和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/169.%20%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/" title="169. 多数元素">169. 多数元素</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/448.%20%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" title="448. 找到所有数组中消失的数字">448. 找到所有数组中消失的数字</a></details><details><summary>栈</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" title="20. 有效的括号">20. 有效的括号</a></details><details><summary>贪心</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机">121. 买卖股票的最佳时机</a></details><details><summary>链表</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" title="141. 环形链表">141. 环形链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/160.%20%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" title="160. 相交链表">160. 相交链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/21.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" title="21. 合并两个有序链表">21. 合并两个有序链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/234.%20%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" title="234. 回文链表">234. 回文链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="206. 反转链表">206. 反转链表</a><a href="/2026/09/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/2.%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" title="2. 两数相加">2. 两数相加</a></details></details><details><summary>Leetcode</summary><a href="/2026/09/13/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/78.%20%E5%AD%90%E9%9B%86/" title="78. 子集">78. 子集</a></details><details><summary>华为机考</summary><a href="/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83%E9%A2%98%E5%9E%8B/" title="华为机考题型">华为机考题型</a><details><summary>leetcode</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/5.%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" title="最长回文子串（Longest Palindromic Substring）">最长回文子串（Longest Palindromic Substring）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/06_zigzag_convert/" title="Z 字形变换（Zigzag Conversion）">Z 字形变换（Zigzag Conversion）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/" title="无重复字符的最长子串（Longest Substring Without Repeating Characters）">无重复字符的最长子串（Longest Substring Without Repeating Characters）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/01_two_sum/" title="两数之和（Two Sum）">两数之和（Two Sum）</a></details><details><summary>nowcoder</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/16_palindrome/" title="最长回文子串（HJ16）">最长回文子串（HJ16）</a><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/HJ114-%E5%AE%9D%E7%9F%B3%E6%89%8B%E4%B8%B2/" title="HJ114 宝石手串">HJ114 宝石手串</a><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ113-%E7%81%AB%E8%BD%A6%E8%BF%9B%E7%AB%99/" title="HJ113 火车进站">HJ113 火车进站</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/" title="HJ149 数水坑">HJ149 数水坑</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ59-%E6%95%B0%E7%BB%84%E5%88%86%E7%BB%84/" title="HJ59 数组分组">HJ59 数组分组</a><a href="/2026/05/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ150_%E5%85%A8%E6%8E%92%E5%88%97/" title="HJ150 全排列">HJ150 全排列</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/12_longest_digit_substring/" title="最长数字子串（HJ12）">最长数字子串（HJ12）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/07_remove_least_freq_chars/" title="删除出现次数最少的字符（HJ7）">删除出现次数最少的字符（HJ7）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/" title="第一个只出现一次的字符（HJ13）">第一个只出现一次的字符（HJ13）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/14_sort_strings/" title="字符串排序（HJ14）">字符串排序（HJ14）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/17_string_match/" title="字符串字符匹配（HJ17）">字符串字符匹配（HJ17）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/" title="字符串变换（HJ15）">字符串变换（HJ15）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/19_string_sort/" title="字符串排序（HJ19）">字符串排序（HJ19）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/" title="明文分组（HJ3）">明文分组（HJ3）</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ148-%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF/" title="HJ148 迷宫寻路">HJ148 迷宫寻路</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/21_longest_common_substring/" title="查找两个字符串a,b中的最长公共子串（HJ21）">查找两个字符串a,b中的最长公共子串（HJ21）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/20_brother_words/" title="查找兄弟单词（HJ20）">查找兄弟单词（HJ20）</a></details></details><details><summary>小红书</summary><details><summary>2025年9月7日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%B6%85%E7%BA%A7%E9%87%8D%E6%8E%92/" title="第1题-超级重排">第1题-超级重排</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E8%BD%B0%E7%82%B8%E6%9C%BA/" title="第3题-轰炸机">第3题-轰炸机</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E8%A1%8C%E4%B8%BA%E6%9D%83%E9%87%8D2/" title="第2题-行为权重2">第2题-行为权重2</a></details><details><summary>2026年9月10日</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E6%9C%80%E5%B0%8F%E5%8C%96%E5%B3%B0%E5%80%BC%E5%B9%B2%E6%89%B0/" title="第1题-最小化峰值干扰">第1题-最小化峰值干扰</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" title="第2题-双通道评测格网">第2题-双通道评测格网</a></details><details><summary>2026年9月13日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%BE%BE%E4%BA%BA%E6%95%B0%E6%8D%AE%E7%9C%8B%E6%9D%BF/" title="第1题-达人数据看板">第1题-达人数据看板</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E9%81%BF%E9%87%8D%E5%8F%A3%E4%BB%A4/" title="第2题-避重口令">第2题-避重口令</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E4%B8%93%E6%A0%8F%E6%94%B9%E6%8C%82%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E7%BB%BC%E5%90%88%E8%AF%84%E5%88%86/" title="第3题-专栏改挂后的最大综合评分">第3题-专栏改挂后的最大综合评分</a></details><details><summary>2026年9月17日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%80%89%E6%8B%A9%E9%A2%98/" title="第1题-选择题">第1题-选择题</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8A%A0%E9%80%9F%E7%AA%97%E5%8F%A3%E6%94%B6%E7%9B%8A/" title="第2题-加速窗口收益">第2题-加速窗口收益</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/" title="第3题-待发热度重排">第3题-待发热度重排</a></details><details><summary>2026年9月20日</summary><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%9B%B6%E5%92%8C%E5%8C%BA%E9%97%B4%E5%88%A0%E9%99%A4/" title="第1题-零和区间删除">第1题-零和区间删除</a><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8C%BA%E9%97%B4%E9%85%8D%E5%AF%B9%E8%AE%A1%E6%95%B0/" title="第2题-区间配对计数">第2题-区间配对计数</a></details><details><summary>练习题</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC1%E9%A2%98%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C/" title="第1题：数列求和">第1题：数列求和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC2%E9%A2%98%EF%BC%9A%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" title="第2题：水仙花数">第2题：水仙花数</a></details></details><details><summary>贪心</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="贪心算法">贪心算法</a></details><details><summary>题目-完全搜索</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/01_Milk%20Pails/" title="Milk Pails">Milk Pails</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/02_Diamond_Collector/" title="Diamond Collector">Diamond Collector</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/04_Counting_Liars/" title="Counting Liars">Counting Liars</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/05_Cow_Gymnastics/" title="Cow Gymnastics">Cow Gymnastics</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" title="Complete Search 完全搜索">Complete Search 完全搜索</a></details></details><details open><summary>开发杂记</summary><a href="/2026/09/20/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/conda%20%E4%B8%8E%20uv/" title="conda 与 uv">conda 与 uv</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/" title="huggingface">huggingface</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/" title="git">git</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/" title="bug修复：GPU内存不足问题">bug修复：GPU内存不足问题</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/tumx/" title="tumx">tumx</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/push%20%E5%88%B0%20github%20%E6%97%B6%E5%87%BA%E9%94%99/" title="push 到 github 时出错">push 到 github 时出错</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/" title="expected str, bytes or os.PathLike object, not MultiplexedPath">expected str, bytes or os.PathLike object, not MultiplexedPath</a></details><details open><summary>秋招学习清单</summary><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%B2%97%E4%BD%8D%E8%A6%81%E6%B1%82/" title="未命名">未命名</a><a href="/2026/09/24/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E9%80%89%E6%8B%A9%E9%A2%98%E8%80%83%E7%82%B9/" title="选择题考点">选择题考点</a><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E6%9C%AA%E5%91%BD%E5%90%8D/" title="未命名">未命名</a><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/Agent/" title="未命名 1">未命名 1</a></details><details open><summary>算法学习</summary><details><summary>01_数据结构</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/00_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" title="00_数据结构总览">00_数据结构总览</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" title="04_队列与栈">04_队列与栈</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/05_%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="05_字符串">05_字符串</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="06_输入输出">06_输入输出</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" title="07_Python工具函数">07_Python工具函数</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/08_%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="08_高级数据结构">08_高级数据结构</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E5%AD%97%E5%85%B8/" title="02_字典">02_字典</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" title="03_集合">03_集合</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" title="01_列表">01_列表</a></details><details><summary>02_核心算法</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" title="01_前缀和">01_前缀和</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" title="02_差分数组">02_差分数组</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="03_二分查找">03_二分查找</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="04_滑动窗口">04_滑动窗口</a><a href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" title="06_排序">06_排序</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" title="05_优先队列">05_优先队列</a></details><details><summary>05_动态规划</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E8%83%8C%E5%8C%85DP/" title="02-背包DP">02-背包DP</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="09_动态规划">09_动态规划</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/05_%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" title="03_Paths on Grids 网格路径问题">03_Paths on Grids 网格路径问题</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%EF%BC%88Kadane%20%E7%AE%97%E6%B3%95%EF%BC%89/" title="最大子数组和（Kadane 算法）">最大子数组和（Kadane 算法）</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/" title="01_Introduction to DP 动态规划简介">01_Introduction to DP 动态规划简介</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" title="04_Longest Increasing Subsequence 最长递增子序列">04_Longest Increasing Subsequence 最长递增子序列</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Chicken_Jockey%20%E9%A2%98%E8%A7%A3/" title="算法学习/05_动态规划/Chicken_Jockey 题解">算法学习/05_动态规划/Chicken_Jockey 题解</a></details><details><summary>06_Graphs</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/05_%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="05_并查集">05_并查集</a><a href="/2026/05/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/06_%E6%9C%89%E5%90%91%E5%9B%BE%E7%8E%AF%E6%A3%80%E6%B5%8B/" title="06_Cycle Detection in Directed Graph 有向图环检测">06_Cycle Detection in Directed Graph 有向图环检测</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/" class="current" title="07_图论">07_图论</a></details><details><summary>其他算法</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="07_使用递归的穷举搜索">07_使用递归的穷举搜索</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/06_%E6%95%B0%E8%AE%BA/" title="07_数论">07_数论</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" title="Rectangle Geometry 矩形几何">Rectangle Geometry 矩形几何</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/08_%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/" title="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩">Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩</a></details></details>
+  <details open><summary>刷题笔记</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/03_%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" title="Casework 案例分析">Casework 案例分析</a><a href="/2026/05/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/BFS-DFS%20%E4%BE%8B%E9%A2%98/" title="Graph 图">Graph 图</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8F%8C%E6%8C%87%E9%92%88%20-%20Problems/" title="Two Pointer - Problems">Two Pointer - Problems</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/00-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E6%80%BB%E8%A7%88/" title="刷题笔记总览">刷题笔记总览</a><details><summary>Hot100</summary><details><summary>二叉树</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/101.%20%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" title="101. 对称二叉树">101. 对称二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/104.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" title="104. 二叉树的最大深度">104. 二叉树的最大深度</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" title="226. 翻转二叉树">226. 翻转二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/543.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" title="543. 二叉树的直径">543. 二叉树的直径</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/94.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" title="94. 二叉树的中序遍历">94. 二叉树的中序遍历</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/617.%20%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/" title="617. 合并二叉树">617. 合并二叉树</a></details><details><summary>位运算</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/461.%20%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" title="461. 汉明距离">461. 汉明距离</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/338.%20%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" title="338. 比特位计数">338. 比特位计数</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" title="136. 只出现一次的数字">136. 只出现一次的数字</a></details><details><summary>动态规划</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/70.%20%E7%88%AC%E6%A5%BC%E6%A2%AF/" title="70. 爬楼梯">70. 爬楼梯</a><a href="/2026/09/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/5.%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" title="5. 最长回文子串">5. 最长回文子串</a></details><details><summary>双指针</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/283.%20%E7%A7%BB%E5%8A%A8%E9%9B%B6/" title="283. 移动零">283. 移动零</a><a href="/2026/09/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/3.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" title="3. 无重复字符的最长子串">3. 无重复字符的最长子串</a></details><details><summary>哈希</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="1. 两数之和">1. 两数之和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/169.%20%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/" title="169. 多数元素">169. 多数元素</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/448.%20%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" title="448. 找到所有数组中消失的数字">448. 找到所有数组中消失的数字</a></details><details><summary>栈</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" title="20. 有效的括号">20. 有效的括号</a></details><details><summary>贪心</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机">121. 买卖股票的最佳时机</a></details><details><summary>链表</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" title="141. 环形链表">141. 环形链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="206. 反转链表">206. 反转链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/21.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" title="21. 合并两个有序链表">21. 合并两个有序链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/234.%20%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" title="234. 回文链表">234. 回文链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/160.%20%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" title="160. 相交链表">160. 相交链表</a><a href="/2026/09/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/2.%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" title="2. 两数相加">2. 两数相加</a></details></details><details><summary>Leetcode</summary><a href="/2026/09/13/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/78.%20%E5%AD%90%E9%9B%86/" title="78. 子集">78. 子集</a></details><details><summary>华为机考</summary><a href="/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83%E9%A2%98%E5%9E%8B/" title="华为机考题型">华为机考题型</a><details><summary>leetcode</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/01_two_sum/" title="两数之和（Two Sum）">两数之和（Two Sum）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/06_zigzag_convert/" title="Z 字形变换（Zigzag Conversion）">Z 字形变换（Zigzag Conversion）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/" title="无重复字符的最长子串（Longest Substring Without Repeating Characters）">无重复字符的最长子串（Longest Substring Without Repeating Characters）</a></details><details><summary>nowcoder</summary><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/HJ114-%E5%AE%9D%E7%9F%B3%E6%89%8B%E4%B8%B2/" title="HJ114 宝石手串">HJ114 宝石手串</a><a href="/2026/05/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ150_%E5%85%A8%E6%8E%92%E5%88%97/" title="HJ150 全排列">HJ150 全排列</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ148-%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF/" title="HJ148 迷宫寻路">HJ148 迷宫寻路</a><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ113-%E7%81%AB%E8%BD%A6%E8%BF%9B%E7%AB%99/" title="HJ113 火车进站">HJ113 火车进站</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ59-%E6%95%B0%E7%BB%84%E5%88%86%E7%BB%84/" title="HJ59 数组分组">HJ59 数组分组</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/" title="HJ149 数水坑">HJ149 数水坑</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/" title="明文分组（HJ3）">明文分组（HJ3）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/14_sort_strings/" title="字符串排序（HJ14）">字符串排序（HJ14）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/" title="字符串变换（HJ15）">字符串变换（HJ15）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/19_string_sort/" title="字符串排序（HJ19）">字符串排序（HJ19）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/17_string_match/" title="字符串字符匹配（HJ17）">字符串字符匹配（HJ17）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/20_brother_words/" title="查找兄弟单词（HJ20）">查找兄弟单词（HJ20）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/12_longest_digit_substring/" title="最长数字子串（HJ12）">最长数字子串（HJ12）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/21_longest_common_substring/" title="查找两个字符串a,b中的最长公共子串（HJ21）">查找两个字符串a,b中的最长公共子串（HJ21）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/07_remove_least_freq_chars/" title="删除出现次数最少的字符（HJ7）">删除出现次数最少的字符（HJ7）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/" title="第一个只出现一次的字符（HJ13）">第一个只出现一次的字符（HJ13）</a></details></details><details><summary>小红书</summary><details><summary>2025年9月7日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E8%A1%8C%E4%B8%BA%E6%9D%83%E9%87%8D2/" title="第2题-行为权重2">第2题-行为权重2</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E8%BD%B0%E7%82%B8%E6%9C%BA/" title="第3题-轰炸机">第3题-轰炸机</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%B6%85%E7%BA%A7%E9%87%8D%E6%8E%92/" title="第1题-超级重排">第1题-超级重排</a></details><details><summary>2026年9月10日</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E6%9C%80%E5%B0%8F%E5%8C%96%E5%B3%B0%E5%80%BC%E5%B9%B2%E6%89%B0/" title="第1题-最小化峰值干扰">第1题-最小化峰值干扰</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" title="第2题-双通道评测格网">第2题-双通道评测格网</a></details><details><summary>2026年9月13日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E9%81%BF%E9%87%8D%E5%8F%A3%E4%BB%A4/" title="第2题-避重口令">第2题-避重口令</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E4%B8%93%E6%A0%8F%E6%94%B9%E6%8C%82%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E7%BB%BC%E5%90%88%E8%AF%84%E5%88%86/" title="第3题-专栏改挂后的最大综合评分">第3题-专栏改挂后的最大综合评分</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%BE%BE%E4%BA%BA%E6%95%B0%E6%8D%AE%E7%9C%8B%E6%9D%BF/" title="第1题-达人数据看板">第1题-达人数据看板</a></details><details><summary>2026年9月17日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8A%A0%E9%80%9F%E7%AA%97%E5%8F%A3%E6%94%B6%E7%9B%8A/" title="第2题-加速窗口收益">第2题-加速窗口收益</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/" title="第3题-待发热度重排">第3题-待发热度重排</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%80%89%E6%8B%A9%E9%A2%98/" title="第1题-选择题">第1题-选择题</a></details><details><summary>2026年9月20日</summary><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%9B%B6%E5%92%8C%E5%8C%BA%E9%97%B4%E5%88%A0%E9%99%A4/" title="第1题-零和区间删除">第1题-零和区间删除</a><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8C%BA%E9%97%B4%E9%85%8D%E5%AF%B9%E8%AE%A1%E6%95%B0/" title="第2题-区间配对计数">第2题-区间配对计数</a></details><details><summary>练习题</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC1%E9%A2%98%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C/" title="第1题：数列求和">第1题：数列求和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC2%E9%A2%98%EF%BC%9A%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" title="第2题：水仙花数">第2题：水仙花数</a></details></details><details><summary>贪心</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="贪心算法">贪心算法</a></details><details><summary>题目-完全搜索</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/01_Milk%20Pails/" title="Milk Pails">Milk Pails</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/02_Diamond_Collector/" title="Diamond Collector">Diamond Collector</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/04_Counting_Liars/" title="Counting Liars">Counting Liars</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/05_Cow_Gymnastics/" title="Cow Gymnastics">Cow Gymnastics</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" title="Complete Search 完全搜索">Complete Search 完全搜索</a></details></details><details open><summary>开发杂记</summary><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/" title="expected str, bytes or os.PathLike object, not MultiplexedPath">expected str, bytes or os.PathLike object, not MultiplexedPath</a><a href="/2026/09/20/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/conda%20%E4%B8%8E%20uv/" title="conda 与 uv">conda 与 uv</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/push%20%E5%88%B0%20github%20%E6%97%B6%E5%87%BA%E9%94%99/" title="push 到 github 时出错">push 到 github 时出错</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/" title="bug修复：GPU内存不足问题">bug修复：GPU内存不足问题</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/" title="git">git</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/" title="huggingface">huggingface</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/tumx/" title="tumx">tumx</a></details><details open><summary>秋招学习清单</summary><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%B2%97%E4%BD%8D%E8%A6%81%E6%B1%82/" title="未命名">未命名</a><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E6%9C%AA%E5%91%BD%E5%90%8D/" title="未命名">未命名</a><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/Agent/" title="未命名 1">未命名 1</a><a href="/2026/09/24/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E9%80%89%E6%8B%A9%E9%A2%98%E8%80%83%E7%82%B9/" title="选择题考点">选择题考点</a></details><details open><summary>算法学习</summary><details><summary>01_数据结构</summary><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" title="01_列表">01_列表</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/00_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" title="00_数据结构总览">00_数据结构总览</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E5%AD%97%E5%85%B8/" title="02_字典">02_字典</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" title="03_集合">03_集合</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/05_%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="05_字符串">05_字符串</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" title="04_队列与栈">04_队列与栈</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" title="07_Python工具函数">07_Python工具函数</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="06_输入输出">06_输入输出</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/08_%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="08_高级数据结构">08_高级数据结构</a></details><details><summary>02_核心算法</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" title="02_差分数组">02_差分数组</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" title="01_前缀和">01_前缀和</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="03_二分查找">03_二分查找</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="04_滑动窗口">04_滑动窗口</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" title="05_优先队列">05_优先队列</a><a href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" title="06_排序">06_排序</a></details><details><summary>05_动态规划</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E8%83%8C%E5%8C%85DP/" title="02-背包DP">02-背包DP</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" title="04_Longest Increasing Subsequence 最长递增子序列">04_Longest Increasing Subsequence 最长递增子序列</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="09_动态规划">09_动态规划</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/" title="01_Introduction to DP 动态规划简介">01_Introduction to DP 动态规划简介</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%EF%BC%88Kadane%20%E7%AE%97%E6%B3%95%EF%BC%89/" title="最大子数组和（Kadane 算法）">最大子数组和（Kadane 算法）</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/05_%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" title="03_Paths on Grids 网格路径问题">03_Paths on Grids 网格路径问题</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Chicken_Jockey%20%E9%A2%98%E8%A7%A3/" title="算法学习/05_动态规划/Chicken_Jockey 题解">算法学习/05_动态规划/Chicken_Jockey 题解</a></details><details><summary>06_Graphs</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/05_%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="05_并查集">05_并查集</a><a href="/2026/05/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/06_%E6%9C%89%E5%90%91%E5%9B%BE%E7%8E%AF%E6%A3%80%E6%B5%8B/" title="06_Cycle Detection in Directed Graph 有向图环检测">06_Cycle Detection in Directed Graph 有向图环检测</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/" class="current" title="07_图论">07_图论</a></details><details><summary>其他算法</summary><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" title="Rectangle Geometry 矩形几何">Rectangle Geometry 矩形几何</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/06_%E6%95%B0%E8%AE%BA/" title="07_数论">07_数论</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="07_使用递归的穷举搜索">07_使用递归的穷举搜索</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/08_%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/" title="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩">Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩</a></details></details>
 </div>
 
     </div>
@@ -354,16 +354,23 @@
             
               <div class="markdown-body">
                 
-                <h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1><h2 id="邻接表建图"><a href="#邻接表建图" class="headerlink" title="邻接表建图"></a>邻接表建图</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 邻接表</span>
+                <h1 id="图论">图论</h1>
+<h2 id="邻接表建图">邻接表建图</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 邻接表</span>
 adj = [[] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]
 <span class="hljs-comment"># 无向图</span>
 adj[u].append(v)
 adj[v].append(u)
 
 adj[u].append((v, w))    <span class="hljs-comment"># 带权重</span></code></pre></div>
-<p><strong>图论基础</strong>：BFS 适合求最短路，DFS 适合遍历/搜索</p>
-<h2 id="DFS（深度优先搜索）"><a href="#DFS（深度优先搜索）" class="headerlink" title="DFS（深度优先搜索）"></a>DFS（深度优先搜索）</h2><h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p><strong>“一条路走到黑，走不通就回头。”</strong> DFS 沿着一个方向一直往深处走，直到无路可走，再回退到上一个岔路口尝试另一个方向。可以用 <strong>递归</strong> 实现。</p>
-<h3 id="递归模板"><a href="#递归模板" class="headerlink" title="递归模板"></a>递归模板</h3><div class="code-wrapper"><pre><code class="hljs python">visited = [<span class="hljs-literal">False</span>] * n
+<p><strong>图论基础</strong>：BFS 适合求最短路，DFS 适合遍历/搜索 ##
+DFS（深度优先搜索）</p>
+<h3 id="核心思想">核心思想</h3>
+<p><strong>“一条路走到黑，走不通就回头。”</strong> DFS
+沿着一个方向一直往深处走，直到无路可走，再回退到上一个岔路口尝试另一个方向。可以用
+<strong>递归</strong> 实现。</p>
+<h3 id="递归模板">递归模板</h3>
+<div class="code-wrapper"><pre><code class="hljs python">visited = [<span class="hljs-literal">False</span>] * n
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">u</span>):
     visited[u] = <span class="hljs-literal">True</span>
@@ -375,11 +382,14 @@ adj[u].append((v, w))    <span class="hljs-comment"># 带权重</span></code></p
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[i]:
         dfs(i)</code></pre></div>
-<h3 id="网格-DFS-—-LC-200-岛屿数量"><a href="#网格-DFS-—-LC-200-岛屿数量" class="headerlink" title="网格 DFS — LC 200 岛屿数量"></a>网格 DFS — LC 200 岛屿数量</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-islands/">https://leetcode.cn/problems/number-of-islands/</a></p>
+<h3 id="网格-dfs-lc-200-岛屿数量">网格 DFS — LC 200 岛屿数量</h3>
+<p>https://leetcode.cn/problems/number-of-islands/</p>
 <blockquote>
-<p>给定一个 <code>&#39;1&#39;</code>（陆地）和 <code>&#39;0&#39;</code>（水）组成的二维网格，计算岛屿的数量。</p>
+<p>给定一个 <code>'1'</code>（陆地）和
+<code>'0'</code>（水）组成的二维网格，计算岛屿的数量。</p>
 </blockquote>
-<p><strong>思路</strong>：遍历每个格子，遇到 <code>&#39;1&#39;</code> 就启动一次 DFS 把整座岛”淹掉”（标记为已访问），岛屿计数 +1。</p>
+<p><strong>思路</strong>：遍历每个格子，遇到 <code>'1'</code> 就启动一次
+DFS 把整座岛”淹掉”（标记为已访问），岛屿计数 +1。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">numIslands</span>(<span class="hljs-params">grid</span>):
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> grid:
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
@@ -400,8 +410,15 @@ adj[u].append((v, w))    <span class="hljs-comment"># 带权重</span></code></p
                 count += <span class="hljs-number">1</span>
                 dfs(r, c)
     <span class="hljs-keyword">return</span> count</code></pre></div>
-<h2 id="BFS（广度优先搜索）"><a href="#BFS（广度优先搜索）" class="headerlink" title="BFS（广度优先搜索）"></a>BFS（广度优先搜索）</h2><h3 id="核心思想-1"><a href="#核心思想-1" class="headerlink" title="核心思想"></a>核心思想</h3><p><strong>“逐层扩散，像水波纹一样。”</strong> BFS 从起点出发，先访问距离为 1 的节点，再访问距离为 2 的节点，依此类推。因为一层一层扩展，<strong>BFS 天然能求最短路径</strong>（边权相等时）。用 <strong>队列（deque）</strong> 实现。</p>
-<h3 id="BFS-模板"><a href="#BFS-模板" class="headerlink" title="BFS 模板"></a>BFS 模板</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<h2 id="bfs广度优先搜索">BFS（广度优先搜索）</h2>
+<h3 id="核心思想-1">核心思想</h3>
+<p><strong>“逐层扩散，像水波纹一样。”</strong> BFS
+从起点出发，先访问距离为 1 的节点，再访问距离为 2
+的节点，依此类推。因为一层一层扩展，<strong>BFS
+天然能求最短路径</strong>（边权相等时）。用
+<strong>队列（deque）</strong> 实现。</p>
+<h3 id="bfs-模板">BFS 模板</h3>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
 visited = [<span class="hljs-literal">False</span>] * n
 
@@ -419,7 +436,8 @@ visited = [<span class="hljs-literal">False</span>] * n
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
     <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> visited[i]:
         bfs(i)</code></pre></div>
-<h3 id="分层-BFS-模板"><a href="#分层-BFS-模板" class="headerlink" title="分层 BFS 模板"></a>分层 BFS 模板</h3><p>很多题目需要知道”当前是第几层”（比如求最短距离），用分层写法：</p>
+<h3 id="分层-bfs-模板">分层 BFS 模板</h3>
+<p>很多题目需要知道”当前是第几层”（比如求最短距离），用分层写法：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">bfs_level</span>(<span class="hljs-params">start, graph</span>):
@@ -436,11 +454,16 @@ visited = [<span class="hljs-literal">False</span>] * n
                     queue.append(neighbor)
         level += <span class="hljs-number">1</span>                       <span class="hljs-comment"># 一层处理完，层数 +1</span>
     <span class="hljs-keyword">return</span> level</code></pre></div>
-<h3 id="多源-BFS-—-LC-994-腐烂的橘子"><a href="#多源-BFS-—-LC-994-腐烂的橘子" class="headerlink" title="多源 BFS — LC 994 腐烂的橘子"></a>多源 BFS — LC 994 腐烂的橘子</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rotting-oranges/">https://leetcode.cn/problems/rotting-oranges/</a></p>
+<h3 id="多源-bfs-lc-994-腐烂的橘子">多源 BFS — LC 994 腐烂的橘子</h3>
+<p>https://leetcode.cn/problems/rotting-oranges/</p>
 <blockquote>
-<p>网格中 <code>0</code> 是空格，<code>1</code> 是新鲜橘子，<code>2</code> 是腐烂橘子。每分钟腐烂橘子会让上下左右的新鲜橘子腐烂。求所有橘子腐烂的最短时间，不可能则返回 -1。</p>
+<p>网格中 <code>0</code> 是空格，<code>1</code>
+是新鲜橘子，<code>2</code>
+是腐烂橘子。每分钟腐烂橘子会让上下左右的新鲜橘子腐烂。求所有橘子腐烂的最短时间，不可能则返回
+-1。</p>
 </blockquote>
-<p><strong>思路</strong>：把所有腐烂橘子同时作为 BFS 起点（多源 BFS），一层层向外扩散，每扩一层就是 1 分钟。</p>
+<p><strong>思路</strong>：把所有腐烂橘子同时作为 BFS 起点（多源
+BFS），一层层向外扩散，每扩一层就是 1 分钟。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">orangesRotting</span>(<span class="hljs-params">grid</span>):
@@ -473,7 +496,7 @@ visited = [<span class="hljs-literal">False</span>] * n
         minutes += <span class="hljs-number">1</span>
     <span class="hljs-comment"># 最后一轮多加了 1，需要减掉</span>
     <span class="hljs-keyword">return</span> minutes - <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> fresh == <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> -<span class="hljs-number">1</span></code></pre></div>
-<h2 id="DFS-vs-BFS-对比"><a href="#DFS-vs-BFS-对比" class="headerlink" title="DFS vs BFS 对比"></a>DFS vs BFS 对比</h2><div class="table-container">
+<h2 id="dfs-vs-bfs-对比">DFS vs BFS 对比</h2>
 <table>
 <thead>
 <tr>
@@ -510,19 +533,23 @@ visited = [<span class="hljs-literal">False</span>] * n
 </tr>
 </tbody>
 </table>
-</div>
-<p><strong>选择建议</strong>：</p>
-<ul>
-<li>求<strong>连通性、所有路径、是否可达</strong> → DFS（代码简洁）</li>
-<li>求<strong>最短距离、最少步数</strong> → BFS（天然最短）</li>
-<li>网格/树的层序遍历 → BFS</li>
-</ul>
-<hr>
-<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><p>拓扑排序针对<strong>有向无环图（DAG）</strong>，把所有节点排成一条线，使得每条边的起点都排在终点前面。典型场景是<strong>任务调度、课程依赖</strong>。核心概念是<strong>入度</strong>（指向该节点的边数），入度为 0 的节点没有前置依赖，可以最先处理。</p>
-<h3 id="LC-207-课程表"><a href="#LC-207-课程表" class="headerlink" title="LC 207 课程表"></a>LC 207 课程表</h3><blockquote>
-<p>共 <code>numCourses</code> 门课，<code>prerequisites[i] = [a, b]</code> 表示学 a 之前要先学 b。判断是否能完成所有课程（即图中是否有环）。</p>
+<p><strong>选择建议</strong>： -
+求<strong>连通性、所有路径、是否可达</strong> → DFS（代码简洁） -
+求<strong>最短距离、最少步数</strong> → BFS（天然最短） -
+网格/树的层序遍历 → BFS</p>
+<hr />
+<h2 id="拓扑排序">拓扑排序</h2>
+<p>拓扑排序针对<strong>有向无环图（DAG）</strong>，把所有节点排成一条线，使得每条边的起点都排在终点前面。典型场景是<strong>任务调度、课程依赖</strong>。核心概念是<strong>入度</strong>（指向该节点的边数），入度为
+0 的节点没有前置依赖，可以最先处理。</p>
+<h3 id="lc-207-课程表">LC 207 课程表</h3>
+<blockquote>
+<p>共 <code>numCourses</code>
+门课，<code>prerequisites[i] = [a, b]</code> 表示学 a 之前要先学
+b。判断是否能完成所有课程（即图中是否有环）。</p>
 </blockquote>
-<p><strong>思路</strong>：BFS 拓扑排序（Kahn 算法）。维护入度表，每次取入度为 0 的节点，处理后将其邻居入度 -1。最终处理节点数等于总数则无环。</p>
+<p><strong>思路</strong>：BFS 拓扑排序（Kahn
+算法）。维护入度表，每次取入度为 0 的节点，处理后将其邻居入度
+-1。最终处理节点数等于总数则无环。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque, defaultdict
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">canFinish</span>(<span class="hljs-params">numCourses, prerequisites</span>):
@@ -546,7 +573,10 @@ visited = [<span class="hljs-literal">False</span>] * n
             <span class="hljs-keyword">if</span> in_degree[neighbor] == <span class="hljs-number">0</span>:    <span class="hljs-comment"># 入度变 0，可以学了</span>
                 queue.append(neighbor)
     <span class="hljs-keyword">return</span> count == numCourses   <span class="hljs-comment"># 全部处理完说明无环</span></code></pre></div>
-<h2 id="单源最短路径算法"><a href="#单源最短路径算法" class="headerlink" title="单源最短路径算法"></a>单源最短路径算法</h2><h3 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h3><p><strong>Dijkstra 算法</strong>用于解决<strong>单源最短路径</strong>问题：在一个<strong>边权非负</strong>的有向或无向图中，给定一个起点，计算该起点到<strong>所有其他节点</strong>的最短距离。</p>
+<h2 id="单源最短路径算法">单源最短路径算法</h2>
+<h3 id="dijkstra">Dijkstra</h3>
+<p><strong>Dijkstra
+算法</strong>用于解决<strong>单源最短路径</strong>问题：在一个<strong>边权非负</strong>的有向或无向图中，给定一个起点，计算该起点到<strong>所有其他节点</strong>的最短距离。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> heapq
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">dijkstra</span>(<span class="hljs-params">start, n, adj</span>):
@@ -563,16 +593,17 @@ visited = [<span class="hljs-literal">False</span>] * n
                 dist[v] = nd
                 heapq.heappush(pq, (nd, v))
     <span class="hljs-keyword">return</span> dist</code></pre></div>
-<h3 id="Bellman-Ford-算法"><a href="#Bellman-Ford-算法" class="headerlink" title="Bellman-Ford 算法"></a>Bellman-Ford 算法</h3><p><strong>Bellman-Ford</strong> 是另一种单源最短路径算法，与 Dijkstra 的最大区别在于：<strong>它可以处理负权边</strong>，并且能够检测图中是否存在<strong>负权环</strong>（即环的总权重为负数，导致最短路径无下界）。</p>
-<h3 id="核心思想-2"><a href="#核心思想-2" class="headerlink" title="核心思想"></a>核心思想</h3><ul>
-<li><p>对每条边进行 <strong>V-1 次松弛操作</strong>（<code>V</code> 是顶点数）。</p>
-</li>
-<li><p>松弛：如果 <code>dist[u] + w &lt; dist[v]</code>，则更新 <code>dist[v]</code>。</p>
-</li>
-<li><p>因为最短路径最多包含 <code>V-1</code> 条边（无环），所以 V-1 轮后所有最短距离必然确定。</p>
-</li>
-<li><p>再做一轮：如果还能松弛，说明存在负权环。</p>
-</li>
+<h3 id="bellman-ford-算法">Bellman-Ford 算法</h3>
+<p><strong>Bellman-Ford</strong> 是另一种单源最短路径算法，与 Dijkstra
+的最大区别在于：<strong>它可以处理负权边</strong>，并且能够检测图中是否存在<strong>负权环</strong>（即环的总权重为负数，导致最短路径无下界）。</p>
+<h3 id="核心思想-2">核心思想</h3>
+<ul>
+<li><p>对每条边进行 <strong>V-1
+次松弛操作</strong>（<code>V</code> 是顶点数）。</p></li>
+<li><p>松弛：如果 <code>dist[u] + w &lt; dist[v]</code>，则更新 <code>dist[v]</code>。</p></li>
+<li><p>因为最短路径最多包含 <code>V-1</code> 条边（无环），所以 V-1
+轮后所有最短距离必然确定。</p></li>
+<li><p>再做一轮：如果还能松弛，说明存在负权环。</p></li>
 </ul>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">bellman_ford</span>(<span class="hljs-params">n, edges, start</span>):
     <span class="hljs-string">&quot;&quot;&quot;</span>
@@ -605,13 +636,12 @@ visited = [<span class="hljs-literal">False</span>] * n
             <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>   <span class="hljs-comment"># 存在负权环，无法得到最短路径</span>
 
     <span class="hljs-keyword">return</span> dist</code></pre></div>
-<h2 id="Floyd-Warshall-算法"><a href="#Floyd-Warshall-算法" class="headerlink" title="Floyd-Warshall 算法"></a>Floyd-Warshall 算法</h2><h3 id="1-算法作用"><a href="#1-算法作用" class="headerlink" title="1. 算法作用"></a>1. 算法作用</h3><ul>
-<li><p>计算<strong>所有节点对之间的最短路径</strong>。</p>
-</li>
-<li><p>可处理<strong>负权边</strong>（但不能有负权环）。</p>
-</li>
-<li><p>适用于<strong>稠密图</strong>，节点数通常 ≤ 500。</p>
-</li>
+<h2 id="floyd-warshall-算法">Floyd-Warshall 算法</h2>
+<h3 id="算法作用">1. 算法作用</h3>
+<ul>
+<li><p>计算<strong>所有节点对之间的最短路径</strong>。</p></li>
+<li><p>可处理<strong>负权边</strong>（但不能有负权环）。</p></li>
+<li><p>适用于<strong>稠密图</strong>，节点数通常 ≤ 500。</p></li>
 </ul>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">floyd_warshall</span>(<span class="hljs-params">n, edges, directed=<span class="hljs-literal">False</span></span>):
     <span class="hljs-string">&quot;&quot;&quot;</span>
@@ -638,7 +668,8 @@ visited = [<span class="hljs-literal">False</span>] * n
                 <span class="hljs-keyword">if</span> dist[i][k] + dist[k][j] &lt; dist[i][j]:
                     dist[i][j] = dist[i][k] + dist[k][j]
     <span class="hljs-keyword">return</span> dist</code></pre></div>
-<h2 id="Kruskal（最小生成树）"><a href="#Kruskal（最小生成树）" class="headerlink" title="Kruskal（最小生成树）"></a>Kruskal（最小生成树）</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">kruskal</span>(<span class="hljs-params">edges, n</span>):
+<h2 id="kruskal最小生成树">Kruskal（最小生成树）</h2>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">kruskal</span>(<span class="hljs-params">edges, n</span>):
     edges.sort()
     parent = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(n))
 
@@ -655,8 +686,11 @@ visited = [<span class="hljs-literal">False</span>] * n
         <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
 
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(w <span class="hljs-keyword">for</span> w, u, v <span class="hljs-keyword">in</span> edges <span class="hljs-keyword">if</span> union(u, v))</code></pre></div>
-<hr>
-<h2 id="二分图检测（染色法）"><a href="#二分图检测（染色法）" class="headerlink" title="二分图检测（染色法）"></a>二分图检测（染色法）</h2><p>BFS 双色染色：相邻节点颜色必须相反；若冲突则不是二分图。下面这版同时统计「改成合法二分图的最少修改数」（每 个连通块内两种染色方向取较小者）：</p>
+<hr />
+<h2 id="二分图检测染色法">二分图检测（染色法）</h2>
+<p>BFS
+双色染色：相邻节点颜色必须相反；若冲突则不是二分图。下面这版同时统计「改成合法二分图的最少修改数」（每
+个连通块内两种染色方向取较小者）：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">is_bipartite</span>(<span class="hljs-params">n, adj, node</span>):
     <span class="hljs-string">&quot;&quot;&quot;检测图是否为二分图，返回 (is_bipartite, min_changes)&quot;&quot;&quot;</span>
     color = [-<span class="hljs-number">1</span>] * n  <span class="hljs-comment"># -1: 未染色, 0/1: 颜色</span>
@@ -683,7 +717,9 @@ visited = [<span class="hljs-literal">False</span>] * n
         ans += <span class="hljs-built_in">min</span>(res)
 
     <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>, ans</code></pre></div>
-<h2 id="拓扑排序（返回序列版）"><a href="#拓扑排序（返回序列版）" class="headerlink" title="拓扑排序（返回序列版）"></a>拓扑排序（返回序列版）</h2><p>Kahn 算法的另一常见形态：不只要判环，还要输出拓扑序本身（有环时返回空列表）：</p>
+<h2 id="拓扑排序返回序列版">拓扑排序（返回序列版）</h2>
+<p>Kahn
+算法的另一常见形态：不只要判环，还要输出拓扑序本身（有环时返回空列表）：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">topological_sort</span>():
     in_degree = [<span class="hljs-number">0</span>] * n
     <span class="hljs-keyword">for</span> u <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
@@ -699,8 +735,9 @@ visited = [<span class="hljs-literal">False</span>] * n
             <span class="hljs-keyword">if</span> in_degree[v] == <span class="hljs-number">0</span>:
                 q.append(v)
     <span class="hljs-keyword">return</span> result <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(result) == n <span class="hljs-keyword">else</span> []  <span class="hljs-comment"># 有环返回空</span></code></pre></div>
-<hr>
-<h2 id="经典题目"><a href="#经典题目" class="headerlink" title="经典题目"></a>经典题目</h2><h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><div class="table-container">
+<hr />
+<h2 id="经典题目">经典题目</h2>
+<h3 id="入门">入门</h3>
 <table>
 <thead>
 <tr>
@@ -727,8 +764,7 @@ visited = [<span class="hljs-literal">False</span>] * n
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><div class="table-container">
+<h3 id="进阶">进阶</h3>
 <table>
 <thead>
 <tr>
@@ -760,8 +796,7 @@ visited = [<span class="hljs-literal">False</span>] * n
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h3><div class="table-container">
+<h3 id="挑战">挑战</h3>
 <table>
 <thead>
 <tr>
@@ -788,15 +823,18 @@ visited = [<span class="hljs-literal">False</span>] * n
 </tr>
 </tbody>
 </table>
-</div>
-<hr>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ol>
-<li><strong>DFS 和 BFS 是图搜索的两大基石</strong>，大量题目都是它们的变体。</li>
+<hr />
+<h2 id="小结">小结</h2>
+<ol type="1">
+<li><strong>DFS 和 BFS
+是图搜索的两大基石</strong>，大量题目都是它们的变体。</li>
 <li>DFS 用递归或栈，擅长路径搜索和连通性判断。</li>
-<li>BFS 用队列，擅长最短路径和层序遍历；多源 BFS 处理”同时出发”的场景。</li>
+<li>BFS 用队列，擅长最短路径和层序遍历；多源 BFS
+处理”同时出发”的场景。</li>
 <li>网格问题本质就是图问题，四方向移动是固定套路。</li>
 <li>拓扑排序用 BFS（Kahn 算法）处理有向无环图的依赖关系。</li>
-<li>刷题时先判断是 DFS 还是 BFS 场景，再套模板，最后根据题意调整细节。</li>
+<li>刷题时先判断是 DFS 还是 BFS
+场景，再套模板，最后根据题意调整细节。</li>
 </ol>
 
                 
