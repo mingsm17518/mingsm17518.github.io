@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Icon.png">
+  <link rel="icon" href="/img/Icon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ming">
+  <meta name="keywords" content="算法,刷题,题解,LeetCode,Hot100,小红书机考,USACO,动态规划,图论,数据结构,Python">
+  
+    <meta name="description" content="📌 AI 核心概念大串联：LLM, Token, Context, Context Window, Prompt, User Prompt, System Prompt, Tool, MCP, Agent, Agent Skill，一期视频带你打通 AI 底层逻辑！ 🎥 相关视频： • MCP终极指南 - 从原理到实战，带你深入掌握MCP（基础篇） • MCP终极指南   带你深入掌握MCP（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="未命名">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E6%9C%AA%E5%91%BD%E5%90%8D/index.html">
+<meta property="og:site_name" content="Ming&#39;s Blog">
+<meta property="og:description" content="📌 AI 核心概念大串联：LLM, Token, Context, Context Window, Prompt, User Prompt, System Prompt, Tool, MCP, Agent, Agent Skill，一期视频带你打通 AI 底层逻辑！ 🎥 相关视频： • MCP终极指南 - 从原理到实战，带你深入掌握MCP（基础篇） • MCP终极指南   带你深入掌握MCP（">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png">
+<meta property="og:image" content="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png">
+<meta property="og:image" content="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png">
+<meta property="og:image" content="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png">
+<meta property="og:image" content="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png">
+<meta property="og:image" content="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png">
+<meta property="og:image" content="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png">
+<meta property="article:published_time" content="2026-09-23T14:32:04.384Z">
+<meta property="article:modified_time" content="2026-09-23T14:32:42.603Z">
+<meta property="article:author" content="Ming">
+<meta property="article:tag" content="算法,刷题,题解,LeetCode,Hot100,小红书机考,USACO,动态规划,图论,数据结构,Python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>未命名 - Ming&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mingsm17518.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ming&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/jiangly.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="未命名"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-09-23 22:32" pubdate>
+          2026年9月23日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          177 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          2 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+<style>
+.doc-tree {
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.doc-tree .dt-title {
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+}
+.doc-tree details {
+  margin-left: 0;
+}
+.doc-tree details details {
+  margin-left: 0.85em;
+}
+.doc-tree summary {
+  cursor: pointer;
+  padding: 1px 0.5rem;
+  border-radius: 6px;
+  color: var(--text-3, #555);
+  user-select: none;
+}
+.doc-tree summary:hover {
+  background: rgba(128, 128, 128, 0.12);
+}
+.doc-tree a {
+  display: block;
+  padding: 1px 0.5rem 1px 1.7em;
+  color: var(--text-3, #666);
+  text-decoration: none;
+  border-radius: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.doc-tree a:hover {
+  background: rgba(128, 128, 128, 0.12);
+  color: var(--primary, #333);
+}
+.doc-tree a.current {
+  color: #fff;
+  background: var(--primary, #2f4154);
+}
+</style>
+
+
+
+<div class="doc-tree">
+  <div class="dt-title">目录树</div>
+  <details open><summary>刷题笔记</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/00-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E6%80%BB%E8%A7%88/" title="刷题笔记总览">刷题笔记总览</a><a href="/2026/05/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/BFS-DFS%20%E4%BE%8B%E9%A2%98/" title="Graph 图">Graph 图</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/03_%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" title="Casework 案例分析">Casework 案例分析</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8F%8C%E6%8C%87%E9%92%88%20-%20Problems/" title="Two Pointer - Problems">Two Pointer - Problems</a><details><summary>Hot100</summary><details><summary>二叉树</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/104.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/" title="104. 二叉树的最大深度">104. 二叉树的最大深度</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/101.%20%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/" title="101. 对称二叉树">101. 对称二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/226.%20%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/" title="226. 翻转二叉树">226. 翻转二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/543.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" title="543. 二叉树的直径">543. 二叉树的直径</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/617.%20%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/" title="617. 合并二叉树">617. 合并二叉树</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/94.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" title="94. 二叉树的中序遍历">94. 二叉树的中序遍历</a></details><details><summary>位运算</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/338.%20%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" title="338. 比特位计数">338. 比特位计数</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" title="136. 只出现一次的数字">136. 只出现一次的数字</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/461.%20%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" title="461. 汉明距离">461. 汉明距离</a></details><details><summary>动态规划</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/70.%20%E7%88%AC%E6%A5%BC%E6%A2%AF/" title="70. 爬楼梯">70. 爬楼梯</a></details><details><summary>双指针</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/283.%20%E7%A7%BB%E5%8A%A8%E9%9B%B6/" title="283. 移动零">283. 移动零</a><a href="/2026/09/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/3.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" title="3. 无重复字符的最长子串">3. 无重复字符的最长子串</a></details><details><summary>哈希</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="1. 两数之和">1. 两数之和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/169.%20%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/" title="169. 多数元素">169. 多数元素</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/448.%20%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" title="448. 找到所有数组中消失的数字">448. 找到所有数组中消失的数字</a></details><details><summary>栈</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" title="20. 有效的括号">20. 有效的括号</a></details><details><summary>贪心</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机">121. 买卖股票的最佳时机</a></details><details><summary>链表</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" title="141. 环形链表">141. 环形链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/160.%20%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" title="160. 相交链表">160. 相交链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/21.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" title="21. 合并两个有序链表">21. 合并两个有序链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/234.%20%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" title="234. 回文链表">234. 回文链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="206. 反转链表">206. 反转链表</a><a href="/2026/09/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/2.%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" title="2. 两数相加">2. 两数相加</a></details></details><details><summary>Leetcode</summary><a href="/2026/09/13/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/78.%20%E5%AD%90%E9%9B%86/" title="78. 子集">78. 子集</a></details><details><summary>华为机考</summary><a href="/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83%E9%A2%98%E5%9E%8B/" title="华为机考题型">华为机考题型</a><details><summary>leetcode</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/5.%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" title="最长回文子串（Longest Palindromic Substring）">最长回文子串（Longest Palindromic Substring）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/06_zigzag_convert/" title="Z 字形变换（Zigzag Conversion）">Z 字形变换（Zigzag Conversion）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/03_longest_substring/" title="无重复字符的最长子串（Longest Substring Without Repeating Characters）">无重复字符的最长子串（Longest Substring Without Repeating Characters）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/leetcode/01_two_sum/" title="两数之和（Two Sum）">两数之和（Two Sum）</a></details><details><summary>nowcoder</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/16_palindrome/" title="最长回文子串（HJ16）">最长回文子串（HJ16）</a><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/HJ114-%E5%AE%9D%E7%9F%B3%E6%89%8B%E4%B8%B2/" title="HJ114 宝石手串">HJ114 宝石手串</a><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ113-%E7%81%AB%E8%BD%A6%E8%BF%9B%E7%AB%99/" title="HJ113 火车进站">HJ113 火车进站</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/" title="HJ149 数水坑">HJ149 数水坑</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ59-%E6%95%B0%E7%BB%84%E5%88%86%E7%BB%84/" title="HJ59 数组分组">HJ59 数组分组</a><a href="/2026/05/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ150_%E5%85%A8%E6%8E%92%E5%88%97/" title="HJ150 全排列">HJ150 全排列</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/12_longest_digit_substring/" title="最长数字子串（HJ12）">最长数字子串（HJ12）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/07_remove_least_freq_chars/" title="删除出现次数最少的字符（HJ7）">删除出现次数最少的字符（HJ7）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/" title="第一个只出现一次的字符（HJ13）">第一个只出现一次的字符（HJ13）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/14_sort_strings/" title="字符串排序（HJ14）">字符串排序（HJ14）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/17_string_match/" title="字符串字符匹配（HJ17）">字符串字符匹配（HJ17）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/" title="字符串变换（HJ15）">字符串变换（HJ15）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/19_string_sort/" title="字符串排序（HJ19）">字符串排序（HJ19）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/" title="明文分组（HJ3）">明文分组（HJ3）</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ148-%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF/" title="HJ148 迷宫寻路">HJ148 迷宫寻路</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/21_longest_common_substring/" title="查找两个字符串a,b中的最长公共子串（HJ21）">查找两个字符串a,b中的最长公共子串（HJ21）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/20_brother_words/" title="查找兄弟单词（HJ20）">查找兄弟单词（HJ20）</a></details></details><details><summary>小红书</summary><details><summary>2025年9月7日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%B6%85%E7%BA%A7%E9%87%8D%E6%8E%92/" title="第1题-超级重排">第1题-超级重排</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E8%BD%B0%E7%82%B8%E6%9C%BA/" title="第3题-轰炸机">第3题-轰炸机</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E8%A1%8C%E4%B8%BA%E6%9D%83%E9%87%8D2/" title="第2题-行为权重2">第2题-行为权重2</a></details><details><summary>2026年9月10日</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E6%9C%80%E5%B0%8F%E5%8C%96%E5%B3%B0%E5%80%BC%E5%B9%B2%E6%89%B0/" title="第1题-最小化峰值干扰">第1题-最小化峰值干扰</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" title="第2题-双通道评测格网">第2题-双通道评测格网</a></details><details><summary>2026年9月13日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%BE%BE%E4%BA%BA%E6%95%B0%E6%8D%AE%E7%9C%8B%E6%9D%BF/" title="第1题-达人数据看板">第1题-达人数据看板</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E9%81%BF%E9%87%8D%E5%8F%A3%E4%BB%A4/" title="第2题-避重口令">第2题-避重口令</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E4%B8%93%E6%A0%8F%E6%94%B9%E6%8C%82%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E7%BB%BC%E5%90%88%E8%AF%84%E5%88%86/" title="第3题-专栏改挂后的最大综合评分">第3题-专栏改挂后的最大综合评分</a></details><details><summary>2026年9月17日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%80%89%E6%8B%A9%E9%A2%98/" title="第1题-选择题">第1题-选择题</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8A%A0%E9%80%9F%E7%AA%97%E5%8F%A3%E6%94%B6%E7%9B%8A/" title="第2题-加速窗口收益">第2题-加速窗口收益</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/" title="第3题-待发热度重排">第3题-待发热度重排</a></details><details><summary>2026年9月20日</summary><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%9B%B6%E5%92%8C%E5%8C%BA%E9%97%B4%E5%88%A0%E9%99%A4/" title="第1题-零和区间删除">第1题-零和区间删除</a><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8C%BA%E9%97%B4%E9%85%8D%E5%AF%B9%E8%AE%A1%E6%95%B0/" title="第2题-区间配对计数">第2题-区间配对计数</a></details><details><summary>练习题</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC1%E9%A2%98%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C/" title="第1题：数列求和">第1题：数列求和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC2%E9%A2%98%EF%BC%9A%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" title="第2题：水仙花数">第2题：水仙花数</a></details></details><details><summary>贪心</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="贪心算法">贪心算法</a></details><details><summary>题目-完全搜索</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/01_Milk%20Pails/" title="Milk Pails">Milk Pails</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/02_Diamond_Collector/" title="Diamond Collector">Diamond Collector</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/04_Counting_Liars/" title="Counting Liars">Counting Liars</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/05_Cow_Gymnastics/" title="Cow Gymnastics">Cow Gymnastics</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" title="Complete Search 完全搜索">Complete Search 完全搜索</a></details></details><details open><summary>开发杂记</summary><a href="/2026/09/20/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/conda%20%E4%B8%8E%20uv/" title="conda 与 uv">conda 与 uv</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/" title="huggingface">huggingface</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/" title="git">git</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/" title="bug修复：GPU内存不足问题">bug修复：GPU内存不足问题</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/tumx/" title="tumx">tumx</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/push%20%E5%88%B0%20github%20%E6%97%B6%E5%87%BA%E9%94%99/" title="push 到 github 时出错">push 到 github 时出错</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/" title="expected str, bytes or os.PathLike object, not MultiplexedPath">expected str, bytes or os.PathLike object, not MultiplexedPath</a></details><details open><summary>秋招学习清单</summary><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%B2%97%E4%BD%8D%E8%A6%81%E6%B1%82/" title="未命名">未命名</a><a href="/2026/09/24/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E9%80%89%E6%8B%A9%E9%A2%98%E8%80%83%E7%82%B9/" title="选择题考点">选择题考点</a><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E6%9C%AA%E5%91%BD%E5%90%8D/" class="current" title="未命名">未命名</a><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/Agent/" title="未命名 1">未命名 1</a></details><details open><summary>算法学习</summary><details><summary>01_数据结构</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/00_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" title="00_数据结构总览">00_数据结构总览</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" title="04_队列与栈">04_队列与栈</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/05_%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="05_字符串">05_字符串</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="06_输入输出">06_输入输出</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" title="07_Python工具函数">07_Python工具函数</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/08_%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="08_高级数据结构">08_高级数据结构</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E5%AD%97%E5%85%B8/" title="02_字典">02_字典</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" title="03_集合">03_集合</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" title="01_列表">01_列表</a></details><details><summary>02_核心算法</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" title="01_前缀和">01_前缀和</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" title="02_差分数组">02_差分数组</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="03_二分查找">03_二分查找</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="04_滑动窗口">04_滑动窗口</a><a href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" title="06_排序">06_排序</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" title="05_优先队列">05_优先队列</a></details><details><summary>05_动态规划</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E8%83%8C%E5%8C%85DP/" title="02-背包DP">02-背包DP</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/09_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="09_动态规划">09_动态规划</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/05_%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" title="03_Paths on Grids 网格路径问题">03_Paths on Grids 网格路径问题</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%EF%BC%88Kadane%20%E7%AE%97%E6%B3%95%EF%BC%89/" title="最大子数组和（Kadane 算法）">最大子数组和（Kadane 算法）</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/" title="01_Introduction to DP 动态规划简介">01_Introduction to DP 动态规划简介</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04_%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" title="04_Longest Increasing Subsequence 最长递增子序列">04_Longest Increasing Subsequence 最长递增子序列</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Chicken_Jockey%20%E9%A2%98%E8%A7%A3/" title="算法学习/05_动态规划/Chicken_Jockey 题解">算法学习/05_动态规划/Chicken_Jockey 题解</a></details><details><summary>06_Graphs</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/05_%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="05_并查集">05_并查集</a><a href="/2026/05/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/06_%E6%9C%89%E5%90%91%E5%9B%BE%E7%8E%AF%E6%A3%80%E6%B5%8B/" title="06_Cycle Detection in Directed Graph 有向图环检测">06_Cycle Detection in Directed Graph 有向图环检测</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/" title="07_图论">07_图论</a></details><details><summary>其他算法</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="07_使用递归的穷举搜索">07_使用递归的穷举搜索</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/06_%E6%95%B0%E8%AE%BA/" title="07_数论">07_数论</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" title="Rectangle Geometry 矩形几何">Rectangle Geometry 矩形几何</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/08_%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/" title="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩">Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩</a></details></details>
+</div>
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">未命名</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-09-23T22:32:42+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>📌 AI 核心概念大串联：LLM, Token, Context, Context Window, Prompt, User Prompt, System Prompt, Tool, MCP, Agent, Agent Skill，一期视频带你打通 AI 底层逻辑！</p>
+<p>🎥 相关视频：<br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=yjBUnbRgiNs&amp;t=1361s"><img src="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png" srcset="/img/loading.gif" lazyload alt=""> • MCP终极指南 - 从原理到实战，带你深入掌握MCP（基础篇）</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=zrs_HWkZS5w"><img src="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png" srcset="/img/loading.gif" lazyload alt=""> • MCP终极指南   带你深入掌握MCP（进阶篇）</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=YyVkXrXxvX8"><img src="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png" srcset="/img/loading.gif" lazyload alt=""> • MCP终极指南 - 番外篇：抓包分析 Cline 与模型的交互协议（内含 Agent…</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=WWdlme1EAGI&amp;t=8s"><img src="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png" srcset="/img/loading.gif" lazyload alt=""> • RAG 工作机制详解——一个高质量知识库背后的技术全流程</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=GE0pFiFJTKo"><img src="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png" srcset="/img/loading.gif" lazyload alt=""> • Agent 的概念、原理与构建模式 —— 从零打造一个简化版的 Claude Code</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=QNiaoD5RxPA&amp;t=259s"><img src="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png" srcset="/img/loading.gif" lazyload alt=""> • Token 到底是什么？—— 揭秘大模型背后的“文字压缩术”</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=yDc0_8emz7M"><img src="https://www.gstatic.com/youtube/img/watch/yt_favicon_ringo2.png" srcset="/img/loading.gif" lazyload alt=""> • Agent Skill 从使用到原理，一次讲清</a>   </p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/" class="category-chain-item">秋招学习清单</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>未命名</div>
+      <div>https://mingsm17518.github.io/2026/09/23/秋招学习清单/未命名/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ming</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年9月23日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年9月23日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/09/24/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E9%80%89%E6%8B%A9%E9%A2%98%E8%80%83%E7%82%B9/" title="选择题考点">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">选择题考点</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/Agent/" title="未命名 1">
+                        <span class="hidden-mobile">未命名 1</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
