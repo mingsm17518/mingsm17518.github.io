@@ -1,0 +1,1045 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/site/Icon.png">
+  <link rel="icon" href="/img/site/Icon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ming">
+  <meta name="keywords" content="戳气球,区间DP,记忆化搜索">
+  
+    <meta name="description" content="312. 戳气球题目链接（困难） 题目描述有 n 个气球，编号为 0 到 n - 1，每个气球上都标有一个数字，这些数字存在数组 nums 中。 现在要求你戳破所有的气球。戳破第 i 个气球，你可以获得 nums[i - 1] * nums[i] * nums[i + 1] 枚硬币。这里的 i - 1 和 i + 1 代表和 i 相邻的两个气球的序号。如果 i - 1 或 i + 1 超出了数组的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="312. 戳气球">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/10/10/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/312.%20%E6%88%B3%E6%B0%94%E7%90%83/index.html">
+<meta property="og:site_name" content="Ming&#39;s Blog">
+<meta property="og:description" content="312. 戳气球题目链接（困难） 题目描述有 n 个气球，编号为 0 到 n - 1，每个气球上都标有一个数字，这些数字存在数组 nums 中。 现在要求你戳破所有的气球。戳破第 i 个气球，你可以获得 nums[i - 1] * nums[i] * nums[i + 1] 枚硬币。这里的 i - 1 和 i + 1 代表和 i 相邻的两个气球的序号。如果 i - 1 或 i + 1 超出了数组的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-09T19:02:18.204Z">
+<meta property="article:modified_time" content="2026-10-09T19:02:18.511Z">
+<meta property="article:author" content="Ming">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="区间DP">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="记忆化搜索">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>312. 戳气球 - Ming&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mingsm17518.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ming&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/site/jiangly.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="312. 戳气球"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-10 03:02" pubdate>
+          2026年10月10日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+<style>
+.doc-tree {
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.doc-tree .dt-title {
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+}
+.doc-tree details {
+  margin-left: 0;
+}
+.doc-tree details details {
+  margin-left: 0.85em;
+}
+.doc-tree summary {
+  cursor: pointer;
+  padding: 1px 0.5rem;
+  border-radius: 6px;
+  color: var(--text-3, #555);
+  user-select: none;
+}
+.doc-tree summary:hover {
+  background: rgba(128, 128, 128, 0.12);
+}
+.doc-tree a {
+  display: block;
+  padding: 1px 0.5rem 1px 1.7em;
+  color: var(--text-3, #666);
+  text-decoration: none;
+  border-radius: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.doc-tree a:hover {
+  background: rgba(128, 128, 128, 0.12);
+  color: var(--primary, #333);
+}
+.doc-tree a.current {
+  color: #fff;
+  background: var(--primary, #2f4154);
+}
+</style>
+
+
+
+<div class="doc-tree">
+  <div class="dt-title">目录树</div>
+  <details open><summary>刷题笔记</summary><a href="/2026/05/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/BFS-DFS%20%E4%BE%8B%E9%A2%98/" title="Graph 图">Graph 图</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/00-%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%E6%80%BB%E8%A7%88/" title="刷题笔记总览">刷题笔记总览</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8F%8C%E6%8C%87%E9%92%88%20-%20Problems/" title="Two Pointer - Problems">Two Pointer - Problems</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/03_%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" title="Casework 案例分析">Casework 案例分析</a><a href="/2026/10/02/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E7%BD%91%E6%98%93%E4%BA%91AIcoding%E7%AC%94%E8%AF%95%E8%A7%A3%E6%9E%90/" title="未命名">未命名</a><details><summary>Hot100</summary><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/48.%20%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/" title="48. 旋转图像">48. 旋转图像</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/56.%20%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/" title="56. 合并区间">56. 合并区间</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/208.%20%E5%AE%9E%E7%8E%B0%20Trie%20(%E5%89%8D%E7%BC%80%E6%A0%91)/" title="208. 实现 Trie (前缀树)">208. 实现 Trie (前缀树)</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/253.%20%E4%BC%9A%E8%AE%AE%E5%AE%A4%20II/" title="253. 会议室 II">253. 会议室 II</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/406.%20%E6%A0%B9%E6%8D%AE%E8%BA%AB%E9%AB%98%E9%87%8D%E5%BB%BA%E9%98%9F%E5%88%97/" title="406. 根据身高重建队列">406. 根据身高重建队列</a><details><summary>二分查找</summary><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/34.%20%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/" title="34. 在排序数组中查找元素的第一个和最后一个位置">34. 在排序数组中查找元素的第一个和最后一个位置</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/33.%20%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" title="33. 搜索旋转排序数组">33. 搜索旋转排序数组</a></details><details><summary>二叉树</summary><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/105.%20%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/" title="105. 从前序与中序遍历序列构造二叉树">105. 从前序与中序遍历序列构造二叉树</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/98.%20%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="98. 验证二叉搜索树">98. 验证二叉搜索树</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/96.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="96. 不同的二叉搜索树">96. 不同的二叉搜索树</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91/" title="二叉树">二叉树</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/114.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8/" title="114. 二叉树展开为链表">114. 二叉树展开为链表</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/236.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" title="236. 二叉树的最近公共祖先">236. 二叉树的最近公共祖先</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/538.%20%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%B4%AF%E5%8A%A0%E6%A0%91/" title="538. 把二叉搜索树转换为累加树">538. 把二叉搜索树转换为累加树</a></details><details><summary>位运算</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" title="136. 只出现一次的数字">136. 只出现一次的数字</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/461.%20%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" title="461. 汉明距离">461. 汉明距离</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BD%8D%E8%BF%90%E7%AE%97/338.%20%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" title="338. 比特位计数">338. 比特位计数</a></details><details><summary>前缀和</summary><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%89%8D%E7%BC%80%E5%92%8C/437.%20%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%20III/" title="437. 路径总和 III">437. 路径总和 III</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%89%8D%E7%BC%80%E5%92%8C/238.%20%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF/" title="238. 除自身以外数组的乘积">238. 除自身以外数组的乘积</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%89%8D%E7%BC%80%E5%92%8C/560.%20%E5%92%8C%E4%B8%BA%20K%20%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" title="560. 和为 K 的子数组">560. 和为 K 的子数组</a></details><details><summary>动态规划</summary><a href="/2026/10/10/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/312.%20%E6%88%B3%E6%B0%94%E7%90%83/" class="current" title="312. 戳气球">312. 戳气球</a><a href="/2026/10/10/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/494.%20%E7%9B%AE%E6%A0%87%E5%92%8C/" title="494. 目标和">494. 目标和</a></details><details><summary>单调栈</summary><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/739.%20%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/" title="739. 每日温度">739. 每日温度</a></details><details><summary>双指针</summary><a href="/2026/10/02/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/11.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" title="11. 盛最多水的容器">11. 盛最多水的容器</a><a href="/2026/10/02/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/15.%20%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" title="15. 三数之和">15. 三数之和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/283.%20%E7%A7%BB%E5%8A%A8%E9%9B%B6/" title="283. 移动零">283. 移动零</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/31.%20%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/" title="31. 下一个排列">31. 下一个排列</a><a href="/2026/09/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/3.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" title="3. 无重复字符的最长子串">3. 无重复字符的最长子串</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/75.%20%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB/" title="75. 颜色分类">75. 颜色分类</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/438.%20%E6%89%BE%E5%88%B0%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%89%80%E6%9C%89%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/" title="438. 找到字符串中所有字母异位词">438. 找到字符串中所有字母异位词</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/287.%20%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/" title="287. 寻找重复数">287. 寻找重复数</a></details><details><summary>哈希</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/169.%20%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/" title="169. 多数元素">169. 多数元素</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="1. 两数之和">1. 两数之和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/448.%20%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" title="448. 找到所有数组中消失的数字">448. 找到所有数组中消失的数字</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/49.%20%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/" title="49. 字母异位词分组">49. 字母异位词分组</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/128.%20%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97/" title="128. 最长连续序列">128. 最长连续序列</a></details><details><summary>回溯</summary><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/17.%20%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/" title="17. 电话号码的字母组合">17. 电话号码的字母组合</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/22.%20%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" title="22. 括号生成">22. 括号生成</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/46.%20%E5%85%A8%E6%8E%92%E5%88%97/" title="46. 全排列">46. 全排列</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/39.%20%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" title="39. 组合总和">39. 组合总和</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/78.%20%E5%AD%90%E9%9B%86/" title="78. 子集">78. 子集</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/79.%20%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2/" title="79. 单词搜索">79. 单词搜索</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/301.%20%E5%88%A0%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" title="301. 删除无效的括号">301. 删除无效的括号</a></details><details><summary>图</summary><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%BE/207.%20%E8%AF%BE%E7%A8%8B%E8%A1%A8/" title="207. 课程表">207. 课程表</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%BE/399.%20%E9%99%A4%E6%B3%95%E6%B1%82%E5%80%BC/" title="399. 除法求值">399. 除法求值</a></details><details><summary>字符串</summary><a href="/2026/10/10/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/647.%20%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" title="647. 回文子串">647. 回文子串</a></details><details><summary>搜索</summary><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%90%9C%E7%B4%A2/215.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/" title="215. 数组中的第K个最大元素">215. 数组中的第K个最大元素</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%90%9C%E7%B4%A2/240.%20%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5%20II/" title="240. 搜索二维矩阵 II">240. 搜索二维矩阵 II</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%90%9C%E7%B4%A2/347.%20%E5%89%8D%20K%20%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0/" title="347. 前 K 个高频元素">347. 前 K 个高频元素</a></details><details><summary>数组</summary><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%90%9C%E7%B4%A2/581.%20%E6%9C%80%E7%9F%AD%E6%97%A0%E5%BA%8F%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" title="581. 最短无序连续子数组">581. 最短无序连续子数组</a></details><details><summary>栈</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" title="20. 有效的括号">20. 有效的括号</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/155.%20%E6%9C%80%E5%B0%8F%E6%A0%88/" title="155. 最小栈">155. 最小栈</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/394.%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/" title="394. 字符串解码">394. 字符串解码</a></details><details><summary>滑动窗口</summary><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/239.%20%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC/" title="239. 滑动窗口最大值">239. 滑动窗口最大值</a></details><details><summary>贪心</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机">121. 买卖股票的最佳时机</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83/55.%20%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" title="55. 跳跃游戏">55. 跳跃游戏</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/621.%20%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/" title="621. 任务调度器">621. 任务调度器</a></details><details><summary>链表</summary><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%AC%20N%20%E4%B8%AA%E7%BB%93%E7%82%B9/" title="19. 删除链表的倒数第 N 个结点">19. 删除链表的倒数第 N 个结点</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/2.%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" title="2. 两数相加">2. 两数相加</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="206. 反转链表">206. 反转链表</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/21.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" title="21. 合并两个有序链表">21. 合并两个有序链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/160.%20%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" title="160. 相交链表">160. 相交链表</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/234.%20%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" title="234. 回文链表">234. 回文链表</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/141%20&%20142.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" title="141 &amp; 142. 环形链表">141 &amp; 142. 环形链表</a><a href="/2026/10/07/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/146.%20LRU%20%E7%BC%93%E5%AD%98/" title="146. LRU 缓存">146. LRU 缓存</a><a href="/2026/10/07/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/148.%20%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/" title="148. 排序链表">148. 排序链表</a></details></details><details><summary>Leetcode</summary><a href="/2026/09/13/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/78.%20%E5%AD%90%E9%9B%86/" title="78. 子集">78. 子集</a></details><details><summary>华为机考</summary><a href="/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83%E9%A2%98%E5%9E%8B/" title="华为机考题型">华为机考题型</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/06_Z%20%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/" title="Z 字形变换（Zigzag Conversion）">Z 字形变换（Zigzag Conversion）</a><details><summary>nowcoder</summary><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/HJ114-%E5%AE%9D%E7%9F%B3%E6%89%8B%E4%B8%B2/" title="HJ114 宝石手串">HJ114 宝石手串</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/" title="明文分组（HJ3）">明文分组（HJ3）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/" title="第一个只出现一次的字符（HJ13）">第一个只出现一次的字符（HJ13）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/12_longest_digit_substring/" title="最长数字子串（HJ12）">最长数字子串（HJ12）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/" title="字符串变换（HJ15）">字符串变换（HJ15）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/14_sort_strings/" title="字符串排序（HJ14）">字符串排序（HJ14）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/17_string_match/" title="字符串字符匹配（HJ17）">字符串字符匹配（HJ17）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/19_string_sort/" title="字符串排序（HJ19）">字符串排序（HJ19）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/20_brother_words/" title="查找兄弟单词（HJ20）">查找兄弟单词（HJ20）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/07_remove_least_freq_chars/" title="删除出现次数最少的字符（HJ7）">删除出现次数最少的字符（HJ7）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/21_longest_common_substring/" title="查找两个字符串a,b中的最长公共子串（HJ21）">查找两个字符串a,b中的最长公共子串（HJ21）</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/" title="HJ149 数水坑">HJ149 数水坑</a><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ113-%E7%81%AB%E8%BD%A6%E8%BF%9B%E7%AB%99/" title="HJ113 火车进站">HJ113 火车进站</a><a href="/2026/05/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ150_%E5%85%A8%E6%8E%92%E5%88%97/" title="HJ150 全排列">HJ150 全排列</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ148-%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF/" title="HJ148 迷宫寻路">HJ148 迷宫寻路</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ59-%E6%95%B0%E7%BB%84%E5%88%86%E7%BB%84/" title="HJ59 数组分组">HJ59 数组分组</a></details></details><details><summary>小红书</summary><details><summary>2025年9月7日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%B6%85%E7%BA%A7%E9%87%8D%E6%8E%92/" title="第1题-超级重排">第1题-超级重排</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E8%A1%8C%E4%B8%BA%E6%9D%83%E9%87%8D2/" title="第2题-行为权重2">第2题-行为权重2</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E8%BD%B0%E7%82%B8%E6%9C%BA/" title="第3题-轰炸机">第3题-轰炸机</a></details><details><summary>2026年9月10日</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E6%9C%80%E5%B0%8F%E5%8C%96%E5%B3%B0%E5%80%BC%E5%B9%B2%E6%89%B0/" title="第1题-最小化峰值干扰">第1题-最小化峰值干扰</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" title="第2题-双通道评测格网">第2题-双通道评测格网</a></details><details><summary>2026年9月13日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%BE%BE%E4%BA%BA%E6%95%B0%E6%8D%AE%E7%9C%8B%E6%9D%BF/" title="第1题-达人数据看板">第1题-达人数据看板</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E9%81%BF%E9%87%8D%E5%8F%A3%E4%BB%A4/" title="第2题-避重口令">第2题-避重口令</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E4%B8%93%E6%A0%8F%E6%94%B9%E6%8C%82%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E7%BB%BC%E5%90%88%E8%AF%84%E5%88%86/" title="第3题-专栏改挂后的最大综合评分">第3题-专栏改挂后的最大综合评分</a></details><details><summary>2026年9月17日</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%80%89%E6%8B%A9%E9%A2%98/" title="第1题-选择题">第1题-选择题</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8A%A0%E9%80%9F%E7%AA%97%E5%8F%A3%E6%94%B6%E7%9B%8A/" title="第2题-加速窗口收益">第2题-加速窗口收益</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/" title="第3题-待发热度重排">第3题-待发热度重排</a></details><details><summary>2026年9月20日</summary><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%9B%B6%E5%92%8C%E5%8C%BA%E9%97%B4%E5%88%A0%E9%99%A4/" title="第1题-零和区间删除">第1题-零和区间删除</a><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8C%BA%E9%97%B4%E9%85%8D%E5%AF%B9%E8%AE%A1%E6%95%B0/" title="第2题-区间配对计数">第2题-区间配对计数</a></details><details><summary>练习题</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC1%E9%A2%98%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C/" title="第1题：数列求和">第1题：数列求和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC2%E9%A2%98%EF%BC%9A%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" title="第2题：水仙花数">第2题：水仙花数</a></details></details><details><summary>机考-虾皮信息</summary><a href="/2026/09/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83-%E8%99%BE%E7%9A%AE%E4%BF%A1%E6%81%AF/%E7%AC%AC2%E9%A2%98/" title="未命名">未命名</a><a href="/2026/09/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83-%E8%99%BE%E7%9A%AE%E4%BF%A1%E6%81%AF/%E7%AC%AC3%E9%A2%98/" title="未命名">未命名</a></details><details><summary>贪心</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="贪心算法">贪心算法</a></details><details><summary>题目-完全搜索</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/01_Milk%20Pails/" title="Milk Pails">Milk Pails</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/02_Diamond_Collector/" title="Diamond Collector">Diamond Collector</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/04_Counting_Liars/" title="Counting Liars">Counting Liars</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" title="Complete Search 完全搜索">Complete Search 完全搜索</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE-%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/05_Cow_Gymnastics/" title="Cow Gymnastics">Cow Gymnastics</a></details></details><details open><summary>开发杂记</summary><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/" title="bug修复：GPU内存不足问题">bug修复：GPU内存不足问题</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/" title="expected str, bytes or os.PathLike object, not MultiplexedPath">expected str, bytes or os.PathLike object, not MultiplexedPath</a><a href="/2026/09/20/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/conda%20%E4%B8%8E%20uv/" title="conda 与 uv">conda 与 uv</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/" title="git">git</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/tumx/" title="tumx">tumx</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/push%20%E5%88%B0%20github%20%E6%97%B6%E5%87%BA%E9%94%99/" title="push 到 github 时出错">push 到 github 时出错</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/" title="huggingface">huggingface</a></details><details open><summary>秋招学习清单</summary><a href="/2026/09/24/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E9%80%89%E6%8B%A9%E9%A2%98%E8%80%83%E7%82%B9/" title="选择题考点">选择题考点</a><a href="/2026/10/06/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/Agent/" title="未命名 1">未命名 1</a><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%B2%97%E4%BD%8D%E8%A6%81%E6%B1%82/" title="未命名">未命名</a><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E6%9C%AA%E5%91%BD%E5%90%8D/" title="未命名">未命名</a></details><details open><summary>算法学习</summary><details><summary>01_数据结构</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/00_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" title="00_数据结构总览">00_数据结构总览</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E5%AD%97%E5%85%B8/" title="02_字典">02_字典</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" title="03_集合">03_集合</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" title="04_队列与栈">04_队列与栈</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/05_%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="05_字符串">05_字符串</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" title="01_列表">01_列表</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="06_输入输出">06_输入输出</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" title="07_Python工具函数">07_Python工具函数</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/08_%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="08_高级数据结构">08_高级数据结构</a></details><details><summary>02_核心算法</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" title="02_差分数组">02_差分数组</a><a href="/2026/10/05/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="03_二分查找">03_二分查找</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" title="01_前缀和">01_前缀和</a><a href="/2026/10/05/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="04_滑动窗口">04_滑动窗口</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" title="05_优先队列">05_优先队列</a><a href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" title="06_排序">06_排序</a><a href="/2026/10/05/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%BE%8B%E9%A2%98/" title="未命名">未命名</a><a href="/2026/10/05/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E9%80%92%E5%BD%92%E4%B8%8E%E5%9B%9E%E6%BA%AF/" title="递归与回溯">递归与回溯</a></details><details><summary>05_动态规划</summary><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/" title="01_Introduction to DP 动态规划简介">01_Introduction to DP 动态规划简介</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E8%83%8C%E5%8C%85DP/" title="02-背包DP">02-背包DP</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/05_%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" title="03_Paths on Grids 网格路径问题">03_Paths on Grids 网格路径问题</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Chicken_Jockey%20%E9%A2%98%E8%A7%A3/" title="算法学习/05_动态规划/Chicken_Jockey 题解">算法学习/05_动态规划/Chicken_Jockey 题解</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/pre%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="09_动态规划">09_动态规划</a><details><summary>动态规划</summary><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/139.%20%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/" title="139. 单词拆分">139. 单词拆分</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/152.%20%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/" title="152. 乘积最大子数组">152. 乘积最大子数组</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/221.%20%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/" title="221. 最大正方形">221. 最大正方形</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/279.%20%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" title="279. 完全平方数">279. 完全平方数</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/300.%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" title="300. 最长递增子序列">300. 最长递增子序列</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/309.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F/" title="309. 买卖股票的最佳时机含冷冻期">309. 买卖股票的最佳时机含冷冻期</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/5.%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" title="5. 最长回文子串">5. 最长回文子串</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/322.%20%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2/" title="322. 零钱兑换">322. 零钱兑换</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/53.%20%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/" title="53. 最大子数组和">53. 最大子数组和</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/62.%20%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/" title="62. 不同路径">62. 不同路径</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/64.%20%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" title="64. 最小路径和">64. 最小路径和</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-hot100/" title="动态规划">动态规划</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/72.%20%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/" title="72. 编辑距离">72. 编辑距离</a></details></details><details><summary>06_Graphs</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/" title="07_图论">07_图论</a><a href="/2026/05/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/06_%E6%9C%89%E5%90%91%E5%9B%BE%E7%8E%AF%E6%A3%80%E6%B5%8B/" title="06_Cycle Detection in Directed Graph 有向图环检测">06_Cycle Detection in Directed Graph 有向图环检测</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/05_%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="05_并查集">05_并查集</a></details><details><summary>其他算法</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="07_使用递归的穷举搜索">07_使用递归的穷举搜索</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/06_%E6%95%B0%E8%AE%BA/" title="07_数论">07_数论</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" title="Rectangle Geometry 矩形几何">Rectangle Geometry 矩形几何</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/08_%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/" title="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩">Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩</a></details></details>
+</div>
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">312. 戳气球</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-10-10T03:02:18+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="312-戳气球"><a href="#312-戳气球" class="headerlink" title="312. 戳气球"></a>312. 戳气球</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/burst-balloons/">题目链接</a>（困难）</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>有 <code>n</code> 个气球，编号为 <code>0</code> 到 <code>n - 1</code>，每个气球上都标有一个数字，这些数字存在数组 <code>nums</code> 中。</p>
+<p>现在要求你戳破所有的气球。戳破第 <code>i</code> 个气球，你可以获得 <code>nums[i - 1] * nums[i] * nums[i + 1]</code> 枚硬币。这里的 <code>i - 1</code> 和 <code>i + 1</code> 代表和 <code>i</code> 相邻的两个气球的序号。如果 <code>i - 1</code> 或 <code>i + 1</code> 超出了数组的边界，那么就当它是一个数字为 <code>1</code> 的气球。</p>
+<p>求所能获得硬币的最大数量。</p>
+<p><strong>数据范围</strong>：</p>
+<ul>
+<li><code>n == nums.length</code></li>
+<li><code>1 &lt;= n &lt;= 300</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 100</code></li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p><strong>示例 1：</strong></p>
+<p><strong>输入：</strong> <code>nums = [3,1,5,8]</code><br><strong>输出：</strong> <code>167</code><br><strong>解释：</strong><br><div class="code-wrapper"><pre><code class="hljs text">nums = [3,1,5,8] --&gt; [3,5,8] --&gt; [3,8] --&gt; [8] --&gt; []
+coins = 3*1*5 + 3*5*8 + 1*3*8 + 1*8*1 = 167</code></pre></div></p>
+<p><strong>示例 2：</strong></p>
+<p><strong>输入：</strong> <code>nums = [1,5]</code><br><strong>输出：</strong> <code>10</code></p>
+<h2 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h2><p><strong>朴素想法</strong>：枚举第一个戳破哪个气球，然后递归处理剩下的。</p>
+<p><strong>问题</strong>：戳破一个气球后，<strong>左右气球变为相邻</strong>，后续的得分依赖于当前剩余的气球。这个依赖关系很复杂，很难拆分。</p>
+<p><strong>关键技巧</strong>：<strong>反过来看</strong>——不是枚举「先戳哪个」，而是枚举「<strong>最后戳哪个</strong>」。</p>
+<ul>
+<li>假设区间 <code>(i, j)</code>（开区间）内所有气球都被戳破，且 <code>i</code>、<code>j</code> 始终存在；</li>
+<li>令 <code>k</code> 是区间内<strong>最后一个</strong>被戳破的气球；</li>
+<li>那么 <code>k</code> 被戳破时，它的左右邻居恰好是 <code>i</code> 和 <code>j</code>（因为中间其他气球都已被戳破）；</li>
+<li>此时得分为 <code>val[i] * val[k] * val[j]</code>；</li>
+<li>并且问题被拆成两个<strong>独立</strong>的子问题：区间 <code>(i, k)</code> 和区间 <code>(k, j)</code>。</li>
+</ul>
+<p><strong>为什么要两边加哨兵 <code>1</code></strong>：</p>
+<ul>
+<li>题目说超出边界的气球算作 <code>1</code>；</li>
+<li>在数组两端各加一个虚拟气球 <code>1</code>，就不需要特判边界；</li>
+<li>得到新的数组 <code>val = [1] + nums + [1]</code>。</li>
+</ul>
+<p><strong>状态定义</strong>：<code>dp[i][j]</code> 表示「填满开区间 <code>(i, j)</code>（即戳破 <code>i</code> 和 <code>j</code> 之间的所有气球）能获得的最大硬币数」。</p>
+<p><strong>转移方程</strong>：</p>
+<script type="math/tex; mode=display">
+dp[i][j] = \max_{i < k < j} \left( val[i] \times val[k] \times val[j] + dp[i][k] + dp[k][j] \right)</script><p><strong>边界</strong>：<code>i &gt;= j - 1</code> 时，开区间内没有气球，<code>dp[i][j] = 0</code>。</p>
+<p><strong>答案</strong>：<code>dp[0][n+1]</code>（开区间 <code>(0, n+1)</code> 覆盖整个数组）。</p>
+<hr>
+<h2 id="方法一：记忆化搜索（自顶向下）"><a href="#方法一：记忆化搜索（自顶向下）" class="headerlink" title="方法一：记忆化搜索（自顶向下）"></a>方法一：记忆化搜索（自顶向下）</h2><h3 id="思路及解法"><a href="#思路及解法" class="headerlink" title="思路及解法"></a>思路及解法</h3><p>用递归函数 <code>solve(i, j)</code> 表示「戳破开区间 <code>(i, j)</code> 内所有气球能获得的最大硬币数」。</p>
+<p><strong>递归过程</strong>：</p>
+<ol>
+<li>若 <code>i &gt;= j - 1</code>，区间内无气球，返回 <code>0</code>；</li>
+<li>否则枚举 <code>k ∈ (i, j)</code> 作为<strong>最后戳破</strong>的气球：<ul>
+<li>得分 <code>val[i] * val[k] * val[j]</code>；</li>
+<li>递归求 <code>solve(i, k) + solve(k, j)</code>；</li>
+<li>取所有 <code>k</code> 中的最大值。</li>
+</ul>
+</li>
+</ol>
+<p><strong>用 <code>lru_cache</code> 记忆化</strong>：同一个 <code>(i, j)</code> 只会被计算一次，避免重复。</p>
+<p><strong>为什么「最后戳破」的思路是对的</strong>：</p>
+<ul>
+<li>反过来看，每次相当于「<strong>添加一个气球</strong>」；</li>
+<li>最后一个添加的气球 <code>k</code>，它两侧的边界 <code>i</code>、<code>j</code> 一定是已经存在的；</li>
+<li>添加 <code>k</code> 时，<code>k</code> 的左右邻居只能是 <code>i</code> 和 <code>j</code>；</li>
+<li>因此得分只依赖于 <code>i, j, k</code>，与中间过程无关；</li>
+<li>而添加 <code>k</code> 后，问题完全拆成 <code>(i, k)</code> 和 <code>(k, j)</code> 两个独立的子问题。</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> lru_cache
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxCoins</span>(<span class="hljs-params">self, nums: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:
+        n = <span class="hljs-built_in">len</span>(nums)
+        val = [<span class="hljs-number">1</span>] + nums + [<span class="hljs-number">1</span>]     <span class="hljs-comment"># 两端加哨兵</span>
+
+<span class="hljs-meta">        @lru_cache(<span class="hljs-params">maxsize=<span class="hljs-literal">None</span></span>)</span>
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>(<span class="hljs-params">left: <span class="hljs-built_in">int</span>, right: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:
+            <span class="hljs-comment"># 开区间 (left, right) 内无气球</span>
+            <span class="hljs-keyword">if</span> left &gt;= right - <span class="hljs-number">1</span>:
+                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+
+            best = <span class="hljs-number">0</span>
+            <span class="hljs-comment"># 枚举最后戳破的气球 k</span>
+            <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(left + <span class="hljs-number">1</span>, right):
+                total = val[left] * val[k] * val[right]
+                total += solve(left, k) + solve(k, right)
+                best = <span class="hljs-built_in">max</span>(best, total)
+
+            <span class="hljs-keyword">return</span> best
+
+        <span class="hljs-keyword">return</span> solve(<span class="hljs-number">0</span>, n + <span class="hljs-number">1</span>)</code></pre></div>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li>时间复杂度：$O(n^3)$，区间数 $O(n^2)$，每个区间枚举 $O(n)$ 个分割点。</li>
+<li>空间复杂度：$O(n^2)$，缓存 $O(n^2)$ 个状态。</li>
+</ul>
+<hr>
+<h2 id="方法二：动态规划（自底向上）✅-推荐"><a href="#方法二：动态规划（自底向上）✅-推荐" class="headerlink" title="方法二：动态规划（自底向上）✅ 推荐"></a>方法二：动态规划（自底向上）✅ 推荐</h2><h3 id="思路及解法-1"><a href="#思路及解法-1" class="headerlink" title="思路及解法"></a>思路及解法</h3><p>把方法一改为自底向上填表。</p>
+<p><strong>状态定义</strong>：<code>dp[i][j]</code> 表示「戳破开区间 <code>(i, j)</code> 内的所有气球能获得的最大硬币数」。</p>
+<p><strong>转移方程</strong>：</p>
+<script type="math/tex; mode=display">
+dp[i][j] = \max_{i < k < j} \left( val[i] \times val[k] \times val[j] + dp[i][k] + dp[k][j] \right)</script><p><strong>边界</strong>：<code>dp[i][j] = 0</code>，当 <code>i &gt;= j - 1</code>。</p>
+<p><strong>遍历顺序</strong>：<code>dp[i][j]</code> 依赖 <code>dp[i][k]</code> 和 <code>dp[k][j]</code>，其中 <code>k ∈ (i, j)</code>。所以：</p>
+<ul>
+<li><code>i</code> 从大到小枚举（<code>n-1</code> 到 <code>0</code>）；</li>
+<li><code>j</code> 从小到大枚举（<code>i+2</code> 到 <code>n+1</code>）；</li>
+<li>或按<strong>区间长度</strong>从小到大枚举。</li>
+</ul>
+<p><strong>答案</strong>：<code>dp[0][n+1]</code>。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxCoins</span>(<span class="hljs-params">self, nums: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:
+        n = <span class="hljs-built_in">len</span>(nums)
+        val = [<span class="hljs-number">1</span>] + nums + [<span class="hljs-number">1</span>]
+        dp = [[<span class="hljs-number">0</span>] * (n + <span class="hljs-number">2</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">2</span>)]
+
+        <span class="hljs-comment"># i 从大到小</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):
+            <span class="hljs-comment"># j 从小到大</span>
+            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">2</span>, n + <span class="hljs-number">2</span>):
+                <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, j):
+                    total = val[i] * val[k] * val[j]
+                    total += dp[i][k] + dp[k][j]
+                    dp[i][j] = <span class="hljs-built_in">max</span>(dp[i][j], total)
+
+        <span class="hljs-keyword">return</span> dp[<span class="hljs-number">0</span>][n + <span class="hljs-number">1</span>]</code></pre></div>
+<h3 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li>时间复杂度：$O(n^3)$，状态数 $O(n^2)$，每个状态枚举 $O(n)$ 个分割点。</li>
+<li>空间复杂度：$O(n^2)$。</li>
+</ul>
+<hr>
+<h2 id="两种方法对比"><a href="#两种方法对比" class="headerlink" title="两种方法对比"></a>两种方法对比</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>时间</th>
+<th>空间</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>记忆化搜索</td>
+<td>$O(n^3)$</td>
+<td>$O(n^2)$</td>
+<td>思路自然，从「最后戳」出发</td>
+</tr>
+<tr>
+<td>动态规划</td>
+<td>$O(n^3)$</td>
+<td>$O(n^2)$</td>
+<td>状态更清晰，效率稳定</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>推荐</strong>：</p>
+<ul>
+<li><strong>面试开场</strong>：先讲<strong>记忆化搜索</strong>，因为它直接对应「最后戳破某个气球」的思路，非常直观；</li>
+<li><strong>正式写代码</strong>：用<strong>DP</strong>，避免递归开销，也更符合区间 DP 的模板。</li>
+</ul>
+<hr>
+<h2 id="关键细节"><a href="#关键细节" class="headerlink" title="关键细节"></a>关键细节</h2><h3 id="1-为什么是「最后戳破」而不是「最先戳破」"><a href="#1-为什么是「最后戳破」而不是「最先戳破」" class="headerlink" title="1. 为什么是「最后戳破」而不是「最先戳破」"></a>1. 为什么是「最后戳破」而不是「最先戳破」</h3><p>如果枚举「最先戳破哪个」：</p>
+<ul>
+<li>戳破之后左右气球相邻，后续得分依赖中间过程；</li>
+<li>子问题互相干扰，无法独立拆分。</li>
+</ul>
+<p>如果枚举「<strong>最后</strong>戳破哪个」：</p>
+<ul>
+<li>此时区间内其他气球都已经戳破，两侧的边界 <code>i</code> 和 <code>j</code> 一定存在；</li>
+<li>最后戳破 <code>k</code> 时，它的左右邻居恰好是 <code>i</code> 和 <code>j</code>；</li>
+<li>得分 <code>val[i] * val[k] * val[j]</code> 与中间过程无关；</li>
+<li>左右两侧变成<strong>完全独立</strong>的子问题。</li>
+</ul>
+<p><strong>这是本题最重要的思维转换</strong>。</p>
+<h3 id="2-哨兵-1-的作用"><a href="#2-哨兵-1-的作用" class="headerlink" title="2. 哨兵 1 的作用"></a>2. 哨兵 <code>1</code> 的作用</h3><p>题目规定「超出边界的气球算作 <code>1</code>」。我们在两端加虚拟气球 <code>1</code>，好处：</p>
+<ul>
+<li>不需要特判边界；</li>
+<li>边界条件统一为 <code>val[0] = val[n+1] = 1</code>；</li>
+<li>答案直接是 <code>dp[0][n+1]</code>。</li>
+</ul>
+<h3 id="3-状态定义是「开区间」"><a href="#3-状态定义是「开区间」" class="headerlink" title="3. 状态定义是「开区间」"></a>3. 状态定义是「开区间」</h3><p><code>dp[i][j]</code> 表示<strong>开区间</strong> <code>(i, j)</code> 内部的气球全部被戳破，<code>i</code> 和 <code>j</code> 本身<strong>不戳破</strong>。</p>
+<p>这是为了让 <code>i</code> 和 <code>j</code> 成为最后戳破某个气球时的<strong>邻居</strong>。</p>
+<h3 id="4-边界条件-i-gt-j-1"><a href="#4-边界条件-i-gt-j-1" class="headerlink" title="4. 边界条件 i &gt;= j - 1"></a>4. 边界条件 <code>i &gt;= j - 1</code></h3><p>开区间 <code>(i, j)</code> 内没有气球时（<code>j - i &lt;= 1</code>），得分为 0。</p>
+<h3 id="5-DP-遍历顺序"><a href="#5-DP-遍历顺序" class="headerlink" title="5. DP 遍历顺序"></a>5. DP 遍历顺序</h3><p><code>dp[i][j]</code> 依赖 <code>dp[i][k]</code>（更小的右端点）和 <code>dp[k][j]</code>（更大的左端点）。</p>
+<ul>
+<li><code>i</code> 从大到小：保证 <code>dp[k][j]</code> 中 <code>k &gt; i</code> 的已算好；</li>
+<li><code>j</code> 从小到大：保证 <code>dp[i][k]</code> 中 <code>k &lt; j</code> 的已算好。</li>
+</ul>
+<p>也可以用「按区间长度从小到大」的写法，更符合区间 DP 的通用套路。</p>
+<h3 id="6-区间-DP-的通用模板"><a href="#6-区间-DP-的通用模板" class="headerlink" title="6. 区间 DP 的通用模板"></a>6. 区间 DP 的通用模板</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">for</span> length <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, n + <span class="hljs-number">1</span>):
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, n - length + <span class="hljs-number">1</span>):
+        j = i + length - <span class="hljs-number">1</span>
+        <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, j):
+            dp[i][j] = <span class="hljs-built_in">max</span>(dp[i][j], dp[i][k] + dp[k][j] + ...)</code></pre></div>
+<p>本题的 <code>dp[i][j]</code> 是最经典的区间 DP 形态。</p>
+<h3 id="7-与-LC-1039（多边形三角剖分）的关系"><a href="#7-与-LC-1039（多边形三角剖分）的关系" class="headerlink" title="7. 与 LC 1039（多边形三角剖分）的关系"></a>7. 与 LC 1039（多边形三角剖分）的关系</h3><p>两题的 DP 结构几乎一模一样：</p>
+<ul>
+<li>都是「枚举区间内最后一个操作的元素」；</li>
+<li>都是「独立拆成左右两个子问题」；</li>
+<li>都是区间 DP 的模板。</li>
+</ul>
+<p>学完本题可以直接套用 LC 1039。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><strong>核心转换</strong>：把「先戳哪个」转成「<strong>最后</strong>戳哪个」；</li>
+<li><strong>状态定义</strong>：<code>dp[i][j]</code> 表示戳破开区间 <code>(i, j)</code> 内所有气球的最大得分；</li>
+<li><strong>转移方程</strong>：<script type="math/tex; mode=display">
+dp[i][j] = \max_{i < k < j} \left( val[i] \times val[k] \times val[j] + dp[i][k] + dp[k][j] \right)</script></li>
+<li><strong>哨兵技巧</strong>：在数组两端各加一个 <code>1</code>，避免边界特判；</li>
+<li><strong>遍历顺序</strong>：<code>i</code> 从大到小、<code>j</code> 从小到大（或按区间长度从小到大）；</li>
+<li><strong>答案</strong>：<code>dp[0][n+1]</code>；</li>
+<li><strong>时间/空间</strong>：都是 $O(n^2)$ 空间、$O(n^3)$ 时间；</li>
+<li><strong>通用套路</strong>：<strong>「相邻元素不断变化」→ 反过来想，枚举「最后操作的元素」</strong>。</li>
+</ul>
+<h2 id="相关题目"><a href="#相关题目" class="headerlink" title="相关题目"></a>相关题目</h2><ul>
+<li>LC 1039. 多边形三角剖分的最低得分（同款区间 DP）</li>
+<li>LC 516. 最长回文子序列（区间 DP）</li>
+<li>LC 1000. 合并石头的最低成本（区间 DP + 前缀和）</li>
+<li>LC 1547. 切棍子的最小成本（区间 DP）</li>
+<li>LC 664. 奇怪的打印机（区间 DP）</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/" class="category-chain-item">Hot100</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">动态规划</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
+      
+        <a href="/tags/%E6%95%B0%E7%BB%84/" class="print-no-link">#数组</a>
+      
+        <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" class="print-no-link">#记忆化搜索</a>
+      
+        <a href="/tags/%E5%8C%BA%E9%97%B4DP/" class="print-no-link">#区间DP</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>312. 戳气球</div>
+      <div>https://mingsm17518.github.io/2026/10/10/算法学习/05_动态规划/动态规划/312. 戳气球/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ming</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月10日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年10月10日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/301.%20%E5%88%A0%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" title="301. 删除无效的括号">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">301. 删除无效的括号</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/739.%20%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/" title="739. 每日温度">
+                        <span class="hidden-mobile">739. 每日温度</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/obsidian-img.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
