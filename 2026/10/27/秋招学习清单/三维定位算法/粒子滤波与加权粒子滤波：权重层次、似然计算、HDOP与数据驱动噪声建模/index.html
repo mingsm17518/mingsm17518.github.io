@@ -1,0 +1,2080 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/site/Icon.png">
+  <link rel="icon" href="/img/site/Icon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Ming">
+  <meta name="keywords" content="算法,刷题,题解,LeetCode,Hot100,小红书机考,USACO,动态规划,图论,数据结构,Python">
+  
+    <meta name="description" content="粒子滤波与加权粒子滤波：权重层次、似然计算、HDOP与数据驱动噪声建模 1. PF 的核心计算：残差、似然与粒子权重 1.1 PF 对每个粒子计算什么 对第 ii 个粒子 𝒙(i)\mathbf{x}^{(i)}，PF 在自然更新阶段依次计算三样东西。 （1）对每个 AP 的残差（每个粒子 × 每个 AP 一个标量）： rj(i)&#x3D;dj−∥𝒙(i)−𝒂j∥ r_j^{(i)}&#x3D;d_j-\|\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="粒子滤波与加权粒子滤波：权重层次、似然计算、HDOP与数据驱动噪声建模">
+<meta property="og:url" content="https://mingsm17518.github.io/2026/10/27/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%E4%B8%8E%E5%8A%A0%E6%9D%83%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%EF%BC%9A%E6%9D%83%E9%87%8D%E5%B1%82%E6%AC%A1%E3%80%81%E4%BC%BC%E7%84%B6%E8%AE%A1%E7%AE%97%E3%80%81HDOP%E4%B8%8E%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E5%99%AA%E5%A3%B0%E5%BB%BA%E6%A8%A1/index.html">
+<meta property="og:site_name" content="Ming&#39;s Blog">
+<meta property="og:description" content="粒子滤波与加权粒子滤波：权重层次、似然计算、HDOP与数据驱动噪声建模 1. PF 的核心计算：残差、似然与粒子权重 1.1 PF 对每个粒子计算什么 对第 ii 个粒子 𝒙(i)\mathbf{x}^{(i)}，PF 在自然更新阶段依次计算三样东西。 （1）对每个 AP 的残差（每个粒子 × 每个 AP 一个标量）： rj(i)&#x3D;dj−∥𝒙(i)−𝒂j∥ r_j^{(i)}&#x3D;d_j-\|\">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-27T08:16:36.586Z">
+<meta property="article:modified_time" content="2026-10-27T11:16:36.214Z">
+<meta property="article:author" content="Ming">
+<meta property="article:tag" content="HDOP">
+<meta property="article:tag" content="WPF">
+<meta property="article:tag" content="三维定位">
+<meta property="article:tag" content="似然计算">
+<meta property="article:tag" content="噪声建模">
+<meta property="article:tag" content="数据拟合">
+<meta property="article:tag" content="粒子滤波">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>粒子滤波与加权粒子滤波：权重层次、似然计算、HDOP与数据驱动噪声建模 - Ming&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mingsm17518.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ming&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/site/jiangly.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="粒子滤波与加权粒子滤波：权重层次、似然计算、HDOP与数据驱动噪声建模"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-27 16:16" pubdate>
+          2026年10月27日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          101 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+<style>
+.doc-tree {
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.doc-tree .dt-title {
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+}
+.doc-tree details {
+  margin-left: 0;
+}
+.doc-tree details details {
+  margin-left: 0.85em;
+}
+.doc-tree summary {
+  cursor: pointer;
+  padding: 1px 0.5rem;
+  border-radius: 6px;
+  color: var(--text-3, #555);
+  user-select: none;
+}
+.doc-tree summary:hover {
+  background: rgba(128, 128, 128, 0.12);
+}
+.doc-tree a {
+  display: block;
+  padding: 1px 0.5rem 1px 1.7em;
+  color: var(--text-3, #666);
+  text-decoration: none;
+  border-radius: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.doc-tree a:hover {
+  background: rgba(128, 128, 128, 0.12);
+  color: var(--primary, #333);
+}
+.doc-tree a.current {
+  color: #fff;
+  background: var(--primary, #2f4154);
+}
+</style>
+
+
+
+<div class="doc-tree">
+  <div class="dt-title">目录树</div>
+  <details open><summary>刷题笔记</summary><details><summary>Hot100</summary><a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/LeetCode%20HOT%20100%20%E9%A2%98%E8%A7%A3%E6%B8%85%E5%8D%95%EF%BC%88%E6%8C%89%E9%A2%98%E5%8F%B7%EF%BC%89/" title="LeetCode HOT 100 题解清单（按题号）">LeetCode HOT 100 题解清单（按题号）</a><a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/LeetCode%20HOT%20100%20%E9%A2%98%E5%8D%95%EF%BC%88%E6%8C%89%E5%88%86%E7%B1%BB%EF%BC%89/" title="LeetCode HOT 100 题单（按分类）">LeetCode HOT 100 题单（按分类）</a><details><summary>二分查找</summary><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/33.%20%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" title="33. 搜索旋转排序数组">33. 搜索旋转排序数组</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/34.%20%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/" title="34. 在排序数组中查找元素的第一个和最后一个位置">34. 在排序数组中查找元素的第一个和最后一个位置</a></details><details><summary>二叉树</summary><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/114.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8/" title="114. 二叉树展开为链表">114. 二叉树展开为链表</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/105.%20%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/" title="105. 从前序与中序遍历序列构造二叉树">105. 从前序与中序遍历序列构造二叉树</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/236.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" title="236. 二叉树的最近公共祖先">236. 二叉树的最近公共祖先</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91/" title="二叉树">二叉树</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/538.%20%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%B4%AF%E5%8A%A0%E6%A0%91/" title="538. 把二叉搜索树转换为累加树">538. 把二叉搜索树转换为累加树</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/437.%20%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%20III/" title="437. 路径总和 III">437. 路径总和 III</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/96.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="96. 不同的二叉搜索树">96. 不同的二叉搜索树</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E4%BA%8C%E5%8F%89%E6%A0%91/98.%20%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="98. 验证二叉搜索树">98. 验证二叉搜索树</a></details><details><summary>前缀和</summary><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%89%8D%E7%BC%80%E5%92%8C/238.%20%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF/" title="238. 除自身以外数组的乘积">238. 除自身以外数组的乘积</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%89%8D%E7%BC%80%E5%92%8C/560.%20%E5%92%8C%E4%B8%BA%20K%20%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" title="560. 和为 K 的子数组">560. 和为 K 的子数组</a></details><details><summary>动态规划</summary><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/139.%20%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/" title="139. 单词拆分">139. 单词拆分</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/152.%20%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/" title="152. 乘积最大子数组">152. 乘积最大子数组</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/309.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F/" title="309. 买卖股票的最佳时机含冷冻期">309. 买卖股票的最佳时机含冷冻期</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/279.%20%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" title="279. 完全平方数">279. 完全平方数</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/322.%20%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2/" title="322. 零钱兑换">322. 零钱兑换</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/312.%20%E6%88%B3%E6%B0%94%E7%90%83/" title="312. 戳气球">312. 戳气球</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/53.%20%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/" title="53. 最大子数组和">53. 最大子数组和</a><a href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-hot100/" title="动态规划">动态规划</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/300.%20%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/" title="300. 最长递增子序列">300. 最长递增子序列</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/494.%20%E7%9B%AE%E6%A0%87%E5%92%8C/" title="494. 目标和">494. 目标和</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E7%BB%B4%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/221.%20%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2/" title="221. 最大正方形">221. 最大正方形</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E7%BB%B4%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/5.%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" title="5. 最长回文子串">5. 最长回文子串</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E7%BB%B4%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/64.%20%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/" title="64. 最小路径和">64. 最小路径和</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E7%BB%B4%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/62.%20%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/" title="62. 不同路径">62. 不同路径</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E7%BB%B4%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/72.%20%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/" title="72. 编辑距离">72. 编辑距离</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%A4%9A%E7%BB%B4%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/647.%20%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" title="647. 回文子串">647. 回文子串</a></details><details><summary>双指针</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/283.%20%E7%A7%BB%E5%8A%A8%E9%9B%B6/" title="283. 移动零">283. 移动零</a><a href="/2026/10/02/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/11.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" title="11. 盛最多水的容器">11. 盛最多水的容器</a><a href="/2026/10/02/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%8F%8C%E6%8C%87%E9%92%88/15.%20%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" title="15. 三数之和">15. 三数之和</a></details><details><summary>哈希</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/448.%20%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E6%95%B0%E7%BB%84%E4%B8%AD%E6%B6%88%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/" title="448. 找到所有数组中消失的数字">448. 找到所有数组中消失的数字</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/128.%20%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97/" title="128. 最长连续序列">128. 最长连续序列</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/1.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" title="1. 两数之和">1. 两数之和</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%93%88%E5%B8%8C/49.%20%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/" title="49. 字母异位词分组">49. 字母异位词分组</a></details><details><summary>回溯</summary><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/301.%20%E5%88%A0%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" title="301. 删除无效的括号">301. 删除无效的括号</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/39.%20%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" title="39. 组合总和">39. 组合总和</a><a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/22.%20%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" title="22. 括号生成">22. 括号生成</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/17.%20%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/" title="17. 电话号码的字母组合">17. 电话号码的字母组合</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/46.%20%E5%85%A8%E6%8E%92%E5%88%97/" title="46. 全排列">46. 全排列</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/78.%20%E5%AD%90%E9%9B%86/" title="78. 子集">78. 子集</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%9E%E6%BA%AF/79.%20%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2/" title="79. 单词搜索">79. 单词搜索</a></details><details><summary>图论</summary><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%BE%E8%AE%BA/207.%20%E8%AF%BE%E7%A8%8B%E8%A1%A8/" title="207. 课程表">207. 课程表</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%BE%E8%AE%BA/208.%20%E5%AE%9E%E7%8E%B0%20Trie%20(%E5%89%8D%E7%BC%80%E6%A0%91)/" title="208. 实现 Trie (前缀树)">208. 实现 Trie (前缀树)</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%9B%BE%E8%AE%BA/399.%20%E9%99%A4%E6%B3%95%E6%B1%82%E5%80%BC/" title="399. 除法求值">399. 除法求值</a></details><details><summary>堆</summary><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%A0%86/215.%20%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/" title="215. 数组中的第K个最大元素">215. 数组中的第K个最大元素</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%A0%86/253.%20%E4%BC%9A%E8%AE%AE%E5%AE%A4%20II/" title="253. 会议室 II">253. 会议室 II</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%A0%86/621.%20%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8/" title="621. 任务调度器">621. 任务调度器</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E5%A0%86/347.%20%E5%89%8D%20K%20%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0/" title="347. 前 K 个高频元素">347. 前 K 个高频元素</a></details><details><summary>技巧</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%8A%80%E5%B7%A7/136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" title="136. 只出现一次的数字">136. 只出现一次的数字</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%8A%80%E5%B7%A7/169.%20%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/" title="169. 多数元素">169. 多数元素</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%8A%80%E5%B7%A7/338.%20%E6%AF%94%E7%89%B9%E4%BD%8D%E8%AE%A1%E6%95%B0/" title="338. 比特位计数">338. 比特位计数</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%8A%80%E5%B7%A7/461.%20%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" title="461. 汉明距离">461. 汉明距离</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%8A%80%E5%B7%A7/31.%20%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/" title="31. 下一个排列">31. 下一个排列</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%8A%80%E5%B7%A7/75.%20%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB/" title="75. 颜色分类">75. 颜色分类</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%8A%80%E5%B7%A7/287.%20%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/" title="287. 寻找重复数">287. 寻找重复数</a></details><details><summary>排序</summary><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%8E%92%E5%BA%8F/56.%20%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/" title="56. 合并区间">56. 合并区间</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%8E%92%E5%BA%8F/581.%20%E6%9C%80%E7%9F%AD%E6%97%A0%E5%BA%8F%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" title="581. 最短无序连续子数组">581. 最短无序连续子数组</a></details><details><summary>栈</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" title="20. 有效的括号">20. 有效的括号</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/155.%20%E6%9C%80%E5%B0%8F%E6%A0%88/" title="155. 最小栈">155. 最小栈</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/394.%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/" title="394. 字符串解码">394. 字符串解码</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%A0%88/739.%20%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/" title="739. 每日温度">739. 每日温度</a></details><details><summary>滑动窗口</summary><a href="/2026/09/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/3.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" title="3. 无重复字符的最长子串">3. 无重复字符的最长子串</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/239.%20%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC/" title="239. 滑动窗口最大值">239. 滑动窗口最大值</a><a href="/2026/10/10/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/438.%20%E6%89%BE%E5%88%B0%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%89%80%E6%9C%89%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/" title="438. 找到字符串中所有字母异位词">438. 找到字符串中所有字母异位词</a></details><details><summary>矩阵</summary><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E7%9F%A9%E9%98%B5/48.%20%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/" title="48. 旋转图像">48. 旋转图像</a><a href="/2026/10/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E7%9F%A9%E9%98%B5/240.%20%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5%20II/" title="240. 搜索二维矩阵 II">240. 搜索二维矩阵 II</a></details><details><summary>贪心算法</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" title="121. 买卖股票的最佳时机">121. 买卖股票的最佳时机</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/406.%20%E6%A0%B9%E6%8D%AE%E8%BA%AB%E9%AB%98%E9%87%8D%E5%BB%BA%E9%98%9F%E5%88%97/" title="406. 根据身高重建队列">406. 根据身高重建队列</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/55.%20%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/" title="55. 跳跃游戏">55. 跳跃游戏</a></details><details><summary>链表</summary><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/160.%20%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" title="160. 相交链表">160. 相交链表</a><a href="/2026/10/07/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/146.%20LRU%20%E7%BC%93%E5%AD%98/" title="146. LRU 缓存">146. LRU 缓存</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/2.%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" title="2. 两数相加">2. 两数相加</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="206. 反转链表">206. 反转链表</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/21.%20%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" title="21. 合并两个有序链表">21. 合并两个有序链表</a><a href="/2026/10/06/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/234.%20%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" title="234. 回文链表">234. 回文链表</a><a href="/2026/10/05/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/19.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%AC%20N%20%E4%B8%AA%E7%BB%93%E7%82%B9/" title="19. 删除链表的倒数第 N 个结点">19. 删除链表的倒数第 N 个结点</a><a href="/2026/10/09/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/141%20&%20142.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/" title="141 &amp; 142. 环形链表">141 &amp; 142. 环形链表</a><a href="/2026/10/07/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Hot100/%E9%93%BE%E8%A1%A8/148.%20%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/" title="148. 排序链表">148. 排序链表</a></details></details><details><summary>Leetcode</summary><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/171.%20Excel%20%E8%A1%A8%E5%88%97%E5%BA%8F%E5%8F%B7/" title="179. 最大数">179. 最大数</a><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/179.%20%E6%9C%80%E5%A4%A7%E6%95%B0/" title="171. Excel 表列序号">171. Excel 表列序号</a><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/1328.%20%E7%A0%B4%E5%9D%8F%E5%9B%9E%E6%96%87%E4%B8%B2/" title="1328. 破坏回文串">1328. 破坏回文串</a><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/454.%20%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0%20II/" title="454. 四数相加 II">454. 四数相加 II</a><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/50.%20Pow(x,%20n)/" title="50. Pow(x, n)">50. Pow(x, n)</a><a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/32.%20%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7/" title="32. 最长有效括号">32. 最长有效括号</a><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/680.%20%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E4%B8%B2%20II/" title="680. 验证回文串 II">680. 验证回文串 II</a><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/681.%20%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9C%80%E8%BF%91%E7%9A%84%E6%97%B6%E9%97%B4/" title="681. 下一个最近的时间">681. 下一个最近的时间</a><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/682.%20%E6%A3%92%E7%90%83%E6%AF%94%E8%B5%9B/" title="682. 棒球比赛">682. 棒球比赛</a><a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/Leetcode/921.%20%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/" title="921. 使括号有效的最少添加">921. 使括号有效的最少添加</a></details><details><summary>codeforces</summary><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/codeforces/822%20C.%20Removing%20Smallest%20Multiples/" title="C. Removing Smallest Multiples">C. Removing Smallest Multiples</a></details><details><summary>华为机考</summary><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/06_Z%20%E5%AD%97%E5%BD%A2%E5%8F%98%E6%8D%A2/" title="Z 字形变换（Zigzag Conversion）">Z 字形变换（Zigzag Conversion）</a><a href="/2026/09/14/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83%E9%A2%98%E5%9E%8B/" title="华为机考题型">华为机考题型</a><details><summary>nowcoder</summary><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/HJ114-%E5%AE%9D%E7%9F%B3%E6%89%8B%E4%B8%B2/" title="HJ114 宝石手串">HJ114 宝石手串</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/03_string_group/" title="明文分组（HJ3）">明文分组（HJ3）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/07_remove_least_freq_chars/" title="删除出现次数最少的字符（HJ7）">删除出现次数最少的字符（HJ7）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/12_longest_digit_substring/" title="最长数字子串（HJ12）">最长数字子串（HJ12）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/13_first_unique_char/" title="第一个只出现一次的字符（HJ13）">第一个只出现一次的字符（HJ13）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/21_longest_common_substring/" title="查找两个字符串a,b中的最长公共子串（HJ21）">查找两个字符串a,b中的最长公共子串（HJ21）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/20_brother_words/" title="查找兄弟单词（HJ20）">查找兄弟单词（HJ20）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/19_string_sort/" title="字符串排序（HJ19）">字符串排序（HJ19）</a><a href="/2026/04/23/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ113-%E7%81%AB%E8%BD%A6%E8%BF%9B%E7%AB%99/" title="HJ113 火车进站">HJ113 火车进站</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/15_string_transform/" title="字符串变换（HJ15）">字符串变换（HJ15）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/14_sort_strings/" title="字符串排序（HJ14）">字符串排序（HJ14）</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/01_String/17_string_match/" title="字符串字符匹配（HJ17）">字符串字符匹配（HJ17）</a><a href="/2026/05/03/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ150_%E5%85%A8%E6%8E%92%E5%88%97/" title="HJ150 全排列">HJ150 全排列</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ59-%E6%95%B0%E7%BB%84%E5%88%86%E7%BB%84/" title="HJ59 数组分组">HJ59 数组分组</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ149-%E6%95%B0%E6%B0%B4%E5%9D%91/" title="HJ149 数水坑">HJ149 数水坑</a><a href="/2026/04/29/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%80%83/nowcoder/07_DFS/HJ148-%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF/" title="HJ148 迷宫寻路">HJ148 迷宫寻路</a></details></details><details><summary>机考</summary><a href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E9%80%94%E8%99%8E%E5%85%BB%E8%BD%A6-%E5%8C%BA%E9%97%B4%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98/" title="区间调度问题">区间调度问题</a><a href="/2026/10/02/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E7%BD%91%E6%98%93%E4%BA%91AIcoding%E7%AC%94%E8%AF%95%E8%A7%A3%E6%9E%90/" title="未命名">未命名</a><details><summary>1016满帮集团</summary><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/1016%E6%BB%A1%E5%B8%AE%E9%9B%86%E5%9B%A2/01_%E4%BF%AE%E6%94%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BD%BF%E6%97%A0%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BF%AE%E6%94%B9%E6%AC%A1%E6%95%B0/" title="修改字符串使无回文子串的最小修改次数">修改字符串使无回文子串的最小修改次数</a><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/1016%E6%BB%A1%E5%B8%AE%E9%9B%86%E5%9B%A2/02_%E4%BA%A4%E6%8D%A2%E4%B8%80%E6%AC%A1%E4%BD%BF%20a%20%E5%AD%97%E5%85%B8%E5%BA%8F%E4%B8%A5%E6%A0%BC%E5%A4%A7%E4%BA%8E%20b/" title="交换一次使 a 字典序严格大于 b">交换一次使 a 字典序严格大于 b</a><a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/1016%E6%BB%A1%E5%B8%AE%E9%9B%86%E5%9B%A2/03_%E6%95%B0%E5%AD%97%E6%B6%88%E9%99%A4%E4%B8%8E%E8%BF%9E%E9%94%81%E8%BF%9B%E4%BD%8D/" title="数字消除与连锁进位">数字消除与连锁进位</a></details><details><summary>小红书</summary><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%B6%85%E7%BA%A7%E9%87%8D%E6%8E%92/" title="第1题-超级重排">第1题-超级重排</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E8%A1%8C%E4%B8%BA%E6%9D%83%E9%87%8D2/" title="第2题-行为权重2">第2题-行为权重2</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2025%E5%B9%B49%E6%9C%887%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E8%BD%B0%E7%82%B8%E6%9C%BA/" title="第3题-轰炸机">第3题-轰炸机</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E6%9C%80%E5%B0%8F%E5%8C%96%E5%B3%B0%E5%80%BC%E5%B9%B2%E6%89%B0/" title="第1题-最小化峰值干扰">第1题-最小化峰值干扰</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8810%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8F%8C%E9%80%9A%E9%81%93%E8%AF%84%E6%B5%8B%E6%A0%BC%E7%BD%91/" title="第2题-双通道评测格网">第2题-双通道评测格网</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E9%81%BF%E9%87%8D%E5%8F%A3%E4%BB%A4/" title="第2题-避重口令">第2题-避重口令</a><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E4%B8%93%E6%A0%8F%E6%94%B9%E6%8C%82%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E7%BB%BC%E5%90%88%E8%AF%84%E5%88%86/" title="第3题-专栏改挂后的最大综合评分">第3题-专栏改挂后的最大综合评分</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%80%89%E6%8B%A9%E9%A2%98/" title="第1题-选择题">第1题-选择题</a><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E9%9B%B6%E5%92%8C%E5%8C%BA%E9%97%B4%E5%88%A0%E9%99%A4/" title="第1题-零和区间删除">第1题-零和区间删除</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8A%A0%E9%80%9F%E7%AA%97%E5%8F%A3%E6%94%B6%E7%9B%8A/" title="第2题-加速窗口收益">第2题-加速窗口收益</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8817%E6%97%A5/%E7%AC%AC3%E9%A2%98-%E5%BE%85%E5%8F%91%E7%83%AD%E5%BA%A6%E9%87%8D%E6%8E%92/" title="第3题-待发热度重排">第3题-待发热度重排</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC1%E9%A2%98%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C/" title="第1题：数列求和">第1题：数列求和</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%BB%83%E4%B9%A0%E9%A2%98/%E7%AC%AC2%E9%A2%98%EF%BC%9A%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0/" title="第2题：水仙花数">第2题：水仙花数</a><a href="/2026/09/19/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8813%E6%97%A5/%E7%AC%AC1%E9%A2%98-%E8%BE%BE%E4%BA%BA%E6%95%B0%E6%8D%AE%E7%9C%8B%E6%9D%BF/" title="第1题-达人数据看板">第1题-达人数据看板</a><a href="/2026/09/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E5%B0%8F%E7%BA%A2%E4%B9%A6/2026%E5%B9%B49%E6%9C%8820%E6%97%A5/%E7%AC%AC2%E9%A2%98-%E5%8C%BA%E9%97%B4%E9%85%8D%E5%AF%B9%E8%AE%A1%E6%95%B0/" title="第2题-区间配对计数">第2题-区间配对计数</a></details><details><summary>机考-虾皮信息</summary><a href="/2026/09/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E6%9C%BA%E8%80%83-%E8%99%BE%E7%9A%AE%E4%BF%A1%E6%81%AF/%E7%AC%AC2%E9%A2%98/" title="未命名">未命名</a><a href="/2026/09/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E6%9C%BA%E8%80%83-%E8%99%BE%E7%9A%AE%E4%BF%A1%E6%81%AF/%E7%AC%AC3%E9%A2%98/" title="未命名">未命名</a></details><details><summary>虾皮</summary><a href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E8%99%BE%E7%9A%AE/01_%E5%A4%A7%E6%95%B0%E5%8A%A0%E6%B3%95%EF%BC%88%E5%90%AB%E5%B0%8F%E6%95%B0%EF%BC%89/" title="大数加法（含小数）">大数加法（含小数）</a><a href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E8%99%BE%E7%9A%AE/118.%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/" title="118. 杨辉三角">118. 杨辉三角</a><a href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E8%99%BE%E7%9A%AE/119.%20%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%20II/" title="119. 杨辉三角 II">119. 杨辉三角 II</a><a href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E8%99%BE%E7%9A%AE/03_%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92%E7%AC%AC%20k%20%E8%A1%8C%E7%AC%AC%20i%20%E5%88%B0%20j%20%E5%88%97%E7%9A%84%E5%92%8C/" title="杨辉三角第 k 行第 i 到 j 列的和">杨辉三角第 k 行第 i 到 j 列的和</a><a href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E8%99%BE%E7%9A%AE/02_%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86%EF%BC%88%E5%A4%A7%E6%95%B0%E4%BC%98%E5%8C%96%E7%89%88%EF%BC%89/" title="分割等和子集（大数优化版）">分割等和子集（大数优化版）</a></details></details><details><summary>贪心</summary><a href="/2026/09/20/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E8%B4%AA%E5%BF%83/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="贪心算法">贪心算法</a></details><details><summary>题目</summary><a href="/2026/05/08/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/BFS-DFS%20%E4%BE%8B%E9%A2%98/" title="Graph 图">Graph 图</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%8F%8C%E6%8C%87%E9%92%88%20-%20Problems/" title="Two Pointer - Problems">Two Pointer - Problems</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/03_%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/" title="Casework 案例分析">Casework 案例分析</a><details><summary>完全搜索</summary><a href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/01_Milk%20Pails/" title="Milk Pails">Milk Pails</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/04_Counting_Liars/" title="Counting Liars">Counting Liars</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/05_Cow_Gymnastics/" title="Cow Gymnastics">Cow Gymnastics</a><a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" title="Complete Search 完全搜索">Complete Search 完全搜索</a><a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/Counting%20Liars/" title="Counting Liars">Counting Liars</a><a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/Complete%20Search%20%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" title="Complete Search 完全搜索">Complete Search 完全搜索</a></details><details><summary>滑动窗口</summary><a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/1438.%20%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" title="1438. 绝对差不超过限制的最长连续子数组">1438. 绝对差不超过限制的最长连续子数组</a><a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/02_Diamond%20Collector/" title="Diamond Collector">Diamond Collector</a><a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/220.%20%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%20III/" title="220. 存在重复元素 III">220. 存在重复元素 III</a></details></details></details><details open><summary>开发杂记</summary><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/GPU%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E9%97%AE%E9%A2%98/" title="bug修复：GPU内存不足问题">bug修复：GPU内存不足问题</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/expected%20str,%20bytes%20or%20os.PathLike%20object,%20not%20MultiplexedPath/" title="expected str, bytes or os.PathLike object, not MultiplexedPath">expected str, bytes or os.PathLike object, not MultiplexedPath</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/git/" title="git">git</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/tumx/" title="tumx">tumx</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/huggingface/" title="huggingface">huggingface</a><a href="/2026/04/30/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/push%20%E5%88%B0%20github%20%E6%97%B6%E5%87%BA%E9%94%99/" title="push 到 github 时出错">push 到 github 时出错</a><a href="/2026/09/20/%E5%BC%80%E5%8F%91%E6%9D%82%E8%AE%B0/conda%20%E4%B8%8E%20uv/" title="conda 与 uv">conda 与 uv</a></details><details open><summary>秋招学习清单</summary><a href="/2026/10/27/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/AI%20Coding%20%E9%9D%A2%E8%AF%95%E8%80%83%E5%AF%9F%E4%BB%80%E4%B9%88%E5%8F%8A%E5%A6%82%E4%BD%95%E5%87%86%E5%A4%87/" title="AI Coding 面试考察什么及如何准备">AI Coding 面试考察什么及如何准备</a><a href="/2026/10/06/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/AI%20%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E5%A4%A7%E4%B8%B2%E8%81%94%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/" title="AI 核心概念大串联学习清单">AI 核心概念大串联学习清单</a><a href="/2026/10/26/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/Agent%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3/" title="Agent 大模型应用开发学习文档">Agent 大模型应用开发学习文档</a><a href="/2026/10/06/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/Agent%20%E7%AC%94%E8%AE%B0/" title="未命名 1">未命名 1</a><a href="/2026/09/23/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%B2%97%E4%BD%8D%E8%A6%81%E6%B1%82/" title="未命名">未命名</a><a href="/2026/09/24/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E9%80%89%E6%8B%A9%E9%A2%98%E8%80%83%E7%82%B9/" title="选择题考点">选择题考点</a><details><summary>三维定位算法</summary><a href="/2026/10/27/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/01_%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E7%B1%BB%E7%AE%97%E6%B3%95%EF%BC%9ALS%E3%80%81WLS%E3%80%81NLS%E4%B8%8EWNLS/" title="三维定位中的最小二乘类算法：LS、WLS、NLS与WNLS">三维定位中的最小二乘类算法：LS、WLS、NLS与WNLS</a><a href="/2026/10/27/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/02_%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%EF%BC%88PF%EF%BC%89%E7%AE%97%E6%B3%95/" title="粒子滤波（PF）算法">粒子滤波（PF）算法</a><a href="/2026/10/27/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/04_%E5%8A%A0%E6%9D%83%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%EF%BC%88WPF%EF%BC%89%E7%AE%97%E6%B3%95/" title="加权粒子滤波（WPF）算法">加权粒子滤波（WPF）算法</a><a href="/2026/10/27/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/03_%E5%9F%BA%E4%BA%8E%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%E4%B8%8E%E4%B8%A4%E9%98%B6%E6%AE%B5AP%E5%89%94%E9%99%A4%E7%9A%84%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" title="基于粒子滤波与两阶段AP剔除的三维定位算法">基于粒子滤波与两阶段AP剔除的三维定位算法</a><a href="/2026/10/27/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%E4%B8%8E%E5%8A%A0%E6%9D%83%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%EF%BC%9A%E6%9D%83%E9%87%8D%E5%B1%82%E6%AC%A1%E3%80%81%E4%BC%BC%E7%84%B6%E8%AE%A1%E7%AE%97%E3%80%81HDOP%E4%B8%8E%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E5%99%AA%E5%A3%B0%E5%BB%BA%E6%A8%A1/" class="current" title="粒子滤波与加权粒子滤波：权重层次、似然计算、HDOP与数据驱动噪声建模">粒子滤波与加权粒子滤波：权重层次、似然计算、HDOP与数据驱动噪声建模</a><a href="/2026/10/27/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/02_%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%EF%BC%88PF%EF%BC%89%E7%AE%97%E6%B3%95%EF%BC%88%E9%80%9A%E4%BF%97%E7%89%88%EF%BC%89/" title="粒子滤波（PF）算法（通俗版）">粒子滤波（PF）算法（通俗版）</a></details></details><details open><summary>算法学习</summary><details><summary>01_数据结构</summary><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E5%88%97%E8%A1%A8/" title="01_列表">01_列表</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E5%AD%97%E5%85%B8/" title="02_字典">02_字典</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/00_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" title="00_数据结构总览">00_数据结构总览</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" title="04_队列与栈">04_队列与栈</a><a href="/2026/09/14/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" title="03_集合">03_集合</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/08_%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="08_高级数据结构">08_高级数据结构</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" title="07_Python工具函数">07_Python工具函数</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="06_输入输出">06_输入输出</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/05_%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="05_字符串">05_字符串</a></details><details><summary>02_核心算法</summary><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" title="02_差分数组">02_差分数组</a><a href="/2026/10/05/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/03_%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="03_二分查找">03_二分查找</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" title="01_前缀和">01_前缀和</a><a href="/2026/10/06/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/04_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="04_滑动窗口">04_滑动窗口</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/05_%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" title="05_优先队列">05_优先队列</a><a href="/2026/09/22/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/06_%E6%8E%92%E5%BA%8F/" title="06_排序">06_排序</a><a href="/2026/10/05/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%BE%8B%E9%A2%98/" title="未命名">未命名</a><a href="/2026/10/05/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/%E9%80%92%E5%BD%92%E4%B8%8E%E5%9B%9E%E6%BA%AF/" title="递归与回溯">递归与回溯</a></details><details><summary>05_动态规划</summary><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%AE%80%E4%BB%8B/" title="01_Introduction to DP 动态规划简介">01_Introduction to DP 动态规划简介</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/05_%E7%BD%91%E6%A0%BC%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" title="03_Paths on Grids 网格路径问题">03_Paths on Grids 网格路径问题</a><a href="/2026/10/09/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/pre%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="09_动态规划">09_动态规划</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/Chicken_Jockey%20%E9%A2%98%E8%A7%A3/" title="算法学习/05_动态规划/Chicken_Jockey 题解">算法学习/05_动态规划/Chicken_Jockey 题解</a><a href="/2026/09/20/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/05_%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E8%83%8C%E5%8C%85DP/" title="02-背包DP">02-背包DP</a></details><details><summary>06_Graphs</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/05_%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="05_并查集">05_并查集</a><a href="/2026/05/07/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/06_%E6%9C%89%E5%90%91%E5%9B%BE%E7%8E%AF%E6%A3%80%E6%B5%8B/" title="06_Cycle Detection in Directed Graph 有向图环检测">06_Cycle Detection in Directed Graph 有向图环检测</a><a href="/2026/10/25/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/06_Graphs/07_%E5%9B%BE%E8%AE%BA/" title="07_图论">07_图论</a></details><details><summary>其他算法</summary><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/06_%E6%95%B0%E8%AE%BA/" title="07_数论">07_数论</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E7%9F%A9%E5%BD%A2%E5%87%A0%E4%BD%95/" title="Rectangle Geometry 矩形几何">Rectangle Geometry 矩形几何</a><a href="/2026/09/19/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/07_%E4%BD%BF%E7%94%A8%E9%80%92%E5%BD%92%E7%9A%84%E7%A9%B7%E4%B8%BE%E6%90%9C%E7%B4%A2/" title="07_使用递归的穷举搜索">07_使用递归的穷举搜索</a><a href="/2026/04/30/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E5%85%B6%E4%BB%96%E7%AE%97%E6%B3%95/08_%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E8%BE%83%E5%99%A8%E5%92%8C%E5%9D%90%E6%A0%87%E5%8E%8B%E7%BC%A9/" title="Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩">Custom Comparators and Coordinate Compression 自定义比较器和坐标压缩</a></details></details>
+</div>
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">粒子滤波与加权粒子滤波：权重层次、似然计算、HDOP与数据驱动噪声建模</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2026-10-27T19:16:36+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1
+id="粒子滤波与加权粒子滤波权重层次似然计算hdop与数据驱动噪声建模">粒子滤波与加权粒子滤波：权重层次、似然计算、HDOP与数据驱动噪声建模</h1>
+<h2 id="pf-的核心计算残差似然与粒子权重">1. PF
+的核心计算：残差、似然与粒子权重</h2>
+<h3 id="pf-对每个粒子计算什么">1.1 PF 对每个粒子计算什么</h3>
+<p>对第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+个粒子
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">\mathbf{x}^{(i)}</annotation></semantics></math>，PF
+在自然更新阶段依次计算三样东西。</p>
+<p><strong>（1）对每个 AP 的残差</strong>（每个粒子 × 每个 AP
+一个标量）：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>r</mi><mi>j</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><msub><mi>d</mi><mi>j</mi></msub><mi>−</mi><mo stretchy="false" form="postfix">∥</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">
+r_j^{(i)}=d_j-\|\mathbf{x}^{(i)}-\mathbf{a}_j\|
+</annotation></semantics></math></p>
+<p>它衡量“如果目标真在这个粒子位置上，第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+个 AP 的测距应该和实测差多少”。</p>
+<p><strong>（2）该粒子的似然</strong>（每个粒子一个标量）：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><munder><mo>∏</mo><mrow><mi>j</mi><mo>∈</mo><mi mathvariant="script">𝒮</mi></mrow></munder><mi mathvariant="script">𝒩</mi><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>r</mi><mi>j</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>;</mo><mn>0</mn><mo>,</mo><msubsup><mi>σ</mi><mi>j</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+L^{(i)}
+=
+\prod_{j\in\mathcal{S}}
+\mathcal{N}\left(r_j^{(i)};0,\sigma_j^2\right)
+</annotation></semantics></math></p>
+<p>它衡量“这个粒子位置对所有 AP 的测距的综合解释能力”。残差越小、越接近
+0，似然越大。</p>
+<p><strong>（3）该粒子的权重</strong>（每个粒子一个标量）：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>←</mo><msup><mi>ω</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>⋅</mo><msup><mi>L</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><msup><mover><mi>ω</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mfrac><msup><mi>ω</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mrow><munder><mo>∑</mo><mi>l</mi></munder><msup><mi>ω</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+\omega^{(i)}\leftarrow \omega^{(i)}\cdot L^{(i)},\qquad
+\tilde{\omega}^{(i)}
+=
+\frac{\omega^{(i)}}{\sum_l \omega^{(l)}}
+</annotation></semantics></math></p>
+<p>所以，PF 对每个粒子最终计算并维护的，是一个标量权重
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mover><mi>ω</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">\tilde{\omega}^{(i)}</annotation></semantics></math>，它表示“这个粒子假设的位置有多可信”。重采样按这个权重复制/淘汰粒子，最终输出位置是这个权重的加权平均：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi mathvariant="bold-italic">𝒙</mi><mo accent="true">̂</mo></mover><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msup><mover><mi>ω</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">
+\hat{\mathbf{x}}
+=
+\sum_i \tilde{\omega}^{(i)}\mathbf{x}^{(i)}
+</annotation></semantics></math></p>
+<h3 id="似然到底是什么">1.2 似然到底是什么</h3>
+<p><strong>似然不是“概率”，而是“反过来的概率”——给定已经发生的数据，去评价某个假设有多合理。</strong></p>
+<h4 id="概率和似然的区别">1.2.1 概率和似然的区别</h4>
+<p>这两个东西数学公式长得一模一样，但<strong>看的方向相反</strong>。</p>
+<p><strong>概率</strong>：已知模型/参数，问“什么样的数据会出现，各有多大可能”。</p>
+<blockquote>
+<p>比如：已知一枚硬币正面朝上的概率是 0.5，问“抛 10 次出现 7
+次正面”的概率是多少。</p>
+</blockquote>
+<p><strong>似然</strong>：已知数据，问“哪个参数/假设最能解释这组数据”。</p>
+<blockquote>
+<p>比如：抛了 10 次，出现 7 次正面，问“这枚硬币正面朝上的概率是 0.5
+更合理，还是 0.7 更合理”。</p>
+</blockquote>
+<p>公式还是那个公式，但<strong>谁固定、谁变化</strong>反过来了：</p>
+<ul>
+<li>概率：参数固定，数据变化；</li>
+<li>似然：数据固定，参数变化。</li>
+</ul>
+<h4 id="一个生活化的例子">1.2.2 一个生活化的例子</h4>
+<p>你听到窗外有“喵”的一声（<strong>数据</strong>）。现在有两个假设：</p>
+<ul>
+<li>假设 A：外面是一只猫；</li>
+<li>假设 B：外面是一只狗。</li>
+</ul>
+<p>你问自己：<strong>“如果外面真是猫，发出‘喵’的可能性有多大？”</strong>
+很大。<strong>“如果外面真是狗，发出‘喵’的可能性有多大？”</strong>
+很小。</p>
+<p>于是你说：“猫这个假设的<strong>似然</strong>更高。”</p>
+<p>注意：你并没有真的看到猫。你只是用听到的声音（数据），去反推哪个假设更能解释这个数据。<strong>似然就是“假设对数据的解释能力”。</strong></p>
+<h4 id="回到-pf-里">1.2.3 回到 PF 里</h4>
+<p>PF 里：</p>
+<ul>
+<li><strong>数据</strong>是实测距离
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>j</mi></msub><annotation encoding="application/x-tex">d_j</annotation></semantics></math>（设备测出来的，固定不变）；</li>
+<li><strong>假设</strong>是粒子位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">\mathbf{x}^{(i)}</annotation></semantics></math>（每个粒子就是一个候选假设）。</li>
+</ul>
+<p>对第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+个粒子，似然问的是：</p>
+<blockquote>
+<p><strong>“如果目标真的在这个粒子位置上，那么测出
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>j</mi></msub><annotation encoding="application/x-tex">d_j</annotation></semantics></math>
+这个距离值的可能性有多大？”</strong></p>
+</blockquote>
+<ul>
+<li>如果粒子离 AP 的预测距离和实测距离很接近 → 这个假设能很好地解释数据
+→ 似然大；</li>
+<li>如果预测距离和实测距离差很远 → 这个假设解释不了数据 → 似然小。</li>
+</ul>
+<p>所以 PF
+的自然更新，本质上就是：<strong>拿每个粒子假设去“解释”当前这组测距数据，谁解释得好，谁的似然大，谁的权重就高。</strong></p>
+<h4 id="为什么叫似然而不叫概率">1.2.4 为什么叫“似然”而不叫“概率”</h4>
+<p>因为严格来说，粒子位置
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">\mathbf{x}^{(i)}</annotation></semantics></math>
+不是一个随机变量，它是一个<strong>假设</strong>。我们不能说“目标是这个位置的概率是
+0.3”——目标只有一个真实位置，不是随机分布的。但我们<strong>可以</strong>说“这个位置假设对数据的<strong>似然</strong>是
+0.3”。</p>
+<p>“似然”这个词就是用来回避“概率”这个词的：<strong>它衡量的是假设的合理性，不是假设发生的概率。</strong></p>
+<blockquote>
+<p><strong>似然 =
+给定已经观测到的数据，某个假设能多好地解释这组数据。</strong>
+公式和概率一样，但方向反过来：概率是“参数定、数据变”，似然是“数据定、假设变”。PF
+里数据是测距值，假设是粒子位置，似然大的粒子就是“能解释当前测距”的粒子。</p>
+</blockquote>
+<h3 id="单个-ap-的似然公式拆解">1.3 单个 AP 的似然：公式拆解</h3>
+<p>假设目标真实位置在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="bold-italic">𝒙</mi><annotation encoding="application/x-tex">\mathbf{x}</annotation></semantics></math>，第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+个 AP 到目标的真实距离是：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>j</mi></msub><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><mi mathvariant="bold-italic">𝒙</mi><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">
+R_j=\|\mathbf{x}-\mathbf{a}_j\|
+</annotation></semantics></math></p>
+<p>但测距设备有噪声，实测值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>j</mi></msub><annotation encoding="application/x-tex">d_j</annotation></semantics></math>
+不会刚好等于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>j</mi></msub><annotation encoding="application/x-tex">R_j</annotation></semantics></math>，而是：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>j</mi></msub><mo>=</mo><msub><mi>R</mi><mi>j</mi></msub><mo>+</mo><mtext mathvariant="normal">噪声</mtext></mrow><annotation encoding="application/x-tex">
+d_j = R_j + \text{噪声}
+</annotation></semantics></math></p>
+<p>假设噪声服从零均值高斯分布，标准差为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math>。那么给定目标在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="bold-italic">𝒙</mi><annotation encoding="application/x-tex">\mathbf{x}</annotation></semantics></math>，测距值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>j</mi></msub><annotation encoding="application/x-tex">d_j</annotation></semantics></math>
+出现的概率密度是：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo>∣</mo><mi mathvariant="bold-italic">𝒙</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><msqrt><mrow><mn>2</mn><mi>π</mi></mrow></msqrt><msub><mi>σ</mi><mi>j</mi></msub></mrow></mfrac><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mi>−</mi><mo stretchy="false" form="postfix">∥</mo><mi mathvariant="bold-italic">𝒙</mi><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><mrow><mn>2</mn><msubsup><mi>σ</mi><mi>j</mi><mn>2</mn></msubsup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+p(d_j\mid \mathbf{x})
+=
+\frac{1}{\sqrt{2\pi}\sigma_j}
+\exp\left(
+-\frac{(d_j-\|\mathbf{x}-\mathbf{a}_j\|)^2}{2\sigma_j^2}
+\right)
+</annotation></semantics></math></p>
+<p>这个式子就是单个 AP 的似然。把它拆成三块看：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo>∣</mo><mi mathvariant="bold-italic">𝒙</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munder><munder><mfrac><mn>1</mn><mrow><msqrt><mrow><mn>2</mn><mi>π</mi></mrow></msqrt><msub><mi>σ</mi><mi>j</mi></msub></mrow></mfrac><mo accent="true">⏟</mo></munder><mtext mathvariant="normal">归一化常数</mtext></munder><mo>⋅</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><mover><mover><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mi>−</mi><mo stretchy="false" form="postfix">∥</mo><mi mathvariant="bold-italic">𝒙</mi><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><mo accent="true">⏞</mo></mover><mtext mathvariant="normal">残差平方</mtext></mover><munder><munder><mrow><mn>2</mn><msubsup><mi>σ</mi><mi>j</mi><mn>2</mn></msubsup></mrow><mo accent="true">⏟</mo></munder><mtext mathvariant="normal">噪声方差的两倍</mtext></munder></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+p(d_j\mid \mathbf{x})
+=
+\underbrace{\frac{1}{\sqrt{2\pi}\sigma_j}}_{\text{归一化常数}}
+\cdot
+\exp\left(
+-\frac{
+\overbrace{(d_j-\|\mathbf{x}-\mathbf{a}_j\|)^2}^{\text{残差平方}}
+}{
+\underbrace{2\sigma_j^2}_{\text{噪声方差的两倍}}
+}
+\right)
+</annotation></semantics></math></p>
+<p><strong>第一块：残差</strong></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>j</mi></msub><mo>=</mo><msub><mi>d</mi><mi>j</mi></msub><mi>−</mi><mo stretchy="false" form="postfix">∥</mo><mi mathvariant="bold-italic">𝒙</mi><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">
+r_j = d_j-\|\mathbf{x}-\mathbf{a}_j\|
+</annotation></semantics></math></p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>j</mi></msub><annotation encoding="application/x-tex">d_j</annotation></semantics></math>
+是实测距离；</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mi mathvariant="bold-italic">𝒙</mi><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">\|\mathbf{x}-\mathbf{a}_j\|</annotation></semantics></math>
+是“如果目标在粒子
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="bold-italic">𝒙</mi><annotation encoding="application/x-tex">\mathbf{x}</annotation></semantics></math>
+处，到 AP 的理论距离”；</li>
+<li>两者相减，就是这个粒子对这个 AP 的测距解释误差。</li>
+</ul>
+<p><strong>第二块：残差平方除以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msup><mi>σ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">2\sigma^2</annotation></semantics></math></strong></p>
+<ul>
+<li>残差越小，这一项越接近 0；</li>
+<li>残差越大，这一项越大，指数里的负号让它把整个值压小；</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math>
+越大（这个 AP 越不准），同样的残差被惩罚得越轻。</li>
+</ul>
+<p><strong>第三块：指数函数</strong></p>
+<ul>
+<li>残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">=0</annotation></semantics></math>
+时，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\exp(0)=1</annotation></semantics></math>，似然达到最大值；</li>
+<li>残差变大，似然迅速下降，下降速度由
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math>
+决定。</li>
+</ul>
+<p>一句话：单个 AP 的似然就是一个以“理论距离”为中心、以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math>
+为宽度的钟形曲线，实测距离落在中心附近，似然大；偏离越远，似然越小。</p>
+<h3 id="以理论距离为中心是什么意思">1.4
+“以理论距离为中心”是什么意思</h3>
+<p>不是“距离 AP
+远的点”。这里的关键是：<strong>钟形曲线的横轴是“距离数值”，不是“空间位置”。</strong></p>
+<p>单个 AP 的似然函数是：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo>∣</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><msqrt><mrow><mn>2</mn><mi>π</mi></mrow></msqrt><msub><mi>σ</mi><mi>j</mi></msub></mrow></mfrac><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mi>−</mi><mo stretchy="false" form="postfix">∥</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><mrow><mn>2</mn><msubsup><mi>σ</mi><mi>j</mi><mn>2</mn></msubsup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+p(d_j\mid \mathbf{x}^{(i)})
+=
+\frac{1}{\sqrt{2\pi}\sigma_j}
+\exp\left(
+-\frac{(d_j-\|\mathbf{x}^{(i)}-\mathbf{a}_j\|)^2}{2\sigma_j^2}
+\right)
+</annotation></semantics></math></p>
+<p>把它看成关于<strong>实测距离
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>j</mi></msub><annotation encoding="application/x-tex">d_j</annotation></semantics></math></strong>
+的函数，横轴是“距离值”（单位：米），纵轴是“似然值”。</p>
+<p>这条曲线的<strong>中心</strong>（峰值位置）在：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>j</mi></msub><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">
+d_j = \|\mathbf{x}^{(i)}-\mathbf{a}_j\|
+</annotation></semantics></math></p>
+<p>右边这个量就是<strong>“理论距离”</strong>——它是<strong>一个标量数值</strong>，不是空间中的一个点。它表示：<strong>如果目标真的在粒子
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">\mathbf{x}^{(i)}</annotation></semantics></math>
+这个位置，它到第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+个 AP 的距离应该是多少米。</strong></p>
+<p>所以“以理论距离为中心”的意思是：</p>
+<blockquote>
+<p><strong>这条钟形曲线的峰值，落在“理论距离”这个数值上。</strong></p>
+</blockquote>
+<p>举例：粒子在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(5,0,0)</annotation></semantics></math>，AP
+在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,0,0)</annotation></semantics></math>，理论距离
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">=5</annotation></semantics></math>
+m。那么这条钟形曲线的中心就在横轴的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>5</mn><annotation encoding="application/x-tex">5</annotation></semantics></math>
+这个刻度上。实测距离
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>j</mi></msub><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">d_j=5</annotation></semantics></math>
+时，似然最大；实测
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>j</mi></msub><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">d_j=7</annotation></semantics></math>
+时，偏离中心
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>
+m，似然下降；实测
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>j</mi></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">d_j=3</annotation></semantics></math>
+时，也偏离
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>
+m，似然同样下降。</p>
+<p><strong>它说的是“实测距离这个数值离理论距离这个数值有多远”，不是“空间中的点离
+AP 有多远”。</strong></p>
+<p>换一个粒子，中心就移动：</p>
+<ul>
+<li>粒子 A 在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,0,0)</annotation></semantics></math>，到
+AP1 的理论距离
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">=1</annotation></semantics></math>，钟形曲线中心在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>；</li>
+<li>粒子 B 在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(5,0,0)</annotation></semantics></math>，到
+AP1 的理论距离
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">=5</annotation></semantics></math>，钟形曲线中心在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>5</mn><annotation encoding="application/x-tex">5</annotation></semantics></math>；</li>
+<li>粒子 C 在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>9</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(9,0,0)</annotation></semantics></math>，到
+AP1 的理论距离
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">=9</annotation></semantics></math>，钟形曲线中心在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>9</mn><annotation encoding="application/x-tex">9</annotation></semantics></math>。</li>
+</ul>
+<p>如果实测距离是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>1</mn></msub><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">d_1=5</annotation></semantics></math>：</p>
+<ul>
+<li>粒子 A 的曲线中心在 1，实测 5 偏离中心 4，似然极小；</li>
+<li>粒子 B 的曲线中心在 5，实测 5 正好落在中心，似然最大；</li>
+<li>粒子 C 的曲线中心在 9，实测 5 偏离中心 4，似然极小。</li>
+</ul>
+<p><strong>“以理论距离为中心”=
+每个粒子根据自己的位置，画一条中心在自己“预测距离”上的钟形曲线；实测距离落在谁的曲线中心附近，谁的似然就大。</strong></p>
+<blockquote>
+<p><strong>“以理论距离为中心”不是“空间上离 AP
+远的点”，而是“钟形曲线的横轴中心落在‘粒子到 AP
+的预测距离’这个数值上”。</strong>
+横轴是距离数值，不是空间位置；中心随粒子位置移动，实测距离越接近这个中心，该粒子的似然越大。</p>
+</blockquote>
+<h3 id="多个-ap-为什么连乘">1.5 多个 AP 为什么连乘</h3>
+<p>PF 的自然更新里写的是：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><munder><mo>∏</mo><mrow><mi>j</mi><mo>∈</mo><mi mathvariant="script">𝒮</mi></mrow></munder><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo>∣</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+L^{(i)}
+=
+\prod_{j\in\mathcal{S}} p(d_j\mid \mathbf{x}^{(i)})
+</annotation></semantics></math></p>
+<p>这是假设各 AP
+的测距噪声相互独立。独立事件的联合概率等于各自概率的乘积，所以把每个 AP
+的似然乘起来，得到：</p>
+<blockquote>
+<p><strong>如果目标在粒子
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">\mathbf{x}^{(i)}</annotation></semantics></math>
+处，那么“同时观测到这一组测距值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>1</mn></msub><mo>,</mo><msub><mi>d</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>d</mi><mrow><mo stretchy="false" form="prefix">|</mo><mi mathvariant="script">𝒮</mi><mo stretchy="false" form="prefix">|</mo></mrow></msub></mrow><annotation encoding="application/x-tex">d_1,d_2,\dots,d_{|\mathcal{S}|}</annotation></semantics></math>”的联合概率密度。</strong></p>
+</blockquote>
+<p>这个乘积
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">L^{(i)}</annotation></semantics></math>
+就是粒子的似然。它综合了所有 AP 的信息：一个粒子要对所有 AP
+的测距都解释得好，乘积才大；只要有一个 AP
+的残差特别大，乘积就会被拉得很小。</p>
+<h3 id="一个具体数字完整算一遍">1.6 一个具体数字，完整算一遍</h3>
+<p>设场景里有两个 AP：</p>
+<ul>
+<li>AP1 在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,0,0)</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mn>1</mn></msub><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\sigma_1=0.5</annotation></semantics></math>
+m，实测
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>1</mn></msub><mo>=</mo><mn>5.0</mn></mrow><annotation encoding="application/x-tex">d_1=5.0</annotation></semantics></math>
+m；</li>
+<li>AP2 在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>10</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(10,0,0)</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mn>2</mn></msub><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\sigma_2=0.5</annotation></semantics></math>
+m，实测
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>2</mn></msub><mo>=</mo><mn>6.0</mn></mrow><annotation encoding="application/x-tex">d_2=6.0</annotation></semantics></math>
+m。</li>
+</ul>
+<p>有一个粒子
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{x}^{(i)}=(1,0,0)</annotation></semantics></math>。算它对两个
+AP 的似然。</p>
+<p><strong>AP1：</strong></p>
+<p>理论距离：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">∥</mo><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">∥</mo><mo>=</mo><mn>1.0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> m</mtext></mrow></mrow><annotation encoding="application/x-tex">
+\|\mathbf{x}^{(i)}-\mathbf{a}_1\|
+=
+\|(1,0,0)-(0,0,0)\|
+=
+1.0\text{ m}
+</annotation></semantics></math></p>
+<p>残差：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mn>5.0</mn><mo>−</mo><mn>1.0</mn><mo>=</mo><mn>4.0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> m</mtext></mrow></mrow><annotation encoding="application/x-tex">
+r_1=5.0-1.0=4.0\text{ m}
+</annotation></semantics></math></p>
+<p>似然：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mn>1</mn></msub><mo>∣</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><msqrt><mrow><mn>2</mn><mi>π</mi></mrow></msqrt><mo>⋅</mo><mn>0.5</mn></mrow></mfrac><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msup><mn>4.0</mn><mn>2</mn></msup><mrow><mn>2</mn><mo>⋅</mo><msup><mn>0.5</mn><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0.798</mn><mo>⋅</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>32</mn><mo stretchy="false" form="postfix">)</mo><mo>≈</mo><mn>1.0</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>14</mn></mrow></msup></mrow><annotation encoding="application/x-tex">
+p(d_1\mid\mathbf{x}^{(i)})
+=
+\frac{1}{\sqrt{2\pi}\cdot 0.5}
+\exp\left(-\frac{4.0^2}{2\cdot 0.5^2}\right)
+=
+0.798\cdot \exp(-32)
+\approx
+1.0\times 10^{-14}
+</annotation></semantics></math></p>
+<p><strong>AP2：</strong></p>
+<p>理论距离：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">∥</mo><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>10</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">∥</mo><mo>=</mo><mn>9.0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> m</mtext></mrow></mrow><annotation encoding="application/x-tex">
+\|\mathbf{x}^{(i)}-\mathbf{a}_2\|
+=
+\|(1,0,0)-(10,0,0)\|
+=
+9.0\text{ m}
+</annotation></semantics></math></p>
+<p>残差：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mn>6.0</mn><mo>−</mo><mn>9.0</mn><mo>=</mo><mi>−</mi><mn>3.0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> m</mtext></mrow></mrow><annotation encoding="application/x-tex">
+r_2=6.0-9.0=-3.0\text{ m}
+</annotation></semantics></math></p>
+<p>似然：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mn>2</mn></msub><mo>∣</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0.798</mn><mo>⋅</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>3.0</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><mrow><mn>2</mn><mo>⋅</mo><msup><mn>0.5</mn><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0.798</mn><mo>⋅</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>18</mn><mo stretchy="false" form="postfix">)</mo><mo>≈</mo><mn>1.2</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>8</mn></mrow></msup></mrow><annotation encoding="application/x-tex">
+p(d_2\mid\mathbf{x}^{(i)})
+=
+0.798\cdot \exp\left(-\frac{(-3.0)^2}{2\cdot 0.5^2}\right)
+=
+0.798\cdot \exp(-18)
+\approx
+1.2\times 10^{-8}
+</annotation></semantics></math></p>
+<p><strong>联合似然：</strong></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mn>1</mn></msub><mo>∣</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>⋅</mo><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mn>2</mn></msub><mo>∣</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>≈</mo><mn>1.0</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>14</mn></mrow></msup><mo>×</mo><mn>1.2</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>8</mn></mrow></msup><mo>≈</mo><mn>1.2</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>22</mn></mrow></msup></mrow><annotation encoding="application/x-tex">
+L^{(i)}
+=
+p(d_1\mid\mathbf{x}^{(i)})\cdot p(d_2\mid\mathbf{x}^{(i)})
+\approx
+1.0\times 10^{-14}\times 1.2\times 10^{-8}
+\approx
+1.2\times 10^{-22}
+</annotation></semantics></math></p>
+<p>这个数字非常小，说明粒子
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,0,0)</annotation></semantics></math>
+对两个 AP 的测距都解释得很差。</p>
+<p>换一个粒子
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{x}^{(k)}=(5,0,0)</annotation></semantics></math>：</p>
+<ul>
+<li>到 AP1 理论距离 5.0，残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5.0</mn><mo>−</mo><mn>5.0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">5.0-5.0=0</annotation></semantics></math>，似然
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>0.798</mn></mrow><annotation encoding="application/x-tex">=0.798</annotation></semantics></math>；</li>
+<li>到 AP2 理论距离 5.0，残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6.0</mn><mo>−</mo><mn>5.0</mn><mo>=</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">6.0-5.0=1.0</annotation></semantics></math>，似然
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>0.798</mn><mo>⋅</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mi>−</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo><mo>≈</mo><mn>0.108</mn></mrow><annotation encoding="application/x-tex">=0.798\cdot\exp(-2)\approx 0.108</annotation></semantics></math>；</li>
+<li>联合似然
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>0.798</mn><mo>×</mo><mn>0.108</mn><mo>≈</mo><mn>0.086</mn></mrow><annotation encoding="application/x-tex">=0.798\times 0.108\approx 0.086</annotation></semantics></math>。</li>
+</ul>
+<p>对比：粒子
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(5,0,0)</annotation></semantics></math>
+的似然
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.086</mn><annotation encoding="application/x-tex">0.086</annotation></semantics></math>
+比粒子
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,0,0)</annotation></semantics></math>
+的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.2</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>22</mn></mrow></msup></mrow><annotation encoding="application/x-tex">1.2\times 10^{-22}</annotation></semantics></math>
+大了 20 多个数量级。所以
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(5,0,0)</annotation></semantics></math>
+的权重会远大于
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,0,0)</annotation></semantics></math>，重采样时
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(5,0,0)</annotation></semantics></math>
+附近的粒子会被大量复制。</p>
+<h3 id="为什么实际代码里用对数">1.7 为什么实际代码里用对数</h3>
+<p>联合似然是很多个小于 1 的数相乘，AP 一多，结果会小到浮点数下溢变成
+0。所以工程上取对数，把连乘变成连加：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msup><mi>L</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><munder><mo>∑</mo><mrow><mi>j</mi><mo>∈</mo><mi mathvariant="script">𝒮</mi></mrow></munder><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo>∣</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\log L^{(i)}
+=
+\sum_{j\in\mathcal{S}}
+\log p(d_j\mid\mathbf{x}^{(i)})
+</annotation></semantics></math></p>
+<p>单个 AP 的对数似然：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo>∣</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>−</mi><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msqrt><mrow><mn>2</mn><mi>π</mi></mrow></msqrt><msub><mi>σ</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mi>−</mi><mo stretchy="false" form="postfix">∥</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><mrow><mn>2</mn><msubsup><mi>σ</mi><mi>j</mi><mn>2</mn></msubsup></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+\log p(d_j\mid\mathbf{x}^{(i)})
+=
+-\log(\sqrt{2\pi}\sigma_j)
+-
+\frac{(d_j-\|\mathbf{x}^{(i)}-\mathbf{a}_j\|)^2}{2\sigma_j^2}
+</annotation></semantics></math></p>
+<p>粒子权重更新在对数域做：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msup><mi>ω</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>←</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msup><mi>ω</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>+</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msup><mi>L</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">
+\log\omega^{(i)}
+\leftarrow
+\log\omega^{(i)}
++
+\log L^{(i)}
+</annotation></semantics></math></p>
+<p>最后归一化时，先减去所有粒子对数权重的最大值（防止指数溢出），再取指数：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mover><mi>ω</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mfrac><mrow><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msup><mi>ω</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>−</mo><munder><mi mathvariant="normal">max</mi><mi>l</mi></munder><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msup><mi>ω</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><mrow><munder><mo>∑</mo><mi>m</mi></munder><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msup><mi>ω</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>−</mo><munder><mi mathvariant="normal">max</mi><mi>l</mi></munder><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msup><mi>ω</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>l</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+\tilde{\omega}^{(i)}
+=
+\frac{
+\exp(\log\omega^{(i)}-\max_l\log\omega^{(l)})
+}{
+\sum_m \exp(\log\omega^{(m)}-\max_l\log\omega^{(l)})
+}
+</annotation></semantics></math></p>
+<p>这就是代码里常见的“log-sum-exp”技巧。数学上和直接连乘完全等价，只是数值上不会下溢。</p>
+<h3 id="残差里没有真值为什么还要撒粒子">1.8
+残差里没有真值：为什么还要撒粒子</h3>
+<h4 id="残差公式里没有真值">1.8.1 残差公式里没有真值</h4>
+<p>回看残差定义：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>r</mi><mi>j</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><msub><mi>d</mi><mi>j</mi></msub><mi>−</mi><mo stretchy="false" form="postfix">∥</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">
+r_j^{(i)}=d_j-\|\mathbf{x}^{(i)}-\mathbf{a}_j\|
+</annotation></semantics></math></p>
+<p>这里三个量分别是：</p>
+<table>
+
+<thead>
+<tr>
+<th>符号</th>
+<th>是什么</th>
+<th>我们知道吗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>j</mi></msub><annotation encoding="application/x-tex">d_j</annotation></semantics></math></td>
+<td>第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+个 AP 的实测距离</td>
+<td>知道，设备测出来的</td>
+</tr>
+<tr>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\mathbf{a}_j</annotation></semantics></math></td>
+<td>第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+个 AP 的已知坐标</td>
+<td>知道，部署时标定的</td>
+</tr>
+<tr>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">\mathbf{x}^{(i)}</annotation></semantics></math></td>
+<td>第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+个粒子假设的位置</td>
+<td>知道，是我们自己撒的点</td>
+</tr>
+<tr>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>−</mo><msub><mi mathvariant="bold-italic">𝒂</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">\|\mathbf{x}^{(i)}-\mathbf{a}_j\|</annotation></semantics></math></td>
+<td>如果目标在这个粒子位置，到 AP 的距离应该是多少</td>
+<td>可以算，因为粒子位置是我们设的</td>
+</tr>
+</tbody>
+</table>
+<p><strong>真值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="bold-italic">𝒙</mi><mtext mathvariant="normal">true</mtext></msub><annotation encoding="application/x-tex">\mathbf{x}_{\text{true}}</annotation></semantics></math>
+从头到尾没有出现在这个公式里。</strong>
+我们不知道真值，所以没法算“真实距离”。我们算的是“粒子假设位置下的理论距离”，然后拿它和实测距离比较。</p>
+<h4 id="用猜谜游戏类比">1.8.2 用猜谜游戏类比</h4>
+<p>假设目标藏在房间里，你手里有一把测距仪，能测出目标到几个固定点的距离，但你不知道目标在哪。</p>
+<p>你的做法是：在房间里撒 2000
+个猜测点（粒子），每个点都代表一个“如果目标在这里”的假设。对每个猜测点，你问：</p>
+<blockquote>
+<p>“如果目标真的在这个点上，那它到 AP1 的距离应该是多少？到 AP2
+呢？……这些‘应该的距离’和我手里测距仪的读数差多少？”</p>
+</blockquote>
+<ul>
+<li>某个猜测点的“应该距离”和实测距离很接近 →
+这个猜测很合理，给它高权重；</li>
+<li>某个猜测点的“应该距离”和实测距离差很远 →
+这个猜测很离谱，给它低权重。</li>
+</ul>
+<p>你不需要知道真值，你只需要能对每个猜测点算“预测距离”，再和实测比较。这正是
+PF 在做的事。</p>
+<h4 id="一个具体例子把真值和粒子分开">1.8.3
+一个具体例子把“真值”和“粒子”分开</h4>
+<p>设真实目标在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="bold-italic">𝒙</mi><mtext mathvariant="normal">true</mtext></msub><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{x}_{\text{true}}=(5,0,0)</annotation></semantics></math>，但我们不知道。两个
+AP：</p>
+<ul>
+<li>AP1 在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,0,0)</annotation></semantics></math>，实测
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>1</mn></msub><mo>=</mo><mn>5.0</mn></mrow><annotation encoding="application/x-tex">d_1=5.0</annotation></semantics></math>；</li>
+<li>AP2 在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>10</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(10,0,0)</annotation></semantics></math>，实测
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>2</mn></msub><mo>=</mo><mn>5.0</mn></mrow><annotation encoding="application/x-tex">d_2=5.0</annotation></semantics></math>。</li>
+</ul>
+<p>撒三个粒子：</p>
+<ul>
+<li>粒子
+A：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{x}^{(A)}=(1,0,0)</annotation></semantics></math></li>
+<li>粒子
+B：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>B</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{x}^{(B)}=(5,0,0)</annotation></semantics></math></li>
+<li>粒子
+C：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>C</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><mo stretchy="false" form="prefix">(</mo><mn>9</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathbf{x}^{(C)}=(9,0,0)</annotation></semantics></math></li>
+</ul>
+<p>对每个粒子算残差和似然（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\sigma=0.5</annotation></semantics></math>）：</p>
+<p><strong>粒子 A：</strong></p>
+<ul>
+<li>到 AP1 的“预测距离”
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">∥</mo><mo>=</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">=\|(1,0,0)-(0,0,0)\|=1.0</annotation></semantics></math>，残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mn>5.0</mn><mo>−</mo><mn>1.0</mn><mo>=</mo><mn>4.0</mn></mrow><annotation encoding="application/x-tex">r_1=5.0-1.0=4.0</annotation></semantics></math>；</li>
+<li>到 AP2 的“预测距离”
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>10</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">∥</mo><mo>=</mo><mn>9.0</mn></mrow><annotation encoding="application/x-tex">=\|(1,0,0)-(10,0,0)\|=9.0</annotation></semantics></math>，残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mn>5.0</mn><mo>−</mo><mn>9.0</mn><mo>=</mo><mi>−</mi><mn>4.0</mn></mrow><annotation encoding="application/x-tex">r_2=5.0-9.0=-4.0</annotation></semantics></math>；</li>
+<li>两个残差都很大 → 似然极小。</li>
+</ul>
+<p><strong>粒子 B：</strong></p>
+<ul>
+<li>到 AP1 的“预测距离”
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">∥</mo><mo>=</mo><mn>5.0</mn></mrow><annotation encoding="application/x-tex">=\|(5,0,0)-(0,0,0)\|=5.0</annotation></semantics></math>，残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mn>5.0</mn><mo>−</mo><mn>5.0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r_1=5.0-5.0=0</annotation></semantics></math>；</li>
+<li>到 AP2 的“预测距离”
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>10</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">∥</mo><mo>=</mo><mn>5.0</mn></mrow><annotation encoding="application/x-tex">=\|(5,0,0)-(10,0,0)\|=5.0</annotation></semantics></math>，残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mn>5.0</mn><mo>−</mo><mn>5.0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r_2=5.0-5.0=0</annotation></semantics></math>；</li>
+<li>两个残差都为零 → 似然最大。</li>
+</ul>
+<p><strong>粒子 C：</strong></p>
+<ul>
+<li>到 AP1 的“预测距离”
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>9.0</mn></mrow><annotation encoding="application/x-tex">=9.0</annotation></semantics></math>，残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mi>−</mi><mn>4.0</mn></mrow><annotation encoding="application/x-tex">r_1=-4.0</annotation></semantics></math>；</li>
+<li>到 AP2 的“预测距离”
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">=1.0</annotation></semantics></math>，残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mn>4.0</mn></mrow><annotation encoding="application/x-tex">r_2=4.0</annotation></semantics></math>；</li>
+<li>两个残差都很大 → 似然极小。</li>
+</ul>
+<p>结果：粒子 B 的权重远大于 A 和 C。重采样后，B 附近会被大量复制，A 和
+C 被淘汰。</p>
+<p>注意：粒子 B 恰好和真值重合，但我们并不是因为“知道真值是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(5,0,0)</annotation></semantics></math>”才给它高权重。我们是因为它的预测距离和实测距离完全吻合才给它高权重。如果真值在
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>6</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(6,0,0)</annotation></semantics></math>，那么粒子
+B 的残差就不会是 0，而
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>6</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(6,0,0)</annotation></semantics></math>
+附近的粒子会胜出——<strong>是观测
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>1</mn></msub><mo>,</mo><msub><mi>d</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">d_1,d_2</annotation></semantics></math>
+在筛选粒子，不是真值在筛选粒子。</strong></p>
+<h4 id="为什么不能直接解方程求出真值">1.8.4
+为什么不能直接“解方程”求出真值</h4>
+<p>在无噪声、AP
+数量刚好、几何构型良好时，确实可以直接解。但真实场景中：</p>
+<ol type="1">
+<li>测距有噪声，两个球面方程的交点不是一个点，而是一片模糊区域；</li>
+<li>AP
+数量多于未知数，方程是超定的，没有精确解，只能找“最合理”的解；</li>
+<li>NLOS 会让某些测距严重偏离，直接解方程会被坏数据拉偏；</li>
+<li>目标在运动，每一帧的观测都要和运动模型结合，不是孤立地解一帧方程。</li>
+</ol>
+<p>PF
+的做法是：不直接解方程，而是撒大量假设点，用观测去评估每个假设的合理性，让合理的假设存活、不合理的被淘汰。这是一种“用采样代替解析求解”的策略。它不要求方程有闭式解，也不要求噪声是高斯的，还能自然处理多峰、NLOS、运动模型等复杂情况。</p>
+<h4 id="总结">1.8.5 总结</h4>
+<blockquote>
+<p><strong>残差 = 实测距离 − 粒子假设位置下的理论距离。</strong></p>
+</blockquote>
+<ul>
+<li>“实测距离”来自设备；</li>
+<li>“理论距离”来自粒子自己的位置，不是真值；</li>
+<li>真值我们不知道，所以才要撒粒子去逼近它；</li>
+<li>粒子滤波的本质是：用大量假设覆盖未知空间，用观测给每个假设打分，让高分假设存活、低分假设淘汰，最终高分假设的加权平均就是估计值。</li>
+</ul>
+<hr />
+<h2 id="wpf-的两个权重层次">2. WPF 的两个权重层次</h2>
+<h3 id="nlos-锚点降权降的是谁的权重">2.1 NLOS
+锚点降权，降的是“谁的”权重</h3>
+<p>关键结论：</p>
+<blockquote>
+<p><strong>WPF 降的不是粒子的权重
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mover><mi>ω</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">\tilde{\omega}^{(i)}</annotation></semantics></math>，而是该
+AP 在“决定粒子权重”这件事上的话语权。</strong></p>
+</blockquote>
+<p>标准 PF 中，似然是各 AP 高斯似然的等权乘积：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><munder><mo>∏</mo><mi>j</mi></munder><mi mathvariant="script">𝒩</mi><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>r</mi><mi>j</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>;</mo><mn>0</mn><mo>,</mo><msubsup><mi>σ</mi><mi>j</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+L^{(i)}
+=
+\prod_j \mathcal{N}\left(r_j^{(i)};0,\sigma_j^2\right)
+</annotation></semantics></math></p>
+<p>每个 AP 对
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">L^{(i)}</annotation></semantics></math>
+的贡献是“一票”。WPF 把乘积改成带指数的乘积：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>L</mi><mtext mathvariant="normal">WPF</mtext><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><munder><mo>∏</mo><mi>j</mi></munder><msup><mrow><mo stretchy="true" form="prefix">[</mo><mi mathvariant="script">𝒩</mi><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>r</mi><mi>j</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>;</mo><mn>0</mn><mo>,</mo><msubsup><mi>σ</mi><mi>j</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub></msup></mrow><annotation encoding="application/x-tex">
+L_{\text{WPF}}^{(i)}
+=
+\prod_j
+\left[
+\mathcal{N}\left(r_j^{(i)};0,\sigma_j^2\right)
+\right]^{\widetilde{\mathrm{WAP}}_j}
+</annotation></semantics></math></p>
+<p>其中
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub><annotation encoding="application/x-tex">\widetilde{\mathrm{WAP}}_j</annotation></semantics></math>
+是每个 AP 一个标量，由该 AP 到目标的距离决定：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub><mo>=</mo><mfrac><mrow><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo>+</mo><mi>ϵ</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><munder><mi mathvariant="normal">max</mi><mi>l</mi></munder><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>l</mi></msub><mo>+</mo><mi>ϵ</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+\widetilde{\mathrm{WAP}}_j
+=
+\frac{1/(d_j+\epsilon)}{\max_l 1/(d_l+\epsilon)}
+</annotation></semantics></math></p>
+<p>于是：</p>
+<ul>
+<li>近端
+AP：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub><mo>≈</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\widetilde{\mathrm{WAP}}_j\approx 1</annotation></semantics></math>，它的一票基本等于原来的一票；</li>
+<li>远端/NLOS
+AP：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub><mo>≪</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\widetilde{\mathrm{WAP}}_j\ll 1</annotation></semantics></math>，它的一票被压缩成“半票”甚至“十分之一票”。</li>
+</ul>
+<p>对数域看最清楚：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msubsup><mi>L</mi><mtext mathvariant="normal">WPF</mtext><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><munder><mo>∑</mo><mi>j</mi></munder><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub><mo>⋅</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi mathvariant="script">𝒩</mi><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>r</mi><mi>j</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>;</mo><mn>0</mn><mo>,</mo><msubsup><mi>σ</mi><mi>j</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\log L_{\text{WPF}}^{(i)}
+=
+\sum_j
+\widetilde{\mathrm{WAP}}_j
+\cdot
+\log \mathcal{N}\left(r_j^{(i)};0,\sigma_j^2\right)
+</annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub><annotation encoding="application/x-tex">\widetilde{\mathrm{WAP}}_j</annotation></semantics></math>
+是乘在“第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+个 AP
+的对数似然项”上的系数，它不直接出现在粒子权重上，而是通过改变似然来间接改变粒子权重。</p>
+<h3 id="wpf-的对数似然">2.2 WPF 的对数似然</h3>
+<p>标准 PF 的联合似然是：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo>=</mo><munder><mo>∏</mo><mi>j</mi></munder><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo>∣</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+L^{(i)}
+=
+\prod_j p(d_j\mid\mathbf{x}^{(i)})
+</annotation></semantics></math></p>
+<p>WPF 改成：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>L</mi><mtext mathvariant="normal">WPF</mtext><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><munder><mo>∏</mo><mi>j</mi></munder><msup><mrow><mo stretchy="true" form="prefix">[</mo><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo>∣</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub></msup></mrow><annotation encoding="application/x-tex">
+L_{\text{WPF}}^{(i)}
+=
+\prod_j
+\left[
+p(d_j\mid\mathbf{x}^{(i)})
+\right]^{\widetilde{\mathrm{WAP}}_j}
+</annotation></semantics></math></p>
+<p>对数域：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><msubsup><mi>L</mi><mtext mathvariant="normal">WPF</mtext><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><mo>=</mo><munder><mo>∑</mo><mi>j</mi></munder><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub><mo>⋅</mo><mrow><mi mathvariant="normal">log</mi><mo>&#8289;</mo></mrow><mi>p</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo>∣</mo><msup><mi mathvariant="bold-italic">𝒙</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\log L_{\text{WPF}}^{(i)}
+=
+\sum_j
+\widetilde{\mathrm{WAP}}_j
+\cdot
+\log p(d_j\mid\mathbf{x}^{(i)})
+</annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub><annotation encoding="application/x-tex">\widetilde{\mathrm{WAP}}_j</annotation></semantics></math>
+就是乘在“第
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+个 AP 的对数似然项”前面的一个系数。近端 AP 系数接近
+1，它的对数似然项原样计入；远端/NLOS AP
+系数很小，它的对数似然项被压缩，即使残差很大，对总似然的拉低作用也被削弱。</p>
+<h3 id="数值例子两层权重分开">2.3 数值例子：两层权重分开</h3>
+<p>设两个 AP：</p>
+<ul>
+<li>AP1：近端
+LOS，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>1</mn></msub><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">d_1=5</annotation></semantics></math>
+m，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mn>1</mn></msub><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\sigma_1=0.5</annotation></semantics></math>
+m；</li>
+<li>AP2：远端
+NLOS，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>2</mn></msub><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">d_2=40</annotation></semantics></math>
+m，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mn>2</mn></msub><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\sigma_2=0.5</annotation></semantics></math>
+m，实测被 NLOS 拉大了 3 m。</li>
+</ul>
+<p>两个候选粒子：</p>
+<ul>
+<li>粒子 A：位置靠近真实值，对 AP1 残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">r_1=0.1</annotation></semantics></math>，对
+AP2 残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mn>3.0</mn></mrow><annotation encoding="application/x-tex">r_2=3.0</annotation></semantics></math>（因为
+NLOS 偏差）；</li>
+<li>粒子 B：位置被 AP2 的异常测距“骗”过去，对 AP1 残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mn>4.0</mn></mrow><annotation encoding="application/x-tex">r_1=4.0</annotation></semantics></math>，对
+AP2 残差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">r_2=0.1</annotation></semantics></math>。</li>
+</ul>
+<p>标准 PF（等权乘积）：</p>
+<table>
+
+<thead>
+<tr>
+<th></th>
+<th>AP1 似然</th>
+<th>AP2 似然</th>
+<th>总似然
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>粒子 A</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒩</mi><mo stretchy="false" form="prefix">(</mo><mn>0.1</mn><mo>;</mo><mn>0</mn><mo>,</mo><msup><mn>0.5</mn><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo><mo>≈</mo><mn>0.78</mn></mrow><annotation encoding="application/x-tex">\mathcal{N}(0.1;0,0.5^2)\approx 0.78</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒩</mi><mo stretchy="false" form="prefix">(</mo><mn>3.0</mn><mo>;</mo><mn>0</mn><mo>,</mo><msup><mn>0.5</mn><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo><mo>≈</mo><mn>2.4</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>8</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\mathcal{N}(3.0;0,0.5^2)\approx 2.4\times10^{-8}</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>1.9</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>8</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\approx 1.9\times10^{-8}</annotation></semantics></math></td>
+</tr>
+<tr>
+<td>粒子 B</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒩</mi><mo stretchy="false" form="prefix">(</mo><mn>4.0</mn><mo>;</mo><mn>0</mn><mo>,</mo><msup><mn>0.5</mn><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo><mo>≈</mo><mn>1.3</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>14</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\mathcal{N}(4.0;0,0.5^2)\approx 1.3\times10^{-14}</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒩</mi><mo stretchy="false" form="prefix">(</mo><mn>0.1</mn><mo>;</mo><mn>0</mn><mo>,</mo><msup><mn>0.5</mn><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo><mo>≈</mo><mn>0.78</mn></mrow><annotation encoding="application/x-tex">\mathcal{N}(0.1;0,0.5^2)\approx 0.78</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>1.0</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>14</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\approx 1.0\times10^{-14}</annotation></semantics></math></td>
+</tr>
+</tbody>
+</table>
+<p>标准 PF 下，粒子 A 的总似然仍然远大于 B，但这个差距是被 NLOS 的 AP2
+大幅拉开的——AP2 用一票否决权把粒子 A 的似然压了 8 个数量级。</p>
+<p>WPF（距离反比加权）：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>+</mo><mi>ϵ</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>+</mo><mi>ϵ</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>=</mo><mn>1</mn><mo>,</mo><mspace width="2.0em"></mspace><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mn>2</mn></msub><mo>=</mo><mfrac><mrow><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>40</mn><mo>+</mo><mi>ϵ</mi><mo stretchy="false" form="postfix">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mn>5</mn><mo>+</mo><mi>ϵ</mi><mo stretchy="false" form="postfix">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>5</mn><mo>+</mo><mi>ϵ</mi></mrow><mrow><mn>40</mn><mo>+</mo><mi>ϵ</mi></mrow></mfrac><mo>≈</mo><mn>0.12</mn></mrow><annotation encoding="application/x-tex">
+\widetilde{\mathrm{WAP}}_1
+=
+\frac{1/(5+\epsilon)}{1/(5+\epsilon)}
+=
+1,\qquad
+\widetilde{\mathrm{WAP}}_2
+=
+\frac{1/(40+\epsilon)}{1/(5+\epsilon)}
+=
+\frac{5+\epsilon}{40+\epsilon}
+\approx 0.12
+</annotation></semantics></math></p>
+<table>
+
+<thead>
+<tr>
+<th></th>
+<th>AP1 项
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="script">𝒩</mi><mn>1</mn></msup><annotation encoding="application/x-tex">\mathcal{N}^{1}</annotation></semantics></math></th>
+<th>AP2 项
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="script">𝒩</mi><mn>0.12</mn></msup><annotation encoding="application/x-tex">\mathcal{N}^{0.12}</annotation></semantics></math></th>
+<th>总似然
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>L</mi><mtext mathvariant="normal">WPF</mtext></msub><annotation encoding="application/x-tex">L_{\text{WPF}}</annotation></semantics></math></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>粒子 A</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.78</mn><annotation encoding="application/x-tex">0.78</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>2.4</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>8</mn></mrow></msup><msup><mo stretchy="false" form="postfix">)</mo><mn>0.12</mn></msup><mo>≈</mo><mn>0.11</mn></mrow><annotation encoding="application/x-tex">(2.4\times10^{-8})^{0.12}\approx 0.11</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>0.086</mn></mrow><annotation encoding="application/x-tex">\approx 0.086</annotation></semantics></math></td>
+</tr>
+<tr>
+<td>粒子 B</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.3</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>14</mn></mrow></msup></mrow><annotation encoding="application/x-tex">1.3\times10^{-14}</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0.78</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>0.12</mn></msup><mo>≈</mo><mn>0.97</mn></mrow><annotation encoding="application/x-tex">(0.78)^{0.12}\approx 0.97</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>1.3</mn><mo>×</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>14</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\approx 1.3\times10^{-14}</annotation></semantics></math></td>
+</tr>
+</tbody>
+</table>
+<p>关键变化：粒子 A 的总似然从
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mrow><mi>−</mi><mn>8</mn></mrow></msup><annotation encoding="application/x-tex">10^{-8}</annotation></semantics></math>
+量级被“救回”到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">10^{-1}</annotation></semantics></math>
+量级，因为 AP2 的异常残差被指数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0.12</mn><annotation encoding="application/x-tex">0.12</annotation></semantics></math>
+压扁了；而粒子 B 依然很差，因为 AP1 的残差 4.0
+没有被降权，仍然是一票否决。最终粒子 A 的权重远大于 B，滤波结果不会被
+NLOS 的 AP2 拉偏。</p>
+<p>这个例子里：</p>
+<ul>
+<li>粒子的权重
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mover><mi>ω</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">\tilde{\omega}^{(i)}</annotation></semantics></math>
+仍然是每个粒子一个标量（A 大 B 小）；</li>
+<li>被降权的是 AP2 的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mn>2</mn></msub><mo>≈</mo><mn>0.12</mn></mrow><annotation encoding="application/x-tex">\widetilde{\mathrm{WAP}}_2\approx 0.12</annotation></semantics></math>，它是
+AP 层面的系数，不是粒子层面的权重。</li>
+</ul>
+<h3 id="层次对照表">2.4 层次对照表</h3>
+<table>
+
+<thead>
+<tr>
+<th>层次</th>
+<th>符号</th>
+<th>数量</th>
+<th>含义</th>
+<th>谁在用它</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>残差</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>r</mi><mi>j</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msubsup><annotation encoding="application/x-tex">r_j^{(i)}</annotation></semantics></math></td>
+<td>每粒子 × 每 AP 一个</td>
+<td>粒子对某 AP 的测距偏差</td>
+<td>算似然</td>
+</tr>
+<tr>
+<td>AP 权重</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub><annotation encoding="application/x-tex">\widetilde{\mathrm{WAP}}_j</annotation></semantics></math></td>
+<td>每 AP 一个</td>
+<td>该 AP 在似然乘积中的话语权</td>
+<td>WPF 独有，乘在似然指数上</td>
+</tr>
+<tr>
+<td>粒子似然</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">L^{(i)}</annotation></semantics></math></td>
+<td>每粒子一个</td>
+<td>粒子对所有 AP 的综合解释能力</td>
+<td>更新粒子权重</td>
+</tr>
+<tr>
+<td>粒子权重</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mover><mi>ω</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="false" form="prefix">(</mo><mi>i</mi><mo stretchy="false" form="postfix">)</mo></mrow></msup><annotation encoding="application/x-tex">\tilde{\omega}^{(i)}</annotation></semantics></math></td>
+<td>每粒子一个</td>
+<td>该粒子位置假设的可信度</td>
+<td>重采样 + 输出估计</td>
+</tr>
+</tbody>
+</table>
+<p>一句话回答：</p>
+<blockquote>
+<p><strong>PF 对每个粒子计算的是“该粒子对所有 AP
+残差的高斯似然”，并把它乘进该粒子的标量权重里；WPF 对
+NLOS/远端锚点降的是“该 AP 在似然乘积中的指数系数
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mo accent="true">̃</mo></mover><mi>j</mi></msub><annotation encoding="application/x-tex">\widetilde{\mathrm{WAP}}_j</annotation></semantics></math>”，也就是这个
+AP 对粒子权重更新的投票权，而不是直接去改某个粒子的权重。</strong></p>
+</blockquote>
+<p>所以 WPF 的“加权”和 WLS 的“加权”也不是一回事：WLS
+加权改的是线性方程组的行权重，WPF 加权改的是似然乘积中每个 AP
+项的指数。两者都叫“加权”，但作用对象和数学位置完全不同。</p>
+<hr />
+<h2 id="定位精度的限制因素">3. 定位精度的限制因素</h2>
+<h3 id="hdop水平精度因子">3.1 HDOP（水平精度因子）</h3>
+<p>HDOP（Horizontal Dilution of
+Precision，水平精度因子）是衡量定位几何构型在水平方向上对测距误差放大程度的指标。它不直接表示“误差有多大”，而是表示“AP/锚点布局把测距误差在水平面上放大了多少倍”。</p>
+<h4 id="从公式看-hdop">3.1.1 从公式看 HDOP</h4>
+<p>定位解算（如 LS/WLS）的协方差矩阵为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><msup><mi>G</mi><mi>T</mi></msup><mi>G</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\sigma^2(G^TG)^{-1}</annotation></semantics></math>，HDOP
+从其对角元中提取：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">HDOP</mtext><mo>=</mo><msqrt><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>G</mi><mi>T</mi></msup><mi>G</mi><msubsup><mo stretchy="false" form="postfix">)</mo><mn>11</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo>+</mo><mo stretchy="false" form="prefix">(</mo><msup><mi>G</mi><mi>T</mi></msup><mi>G</mi><msubsup><mo stretchy="false" form="postfix">)</mo><mn>22</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup></mrow></msqrt></mrow><annotation encoding="application/x-tex">
+\text{HDOP}
+=
+\sqrt{
+(G^TG)^{-1}_{11}
++
+(G^TG)^{-1}_{22}
+}
+</annotation></semantics></math></p>
+<p>若使用加权（WLS/WNLS），则换成
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><msup><mi>G</mi><mi>T</mi></msup><mi>W</mi><mi>G</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(G^TWG)^{-1}</annotation></semantics></math>，此时称为加权
+HDOP：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">HDOP</mtext><mo>=</mo><msqrt><mrow><mrow><mi mathvariant="normal">trace</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mo stretchy="false" form="prefix">(</mo><msup><mi>G</mi><mi>T</mi></msup><mi>W</mi><mi>G</mi><msup><mo stretchy="false" form="postfix">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msqrt></mrow><annotation encoding="application/x-tex">
+\text{HDOP}
+=
+\sqrt{
+\operatorname{trace}\left((G^TWG)^{-1}\right)
+}
+</annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+是几何矩阵（或设计矩阵），每一行代表目标到对应 AP
+的方向余弦向量，刻画锚点相对于目标的方位关系。</p>
+<h4 id="与定位误差的关系">3.1.2 与定位误差的关系</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mtext mathvariant="normal">水平</mtext></msub><mo>≈</mo><mtext mathvariant="normal">HDOP</mtext><mo>×</mo><msub><mi>σ</mi><mtext mathvariant="normal">测距</mtext></msub></mrow><annotation encoding="application/x-tex">
+\sigma_{\text{水平}}
+\approx
+\text{HDOP}
+\times
+\sigma_{\text{测距}}
+</annotation></semantics></math></p>
+<ul>
+<li>HDOP
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">=1</annotation></semantics></math>：水平误差约等于测距误差，几何构型理想；</li>
+<li>HDOP
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">=5</annotation></semantics></math>：同样的测距误差，水平定位误差被放大
+5 倍；</li>
+<li>HDOP 越大，水平精度越差；HDOP 越小，几何构型在水平面上越好。</li>
+</ul>
+<h4 id="hdop-在整个-dop-体系中的位置">3.1.3 HDOP 在整个 DOP
+体系中的位置</h4>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>约束的维度</th>
+<th>关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GDOP</td>
+<td>3D 位置 + 时间</td>
+<td>最综合</td>
+</tr>
+<tr>
+<td>PDOP</td>
+<td>三维位置</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>D</mi><mi>O</mi><msup><mi>P</mi><mn>2</mn></msup><mo>=</mo><mi>H</mi><mi>D</mi><mi>O</mi><msup><mi>P</mi><mn>2</mn></msup><mo>+</mo><mi>V</mi><mi>D</mi><mi>O</mi><msup><mi>P</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">PDOP^2=HDOP^2+VDOP^2</annotation></semantics></math></td>
+</tr>
+<tr>
+<td>HDOP</td>
+<td>水平面（x, y）</td>
+<td>本文主题</td>
+</tr>
+<tr>
+<td>VDOP</td>
+<td>垂直高度（z）</td>
+<td>三维定位中不可忽略</td>
+</tr>
+</tbody>
+</table>
+<p>在三维定位中，HDOP 小不代表 VDOP 也小，必须分别关注。</p>
+<h4 id="hdop-在-pfwpf-场景中的意义">3.1.4 HDOP 在 PF/WPF
+场景中的意义</h4>
+<ol type="1">
+<li><strong>判断当前 AP 几何是否适合水平定位</strong>：如果参与定位的 AP
+在水平方向上分布很集中（例如都在同一侧），即使测距很准，HDOP
+也会很大，水平坐标会很不确定。</li>
+<li><strong>作为 AP 筛选/加权依据</strong>：现有算法用残差筛 AP；HDOP
+可从几何层面补充。可以在 WPF 中，把 HDOP
+相关因子引入粒子权重，让几何贡献差的 AP 组合被自动降权。</li>
+<li><strong>解释“残差好但定位差”</strong>：有时所有 AP
+残差都不大，但解算出的水平位置依然抖动，原因就是 AP 几何构型差导致 HDOP
+偏高，残差指标本身无法反映这一点。</li>
+</ol>
+<h4 id="一句话总结">3.1.5 一句话总结</h4>
+<blockquote>
+<p><strong>HDOP = 水平方向上，几何构型对测距误差的放大倍数。</strong>
+它由 AP 与目标的相对方位决定，与测距本身准不准无关；HDOP
+越小，说明当前锚点布局在水平面上越“有区分度”，同样的测距误差能换来越高的水平定位精度。</p>
+</blockquote>
+<h3 id="噪声估计与定位精度">3.2 噪声估计与定位精度</h3>
+<p>“定位准需要噪声估计准”这个想法方向是对的，但只说对了一半。更准确的说法是：<strong>噪声估计准是“定位准”的重要前提，但不是唯一条件；而且不同算法对噪声估计的敏感程度完全不同。</strong></p>
+<h4 id="为什么噪声估计准确实关键">3.2.1 为什么“噪声估计准”确实关键</h4>
+<p><strong>（1）WLS/WNLS 里，噪声估计直接决定权重</strong></p>
+<p>WLS 的权重就是
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn><mi>/</mi><msubsup><mi>σ</mi><mi>i</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">w_i=1/\sigma_i^2</annotation></semantics></math>。如果
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\sigma_i</annotation></semantics></math>
+估小了，这个 AP 会被过度信任；估大了，会被过度冷落。权重设错，WLS
+就不再是 BLUE（最佳线性无偏估计），甚至可能比不加权的 LS 还差。WNLS
+同理，协方差矩阵
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="bold">𝚺</mi><annotation encoding="application/x-tex">\boldsymbol{\Sigma}</annotation></semantics></math>
+估不准，就无法逼近 CRLB。</p>
+<p><strong>（2）PF/WPF 里，噪声估计决定似然的“尖锐程度”</strong></p>
+<p>粒子似然是：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒩</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo>;</mo><mn>0</mn><mo>,</mo><msup><mi>σ</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">)</mo><mo>∝</mo><mrow><mi mathvariant="normal">exp</mi><mo>&#8289;</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mfrac><msup><mi>r</mi><mn>2</mn></msup><mrow><mn>2</mn><msup><mi>σ</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\mathcal{N}(r;0,\sigma^2)
+\propto
+\exp\left(-\frac{r^2}{2\sigma^2}\right)
+</annotation></semantics></math></p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+估得太小：似然曲线极窄，残差稍大的粒子权重瞬间趋近
+0。结果是粒子退化极快，少数粒子垄断权重，滤波“过度自信”，一旦真值不在这些粒子附近就彻底跑偏；</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+估得太大：似然曲线太平坦，好粒子和坏粒子的权重差不多，滤波“反应迟钝”，收敛慢，输出估计方差大。</li>
+</ul>
+<p><strong>（3）两阶段 AP 剔除的阈值也依赖噪声水平</strong></p>
+<p>8 m 的残差阈值，本质上是在问“这个残差是正常噪声还是 NLOS
+偏差”。如果实际噪声
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\sigma=0.5</annotation></semantics></math>
+m，8 m 是 16 倍标准差，很安全；如果实际噪声
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\sigma=3</annotation></semantics></math>
+m，8 m 只有不到 3
+倍标准差，正常测量也可能被误杀。阈值合理性直接取决于噪声估计。</p>
+<h4 id="为什么噪声估计准还不够">3.2.2 为什么“噪声估计准”还不够</h4>
+<p><strong>（1）几何构型差，噪声再准也救不了</strong></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mtext mathvariant="normal">位置</mtext></msub><mo>≈</mo><mtext mathvariant="normal">HDOP</mtext><mo>×</mo><msub><mi>σ</mi><mtext mathvariant="normal">测距</mtext></msub></mrow><annotation encoding="application/x-tex">
+\sigma_{\text{位置}}
+\approx
+\text{HDOP}
+\times
+\sigma_{\text{测距}}
+</annotation></semantics></math></p>
+<p>如果 AP 在水平面上几乎共线，HDOP 可能是 10 甚至更大。此时即使
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+估得极准，位置误差仍然被几何放大 10
+倍。噪声估计准只保证“没有额外放大”，不保证“放大倍数小”。</p>
+<p><strong>（2）噪声的“质”比“量”更重要</strong></p>
+<p>噪声估计通常只估了方差，但真实误差可能是：</p>
+<ul>
+<li>NLOS
+系统性正偏差：不是零均值，估方差没用，需要偏差建模或鲁棒估计；</li>
+<li>多径引起的非高斯重尾：方差能描述一部分，但尾部行为需要重尾分布（如
+Student-t）或 M 估计；</li>
+<li>异常值/粗差：单个离谱测量，方差估计会被污染，需要先剔除再估。</li>
+</ul>
+<p><strong>（3）模型失配比噪声估计误差更致命</strong></p>
+<p>如果运动模型写错（目标急转弯但用匀速模型）、观测模型写错（测距有固定偏差但模型假设零均值），那么噪声估计再准，滤波也会系统性偏离。模型误差是偏差，噪声估计误差是方差，前者往往影响更大。</p>
+<p><strong>（4）算法本身的收敛性/初值问题</strong></p>
+<p>NLS/WNLS/PF
+都需要初值或粒子覆盖。初值差、粒子数不足、重采样过早贫化，这些问题的后果不会因为噪声估计准而消失。</p>
+<h4 id="更准确的表述">3.2.3 更准确的表述</h4>
+<blockquote>
+<p><strong>定位准需要：噪声估计合理 + 几何构型良好 + 误差模型匹配 +
+算法收敛正常。噪声估计准是必要非充分条件；而且“准”不等于“精确”，更关键的是“不严重低估”——低估噪声比高估噪声危险得多。</strong></p>
+</blockquote>
+<p>为什么“不严重低估”比“精确估计”更实际：</p>
+<ul>
+<li>低估
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+→ 过度自信 → 粒子退化、WLS 权重极端化 → 灾难性失败；</li>
+<li>高估
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+→ 保守 → 收敛慢、精度略降 → 性能平滑退化，不会崩。</li>
+</ul>
+<p>所以在工程上，宁可把
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+估得略大一点（加安全裕量），也不要估小。这也是 PF
+里常给似然方差设下限、WLS 里给权重设上限的原因。</p>
+<h4 id="结合-pfwpf-项目的落地建议">3.2.4 结合 PF/WPF 项目的落地建议</h4>
+<ol type="1">
+<li><strong>在线估计噪声，而不是用固定值</strong>：用新息序列（残差序列）的滑动方差估计
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math>，或者用鲁棒尺度估计（如
+MAD）避免被 NLOS 污染；</li>
+<li><strong>给似然方差设下限</strong>：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>j</mi></msub><mo>←</mo><mrow><mi mathvariant="normal">max</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>σ</mi><mi>j</mi></msub><mo>,</mo><msub><mi>σ</mi><mi mathvariant="normal">min</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\sigma_j\leftarrow\max(\sigma_j,\sigma_{\min})</annotation></semantics></math>，防止某帧噪声估得过小导致粒子瞬间退化；</li>
+<li><strong>区分“方差”和“偏差”</strong>：WPF 的距离反比降权处理的是“远端
+AP
+更可能有偏差”，这是偏差层面的鲁棒化；噪声方差估计处理的是“零均值波动”，两者互补，不能互相替代；</li>
+<li><strong>用 HDOP 监控几何</strong>：如果 HDOP 突然变大，说明当前 AP
+组合几何变差，此时即使噪声估计准，也应考虑放宽残差阈值或增加
+AP，而不是硬信当前解；</li>
+<li><strong>两阶段剔除的阈值应随噪声估计自适应</strong>：把固定 8 m 改成
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>⋅</mo><mover><mi>σ</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">k\cdot\hat{\sigma}</annotation></semantics></math>（如
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mover><mi>σ</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">4\hat{\sigma}</annotation></semantics></math>
+到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mover><mi>σ</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">5\hat{\sigma}</annotation></semantics></math>），噪声水平变化时阈值自动跟着变。</li>
+</ol>
+<h4 id="一句话总结-1">3.2.5 一句话总结</h4>
+<blockquote>
+<p><strong>“噪声估计准”是定位准的重要拼图，但它管的是“权重和似然设得对不对”，管不了“几何构型好不好、误差分布是不是高斯、模型有没有写错”。工程上最危险的不是噪声估计不够精确，而是严重低估噪声导致算法过度自信；所以策略应是“合理估计
++ 安全裕量 +
+与几何监控和鲁棒处理配合”，而不是追求噪声参数的绝对精确。</strong></p>
+</blockquote>
+<hr />
+<h2 id="噪声建模从反推到数据拟合">4. 噪声建模：从反推到数据拟合</h2>
+<h3 id="从测距反推噪声性质">4.1 从测距反推噪声性质</h3>
+<p>这个方向是对的，而且在定位领域已有成熟的研究脉络。可以拆成两个可操作的问题：</p>
+<ol type="1">
+<li>从测距结果本身能否“反推”出噪声的性质（方差、分布、甚至成因）？</li>
+<li>噪声是否与测距算法本身相关，从而可以“按算法分别建模”？</li>
+</ol>
+<p>答案是：两者都可以，而且结合起来确实能让定位更准。</p>
+<h4 id="从残差新息反推噪声性质">4.1.1 从残差/新息反推噪声性质</h4>
+<p>在 PF/WPF
+中，已经有一个天然的“探测器”：粒子预测位置与实测测距之间的残差（新息）。</p>
+<p><strong>在线方差辨识</strong>：最基础的做法是对残差序列做滑动方差估计，动态更新每个
+AP 的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math>。更稳健的是用
+MAD（中位数绝对偏差）代替标准差，避免被 NLOS
+帧污染。在卡尔曼框架下，这等价于用新息协方差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>k</mi></msub><mo>=</mo><mi>H</mi><msub><mi>P</mi><mrow><mi>k</mi><mo stretchy="false" form="prefix">|</mo><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><msup><mi>H</mi><mi>T</mi></msup><mo>+</mo><msub><mi>R</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">S_k=HP_{k|k-1}H^T+R_k</annotation></semantics></math>
+反推测量噪声协方差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>k</mi></msub><annotation encoding="application/x-tex">R_k</annotation></semantics></math>，已有工作用
+Sage-Husa 自适应滤波实时估计
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>。</p>
+<p><strong>分布性质辨识</strong>：只看方差不够，因为 NLOS
+噪声是有偏的，不是零均值高斯。利用标准化新息检验统计量
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mi>k</mi></msub><mo>=</mo><msubsup><mi>v</mi><mi>k</mi><mi>T</mi></msubsup><msubsup><mi>S</mi><mi>k</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><msub><mi>v</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">d_k=v_k^TS_k^{-1}v_k</annotation></semantics></math>
+可以判断当前残差是否“异常”；如果
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>d</mi><mi>k</mi></msub><annotation encoding="application/x-tex">d_k</annotation></semantics></math>
+持续偏大，说明该 AP 的噪声不再是简单的高斯白噪声，可能进入了 NLOS
+状态。更进一步，可以用 Allan
+方差分析残差序列的时间相关性，区分白噪声与有色噪声。已有 UWB
+定位研究表明，在有色噪声场景下，自适应粒子滤波（通过调整似然分布）的定位效果优于标准
+PF 和 EKF。</p>
+<h4 id="噪声与测距算法的相关性">4.1.2 噪声与测距算法的相关性</h4>
+<p>噪声确实与测距算法相关，这不是猜想，而是物理事实：</p>
+<ul>
+<li>TOA 的误差主要来自时钟同步精度和信号带宽，LOS 下近似零均值高斯，NLOS
+下叠加正偏差；</li>
+<li>RSS
+的误差随距离增大而增大（路径损耗模型的不确定性），方差本身是距离的函数；</li>
+<li>TDOA 的噪声结构更复杂，因为差分操作会引入 AP 之间的噪声相关性。</li>
+</ul>
+<p>因此，不要用一个统一的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+覆盖所有 AP。更合理的做法是：<strong>为每个 AP
+维护一个“噪声指纹”</strong>，包含方差、偏置先验、分布类型（高斯/重尾），并根据其测距体制（TOA/RSS/TDOA）初始化不同的先验。在线更新时，只更新与当前残差一致的参数，而不是把所有
+AP 的噪声混在一起估计。</p>
+<h4 id="噪声成因的反演从估参数到分类状态">4.1.3
+噪声“成因”的反演：从估参数到分类状态</h4>
+<p>反推“成因”在工程上通常落地为状态分类，而不是解析出具体的物理机制。最实用的是
+LOS/NLOS 二分类：</p>
+<p>利用残差特征（标准化新息、残差的滑动均值/方差、信号质量指标如 RSSI
+或首径功率）训练一个轻量分类器，在线判断每个 AP 当前处于 LOS 还是
+NLOS。一旦分类为 NLOS，就切换该 AP
+的似然模型：从零均值高斯切换到带偏置的重尾分布（如
+Student-t），或者直接大幅提高其等效方差。这比 WPF
+中固定的距离反比降权更精细——因为它区分了“远端但 LOS”和“远端且
+NLOS”两种情况。</p>
+<p>贝叶斯非参数方法提供了更彻底的方案：用变分贝叶斯（VB）将噪声的统计参数（均值、方差、甚至自由度）视为随机变量，与粒子状态联合估计。这样不需要预先指定噪声是高斯还是重尾，VB
+会自动从数据中推断出后验的噪声参数。代价是计算量高于固定噪声模型，但对“噪声性质未知”的场景非常合适。</p>
+<h4 id="融入-pfwpf-框架的工程化方案">4.1.4 融入 PF/WPF
+框架的工程化方案</h4>
+<p>不需要推翻现有架构，可以在三个位置嵌入“噪声反演”：</p>
+<p><strong>① 在 WPF 的降权因子中引入“噪声类型”维度</strong></p>
+<p>目前的 WAP 只用了距离反比。可以扩展为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mi>j</mi></msub><mo>=</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>⋅</mo><mi>g</mi><mo stretchy="false" form="prefix">(</mo><msub><mover><mi>σ</mi><mo accent="true">̂</mo></mover><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>⋅</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><msub><mtext mathvariant="normal">NLOS概率</mtext><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\mathrm{WAP}_j
+=
+f(d_j)\cdot g(\hat{\sigma}_j)\cdot h(\text{NLOS概率}_j)
+</annotation></semantics></math></p>
+<p>其中
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>σ</mi><mo accent="true">̂</mo></mover><mi>j</mi></msub><annotation encoding="application/x-tex">\hat{\sigma}_j</annotation></semantics></math>
+和 NLOS
+概率都来自在线辨识。这样降权不再只依赖“远不远”，还依赖“当前噪声大不大、是否被污染”。</p>
+<p><strong>② 用新息序列在线更新
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math>，替代固定噪声参数</strong></p>
+<p>在每一轮 PF/WPF 更新后，用该轮粒子的加权残差方差更新
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math>（加遗忘因子和平滑）。这直接回应了“噪声估计准定位才准”——让噪声估计在线自适应，而不是离线标定一次。</p>
+<p><strong>③ 两阶段 AP 剔除的阈值自适应化</strong></p>
+<p>把固定的 8 m 阈值改为
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>⋅</mo><msub><mover><mi>σ</mi><mo accent="true">̂</mo></mover><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">k\cdot\hat{\sigma}_j</annotation></semantics></math>（例如
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><msub><mover><mi>σ</mi><mo accent="true">̂</mo></mover><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">4\hat{\sigma}_j</annotation></semantics></math>
+到
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><msub><mover><mi>σ</mi><mo accent="true">̂</mo></mover><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">5\hat{\sigma}_j</annotation></semantics></math>）。当在线辨识到某
+AP 噪声水平升高时，剔除阈值自动收紧或放宽，而不是用一个硬编码的 8 m
+应对所有场景。</p>
+<h4 id="边界与提醒">4.1.5 边界与提醒</h4>
+<p>这套思路的收益是有条件的：当 NLOS
+偏差是主导误差时，噪声类型辨识和自适应方差带来的增益最大；当几何构型本身很差（HDOP
+很高）时，即使噪声估计完美，定位精度仍受几何限制。此外，在线辨识需要一定的数据积累（残差样本），在目标刚启动或
+AP 切换频繁时，初期估计可能不稳定，需要设置保守的先验或安全裕量。</p>
+<h4 id="总结-1">4.1.6 总结</h4>
+<blockquote>
+<p><strong>从测距残差反推噪声性质（方差、分布、LOS/NLOS
+状态）是可行的，噪声与测距算法强相关因此应按 AP
+分别建模，将辨识出的噪声参数反馈到 WPF
+的降权因子、似然方差和剔除阈值中，可以在不改变主体架构的前提下提升定位鲁棒性。代价是增加了在线估计的计算和调参复杂度，收益在
+NLOS 主导的场景中最显著。</strong></p>
+</blockquote>
+<h3 id="用数据拟合噪声">4.2 用数据拟合噪声</h3>
+<p>可以，而且已有数据恰好是做这件事最宝贵的资源。用数据拟合噪声，本质上就是把“反推噪声性质”从在线估计升级为离线建模。一旦有了可靠的离线噪声模型，PF/WPF
+的似然函数、WPF
+的降权因子、两阶段剔除的阈值都可以从“拍脑袋”变成“有数据支撑”。</p>
+<h4 id="先分类再拟合los-和-nlos-是两种完全不同的噪声">4.2.1
+先分类，再拟合：LOS 和 NLOS 是两种完全不同的噪声</h4>
+<p>如果把所有测距误差混在一起拟合一个分布，得到的参数会毫无物理意义。必须先把数据分成
+LOS 和 NLOS 两类，分别建模。</p>
+<p><strong>LOS 噪声</strong>：通常可以用零均值高斯建模，核心参数是标准差
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>L</mi></msub><annotation encoding="application/x-tex">\sigma_L</annotation></semantics></math>。如果数据里能看到轻微偏置，也可以拟合一个非零均值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>μ</mi><mi>L</mi></msub><annotation encoding="application/x-tex">\mu_L</annotation></semantics></math>，但通常量级很小。</p>
+<p><strong>NLOS
+噪声</strong>：不是零均值高斯，而是正偏、重尾。已有研究常用两种形式：</p>
+<ul>
+<li>对数正态分布：适合描述 NLOS
+引起的额外正偏差，单峰时用一个对数正态即可，复杂遮挡场景可以用两个对数正态的加权和来拟合双峰或多峰形态；</li>
+<li>重尾分布（如 Student-t）：如果 NLOS
+数据在尾部“拖得很长”，高斯拟合会严重低估极端误差的概率，重尾分布能更真实地反映这种特性。</li>
+</ul>
+<p>操作上：用数据画出两类误差的直方图，肉眼判断是单峰还是双峰、是否明显右偏。然后用
+<code>scipy.stats</code> 或 <code>fitdist</code> 对候选分布做拟合，用 KS
+检验或 AIC/BIC
+比较哪个分布更匹配。不要预设结论——数据说是什么分布，就用什么分布。</p>
+<h4 id="拟合距离相关的噪声参数方差不是常数">4.2.2
+拟合“距离相关”的噪声参数：方差不是常数</h4>
+<p>WPF 用距离反比降权，已经隐含了“远端 AP
+更不可靠”的假设。数据拟合可以把这种定性假设变成定量的函数关系。</p>
+<p>一个可落地的流程：</p>
+<ol type="1">
+<li><strong>采集覆盖全场景的数据</strong>：目标走遍所有可行位置，记录每个
+AP 的测距值和对应的真实距离；</li>
+<li><strong>计算每个采样点的测距误差</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><msub><mi>d</mi><mtext mathvariant="normal">测</mtext></msub><mo>−</mo><msub><mi>d</mi><mtext mathvariant="normal">真</mtext></msub></mrow><annotation encoding="application/x-tex">e=d_{\text{测}}-d_{\text{真}}</annotation></semantics></math>；</li>
+<li><strong>按真实距离分箱</strong>（例如每 1 m
+一个箱），把误差分配到对应箱中；</li>
+<li><strong>对每个箱计算误差的均值和方差</strong>，得到序列
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>μ</mi><mi>b</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\mu_b\}</annotation></semantics></math>
+和
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msubsup><mi>σ</mi><mi>b</mi><mn>2</mn></msubsup><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\sigma_b^2\}</annotation></semantics></math>；</li>
+<li><strong>对均值序列和方差序列分别做多项式拟合</strong>。</li>
+</ol>
+<p>关键经验结论是：<strong>均值更适合线性拟合，方差更适合二次拟合</strong>，因为方差随距离增长的速度比均值更快。也就是说，可以得到类似</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>a</mi><msup><mi>d</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>d</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">
+\sigma^2(d)=ad^2+bd+c
+</annotation></semantics></math></p>
+<p>的函数，直接替代固定
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>σ</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\sigma_j</annotation></semantics></math>。</p>
+<p>如果数据量不足以做分箱拟合，退而求其次：为每个 AP
+单独估计一个方差，而不是所有 AP 共用一个
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>。不同
+AP 的部署位置不同，噪声水平本来就不应该相同。</p>
+<h4 id="训练-losnlos-分类器用残差和信号特征判状态">4.2.3 训练 LOS/NLOS
+分类器：用残差和信号特征判状态</h4>
+<p>噪声分布拟合解决的是“已知状态后噪声长什么样”，还需要解决“当前帧这个
+AP 处于什么状态”。</p>
+<p>最直接的特征就是残差：NLOS 锚点的平均残差通常系统性地高于 LOS
+锚点。现有的两阶段 PF 剔除已经在隐式地做这件事，但可以把固定阈值 8 m
+替换为基于分类器概率的软决策。</p>
+<p>更丰富的特征来自接收信号本身：峰度、偏度、上升时间、最强路径能量、总能量、RMS
+时延扩展等，在文献中被反复证明对 LOS/NLOS
+区分有效，部分方法的分类准确率可达 93%–99%。方法上可以从简单的
+LS-SVM（同时做分类和偏差回归）到随机森林、DNN，选择取决于数据量和算力预算。</p>
+<p>落地建议：如果不想引入复杂的机器学习管线，只用残差特征 +
+一个轻量分类器（如逻辑回归或小决策树）就能比固定阈值更自适应。分类器的输出是一个
+NLOS 概率，直接接入下一步的似然切换。</p>
+<h4 id="把拟合结果馈入-pfwpf三个接入点">4.2.4 把拟合结果馈入
+PF/WPF：三个接入点</h4>
+<p><strong>接入点
+1：似然函数从“单一高斯”切换为“状态依赖的分布”</strong></p>
+<p>这是最直接的收益。现有 PF 的自然更新用高斯似然。拟合之后，对每个 AP
+根据分类器输出的 NLOS 概率选择或混合似然：</p>
+<ul>
+<li>判为 LOS → 用拟合好的高斯
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">𝒩</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>μ</mi><mi>L</mi></msub><mo>,</mo><msubsup><mi>σ</mi><mi>L</mi><mn>2</mn></msubsup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{N}(\mu_L,\sigma_L^2)</annotation></semantics></math>；</li>
+<li>判为 NLOS → 用拟合好的对数正态或重尾分布；</li>
+<li>概率模糊时 → 用概率加权混合似然，避免硬切换的抖动。</li>
+</ul>
+<p>这比 WPF 中“不管状态一律距离反比降权”更精细：它区分了“远端但
+LOS”和“远端且 NLOS”。</p>
+<p><strong>接入点 2：WAP 降权因子中加入“拟合噪声水平”维度</strong></p>
+<p>现在的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mi>j</mi></msub><mo>=</mo><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo>+</mo><mi>ϵ</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\mathrm{WAP}_j=1/(d_j+\epsilon)</annotation></semantics></math>
+只用了距离。拟合之后可以扩展为：</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">W</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">P</mi></mrow><mi>j</mi></msub><mo>∝</mo><mfrac><mn>1</mn><mrow><msub><mi>d</mi><mi>j</mi></msub><mo>+</mo><mi>ϵ</mi></mrow></mfrac><mo>⋅</mo><mi>g</mi><mo stretchy="false" form="prefix">(</mo><msub><mover><mi>σ</mi><mo accent="true">̂</mo></mover><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>⋅</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><msub><mtext mathvariant="normal">NLOS概率</mtext><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+\mathrm{WAP}_j
+\propto
+\frac{1}{d_j+\epsilon}
+\cdot
+g(\hat{\sigma}_j)
+\cdot
+h(\text{NLOS概率}_j)
+</annotation></semantics></math></p>
+<p>其中
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>⋅</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g(\cdot)</annotation></semantics></math>
+让拟合方差大的 AP
+进一步降权，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>⋅</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">h(\cdot)</annotation></semantics></math>
+让被判为 NLOS 的 AP
+大幅降权。距离、噪声水平、状态三类信息同时进入降权决策，比单一距离反比更稳健。</p>
+<p><strong>接入点 3：两阶段剔除的阈值从“固定 8
+m”改为“数据驱动的自适应阈值”</strong></p>
+<p>用拟合出的
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mo stretchy="false" form="prefix">(</mo><mi>d</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\sigma(d)</annotation></semantics></math>
+或分类器的 NLOS 概率来动态设定阈值。例如：阈值
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mi>k</mi><mo>⋅</mo><mover><mi>σ</mi><mo accent="true">̂</mo></mover><mo stretchy="false" form="prefix">(</mo><msub><mi>d</mi><mi>j</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">=k\cdot\hat{\sigma}(d_j)</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+取 4–5），或者“NLOS 概率超过 0.8 且残差超过
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mover><mi>σ</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">3\hat{\sigma}</annotation></semantics></math>”才剔除。阈值不再是一个脱离场景的数字，而是从数据分布中推导出来的。</p>
+<h4 id="数据里的真值从哪来">4.2.5 数据里的“真值”从哪来</h4>
+<p>拟合噪声需要测距误差，而测距误差需要真实距离。如果数据是在已知坐标的参考点上采集的（目标放在标定点上，或高精度全站仪/激光跟踪仪提供真值），那是最理想的。如果真值本身来自某个定位系统的输出，那么拟合出的“噪声”会混入定位系统的误差——拟合之前必须把真值的来源和精度说清楚，否则拟合的是“测距误差
++ 真值误差”的混合体。</p>
+<p>另一个实用技巧：用高精度参考系统（如光学动捕）只采集一小段标定数据来拟合噪声参数，然后把参数用到全部数据上，不需要全程都有真值。</p>
+<h4 id="总结-2">4.2.6 总结</h4>
+<blockquote>
+<p><strong>可以拟合，而且值得拟合。</strong> 路径是：先按 LOS/NLOS
+分类，分别拟合分布形态（高斯/对数正态/重尾），再拟合距离相关的方差函数（分箱+多项式），同时训练一个基于残差和信号特征的轻量状态分类器；最后把“状态概率
++ 拟合参数”接入 PF 的似然函数、WPF
+的降权因子和两阶段剔除的自适应阈值。代价是离线建模的工作量和真值数据的质量要求，但收益是把目前依赖经验设置的参数全部替换为数据驱动的估计，在
+NLOS 主导的场景中，定位鲁棒性的提升通常是显著的。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/" class="category-chain-item">秋招学习清单</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/" class="category-chain-item">三维定位算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D/" class="print-no-link">#三维定位</a>
+      
+        <a href="/tags/%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2/" class="print-no-link">#粒子滤波</a>
+      
+        <a href="/tags/WPF/" class="print-no-link">#WPF</a>
+      
+        <a href="/tags/%E4%BC%BC%E7%84%B6%E8%AE%A1%E7%AE%97/" class="print-no-link">#似然计算</a>
+      
+        <a href="/tags/HDOP/" class="print-no-link">#HDOP</a>
+      
+        <a href="/tags/%E5%99%AA%E5%A3%B0%E5%BB%BA%E6%A8%A1/" class="print-no-link">#噪声建模</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8B%9F%E5%90%88/" class="print-no-link">#数据拟合</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>粒子滤波与加权粒子滤波：权重层次、似然计算、HDOP与数据驱动噪声建模</div>
+      <div>https://mingsm17518.github.io/2026/10/27/秋招学习清单/三维定位算法/粒子滤波与加权粒子滤波：权重层次、似然计算、HDOP与数据驱动噪声建模/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Ming</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月27日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2026年10月27日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/27/%E7%A7%8B%E6%8B%9B%E5%AD%A6%E4%B9%A0%E6%B8%85%E5%8D%95/%E4%B8%89%E7%BB%B4%E5%AE%9A%E4%BD%8D%E7%AE%97%E6%B3%95/02_%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2%EF%BC%88PF%EF%BC%89%E7%AE%97%E6%B3%95%EF%BC%88%E9%80%9A%E4%BF%97%E7%89%88%EF%BC%89/" title="粒子滤波（PF）算法（通俗版）">
+                        <span class="hidden-mobile">粒子滤波（PF）算法（通俗版）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/obsidian-img.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
