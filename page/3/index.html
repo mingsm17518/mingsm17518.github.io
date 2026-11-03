@@ -236,15 +236,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/05_Cow_Gymnastics/" target="_self">
-          Cow Gymnastics
+        <a href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" target="_self">
+          02_差分数组
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/05_Cow_Gymnastics/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/02_%E5%B7%AE%E5%88%86%E6%95%B0%E7%BB%84/" target="_self">
         <div>
-          问题描述 USACO 2019 December Contest, Bronze Problem 1. Cow Gymnastics https://usaco.org/index.php?page=viewproblem2&amp;cpid=963 奶牛们正在进行体操训练，Bessie 记录了 K 次训练课中 N 头奶牛的排名。我们需要找出所有”一致”的奶牛对，即其中一头奶牛在每次训练课中都表现
+          差分数组 模板 diff = [0] * (n + 1)   # 开 n+1，防止 r+1 越界  # 对区间 [l, r] 加 v diff[l] += v diff[r+1] -= v  # 还原：对 diff 求前缀和 arr = [0] * n curr = 0 for i in range(n):     curr += diff[i]     arr[i] = curr 字典版（稀疏差
         </div>
       </a>
 
@@ -252,8 +252,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-30 17:00" pubdate>
-              2026-04-30
+            <time datetime="2026-11-03 12:36" pubdate>
+              2026-11-03
             </time>
           </div>
         
@@ -268,20 +268,13 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/" class="category-chain-item">题目</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" class="category-chain-item">完全搜索</a>
-  
-  
-
   
 
   
@@ -297,174 +290,10 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
-            
-              <a href="/tags/Bronze/">#Bronze</a>
-            
-              <a href="/tags/USACO/">#USACO</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" target="_self">
-          Complete Search 完全搜索
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/04/30/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" target="_self">
-        <div>
-          02_Complete Search 完全搜索 题目列表    # 题目 难度     01 Milk Pails ⭐⭐   02 Diamond Collector ⭐⭐   03 Daisy Chains ⭐⭐   04 Counting Liars ⭐⭐   05 Cow Gymnastics ⭐⭐⭐   06 Bovine Genomics ⭐⭐⭐     经典例题 01. Milk Pa
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-04-30 17:02" pubdate>
-              2026-04-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/" class="category-chain-item">题目</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" class="category-chain-item">完全搜索</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
-            
-              <a href="/tags/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/">#完全搜索</a>
-            
-              <a href="/tags/%E6%9A%B4%E5%8A%9B/">#暴力</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/Counting%20Liars/" target="_self">
-          Counting Liars
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/Counting%20Liars/" target="_self">
-        <div>
-          Counting Liars 题目链接（USACO 2022 US Open Contest, Bronze Problem 2） 题目描述 农夫约翰有 N 头奶牛（不包括 Bessie）。每头牛给出一条关于 Bessie 躲藏位置的陈述：  若某头牛说 L p：表示 Bessie 的位置 ≤ p； 若某头牛说 G p：表示 Bessie 的位置 ≥ p。  可能并非所有牛都说了真话，你需要找出至
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-10-26 00:21" pubdate>
-              2026-10-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/" class="category-chain-item">题目</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" class="category-chain-item">完全搜索</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
-            
-              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+              <a href="/tags/%E5%B7%AE%E5%88%86/">#差分</a>
             
               <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
             
-              <a href="/tags/Bronze/">#Bronze</a>
-            
-              <a href="/tags/USACO/">#USACO</a>
-            
           </div>
         
       </div>
@@ -477,15 +306,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/Complete%20Search%20%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" target="_self">
-          Complete Search 完全搜索
+        <a href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
+          01_前缀和
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/Complete%20Search%20%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02_%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/01_%E5%89%8D%E7%BC%80%E5%92%8C/" target="_self">
         <div>
-          Complete Search 完全搜索 完全搜索（暴力枚举）是最基础的算法思想：枚举所有可能的解，逐一检查。适用于数据规模小、状态空间有限的题目。USACO Bronze 中大量题目都可以用完全搜索解决。 题目列表    # 题目 来源 难度     01 Milk Pails USACO 2016 Feb Bronze ⭐⭐   02 Diamond Collector USACO 2016
+          前缀和 前缀和模板 # 一维前缀和 prefix = [0] * (n + 1) for i in range(n):   prefix[i + 1] = prefix[i] + a[i]  # a 是 0-indexed  # 查询区间 [l, r]（1-indexed） def query(l, r):   return prefix[r] - prefix[l - 1] # 二维前缀和 pr
         </div>
       </a>
 
@@ -493,8 +322,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-10-26 00:23" pubdate>
-              2026-10-26
+            <time datetime="2026-11-03 12:36" pubdate>
+              2026-11-03
             </time>
           </div>
         
@@ -509,20 +338,13 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/" class="category-chain-item">题目</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/02-%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95/" class="category-chain-item">02_核心算法</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/" class="category-chain-item">完全搜索</a>
-  
-  
-
   
 
   
@@ -535,19 +357,6 @@
           </div>
         
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
-            
-              <a href="/tags/USACO/">#USACO</a>
-            
-              <a href="/tags/%E5%AE%8C%E5%85%A8%E6%90%9C%E7%B4%A2/">#完全搜索</a>
-            
-              <a href="/tags/%E6%9A%B4%E5%8A%9B/">#暴力</a>
-            
-          </div>
-        
       </div>
     </article>
   </div>
@@ -558,15 +367,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/1016%E6%BB%A1%E5%B8%AE%E9%9B%86%E5%9B%A2/01_%E4%BF%AE%E6%94%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BD%BF%E6%97%A0%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BF%AE%E6%94%B9%E6%AC%A1%E6%95%B0/" target="_self">
-          修改字符串使无回文子串的最小修改次数
+        <a href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" target="_self">
+          07_Python工具函数
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/1016%E6%BB%A1%E5%B8%AE%E9%9B%86%E5%9B%A2/01_%E4%BF%AE%E6%94%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BD%BF%E6%97%A0%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BF%AE%E6%94%B9%E6%AC%A1%E6%95%B0/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/07_Python%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0/" target="_self">
         <div>
-          修改字符串使无回文子串的最小修改次数 题目描述 给定一个只包含小写字母的字符串 s，每次操作可以将任意一个字符修改为任意其他小写字母。求最少需要多少次修改，使得修改后的字符串中不包含任何长度 ≥ 2 的回文子串。 回文子串：正着读和反着读相同的连续子串。 数据范围：1 &lt;= s.length &lt;= 10^5，s 仅由小写字母组成。 示例 示例 1： 输入： s = "ababa" 输出
+          Python 工具函数 itertools.accumulate —— 前缀和 / 前缀最值 签名：itertools.accumulate(iterable, func=operator.add, *, initial=None) 一遍扫描累积出「每一步的折叠结果」，默认就是前缀和： from itertools import accumulate from operator import mu
         </div>
       </a>
 
@@ -574,8 +383,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-10-22 23:14" pubdate>
-              2026-10-22
+            <time datetime="2026-11-03 12:36" pubdate>
+              2026-11-03
             </time>
           </div>
         
@@ -590,330 +399,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/" class="category-chain-item">机考</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/1016%E6%BB%A1%E5%B8%AE%E9%9B%86%E5%9B%A2/" class="category-chain-item">1016满帮集团</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
-            
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
-            
-              <a href="/tags/%E5%9B%9E%E6%96%87/">#回文</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/1016%E6%BB%A1%E5%B8%AE%E9%9B%86%E5%9B%A2/02_%E4%BA%A4%E6%8D%A2%E4%B8%80%E6%AC%A1%E4%BD%BF%20a%20%E5%AD%97%E5%85%B8%E5%BA%8F%E4%B8%A5%E6%A0%BC%E5%A4%A7%E4%BA%8E%20b/" target="_self">
-          交换一次使 a 字典序严格大于 b
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/10/22/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/1016%E6%BB%A1%E5%B8%AE%E9%9B%86%E5%9B%A2/02_%E4%BA%A4%E6%8D%A2%E4%B8%80%E6%AC%A1%E4%BD%BF%20a%20%E5%AD%97%E5%85%B8%E5%BA%8F%E4%B8%A5%E6%A0%BC%E5%A4%A7%E4%BA%8E%20b/" target="_self">
-        <div>
-          交换一次使 a 字典序严格大于 b 题目描述 给定两个数字字符串 a 和 b，长度不一定相同。你可以对字符串 a 执行至多一次操作：交换 a 中任意两个位置上的字符（也可以不交换）。 操作完成后：  如果存在一种操作使 a' 字典序严格大于 b，输出任意一个满足条件的 a'； 否则输出 b。  输入格式：  第一行一个整数 t（1 &lt;= t &lt;= 1000），表示测试用例数量。 接下来
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-10-22 23:14" pubdate>
-              2026-10-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/" class="category-chain-item">机考</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/1016%E6%BB%A1%E5%B8%AE%E9%9B%86%E5%9B%A2/" class="category-chain-item">1016满帮集团</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
-            
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
-            
-              <a href="/tags/%E5%AD%97%E5%85%B8%E5%BA%8F/">#字典序</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E8%99%BE%E7%9A%AE/01_%E5%A4%A7%E6%95%B0%E5%8A%A0%E6%B3%95%EF%BC%88%E5%90%AB%E5%B0%8F%E6%95%B0%EF%BC%89/" target="_self">
-          大数加法（含小数）
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E8%99%BE%E7%9A%AE/01_%E5%A4%A7%E6%95%B0%E5%8A%A0%E6%B3%95%EF%BC%88%E5%90%AB%E5%B0%8F%E6%95%B0%EF%BC%89/" target="_self">
-        <div>
-          大数加法（含小数） 题目描述 实现两个大数相加，大数可能包含小数位。输入两个数字字符串 numStr1、numStr2，返回它们的和的字符串表示。 数据范围：数字字符串长度可能非常大，无法用内置整数类型直接存储，必须用字符串模拟。 示例 输入： 9007199254740991 1234567899999999999  输出： 1243575099254740990 输入： 90071992547
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-10-25 22:10" pubdate>
-              2026-10-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/" class="category-chain-item">机考</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E8%99%BE%E7%9A%AE/" class="category-chain-item">虾皮</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%A4%A7%E6%95%B0%E5%8A%A0%E6%B3%95/">#大数加法</a>
-            
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%8B%9F/">#字符串模拟</a>
-            
-              <a href="/tags/%E8%BF%9B%E4%BD%8D/">#进位</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E8%99%BE%E7%9A%AE/02_%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86%EF%BC%88%E5%A4%A7%E6%95%B0%E4%BC%98%E5%8C%96%E7%89%88%EF%BC%89/" target="_self">
-          分割等和子集（大数优化版）
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E8%99%BE%E7%9A%AE/02_%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86%EF%BC%88%E5%A4%A7%E6%95%B0%E4%BC%98%E5%8C%96%E7%89%88%EF%BC%89/" target="_self">
-        <div>
-          分割等和子集（大数优化版） 题目描述 给定一个只包含正整数的数组 nums，判断能否将数组分成两个子集，使得两个子集的元素和相等。 等价转化： 设数组总和为 total。若存在一个子集和为 total / 2，则剩下的元素和也为 total / 2，两边相等。 因此问题转化为：能否从 nums 中选出一个子集，使其和恰好等于 total / 2。 核心思路  总和为奇数：无法平分，直接返回 Fal
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-10-25 22:12" pubdate>
-              2026-10-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/" class="category-chain-item">机考</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E8%99%BE%E7%9A%AE/" class="category-chain-item">虾皮</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-              <a href="/tags/0-1%E8%83%8C%E5%8C%85/">#0-1背包</a>
-            
-              <a href="/tags/bitset/">#bitset</a>
-            
-              <a href="/tags/%E5%AD%90%E9%9B%86%E5%92%8C/">#子集和</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E9%80%94%E8%99%8E%E5%85%BB%E8%BD%A6-%E5%8C%BA%E9%97%B4%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98/" target="_self">
-          区间调度问题
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/10/25/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/%E9%80%94%E8%99%8E%E5%85%BB%E8%BD%A6-%E5%8C%BA%E9%97%B4%E8%B0%83%E5%BA%A6%E9%97%AE%E9%A2%98/" target="_self">
-        <div>
-          区间调度问题 问题概述 给定 n 个任务，每个任务有开始时间 start 和结束时间 end。两个任务不冲突当且仅当后一个任务的开始时间 &gt;= 前一个任务的结束时间（首尾可相接）。 两种常见变体：  最大任务数：每个任务权重相同，求最多能完成多少个任务 → 贪心； 最大利润：每个任务有利润 profit，求最大总利润 → 动态规划 + 二分。   方法一：最大任务数（贪心） 思路及解法 这是
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-10-25 16:21" pubdate>
-              2026-10-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E6%9C%BA%E8%80%83/" class="category-chain-item">机考</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
   
   
 
@@ -930,13 +421,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+              <a href="/tags/Python/">#Python</a>
             
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+              <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
             
-              <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">#二分查找</a>
-            
-              <a href="/tags/%E5%8C%BA%E9%97%B4%E8%B0%83%E5%BA%A6/">#区间调度</a>
+              <a href="/tags/itertools/">#itertools</a>
             
           </div>
         
@@ -950,15 +439,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/220.%20%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%20III/" target="_self">
-          220. 存在重复元素 III
+        <a href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/08_%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_self">
+          08_高级数据结构
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/10/26/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/220.%20%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%20III/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/08_%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_self">
         <div>
-          220. 存在重复元素 III 题目链接（困难） 题目描述 给你一个整数数组 nums 和两个整数 indexDiff 和 valueDiff。 找出满足下述条件的下标对 (i, j)：  i != j abs(i - j) &lt;= indexDiff abs(nums[i] - nums[j]) &lt;= valueDiff  如果存在，返回 true；否则，返回 false。 数据范围：
+          高级数据结构 树状数组 (Fenwick Tree) class Fenwick:     &quot;&quot;&quot;树状数组 (Fenwick Tree / Binary Indexed Tree)&quot;&quot;&quot;      def __init__(self, n: int = 0):         self.n = n         self.a = [0]
         </div>
       </a>
 
@@ -966,8 +455,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2026-10-26 00:53" pubdate>
-              2026-10-26
+            <time datetime="2026-11-03 12:36" pubdate>
+              2026-11-03
             </time>
           </div>
         
@@ -982,20 +471,13 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">刷题笔记</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/" class="category-chain-item">题目</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/%E9%A2%98%E7%9B%AE/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">滑动窗口</a>
-  
-  
-
   
 
   
@@ -1011,15 +493,390 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
+              <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">#并查集</a>
             
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+              <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#树状数组</a>
             
-              <a href="/tags/%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88/">#有序集合</a>
+              <a href="/tags/RMQ/">#RMQ</a>
             
-              <a href="/tags/%E6%A1%B6%E6%8E%92%E5%BA%8F/">#桶排序</a>
+              <a href="/tags/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/">#矩阵快速幂</a>
             
           </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/05_%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_self">
+          05_字符串
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/05_%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_self">
+        <div>
+          字符串 基本操作 s = &quot;hello&quot; lst = list(s)        # 字符串转列表  # 大小写转换 s.upper()            # 转大写 s.lower()            # 转小写 s.capitalize()       # 首字母大写 s.swapcase()         # 大小写互换  # 去除空白 s.strip()
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-11-03 12:36" pubdate>
+              2026-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" target="_self">
+          06_输入输出
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/06_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" target="_self">
+        <div>
+          输入输出 基础输入 # 单个整数 n = int(input())  # 多个整数（空格分隔） a, b = map(int, input().split())  # 一行整数转列表 arr = list(map(int, input().split()))  # 去除换行符 s = input().strip()  # 去除首尾空白（含 \n）  # 读取 n 行到列表 arr = [int(i
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-11-03 12:36" pubdate>
+              2026-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">#Python</a>
+            
+              <a href="/tags/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">#输入输出</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" target="_self">
+          03_集合
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88/" target="_self">
+        <div>
+          集合 set 是无序集合，元素唯一，支持 O(1) 成员检查。 s = set()  # 从列表创建（去重） nums = [1, 2, 2, 3, 3, 3] unique = set(nums) # &#123;1, 2, 3&#125;  s.add(x) s.remove(x)      # 不存在会报错 s.discard(x)     # 不存在不报错 s.pop()      # 删
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-11-03 12:36" pubdate>
+              2026-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" target="_self">
+          04_队列与栈
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/04_%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88/" target="_self">
+        <div>
+          队列 from collections import deque  dq = deque() dq.append(x) dq.appendleft(x) dq.pop() dq.popleft() 单调队列 from collections import deque  # 求窗口最小值（递增队列） q = deque() for i in range(n):     while q and q[0
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-11-03 12:36" pubdate>
+              2026-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/00_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" target="_self">
+          00_数据结构总览
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/00_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%80%BB%E8%A7%88/" target="_self">
+        <div>
+          数据结构 复杂度速查    数据结构 操作 时间复杂度     列表 索引访问/切片 O(1) / O(k)    append/pop(末尾) O(1)    insert/pop(开头) O(n)    in 检查 O(n)   集合/字典 in 检查 O(1) 平均    add/insert O(1) 平均    remove/delete O(1) 平均   堆 push/pop O(l
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-11-03 12:36" pubdate>
+              2026-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E5%AD%97%E5%85%B8/" target="_self">
+          02_字典
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/11/03/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E5%AD%97%E5%85%B8/" target="_self">
+        <div>
+          字典/哈希表 d = &#123;&#125; # 创建 person = &#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25&#125; # 访问 person[&quot;name&quot;] # &#x27;Alice&#x27; d.get(key, default)    # 获取值，不存在返回 default
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-11-03 12:36" pubdate>
+              2026-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="category-chain-item">算法学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
         
       </div>
     </article>
@@ -1029,7 +886,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/#board">20</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/#board">21</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
